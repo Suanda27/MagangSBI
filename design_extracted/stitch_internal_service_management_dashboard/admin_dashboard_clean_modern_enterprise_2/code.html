@@ -1,0 +1,611 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ISM System - Admin Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+        background-color: #f8fafc;
+        color: #0f172a;
+      }
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    }
+  </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-900 font-sans antialiased min-h-screen">
+<!-- Left Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-white border-r border-slate-200/80 z-50 flex flex-col justify-between select-none">
+<div class="flex flex-col flex-1 overflow-y-auto">
+<!-- App Brand -->
+<div class="h-16 px-6 flex items-center gap-3 border-b border-slate-100">
+<div class="w-8 h-8 rounded-lg bg-blue-800 flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined text-[20px] text-white">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="font-semibold text-[15px] text-slate-900 leading-tight tracking-tight">ISM System</span>
+<span class="text-[12px] text-slate-400">Internal Service</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="px-3.5 py-4 flex flex-col gap-0.5 text-[13.5px]">
+<a aria-current="page" class="flex items-center gap-3 px-3 py-2 rounded-lg bg-blue-50/80 text-blue-700 font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[19px] text-blue-700">dashboard</span>
+<span>Dashboard</span>
+</a>
+<div class="px-3 pt-5 pb-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Master Data</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[19px] text-slate-400">group</span>
+<span>Karyawan</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[19px] text-slate-400">corporate_fare</span>
+<span>Section</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[19px] text-slate-400">design_services</span>
+<span>Layanan</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[19px] text-slate-400">badge</span>
+<span>PIC</span>
+</a>
+<div class="px-3 pt-5 pb-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Permintaan</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[19px] text-slate-400">list_alt</span>
+<span>Semua Permintaan</span>
+</a>
+<div class="px-3 pt-5 pb-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Analisis</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[19px] text-slate-400">bar_chart</span>
+<span>Laporan</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Actions -->
+<div class="p-3 border-t border-slate-100 flex flex-col gap-0.5 text-[13.5px]">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<span class="material-symbols-outlined text-[19px] text-slate-400">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-rose-600 hover:text-rose-700 hover:bg-rose-50/70 transition-colors" href="#">
+<span class="material-symbols-outlined text-[19px] text-rose-500">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main View Area -->
+<div class="pl-64 flex flex-col min-h-screen">
+<!-- Top Header -->
+<header class="fixed top-0 left-64 right-0 h-16 bg-white/90 backdrop-blur-md border-b border-slate-200/80 z-40">
+<div class="h-16 px-8 flex items-center justify-between">
+<!-- Breadcrumb -->
+<div class="flex items-center gap-2 text-[13px] text-slate-500">
+<span class="hover:text-slate-800 transition-colors cursor-pointer">Portal</span>
+<span class="text-slate-300">/</span>
+<span class="text-slate-900 font-medium">Console</span>
+</div>
+<!-- Controls -->
+<div class="flex items-center gap-4">
+<!-- Compact Search Input -->
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400 text-[18px] pointer-events-none">search</span>
+<input class="w-64 pl-9 pr-3.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-[13px] text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all" placeholder="Cari NIK, ID, nama..." type="text">
+</div>
+<!-- Notification Button -->
+<button aria-label="Notifikasi" class="relative p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+</button>
+<!-- User Pill -->
+<div class="flex items-center gap-2.5 pl-2 py-1 pr-1.5 rounded-lg hover:bg-slate-100/70 transition-colors cursor-pointer">
+<div class="w-7 h-7 rounded-full bg-blue-800 text-white flex items-center justify-center font-medium text-[11px]">
+              AD
+            </div>
+<div class="flex flex-col text-left">
+<span class="text-[13px] font-medium text-slate-800 leading-tight">Admin ISM</span>
+<span class="text-[11px] text-slate-400">Administrator</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="w-full pt-16 flex-1">
+<div class="max-w-[1440px] mx-auto px-8 py-8 flex flex-col gap-6">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="text-[24px] font-semibold text-slate-900 tracking-tight">Dashboard</h1>
+<p class="text-[13.5px] text-slate-500 mt-0.5">Ringkasan pengelolaan layanan dan aktivitas sistem secara real-time.</p>
+</div>
+<div class="flex items-center gap-2.5">
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-[13px] font-medium text-slate-700 transition-all shadow-[0_1px_2px_rgba(0,0,0,0.02)]" type="button">
+<span class="material-symbols-outlined text-[17px] text-slate-500">person_add</span>
+<span>Tambah Karyawan</span>
+</button>
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-blue-800 hover:bg-blue-900 text-white text-[13px] font-medium transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[17px]">add_circle</span>
+<span>Tambah Layanan</span>
+</button>
+</div>
+</div>
+<!-- KPI Metrics Grid (All 6 Preserved) -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5">
+<!-- Total Karyawan -->
+<div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11.5px] font-semibold text-slate-400 uppercase tracking-wider">Total Karyawan</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">group</span>
+</div>
+<div>
+<div class="text-[25px] font-semibold text-slate-900 leading-none tracking-tight">128</div>
+<p class="text-[11.5px] text-slate-500 mt-2 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+<span>121 Aktif · 7 Nonaktif</span>
+</p>
+</div>
+</div>
+<!-- Total Section -->
+<div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11.5px] font-semibold text-slate-400 uppercase tracking-wider">Total Section</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">corporate_fare</span>
+</div>
+<div>
+<div class="text-[25px] font-semibold text-slate-900 leading-none tracking-tight">5</div>
+<p class="text-[11.5px] text-slate-500 mt-2 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+<span>5 Section operasional</span>
+</p>
+</div>
+</div>
+<!-- Total Layanan -->
+<div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11.5px] font-semibold text-slate-400 uppercase tracking-wider">Total Layanan</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">design_services</span>
+</div>
+<div>
+<div class="text-[25px] font-semibold text-slate-900 leading-none tracking-tight">32</div>
+<p class="text-[11.5px] text-slate-500 mt-2 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+<span>29 Aktif · 3 Nonaktif</span>
+</p>
+</div>
+</div>
+<!-- Total PIC -->
+<div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11.5px] font-semibold text-slate-400 uppercase tracking-wider">Total PIC</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">badge</span>
+</div>
+<div>
+<div class="text-[25px] font-semibold text-slate-900 leading-none tracking-tight">14</div>
+<p class="text-[11.5px] text-slate-500 mt-2 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+<span>13 Bertugas · 1 Nonaktif</span>
+</p>
+</div>
+</div>
+<!-- Total Permintaan -->
+<div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11.5px] font-semibold text-slate-400 uppercase tracking-wider">Total Permintaan</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">task</span>
+</div>
+<div>
+<div class="text-[25px] font-semibold text-slate-900 leading-none tracking-tight">186</div>
+<p class="text-[11.5px] text-slate-500 mt-2 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+<span>Semua tiket tercatat</span>
+</p>
+</div>
+</div>
+<!-- Permintaan Aktif (Subtly Highlighted) -->
+<div class="p-4 rounded-xl bg-white border border-blue-200 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col justify-between hover:border-blue-300 transition-all">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11.5px] font-semibold text-blue-800 uppercase tracking-wider">Permintaan Aktif</span>
+<span class="material-symbols-outlined text-blue-700 text-[18px]">hourglass_top</span>
+</div>
+<div>
+<div class="text-[25px] font-semibold text-blue-900 leading-none tracking-tight">31</div>
+<p class="text-[11.5px] text-blue-700 font-medium mt-2 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+<span>13 Menunggu · 18 Diproses</span>
+</p>
+</div>
+</div>
+</div>
+<!-- Analytics Section (Balanced 3-Column Layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+<!-- 1. Permintaan Berdasarkan Section -->
+<div class="p-5 rounded-xl bg-white border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-1">
+<h2 class="text-[14.5px] font-semibold text-slate-900">Permintaan Berdasarkan Section</h2>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">bar_chart</span>
+</div>
+<p class="text-[12px] text-slate-400 mb-5">Sebaran beban kerja lintas departemen</p>
+<div class="space-y-3.5">
+<!-- Assembly -->
+<div>
+<div class="flex justify-between text-[12.5px] mb-1">
+<span class="text-slate-700 font-medium">Assembly</span>
+<span class="text-slate-900 font-semibold">64 <span class="text-slate-400 font-normal text-[11px]">(34.4%)</span></span>
+</div>
+<div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-blue-800 rounded-full" style="width: 34.4%"></div>
+</div>
+</div>
+<!-- PE -->
+<div>
+<div class="flex justify-between text-[12.5px] mb-1">
+<span class="text-slate-700 font-medium">Production Engineering (PE)</span>
+<span class="text-slate-900 font-semibold">35 <span class="text-slate-400 font-normal text-[11px]">(18.8%)</span></span>
+</div>
+<div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-blue-600 rounded-full" style="width: 18.8%"></div>
+</div>
+</div>
+<!-- IS -->
+<div>
+<div class="flex justify-between text-[12.5px] mb-1">
+<span class="text-slate-700 font-medium">Information System (IS)</span>
+<span class="text-slate-900 font-semibold">31 <span class="text-slate-400 font-normal text-[11px]">(16.7%)</span></span>
+</div>
+<div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-sky-500 rounded-full" style="width: 16.7%"></div>
+</div>
+</div>
+<!-- HR -->
+<div>
+<div class="flex justify-between text-[12.5px] mb-1">
+<span class="text-slate-700 font-medium">Human Resources (HR)</span>
+<span class="text-slate-900 font-semibold">28 <span class="text-slate-400 font-normal text-[11px]">(15.0%)</span></span>
+</div>
+<div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-slate-400 rounded-full" style="width: 15.0%"></div>
+</div>
+</div>
+<!-- GA -->
+<div>
+<div class="flex justify-between text-[12.5px] mb-1">
+<span class="text-slate-700 font-medium">General Affairs (GA)</span>
+<span class="text-slate-900 font-semibold">28 <span class="text-slate-400 font-normal text-[11px]">(15.0%)</span></span>
+</div>
+<div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-slate-300 rounded-full" style="width: 15.0%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-4 mt-5 border-t border-slate-100 flex items-center justify-between text-[11.5px] text-slate-500">
+<span>Total Terlayani: 186</span>
+<span class="text-slate-700 font-medium">Permintaan tertinggi: Assembly</span>
+</div>
+</div>
+<!-- 2. Distribusi Status Permintaan -->
+<div class="p-5 rounded-xl bg-white border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-1">
+<h2 class="text-[14.5px] font-semibold text-slate-900">Distribusi Status Permintaan</h2>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">pie_chart</span>
+</div>
+<p class="text-[12px] text-slate-400 mb-4">Rasio penyelesaian dan progres operasional</p>
+<div class="flex items-center justify-center gap-6 py-2">
+<!-- Refined Conic Chart -->
+<div class="relative w-32 h-32 rounded-full flex items-center justify-center shrink-0" style="background: conic-gradient(
+                  #1e40af 0% 68.8%,
+                  #93c5fd 68.8% 85.5%,
+                  #f43f5e 85.5% 93%,
+                  #cbd5e1 93% 100%
+                );">
+<div class="w-22 h-22 w-[86px] h-[86px] rounded-full bg-white flex flex-col items-center justify-center">
+<span class="text-[20px] font-semibold text-slate-900 leading-tight">186</span>
+<span class="text-[10.5px] text-slate-400">Total Tiket</span>
+</div>
+</div>
+<!-- Clean Compact Legend -->
+<div class="flex flex-col gap-2 text-[12px]">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-blue-800 shrink-0"></span>
+<span class="text-slate-600">Selesai: <strong class="text-slate-800 font-semibold">128</strong> <span class="text-slate-400 text-[11px]">(68.8%)</span></span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-blue-300 shrink-0"></span>
+<span class="text-slate-600">Diproses: <strong class="text-slate-800 font-semibold">31</strong> <span class="text-slate-400 text-[11px]">(16.7%)</span></span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-rose-500 shrink-0"></span>
+<span class="text-slate-600">Ditolak: <strong class="text-slate-800 font-semibold">14</strong> <span class="text-slate-400 text-[11px]">(7.5%)</span></span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-slate-300 shrink-0"></span>
+<span class="text-slate-600">Menunggu: <strong class="text-slate-800 font-semibold">13</strong> <span class="text-slate-400 text-[11px]">(7.0%)</span></span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-4 mt-5 border-t border-slate-100 flex items-center justify-between text-[11.5px] text-slate-500">
+<span>Tingkat Resolusi: <strong class="text-slate-800 font-semibold">85.5%</strong></span>
+<span class="inline-flex items-center gap-1 text-emerald-600 font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> SLA Memenuhi Target
+              </span>
+</div>
+</div>
+<!-- 3. Tren Permintaan (Minimal Line Chart) -->
+<div class="p-5 rounded-xl bg-white border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-1">
+<h2 class="text-[14.5px] font-semibold text-slate-900">Tren Permintaan (2026)</h2>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 text-slate-600">6 Bulan</span>
+</div>
+<p class="text-[12px] text-slate-400 mb-3">Volume bulanan April – September 2026</p>
+<div class="w-full py-1">
+<svg class="w-full h-28 overflow-visible" preserveAspectRatio="none" viewBox="0 0 320 120">
+<!-- Subtle Horizontal Lines -->
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="320" y1="20" y2="20"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="320" y1="60" y2="60"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="320" y1="100" y2="100"></line>
+<!-- Delicate stroke line -->
+<polyline fill="none" points="15,85 75,72 135,78 195,45 255,38 305,20" stroke="#1e40af" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"></polyline>
+<!-- Small clean circular points -->
+<circle cx="15" cy="85" fill="#ffffff" r="3" stroke="#1e40af" stroke-width="1.5"></circle>
+<circle cx="75" cy="72" fill="#ffffff" r="3" stroke="#1e40af" stroke-width="1.5"></circle>
+<circle cx="135" cy="78" fill="#ffffff" r="3" stroke="#1e40af" stroke-width="1.5"></circle>
+<circle cx="195" cy="45" fill="#ffffff" r="3" stroke="#1e40af" stroke-width="1.5"></circle>
+<circle cx="255" cy="38" fill="#ffffff" r="3" stroke="#1e40af" stroke-width="1.5"></circle>
+<circle cx="305" cy="20" fill="#1e40af" r="3.5" stroke="#ffffff" stroke-width="1.5"></circle>
+</svg>
+<!-- Month Labels -->
+<div class="flex justify-between text-[11px] text-slate-400 mt-1.5 px-1">
+<span>Apr</span>
+<span>Mei</span>
+<span>Jun</span>
+<span>Jul</span>
+<span>Agt</span>
+<span class="font-medium text-slate-800">Sep (Proj)</span>
+</div>
+</div>
+</div>
+<div class="pt-4 mt-5 border-t border-slate-100 flex items-center justify-between text-[11.5px]">
+<span class="flex items-center gap-1 font-medium text-blue-700">
+<span class="material-symbols-outlined text-[15px]">trending_up</span>
+                Kenaikan +18.4% bln ini
+              </span>
+<span class="text-slate-400">Rata-rata: 31 tiket/bln</span>
+</div>
+</div>
+</div>
+<!-- Recent Requests Table ("Permintaan Terbaru") -->
+<div class="rounded-xl bg-white border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] overflow-hidden">
+<!-- Header -->
+<div class="px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100">
+<div>
+<h2 class="text-[15px] font-semibold text-slate-900">Permintaan Terbaru</h2>
+<p class="text-[12.5px] text-slate-400 mt-0.5">Daftar transaksi layanan internal yang masuk dalam antrean.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<select class="appearance-none pl-3 pr-8 py-1.5 text-[12.5px] font-medium rounded-lg bg-slate-50 border border-slate-200 text-slate-700 hover:bg-slate-100/70 focus:outline-none focus:border-blue-500 cursor-pointer">
+<option>Semua Status</option>
+<option>Menunggu</option>
+<option>Diproses</option>
+<option>Selesai</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2 text-slate-400 text-[16px] pointer-events-none">expand_more</span>
+</div>
+<a class="inline-flex items-center gap-1 text-[12.5px] font-medium text-blue-700 hover:text-blue-800 transition-colors" href="#">
+<span>Lihat Semua</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left text-[13px]">
+<thead>
+<tr class="border-b border-slate-100 bg-slate-50/60 text-slate-400 text-[11px] font-medium uppercase tracking-wider">
+<th class="py-3 px-6">ID Permintaan</th>
+<th class="py-3 px-4">Judul Permintaan</th>
+<th class="py-3 px-4">Layanan</th>
+<th class="py-3 px-4">Pengaju</th>
+<th class="py-3 px-4">Section</th>
+<th class="py-3 px-4">PIC</th>
+<th class="py-3 px-4">Lokasi</th>
+<th class="py-3 px-4">Tanggal</th>
+<th class="py-3 px-4">Status</th>
+<th class="py-3 px-6 text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="py-3.5 px-6 font-medium text-blue-800 cursor-pointer hover:underline">#SRV-2026-0012</td>
+<td class="py-3.5 px-4 font-medium text-slate-800">Sensor PLC Conveyor Rusak</td>
+<td class="py-3.5 px-4 text-slate-500 text-[12.5px]">Sensor &amp; Otomasi</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[10px] font-semibold border border-slate-200">MF</div>
+<span class="text-slate-800">Muhammad Faiz</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex px-2 py-0.5 rounded text-[11.5px] font-medium bg-slate-100 text-slate-600">Assembly</span>
+</td>
+<td class="py-3.5 px-4 text-slate-700 text-[12.5px]">Budi Santoso</td>
+<td class="py-3.5 px-4 text-slate-500 text-[12.5px]">Plant 2, Lt. 1</td>
+<td class="py-3.5 px-4 text-slate-400 text-[12px] whitespace-nowrap">23 Agt 2026, 08:24</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11.5px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-100">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      Selesai
+                    </span>
+</td>
+<td class="py-3.5 px-6 text-right">
+<button class="text-[12px] font-medium text-slate-500 hover:text-blue-700 transition-colors" type="button">Detail</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="py-3.5 px-6 font-medium text-blue-800 cursor-pointer hover:underline">#SRV-2026-0015</td>
+<td class="py-3.5 px-4 font-medium text-slate-800">VPN &amp; GitLab Onboarding</td>
+<td class="py-3.5 px-4 text-slate-500 text-[12.5px]">Dukungan Sistem</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[10px] font-semibold border border-slate-200">SA</div>
+<span class="text-slate-800">Siti Aminah</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex px-2 py-0.5 rounded text-[11.5px] font-medium bg-slate-100 text-slate-600">HR</span>
+</td>
+<td class="py-3.5 px-4 text-slate-700 text-[12.5px]">Hendra Wijaya</td>
+<td class="py-3.5 px-4 text-slate-500 text-[12.5px]">Plant 1, Lt. 2</td>
+<td class="py-3.5 px-4 text-slate-400 text-[12px] whitespace-nowrap">23 Agt 2026, 09:15</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11.5px] font-medium bg-blue-50 text-blue-700 border border-blue-100">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                      Sedang Diproses
+                    </span>
+</td>
+<td class="py-3.5 px-6 text-right">
+<button class="text-[12px] font-medium text-slate-500 hover:text-blue-700 transition-colors" type="button">Detail</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="py-3.5 px-6 font-medium text-blue-800 cursor-pointer hover:underline">#SRV-2026-0018</td>
+<td class="py-3.5 px-4 font-medium text-slate-800">Kalibrasi Mesin Press Hidrolik</td>
+<td class="py-3.5 px-4 text-slate-500 text-[12.5px]">Maintenance Mesin</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[10px] font-semibold border border-slate-200">RH</div>
+<span class="text-slate-800">Rudi Hartono</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex px-2 py-0.5 rounded text-[11.5px] font-medium bg-slate-100 text-slate-600">PE</span>
+</td>
+<td class="py-3.5 px-4 text-slate-700 text-[12.5px]">Budi Santoso</td>
+<td class="py-3.5 px-4 text-slate-500 text-[12.5px]">Plant 1, Lt. 1</td>
+<td class="py-3.5 px-4 text-slate-400 text-[12px] whitespace-nowrap">23 Agt 2026, 10:00</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11.5px] font-medium bg-amber-50 text-amber-700 border border-amber-100">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                      Menunggu Pemeriksaan
+                    </span>
+</td>
+<td class="py-3.5 px-6 text-right">
+<button class="text-[12px] font-medium text-slate-500 hover:text-blue-700 transition-colors" type="button">Detail</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="py-3.5 px-6 font-medium text-blue-800 cursor-pointer hover:underline">#SRV-2026-0021</td>
+<td class="py-3.5 px-4 font-medium text-slate-800">Penggantian Lampu LED Line 4</td>
+<td class="py-3.5 px-4 text-slate-500 text-[12.5px]">Fasilitas &amp; Gedung</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[10px] font-semibold border border-slate-200">AK</div>
+<span class="text-slate-800">Agus Kurnia</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex px-2 py-0.5 rounded text-[11.5px] font-medium bg-slate-100 text-slate-600">GA</span>
+</td>
+<td class="py-3.5 px-4 text-slate-700 text-[12.5px]">Doni Prasetyo</td>
+<td class="py-3.5 px-4 text-slate-500 text-[12.5px]">Plant 3, Lt. 2</td>
+<td class="py-3.5 px-4 text-slate-400 text-[12px] whitespace-nowrap">22 Agt 2026, 16:40</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11.5px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-100">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      Selesai
+                    </span>
+</td>
+<td class="py-3.5 px-6 text-right">
+<button class="text-[12px] font-medium text-slate-500 hover:text-blue-700 transition-colors" type="button">Detail</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="py-3.5 px-6 font-medium text-blue-800 cursor-pointer hover:underline">#SRV-2026-0022</td>
+<td class="py-3.5 px-4 font-medium text-slate-800">Permohonan Surat Visa Dinas</td>
+<td class="py-3.5 px-4 text-slate-500 text-[12.5px]">Dokumen &amp; Surat</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[10px] font-semibold border border-slate-200">DS</div>
+<span class="text-slate-800">Dewi Sartika</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex px-2 py-0.5 rounded text-[11.5px] font-medium bg-slate-100 text-slate-600">HR</span>
+</td>
+<td class="py-3.5 px-4 text-slate-700 text-[12.5px]">Rina Wulandari</td>
+<td class="py-3.5 px-4 text-slate-500 text-[12.5px]">Plant 1, Lt. 3</td>
+<td class="py-3.5 px-4 text-slate-400 text-[12px] whitespace-nowrap">22 Agt 2026, 14:10</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11.5px] font-medium bg-rose-50 text-rose-700 border border-rose-100">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+                      Ditolak
+                    </span>
+</td>
+<td class="py-3.5 px-6 text-right">
+<button class="text-[12px] font-medium text-slate-500 hover:text-blue-700 transition-colors" type="button">Detail</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="px-6 py-3.5 bg-white border-t border-slate-100 flex items-center justify-between text-[12px] text-slate-500">
+<span>Menampilkan 5 dari 186 tiket permintaan internal</span>
+<div class="flex items-center gap-2">
+<button class="p-1 rounded border border-slate-200 text-slate-300 cursor-not-allowed bg-slate-50" disabled="" type="button">
+<span class="material-symbols-outlined text-[17px]">chevron_left</span>
+</button>
+<span class="font-medium text-slate-700 px-1">Halaman 1 dari 38</span>
+<button class="p-1 rounded border border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

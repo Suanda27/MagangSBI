@@ -1,0 +1,313 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-error": "#ffffff", "error-container": "#ffdad6", "on-primary-fixed": "#001453", "surface-container": "#eceef0", "on-tertiary": "#ffffff", "primary-fixed": "#dde1ff", "on-tertiary-fixed": "#131b2e", "surface-container-lowest": "#ffffff", "secondary": "#505f76", "on-primary-container": "#a8b8ff", "on-secondary-fixed-variant": "#38485d", "surface-tint": "#3755c3", "on-secondary-fixed": "#0b1c30", "tertiary-fixed": "#dae2fd", "surface-variant": "#e0e3e5", "primary": "#00288e", "inverse-primary": "#b8c4ff", "surface-container-highest": "#e0e3e5", "surface-bright": "#f7f9fb", "tertiary": "#2d3449", "on-surface": "#191c1e", "background": "#f7f9fb", "on-surface-variant": "#444653", "on-secondary-container": "#54647a", "surface": "#f7f9fb", "surface-container-high": "#e6e8ea", "on-error-container": "#93000a", "inverse-surface": "#2d3133", "tertiary-fixed-dim": "#bec6e0", "on-tertiary-fixed-variant": "#3f465c", "on-tertiary-container": "#b4bbd5", "secondary-fixed-dim": "#b7c8e1", "primary-container": "#1e40af", "on-background": "#191c1e", "tertiary-container": "#434b60", "inverse-on-surface": "#eff1f3", "outline": "#757684", "secondary-fixed": "#d3e4fe", "secondary-container": "#d0e1fb", "on-primary-fixed-variant": "#173bab", "on-secondary": "#ffffff", "error": "#ba1a1a", "on-primary": "#ffffff", "surface-container-low": "#f2f4f6", "outline-variant": "#c4c5d5", "primary-fixed-dim": "#b8c4ff", "surface-dim": "#d8dadc" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "container-max": "1440px", "xl": "32px", "xs": "4px", "lg": "24px", "base": "4px", "gutter": "20px", "md": "16px", "sm": "8px" }, "fontFamily": { "caption": ["Inter"], "label-md": ["Inter"], "body-md": ["Inter"], "body-lg": ["Inter"], "headline-md": ["Inter"], "display": ["Inter"], "headline-lg": ["Inter"] }, "fontSize": { "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest border-r border-outline-variant/30 z-50 flex flex-col justify-between select-none"><div class="flex flex-col h-full"><div class="h-16 px-6 flex items-center gap-3 border-b border-outline-variant/20"><div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-on-primary font-headline-md text-headline-md font-bold">S</div><div class="flex flex-col"><span class="font-headline-md text-body-md font-bold text-on-surface leading-tight">ISM System</span><span class="font-caption text-caption text-secondary">Enterprise Service Desk</span></div></div><div class="flex-1 overflow-y-auto px-3 py-4 space-y-6"><div class="space-y-1"><div class="px-3 font-label-md text-label-md uppercase text-secondary tracking-wider">Main</div><nav class="space-y-0.5 mt-1" data-active-classes="bg-primary-container text-on-primary font-semibold"><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-body-md text-body-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span>Dashboard</span></a></nav></div><div class="space-y-1"><div class="px-3 font-label-md text-label-md uppercase text-secondary tracking-wider">Master Data</div><nav class="space-y-0.5 mt-1" data-active-classes="bg-primary-container text-on-primary font-semibold"><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-body-md text-body-md" data-path="master-data-pengguna" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span>Pengguna</span></a><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-body-md text-body-md" data-path="master-data-section" href="#"><span class="material-symbols-outlined text-[20px]">account_tree</span><span>Section</span></a><a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary-container text-on-primary font-semibold shadow-sm transition-colors font-body-md text-body-md" data-path="master-data-layanan" href="#"><span class="material-symbols-outlined text-[20px]">dns</span><span>Layanan</span></a><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-body-md text-body-md" data-path="master-data-pic" href="#"><span class="material-symbols-outlined text-[20px]">badge</span><span>PIC</span></a></nav></div><div class="space-y-1"><div class="px-3 font-label-md text-label-md uppercase text-secondary tracking-wider">Permintaan</div><nav class="space-y-0.5 mt-1" data-active-classes="bg-primary-container text-on-primary font-semibold"><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-body-md text-body-md" data-path="semua-permintaan" href="#"><span class="material-symbols-outlined text-[20px]">inbox</span><span>Semua Permintaan</span></a></nav></div><div class="space-y-1"><div class="px-3 font-label-md text-label-md uppercase text-secondary tracking-wider">Analisis</div><nav class="space-y-0.5 mt-1" data-active-classes="bg-primary-container text-on-primary font-semibold"><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-body-md text-body-md" data-path="laporan" href="#"><span class="material-symbols-outlined text-[20px]">analytics</span><span>Laporan</span></a></nav></div><div class="space-y-1 pt-2"><div class="px-3 font-label-md text-label-md uppercase text-secondary tracking-wider">System</div><nav class="space-y-0.5 mt-1" data-active-classes="bg-primary-container text-on-primary font-semibold"><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-body-md text-body-md" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-error hover:bg-error-container hover:text-on-error-container transition-colors font-body-md text-body-md" data-path="logout" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span>Logout</span></a></nav></div></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 z-40 px-6 flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-4 flex-1 max-w-xl"><div class="relative w-full max-w-md"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[20px]">search</span><input class="w-full h-10 pl-10 pr-4 rounded-lg bg-surface border border-outline-variant/50 text-on-surface font-body-md text-body-md placeholder-secondary focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all" placeholder="Cari NIK, ID, nama..." type="text"></div></div><div class="flex items-center gap-4"><button aria-label="Notifications" class="relative w-10 h-10 rounded-lg hover:bg-surface-container-low flex items-center justify-center text-on-surface-variant transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="h-6 w-px bg-outline-variant/30"></div><div class="flex items-center gap-3 pl-1"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="hidden md:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Admin ISM</span><span class="font-caption text-caption text-secondary">Super Administrator</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="px-8 py-8 w-full max-w-[1280px] mx-auto flex flex-col gap-6">
+<!-- Breadcrumb & Top Navigation Bar -->
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 font-caption text-caption text-secondary">
+<span class="hover:text-primary cursor-pointer transition-colors">Portal</span>
+<span class="material-symbols-outlined text-[14px] text-secondary">chevron_right</span>
+<span class="hover:text-primary cursor-pointer transition-colors">Console</span>
+<span class="material-symbols-outlined text-[14px] text-secondary">chevron_right</span>
+<span class="hover:text-primary cursor-pointer transition-colors">Master Data</span>
+<span class="material-symbols-outlined text-[14px] text-secondary">chevron_right</span>
+<a class="hover:text-primary cursor-pointer transition-colors" data-path="master-data-layanan" href="#">Layanan</a>
+<span class="material-symbols-outlined text-[14px] text-secondary">chevron_right</span>
+<span class="text-on-surface font-medium">Edit Layanan</span>
+</nav>
+<a class="inline-flex items-center gap-1.5 text-secondary hover:text-primary-container font-label-md text-label-md transition-colors w-fit" data-path="master-data-layanan" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Kembali ke Layanan</span>
+</a>
+</div>
+<!-- Header Section with Metadata Pill -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-2 border-b border-surface-container-high">
+<div>
+<div class="flex items-center gap-3">
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">Edit Layanan</h1>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md font-medium">
+<span class="material-symbols-outlined text-[14px] text-secondary">history_edu</span>
+            Rev. #04
+          </span>
+</div>
+<p class="font-body-md text-body-md text-secondary mt-1">Perbarui informasi layanan yang telah terdaftar di katalog operasional ISM.</p>
+</div>
+<!-- Quick Status Preview in Header -->
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-lg shadow-sm">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Status Record:</span>
+<span class="font-label-md text-label-md font-semibold text-emerald-800">Aktif &amp; Siap Dipakai</span>
+</div>
+</div>
+<!-- Main Form Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.05)] overflow-hidden">
+<!-- Card Title Bar -->
+<div class="px-8 py-5 bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary-container/10 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]">edit_note</span>
+</div>
+<div>
+<h2 class="font-headline-md text-body-lg font-semibold text-on-surface">Informasi Layanan</h2>
+<p class="font-caption text-caption text-secondary">Semua kolom bertanda bintang (<span class="text-error font-bold">*</span>) wajib diisi dengan valid.</p>
+</div>
+</div>
+<div class="hidden sm:flex items-center gap-2 text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Diperbarui: 14 Okt 2024, 09:20 WIB</span>
+</div>
+</div>
+<!-- Form Body -->
+<form class="p-8 space-y-8" id="editLayananForm">
+<!-- 2-Column Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+<!-- LEFT COLUMN -->
+<div class="space-y-6">
+<!-- 1. ID Layanan (Read-only) -->
+<div class="space-y-2">
+<label class="block font-label-md text-label-md font-medium text-on-surface" for="idLayanan">
+                ID Layanan
+              </label>
+<div class="relative">
+<input class="w-full h-11 px-3.5 pr-10 rounded-lg bg-surface-container-high/60 text-secondary font-body-md text-body-md cursor-not-allowed select-none transition-colors" disabled="" id="idLayanan" name="idLayanan" readonly="" type="text" value="LYN-001">
+<div class="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</div>
+</div>
+<p class="flex items-center gap-1.5 font-caption text-caption text-secondary">
+<span class="material-symbols-outlined text-[14px]">info</span>
+<span>ID Layanan bersifat unik dan tidak dapat diubah.</span>
+</p>
+</div>
+<!-- 2. Nama Layanan -->
+<div class="space-y-2">
+<label class="block font-label-md text-label-md font-medium text-on-surface" for="namaLayanan">
+                Nama Layanan <span class="text-error font-semibold">*</span>
+</label>
+<div class="relative">
+<input class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-primary-container/20 focus:bg-surface-container-lowest" id="namaLayanan" name="namaLayanan" placeholder="Masukkan nama layanan" required="" type="text" value="Perbaikan AC">
+</div>
+<p class="font-caption text-caption text-secondary">Tuliskan nama layanan secara ringkas dan mudah dipahami staf.</p>
+</div>
+<!-- 3. Kategori -->
+<div class="space-y-2">
+<label class="block font-label-md text-label-md font-medium text-on-surface" for="kategoriLayanan">
+                Kategori <span class="text-error font-semibold">*</span>
+</label>
+<div class="relative">
+<select class="w-full h-11 pl-3.5 pr-10 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm appearance-none cursor-pointer transition-all focus:outline-none focus:ring-2 focus:ring-primary-container/20" id="kategoriLayanan" name="kategoriLayanan" required="">
+<option selected="" value="Fasilitas &amp; Gedung">Fasilitas &amp; Gedung</option>
+<option value="Peralatan &amp; Perlengkapan">Peralatan &amp; Perlengkapan</option>
+<option value="Dukungan Sistem">Dukungan Sistem</option>
+<option value="Administrasi Karyawan">Administrasi Karyawan</option>
+<option value="Dokumen &amp; Surat">Dokumen &amp; Surat</option>
+<option value="Pelaporan Masalah">Pelaporan Masalah</option>
+<option value="Lainnya">Lainnya</option>
+</select>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+<p class="font-caption text-caption text-secondary">Kategori membantu mengelompokkan formulir permohonan pemohon.</p>
+</div>
+</div>
+<!-- RIGHT COLUMN -->
+<div class="space-y-6">
+<!-- 1. Section -->
+<div class="space-y-2">
+<label class="block font-label-md text-label-md font-medium text-on-surface" for="sectionLayanan">
+                Section Penanggung Jawab <span class="text-error font-semibold">*</span>
+</label>
+<div class="relative">
+<select class="w-full h-11 pl-3.5 pr-10 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm appearance-none cursor-pointer transition-all focus:outline-none focus:ring-2 focus:ring-primary-container/20" id="sectionLayanan" name="sectionLayanan" required="">
+<option selected="" value="GA">GA (General Affairs)</option>
+<option value="Assembly">Assembly</option>
+<option value="HR">HR (Human Resources)</option>
+<option value="IS">IS (Information System)</option>
+<option value="PE">PE (Production Engineering)</option>
+</select>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+<p class="font-caption text-caption text-secondary">Tim/divisi internal yang menangani tiket permohonan ini.</p>
+</div>
+<!-- 2. Status Layanan -->
+<div class="space-y-2">
+<label class="block font-label-md text-label-md font-medium text-on-surface">
+                Status Layanan <span class="text-error font-semibold">*</span>
+</label>
+<!-- Segmented Control with Active Visual Cue -->
+<div class="grid grid-cols-2 gap-2 p-1 bg-surface-container rounded-lg">
+<button class="flex items-center justify-center gap-2 py-2 px-4 rounded-md bg-surface-container-lowest shadow-sm font-label-md text-label-md font-semibold text-primary transition-all" id="statusAktifBtn" onclick="setStatus('Aktif')" type="button">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span>Aktif</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-2 px-4 rounded-md text-secondary hover:text-on-surface font-label-md text-label-md font-medium transition-all" id="statusNonaktifBtn" onclick="setStatus('Nonaktif')" type="button">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Nonaktif</span>
+</button>
+</div>
+<input id="statusLayanan" name="statusLayanan" type="hidden" value="Aktif">
+<p class="font-caption text-caption text-secondary">Layanan aktif dapat digunakan dalam pengajuan permintaan oleh seluruh karyawan.</p>
+</div>
+<!-- Contextual Operational Box -->
+<div class="p-4 rounded-lg bg-surface-container-low flex items-start gap-3">
+<span class="material-symbols-outlined text-primary-container text-[20px] mt-0.5">verified_user</span>
+<div class="space-y-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface block">Validasi Standar ISO Layanan</span>
+<p class="font-caption text-caption text-secondary leading-relaxed">
+                  Perubahan konfigurasi section dan kategori akan secara otomatis disesuaikan pada matriks eskalasi SLA terkait.
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Full Width: Deskripsi -->
+<div class="space-y-2 pt-2">
+<div class="flex items-center justify-between">
+<label class="block font-label-md text-label-md font-medium text-on-surface" for="deskripsiLayanan">
+              Deskripsi Layanan <span class="text-error font-semibold">*</span>
+</label>
+<span class="font-caption text-caption text-secondary" id="charCount">62 karakter</span>
+</div>
+<textarea class="w-full p-3.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-primary-container/20 resize-y" id="deskripsiLayanan" name="deskripsiLayanan" oninput="document.getElementById('charCount').textContent = this.value.length + ' karakter'" placeholder="Tuliskan cakupan perbaikan atau penanganan layanan ini..." required="" rows="4">Permintaan perbaikan atau penanganan AC yang mengalami gangguan.</textarea>
+<p class="font-caption text-caption text-secondary">Jelaskan alur masalah umum yang di-cover agar pemohon tidak keliru memilih form.</p>
+</div>
+<!-- Form Actions Bar -->
+<div class="pt-6 border-t border-surface-container-high flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-2 text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-[16px] text-emerald-600">check_circle</span>
+<span>Semua field tersinkronisasi dengan Master Catalog</span>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+<!-- Cancel Button -->
+<a class="w-full sm:w-auto text-center px-5 py-2.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high/60 text-secondary hover:text-on-surface font-label-md text-label-md font-medium shadow-sm transition-colors" data-path="master-data-layanan" href="#">
+              Batal
+            </a>
+<!-- Submit Button -->
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-primary-container hover:bg-primary-container/90 text-on-primary font-label-md text-label-md font-semibold shadow-sm transition-all active:scale-[0.98]" type="submit">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>Simpan Perubahan</span>
+</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+<!-- Interactive Modal Confirmation (Hidden by Default) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200 p-4" id="successModal">
+<div class="bg-surface-container-lowest rounded-xl shadow-xl w-full max-w-lg transform scale-95 transition-transform duration-200 overflow-hidden" id="modalCard">
+<!-- Modal Header Banner -->
+<div class="bg-surface-container-low px-6 py-5 flex items-start gap-4">
+<div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 text-emerald-700">
+<span class="material-symbols-outlined text-[28px]">check_circle</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface leading-tight">Perubahan berhasil disimpan</h3>
+<p class="font-body-md text-body-md text-secondary">Informasi layanan berhasil diperbarui pada database sistem.</p>
+</div>
+</div>
+<!-- Modal Content: Summary Preview -->
+<div class="p-6 space-y-4">
+<div class="font-label-md text-label-md uppercase tracking-wider text-secondary">Ringkasan Data Layanan</div>
+<div class="bg-surface-container-low rounded-lg p-4 space-y-3 font-body-md text-body-md">
+<div class="flex items-center justify-between pb-2 border-b border-surface-container-high/60">
+<span class="text-secondary font-caption text-caption uppercase tracking-wider">ID Layanan</span>
+<span class="font-semibold text-on-surface font-label-md text-label-md px-2 py-0.5 rounded bg-surface-container" id="previewId">LYN-001</span>
+</div>
+<div class="flex items-center justify-between pb-2 border-b border-surface-container-high/60">
+<span class="text-secondary">Nama Layanan</span>
+<span class="font-semibold text-on-surface" id="previewNama">Perbaikan AC</span>
+</div>
+<div class="flex items-center justify-between pb-2 border-b border-surface-container-high/60">
+<span class="text-secondary">Kategori</span>
+<span class="font-medium text-on-surface" id="previewKategori">Fasilitas &amp; Gedung</span>
+</div>
+<div class="flex items-center justify-between pb-2 border-b border-surface-container-high/60">
+<span class="text-secondary">Section Penanggung Jawab</span>
+<span class="font-semibold text-primary-container px-2 py-0.5 rounded bg-secondary-container/30" id="previewSection">GA</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-secondary">Status Operasional</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-caption font-semibold bg-emerald-100 text-emerald-800" id="previewStatus">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+<span>Aktif</span>
+</span>
+</div>
+</div>
+<p class="font-caption text-caption text-secondary text-center pt-1">
+          Karyawan sekarang dapat mengajukan tiket dengan data terbaru ini.
+        </p>
+</div>
+<!-- Modal Footer Buttons -->
+<div class="p-6 pt-2 bg-surface-container-lowest flex items-center justify-end gap-3 border-t border-surface-container-high/50">
+<a class="px-4 py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-secondary font-label-md text-label-md font-medium transition-colors" data-path="master-data-layanan" href="#">
+          Kembali ke Layanan
+        </a>
+<button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary-container hover:bg-primary-container/90 text-on-primary font-label-md text-label-md font-semibold transition-all shadow-sm" onclick="closeModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>Lihat Detail</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+    function setStatus(status) {
+      const input = document.getElementById('statusLayanan');
+      const btnAktif = document.getElementById('statusAktifBtn');
+      const btnNonaktif = document.getElementById('statusNonaktifBtn');
+
+      input.value = status;
+
+      if (status === 'Aktif') {
+        btnAktif.className = 'flex items-center justify-center gap-2 py-2 px-4 rounded-md bg-surface-container-lowest shadow-sm font-label-md text-label-md font-semibold text-primary transition-all';
+        btnNonaktif.className = 'flex items-center justify-center gap-2 py-2 px-4 rounded-md text-secondary hover:text-on-surface font-label-md text-label-md font-medium transition-all';
+      } else {
+        btnNonaktif.className = 'flex items-center justify-center gap-2 py-2 px-4 rounded-md bg-surface-container-lowest shadow-sm font-label-md text-label-md font-semibold text-error transition-all';
+        btnAktif.className = 'flex items-center justify-center gap-2 py-2 px-4 rounded-md text-secondary hover:text-on-surface font-label-md text-label-md font-medium transition-all';
+      }
+    }
+
+    const form = document.getElementById('editLayananForm');
+    const modal = document.getElementById('successModal');
+    const modalCard = document.getElementById('modalCard');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Populate preview values
+      const idVal = document.getElementById('idLayanan').value;
+      const namaVal = document.getElementById('namaLayanan').value;
+      const kategoriVal = document.getElementById('kategoriLayanan').value;
+      const sectionVal = document.getElementById('sectionLayanan').value;
+      const statusVal = document.getElementById('statusLayanan').value;
+
+      document.getElementById('previewId').textContent = idVal;
+      document.getElementById('previewNama').textContent = namaVal;
+      document.getElementById('previewKategori').textContent = kategoriVal;
+      document.getElementById('previewSection').textContent = sectionVal;
+
+      const previewStatusBadge = document.getElementById('previewStatus');
+      if (statusVal === 'Aktif') {
+        previewStatusBadge.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-caption font-semibold bg-emerald-100 text-emerald-800';
+        previewStatusBadge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span><span>Aktif</span>';
+      } else {
+        previewStatusBadge.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-caption font-semibold bg-surface-container-highest text-secondary';
+        previewStatusBadge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span>Nonaktif</span>';
+      }
+
+      // Show modal
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modalCard.classList.remove('scale-95');
+      modalCard.classList.add('scale-100');
+    });
+
+    function closeModal() {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modalCard.classList.remove('scale-100');
+      modalCard.classList.add('scale-95');
+    }
+  </script>
+</div></main></div>
+
+</body></html>

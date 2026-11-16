@@ -1,0 +1,662 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ISM System - Admin Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+        background-color: #f8fafc;
+        color: #0f172a;
+      }
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    }
+  </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-900 font-sans antialiased min-h-screen">
+<!-- Left Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-white border-r border-slate-200/80 z-50 flex flex-col justify-between select-none">
+<div class="flex flex-col flex-1 overflow-y-auto">
+<!-- App Brand -->
+<div class="h-16 px-6 flex items-center gap-3 border-b border-slate-100">
+<div class="w-8 h-8 rounded-lg bg-blue-800 flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined text-[20px] text-white">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="font-semibold text-[15px] text-slate-900 leading-tight tracking-tight">ISM System</span>
+<span class="text-[12px] text-slate-400">Internal Service</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="px-3.5 py-4 flex flex-col gap-0.5 text-[13.5px]"><div class="px-3 pb-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Main</div>
+<a aria-current="page" class="flex items-center gap-3 px-3 py-2 rounded-lg bg-blue-50/80 text-blue-700 font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[19px] text-blue-700">dashboard</span>
+<span>Dashboard</span>
+</a>
+<div class="px-3 pt-4 pb-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Master Data</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#pengguna-preview">
+<span class="material-symbols-outlined text-[19px] text-slate-400">person</span>
+<span>Pengguna</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#section-preview">
+<span class="material-symbols-outlined text-[19px] text-slate-400">layers</span>
+<span>Section</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#layanan-preview">
+<span class="material-symbols-outlined text-[19px] text-slate-400">build</span>
+<span>Layanan</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#pic-preview">
+<span class="material-symbols-outlined text-[19px] text-slate-400">badge</span>
+<span>PIC</span>
+</a>
+<div class="px-3 pt-4 pb-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Permintaan</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#permintaan-preview">
+<span class="material-symbols-outlined text-[19px] text-slate-400">inbox</span>
+<span>Semua Permintaan</span>
+</a>
+<div class="px-3 pt-4 pb-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Analisis</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#laporan-preview">
+<span class="material-symbols-outlined text-[19px] text-slate-400">bar_chart</span>
+<span>Laporan</span>
+</a>
+<div class="px-3 pt-4 pb-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">System</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#settings-preview">
+<span class="material-symbols-outlined text-[19px] text-slate-400">settings</span>
+<span>Settings</span>
+</a></nav>
+</div>
+<!-- Bottom Actions -->
+<div class="p-3 border-t border-slate-100 flex flex-col gap-0.5 text-[13.5px]"><button class="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-rose-600 hover:text-rose-700 hover:bg-rose-50/70 transition-colors text-left cursor-pointer" onclick="document.getElementById('logout-modal').classList.remove('hidden')" type="button">
+<span class="material-symbols-outlined text-[19px] text-rose-500">logout</span>
+<span class="font-medium">Logout</span>
+</button></div>
+</aside>
+<!-- Main View Area -->
+<div class="pl-64 flex flex-col min-h-screen">
+<!-- Top Header -->
+<header class="fixed top-0 left-64 right-0 h-16 bg-white/90 backdrop-blur-md border-b border-slate-200/80 z-40">
+<div class="h-16 px-8 flex items-center justify-between">
+<!-- Breadcrumb -->
+<div class="flex items-center gap-2 text-[13px] text-slate-500">
+<span class="hover:text-slate-800 transition-colors cursor-pointer">Portal</span>
+<span class="text-slate-300">/</span>
+<span class="text-slate-900 font-medium">Console</span>
+</div>
+<!-- Controls -->
+<div class="flex items-center gap-4">
+<!-- Compact Search Input -->
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400 text-[18px] pointer-events-none">search</span>
+<input class="w-64 pl-9 pr-3.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-[13px] text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-100 transition-all" placeholder="Cari NIK, ID, nama..." type="text">
+</div>
+<!-- Notification Button -->
+<button aria-label="Notifikasi" class="relative p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+</button>
+<!-- User Pill -->
+<div class="flex items-center gap-2.5 pl-2 py-1 pr-1.5 rounded-lg hover:bg-slate-100/70 transition-colors cursor-pointer">
+<div class="w-7 h-7 rounded-full bg-blue-800 text-white flex items-center justify-center font-medium text-[11px]">
+              AD
+            </div>
+<div class="flex flex-col text-left">
+<span class="text-[13px] font-medium text-slate-800 leading-tight">Admin ISM</span>
+<span class="text-[11px] text-slate-400">Administrator</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="w-full pt-16 flex-1"><div class="max-w-[1440px] mx-auto px-8 py-8 flex flex-col gap-6">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="text-[24px] font-semibold text-slate-900 tracking-tight">Dashboard</h1>
+<p class="text-[13.5px] text-slate-500 mt-0.5">Kelola data dan pantau aktivitas layanan internal.</p>
+</div>
+<div class="flex items-center gap-2.5">
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-[13px] font-medium text-slate-700 transition-all shadow-[0_1px_2px_rgba(0,0,0,0.02)] cursor-pointer" onclick="alert('Arahkan ke Tambah Pengguna baru')" type="button">
+<span class="material-symbols-outlined text-[17px] text-slate-500">person_add</span>
+<span>Tambah Pengguna</span>
+</button>
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-blue-800 hover:bg-blue-900 text-white text-[13px] font-medium transition-all shadow-sm cursor-pointer" onclick="alert('Arahkan ke Formulir Tambah Layanan')" type="button">
+<span class="material-symbols-outlined text-[17px]">add_circle</span>
+<span>Tambah Layanan</span>
+</button>
+</div>
+</div>
+<!-- Quick Switcher Navigator Banner -->
+<div class="bg-blue-50/80 border border-blue-100 rounded-xl p-3.5 flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-blue-700 text-[20px]">hub</span>
+<div class="text-[12.5px]">
+<span class="font-semibold text-blue-900">Navigasi Cepat Master &amp; Sistem:</span>
+<span class="text-blue-800 ml-1">Pilih modul untuk menguji alur integrasi data ISM</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-1.5 text-[12px]">
+<a class="px-2.5 py-1 rounded bg-blue-800 text-white font-medium hover:bg-blue-900 transition-colors" href="#">Dashboard</a>
+<a class="px-2.5 py-1 rounded bg-white text-slate-700 border border-blue-200 hover:bg-blue-50 transition-colors font-medium" href="#" onclick="alert('Buka Master Pengguna: 128 Terdaftar'); return false;">Pengguna</a>
+<a class="px-2.5 py-1 rounded bg-white text-slate-700 border border-blue-200 hover:bg-blue-50 transition-colors font-medium" href="#" onclick="alert('Buka Master Section: 5 Unit Operasional'); return false;">Section</a>
+<a class="px-2.5 py-1 rounded bg-white text-slate-700 border border-blue-200 hover:bg-blue-50 transition-colors font-medium" href="#" onclick="alert('Buka Master Layanan: 32 Katalog Aktif'); return false;">Layanan</a>
+<a class="px-2.5 py-1 rounded bg-white text-slate-700 border border-blue-200 hover:bg-blue-50 transition-colors font-medium" href="#" onclick="alert('Buka Master PIC: 14 Petugas Teknis'); return false;">PIC</a>
+<a class="px-2.5 py-1 rounded bg-white text-slate-700 border border-blue-200 hover:bg-blue-50 transition-colors font-medium" href="#" onclick="alert('Buka Laporan &amp; Ekspor Analisis'); return false;">Laporan</a>
+<a class="px-2.5 py-1 rounded bg-white text-slate-700 border border-blue-200 hover:bg-blue-50 transition-colors font-medium" href="#" onclick="alert('Buka Konfigurasi Settings &amp; Kebijakan SLA'); return false;">Settings</a>
+</div>
+</div>
+<!-- Compact Summary Metrics (6 Cards in responsive grid) -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5">
+<!-- 1. Total Pengguna -->
+<div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Total Pengguna</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">person</span>
+</div>
+<div>
+<div class="text-[25px] font-semibold text-slate-900 leading-none tracking-tight">128</div>
+<p class="text-[11.5px] text-slate-500 mt-2 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+<span>121 Aktif • 7 Nonaktif</span>
+</p>
+</div>
+</div>
+<!-- 2. Total Section -->
+<div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Total Section</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">layers</span>
+</div>
+<div>
+<div class="text-[25px] font-semibold text-slate-900 leading-none tracking-tight">5</div>
+<p class="text-[11.5px] text-slate-500 mt-2 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+<span>5 Section operasional</span>
+</p>
+</div>
+</div>
+<!-- 3. Total Layanan -->
+<div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Total Layanan</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">build</span>
+</div>
+<div>
+<div class="text-[25px] font-semibold text-slate-900 leading-none tracking-tight">32</div>
+<p class="text-[11.5px] text-slate-500 mt-2 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+<span>29 Aktif • 3 Nonaktif</span>
+</p>
+</div>
+</div>
+<!-- 4. Total PIC -->
+<div class="p-4 rounded-xl bg-white border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col justify-between hover:border-slate-300 transition-all">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Total PIC</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">badge</span>
+</div>
+<div>
+<div class="text-[25px] font-semibold text-slate-900 leading-none tracking-tight">14</div>
+<p class="text-[11.5px] text-slate-500 mt-2 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+<span>13 Bertugas • 1 Nonaktif</span>
+</p>
+</div>
+</div>
+<!-- 5. Permintaan Aktif -->
+<div class="p-4 rounded-xl bg-white border border-blue-200 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col justify-between hover:border-blue-300 transition-all">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] font-semibold text-blue-800 uppercase tracking-wider">Permintaan Aktif</span>
+<span class="material-symbols-outlined text-blue-700 text-[18px]">hourglass_top</span>
+</div>
+<div>
+<div class="text-[25px] font-semibold text-blue-900 leading-none tracking-tight">46</div>
+<p class="text-[11.5px] text-blue-700 font-medium mt-2 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+<span>12 Menunggu • 34 Diproses</span>
+</p>
+</div>
+</div>
+<!-- 6. Permintaan Selesai -->
+<div class="p-4 rounded-xl bg-white border border-emerald-100 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex flex-col justify-between hover:border-emerald-200 transition-all">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] font-semibold text-emerald-700 uppercase tracking-wider">Permintaan Selesai</span>
+<span class="material-symbols-outlined text-emerald-600 text-[18px]">check_circle</span>
+</div>
+<div>
+<div class="text-[25px] font-semibold text-slate-900 leading-none tracking-tight">68</div>
+<p class="text-[11.5px] text-emerald-700 font-medium mt-2 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span>SLA tercapai 92.4%</span>
+</p>
+</div>
+</div>
+</div>
+<!-- Middle Grid Section (2 columns: Ringkasan Permintaan & Beban vs Aktivitas Terbaru) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+<!-- Left Column (7/12): Ringkasan Permintaan & Beban per Section -->
+<div class="lg:col-span-7 bg-white rounded-xl border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] p-5 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-2">
+<h2 class="text-[14.5px] font-semibold text-slate-900">Ringkasan Permintaan &amp; Beban Unit</h2>
+<span class="px-2 py-0.5 rounded text-[10.5px] font-medium bg-blue-50 text-blue-700 border border-blue-100">Real-time</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">pie_chart</span>
+</div>
+<p class="text-[12px] text-slate-400 mb-5">Komparasi distribusi status tiket operasional dan beban kerja per departemen.</p>
+<!-- Status Breakdown & Donut Section -->
+<div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-5 border-b border-slate-100">
+<!-- Donut Chart -->
+<div class="relative w-32 h-32 rounded-full flex items-center justify-center shrink-0 shadow-sm" style="background: conic-gradient(
+  #1e40af 0% 53.1%,
+  #93c5fd 53.1% 79.7%,
+  #f59e0b 79.7% 89.1%,
+  #f43f5e 89.1% 100%
+);">
+<div class="w-[86px] h-[86px] rounded-full bg-white flex flex-col items-center justify-center shadow-inner">
+<span class="text-[20px] font-bold text-slate-900 leading-tight">128</span>
+<span class="text-[10.5px] text-slate-400 font-medium">Total Tiket</span>
+</div>
+</div>
+<!-- Status Legend & Counts -->
+<div class="grid grid-cols-2 gap-x-6 gap-y-2.5 text-[12.5px] flex-1 w-full">
+<div class="flex items-center gap-2 p-2 rounded-lg bg-slate-50/60 border border-slate-100">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></span>
+<div class="flex flex-col">
+<span class="text-slate-500 text-[11px]">Menunggu Pemeriksaan</span>
+<span class="text-slate-900 font-semibold">12 <span class="text-slate-400 font-normal text-[10.5px]">(9.4%)</span></span>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 rounded-lg bg-slate-50/60 border border-slate-100">
+<span class="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0"></span>
+<div class="flex flex-col">
+<span class="text-slate-500 text-[11px]">Sedang Diproses</span>
+<span class="text-slate-900 font-semibold">34 <span class="text-slate-400 font-normal text-[10.5px]">(26.6%)</span></span>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 rounded-lg bg-slate-50/60 border border-slate-100">
+<span class="w-2.5 h-2.5 rounded-full bg-blue-800 shrink-0"></span>
+<div class="flex flex-col">
+<span class="text-slate-500 text-[11px]">Selesai</span>
+<span class="text-slate-900 font-semibold">68 <span class="text-slate-400 font-normal text-[10.5px]">(53.1%)</span></span>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 rounded-lg bg-slate-50/60 border border-slate-100">
+<span class="w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0"></span>
+<div class="flex flex-col">
+<span class="text-slate-500 text-[11px]">Ditolak</span>
+<span class="text-slate-900 font-semibold">14 <span class="text-slate-400 font-normal text-[10.5px]">(10.9%)</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Beban per Section Progress Bars -->
+<div class="pt-4">
+<div class="flex items-center justify-between mb-3">
+<span class="text-[12px] font-semibold text-slate-700 uppercase tracking-wider">Beban Kerja per Section</span>
+<span class="text-[11.5px] text-slate-400">Kapasitas SLA Bulanan</span>
+</div>
+<div class="space-y-3">
+<div>
+<div class="flex justify-between text-[12.5px] mb-1">
+<span class="text-slate-700 font-medium">Assembly</span>
+<span class="text-slate-900 font-semibold">48 <span class="text-slate-400 font-normal text-[11px]">(37.5%)</span></span>
+</div>
+<div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-blue-800 rounded-full" style="width: 37.5%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[12.5px] mb-1">
+<span class="text-slate-700 font-medium">Production Engineering (PE)</span>
+<span class="text-slate-900 font-semibold">30 <span class="text-slate-400 font-normal text-[11px]">(23.4%)</span></span>
+</div>
+<div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-blue-600 rounded-full" style="width: 23.4%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[12.5px] mb-1">
+<span class="text-slate-700 font-medium">Information System (IS)</span>
+<span class="text-slate-900 font-semibold">24 <span class="text-slate-400 font-normal text-[11px]">(18.8%)</span></span>
+</div>
+<div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-sky-500 rounded-full" style="width: 18.8%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[12.5px] mb-1">
+<span class="text-slate-700 font-medium">Human Resources (HR)</span>
+<span class="text-slate-900 font-semibold">14 <span class="text-slate-400 font-normal text-[11px]">(10.9%)</span></span>
+</div>
+<div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-slate-400 rounded-full" style="width: 10.9%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[12.5px] mb-1">
+<span class="text-slate-700 font-medium">General Affairs (GA)</span>
+<span class="text-slate-900 font-semibold">12 <span class="text-slate-400 font-normal text-[11px]">(9.4%)</span></span>
+</div>
+<div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-slate-300 rounded-full" style="width: 9.4%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-3.5 mt-4 border-t border-slate-100 flex items-center justify-between text-[11.5px] text-slate-500">
+<span>Beban aktif tertinggi: <strong class="text-slate-800 font-semibold">Assembly</strong></span>
+<span class="text-emerald-700 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">verified</span> Alokasi PIC Berimbang
+</span>
+</div>
+</div>
+<!-- Right Column (5/12): Aktivitas Terbaru (Audit Log) -->
+<div class="lg:col-span-5 bg-white rounded-xl border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] p-5 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-2">
+<h2 class="text-[14.5px] font-semibold text-slate-900">Aktivitas Terbaru</h2>
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+</div>
+<a class="text-[12px] text-blue-700 font-medium hover:underline" href="#" onclick="alert('Membuka Log Audit Sistem lengkap'); return false;">Lihat Log</a>
+</div>
+<p class="text-[12px] text-slate-400 mb-4">Rekam jejak tindakan admin, assignment PIC, dan update operasional.</p>
+<!-- Timeline of events -->
+<div class="space-y-3.5 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-slate-100">
+<!-- Event 1: PIC Assignment -->
+<div class="relative flex items-start gap-3 pl-1">
+<div class="w-6 h-6 rounded-full bg-blue-50 border border-blue-200 text-blue-700 flex items-center justify-center shrink-0 z-10">
+<span class="material-symbols-outlined text-[13px]">assignment_ind</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="text-[12.5px] font-medium text-slate-800">Penugasan PIC Tiket</span>
+<span class="text-[11px] text-slate-400">5 mnt lalu</span>
+</div>
+<p class="text-[12px] text-slate-500 mt-0.5"><strong>Budi Santoso</strong> ditugaskan pada tiket <span class="text-blue-800 font-medium">#SRV-2026-0018</span> (Kalibrasi Hidrolik).</p>
+</div>
+</div>
+<!-- Event 2: Service status update -->
+<div class="relative flex items-start gap-3 pl-1">
+<div class="w-6 h-6 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center shrink-0 z-10">
+<span class="material-symbols-outlined text-[13px]">check</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="text-[12.5px] font-medium text-slate-800">Status Layanan Diperbarui</span>
+<span class="text-[11px] text-slate-400">24 mnt lalu</span>
+</div>
+<p class="text-[12px] text-slate-500 mt-0.5">Tiket <span class="text-blue-800 font-medium">#SRV-2026-0012</span> diubah ke status <span class="text-emerald-700 font-medium">Selesai</span> oleh Admin ISM.</p>
+</div>
+</div>
+<!-- Event 3: New request submitted -->
+<div class="relative flex items-start gap-3 pl-1">
+<div class="w-6 h-6 rounded-full bg-sky-50 border border-sky-200 text-sky-700 flex items-center justify-center shrink-0 z-10">
+<span class="material-symbols-outlined text-[13px]">add_task</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="text-[12.5px] font-medium text-slate-800">Permintaan Baru Masuk</span>
+<span class="text-[11px] text-slate-400">1 jam lalu</span>
+</div>
+<p class="text-[12px] text-slate-500 mt-0.5"><strong>Siti Aminah</strong> (HR) mengajukan tiket VPN &amp; GitLab Onboarding.</p>
+</div>
+</div>
+<!-- Event 4: Section configuration change -->
+<div class="relative flex items-start gap-3 pl-1">
+<div class="w-6 h-6 rounded-full bg-slate-100 border border-slate-200 text-slate-600 flex items-center justify-center shrink-0 z-10">
+<span class="material-symbols-outlined text-[13px]">settings</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="text-[12.5px] font-medium text-slate-800">Konfigurasi Section Diubah</span>
+<span class="text-[11px] text-slate-400">3 jam lalu</span>
+</div>
+<p class="text-[12px] text-slate-500 mt-0.5">SLA batas waktu respon untuk Section <strong>Assembly</strong> disesuaikan menjadi 2 jam.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-3.5 mt-4 border-t border-slate-100 flex items-center justify-between text-[11.5px] text-slate-500">
+<span>Total Event Hari Ini: <strong class="text-slate-700">42 tercatat</strong></span>
+<span class="text-slate-400">Audit trail tersimpan aman</span>
+</div>
+</div>
+</div>
+<!-- Lower Section: Permintaan Terbaru (Compact Table with required headers and detail action) -->
+<div class="rounded-xl bg-white border border-slate-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] overflow-hidden">
+<!-- Header -->
+<div class="px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100">
+<div>
+<h2 class="text-[15px] font-semibold text-slate-900">Permintaan Terbaru</h2>
+<p class="text-[12.5px] text-slate-400 mt-0.5">Daftar transaksi layanan internal yang masuk dalam antrean.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<select class="appearance-none pl-3 pr-8 py-1.5 text-[12.5px] font-medium rounded-lg bg-slate-50 border border-slate-200 text-slate-700 hover:bg-slate-100/70 focus:outline-none focus:border-blue-500 cursor-pointer">
+<option>Semua Status</option>
+<option>Menunggu Pemeriksaan</option>
+<option>Sedang Diproses</option>
+<option>Selesai</option>
+<option>Ditolak</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2 text-slate-400 text-[16px] pointer-events-none">expand_more</span>
+</div>
+<a class="inline-flex items-center gap-1 text-[12.5px] font-medium text-blue-700 hover:text-blue-800 transition-colors" href="#">
+<span>Lihat Semua</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Table matching ID Permintaan, Judul, Pengaju, Section, PIC, Status badge, Tanggal, Aksi 'Lihat Detail' -->
+<div class="overflow-x-auto">
+<table class="w-full text-left text-[13px]">
+<thead>
+<tr class="border-b border-slate-100 bg-slate-50/60 text-slate-400 text-[11px] font-medium uppercase tracking-wider">
+<th class="py-3 px-6">ID Permintaan</th>
+<th class="py-3 px-4">Judul</th>
+<th class="py-3 px-4">Pengaju</th>
+<th class="py-3 px-4">Section</th>
+<th class="py-3 px-4">PIC</th>
+<th class="py-3 px-4">Status</th>
+<th class="py-3 px-4">Tanggal</th>
+<th class="py-3 px-6 text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="py-3.5 px-6 font-medium text-blue-800 cursor-pointer hover:underline">#SRV-2026-0012</td>
+<td class="py-3.5 px-4 font-medium text-slate-800">Sensor PLC Conveyor Rusak</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[10px] font-semibold border border-slate-200">MF</div>
+<span class="text-slate-800">Muhammad Faiz</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex px-2 py-0.5 rounded text-[11.5px] font-medium bg-slate-100 text-slate-600">Assembly</span>
+</td>
+<td class="py-3.5 px-4 text-slate-700 text-[12.5px]">Budi Santoso</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11.5px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-100">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+Selesai
+</span>
+</td>
+<td class="py-3.5 px-4 text-slate-400 text-[12px] whitespace-nowrap">23 Agt 2026, 08:24</td>
+<td class="py-3.5 px-6 text-right">
+<button class="text-[12px] font-medium text-blue-700 hover:text-blue-800 hover:underline transition-colors cursor-pointer" onclick="alert('Buka Detail Permintaan #SRV-2026-0012')" type="button">Lihat Detail</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="py-3.5 px-6 font-medium text-blue-800 cursor-pointer hover:underline">#SRV-2026-0015</td>
+<td class="py-3.5 px-4 font-medium text-slate-800">VPN &amp; GitLab Onboarding</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[10px] font-semibold border border-slate-200">SA</div>
+<span class="text-slate-800">Siti Aminah</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex px-2 py-0.5 rounded text-[11.5px] font-medium bg-slate-100 text-slate-600">HR</span>
+</td>
+<td class="py-3.5 px-4 text-slate-700 text-[12.5px]">Hendra Wijaya</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11.5px] font-medium bg-blue-50 text-blue-700 border border-blue-100">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+Sedang Diproses
+</span>
+</td>
+<td class="py-3.5 px-4 text-slate-400 text-[12px] whitespace-nowrap">23 Agt 2026, 09:15</td>
+<td class="py-3.5 px-6 text-right">
+<button class="text-[12px] font-medium text-blue-700 hover:text-blue-800 hover:underline transition-colors cursor-pointer" onclick="alert('Buka Detail Permintaan #SRV-2026-0015')" type="button">Lihat Detail</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="py-3.5 px-6 font-medium text-blue-800 cursor-pointer hover:underline">#SRV-2026-0018</td>
+<td class="py-3.5 px-4 font-medium text-slate-800">Kalibrasi Mesin Press Hidrolik</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[10px] font-semibold border border-slate-200">RH</div>
+<span class="text-slate-800">Rudi Hartono</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex px-2 py-0.5 rounded text-[11.5px] font-medium bg-slate-100 text-slate-600">PE</span>
+</td>
+<td class="py-3.5 px-4 text-slate-700 text-[12.5px]">Budi Santoso</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11.5px] font-medium bg-amber-50 text-amber-700 border border-amber-100">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+Menunggu Pemeriksaan
+</span>
+</td>
+<td class="py-3.5 px-4 text-slate-400 text-[12px] whitespace-nowrap">23 Agt 2026, 10:00</td>
+<td class="py-3.5 px-6 text-right">
+<button class="text-[12px] font-medium text-blue-700 hover:text-blue-800 hover:underline transition-colors cursor-pointer" onclick="alert('Buka Detail Permintaan #SRV-2026-0018')" type="button">Lihat Detail</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="py-3.5 px-6 font-medium text-blue-800 cursor-pointer hover:underline">#SRV-2026-0021</td>
+<td class="py-3.5 px-4 font-medium text-slate-800">Penggantian Lampu LED Line 4</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[10px] font-semibold border border-slate-200">AK</div>
+<span class="text-slate-800">Agus Kurnia</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex px-2 py-0.5 rounded text-[11.5px] font-medium bg-slate-100 text-slate-600">GA</span>
+</td>
+<td class="py-3.5 px-4 text-slate-700 text-[12.5px]">Doni Prasetyo</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11.5px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-100">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+Selesai
+</span>
+</td>
+<td class="py-3.5 px-4 text-slate-400 text-[12px] whitespace-nowrap">22 Agt 2026, 16:40</td>
+<td class="py-3.5 px-6 text-right">
+<button class="text-[12px] font-medium text-blue-700 hover:text-blue-800 hover:underline transition-colors cursor-pointer" onclick="alert('Buka Detail Permintaan #SRV-2026-0021')" type="button">Lihat Detail</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="py-3.5 px-6 font-medium text-blue-800 cursor-pointer hover:underline">#SRV-2026-0022</td>
+<td class="py-3.5 px-4 font-medium text-slate-800">Permohonan Surat Visa Dinas</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[10px] font-semibold border border-slate-200">DS</div>
+<span class="text-slate-800">Dewi Sartika</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex px-2 py-0.5 rounded text-[11.5px] font-medium bg-slate-100 text-slate-600">HR</span>
+</td>
+<td class="py-3.5 px-4 text-slate-700 text-[12.5px]">Rina Wulandari</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11.5px] font-medium bg-rose-50 text-rose-700 border border-rose-100">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+Ditolak
+</span>
+</td>
+<td class="py-3.5 px-4 text-slate-400 text-[12px] whitespace-nowrap">22 Agt 2026, 14:10</td>
+<td class="py-3.5 px-6 text-right">
+<button class="text-[12px] font-medium text-blue-700 hover:text-blue-800 hover:underline transition-colors cursor-pointer" onclick="alert('Buka Detail Permintaan #SRV-2026-0022')" type="button">Lihat Detail</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="px-6 py-3.5 bg-white border-t border-slate-100 flex items-center justify-between text-[12px] text-slate-500">
+<span>Menampilkan 5 dari 186 tiket permintaan internal</span>
+<div class="flex items-center gap-2">
+<button class="p-1 rounded border border-slate-200 text-slate-300 cursor-not-allowed bg-slate-50" disabled="" type="button">
+<span class="material-symbols-outlined text-[17px]">chevron_left</span>
+</button>
+<span class="font-medium text-slate-700 px-1">Halaman 1 dari 38</span>
+<button class="p-1 rounded border border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors" type="button">
+<span class="material-symbols-outlined text-[17px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Logout Confirmation Modal -->
+<div class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4" id="logout-modal">
+<div class="bg-white rounded-xl max-w-md w-full p-6 shadow-xl border border-slate-200">
+<div class="w-12 h-12 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[26px]">logout</span>
+</div>
+<h3 class="text-[18px] font-semibold text-slate-900">Keluar dari Sistem?</h3>
+<p class="text-[13.5px] text-slate-500 mt-1.5 leading-relaxed">Apakah Anda yakin ingin keluar dari akun Anda? Sesi kerja aktif Anda akan ditutup.</p>
+<div class="mt-6 flex items-center justify-end gap-3">
+<button class="px-4 py-2 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 text-[13px] font-medium transition-colors cursor-pointer" onclick="document.getElementById('logout-modal').classList.add('hidden')" type="button">Batal</button>
+<button class="px-4 py-2 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-[13px] font-medium transition-colors shadow-sm cursor-pointer" onclick="alert('Anda telah berhasil keluar dari ISM System.'); document.getElementById('logout-modal').classList.add('hidden');" type="button">Logout</button>
+</div>
+</div>
+</div></main>
+</div>
+</body></html>

@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-surface":"#2d3133","on-surface-variant":"#444653","inverse-on-surface":"#eff1f3","tertiary-container":"#434b60","secondary":"#505f76","surface-container-high":"#e6e8ea","primary-fixed":"#dde1ff","background":"#f7f9fb","inverse-primary":"#b8c4ff","surface-container-highest":"#e0e3e5","surface-tint":"#3755c3","secondary-container":"#d0e1fb","primary-fixed-dim":"#b8c4ff","on-tertiary":"#ffffff","secondary-fixed-dim":"#b7c8e1","on-secondary-fixed-variant":"#38485d","surface-container":"#eceef0","on-tertiary-container":"#b4bbd5","surface-container-lowest":"#ffffff","surface-dim":"#d8dadc","surface-bright":"#f7f9fb","error-container":"#ffdad6","surface-variant":"#e0e3e5","surface":"#f7f9fb","surface-container-low":"#f2f4f6","outline-variant":"#c4c5d5","primary":"#00288e","outline":"#757684","on-tertiary-fixed-variant":"#3f465c","tertiary":"#2d3449","error":"#ba1a1a","on-primary":"#ffffff","primary-container":"#1e40af","on-primary-fixed":"#001453","tertiary-fixed":"#dae2fd","on-primary-fixed-variant":"#173bab","on-secondary-fixed":"#0b1c30","on-tertiary-fixed":"#131b2e","on-secondary":"#ffffff","tertiary-fixed-dim":"#bec6e0","on-error-container":"#93000a","on-error":"#ffffff","on-background":"#191c1e","on-secondary-container":"#54647a","secondary-fixed":"#d3e4fe","on-surface":"#191c1e","on-primary-container":"#a8b8ff"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{xs:"4px",md:"16px",base:"4px",sm:"8px",lg:"24px",xl:"32px","container-max":"1440px",gutter:"20px"},fontFamily:{"label-md":["Inter"],caption:["Inter"],display:["Inter"],"headline-lg":["Inter"],"headline-md":["Inter"],"body-lg":["Inter"],"body-md":["Inter"]},fontSize:{"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.05em",fontWeight:"600"}],caption:["12px",{lineHeight:"16px",fontWeight:"400"}],display:["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg":["28px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"600"}],"headline-md":["20px",{lineHeight:"28px",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}]}}}}</script></head><body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-16 flex items-center px-lg bg-surface-container-low"><div class="flex items-center gap-sm"><div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[20px]">hub</span></div><div class="flex flex-col"><span class="font-label-md text-label-md text-primary font-bold tracking-tight">ISM SYSTEM</span><span class="font-caption text-caption text-secondary tracking-widest text-[10px] uppercase font-semibold">Supervisor Portal</span></div></div></div><div class="px-md py-lg"><p class="px-sm font-label-md text-label-md uppercase tracking-wider text-outline mb-sm">Navigasi Utama</p><nav class="flex flex-col gap-xs" data-active-classes="bg-primary-container text-on-primary font-medium shadow-[0_1px_3px_rgba(0,0,0,0.05)]"><a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-body-md text-body-md">Dashboard</span></a><a aria-current="page" class="flex items-center gap-md px-md py-sm rounded-lg transition-all bg-primary-container text-on-primary font-medium shadow-[0_1px_3px_rgba(0,0,0,0.05)]" data-path="monitoring-permintaan" href="#"><span class="material-symbols-outlined text-[20px]">assignment_turned_in</span><span class="font-body-md text-body-md">Monitoring Permintaan</span></a><a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="laporan" href="#"><span class="material-symbols-outlined text-[20px]">analytics</span><span class="font-body-md text-body-md">Laporan</span></a><a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="pengaturan" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Pengaturan</span></a></nav></div></div><div class="p-md bg-surface-container-low"><button class="w-full flex items-center gap-md px-md py-sm rounded-lg text-error hover:bg-error-container hover:text-on-error-container transition-colors" onclick="document.getElementById('logout-modal').classList.remove('hidden')" type="button"><span class="material-symbols-outlined text-[20px]">logout</span><span class="font-body-md text-body-md font-medium">Keluar Sesi</span></button></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-lg"><div class="flex items-center gap-md"><div class="flex items-center gap-xs font-body-md text-body-md text-on-surface-variant"><span class="font-caption text-caption text-secondary">Portal</span><span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span><span class="font-body-md text-body-md text-on-surface font-medium">Layanan Internal</span></div></div><div class="flex items-center gap-lg"><div class="hidden md:flex items-center gap-xs text-on-surface-variant"><span class="material-symbols-outlined text-[18px] text-outline">calendar_today</span><span class="font-caption text-caption text-secondary">Senin, 24 Oktober 2024</span></div><div class="h-6 w-px bg-surface-container-high hidden md:block"></div><button class="relative p-xs rounded-full hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-md pl-xs"><div class="text-right hidden sm:block"><p class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Hendra Gunawan</p><p class="font-caption text-caption text-secondary text-[11px]">Supervisor ISM</p></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ring-2 ring-secondary-container"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-background min-h-screen px-lg py-lg max-w-container-max mx-auto"><div class="flex flex-col w-full gap-lg pb-xl">
+<!-- TOP CONTEXT BAR: Breadcrumbs, Status Pill, & Supervisor Read-Only Identity -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-md bg-surface-container-lowest p-md rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.05)]">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="font-caption text-caption text-secondary">Portal</span>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="font-caption text-caption text-secondary">Supervisor</span>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="font-label-md text-label-md text-primary font-semibold">Monitoring Permintaan</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">Monitoring Permintaan</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Pantau status dan perkembangan seluruh permintaan layanan internal yang berada dalam cakupan supervisi Anda.</p>
+</div>
+<!-- Supervisor Identity & Quick Scope Badge -->
+<div class="flex flex-wrap items-center gap-md">
+<div class="flex items-center gap-xs bg-surface-container px-md py-xs rounded-lg">
+<span class="material-symbols-outlined text-secondary text-[18px]">calendar_today</span>
+<span class="font-label-md text-label-md text-secondary">Senin, 24 Agu 2026</span>
+</div>
+<div class="flex items-center gap-xs bg-secondary-container text-on-secondary-container px-md py-xs rounded-lg">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span class="font-label-md text-label-md tracking-wider uppercase font-semibold">Supervisor (Read-Only)</span>
+</div>
+<div class="flex items-center gap-xs bg-surface-container-low p-xs rounded-lg">
+<button class="px-sm py-xs text-caption font-label-md rounded bg-surface-container-lowest text-primary shadow-sm" type="button">Hari Ini</button>
+<button class="px-sm py-xs text-caption font-label-md rounded text-secondary hover:text-on-surface" type="button">Minggu Ini</button>
+<button class="px-sm py-xs text-caption font-label-md rounded text-secondary hover:text-on-surface" type="button">Bulan Ini</button>
+</div>
+</div>
+</div>
+<!-- STATISTICAL SUMMARY MINI-PILLS / METRIC STRIP -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-md">
+<!-- Pill 1: Total Dipantau -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.05)] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-secondary uppercase tracking-wider">Total Dipantau</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold mt-xs">186 <span class="font-label-md text-label-md text-secondary font-normal">Tiket</span></span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">inventory_2</span>
+</div>
+</div>
+<!-- Pill 2: Baru Diajukan -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.05)] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-secondary uppercase tracking-wider">Baru Diajukan</span>
+<span class="font-headline-md text-headline-md text-primary font-bold mt-xs">13</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-[22px]">fiber_new</span>
+</div>
+</div>
+<!-- Pill 3: Sedang Diproses -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.05)] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-secondary uppercase tracking-wider">Sedang Diproses</span>
+<span class="font-headline-md text-headline-md text-primary-container font-bold mt-xs">31</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[22px]">pending_actions</span>
+</div>
+</div>
+<!-- Pill 4: Selesai Periode Ini -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.05)] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-secondary uppercase tracking-wider">Selesai Periode Ini</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold mt-xs">128</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">task_alt</span>
+</div>
+</div>
+<!-- Pill 5: Pending/Review -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.05)] flex items-center justify-between col-span-2 md:col-span-1">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-secondary uppercase tracking-wider">Pending / Tertunda</span>
+<span class="font-headline-md text-headline-md text-error font-bold mt-xs">14</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined text-[22px]">schedule</span>
+</div>
+</div>
+</div>
+<!-- FILTER & SEARCH PANEL (Compact Enterprise Card) -->
+<div class="bg-surface-container-lowest p-md lg:p-lg rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.05)] flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">filter_alt</span>
+<span class="font-headline-md text-[16px] text-on-surface font-semibold">Filter Pengawasan Permintaan</span>
+</div>
+<span class="font-caption text-caption text-secondary">Cakupan Divisi ISM &amp; Operasional</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-md">
+<!-- Search Input -->
+<div class="flex flex-col gap-xs xl:col-span-1">
+<label class="font-caption text-caption text-secondary font-medium">Pencarian</label>
+<div class="flex items-center px-sm py-xs bg-surface-container-low rounded-lg focus-within:bg-surface-container-lowest focus-within:shadow-[0_0_0_2px_#1e40af] transition-all">
+<span class="material-symbols-outlined text-outline text-[18px]">search</span>
+<input class="bg-transparent border-none outline-none font-body-md text-body-md text-on-surface placeholder:text-outline w-full px-xs" placeholder="ID, judul, atau pengaju..." type="text"/>
+</div>
+</div>
+<!-- Status Dropdown -->
+<div class="flex flex-col gap-xs">
+<label class="font-caption text-caption text-secondary font-medium">Status Tiket</label>
+<div class="relative bg-surface-container-low rounded-lg">
+<select class="w-full appearance-none bg-transparent py-xs pl-sm pr-lg font-body-md text-body-md text-on-surface outline-none cursor-pointer">
+<option value="">Semua Status</option>
+<option value="baru">Baru</option>
+<option value="diproses">Diproses</option>
+<option value="selesai">Selesai</option>
+<option value="pending">Pending</option>
+<option value="ditolak">Ditolak</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-sm top-1/2 -translate-y-1/2 text-outline text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Layanan Dropdown -->
+<div class="flex flex-col gap-xs">
+<label class="font-caption text-caption text-secondary font-medium">Layanan Internal</label>
+<div class="relative bg-surface-container-low rounded-lg">
+<select class="w-full appearance-none bg-transparent py-xs pl-sm pr-lg font-body-md text-body-md text-on-surface outline-none cursor-pointer">
+<option value="">Semua Layanan</option>
+<option value="pe">Production Engineering (PE)</option>
+<option value="hr">Human Resource (HR)</option>
+<option value="ga">General Affairs (GA)</option>
+<option value="is">Information System (IS)</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-sm top-1/2 -translate-y-1/2 text-outline text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Section Dropdown -->
+<div class="flex flex-col gap-xs">
+<label class="font-caption text-caption text-secondary font-medium">Section Pengaju</label>
+<div class="relative bg-surface-container-low rounded-lg">
+<select class="w-full appearance-none bg-transparent py-xs pl-sm pr-lg font-body-md text-body-md text-on-surface outline-none cursor-pointer">
+<option value="">Semua Section</option>
+<option value="assembly">Assembly</option>
+<option value="pe">PE</option>
+<option value="ga">GA</option>
+<option value="hr">HR</option>
+<option value="is">IS</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-sm top-1/2 -translate-y-1/2 text-outline text-[18px]">expand_more</span>
+</div>
+</div>
+<!-- Filter Actions -->
+<div class="flex flex-col gap-xs justify-end">
+<div class="flex items-center gap-xs">
+<button class="flex-1 flex items-center justify-center gap-xs bg-primary text-on-primary py-xs px-md rounded-lg font-body-md text-body-md font-medium hover:bg-primary-container transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+<span>Terapkan</span>
+</button>
+<button class="flex items-center justify-center p-xs bg-surface-container-low text-secondary hover:text-on-surface rounded-lg transition-colors" title="Reset Filter" type="button">
+<span class="material-symbols-outlined text-[20px]">restart_alt</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- TABLE SECTION & SUPERVISION LOG -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.05),0_10px_15px_-3px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col">
+<!-- Table Header Toolbar -->
+<div class="px-lg py-md flex flex-col sm:flex-row sm:items-center justify-between gap-sm bg-surface-container-low">
+<div class="flex items-center gap-sm">
+<span class="font-headline-md text-[16px] text-on-surface font-semibold">Daftar Tiket Permintaan</span>
+<span class="bg-primary-fixed text-on-primary-fixed text-caption font-label-md px-sm py-xs rounded-full">186 Tiket Terdata</span>
+</div>
+<div class="flex items-center gap-xs text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span>Pembaruan otomatis real-time</span>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-secondary font-label-md text-label-md uppercase tracking-wider">
+<th class="py-md px-md">ID Permintaan</th>
+<th class="py-md px-md">Waktu Masuk</th>
+<th class="py-md px-md">Judul Permintaan</th>
+<th class="py-md px-md">Layanan</th>
+<th class="py-md px-md">Pengaju &amp; Section</th>
+<th class="py-md px-md">PIC Ditugaskan</th>
+<th class="py-md px-md text-center">Status</th>
+<th class="py-md px-md">Update Terakhir</th>
+<th class="py-md px-md text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low font-body-md text-body-md text-on-surface">
+<!-- ROW 1 -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-md px-md">
+<button class="font-label-md text-label-md text-primary hover:underline font-semibold flex items-center gap-xs" onclick="openDetailDrawer('#ISM-2026-001')" type="button">
+<span>#ISM-2026-001</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+</button>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="text-on-surface font-medium block">24 Agu 2026</span>
+<span class="text-secondary font-caption text-caption">08:30 WIB</span>
+</td>
+<td class="py-md px-md min-w-[220px]">
+<p class="font-medium text-on-surface truncate max-w-xs">Perbaikan AC Ruang Produksi</p>
+<span class="text-secondary font-caption text-caption">Plant 2 - Assembly Area</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="inline-flex items-center px-sm py-xs rounded bg-surface-container text-on-surface-variant font-label-md text-[11px]">General Affairs</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="font-medium block text-on-surface">M. Ahmad</span>
+<span class="text-secondary font-caption text-caption">Section Assembly</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">engineering</span>
+<span class="text-on-surface font-medium">Andi Pratama</span>
+</div>
+<span class="text-secondary font-caption text-caption pl-5">PIC GA</span>
+</td>
+<td class="py-md px-md text-center whitespace-nowrap">
+<span class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-secondary-container text-on-secondary-container font-label-md text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Diproses
+              </span>
+</td>
+<td class="py-md px-md whitespace-nowrap text-secondary font-caption text-caption">15 menit lalu</td>
+<td class="py-md px-md text-right whitespace-nowrap">
+<button class="inline-flex items-center gap-xs px-sm py-xs bg-surface-container rounded text-primary hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors font-label-md text-label-md font-medium" onclick="openDetailDrawer('#ISM-2026-001')" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>Detail</span>
+</button>
+</td>
+</tr>
+<!-- ROW 2 -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-md px-md">
+<button class="font-label-md text-label-md text-primary hover:underline font-semibold" onclick="openDetailDrawer('#ISM-2026-002')" type="button">
+                #ISM-2026-002
+              </button>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="text-on-surface font-medium block">24 Agu 2026</span>
+<span class="text-secondary font-caption text-caption">09:15 WIB</span>
+</td>
+<td class="py-md px-md min-w-[220px]">
+<p class="font-medium text-on-surface truncate max-w-xs">Kalibrasi Sensor PLC Line 2</p>
+<span class="text-secondary font-caption text-caption">Line 2 Sub-assembly</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="inline-flex items-center px-sm py-xs rounded bg-surface-container text-on-surface-variant font-label-md text-[11px]">Production Eng.</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="font-medium block text-on-surface">Rizky Pratama</span>
+<span class="text-secondary font-caption text-caption">Section PE</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">engineering</span>
+<span class="text-on-surface font-medium">Budi Santoso</span>
+</div>
+<span class="text-secondary font-caption text-caption pl-5">PIC PE</span>
+</td>
+<td class="py-md px-md text-center whitespace-nowrap">
+<span class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-primary-fixed text-on-primary-fixed font-label-md text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Baru
+              </span>
+</td>
+<td class="py-md px-md whitespace-nowrap text-secondary font-caption text-caption">45 menit lalu</td>
+<td class="py-md px-md text-right whitespace-nowrap">
+<button class="inline-flex items-center gap-xs px-sm py-xs bg-surface-container rounded text-primary hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors font-label-md text-label-md font-medium" onclick="openDetailDrawer('#ISM-2026-002')" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>Detail</span>
+</button>
+</td>
+</tr>
+<!-- ROW 3 -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-md px-md">
+<button class="font-label-md text-label-md text-primary hover:underline font-semibold" onclick="openDetailDrawer('#ISM-2026-003')" type="button">
+                #ISM-2026-003
+              </button>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="text-on-surface font-medium block">23 Agu 2026</span>
+<span class="text-secondary font-caption text-caption">14:10 WIB</span>
+</td>
+<td class="py-md px-md min-w-[220px]">
+<p class="font-medium text-on-surface truncate max-w-xs">Penggantian Lampu Ruang Server</p>
+<span class="text-secondary font-caption text-caption">Server Room Gd. A</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="inline-flex items-center px-sm py-xs rounded bg-surface-container text-on-surface-variant font-label-md text-[11px]">General Affairs</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="font-medium block text-on-surface">Siti Rahma</span>
+<span class="text-secondary font-caption text-caption">Section Assembly</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-secondary">done_all</span>
+<span class="text-on-surface font-medium">Doni Prasetyo</span>
+</div>
+<span class="text-secondary font-caption text-caption pl-5">PIC GA</span>
+</td>
+<td class="py-md px-md text-center whitespace-nowrap">
+<span class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-surface-container-high text-on-surface font-label-md text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Selesai
+              </span>
+</td>
+<td class="py-md px-md whitespace-nowrap text-secondary font-caption text-caption">1 hari lalu</td>
+<td class="py-md px-md text-right whitespace-nowrap">
+<button class="inline-flex items-center gap-xs px-sm py-xs bg-surface-container rounded text-primary hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors font-label-md text-label-md font-medium" onclick="openDetailDrawer('#ISM-2026-003')" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>Detail</span>
+</button>
+</td>
+</tr>
+<!-- ROW 4 -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-md px-md">
+<button class="font-label-md text-label-md text-primary hover:underline font-semibold" onclick="openDetailDrawer('#ISM-2026-004')" type="button">
+                #ISM-2026-004
+              </button>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="text-on-surface font-medium block">23 Agu 2026</span>
+<span class="text-secondary font-caption text-caption">11:20 WIB</span>
+</td>
+<td class="py-md px-md min-w-[220px]">
+<p class="font-medium text-on-surface truncate max-w-xs">Reset Akun ERP SAP &amp; VPN</p>
+<span class="text-secondary font-caption text-caption">Kredensial User Finansial</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="inline-flex items-center px-sm py-xs rounded bg-surface-container text-on-surface-variant font-label-md text-[11px]">Info System (IS)</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="font-medium block text-on-surface">Dina Oktaviani</span>
+<span class="text-secondary font-caption text-caption">Section GA</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">engineering</span>
+<span class="text-on-surface font-medium">Hendra Wijaya</span>
+</div>
+<span class="text-secondary font-caption text-caption pl-5">PIC IS</span>
+</td>
+<td class="py-md px-md text-center whitespace-nowrap">
+<span class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-error-container text-on-error-container font-label-md text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                Pending
+              </span>
+</td>
+<td class="py-md px-md whitespace-nowrap text-secondary font-caption text-caption">3 jam lalu</td>
+<td class="py-md px-md text-right whitespace-nowrap">
+<button class="inline-flex items-center gap-xs px-sm py-xs bg-surface-container rounded text-primary hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors font-label-md text-label-md font-medium" onclick="openDetailDrawer('#ISM-2026-004')" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>Detail</span>
+</button>
+</td>
+</tr>
+<!-- ROW 5 -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-md px-md">
+<button class="font-label-md text-label-md text-primary hover:underline font-semibold" onclick="openDetailDrawer('#ISM-2026-005')" type="button">
+                #ISM-2026-005
+              </button>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="text-on-surface font-medium block">24 Agu 2026</span>
+<span class="text-secondary font-caption text-caption">10:05 WIB</span>
+</td>
+<td class="py-md px-md min-w-[220px]">
+<p class="font-medium text-on-surface truncate max-w-xs">Penanganan Oli Tumpah Jalur Forklift</p>
+<span class="text-secondary font-caption text-caption">Koridor Logistik B</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="inline-flex items-center px-sm py-xs rounded bg-surface-container text-on-surface-variant font-label-md text-[11px]">General Affairs</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="font-medium block text-on-surface">Agus Hidayat</span>
+<span class="text-secondary font-caption text-caption">Section Assembly</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">engineering</span>
+<span class="text-on-surface font-medium">Eko Prasetyo</span>
+</div>
+<span class="text-secondary font-caption text-caption pl-5">PIC GA</span>
+</td>
+<td class="py-md px-md text-center whitespace-nowrap">
+<span class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-secondary-container text-on-secondary-container font-label-md text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Diproses
+              </span>
+</td>
+<td class="py-md px-md whitespace-nowrap text-secondary font-caption text-caption">30 menit lalu</td>
+<td class="py-md px-md text-right whitespace-nowrap">
+<button class="inline-flex items-center gap-xs px-sm py-xs bg-surface-container rounded text-primary hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors font-label-md text-label-md font-medium" onclick="openDetailDrawer('#ISM-2026-005')" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>Detail</span>
+</button>
+</td>
+</tr>
+<!-- ROW 6 -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-md px-md">
+<button class="font-label-md text-label-md text-primary hover:underline font-semibold" onclick="openDetailDrawer('#ISM-2026-006')" type="button">
+                #ISM-2026-006
+              </button>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="text-on-surface font-medium block">22 Agu 2026</span>
+<span class="text-secondary font-caption text-caption">16:45 WIB</span>
+</td>
+<td class="py-md px-md min-w-[220px]">
+<p class="font-medium text-on-surface truncate max-w-xs">Pengajuan Sertifikasi K3 Khusus</p>
+<span class="text-secondary font-caption text-caption">Pelatihan Eksternal Q3</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="inline-flex items-center px-sm py-xs rounded bg-surface-container text-on-surface-variant font-label-md text-[11px]">Human Resource</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="font-medium block text-on-surface">Wahyu Ningrum</span>
+<span class="text-secondary font-caption text-caption">Section HR</span>
+</td>
+<td class="py-md px-md whitespace-nowrap">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-error">cancel</span>
+<span class="text-on-surface font-medium">Siti Aminah</span>
+</div>
+<span class="text-secondary font-caption text-caption pl-5">PIC HR</span>
+</td>
+<td class="py-md px-md text-center whitespace-nowrap">
+<span class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-error-container text-on-error-container font-label-md text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                Ditolak
+              </span>
+</td>
+<td class="py-md px-md whitespace-nowrap text-secondary font-caption text-caption">2 hari lalu</td>
+<td class="py-md px-md text-right whitespace-nowrap">
+<button class="inline-flex items-center gap-xs px-sm py-xs bg-surface-container rounded text-primary hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors font-label-md text-label-md font-medium" onclick="openDetailDrawer('#ISM-2026-006')" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>Detail</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- PAGINATION & METRIC FOOTER -->
+<div class="p-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-md">
+<div class="flex items-center gap-md">
+<span class="font-body-md text-body-md text-secondary">
+          Menampilkan <span class="font-semibold text-on-surface">1 - 6</span> dari <span class="font-semibold text-on-surface">186</span> permintaan layanan
+        </span>
+<div class="hidden sm:flex items-center gap-xs font-caption text-caption text-secondary">
+<span>Tampilkan</span>
+<select class="bg-surface-container-lowest py-xs px-sm rounded font-label-md text-label-md text-on-surface outline-none cursor-pointer">
+<option>10</option>
+<option>25</option>
+<option>50</option>
+</select>
+<span>per baris</span>
+</div>
+</div>
+<!-- Page Navigators -->
+<div class="flex items-center gap-xs">
+<button class="p-xs rounded bg-surface-container text-outline cursor-not-allowed flex items-center justify-center" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="px-md py-xs rounded bg-primary text-on-primary font-label-md text-label-md shadow-sm" type="button">1</button>
+<button class="px-md py-xs rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors" type="button">2</button>
+<button class="px-md py-xs rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors" type="button">3</button>
+<span class="px-xs text-secondary">...</span>
+<button class="px-md py-xs rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors" type="button">19</button>
+<button class="p-xs rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-colors flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- SLIDE-OVER / INSPECTION PANEL: READ-ONLY DETAIL PERMINTAAN -->
+<div class="hidden fixed inset-0 z-50 overflow-hidden" id="detail-drawer">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-inverse-surface/40 backdrop-blur-xs transition-opacity" onclick="closeDetailDrawer()"></div>
+<div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+<div class="w-screen max-w-2xl bg-surface-container-lowest shadow-2xl flex flex-col justify-between overflow-y-auto">
+<!-- Drawer Header -->
+<div class="p-lg bg-surface-container-low flex flex-col gap-sm">
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-xs font-label-md text-label-md text-secondary hover:text-on-surface transition-colors" onclick="closeDetailDrawer()" type="button">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Kembali ke Monitoring</span>
+</button>
+<div class="flex items-center gap-xs bg-secondary-container text-on-secondary-container px-sm py-xs rounded text-caption font-label-md uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Mode Pengawasan (Read-Only)</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-xs">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Detail Permintaan</h2>
+<p class="font-label-md text-label-md text-primary font-semibold mt-xs" id="drawer-ticket-id">#ISM-2026-001</p>
+</div>
+<span class="inline-flex items-center gap-xs px-md py-xs rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+              Sedang Diproses
+            </span>
+</div>
+</div>
+<!-- Drawer Content Body -->
+<div class="p-lg flex flex-col gap-lg flex-1">
+<!-- Section 1: Ringkasan & Deskripsi Masalah -->
+<div class="bg-surface-container-low p-md rounded-xl flex flex-col gap-md">
+<div class="flex items-center gap-xs text-primary font-label-md text-label-md uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[18px]">info</span>
+<span>Informasi Utama Permintaan</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div>
+<span class="font-caption text-caption text-secondary">Judul Permintaan</span>
+<p class="font-body-md text-body-md text-on-surface font-semibold mt-xs">Perbaikan AC Ruang Produksi</p>
+</div>
+<div>
+<span class="font-caption text-caption text-secondary">Kategori Layanan</span>
+<p class="font-body-md text-body-md text-on-surface font-semibold mt-xs">General Affairs (Fasilitas &amp; Gedung)</p>
+</div>
+<div>
+<span class="font-caption text-caption text-secondary">Pengaju &amp; Section</span>
+<p class="font-body-md text-body-md text-on-surface mt-xs">M. Ahmad <span class="text-secondary text-caption">(NIK: 202108044)</span></p>
+<span class="font-caption text-caption text-secondary">Section: Assembly Line 2</span>
+</div>
+<div>
+<span class="font-caption text-caption text-secondary">Lokasi Spesifik</span>
+<p class="font-body-md text-body-md text-on-surface mt-xs">Plant 2, Lantai 1 - Assembly Area</p>
+</div>
+<div>
+<span class="font-caption text-caption text-secondary">Tanggal Pengajuan</span>
+<p class="font-body-md text-body-md text-on-surface mt-xs">24 Agustus 2026, 08:30 WIB</p>
+</div>
+<div>
+<span class="font-caption text-caption text-secondary">Target SLA Penyelesaian</span>
+<p class="font-body-md text-body-md text-primary font-semibold mt-xs">4 Jam <span class="font-caption text-caption text-secondary font-normal">(Est: 12:30 WIB)</span></p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-lg flex flex-col gap-xs">
+<span class="font-caption text-caption text-secondary font-medium">Uraian / Deskripsi Keluhan:</span>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                "AC Split pada area Assembly Line 2 mengalami kebocoran air dan hembusan udara tidak dingin sejak pagi hari, berpotensi mempengaruhi kelembaban komponen elektronik presisi serta kenyamanan operator perakitan."
+              </p>
+</div>
+</div>
+<!-- Section 2: Person In Charge (PIC) & Catatan Lapangan -->
+<div class="bg-surface-container-low p-md rounded-xl flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-xs text-primary font-label-md text-label-md uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+<span>Petugas PIC Terpilih</span>
+</div>
+<span class="font-caption text-caption text-secondary">Ditugaskan oleh GA Head</span>
+</div>
+<div class="flex items-center gap-md bg-surface-container-lowest p-md rounded-lg">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold text-[18px]">
+                AP
+              </div>
+<div class="flex flex-col flex-1">
+<p class="font-body-md text-body-md font-semibold text-on-surface">Andi Pratama</p>
+<p class="font-caption text-caption text-secondary">Teknisi Senior HVAC - Divisi General Affairs</p>
+<div class="flex items-center gap-md mt-xs font-caption text-caption text-secondary">
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">call</span> Ext. 4022</span>
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">radio_button_checked</span> Respon: 15 Menit</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-lg flex flex-col gap-xs">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-secondary font-medium">Catatan Penanganan PIC:</span>
+<span class="font-caption text-caption text-secondary">Pembaruan: 09:15 WIB</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic">
+                "Pipa pembuangan air kondensat tersumbat endapan lumut. Sedang dilakukan flushing pipa pembuangan dan pemeriksaan tekanan refrigerant R32. Estimasi pengerjaan selesai 45 menit lagi."
+              </p>
+</div>
+</div>
+<!-- Section 3: Vertical Stepper Timeline Permintaan -->
+<div class="flex flex-col gap-md">
+<div class="flex items-center gap-xs text-primary font-label-md text-label-md uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[18px]">timeline</span>
+<span>Riwayat Alur Proses Permintaan</span>
+</div>
+<div class="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-surface-container-high">
+<!-- Timeline 1: Pengajuan Tiket (Done) -->
+<div class="relative flex items-start gap-md">
+<div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[10px] text-on-primary">check</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-sm">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Pengajuan Tiket Layanan</span>
+<span class="font-caption text-caption text-secondary">24 Agu, 08:30 WIB</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-xs">Tiket dibuat dan dikirimkan oleh pemohon M. Ahmad via portal internal.</p>
+</div>
+</div>
+<!-- Timeline 2: Tiket Diterima PIC (Done) -->
+<div class="relative flex items-start gap-md">
+<div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[10px] text-on-primary">check</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-sm">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Diterima &amp; Ditugaskan</span>
+<span class="font-caption text-caption text-secondary">24 Agu, 08:45 WIB</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-xs">Penugasan otomatis kepada PIC Teknisi HVAC Andi Pratama oleh Koordinator GA.</p>
+</div>
+</div>
+<!-- Timeline 3: Sedang Diproses (Current / Active) -->
+<div class="relative flex items-start gap-md">
+<div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-primary-container ring-4 ring-secondary-container flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-sm">
+<span class="font-body-md text-body-md font-bold text-primary">Sedang Dikerjakan di Lapangan</span>
+<span class="font-caption text-caption text-secondary">24 Agu, 09:15 WIB</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface text-sm mt-xs font-medium">Teknisi memeriksa unit di Assembly Line 2 dan melakukan pembersihan pipa kondensat.</p>
+</div>
+</div>
+<!-- Timeline 4: Selesai & Verifikasi (Upcoming) -->
+<div class="relative flex items-start gap-md opacity-60">
+<div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-sm">
+<span class="font-body-md text-body-md font-medium text-secondary">Penyelesaian &amp; Konfirmasi Penutupan</span>
+<span class="font-caption text-caption text-secondary">Estimasi 10:30 WIB</span>
+</div>
+<p class="font-body-md text-body-md text-secondary text-sm mt-xs">Menunggu pengetesan pendinginan stabil dan persetujuan tanda tangan serah terima.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 4: Dokumen & Lampiran Pendukung -->
+<div class="flex flex-col gap-sm">
+<div class="flex items-center gap-xs text-primary font-label-md text-label-md uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[18px]">attachment</span>
+<span>Lampiran Berkas Pemohon (2 Dokumen)</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<div class="p-sm bg-surface-container-low rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-sm truncate">
+<span class="material-symbols-outlined text-primary text-[24px]">image</span>
+<div class="flex flex-col truncate">
+<span class="font-label-md text-label-md text-on-surface truncate">foto_kebocoran_ac.jpg</span>
+<span class="font-caption text-caption text-secondary">2.4 MB • JPG Foto Bukti</span>
+</div>
+</div>
+<button class="p-xs text-secondary hover:text-primary transition-colors" title="Buka Pratinjau" type="button">
+<span class="material-symbols-outlined text-[20px]">open_in_new</span>
+</button>
+</div>
+<div class="p-sm bg-surface-container-low rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-sm truncate">
+<span class="material-symbols-outlined text-error text-[24px]">picture_as_pdf</span>
+<div class="flex flex-col truncate">
+<span class="font-label-md text-label-md text-on-surface truncate">formulir_keluhan.pdf</span>
+<span class="font-caption text-caption text-secondary">410 KB • Disetujui Operator</span>
+</div>
+</div>
+<button class="p-xs text-secondary hover:text-primary transition-colors" title="Buka Dokumen" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Section 5: Notice Hak Akses Supervisor (Enforce Read-Only Rule) -->
+<div class="bg-surface-container p-md rounded-xl flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary text-[22px] mt-0.5">policy</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Kebijakan Supervisi &amp; Batasan Akses</span>
+<p class="font-caption text-caption text-secondary mt-xs leading-normal">
+                Sebagai Supervisor ISM, akun Anda berstatus <strong>Monitoring Pengawasan Penuh</strong>. Anda memiliki kewenangan untuk melihat semua detail, riwayat waktu, dan lampiran teknis tanpa hak merubah isi laporan, mengubah status, ataupun mendisposisikan PIC secara langsung.
+              </p>
+</div>
+</div>
+</div>
+<!-- Drawer Footer: ONLY Return button, NO administrative modification controls -->
+<div class="p-lg bg-surface-container-low flex items-center justify-between">
+<span class="font-caption text-caption text-secondary">Sistem Pemantauan ISM v4.2 - Logged as Supervisor</span>
+<button class="px-lg py-sm bg-primary text-on-primary rounded-lg font-body-md text-body-md font-medium hover:bg-primary-container transition-colors shadow-sm" onclick="closeDetailDrawer()" type="button">
+            Kembali ke Monitoring
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- INTERACTION SCRIPT FOR SLIDE-OVER DRAWER -->
+<script>
+  function openDetailDrawer(ticketId) {
+    var drawer = document.getElementById('detail-drawer');
+    var label = document.getElementById('drawer-ticket-id');
+    if (drawer && label) {
+      label.innerText = ticketId || '#ISM-2026-001';
+      drawer.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeDetailDrawer() {
+    var drawer = document.getElementById('detail-drawer');
+    if (drawer) {
+      drawer.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+  }
+
+  // Support ESC key to dismiss drawer
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      closeDetailDrawer();
+    }
+  });
+</script></main></div><div class="hidden fixed inset-0 z-50 flex items-center justify-center bg-inverse-surface/40 backdrop-blur-sm" id="logout-modal"><div class="bg-surface-container-lowest rounded-xl shadow-[0_10px_15px_-3px_rgba(0,0,0,0.05)] w-full max-w-sm p-lg mx-md flex flex-col gap-md"><div class="flex items-center gap-md"><div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center text-error"><span class="material-symbols-outlined text-[22px]">logout</span></div><div><h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Konfirmasi Keluar</h3><p class="font-caption text-caption text-secondary mt-xs">Apakah Anda yakin ingin mengakhiri sesi kerja ini?</p></div></div><div class="flex justify-end gap-sm mt-md"><button class="px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container transition-colors" onclick="document.getElementById('logout-modal').classList.add('hidden')" type="button">Batal</button><a class="px-md py-sm rounded-lg font-body-md text-body-md bg-error text-on-error hover:opacity-90 transition-opacity font-medium" data-path="login" href="#">Ya, Keluar</a></div></div></div></body></html>

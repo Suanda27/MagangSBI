@@ -1,0 +1,846 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-secondary": "#ffffff",
+          "outline-variant": "#c4c5d5",
+          "tertiary-fixed": "#dae2fd",
+          "inverse-on-surface": "#eff1f3",
+          "surface-dim": "#d8dadc",
+          "error": "#ba1a1a",
+          "inverse-surface": "#2d3133",
+          "surface-container-high": "#e6e8ea",
+          "primary": "#00288e",
+          "on-secondary-fixed": "#0b1c30",
+          "tertiary-fixed-dim": "#bec6e0",
+          "secondary": "#505f76",
+          "error-container": "#ffdad6",
+          "on-secondary-fixed-variant": "#38485d",
+          "on-secondary-container": "#54647a",
+          "secondary-fixed": "#d3e4fe",
+          "surface-variant": "#e0e3e5",
+          "on-primary-fixed-variant": "#173bab",
+          "on-tertiary-container": "#b4bbd5",
+          "surface-container-low": "#f2f4f6",
+          "on-primary": "#ffffff",
+          "on-tertiary-fixed": "#131b2e",
+          "primary-container": "#1e40af",
+          "secondary-container": "#d0e1fb",
+          "inverse-primary": "#b8c4ff",
+          "surface-container": "#eceef0",
+          "background": "#f7f9fb",
+          "tertiary": "#2d3449",
+          "secondary-fixed-dim": "#b7c8e1",
+          "on-tertiary-fixed-variant": "#3f465c",
+          "primary-fixed-dim": "#b8c4ff",
+          "on-primary-container": "#a8b8ff",
+          "tertiary-container": "#434b60",
+          "surface": "#f7f9fb",
+          "primary-fixed": "#dde1ff",
+          "on-error-container": "#93000a",
+          "outline": "#757684",
+          "on-background": "#191c1e",
+          "on-surface": "#191c1e",
+          "on-surface-variant": "#444653",
+          "on-primary-fixed": "#001453",
+          "on-error": "#ffffff",
+          "surface-tint": "#3755c3",
+          "surface-bright": "#f7f9fb",
+          "on-tertiary": "#ffffff",
+          "surface-container-lowest": "#ffffff",
+          "surface-container-highest": "#e0e3e5"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "base": "4px",
+          "md": "16px",
+          "sm": "8px",
+          "xl": "32px",
+          "gutter": "20px",
+          "lg": "24px",
+          "xs": "4px",
+          "container-max": "1440px"
+        },
+        "fontFamily": {
+          "caption": ["Inter"],
+          "headline-lg": ["Inter"],
+          "headline-md": ["Inter"],
+          "body-lg": ["Inter"],
+          "label-md": ["Inter"],
+          "display": ["Inter"],
+          "body-md": ["Inter"]
+        },
+        "fontSize": {
+          "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+          "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+          "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+          "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+          "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+        }
+      }
+    }
+  }</script></head><body class="bg-background font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between select-none"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-16 px-6 flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[24px]">shield</span></div><div class="flex flex-col"><span class="font-headline-md text-body-lg text-primary font-bold leading-tight">ISM System</span><span class="font-caption text-caption text-on-surface-variant">Internal Service</span></div></div><nav class="px-3 py-4 flex flex-col gap-1" data-active-classes="bg-secondary-container text-on-secondary-container font-semibold rounded-lg"><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body-md text-body-md">Dashboard</span></a><div class="px-3 pt-5 pb-2 font-label-md text-label-md text-outline uppercase tracking-wider">MASTER DATA</div><a aria-current="page" class="flex items-center gap-3 px-3 py-2.5 transition-colors bg-secondary-container text-on-secondary-container font-semibold rounded-lg" data-path="karyawan" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-body-md text-body-md">Karyawan</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="section" href="#"><span class="material-symbols-outlined text-[20px]">corporate_fare</span><span class="font-body-md text-body-md">Section</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="layanan" href="#"><span class="material-symbols-outlined text-[20px]">design_services</span><span class="font-body-md text-body-md">Layanan</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="pic" href="#"><span class="material-symbols-outlined text-[20px]">badge</span><span class="font-body-md text-body-md">PIC</span></a><div class="px-3 pt-5 pb-2 font-label-md text-label-md text-outline uppercase tracking-wider">PERMINTAAN</div><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="semua-permintaan" href="#"><span class="material-symbols-outlined text-[20px]">list_alt</span><span class="font-body-md text-body-md">Semua Permintaan</span></a><div class="px-3 pt-5 pb-2 font-label-md text-label-md text-outline uppercase tracking-wider">ANALISIS</div><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="laporan" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-body-md text-body-md">Laporan</span></a></nav></div><div class="p-3 bg-surface-container-lowest"><nav class="flex flex-col gap-1" data-active-classes="bg-secondary-container text-on-secondary-container font-semibold rounded-lg"><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Settings</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-error hover:bg-error-container hover:text-on-error-container transition-colors" data-path="logout" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="font-body-md text-body-md">Logout</span></a></nav></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40"><div class="h-16 w-full px-8 flex items-center justify-between gap-6"><div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md"><span class="hover:text-primary transition-colors cursor-pointer">Portal</span><span class="material-symbols-outlined text-outline text-[16px]">chevron_right</span><span class="text-on-surface font-semibold">Console</span></div><div class="flex items-center gap-5"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-outline text-[18px] pointer-events-none">search</span><input class="w-64 pl-9 pr-4 py-1.5 rounded-full bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(30,64,175,0.2)] transition-all" placeholder="Cari NIK, ID, nama..." type="text"></div><button aria-label="Notifications" class="relative p-2 rounded-full text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></button><div class="flex items-center gap-3 pl-3 py-1 pr-2 rounded-full hover:bg-surface-container-low transition-colors cursor-pointer"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="hidden md:flex flex-col text-left"><span class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Admin ISM</span><span class="font-caption text-caption text-on-surface-variant">Administrator</span></div><span class="material-symbols-outlined text-outline text-[18px]">expand_more</span></div></div></div></header><main class="w-full pt-16 bg-background flex-1"><div class="w-full max-w-[1440px] mx-auto px-8 py-6"><div class="flex flex-col w-full gap-6">
+<!-- Header & Page Controls -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface">Karyawan</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md">Data Master</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Kelola data dan akun karyawan.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface shadow-sm hover:shadow transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+<span class="font-body-md text-body-md font-medium">Export CSV</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-container text-on-primary shadow-sm hover:bg-primary transition-all" id="btnOpenAddModal" type="button">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+<span class="font-body-md text-body-md font-semibold">+ Tambah Karyawan</span>
+</button>
+</div>
+</div>
+<!-- Metric Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+<!-- Card 1: Total Karyawan -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex items-center justify-between relative overflow-hidden">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase tracking-wider text-outline font-semibold">Total Karyawan</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display text-display text-on-surface">128</span>
+<span class="font-caption text-caption text-secondary font-medium">jiwa terdaftar</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">domain</span>
+          5 Divisi Aktif
+        </span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[26px]">groups</span>
+</div>
+<div class="absolute -right-4 -bottom-4 w-20 h-20 bg-primary-container/5 rounded-full pointer-events-none"></div>
+</div>
+<!-- Card 2: Aktif -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex items-center justify-between relative overflow-hidden">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase tracking-wider text-outline font-semibold">Aktif</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display text-display text-on-surface">121</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-caption text-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+            94.5%
+          </span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant mt-2 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+          Siap ditugaskan &amp; login
+        </span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed/50 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[26px]">check_circle</span>
+</div>
+<div class="absolute -right-4 -bottom-4 w-20 h-20 bg-secondary-container/20 rounded-full pointer-events-none"></div>
+</div>
+<!-- Card 3: Nonaktif -->
+<div class="bg-surface-container-lowest p-5 rounded-xl shadow-sm flex items-center justify-between relative overflow-hidden">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase tracking-wider text-outline font-semibold">Nonaktif</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display text-display text-secondary">7</span>
+<span class="font-caption text-caption text-outline font-medium">karyawan</span>
+</div>
+<span class="font-caption text-caption text-outline mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock_clock</span>
+          Akses dinonaktifkan
+        </span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[26px]">person_off</span>
+</div>
+<div class="absolute -right-4 -bottom-4 w-20 h-20 bg-surface-dim/40 rounded-full pointer-events-none"></div>
+</div>
+</div>
+<!-- Search & Filter Bar -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+<div class="flex-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+<!-- Search Input -->
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full pl-9 pr-3 py-2 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(30,64,175,0.25)] transition-all" id="searchInput" placeholder="Cari NIK, nama, atau email..." type="text">
+</div>
+<!-- Filters -->
+<div class="flex flex-wrap items-center gap-2">
+<!-- Section Filter -->
+<div class="relative">
+<select class="appearance-none pl-3 pr-8 py-2 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(30,64,175,0.25)] cursor-pointer transition-all" id="filterSection">
+<option value="">Semua Section</option>
+<option value="Assembly">Assembly</option>
+<option value="HR">HR</option>
+<option value="IS">IS</option>
+<option value="PE">PE</option>
+<option value="GA">GA</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-[16px] pointer-events-none">unfold_more</span>
+</div>
+<!-- Role Filter -->
+<div class="relative">
+<select class="appearance-none pl-3 pr-8 py-2 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(30,64,175,0.25)] cursor-pointer transition-all" id="filterRole">
+<option value="">Semua Role</option>
+<option value="Karyawan">Karyawan</option>
+<option value="PIC">PIC</option>
+<option value="Supervisor">Supervisor</option>
+<option value="Admin">Admin</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-[16px] pointer-events-none">unfold_more</span>
+</div>
+<!-- Status Filter -->
+<div class="relative">
+<select class="appearance-none pl-3 pr-8 py-2 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(30,64,175,0.25)] cursor-pointer transition-all" id="filterStatus">
+<option value="">Semua Status</option>
+<option value="Aktif">Aktif</option>
+<option value="Nonaktif">Nonaktif</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-[16px] pointer-events-none">unfold_more</span>
+</div>
+</div>
+</div>
+<!-- Reset Filter -->
+<div class="flex items-center justify-end">
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-lg text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors" id="btnResetFilter" type="button">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span class="font-body-md text-body-md font-medium">Reset Filter</span>
+</button>
+</div>
+</div>
+<!-- Data Table Section -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<th class="py-3.5 px-5 font-semibold">NIK</th>
+<th class="py-3.5 px-5 font-semibold">Nama Lengkap</th>
+<th class="py-3.5 px-5 font-semibold">Email</th>
+<th class="py-3.5 px-5 font-semibold">Section</th>
+<th class="py-3.5 px-5 font-semibold">Role</th>
+<th class="py-3.5 px-5 font-semibold">Status</th>
+<th class="py-3.5 px-5 font-semibold text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface" id="employeeTableBody">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-email="faiz@example.com" data-nama="Muhammad Faiz" data-nik="12345678" data-role="Karyawan" data-section="Assembly" data-status="Aktif">
+<td class="py-3.5 px-5 font-semibold text-primary font-caption text-caption tracking-wider">12345678</td>
+<td class="py-3.5 px-5">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-caption">MF</div>
+<span class="font-medium text-on-surface">Muhammad Faiz</span>
+</div>
+</td>
+<td class="py-3.5 px-5 text-on-surface-variant">faiz@example.com</td>
+<td class="py-3.5 px-5">
+<span class="px-2.5 py-1 rounded bg-surface-container font-medium text-caption text-on-surface">Assembly</span>
+</td>
+<td class="py-3.5 px-5">
+<span class="text-on-surface">Karyawan</span>
+</td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Aktif
+              </span>
+</td>
+<td class="py-3.5 px-5 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="btn-detail p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" title="Detail" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="btn-edit p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary-container transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="btn-toggle-status p-1.5 rounded hover:bg-error-container text-error transition-colors" title="Nonaktifkan" type="button">
+<span class="material-symbols-outlined text-[18px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-email="budi.santoso@example.com" data-nama="Budi Santoso" data-nik="12345679" data-role="PIC" data-section="IS" data-status="Aktif">
+<td class="py-3.5 px-5 font-semibold text-primary font-caption text-caption tracking-wider">12345679</td>
+<td class="py-3.5 px-5">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-caption">BS</div>
+<span class="font-medium text-on-surface">Budi Santoso</span>
+</div>
+</td>
+<td class="py-3.5 px-5 text-on-surface-variant">budi.santoso@example.com</td>
+<td class="py-3.5 px-5">
+<span class="px-2.5 py-1 rounded bg-surface-container font-medium text-caption text-on-surface">IS</span>
+</td>
+<td class="py-3.5 px-5">
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-medium text-caption">PIC</span>
+</td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Aktif
+              </span>
+</td>
+<td class="py-3.5 px-5 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="btn-detail p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" title="Detail" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="btn-edit p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary-container transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="btn-toggle-status p-1.5 rounded hover:bg-error-container text-error transition-colors" title="Nonaktifkan" type="button">
+<span class="material-symbols-outlined text-[18px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-email="siti.aminah@example.com" data-nama="Siti Aminah" data-nik="12345680" data-role="Karyawan" data-section="HR" data-status="Aktif">
+<td class="py-3.5 px-5 font-semibold text-primary font-caption text-caption tracking-wider">12345680</td>
+<td class="py-3.5 px-5">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-caption">SA</div>
+<span class="font-medium text-on-surface">Siti Aminah</span>
+</div>
+</td>
+<td class="py-3.5 px-5 text-on-surface-variant">siti.aminah@example.com</td>
+<td class="py-3.5 px-5">
+<span class="px-2.5 py-1 rounded bg-surface-container font-medium text-caption text-on-surface">HR</span>
+</td>
+<td class="py-3.5 px-5">
+<span class="text-on-surface">Karyawan</span>
+</td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Aktif
+              </span>
+</td>
+<td class="py-3.5 px-5 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="btn-detail p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" title="Detail" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="btn-edit p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary-container transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="btn-toggle-status p-1.5 rounded hover:bg-error-container text-error transition-colors" title="Nonaktifkan" type="button">
+<span class="material-symbols-outlined text-[18px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-email="hendra.w@example.com" data-nama="Hendra Wijaya" data-nik="12345681" data-role="PIC" data-section="IS" data-status="Aktif">
+<td class="py-3.5 px-5 font-semibold text-primary font-caption text-caption tracking-wider">12345681</td>
+<td class="py-3.5 px-5">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-caption">HW</div>
+<span class="font-medium text-on-surface">Hendra Wijaya</span>
+</div>
+</td>
+<td class="py-3.5 px-5 text-on-surface-variant">hendra.w@example.com</td>
+<td class="py-3.5 px-5">
+<span class="px-2.5 py-1 rounded bg-surface-container font-medium text-caption text-on-surface">IS</span>
+</td>
+<td class="py-3.5 px-5">
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-medium text-caption">PIC</span>
+</td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Aktif
+              </span>
+</td>
+<td class="py-3.5 px-5 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="btn-detail p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" title="Detail" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="btn-edit p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary-container transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="btn-toggle-status p-1.5 rounded hover:bg-error-container text-error transition-colors" title="Nonaktifkan" type="button">
+<span class="material-symbols-outlined text-[18px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-email="rudi.h@example.com" data-nama="Rudi Hartono" data-nik="12345682" data-role="Supervisor" data-section="PE" data-status="Aktif">
+<td class="py-3.5 px-5 font-semibold text-primary font-caption text-caption tracking-wider">12345682</td>
+<td class="py-3.5 px-5">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-caption">RH</div>
+<span class="font-medium text-on-surface">Rudi Hartono</span>
+</div>
+</td>
+<td class="py-3.5 px-5 text-on-surface-variant">rudi.h@example.com</td>
+<td class="py-3.5 px-5">
+<span class="px-2.5 py-1 rounded bg-surface-container font-medium text-caption text-on-surface">PE</span>
+</td>
+<td class="py-3.5 px-5">
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed-variant font-medium text-caption">Supervisor</span>
+</td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Aktif
+              </span>
+</td>
+<td class="py-3.5 px-5 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="btn-detail p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" title="Detail" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="btn-edit p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary-container transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="btn-toggle-status p-1.5 rounded hover:bg-error-container text-error transition-colors" title="Nonaktifkan" type="button">
+<span class="material-symbols-outlined text-[18px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-email="rina.w@example.com" data-nama="Rina Wulandari" data-nik="12345683" data-role="PIC" data-section="HR" data-status="Aktif">
+<td class="py-3.5 px-5 font-semibold text-primary font-caption text-caption tracking-wider">12345683</td>
+<td class="py-3.5 px-5">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-caption">RW</div>
+<span class="font-medium text-on-surface">Rina Wulandari</span>
+</div>
+</td>
+<td class="py-3.5 px-5 text-on-surface-variant">rina.w@example.com</td>
+<td class="py-3.5 px-5">
+<span class="px-2.5 py-1 rounded bg-surface-container font-medium text-caption text-on-surface">HR</span>
+</td>
+<td class="py-3.5 px-5">
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-medium text-caption">PIC</span>
+</td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Aktif
+              </span>
+</td>
+<td class="py-3.5 px-5 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="btn-detail p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" title="Detail" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="btn-edit p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary-container transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="btn-toggle-status p-1.5 rounded hover:bg-error-container text-error transition-colors" title="Nonaktifkan" type="button">
+<span class="material-symbols-outlined text-[18px]">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors opacity-80" data-email="joko.s@example.com" data-nama="Joko Susilo" data-nik="12345684" data-role="Karyawan" data-section="GA" data-status="Nonaktif">
+<td class="py-3.5 px-5 font-semibold text-outline font-caption text-caption tracking-wider">12345684</td>
+<td class="py-3.5 px-5">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-surface-container text-outline flex items-center justify-center font-bold text-caption">JS</div>
+<span class="font-medium text-outline">Joko Susilo</span>
+</div>
+</td>
+<td class="py-3.5 px-5 text-outline">joko.s@example.com</td>
+<td class="py-3.5 px-5">
+<span class="px-2.5 py-1 rounded bg-surface-container font-medium text-caption text-outline">GA</span>
+</td>
+<td class="py-3.5 px-5">
+<span class="text-outline">Karyawan</span>
+</td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-high text-outline font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                Nonaktif
+              </span>
+</td>
+<td class="py-3.5 px-5 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="btn-detail p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" title="Detail" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="btn-edit p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary-container transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="btn-toggle-status p-1.5 rounded hover:bg-secondary-fixed text-primary transition-colors" title="Aktifkan" type="button">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="px-5 py-4 bg-surface-container-low/40 flex flex-col sm:flex-row items-center justify-between gap-4">
+<span class="font-body-md text-body-md text-on-surface-variant">
+        Menampilkan <span class="font-semibold text-on-surface">1–7</span> dari <span class="font-semibold text-on-surface">128</span> karyawan
+      </span>
+<div class="flex items-center gap-1.5">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface shadow-sm font-body-md text-body-md transition-all" type="button">
+          Sebelumnya
+        </button>
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary font-body-md text-body-md font-semibold flex items-center justify-center shadow-sm" type="button">
+          1
+        </button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container font-body-md text-body-md font-medium flex items-center justify-center transition-all" type="button">
+          2
+        </button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container font-body-md text-body-md font-medium flex items-center justify-center transition-all" type="button">
+          3
+        </button>
+<span class="px-1 text-outline">...</span>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container font-body-md text-body-md font-medium flex items-center justify-center transition-all" type="button">
+          19
+        </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface shadow-sm font-body-md text-body-md transition-all" type="button">
+          Selanjutnya
+        </button>
+</div>
+</div>
+</div>
+<!-- Slide-Over Modal Drawer (Form Tambah / Edit / Detail) -->
+<div class="fixed inset-0 z-50 flex justify-end bg-on-background/40 backdrop-blur-[2px] transition-opacity duration-300 opacity-0 pointer-events-none" id="modalDrawer">
+<div class="w-full max-w-md bg-surface-container-lowest h-full shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-out" id="drawerPanel">
+<!-- Drawer Header -->
+<div class="px-6 py-5 bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm" id="drawerIconBox">
+<span class="material-symbols-outlined text-[22px]" id="drawerIcon">person_add</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface leading-tight" id="drawerTitle">Tambah Karyawan</span>
+<span class="font-caption text-caption text-on-surface-variant" id="drawerSubtitle">Lengkapi kredensial dan hak akses akun</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-outline hover:text-on-surface hover:bg-surface-container transition-colors" id="btnCloseModal" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Drawer Body / Form -->
+<div class="p-6 overflow-y-auto flex-1 flex flex-col gap-4">
+<!-- NIK Field -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold" for="formNik">
+            Nomor Induk Karyawan (NIK) <span class="text-error">*</span>
+</label>
+<input class="w-full px-3.5 py-2.5 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(30,64,175,0.25)] transition-all" id="formNik" placeholder="Contoh: 12345685" type="text">
+</div>
+<!-- Nama Lengkap Field -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold" for="formNama">
+            Nama Lengkap <span class="text-error">*</span>
+</label>
+<input class="w-full px-3.5 py-2.5 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(30,64,175,0.25)] transition-all" id="formNama" placeholder="Masukkan nama lengkap..." type="text">
+</div>
+<!-- Email Field -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold" for="formEmail">
+            Email Perusahaan <span class="text-error">*</span>
+</label>
+<input class="w-full px-3.5 py-2.5 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(30,64,175,0.25)] transition-all" id="formEmail" placeholder="nama@example.com" type="email">
+</div>
+<!-- Section Dropdown -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold" for="formSection">
+            Section / Departemen <span class="text-error">*</span>
+</label>
+<div class="relative">
+<select class="w-full appearance-none px-3.5 py-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(30,64,175,0.25)] cursor-pointer transition-all" id="formSection">
+<option value="">Pilih Section</option>
+<option value="Assembly">Assembly</option>
+<option value="HR">HR</option>
+<option value="IS">IS</option>
+<option value="PE">PE</option>
+<option value="GA">GA</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Role Dropdown -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold" for="formRole">
+            Role Akun <span class="text-error">*</span>
+</label>
+<div class="relative">
+<select class="w-full appearance-none px-3.5 py-2.5 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(30,64,175,0.25)] cursor-pointer transition-all" id="formRole">
+<option value="">Pilih Role</option>
+<option value="Karyawan">Karyawan</option>
+<option value="PIC">PIC</option>
+<option value="Supervisor">Supervisor</option>
+<option value="Admin">Admin</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-1.5" id="passwordWrapper">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold" for="formPassword">
+              Password Sementara <span class="text-error">*</span>
+</label>
+<span class="font-caption text-caption text-outline">Min. 8 karakter</span>
+</div>
+<div class="relative">
+<input class="w-full pl-3.5 pr-10 py-2.5 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(30,64,175,0.25)] transition-all" id="formPassword" placeholder="••••••••" type="password">
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface" id="btnTogglePassword" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Detail Meta Banner (shown in detail mode only) -->
+<div class="hidden p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-2" id="detailMetaBox">
+<div class="flex items-center justify-between font-caption text-caption">
+<span class="text-outline">Status Akun:</span>
+<span class="inline-flex items-center gap-1 font-semibold text-primary" id="detailStatusBadge">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+              Aktif
+            </span>
+</div>
+<div class="flex items-center justify-between font-caption text-caption">
+<span class="text-outline">Terakhir Login:</span>
+<span class="text-on-surface font-medium">Hari ini, 08:42 WIB</span>
+</div>
+<div class="flex items-center justify-between font-caption text-caption">
+<span class="text-outline">Dibuat Pada:</span>
+<span class="text-on-surface font-medium">12 Jan 2024</span>
+</div>
+</div>
+</div>
+<!-- Drawer Footer Action Buttons -->
+<div class="p-6 bg-surface-container-low flex items-center justify-end gap-3">
+<button class="px-4 py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md font-semibold hover:bg-surface-container transition-all" id="btnCancelModal" type="button">
+          Batal
+        </button>
+<button class="px-5 py-2.5 rounded-lg bg-primary-container text-on-primary font-body-md text-body-md font-semibold hover:bg-primary shadow-sm transition-all flex items-center gap-2" id="btnSubmitModal" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span>Simpan Karyawan</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const modalDrawer = document.getElementById('modalDrawer');
+    const drawerPanel = document.getElementById('drawerPanel');
+    const btnOpenAddModal = document.getElementById('btnOpenAddModal');
+    const btnCloseModal = document.getElementById('btnCloseModal');
+    const btnCancelModal = document.getElementById('btnCancelModal');
+    const btnSubmitModal = document.getElementById('btnSubmitModal');
+    const drawerTitle = document.getElementById('drawerTitle');
+    const drawerSubtitle = document.getElementById('drawerSubtitle');
+    const drawerIcon = document.getElementById('drawerIcon');
+    const detailMetaBox = document.getElementById('detailMetaBox');
+    const passwordWrapper = document.getElementById('passwordWrapper');
+
+    const formNik = document.getElementById('formNik');
+    const formNama = document.getElementById('formNama');
+    const formEmail = document.getElementById('formEmail');
+    const formSection = document.getElementById('formSection');
+    const formRole = document.getElementById('formRole');
+    const formPassword = document.getElementById('formPassword');
+    const btnTogglePassword = document.getElementById('btnTogglePassword');
+
+    // Filter Elements
+    const searchInput = document.getElementById('searchInput');
+    const filterSection = document.getElementById('filterSection');
+    const filterRole = document.getElementById('filterRole');
+    const filterStatus = document.getElementById('filterStatus');
+    const btnResetFilter = document.getElementById('btnResetFilter');
+    const tableBody = document.getElementById('employeeTableBody');
+
+    function openDrawer(mode, data = {}) {
+      modalDrawer.classList.remove('opacity-0', 'pointer-events-none');
+      drawerPanel.classList.remove('translate-x-full');
+
+      // Reset inputs state
+      [formNik, formNama, formEmail, formSection, formRole, formPassword].forEach(input => {
+        input.disabled = false;
+        input.classList.remove('bg-surface-container', 'opacity-70');
+      });
+      detailMetaBox.classList.add('hidden');
+      passwordWrapper.classList.remove('hidden');
+      btnSubmitModal.classList.remove('hidden');
+
+      if (mode === 'add') {
+        drawerTitle.textContent = 'Tambah Karyawan';
+        drawerSubtitle.textContent = 'Lengkapi kredensial dan hak akses akun baru';
+        drawerIcon.textContent = 'person_add';
+        formNik.value = '';
+        formNama.value = '';
+        formEmail.value = '';
+        formSection.value = '';
+        formRole.value = '';
+        formPassword.value = '';
+      } else if (mode === 'edit') {
+        drawerTitle.textContent = 'Edit Karyawan';
+        drawerSubtitle.textContent = 'Perbarui data profil dan hak akses akun';
+        drawerIcon.textContent = 'edit';
+        formNik.value = data.nik || '';
+        formNama.value = data.nama || '';
+        formEmail.value = data.email || '';
+        formSection.value = data.section || '';
+        formRole.value = data.role || '';
+        formPassword.value = '••••••••';
+      } else if (mode === 'detail') {
+        drawerTitle.textContent = 'Detail Karyawan';
+        drawerSubtitle.textContent = 'Informasi lengkap profil karyawan terpilih';
+        drawerIcon.textContent = 'badge';
+        formNik.value = data.nik || '';
+        formNama.value = data.nama || '';
+        formEmail.value = data.email || '';
+        formSection.value = data.section || '';
+        formRole.value = data.role || '';
+        
+        // Make Readonly
+        [formNik, formNama, formEmail, formSection, formRole].forEach(input => {
+          input.disabled = true;
+          input.classList.add('bg-surface-container', 'opacity-70');
+        });
+        passwordWrapper.classList.add('hidden');
+        detailMetaBox.classList.remove('hidden');
+        btnSubmitModal.classList.add('hidden');
+      }
+    }
+
+    function closeDrawer() {
+      drawerPanel.classList.add('translate-x-full');
+      modalDrawer.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    btnOpenAddModal?.addEventListener('click', () => openDrawer('add'));
+    btnCloseModal?.addEventListener('click', closeDrawer);
+    btnCancelModal?.addEventListener('click', closeDrawer);
+
+    // Close when clicking overlay backdrop
+    modalDrawer?.addEventListener('click', (e) => {
+      if (e.target === modalDrawer) closeDrawer();
+    });
+
+    // Password Visibility toggle
+    btnTogglePassword?.addEventListener('click', () => {
+      const isPass = formPassword.getAttribute('type') === 'password';
+      formPassword.setAttribute('type', isPass ? 'text' : 'password');
+      btnTogglePassword.querySelector('span').textContent = isPass ? 'visibility' : 'visibility_off';
+    });
+
+    // Delegated actions on table
+    tableBody?.addEventListener('click', (e) => {
+      const row = e.target.closest('tr');
+      if (!row) return;
+
+      const nik = row.getAttribute('data-nik');
+      const nama = row.getAttribute('data-nama');
+      const email = row.getAttribute('data-email');
+      const section = row.getAttribute('data-section');
+      const role = row.getAttribute('data-role');
+      const status = row.getAttribute('data-status');
+
+      if (e.target.closest('.btn-detail')) {
+        openDrawer('detail', { nik, nama, email, section, role, status });
+      } else if (e.target.closest('.btn-edit')) {
+        openDrawer('edit', { nik, nama, email, section, role, status });
+      } else if (e.target.closest('.btn-toggle-status')) {
+        const nextStatus = status === 'Aktif' ? 'Nonaktif' : 'Aktif';
+        row.setAttribute('data-status', nextStatus);
+        
+        const badgeCell = row.children[5];
+        const actionCell = row.children[6];
+        const statusBtn = actionCell.querySelector('.btn-toggle-status');
+
+        if (nextStatus === 'Aktif') {
+          row.classList.remove('opacity-80');
+          badgeCell.innerHTML = `
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              Aktif
+            </span>
+          `;
+          statusBtn.className = 'btn-toggle-status p-1.5 rounded hover:bg-error-container text-error transition-colors';
+          statusBtn.setAttribute('title', 'Nonaktifkan');
+          statusBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">block</span>';
+        } else {
+          row.classList.add('opacity-80');
+          badgeCell.innerHTML = `
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-high text-outline font-label-md text-label-md">
+              <span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+              Nonaktif
+            </span>
+          `;
+          statusBtn.className = 'btn-toggle-status p-1.5 rounded hover:bg-secondary-fixed text-primary transition-colors';
+          statusBtn.setAttribute('title', 'Aktifkan');
+          statusBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check_circle</span>';
+        }
+      }
+    });
+
+    // Client-side filtering
+    function applyFilters() {
+      const q = searchInput.value.toLowerCase().trim();
+      const s = filterSection.value;
+      const r = filterRole.value;
+      const st = filterStatus.value;
+
+      const rows = tableBody.querySelectorAll('tr');
+      rows.forEach(row => {
+        const nik = (row.getAttribute('data-nik') || '').toLowerCase();
+        const nama = (row.getAttribute('data-nama') || '').toLowerCase();
+        const email = (row.getAttribute('data-email') || '').toLowerCase();
+        const section = row.getAttribute('data-section') || '';
+        const role = row.getAttribute('data-role') || '';
+        const status = row.getAttribute('data-status') || '';
+
+        const matchQuery = !q || nik.includes(q) || nama.includes(q) || email.includes(q);
+        const matchSection = !s || section === s;
+        const matchRole = !r || role === r;
+        const matchStatus = !st || status === st;
+
+        if (matchQuery && matchSection && matchRole && matchStatus) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    searchInput?.addEventListener('input', applyFilters);
+    filterSection?.addEventListener('change', applyFilters);
+    filterRole?.addEventListener('change', applyFilters);
+    filterStatus?.addEventListener('change', applyFilters);
+
+    btnResetFilter?.addEventListener('click', () => {
+      searchInput.value = '';
+      filterSection.value = '';
+      filterRole.value = '';
+      filterStatus.value = '';
+      applyFilters();
+    });
+
+    btnSubmitModal?.addEventListener('click', () => {
+      // Simple feedback action
+      closeDrawer();
+    });
+  })();
+</script></div></main></div></body></html>

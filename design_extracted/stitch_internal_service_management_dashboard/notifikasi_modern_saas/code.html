@@ -1,0 +1,290 @@
+<!DOCTYPE html><html lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Notifikasi - ISM System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#edeeef",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#dde1ff",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "text-muted": "#64748B",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dde1ff",
+                        "secondary-fixed-dim": "#b8c4ff",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "surface-dim": "#d9dadb",
+                        "primary-container": "#00288e",
+                        "text-main": "#0F172A",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed": "#d3e4fe",
+                        "surface-tint": "#3d57ba",
+                        "on-surface-variant": "#444652",
+                        "on-primary-fixed-variant": "#213da0",
+                        "on-secondary-fixed": "#001453",
+                        "outline-variant": "#c5c5d4",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "secondary-container": "#708cfd",
+                        "on-secondary-fixed-variant": "#173bab",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary-container": "#253549",
+                        "surface": "#f8f9fa",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#b8c4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "border-subtle": "#E2E8F0",
+                        "on-tertiary-container": "#8d9eb6",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f3f4f5",
+                        "on-primary-container": "#7e97fe",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#191c1d",
+                        "tertiary": "#0f2033",
+                        "on-primary-fixed": "#001453",
+                        "surface-white": "#FFFFFF",
+                        "on-secondary-container": "#00217a",
+                        "secondary": "#3755c3",
+                        "on-background": "#191c1d",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "outline": "#757684",
+                        "surface-bright": "#f8f9fa",
+                        "inverse-surface": "#2e3132",
+                        "on-secondary": "#ffffff",
+                        "primary": "#00175c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "xl": "48px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter", "sans-serif"],
+                        "headline-lg-mobile": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "display": ["Inter", "sans-serif"],
+                        "headline-lg": ["Inter", "sans-serif"],
+                        "caption": ["Inter", "sans-serif"],
+                        "label-md": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-text-main font-body-md min-h-screen flex">
+<!-- SideNavBar (Suppressed for Notification specific page intent, assuming user clicked into notifications from Top Nav, acting as a focused task list) -->
+<!-- Re-evaluating: Notifications is often a top-level view or a dropdown. Since it's a full page request, I will include the nav shell for context but not highlight any main tabs as 'Notifikasi' isn't in the primary tab list. -->
+<nav class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-low border-r border-border-subtle hidden md:flex flex-col py-lg px-md z-20">
+<div class="mb-xl px-4">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">ISM System</h1>
+<p class="font-caption text-caption text-text-muted">Internal Service</p>
+</div>
+<div class="flex-1 flex flex-col gap-sm">
+<a class="flex items-center gap-3 text-text-muted hover:bg-surface-container rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 text-text-muted hover:bg-surface-container rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">add_box</span>Pengajuan Layanan</a>
+<a class="flex items-center gap-3 text-text-muted hover:bg-surface-container rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+                Permintaan Saya
+            </a>
+<a class="flex items-center gap-3 text-text-muted hover:bg-surface-container rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">history</span>
+                Riwayat
+            </a>
+<a class="flex items-center gap-3 text-text-muted hover:bg-surface-container rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+                Profile
+            </a>
+</div>
+<div class="mt-auto flex flex-col gap-sm border-t border-border-subtle pt-md">
+<a class="flex items-center gap-3 text-text-muted hover:bg-surface-container rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-3 text-text-muted hover:bg-surface-container rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Logout
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 md:ml-[240px] flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-10 h-16 bg-surface-white border-b border-border-subtle flex justify-between items-center px-lg max-w-container-max mx-auto w-full">
+<div class="flex items-center md:hidden">
+<button class="text-text-muted p-2 -ml-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<div class="flex-1 md:hidden">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">ISM System</h1>
+</div>
+<div class="flex-1 hidden md:flex items-center gap-4">
+<!-- Breadcrumb or Context Title could go here -->
+</div>
+<div class="flex items-center gap-md">
+<button class="relative p-2 text-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined font-bold border-b-2 border-primary pb-1">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-border-subtle flex items-center justify-center">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A small, professional headshot of an employee used as a user avatar placeholder. High key lighting, modern corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDInJEfX9sPzkiK-DHn4K99xWx3XjhOKWG-rQNzcF1igSeAxDO1EMJ_JkDj9rO4uqsvnlA3-yLkDMjQs6mO80PpBQXNFis3cG-mTEBkI1FUUvP0RQS3RjZPwpaoQ8wdJI8p_8my2b8VRxCnMS_Qg5l15vIwqTPGricsLQNMyjjIAawoKAwpHqyYnQTAudjVY36B4vSjDQf8JxIiOWeOVoKspJllX2zESJN6GtQsJ_DRxWU3vwyd6zr0">
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 p-md md:p-lg max-w-3xl mx-auto w-full">
+<div class="mb-lg flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-text-main mb-1">Notifikasi</h2>
+<p class="font-body-md text-body-md text-text-muted">Pembaruan terbaru dari aktivitas Anda.</p>
+</div>
+<button class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors py-2 px-4 rounded border border-border-subtle bg-surface-white hover:bg-surface-container-low self-start sm:self-auto">
+                    Tandai semua dibaca
+                </button>
+</div>
+<!-- Tabs -->
+<div class="flex border-b border-border-subtle mb-md">
+<button class="font-label-md text-label-md text-primary border-b-2 border-primary pb-2 px-4">
+                    Semua
+                </button>
+<button class="font-label-md text-label-md text-text-muted hover:text-text-main transition-colors pb-2 px-4">
+                    Belum Dibaca
+                    <span class="inline-flex items-center justify-center bg-primary-container text-on-primary text-[10px] rounded-full h-4 min-w-[16px] px-1 ml-2 font-bold">3</span>
+</button>
+</div>
+<!-- Notification List -->
+<div class="bg-surface-white border border-border-subtle rounded-lg flex flex-col">
+<!-- Unread Item 1 -->
+<div class="flex gap-4 p-4 border-b border-border-subtle hover:bg-surface-container-low transition-colors relative cursor-pointer">
+<!-- Unread Indicator -->
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-r-full"></div>
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<p class="font-body-md text-body-md text-text-main font-semibold truncate pr-4">Permintaan Perangkat Keras Disetujui</p>
+<span class="font-caption text-caption text-primary flex-shrink-0 whitespace-nowrap">10 menit yang lalu</span>
+</div>
+<p class="font-body-md text-body-md text-text-muted line-clamp-2">
+                            Permintaan Anda untuk "MacBook Pro M3" telah disetujui oleh IT Support. Perangkat sedang disiapkan untuk pengiriman.
+                        </p>
+</div>
+</div>
+<!-- Unread Item 2 -->
+<div class="flex gap-4 p-4 border-b border-border-subtle hover:bg-surface-container-low transition-colors relative cursor-pointer">
+<!-- Unread Indicator -->
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-r-full"></div>
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">error</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<p class="font-body-md text-body-md text-text-main font-semibold truncate pr-4">Pembaruan Sistem Terjadwal</p>
+<span class="font-caption text-caption text-primary flex-shrink-0 whitespace-nowrap">1 jam yang lalu</span>
+</div>
+<p class="font-body-md text-body-md text-text-muted line-clamp-2">
+                            Sistem ISM akan mengalami waktu henti sementara untuk pemeliharaan malam ini dari pukul 02:00 - 04:00 WIB. Harap simpan pekerjaan Anda.
+                        </p>
+</div>
+</div>
+<!-- Unread Item 3 -->
+<div class="flex gap-4 p-4 border-b border-border-subtle hover:bg-surface-container-low transition-colors relative cursor-pointer">
+<!-- Unread Indicator -->
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-r-full"></div>
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">comment</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<p class="font-body-md text-body-md text-text-main font-semibold truncate pr-4">Komentar Baru pada Permintaan #REQ-2048</p>
+<span class="font-caption text-caption text-primary flex-shrink-0 whitespace-nowrap">2 jam yang lalu</span>
+</div>
+<p class="font-body-md text-body-md text-text-muted line-clamp-2">
+                           Budi Santoso menambahkan komentar: "Tolong lampirkan spesifikasi detail untuk software yang dibutuhkan sebelum diproses lebih lanjut."
+                       </p>
+</div>
+</div>
+<!-- Read Item 1 -->
+<div class="flex gap-4 p-4 border-b border-border-subtle hover:bg-surface-container-low transition-colors cursor-pointer bg-surface-white">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-surface-container-high text-text-muted flex items-center justify-center">
+<span class="material-symbols-outlined">assignment</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<p class="font-body-md text-body-md text-text-muted font-medium truncate pr-4">Status Permintaan Diperbarui</p>
+<span class="font-caption text-caption text-text-muted flex-shrink-0 whitespace-nowrap">Kemarin</span>
+</div>
+<p class="font-body-md text-body-md text-text-muted opacity-80 line-clamp-2">
+                            Permintaan akses VPN Anda (#REQ-2045) telah diubah statusnya menjadi 'Sedang Diproses'.
+                        </p>
+</div>
+</div>
+<!-- Read Item 2 -->
+<div class="flex gap-4 p-4 hover:bg-surface-container-low transition-colors cursor-pointer bg-surface-white">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-surface-container-high text-text-muted flex items-center justify-center">
+<span class="material-symbols-outlined">info</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<p class="font-body-md text-body-md text-text-muted font-medium truncate pr-4">Panduan Pengguna Baru Tersedia</p>
+<span class="font-caption text-caption text-text-muted flex-shrink-0 whitespace-nowrap">2 hari yang lalu</span>
+</div>
+<p class="font-body-md text-body-md text-text-muted opacity-80 line-clamp-2">
+                            Silakan periksa pusat bantuan kami untuk panduan terbaru mengenai pengajuan cuti melalui portal HR baru.
+                        </p>
+</div>
+</div>
+</div>
+<div class="mt-md text-center">
+<button class="font-label-md text-label-md text-text-muted hover:text-text-main py-2 px-4 transition-colors">
+                    Muat lebih banyak
+                </button>
+</div>
+</main>
+</div>
+
+
+</body></html>

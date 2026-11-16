@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - ESM Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#d3e4fe",
+                    "on-background": "#191c1e",
+                    "surface-variant": "#e0e3e5",
+                    "on-secondary-fixed": "#0b1c30",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#d0e1fb",
+                    "outline": "#757684",
+                    "background": "#f7f9fb",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "tertiary": "#2d3449",
+                    "on-surface": "#191c1e",
+                    "surface-bright": "#f7f9fb",
+                    "tertiary-fixed-dim": "#bec6e0",
+                    "on-tertiary-fixed": "#131b2e",
+                    "inverse-surface": "#2d3133",
+                    "primary-fixed": "#dde1ff",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#434b60",
+                    "on-primary-fixed-variant": "#173bab",
+                    "on-primary-fixed": "#001453",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#1e40af",
+                    "surface-dim": "#d8dadc",
+                    "error": "#ba1a1a",
+                    "secondary": "#505f76",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e6e8ea",
+                    "outline-variant": "#c4c5d5",
+                    "surface-tint": "#3755c3",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "surface-container": "#eceef0",
+                    "tertiary-fixed": "#dae2fd",
+                    "inverse-primary": "#b8c4ff",
+                    "on-primary-container": "#a8b8ff",
+                    "on-tertiary-fixed-variant": "#3f465c",
+                    "surface-container-low": "#f2f4f6",
+                    "primary-fixed-dim": "#b8c4ff",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-secondary-container": "#54647a",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface": "#f7f9fb",
+                    "on-surface-variant": "#444653",
+                    "on-error-container": "#93000a",
+                    "primary": "#00288e",
+                    "on-tertiary-container": "#b4bbd5",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "container-max": "1440px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "gutter": "20px"
+            },
+            "fontFamily": {
+                    "caption": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "display": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "caption": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-md": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "28px",
+                            {
+                                    "lineHeight": "36px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display": [
+                            "36px",
+                            {
+                                    "lineHeight": "44px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #F8FAFC; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0; }
+        .card-shadow { box-shadow: 0px 1px 3px rgba(0,0,0,0.05), 0px 10px 15px -3px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body class="text-on-background font-body-md h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-screen w-60 bg-surface shadow-sm flex flex-col border-r border-outline-variant z-20 hidden md:flex">
+<div class="p-6">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">ESM Portal</h1>
+<p class="font-caption text-caption text-secondary mt-1">Employee Services</p>
+</div>
+<div class="flex-1 flex flex-col gap-1 px-2 mt-4 overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+                Buat Permintaan
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">pending_actions</span>
+                Permintaan Saya
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">history</span>
+                Riwayat
+            </a>
+</div>
+<div class="p-4 border-t border-outline-variant flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-surface-container text-primary border-l-4 border-primary font-body-md text-body-md transition-transform duration-150 scale-95 rounded-r-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">help</span>
+                Help
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-60 h-screen overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface border-b border-outline-variant shadow-sm flex justify-between items-center h-16 px-6 shrink-0 sticky top-0 z-10 w-full">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-secondary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="font-headline-md text-headline-md font-bold text-primary md:hidden">ESM Portal</h2>
+<h2 class="font-headline-md text-headline-md text-on-surface hidden md:block">Settings</h2>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-secondary hover:bg-surface-container-low p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-secondary hover:bg-surface-container-low p-2 rounded-full transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 overflow-y-auto p-4 md:p-8">
+<div class="max-w-[800px] mx-auto space-y-lg pb-xl">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-background">Settings</h1>
+<p class="font-body-md text-body-md text-secondary mt-1">Manage your account preferences and settings.</p>
+</div>
+<button class="bg-primary-container text-on-primary font-label-md text-label-md px-6 py-2.5 rounded-lg shadow-sm hover:opacity-90 transition-opacity">
+                        Save Changes
+                    </button>
+</div>
+<!-- Account Settings -->
+<section class="bg-surface-container-lowest rounded-lg p-md card-shadow border border-outline-variant">
+<h3 class="font-headline-md text-headline-md text-on-background mb-4 pb-2 border-b border-surface-variant">Account</h3>
+<div class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-1">First Name</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded p-2.5 font-body-md text-body-md text-on-background focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all" type="text" value="Jane"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-1">Last Name</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded p-2.5 font-body-md text-body-md text-on-background focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all" type="text" value="Doe"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-secondary mb-1">Email Address</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded p-2.5 font-body-md text-body-md text-on-background focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all" type="email" value="jane.doe@company.com"/>
+</div>
+<div class="pt-4 border-t border-surface-variant">
+<h4 class="font-label-md text-label-md text-on-background mb-3">Change Password</h4>
+<div class="space-y-4">
+<div>
+<input class="w-full md:w-2/3 bg-surface-container-lowest border border-outline-variant rounded p-2.5 font-body-md text-body-md text-on-background focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all" placeholder="Current Password" type="password"/>
+</div>
+<div>
+<input class="w-full md:w-2/3 bg-surface-container-lowest border border-outline-variant rounded p-2.5 font-body-md text-body-md text-on-background focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all" placeholder="New Password" type="password"/>
+</div>
+<button class="border border-primary-container text-primary-container font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-surface-container-low transition-colors">
+                                    Update Password
+                                </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Notifications -->
+<section class="bg-surface-container-lowest rounded-lg p-md card-shadow border border-outline-variant">
+<h3 class="font-headline-md text-headline-md text-on-background mb-4 pb-2 border-b border-surface-variant">Notifications</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between py-2">
+<div>
+<h4 class="font-body-lg text-body-lg text-on-background">Email Notifications</h4>
+<p class="font-caption text-caption text-secondary">Receive updates and alerts via email.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="flex items-center justify-between py-2 border-t border-surface-variant">
+<div>
+<h4 class="font-body-lg text-body-lg text-on-background">Push Notifications</h4>
+<p class="font-caption text-caption text-secondary">Receive real-time alerts in the browser.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Appearance -->
+<section class="bg-surface-container-lowest rounded-lg p-md card-shadow border border-outline-variant">
+<h3 class="font-headline-md text-headline-md text-on-background mb-4 pb-2 border-b border-surface-variant">Appearance</h3>
+<div class="grid grid-cols-3 gap-4">
+<label class="cursor-pointer">
+<input checked="" class="sr-only peer" name="theme" type="radio"/>
+<div class="border-2 border-surface-variant peer-checked:border-primary-container rounded-lg p-4 text-center hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[32px] text-on-background mb-2">light_mode</span>
+<p class="font-label-md text-label-md text-on-background">Light</p>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" name="theme" type="radio"/>
+<div class="border-2 border-surface-variant peer-checked:border-primary-container rounded-lg p-4 text-center hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[32px] text-on-background mb-2">dark_mode</span>
+<p class="font-label-md text-label-md text-on-background">Dark</p>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" name="theme" type="radio"/>
+<div class="border-2 border-surface-variant peer-checked:border-primary-container rounded-lg p-4 text-center hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[32px] text-on-background mb-2">settings_brightness</span>
+<p class="font-label-md text-label-md text-on-background">System</p>
+</div>
+</label>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="mt-8 border-t border-outline-variant py-4 px-2 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-caption text-caption text-secondary">© 2024 Employee Service Management. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="font-caption text-caption text-secondary hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-caption text-caption text-secondary hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-caption text-caption text-secondary hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

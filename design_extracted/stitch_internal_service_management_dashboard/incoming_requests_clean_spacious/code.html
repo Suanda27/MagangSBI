@@ -1,0 +1,683 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ISM System - Incoming Requests</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "error": "#ba1a1a",
+            "on-primary-fixed": "#001453",
+            "inverse-on-surface": "#eff1f3",
+            "primary-fixed-dim": "#b8c4ff",
+            "on-error-container": "#93000a",
+            "secondary-container": "#d0e1fb",
+            "on-tertiary-fixed-variant": "#3f465c",
+            "on-tertiary-fixed": "#131b2e",
+            "surface-container": "#eceef0",
+            "inverse-surface": "#2d3133",
+            "outline-variant": "#c4c5d5",
+            "outline": "#757684",
+            "on-primary-container": "#a8b8ff",
+            "on-secondary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-background": "#191c1e",
+            "on-primary-fixed-variant": "#173bab",
+            "surface-dim": "#d8dadc",
+            "surface-container-low": "#f2f4f6",
+            "surface-container-highest": "#e0e3e5",
+            "on-secondary-fixed-variant": "#38485d",
+            "primary-fixed": "#dde1ff",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed-dim": "#b7c8e1",
+            "on-tertiary-container": "#b4bbd5",
+            "inverse-primary": "#b8c4ff",
+            "on-surface": "#191c1e",
+            "tertiary-fixed-dim": "#bec6e0",
+            "secondary-fixed": "#d3e4fe",
+            "on-secondary-fixed": "#0b1c30",
+            "surface-bright": "#f7f9fb",
+            "surface-variant": "#e0e3e5",
+            "surface": "#f7f9fb",
+            "background": "#f7f9fb",
+            "tertiary": "#2d3449",
+            "primary-container": "#1e40af",
+            "on-tertiary": "#ffffff",
+            "on-secondary-container": "#54647a",
+            "surface-container-high": "#e6e8ea",
+            "tertiary-container": "#434b60",
+            "on-error": "#ffffff",
+            "primary": "#00288e",
+            "surface-tint": "#3755c3",
+            "on-surface-variant": "#444653",
+            "secondary": "#505f76",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#dae2fd"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "container-max": "1440px"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c4c5d5;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="bg-[#f8fafc] text-on-surface antialiased min-h-screen flex">
+<!-- Minimal Persistent Navigation Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest border-r border-slate-200/80 z-40 flex flex-col justify-between select-none">
+<div class="flex flex-col">
+<!-- App Brand -->
+<div class="h-16 flex items-center gap-3 px-5 border-b border-slate-100">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-white flex items-center justify-center font-bold text-sm shadow-sm">
+          IS
+        </div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-slate-900 leading-tight">ISM System</span>
+<span class="text-xs text-slate-500 font-medium">PIC Operations</span>
+</div>
+</div>
+<!-- Nav Items -->
+<nav class="flex flex-col gap-1 p-3 mt-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100/70 hover:text-slate-900 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg bg-slate-100 text-primary-container font-semibold relative before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary-container before:rounded-r transition-colors text-sm" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]">inbox</span>
+<span>Incoming Requests</span>
+</div>
+<span class="text-xs bg-primary-fixed text-on-primary-fixed font-semibold px-2 py-0.5 rounded-full">8</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100/70 hover:text-slate-900 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">assignment_ind</span>
+<span>My Requests</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100/70 hover:text-slate-900 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+<span>Processing</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100/70 hover:text-slate-900 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span>Completed</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100/70 hover:text-slate-900 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">bar_chart</span>
+<span>Reports</span>
+</a>
+</nav>
+</div>
+<!-- Bottom utility links -->
+<div class="p-3 border-t border-slate-100 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100/70 hover:text-slate-900 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-500 hover:bg-rose-50 hover:text-rose-600 transition-colors text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main View Area -->
+<div class="pl-64 flex flex-col min-h-screen flex-1">
+<!-- Clean Minimal Header -->
+<header class="h-16 bg-surface-container-lowest/80 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-30 px-8 flex items-center justify-between">
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<span>Portal</span>
+<span>/</span>
+<span class="text-slate-900 font-medium">Incoming Requests</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-colors relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+</button>
+<div class="h-4 w-px bg-slate-200"></div>
+<div class="flex items-center gap-2.5">
+<img alt="Budi Santoso" class="w-7 h-7 rounded-full object-cover ring-1 ring-slate-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw8INcMNZM5-upL5bqtFnkAx4HJ4ZIRTal-N9gRsz6iddeoHaROF451fan3A3Mtbhr0xLYsFoIJwWVxqX9F0kKjHnQ5jEU6jiuxI63mZZcvdKaLqvX3yocsL16tayqIniIGVkVYZVU4I8AdFJbs15fqp2ThSzc07ZbQC_Rp0ZoP8LRX6boogV45hDFZmsC6JzJOpny7aZAirvY_N48Tr8MAtsMoRAOv2wFhL5fDM7DK8sfuXhwrv6T">
+<div class="flex flex-col text-left">
+<span class="text-xs font-semibold text-slate-800 leading-tight">Budi Santoso</span>
+<span class="text-[11px] text-slate-500">IT &amp; Automation PIC</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Content Container -->
+<main class="p-8 max-w-container-max w-full mx-auto flex flex-col gap-6">
+<!-- Minimalist Page Title & Clean Subtitle -->
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-slate-200/60 pb-5">
+<div>
+<h1 class="text-2xl font-semibold text-slate-900 tracking-tight">Incoming Requests</h1>
+<p class="text-sm text-slate-500 mt-1 font-normal">Review and triage service requests assigned to your department.</p>
+</div>
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+<span>SLA Queue Live</span>
+</div>
+</div>
+<!-- Compact Horizontal Filter Toolbar -->
+<div class="flex flex-wrap items-center justify-between gap-3">
+<div class="flex flex-wrap items-center gap-2.5 flex-1 min-w-[280px]">
+<!-- Compact Search -->
+<div class="relative min-w-[260px] max-w-sm w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">search</span>
+<input class="w-full pl-9 pr-3 py-1.5 text-xs bg-white border border-slate-200 rounded-lg text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition" id="searchInput" placeholder="Search request ID, keyword..." type="text">
+</div>
+<!-- Status Filter -->
+<div class="relative">
+<select class="appearance-none bg-white border border-slate-200 text-xs text-slate-700 py-1.5 pl-3 pr-8 rounded-lg hover:border-slate-300 focus:outline-none focus:border-slate-400 cursor-pointer">
+<option value="">All Statuses</option>
+<option value="pending">Pending Review</option>
+<option value="urgent">Urgent</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 text-base pointer-events-none">expand_more</span>
+</div>
+<!-- Service Filter -->
+<div class="relative">
+<select class="appearance-none bg-white border border-slate-200 text-xs text-slate-700 py-1.5 pl-3 pr-8 rounded-lg hover:border-slate-300 focus:outline-none focus:border-slate-400 cursor-pointer">
+<option value="">All Services</option>
+<option value="it">IT Support</option>
+<option value="facility">Facility Repair</option>
+<option value="access">System Access</option>
+<option value="equipment">Equipment Request</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 text-base pointer-events-none">expand_more</span>
+</div>
+<!-- Reset button subtle icon -->
+<button class="p-1.5 text-slate-400 hover:text-slate-600 rounded hover:bg-slate-100 transition-colors" title="Clear filters">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+</div>
+<!-- Subtle result count & Quick summary -->
+<div class="text-xs font-medium text-slate-500 tracking-normal flex items-center gap-2">
+<span class="text-slate-700 font-semibold">8 requests</span> pending triage
+          <span class="text-slate-300">•</span>
+<span class="text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200/60 font-medium text-[11px]">2 near SLA deadline</span>
+</div>
+</div>
+<!-- Main Clean Data Table Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-slate-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.02)] overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[900px]">
+<thead>
+<tr class="border-b border-slate-100 bg-slate-50/50 text-slate-500 font-medium text-[12px] uppercase tracking-wider">
+<th class="py-3 px-4 font-medium">Request ID</th>
+<th class="py-3 px-4 font-medium">Service</th>
+<th class="py-3 px-4 font-medium">Requester</th>
+<th class="py-3 px-4 font-medium">Section</th>
+<th class="py-3 px-4 font-medium">Status</th>
+<th class="py-3 px-4 font-medium">Submitted Date</th>
+<th class="py-3 pr-5 pl-4 text-right font-medium">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-xs text-slate-700">
+<!-- Row 1 (Selected Row) -->
+<tr class="hover:bg-slate-50/70 transition-colors bg-blue-50/30 group">
+<td class="py-4 px-4 font-semibold text-slate-900">
+<div class="flex items-center gap-1.5">
+<span class="text-primary-container hover:underline cursor-pointer">#SRV-2026-0012</span>
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-slate-900">PLC Controller Sensor Failure</span>
+<span class="text-[11px] text-slate-400">Asset Repair • Station B</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2.5">
+<img class="w-6 h-6 rounded-full object-cover shrink-0" data-alt="Requester portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9fRm4zTjY8dZxUyPzjtVZigtPDXkV0kJnDeJUjvm81Mu8lXiX34fBebRpebOkev3kY5Ot1PbTSAALikSpUTPwDhYr6SaZI4--3-FmNhum54a1JtHJd6U2GSNLu_gbfdzwZtqZniWI2oKziO_CLJPH9gUv7sEtWhseoDUakhRD8rWvPHsD_o1718sA6_SW-MgB7pPo_0ODgTFxkRT_q6pVHItFN_0ja5UIJopiQb2atM40oXEjWA_A">
+<span class="font-medium text-slate-800">Muhammad Faiz</span>
+</div>
+</td>
+<td class="py-4 px-4 text-slate-600">
+<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px] font-medium">Assembly</span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-medium bg-amber-50 text-amber-800 border border-amber-200/70">
+<span class="w-1 h-1 rounded-full bg-amber-600"></span>
+                    Urgent
+                  </span>
+</td>
+<td class="py-4 px-4 text-slate-500">
+<span class="text-slate-800 font-medium">Today, 08:24</span>
+<span class="block text-[11px] text-rose-600 font-medium">1h 14m SLA remaining</span>
+</td>
+<td class="py-4 pr-5 pl-4 text-right">
+<button class="px-3 py-1.5 bg-primary-container text-white text-xs font-medium rounded hover:bg-blue-800 transition-colors shadow-none" onclick="openDrawer('#SRV-2026-0012', 'Muhammad Faiz', 'Assembly Plant 2', 'PLC Controller Sensor Failure', 'Asset Repair', 'Optical barcode reading sensor on Station B is experiencing intermittent read timeouts, causing assembly conveyance stoppage every 4 minutes. Error code E-0419 displayed on unit console. Requires physical inspection and sensor lens replacement or realignment.', 'Urgent')">
+                    Review &amp; Triage
+                  </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/70 transition-colors group">
+<td class="py-4 px-4 font-semibold text-slate-900">
+<span class="text-primary-container hover:underline cursor-pointer">#SRV-2026-0014</span>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-slate-900">ERP SAP Production Role Elevate</span>
+<span class="text-[11px] text-slate-400">System Access • Month-end Run</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2.5">
+<img class="w-6 h-6 rounded-full object-cover shrink-0" data-alt="Requester portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIE6RFgwW9qaP3p_huV8GLNZ_pUs_uygTBdHjytTV5BG54Aoa0Cb0S9eAR01I-toGDR93LfOTD7g0F_R5ZOTfyh_Ob5yQFI1GKKU9zFl6mTB8S2XpdFDOTBAjlfHYkZhP9aTQRIeRC73CcAkcWgX_wtFyBYtYGTTmYcka5xoAPL5r6YbyKIsvGugU1gTlU_G7I2BQEfWBWboBK30rV-npQ3ad9iuKUCzBBDj3w15ipolrel0FrMZmx">
+<span class="font-medium text-slate-800">Siti Rahmawati</span>
+</div>
+</td>
+<td class="py-4 px-4 text-slate-600">
+<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px] font-medium">PE</span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-medium bg-amber-50 text-amber-800 border border-amber-200/70">
+<span class="w-1 h-1 rounded-full bg-amber-600"></span>
+                    Urgent
+                  </span>
+</td>
+<td class="py-4 px-4 text-slate-500">
+<span class="text-slate-800 font-medium">Today, 08:45</span>
+<span class="block text-[11px] text-rose-600 font-medium">1h 45m SLA remaining</span>
+</td>
+<td class="py-4 pr-5 pl-4 text-right">
+<button class="px-3 py-1.5 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 text-xs font-medium rounded transition-colors" onclick="openDrawer('#SRV-2026-0014', 'Siti Rahmawati', 'Production Engineering', 'ERP SAP Production Role Elevate', 'System Access', 'Urgent SAP authorization role elevation needed for month-end close cycle and work-order reconciliation batch job.', 'Urgent')">
+                    Review &amp; Triage
+                  </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50/70 transition-colors group">
+<td class="py-4 px-4 font-semibold text-slate-900">
+<span class="text-primary-container hover:underline cursor-pointer">#SRV-2026-0019</span>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-slate-900">Engineering CAD Laptop Replacement</span>
+<span class="text-[11px] text-slate-400">IT Support • Thermal shutdown</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-slate-200 text-slate-700 font-semibold flex items-center justify-center text-[10px]">DA</div>
+<span class="font-medium text-slate-800">Dimas Anggara</span>
+</div>
+</td>
+<td class="py-4 px-4 text-slate-600">
+<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px] font-medium">IS</span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-medium bg-blue-50 text-blue-700 border border-blue-200/60">
+<span class="w-1 h-1 rounded-full bg-blue-500"></span>
+                    Pending
+                  </span>
+</td>
+<td class="py-4 px-4 text-slate-500">
+<span>Yesterday, 16:10</span>
+<span class="block text-[11px] text-slate-400">4h SLA remaining</span>
+</td>
+<td class="py-4 pr-5 pl-4 text-right">
+<button class="px-3 py-1.5 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 text-xs font-medium rounded transition-colors" onclick="openDrawer('#SRV-2026-0019', 'Dimas Anggara', 'Info Systems', 'Engineering CAD Laptop Replacement', 'IT Support', 'Laptop fan has failed resulting in automatic thermal throttling and forced OS shutdowns during SolidWorks rendering.', 'Pending')">
+                    Review &amp; Triage
+                  </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50/70 transition-colors group">
+<td class="py-4 px-4 font-semibold text-slate-900">
+<span class="text-primary-container hover:underline cursor-pointer">#SRV-2026-0022</span>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-slate-900">Server Room 02 HVAC Airflow Error</span>
+<span class="text-[11px] text-slate-400">Facility Repair • Main Annex B1</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-slate-200 text-slate-700 font-semibold flex items-center justify-center text-[10px]">LW</div>
+<span class="font-medium text-slate-800">Lestari Wahyuni</span>
+</div>
+</td>
+<td class="py-4 px-4 text-slate-600">
+<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px] font-medium">HR</span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-medium bg-blue-50 text-blue-700 border border-blue-200/60">
+<span class="w-1 h-1 rounded-full bg-blue-500"></span>
+                    Pending
+                  </span>
+</td>
+<td class="py-4 px-4 text-slate-500">
+<span>Yesterday, 17:30</span>
+<span class="block text-[11px] text-slate-400">5h SLA remaining</span>
+</td>
+<td class="py-4 pr-5 pl-4 text-right">
+<button class="px-3 py-1.5 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 text-xs font-medium rounded transition-colors" onclick="openDrawer('#SRV-2026-0022', 'Lestari Wahyuni', 'HR &amp; General Affairs', 'Server Room 02 HVAC Airflow Error', 'Facility Repair', 'Ambient temperature inside server room B1 is rising past 26C. Secondary condenser unit not cycling on properly.', 'Pending')">
+                    Review &amp; Triage
+                  </button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-slate-50/70 transition-colors group">
+<td class="py-4 px-4 font-semibold text-slate-900">
+<span class="text-primary-container hover:underline cursor-pointer">#SRV-2026-0025</span>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-slate-900">Barcode Thermal Label Printer Roll</span>
+<span class="text-[11px] text-slate-400">Equipment Request • Shipping Bay 4</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2.5">
+<img class="w-6 h-6 rounded-full object-cover shrink-0" data-alt="Requester portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEPyWSM42k-k2kmr17qo7i1IP9OYS8k_fd15HI4R3mt8GayK79uTfK9OMZfQ9p6Cm9Wuo6GV1v1orJfbFqTW8yuvbOwZwM47AHIsBvQIJIsj4wo-iHj_FsJKWrARiE9nSyLvZMsMGpX-WO6lP1sJOCvlyhIPBGnX9Hl5rf0DvIMQ64ZhrwEw9hGg-rrp4x02uNdXFMCOQuQNRvHWuRquaoiffVE-V10HtIzJoEi95AYLZ-pCFdGBQd">
+<span class="font-medium text-slate-800">Hendra Gunawan</span>
+</div>
+</td>
+<td class="py-4 px-4 text-slate-600">
+<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px] font-medium">Marketing</span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-medium bg-blue-50 text-blue-700 border border-blue-200/60">
+<span class="w-1 h-1 rounded-full bg-blue-500"></span>
+                    Pending
+                  </span>
+</td>
+<td class="py-4 px-4 text-slate-500">
+<span>Yesterday, 14:15</span>
+<span class="block text-[11px] text-slate-400">18h SLA remaining</span>
+</td>
+<td class="py-4 pr-5 pl-4 text-right">
+<button class="px-3 py-1.5 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 text-xs font-medium rounded transition-colors" onclick="openDrawer('#SRV-2026-0025', 'Hendra Gunawan', 'Logistics &amp; Marketing', 'Barcode Thermal Label Printer Roll', 'Equipment Request', 'Replacement print head and 10 cartons of industrial thermal transfer ribbon for Zebra label printers.', 'Pending')">
+                    Review &amp; Triage
+                  </button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-slate-50/70 transition-colors group">
+<td class="py-4 px-4 font-semibold text-slate-900">
+<span class="text-primary-container hover:underline cursor-pointer">#SRV-2026-0028</span>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-slate-900">Remote VPN Provisioning - New Hire</span>
+<span class="text-[11px] text-slate-400">System Access • Gateway 03 Profile</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-slate-200 text-slate-700 font-semibold flex items-center justify-center text-[10px]">RT</div>
+<span class="font-medium text-slate-800">Rian Triadi</span>
+</div>
+</td>
+<td class="py-4 px-4 text-slate-600">
+<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px] font-medium">HR</span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-medium bg-blue-50 text-blue-700 border border-blue-200/60">
+<span class="w-1 h-1 rounded-full bg-blue-500"></span>
+                    Pending
+                  </span>
+</td>
+<td class="py-4 px-4 text-slate-500">
+<span>May 19, 11:20</span>
+<span class="block text-[11px] text-slate-400">20h SLA remaining</span>
+</td>
+<td class="py-4 pr-5 pl-4 text-right">
+<button class="px-3 py-1.5 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 text-xs font-medium rounded transition-colors" onclick="openDrawer('#SRV-2026-0028', 'Rian Triadi', 'Human Resources', 'Remote VPN Provisioning - New Hire', 'System Access', 'Standard remote engineer VPN security certificate and multi-factor authentication setup for incoming recruit.', 'Pending')">
+                    Review &amp; Triage
+                  </button>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-slate-50/70 transition-colors group">
+<td class="py-4 px-4 font-semibold text-slate-900">
+<span class="text-primary-container hover:underline cursor-pointer">#SRV-2026-0030</span>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-slate-900">LAN Port Reconfiguration</span>
+<span class="text-[11px] text-slate-400">IT Support • Meeting Room C</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-slate-200 text-slate-700 font-semibold flex items-center justify-center text-[10px]">AP</div>
+<span class="font-medium text-slate-800">Anisa Permata</span>
+</div>
+</td>
+<td class="py-4 px-4 text-slate-600">
+<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px] font-medium">Marketing</span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-medium bg-blue-50 text-blue-700 border border-blue-200/60">
+<span class="w-1 h-1 rounded-full bg-blue-500"></span>
+                    Pending
+                  </span>
+</td>
+<td class="py-4 px-4 text-slate-500">
+<span>May 19, 09:12</span>
+<span class="block text-[11px] text-slate-400">22h SLA remaining</span>
+</td>
+<td class="py-4 pr-5 pl-4 text-right">
+<button class="px-3 py-1.5 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 text-xs font-medium rounded transition-colors" onclick="openDrawer('#SRV-2026-0030', 'Anisa Permata', 'Marketing Division', 'LAN Port Reconfiguration', 'IT Support', 'Meeting Room C wall Ethernet terminal is not providing DHCP assignment for conference room display units.', 'Pending')">
+                    Review &amp; Triage
+                  </button>
+</td>
+</tr>
+<!-- Row 8 -->
+<tr class="hover:bg-slate-50/70 transition-colors group">
+<td class="py-4 px-4 font-semibold text-slate-900">
+<span class="text-primary-container hover:underline cursor-pointer">#SRV-2026-0033</span>
+</td>
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-medium text-slate-900">Ergonomic Desk Adjustment</span>
+<span class="text-[11px] text-slate-400">Facility Repair • Engineering Cluster 4</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-slate-200 text-slate-700 font-semibold flex items-center justify-center text-[10px]">BS</div>
+<span class="font-medium text-slate-800">Bagus Santiko</span>
+</div>
+</td>
+<td class="py-4 px-4 text-slate-600">
+<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px] font-medium">PE</span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-medium bg-blue-50 text-blue-700 border border-blue-200/60">
+<span class="w-1 h-1 rounded-full bg-blue-500"></span>
+                    Pending
+                  </span>
+</td>
+<td class="py-4 px-4 text-slate-500">
+<span>May 18, 15:40</span>
+<span class="block text-[11px] text-slate-400">34h SLA remaining</span>
+</td>
+<td class="py-4 pr-5 pl-4 text-right">
+<button class="px-3 py-1.5 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 text-xs font-medium rounded transition-colors" onclick="openDrawer('#SRV-2026-0033', 'Bagus Santiko', 'Production Engineering', 'Ergonomic Desk Adjustment', 'Facility Repair', 'Electric desk lift motor requires recalibration after reset.', 'Pending')">
+                    Review &amp; Triage
+                  </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Subtle Minimalist Footer Pagination -->
+<div class="px-5 py-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+<div>Showing <span class="font-semibold text-slate-700">1 - 8</span> of <span class="font-semibold text-slate-700">8</span> requests</div>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded text-slate-400 hover:bg-slate-100 disabled:opacity-40" disabled="">Previous</button>
+<button class="w-6 h-6 rounded bg-slate-100 font-semibold text-slate-800 flex items-center justify-center">1</button>
+<button class="px-2 py-1 rounded text-slate-400 hover:bg-slate-100 disabled:opacity-40" disabled="">Next</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Sleek & Minimalist Slide-Out Drawer for Request Triage -->
+<div class="fixed inset-y-0 right-0 w-full sm:w-[440px] bg-white border-l border-slate-200 shadow-xl z-50 transform translate-x-full transition-transform duration-300 ease-out flex flex-col justify-between" id="reviewDrawer">
+<div class="flex flex-col h-full overflow-y-auto">
+<!-- Minimal Drawer Header -->
+<div class="p-5 border-b border-slate-100 flex items-center justify-between sticky top-0 bg-white/95 backdrop-blur-sm z-10">
+<div class="flex items-center gap-2.5">
+<span class="text-base font-semibold text-slate-900" id="drawerRequestId">#SRV-2026-0012</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-amber-50 text-amber-800 border border-amber-200/60" id="drawerPriorityBadge">Urgent</span>
+</div>
+<button class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors" onclick="closeDrawer()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Drawer Content -->
+<div class="p-6 flex flex-col gap-6">
+<!-- Requester Metadata Card -->
+<div class="flex flex-col gap-2">
+<span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Requester</span>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-slate-50/80 border border-slate-100">
+<div class="w-9 h-9 rounded-full bg-primary-container text-white flex items-center justify-center font-semibold text-xs" id="drawerRequesterInitials">
+                MF
+              </div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-slate-800" id="drawerRequester">Muhammad Faiz</span>
+<span class="text-[11px] text-slate-500" id="drawerDept">Senior Assembly Specialist • Assembly Plant 2</span>
+</div>
+</div>
+</div>
+<!-- Problem Summary Section -->
+<div class="flex flex-col gap-2">
+<span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Problem Summary</span>
+<div class="p-3.5 rounded-lg bg-slate-50/80 border border-slate-100 flex flex-col gap-2">
+<span class="text-xs font-semibold text-slate-900" id="drawerTitle">PLC Controller Sensor Failure</span>
+<p class="text-xs text-slate-600 leading-relaxed" id="drawerDesc">
+                Optical barcode reading sensor on Station B is experiencing intermittent read timeouts, causing assembly conveyance stoppage every 4 minutes. Error code E-0419 displayed on unit console. Requires physical inspection and sensor lens replacement or realignment.
+              </p>
+</div>
+</div>
+<!-- Service Details -->
+<div class="grid grid-cols-2 gap-3 text-xs">
+<div class="p-3 rounded-lg border border-slate-100 bg-slate-50/50">
+<span class="text-[11px] text-slate-400 block mb-0.5 font-medium">Service Category</span>
+<span class="font-medium text-slate-800" id="drawerCategory">Asset Repair</span>
+</div>
+<div class="p-3 rounded-lg border border-slate-100 bg-slate-50/50">
+<span class="text-[11px] text-slate-400 block mb-0.5 font-medium">Assigned SLA</span>
+<span class="font-medium text-amber-700">First response &lt; 2 Hours</span>
+</div>
+</div>
+<!-- Assignment & Note (Optional Compact Field) -->
+<div class="flex flex-col gap-2 pt-1">
+<label class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Triage Notes (Optional)</label>
+<textarea class="w-full text-xs p-2.5 rounded-lg border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-slate-400 resize-none" placeholder="Provide preliminary instructions or dispatch directions..." rows="2"></textarea>
+</div>
+</div>
+</div>
+<!-- Progressive Disclosure Actions Footer -->
+<div class="p-4 border-t border-slate-100 bg-white flex items-center justify-end gap-2.5 sticky bottom-0">
+<button class="px-3.5 py-2 text-xs font-medium text-slate-600 hover:text-slate-900 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors" onclick="closeDrawer()">
+          Reject
+        </button>
+<button class="px-4 py-2 text-xs font-semibold bg-primary-container text-white rounded-lg hover:bg-blue-800 transition-colors" onclick="acceptRequest()">
+          Accept &amp; Process
+        </button>
+</div>
+</div>
+<!-- Backdrop Overlay -->
+<div class="fixed inset-0 bg-slate-900/20 backdrop-blur-[2px] z-40 hidden transition-opacity" id="drawerBackdrop" onclick="closeDrawer()"></div>
+<!-- Minimalist Clean Footer -->
+<footer class="mt-auto py-5 px-8 border-t border-slate-200/60 flex items-center justify-between text-xs text-slate-400">
+<span>© 2026 Internal Service Management</span>
+<div class="flex items-center gap-4">
+<a class="hover:text-slate-600 transition-colors" href="#">SLA Guidelines</a>
+<a class="hover:text-slate-600 transition-colors" href="#">Help &amp; Support</a>
+</div>
+</footer>
+</div>
+<!-- Interactive Slide-over Logic -->
+<script>
+    const drawer = document.getElementById('reviewDrawer');
+    const backdrop = document.getElementById('drawerBackdrop');
+
+    function openDrawer(id, requester, dept, title, category, desc, status) {
+      document.getElementById('drawerRequestId').textContent = id;
+      document.getElementById('drawerRequester').textContent = requester;
+      document.getElementById('drawerDept').textContent = dept;
+      document.getElementById('drawerTitle').textContent = title;
+      document.getElementById('drawerCategory').textContent = category;
+      document.getElementById('drawerDesc').textContent = desc;
+      
+      const badge = document.getElementById('drawerPriorityBadge');
+      badge.textContent = status;
+      if (status === 'Urgent') {
+        badge.className = "px-2 py-0.5 rounded text-[11px] font-medium bg-amber-50 text-amber-800 border border-amber-200/60";
+      } else {
+        badge.className = "px-2 py-0.5 rounded text-[11px] font-medium bg-blue-50 text-blue-700 border border-blue-200/60";
+      }
+
+      // Initials
+      const initials = requester.split(' ').map(n => n[0]).join('').slice(0, 2);
+      document.getElementById('drawerRequesterInitials').textContent = initials;
+
+      backdrop.classList.remove('hidden');
+      setTimeout(() => {
+        drawer.classList.remove('translate-x-full');
+      }, 10);
+    }
+
+    function closeDrawer() {
+      drawer.classList.add('translate-x-full');
+      setTimeout(() => {
+        backdrop.classList.add('hidden');
+      }, 200);
+    }
+
+    function acceptRequest() {
+      const id = document.getElementById('drawerRequestId').textContent;
+      alert(`Request ${id} accepted and queued for processing.`);
+      closeDrawer();
+    }
+
+    // Default open on initial view to demonstrate the slide-out inspection state
+    window.addEventListener('DOMContentLoaded', () => {
+      // Keep it cleanly accessible
+    });
+  </script>
+</body></html>

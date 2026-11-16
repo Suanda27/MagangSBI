@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-highest":"#e0e3e5","on-surface-variant":"#444653","on-background":"#191c1e","on-secondary":"#ffffff","surface":"#f7f9fb","on-secondary-fixed-variant":"#38485d","background":"#f7f9fb","on-primary":"#ffffff","on-tertiary":"#ffffff","surface-dim":"#d8dadc","primary-container":"#1e40af","surface-container-lowest":"#ffffff","inverse-primary":"#b8c4ff","tertiary-container":"#434b60","surface-tint":"#3755c3","inverse-on-surface":"#eff1f3","on-tertiary-fixed-variant":"#3f465c","error-container":"#ffdad6","surface-variant":"#e0e3e5","on-secondary-container":"#54647a","primary-fixed-dim":"#b8c4ff","on-error-container":"#93000a","on-secondary-fixed":"#0b1c30","outline-variant":"#c4c5d5","tertiary-fixed":"#dae2fd","on-primary-container":"#a8b8ff","outline":"#757684","on-primary-fixed-variant":"#173bab","on-primary-fixed":"#001453","primary-fixed":"#dde1ff","on-tertiary-container":"#b4bbd5","tertiary":"#2d3449","on-tertiary-fixed":"#131b2e","error":"#ba1a1a","surface-bright":"#f7f9fb","secondary-fixed":"#d3e4fe","on-error":"#ffffff","inverse-surface":"#2d3133","secondary-fixed-dim":"#b7c8e1","secondary-container":"#d0e1fb","primary":"#00288e","surface-container":"#eceef0","surface-container-low":"#f2f4f6","tertiary-fixed-dim":"#bec6e0","secondary":"#505f76","on-surface":"#191c1e","surface-container-high":"#e6e8ea"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"container-max":"1440px","xs":"4px","lg":"24px","md":"16px","gutter":"20px","xl":"32px","sm":"8px","base":"4px"},fontFamily:{"body-lg":["Inter"],"body-md":["Inter"],"headline-lg":["Inter"],"label-md":["Inter"],"display":["Inter"],"caption":["Inter"],"headline-md":["Inter"]},fontSize:{"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"headline-lg":["28px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.05em",fontWeight:"600"}],"display":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}],"caption":["12px",{lineHeight:"16px",fontWeight:"400"}],"headline-md":["20px",{lineHeight:"28px",fontWeight:"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 flex items-center gap-3 px-md border-b border-surface-container"><img alt="ISM System" class="w-8 h-8 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WqT4Xm90exopNBfjIj_cnCKS1qNqUqfSrXDch2gTScDZ32xaNJsPk8nhJXens9g3alBPgSpOatGFxWY4sgemkbjbg3mkyPGm8cXAYUhTvyyG1p71gmUcdcBbIzCUKnTF4Z3fozgm1cbE7V2rPMPfT2NOhJPDnlas2DcLdluFjvy2DUylS43W4cODc7zXM1puukA4D8eV3IAUlWkhvb-ATiu1fYa2pHMqh5Rm8skHC_8e0i3nNog-Fs-Xc"/><div class="flex flex-col"><span class="font-headline-md text-body-md text-primary font-bold leading-tight">ISM System</span><span class="font-label-md text-caption text-on-surface-variant">PIC Portal</span></div></div><nav class="flex flex-col gap-1 p-sm mt-2" data-active-classes="bg-secondary-container text-on-secondary-fixed font-semibold relative before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary-container before:rounded-r"><a class="flex items-center gap-3 px-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-xl">dashboard</span><span class="font-body-md text-body-md">Dashboard</span></a><a aria-current="page" class="flex items-center justify-between px-3 py-2.5 rounded transition-all bg-secondary-container text-on-secondary-fixed font-semibold relative before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary-container before:rounded-r" data-path="incoming-requests" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-xl">move_to_inbox</span><span class="font-body-md text-body-md">Incoming Requests</span></div><span class="font-label-md text-caption bg-secondary-container text-on-secondary-fixed px-1.5 py-0.5 rounded-full">12</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="my-requests" href="#"><span class="material-symbols-outlined text-xl">assignment_ind</span><span class="font-body-md text-body-md">My Requests</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="processing" href="#"><span class="material-symbols-outlined text-xl">sync_alt</span><span class="font-body-md text-body-md">Processing</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="completed" href="#"><span class="material-symbols-outlined text-xl">task_alt</span><span class="font-body-md text-body-md">Completed</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="reports" href="#"><span class="material-symbols-outlined text-xl">insights</span><span class="font-body-md text-body-md">Reports</span></a></nav></div><div class="p-sm border-t border-surface-container flex flex-col gap-1"><a class="flex items-center gap-3 px-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="settings" href="#"><span class="material-symbols-outlined text-xl">settings</span><span class="font-body-md text-body-md">Settings</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded text-on-surface-variant hover:bg-error-container hover:text-on-error-container transition-all" data-path="logout" href="#"><span class="material-symbols-outlined text-xl">logout</span><span class="font-body-md text-body-md">Logout</span></a></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-lg flex items-center justify-between border-b border-surface-container"><div class="flex items-center flex-1 max-w-md"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span><input class="w-full pl-9 pr-4 py-1.5 rounded bg-surface-container-low border border-surface-container-highest text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container text-body-md transition-colors" placeholder="Search requests, tickets, or service tags..." type="text"/></div></div><div class="flex items-center gap-lg"><button class="relative p-1.5 rounded-full text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-2xl">notifications</span><span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span></button><div class="h-8 w-px bg-surface-container-highest"></div><div class="flex items-center gap-3"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WqT4Xm90exopNBfjIj_cnCKS1qNqUqfSrXDch2gTScDZ32xaNJsPk8nhJXens9g3alBPgSpOatGFxWY4sgemkbjbg3mkyPGm8cXAYUhTvyyG1p71gmUcdcBbIzCUKnTF4Z3fozgm1cbE7V2rPMPfT2NOhJPDnlas2DcLdluFjvy2DUylS43W4cODc7zXM1puukA4D8eV3IAUlWkhvb-ATiu1fYa2pHMqh5Rm8skHC_8e0i3nNog-Fs-Xc"/><div class="flex flex-col text-left"><span class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Budi Santoso</span><span class="font-label-md text-caption text-secondary font-medium">PIC - IT Support & Facilities</span></div><button class="text-on-surface-variant hover:text-on-surface ml-1"><span class="material-symbols-outlined text-lg">expand_more</span></button></div></div></header><main class="w-full pt-16 flex-1 px-lg py-lg max-w-container-max mx-auto"><div class="flex flex-col w-full gap-lg">
+<!-- Top Stat / Banner & SLA Rules (Corporate Minimalist Layering) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-md items-stretch">
+<!-- Main Welcome & Counter Card -->
+<div class="lg:col-span-8 bg-surface-container-lowest p-lg rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 z-10">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Incoming Requests</h1>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              8 Requests Pending Review
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mt-1">
+            Review, triage, and decide on incoming employee service requests assigned to your division. Fast responses ensure SLA compliance across departments.
+          </p>
+</div>
+<div class="flex items-center gap-2 self-start">
+<button class="px-3 py-2 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+            Export Log
+          </button>
+<button class="px-3.5 py-2 bg-primary-container text-on-primary font-label-md text-label-md rounded flex items-center gap-1.5 shadow-sm hover:opacity-95 transition-opacity">
+<span class="material-symbols-outlined text-lg">bolt</span>
+            Quick Triage (3)
+          </button>
+</div>
+</div>
+<!-- Quick Metrics Ribbon -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-4 border-t border-surface-container z-10">
+<div class="flex flex-col">
+<span class="font-label-md text-caption text-secondary">Awaiting PIC Action</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold mt-0.5">8</span>
+<span class="font-caption text-caption text-error flex items-center gap-1 mt-0.5 font-medium">
+<span class="material-symbols-outlined text-sm">schedule</span> 2 near SLA breach
+          </span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-caption text-secondary">In Processing Queue</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold mt-0.5">16</span>
+<span class="font-caption text-caption text-on-surface-variant mt-0.5">Across 4 departments</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-caption text-secondary">Avg. Response Time</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold mt-0.5">42m</span>
+<span class="font-caption text-caption text-primary font-medium mt-0.5">18% faster vs target</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-caption text-secondary">First-Touch Resolution</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold mt-0.5">91.4%</span>
+<span class="font-caption text-caption text-on-surface-variant mt-0.5">Target ≥ 88%</span>
+</div>
+</div>
+<!-- Subtle background ambient tint -->
+<div class="absolute -right-8 -bottom-8 w-64 h-64 bg-primary/5 rounded-full pointer-events-none blur-3xl"></div>
+</div>
+<!-- SLA Urgency Rules & Policy Slide-over Card -->
+<div class="lg:col-span-4 bg-surface-container-low p-lg rounded-xl flex flex-col justify-between shadow-sm">
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-xl">verified_user</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold uppercase tracking-wider">Service SLA Commitments</span>
+</div>
+<span class="font-caption text-caption text-on-secondary-fixed bg-secondary-container px-2 py-0.5 rounded font-medium">PIC Policy</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">
+          Requests must be triaged within designated time windows from submission to guarantee operational continuity:
+        </p>
+<div class="flex flex-col gap-2 mt-1">
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="font-body-md text-caption font-semibold text-on-surface">Urgent Priority</span>
+</div>
+<span class="font-label-md text-caption text-error font-bold">First touch < 2 Hours</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+<span class="font-body-md text-caption font-semibold text-on-surface">High Priority</span>
+</div>
+<span class="font-label-md text-caption text-amber-700 font-bold">First touch < 6 Hours</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span class="font-body-md text-caption font-semibold text-on-surface">Medium / Low</span>
+</div>
+<span class="font-label-md text-caption text-on-surface-variant font-bold">First touch < 24 Hours</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-caption text-secondary border-t border-surface-container-highest">
+<span class="flex items-center gap-1 font-caption">
+<span class="material-symbols-outlined text-sm">schedule</span> Realtime sync active
+        </span>
+<a class="font-label-md text-caption text-primary-container font-semibold hover:underline flex items-center gap-0.5" href="#">
+          Read SLA Docs <span class="material-symbols-outlined text-sm">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Filter & Search Toolbar Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col gap-md">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+<!-- Search Input -->
+<div class="relative flex-1 min-w-[280px]">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg pointer-events-none">search</span>
+<input class="w-full pl-10 pr-4 py-2 rounded bg-surface-container-low border border-surface-container text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 text-body-md transition-all" id="requestSearch" placeholder="Search by Request ID, requester, or keyword..." type="text"/>
+</div>
+<!-- Quick Filter Dropdowns Group -->
+<div class="flex flex-wrap items-center gap-2">
+<!-- Service Filter -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low text-on-surface font-body-md text-caption py-2 pl-3 pr-8 rounded border border-surface-container focus:outline-none focus:border-primary-container cursor-pointer">
+<option value="">All Services</option>
+<option value="it">IT Support</option>
+<option value="access">System Access</option>
+<option value="facility">Facility Repair</option>
+<option value="equipment">Equipment Request</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-base pointer-events-none">expand_more</span>
+</div>
+<!-- Department Filter -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low text-on-surface font-body-md text-caption py-2 pl-3 pr-8 rounded border border-surface-container focus:outline-none focus:border-primary-container cursor-pointer">
+<option value="">All Sections</option>
+<option value="is">IS (Info Systems)</option>
+<option value="hr">HR Division</option>
+<option value="assembly">Assembly Plant 2</option>
+<option value="marketing">Marketing & Sales</option>
+<option value="pe">Production Engineering</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-base pointer-events-none">expand_more</span>
+</div>
+<!-- Priority Filter -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low text-on-surface font-body-md text-caption py-2 pl-3 pr-8 rounded border border-surface-container focus:outline-none focus:border-primary-container cursor-pointer">
+<option value="">All Priorities</option>
+<option value="urgent">Urgent</option>
+<option value="high">High</option>
+<option value="medium">Medium</option>
+<option value="low">Low</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-base pointer-events-none">expand_more</span>
+</div>
+<!-- Date Range Filter -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low text-on-surface font-body-md text-caption py-2 pl-3 pr-8 rounded border border-surface-container focus:outline-none focus:border-primary-container cursor-pointer">
+<option value="this-week">This Week</option>
+<option value="today">Today</option>
+<option value="last-week">Last 14 Days</option>
+<option value="custom">Custom Date Range...</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-base pointer-events-none">calendar_today</span>
+</div>
+<!-- Reset Button -->
+<button class="p-2 text-on-surface-variant hover:text-on-surface rounded hover:bg-surface-container transition-colors" title="Reset Filters">
+<span class="material-symbols-outlined text-lg">restart_alt</span>
+</button>
+</div>
+</div>
+<!-- Active Filter Chips & Bulk Action Sub-bar -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-surface-container">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-caption text-caption text-secondary font-medium">Applied:</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container font-label-md text-caption text-on-surface">
+          Service: IT Support & Facilities
+          <span class="material-symbols-outlined text-sm cursor-pointer hover:text-error">close</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container font-label-md text-caption text-on-surface">
+          Status: Pending + Under Review
+          <span class="material-symbols-outlined text-sm cursor-pointer hover:text-error">close</span>
+</span>
+<button class="text-caption font-label-md text-primary hover:underline ml-1">Clear all</button>
+</div>
+<!-- Bulk Selection Actions -->
+<div class="flex items-center gap-2 self-end sm:self-auto">
+<span class="font-caption text-caption text-secondary" id="selectedCount">0 items selected</span>
+<div class="h-4 w-px bg-surface-container-highest"></div>
+<button class="px-2.5 py-1.5 rounded bg-surface-container text-on-surface-variant font-label-md text-caption flex items-center gap-1 transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:bg-surface-container-high" disabled="" id="btnAssignPIC">
+<span class="material-symbols-outlined text-base">person_add</span>
+          Assign PIC
+        </button>
+<button class="px-2.5 py-1.5 rounded bg-surface-container text-on-surface-variant font-label-md text-caption flex items-center gap-1 transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:bg-surface-container-high" disabled="" id="btnBatchReview">
+<span class="material-symbols-outlined text-base">fact_check</span>
+          Batch Review
+        </button>
+</div>
+</div>
+</div>
+<!-- Data Table Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse min-w-[1020px]">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-container text-secondary font-label-md text-caption">
+<th class="py-3.5 pl-4 pr-2 w-10">
+<input class="rounded text-primary-container focus:ring-primary-container cursor-pointer w-4 h-4 accent-primary-container" id="selectAllCheckbox" type="checkbox"/>
+</th>
+<th class="py-3.5 px-3">Request ID</th>
+<th class="py-3.5 px-3">Service & Category</th>
+<th class="py-3.5 px-3">Requester & NIK</th>
+<th class="py-3.5 px-3">Section</th>
+<th class="py-3.5 px-3">Submitted</th>
+<th class="py-3.5 px-3">Priority</th>
+<th class="py-3.5 px-3">Status</th>
+<th class="py-3.5 pr-4 pl-3 text-right">Triage Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-md text-body-md text-on-surface">
+<!-- Row 1: Urgent -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 pl-4 pr-2">
+<input class="row-checkbox rounded text-primary-container focus:ring-primary-container cursor-pointer w-4 h-4 accent-primary-container" type="checkbox"/>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-primary-container hover:underline cursor-pointer flex items-center gap-1">
+                  #SRV-2026-0012
+                  <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</span>
+<span class="font-caption text-caption text-secondary">Asset Repair</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-lg">precision_manufacturing</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-medium text-on-surface truncate">PLC Controller Sensor Failure</span>
+<span class="font-caption text-caption text-secondary truncate">Assembly Line 3 - Station B</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<img class="w-7 h-7 rounded-full object-cover shrink-0" data-alt="Close up corporate ID badge portrait of an Indonesian male factory supervisor wearing safety helmet and polo shirt, clean modern industrial background, warm cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9fRm4zTjY8dZxUyPzjtVZigtPDXkV0kJnDeJUjvm81Mu8lXiX34fBebRpebOkev3kY5Ot1PbTSAALikSpUTPwDhYr6SaZI4--3-FmNhum54a1JtHJd6U2GSNLu_gbfdzwZtqZniWI2oKziO_CLJPH9gUv7sEtWhseoDUakhRD8rWvPHsD_o1718sA6_SW-MgB7pPo_0ODgTFxkRT_q6pVHItFN_0ja5UIJopiQb2atM40oXEjWA_A"/>
+<div class="flex flex-col min-w-0">
+<span class="font-medium text-on-surface truncate">Muhammad Faiz</span>
+<span class="font-caption text-caption text-secondary truncate">EMP-2023-0842</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container font-label-md text-caption text-on-surface-variant">
+                Assembly
+              </span>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex flex-col">
+<span class="font-body-md text-caption text-on-surface font-medium">Today, 08:24</span>
+<span class="font-caption text-caption text-error font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs">timer</span> 1h 14m left
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-md text-caption font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-ping"></span>
+                Urgent
+              </span>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-label-md text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Pending Review
+              </span>
+</td>
+<td class="py-3.5 pr-4 pl-3 text-right">
+<button class="px-3 py-1.5 bg-primary-container text-on-primary font-label-md text-caption rounded shadow-sm hover:opacity-95 transition-all inline-flex items-center gap-1" onclick="openDrawer('#SRV-2026-0012')">
+                Review Request
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Urgent -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 pl-4 pr-2">
+<input class="row-checkbox rounded text-primary-container focus:ring-primary-container cursor-pointer w-4 h-4 accent-primary-container" type="checkbox"/>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-primary-container hover:underline cursor-pointer flex items-center gap-1">
+                  #SRV-2026-0014
+                  <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</span>
+<span class="font-caption text-caption text-secondary">System Access</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-lg">key</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-medium text-on-surface truncate">ERP SAP Production Role Elevate</span>
+<span class="font-caption text-caption text-secondary truncate">Critical Month-end Run</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<img class="w-7 h-7 rounded-full object-cover shrink-0" data-alt="Professional headshot of a female financial controller in a blue formal blazer inside a well-lit minimalist corporate office with soft glass reflections, corporate business aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIE6RFgwW9qaP3p_huV8GLNZ_pUs_uygTBdHjytTV5BG54Aoa0Cb0S9eAR01I-toGDR93LfOTD7g0F_R5ZOTfyh_Ob5yQFI1GKKU9zFl6mTB8S2XpdFDOTBAjlfHYkZhP9aTQRIeRC73CcAkcWgX_wtFyBYtYGTTmYcka5xoAPL5r6YbyKIsvGugU1gTlU_G7I2BQEfWBWboBK30rV-npQ3ad9iuKUCzBBDj3w15ipolrel0FrMZmx"/>
+<div class="flex flex-col min-w-0">
+<span class="font-medium text-on-surface truncate">Siti Rahmawati</span>
+<span class="font-caption text-caption text-secondary truncate">EMP-2021-0419</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container font-label-md text-caption text-on-surface-variant">
+                PE
+              </span>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex flex-col">
+<span class="font-body-md text-caption text-on-surface font-medium">Today, 08:45</span>
+<span class="font-caption text-caption text-error font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs">timer</span> 1h 45m left
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-md text-caption font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                Urgent
+              </span>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-label-md text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Pending Review
+              </span>
+</td>
+<td class="py-3.5 pr-4 pl-3 text-right">
+<button class="px-3 py-1.5 bg-primary-container text-on-primary font-label-md text-caption rounded shadow-sm hover:opacity-95 transition-all inline-flex items-center gap-1" onclick="openDrawer('#SRV-2026-0014')">
+                Review Request
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: High Priority -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 pl-4 pr-2">
+<input class="row-checkbox rounded text-primary-container focus:ring-primary-container cursor-pointer w-4 h-4 accent-primary-container" type="checkbox"/>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-primary-container hover:underline cursor-pointer flex items-center gap-1">
+                  #SRV-2026-0019
+                  <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</span>
+<span class="font-caption text-caption text-secondary">IT Support</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-lg">laptop_chromebook</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-medium text-on-surface truncate">Engineering CAD Laptop Replacement</span>
+<span class="font-caption text-caption text-secondary truncate">Thermal throttling issue</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-fixed font-semibold flex items-center justify-center text-caption shrink-0">
+                  DA
+                </div>
+<div class="flex flex-col min-w-0">
+<span class="font-medium text-on-surface truncate">Dimas Anggara</span>
+<span class="font-caption text-caption text-secondary truncate">EMP-2024-1102</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container font-label-md text-caption text-on-surface-variant">
+                IS
+              </span>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex flex-col">
+<span class="font-body-md text-caption text-on-surface font-medium">Yesterday, 16:10</span>
+<span class="font-caption text-caption text-secondary">SLA: 4h remaining</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 font-label-md text-caption font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                High
+              </span>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Under Review
+              </span>
+</td>
+<td class="py-3.5 pr-4 pl-3 text-right">
+<button class="px-3 py-1.5 bg-primary-container text-on-primary font-label-md text-caption rounded shadow-sm hover:opacity-95 transition-all inline-flex items-center gap-1" onclick="openDrawer('#SRV-2026-0019')">
+                Review Request
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: High Priority -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 pl-4 pr-2">
+<input class="row-checkbox rounded text-primary-container focus:ring-primary-container cursor-pointer w-4 h-4 accent-primary-container" type="checkbox"/>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-primary-container hover:underline cursor-pointer flex items-center gap-1">
+                  #SRV-2026-0022
+                  <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</span>
+<span class="font-caption text-caption text-secondary">Facility Repair</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-lg">ac_unit</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-medium text-on-surface truncate">Server Room 02 HVAC Airflow Error</span>
+<span class="font-caption text-caption text-secondary truncate">Main Admin Annex - B1</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-tertiary-container text-on-tertiary-container font-semibold flex items-center justify-center text-caption shrink-0">
+                  LW
+                </div>
+<div class="flex flex-col min-w-0">
+<span class="font-medium text-on-surface truncate">Lestari Wahyuni</span>
+<span class="font-caption text-caption text-secondary truncate">EMP-2019-0129</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container font-label-md text-caption text-on-surface-variant">
+                HR
+              </span>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex flex-col">
+<span class="font-body-md text-caption text-on-surface font-medium">Yesterday, 17:30</span>
+<span class="font-caption text-caption text-secondary">SLA: 5h remaining</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 font-label-md text-caption font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                High
+              </span>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-label-md text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Pending Review
+              </span>
+</td>
+<td class="py-3.5 pr-4 pl-3 text-right">
+<button class="px-3 py-1.5 bg-primary-container text-on-primary font-label-md text-caption rounded shadow-sm hover:opacity-95 transition-all inline-flex items-center gap-1" onclick="openDrawer('#SRV-2026-0022')">
+                Review Request
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Medium Priority -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 pl-4 pr-2">
+<input class="row-checkbox rounded text-primary-container focus:ring-primary-container cursor-pointer w-4 h-4 accent-primary-container" type="checkbox"/>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-primary-container hover:underline cursor-pointer flex items-center gap-1">
+                  #SRV-2026-0025
+                  <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</span>
+<span class="font-caption text-caption text-secondary">Equipment Request</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-lg">print</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-medium text-on-surface truncate">Barcode Thermal Label Printer Roll</span>
+<span class="font-caption text-caption text-secondary truncate">Inventory Shipping Bay 4</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<img class="w-7 h-7 rounded-full object-cover shrink-0" data-alt="Modern Asian marketing manager in casual corporate attire smiling slightly against high-tech office interior with diffused window light, professional corporate photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEPyWSM42k-k2kmr17qo7i1IP9OYS8k_fd15HI4R3mt8GayK79uTfK9OMZfQ9p6Cm9Wuo6GV1v1orJfbFqTW8yuvbOwZwM47AHIsBvQIJIsj4wo-iHj_FsJKWrARiE9nSyLvZMsMGpX-WO6lP1sJOCvlyhIPBGnX9Hl5rf0DvIMQ64ZhrwEw9hGg-rrp4x02uNdXFMCOQuQNRvHWuRquaoiffVE-V10HtIzJoEi95AYLZ-pCFdGBQd"/>
+<div class="flex flex-col min-w-0">
+<span class="font-medium text-on-surface truncate">Hendra Gunawan</span>
+<span class="font-caption text-caption text-secondary truncate">EMP-2022-0994</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container font-label-md text-caption text-on-surface-variant">
+                Marketing
+              </span>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex flex-col">
+<span class="font-body-md text-caption text-on-surface font-medium">Yesterday, 14:15</span>
+<span class="font-caption text-caption text-secondary">SLA: 18h remaining</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-fixed font-label-md text-caption font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Medium
+              </span>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-label-md text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Pending Review
+              </span>
+</td>
+<td class="py-3.5 pr-4 pl-3 text-right">
+<button class="px-3 py-1.5 bg-primary-container text-on-primary font-label-md text-caption rounded shadow-sm hover:opacity-95 transition-all inline-flex items-center gap-1" onclick="openDrawer('#SRV-2026-0025')">
+                Review Request
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 6: Medium Priority -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 pl-4 pr-2">
+<input class="row-checkbox rounded text-primary-container focus:ring-primary-container cursor-pointer w-4 h-4 accent-primary-container" type="checkbox"/>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-primary-container hover:underline cursor-pointer flex items-center gap-1">
+                  #SRV-2026-0028
+                  <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</span>
+<span class="font-caption text-caption text-secondary">System Access</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-lg">vpn_lock</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-medium text-on-surface truncate">Remote VPN Provisioning - New Hire</span>
+<span class="font-caption text-caption text-secondary truncate">Global Gateway 03 Profile</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-fixed font-semibold flex items-center justify-center text-caption shrink-0">
+                  RT
+                </div>
+<div class="flex flex-col min-w-0">
+<span class="font-medium text-on-surface truncate">Rian Triadi</span>
+<span class="font-caption text-caption text-secondary truncate">EMP-2026-0031</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container font-label-md text-caption text-on-surface-variant">
+                HR
+              </span>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex flex-col">
+<span class="font-body-md text-caption text-on-surface font-medium">May 19, 11:20</span>
+<span class="font-caption text-caption text-secondary">SLA: 20h remaining</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-fixed font-label-md text-caption font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Medium
+              </span>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Under Review
+              </span>
+</td>
+<td class="py-3.5 pr-4 pl-3 text-right">
+<button class="px-3 py-1.5 bg-primary-container text-on-primary font-label-md text-caption rounded shadow-sm hover:opacity-95 transition-all inline-flex items-center gap-1" onclick="openDrawer('#SRV-2026-0028')">
+                Review Request
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 7: Medium Priority -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 pl-4 pr-2">
+<input class="row-checkbox rounded text-primary-container focus:ring-primary-container cursor-pointer w-4 h-4 accent-primary-container" type="checkbox"/>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-primary-container hover:underline cursor-pointer flex items-center gap-1">
+                  #SRV-2026-0030
+                  <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</span>
+<span class="font-caption text-caption text-secondary">IT Support</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-lg">cable</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-medium text-on-surface truncate">LAN Port Reconfiguration</span>
+<span class="font-caption text-caption text-secondary truncate">Meeting Room C - Switchboard 12</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-fixed font-semibold flex items-center justify-center text-caption shrink-0">
+                  AP
+                </div>
+<div class="flex flex-col min-w-0">
+<span class="font-medium text-on-surface truncate">Anisa Permata</span>
+<span class="font-caption text-caption text-secondary truncate">EMP-2023-0518</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container font-label-md text-caption text-on-surface-variant">
+                Marketing
+              </span>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex flex-col">
+<span class="font-body-md text-caption text-on-surface font-medium">May 19, 09:12</span>
+<span class="font-caption text-caption text-secondary">SLA: 22h remaining</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-fixed font-label-md text-caption font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Medium
+              </span>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-label-md text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Pending Review
+              </span>
+</td>
+<td class="py-3.5 pr-4 pl-3 text-right">
+<button class="px-3 py-1.5 bg-primary-container text-on-primary font-label-md text-caption rounded shadow-sm hover:opacity-95 transition-all inline-flex items-center gap-1" onclick="openDrawer('#SRV-2026-0030')">
+                Review Request
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 8: Low Priority -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 pl-4 pr-2">
+<input class="row-checkbox rounded text-primary-container focus:ring-primary-container cursor-pointer w-4 h-4 accent-primary-container" type="checkbox"/>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-primary-container hover:underline cursor-pointer flex items-center gap-1">
+                  #SRV-2026-0033
+                  <span class="material-symbols-outlined text-xs opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</span>
+</span>
+<span class="font-caption text-caption text-secondary">Facility Repair</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-lg">chair</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-medium text-on-surface truncate">Ergonomic Desk Height Adjustment Mechanism</span>
+<span class="font-caption text-caption text-secondary truncate">Engineering Desk Cluster 4</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-fixed font-semibold flex items-center justify-center text-caption shrink-0">
+                  BS
+                </div>
+<div class="flex flex-col min-w-0">
+<span class="font-medium text-on-surface truncate">Bagus Santiko</span>
+<span class="font-caption text-caption text-secondary truncate">EMP-2020-0221</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container font-label-md text-caption text-on-surface-variant">
+                PE
+              </span>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex flex-col">
+<span class="font-body-md text-caption text-on-surface font-medium">May 18, 15:40</span>
+<span class="font-caption text-caption text-secondary">SLA: 34h remaining</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-md text-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                Low
+              </span>
+</td>
+<td class="py-3.5 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-label-md text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Pending Review
+              </span>
+</td>
+<td class="py-3.5 pr-4 pl-3 text-right">
+<button class="px-3 py-1.5 bg-primary-container text-on-primary font-label-md text-caption rounded shadow-sm hover:opacity-95 transition-all inline-flex items-center gap-1" onclick="openDrawer('#SRV-2026-0033')">
+                Review Request
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="px-lg py-3.5 border-t border-surface-container flex flex-col sm:flex-row items-center justify-between gap-3 bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="font-caption text-caption text-on-surface-variant">
+          Showing <span class="font-semibold text-on-surface">1 - 8</span> of <span class="font-semibold text-on-surface">24</span> incoming requests
+        </span>
+<span class="hidden md:inline-block text-outline-variant">•</span>
+<div class="hidden md:flex items-center gap-1 font-caption text-caption text-on-surface-variant">
+<span>Rows per page:</span>
+<select class="bg-transparent border-none font-semibold text-on-surface focus:outline-none cursor-pointer">
+<option>8</option>
+<option>15</option>
+<option>25</option>
+</select>
+</div>
+</div>
+<!-- Pagination Controls -->
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded text-outline hover:bg-surface-container disabled:opacity-40 disabled:hover:bg-transparent transition-colors" disabled="">
+<span class="material-symbols-outlined text-lg">first_page</span>
+</button>
+<button class="px-2.5 py-1 rounded text-on-surface-variant hover:bg-surface-container font-label-md text-caption disabled:opacity-40 disabled:hover:bg-transparent flex items-center gap-0.5 transition-colors" disabled="">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+          Prev
+        </button>
+<!-- Page Numbers -->
+<div class="flex items-center gap-1 mx-1">
+<button class="w-7 h-7 rounded bg-primary-container text-on-primary font-label-md text-caption font-semibold flex items-center justify-center">1</button>
+<button class="w-7 h-7 rounded text-on-surface-variant hover:bg-surface-container font-label-md text-caption flex items-center justify-center transition-colors">2</button>
+<button class="w-7 h-7 rounded text-on-surface-variant hover:bg-surface-container font-label-md text-caption flex items-center justify-center transition-colors">3</button>
+</div>
+<button class="px-2.5 py-1 rounded text-on-surface hover:bg-surface-container font-label-md text-caption flex items-center gap-0.5 transition-colors">
+          Next
+          <span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+<button class="p-1.5 rounded text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-lg">last_page</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Preview Slide-Over Drawer (Toggled by 'Review Request' buttons) -->
+<div class="fixed inset-y-0 right-0 w-full sm:w-[480px] bg-surface-container-lowest shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between" id="reviewSlideOver">
+<div class="flex flex-col h-full overflow-y-auto">
+<!-- Drawer Header -->
+<div class="p-lg bg-surface-container-low border-b border-surface-container flex items-center justify-between sticky top-0 z-10 backdrop-blur-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface" id="drawerRequestId">#SRV-2026-0012</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-md text-caption font-bold" id="drawerPriority">Urgent</span>
+</div>
+<span class="font-caption text-caption text-secondary">Triage & Initial Assessment Drawer</span>
+</div>
+<button class="p-2 rounded-full text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" onclick="closeDrawer()">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<!-- Drawer Body Content -->
+<div class="p-lg flex flex-col gap-md">
+<!-- SLA Risk Alert in Drawer -->
+<div class="p-md rounded-lg bg-error-container/40 border border-error/20 flex items-start gap-3">
+<span class="material-symbols-outlined text-error text-xl shrink-0 mt-0.5">warning</span>
+<div class="flex flex-col">
+<span class="font-label-md text-caption font-bold text-on-error-container">SLA Critical Threshold Approaching</span>
+<span class="font-caption text-caption text-on-surface-variant mt-0.5">
+              Target response expires in 1 hour 14 minutes. Immediate triage decision required to retain department KPI.
+            </span>
+</div>
+</div>
+<!-- Requester Information Block -->
+<div class="bg-surface-container-low p-md rounded-lg flex flex-col gap-2">
+<span class="font-label-md text-caption uppercase tracking-wider text-secondary font-semibold">Requester Profile</span>
+<div class="flex items-center gap-3 mt-1">
+<img class="w-12 h-12 rounded-full object-cover shrink-0" data-alt="Indonesian male engineer portrait in clean factory supervisor attire, high contrast modern corporate photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw8INcMNZM5-upL5bqtFnkAx4HJ4ZIRTal-N9gRsz6iddeoHaROF451fan3A3Mtbhr0xLYsFoIJwWVxqX9F0kKjHnQ5jEU6jiuxI63mZZcvdKaLqvX3yocsL16tayqIniIGVkVYZVU4I8AdFJbs15fqp2ThSzc07ZbQC_Rp0ZoP8LRX6boogV45hDFZmsC6JzJOpny7aZAirvY_N48Tr8MAtsMoRAOv2wFhL5fDM7DK8sfuXhwrv6T"/>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-bold text-on-surface" id="drawerRequester">Muhammad Faiz</span>
+<span class="font-caption text-caption text-on-surface-variant">Senior Assembly Specialist • Assembly Plant 2</span>
+<span class="font-caption text-caption text-secondary">NIK: EMP-2023-0842 • Extension: +62 21 8980 442</span>
+</div>
+</div>
+</div>
+<!-- Request Details -->
+<div class="flex flex-col gap-2">
+<span class="font-label-md text-caption uppercase tracking-wider text-secondary font-semibold">Service Particulars</span>
+<div class="grid grid-cols-2 gap-2 text-caption">
+<div class="p-2.5 rounded bg-surface-container-low">
+<span class="text-secondary block">Service Category</span>
+<span class="font-semibold text-on-surface" id="drawerCategory">Asset / Machine Repair</span>
+</div>
+<div class="p-2.5 rounded bg-surface-container-low">
+<span class="text-secondary block">Target Asset ID</span>
+<span class="font-semibold text-on-surface font-mono">MC-PLC-091</span>
+</div>
+<div class="p-2.5 rounded bg-surface-container-low">
+<span class="text-secondary block">Plant Location</span>
+<span class="font-semibold text-on-surface">Plant 2 - Bay 4 - Station B</span>
+</div>
+<div class="p-2.5 rounded bg-surface-container-low">
+<span class="text-secondary block">Submission Time</span>
+<span class="font-semibold text-on-surface">20 May 2026, 08:24 WIB</span>
+</div>
+</div>
+</div>
+<!-- Issue Description -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-md text-caption uppercase tracking-wider text-secondary font-semibold">Problem Description</span>
+<div class="p-3 rounded-lg bg-surface-container-low text-body-md text-on-surface leading-relaxed">
+<p id="drawerDesc">
+              "Optical barcode reading sensor on Station B is experiencing intermittent read timeouts, causing assembly conveyance stoppage every 4 minutes. Error code E-0419 displayed on unit console. Requires physical inspection and sensor lens replacement or realignment."
+            </p>
+</div>
+</div>
+<!-- PIC Triage Form -->
+<div class="flex flex-col gap-3 pt-2">
+<span class="font-label-md text-caption uppercase tracking-wider text-secondary font-semibold">Triage Decision</span>
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption text-on-surface-variant font-medium">Assign Responsible Engineer (PIC)</label>
+<select class="p-2 rounded bg-surface-container-low border border-surface-container text-body-md text-on-surface focus:outline-none focus:border-primary-container">
+<option value="budi">Budi Santoso (Self - IT & Automation)</option>
+<option value="dian">Dian Kusuma (Industrial Network PIC)</option>
+<option value="eko">Eko Prasetyo (Hardware Field Specialist)</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption text-on-surface-variant font-medium">Initial Assessment Notes (Optional)</label>
+<textarea class="p-2.5 rounded bg-surface-container-low border border-surface-container text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container resize-none" placeholder="Add guidance, preliminary diagnosis, or requisition requirements..." rows="2"></textarea>
+</div>
+</div>
+</div>
+<!-- Drawer Actions Footer -->
+<div class="p-lg bg-surface-container-low border-t border-surface-container flex items-center justify-between gap-3 sticky bottom-0">
+<button class="px-4 py-2 rounded bg-surface-container text-on-surface font-label-md text-body-md hover:bg-surface-container-high transition-colors" onclick="closeDrawer()">
+          Reject / Return
+        </button>
+<div class="flex items-center gap-2">
+<button class="px-4 py-2 rounded bg-surface-container-highest text-on-surface font-label-md text-body-md hover:bg-surface-dim transition-colors" onclick="closeDrawer()">
+            Save Draft
+          </button>
+<button class="px-4 py-2 rounded bg-primary-container text-on-primary font-label-md text-body-md font-semibold hover:opacity-95 shadow-sm transition-all flex items-center gap-1" onclick="approveRequest()">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+            Accept & Process
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Overlay Backdrop for Slide-over -->
+<div class="fixed inset-0 bg-inverse-surface/40 backdrop-blur-xs z-40 hidden transition-opacity" id="drawerBackdrop" onclick="closeDrawer()"></div>
+</div>
+<script>
+  // Bulk selection and interactive behavior
+  const selectAll = document.getElementById('selectAllCheckbox');
+  const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+  const selectedCountLabel = document.getElementById('selectedCount');
+  const btnAssign = document.getElementById('btnAssignPIC');
+  const btnBatch = document.getElementById('btnBatchReview');
+
+  function updateBulkState() {
+    const checked = document.querySelectorAll('.row-checkbox:checked');
+    const count = checked.length;
+    selectedCountLabel.textContent = `${count} item${count === 1 ? '' : 's'} selected`;
+    
+    if (count > 0) {
+      btnAssign.removeAttribute('disabled');
+      btnBatch.removeAttribute('disabled');
+      btnAssign.classList.add('bg-primary-container', 'text-on-primary');
+      btnAssign.classList.remove('bg-surface-container', 'text-on-surface-variant');
+      btnBatch.classList.add('bg-surface-container-high', 'text-on-surface');
+      btnBatch.classList.remove('bg-surface-container', 'text-on-surface-variant');
+    } else {
+      btnAssign.setAttribute('disabled', 'true');
+      btnBatch.setAttribute('disabled', 'true');
+      btnAssign.classList.remove('bg-primary-container', 'text-on-primary');
+      btnAssign.classList.add('bg-surface-container', 'text-on-surface-variant');
+      btnBatch.classList.remove('bg-surface-container-high', 'text-on-surface');
+      btnBatch.classList.add('bg-surface-container', 'text-on-surface-variant');
+    }
+  }
+
+  if (selectAll) {
+    selectAll.addEventListener('change', (e) => {
+      rowCheckboxes.forEach(cb => {
+        cb.checked = e.target.checked;
+      });
+      updateBulkState();
+    });
+  }
+
+  rowCheckboxes.forEach(cb => {
+    cb.addEventListener('change', () => {
+      updateBulkState();
+      if (!cb.checked && selectAll.checked) {
+        selectAll.checked = false;
+      }
+    });
+  });
+
+  // Slide-over Drawer controls
+  const slideOver = document.getElementById('reviewSlideOver');
+  const backdrop = document.getElementById('drawerBackdrop');
+
+  window.openDrawer = function(requestId) {
+    document.getElementById('drawerRequestId').textContent = requestId;
+    if (slideOver && backdrop) {
+      backdrop.classList.remove('hidden');
+      setTimeout(() => {
+        slideOver.classList.remove('translate-x-full');
+      }, 10);
+    }
+  };
+
+  window.closeDrawer = function() {
+    if (slideOver && backdrop) {
+      slideOver.classList.add('translate-x-full');
+      setTimeout(() => {
+        backdrop.classList.add('hidden');
+      }, 250);
+    }
+  };
+
+  window.approveRequest = function() {
+    const id = document.getElementById('drawerRequestId').textContent;
+    alert(`Request ${id} accepted. Status transferred to "In Processing" and assigned to PIC.`);
+    closeDrawer();
+  };
+</script></main><footer class="w-full bg-surface-container-lowest py-4 px-lg border-t border-surface-container mt-auto"><div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center justify-between gap-4"><p class="font-caption text-caption text-on-surface-variant">© 2026 Internal Service Management. All rights reserved.</p><div class="flex items-center gap-6"><a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a><a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a><a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a></div></div></footer></div></body></html>

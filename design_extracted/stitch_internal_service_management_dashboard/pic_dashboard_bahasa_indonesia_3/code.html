@@ -1,0 +1,448 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ISM System - PIC Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..24,300..500,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#fbfcfd",
+            "surface-subtle": "#f4f5f7",
+            "surface-card": "#ffffff",
+            "primary": "#1e40af",
+            "primary-light": "#eff4fe",
+            "border-subtle": "#e9ebef",
+            "border-medium": "#dcdfe5",
+            "on-surface": "#0f172a",
+            "on-surface-muted": "#64748b",
+            "on-surface-subtle": "#94a3b8"
+          },
+          fontFamily: {
+            sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-surface font-sans text-on-surface antialiased min-h-screen flex flex-col">
+<!-- Left Sidebar (Linear / Notion style minimal navigation) -->
+<aside class="fixed left-0 top-0 h-full w-60 bg-[#fafbfe] border-r border-border-subtle z-50 flex flex-col justify-between select-none">
+<div class="flex flex-col">
+<!-- App Brand -->
+<div class="h-16 flex items-center px-5 gap-3 border-b border-border-subtle/70">
+<div class="w-7 h-7 rounded-md bg-primary flex items-center justify-center text-white font-semibold text-xs shadow-sm">
+          IS
+        </div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold tracking-tight text-slate-900 leading-tight">ISM Portal</span>
+<span class="text-[11px] text-slate-400 font-normal">IT &amp; Operations PIC</span>
+</div>
+</div>
+<!-- Main Navigation -->
+<nav class="flex flex-col gap-0.5 px-3 py-4 text-[13px]">
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md font-medium text-primary bg-primary-light" href="#">
+<span class="material-symbols-outlined text-[18px]">space_dashboard</span>
+<span class="">Dashboard</span>
+</a><a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md font-normal text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">add_circle</span>
+<span class="">Ajukan Layanan</span>
+</a>
+<a class="flex items-center justify-between px-2.5 py-1.5 rounded-md font-normal text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 transition-colors" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-slate-400">inbox</span>
+<span class="">Permintaan Masuk</span>
+</div>
+<span class="text-[11px] font-medium text-slate-500 bg-slate-200/60 px-1.5 py-0.2 rounded">8</span>
+</a>
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md font-normal text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">hourglass_top</span>
+<span class="">Sedang Diproses</span>
+</a>
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md font-normal text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">check_circle</span>
+<span class="">Selesai</span>
+</a>
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md font-normal text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">bar_chart</span>
+<span class="">Laporan</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Sidebar Section -->
+<div class="p-3 border-t border-border-subtle/70 flex flex-col gap-1 text-[13px]">
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md font-normal text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">help_outline</span>
+<span class="">Bantuan &amp; Panduan</span>
+</a>
+<a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md font-normal text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-400">person_outline</span>
+<span class="">Profil &amp; Pengaturan</span>
+</a>
+</div>
+</aside>
+<!-- Main Layout Wrapper -->
+<div class="pl-60 flex flex-col min-h-screen">
+<!-- Top Minimal Header -->
+<header class="h-14 border-b border-border-subtle/80 bg-white/80 backdrop-blur-md sticky top-0 z-40 px-8 flex items-center justify-between">
+<!-- Search Input -->
+<div class="relative w-80 max-w-full">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[17px] text-slate-400">search</span>
+<input class="w-full bg-slate-50 border border-slate-200/80 rounded-md pl-8 pr-3 py-1.5 text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-slate-300 focus:bg-white transition-colors" placeholder="Cari permintaan, ID, atau pengaju..." type="text">
+</div>
+<!-- Right Profile & Icons -->
+<div class="flex items-center gap-4">
+<button class="relative p-1.5 text-slate-400 hover:text-slate-600 rounded-md transition-colors" title="Notifikasi">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
+</button>
+<div class="h-4 w-px bg-slate-200"></div>
+<div class="flex items-center gap-2.5 pl-1 cursor-pointer group">
+<div class="w-7 h-7 rounded-full bg-slate-100 border border-slate-200 overflow-hidden flex items-center justify-center text-xs font-semibold text-slate-700">
+            BS
+          </div>
+<div class="flex flex-col text-left">
+<span class="text-xs font-medium text-slate-800 leading-tight">Budi Santoso</span>
+<span class="text-[11px] text-slate-400">PIC</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Content Container -->
+<main class="flex-1 w-full max-w-6xl mx-auto px-8 py-10">
+<!-- Greeting and Primary Actions -->
+<div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-8">
+<div>
+<h1 class="text-2xl font-semibold tracking-tight text-slate-900">Selamat pagi, Budi</h1>
+<p class="text-[13px] text-slate-500 mt-1">Berikut ringkasan permintaan layanan yang perlu Anda tangani.</p>
+</div>
+<div class="flex items-center gap-2.5">
+<button class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-md border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[15px]">filter_list</span>
+<span class="">Filter</span>
+</button>
+<button class="inline-flex items-center gap-1.5 text-xs font-medium px-3.5 py-1.5 rounded-md bg-primary text-white hover:bg-blue-800 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[15px]">add</span>
+<span class="">Permintaan Baru</span>
+</button>
+</div>
+</div>
+<!-- Compact Unified Summary Row (Notion / Linear Style) -->
+<div class="bg-white border border-border-subtle rounded-lg shadow-[0_1px_2px_rgba(0,0,0,0.02)] mb-10 overflow-hidden">
+<div class="grid grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border-subtle md:grid-cols-3">
+<!-- Incoming Metric -->
+<div class="p-5 flex flex-col justify-between group hover:bg-slate-50/50 transition-colors">
+<div class="flex items-center justify-between text-slate-500 mb-2">
+<span class="text-xs font-medium uppercase tracking-wider text-slate-400">Permintaan Masuk</span>
+<span class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-blue-600 transition-colors">move_to_inbox</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-semibold text-slate-900 tracking-tight">8</span>
+<span class="text-[11px] text-blue-600 font-medium">+3 baru hari ini</span>
+</div>
+<span class="text-[12px] text-slate-400 mt-1">Menunggu pemeriksaan awal</span>
+</div>
+<!-- In Progress Metric -->
+<div class="p-5 flex flex-col justify-between group hover:bg-slate-50/50 transition-colors">
+<div class="flex items-center justify-between text-slate-500 mb-2">
+<span class="text-xs font-medium uppercase tracking-wider text-slate-400">Sedang Diproses</span>
+<span class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-amber-600 transition-colors">sync</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-semibold text-slate-900 tracking-tight">14</span>
+<span class="text-[11px] text-slate-500 font-medium">tugas aktif</span>
+</div>
+<span class="text-[12px] text-slate-400 mt-1">Sedang ditangani</span>
+</div>
+<!-- Completed Metric -->
+<div class="p-5 flex flex-col justify-between group hover:bg-slate-50/50 transition-colors">
+<div class="flex items-center justify-between text-slate-500 mb-2">
+<span class="text-xs font-medium uppercase tracking-wider text-slate-400">Selesai</span>
+<span class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-emerald-600 transition-colors">check_circle</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-semibold text-slate-900 tracking-tight">42</span>
+<span class="text-[11px] text-emerald-600 font-medium">98,2% tepat waktu</span>
+</div>
+<span class="text-[12px] text-slate-400 mt-1">Selesai bulan ini</span>
+</div>
+<!-- Overdue Metric -->
+
+</div>
+</div>
+<!-- Requests Requiring Attention (Clean & Breathable Table) -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-3.5">
+<div class="flex items-center gap-3">
+<h2 class="text-sm font-semibold text-slate-900 tracking-tight">Permintaan yang Perlu Ditangani</h2>
+<span class="text-[11px] font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">4 menunggu pemeriksaan</span>
+</div>
+<a class="text-xs font-medium text-slate-500 hover:text-primary transition-colors" href="#">Lihat semua permintaan →</a>
+</div>
+<div class="bg-white border border-border-subtle rounded-lg shadow-[0_1px_2px_rgba(0,0,0,0.02)] overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left text-xs border-collapse">
+<thead>
+<tr class="border-b border-border-subtle bg-slate-50/60 text-slate-500">
+<th class="py-3 px-4 font-medium text-slate-600">ID Permintaan</th>
+<th class="py-3 px-4 font-medium text-slate-600">Layanan</th>
+<th class="py-3 px-4 font-medium text-slate-600">Pengaju</th>
+<th class="py-3 px-4 font-medium text-slate-600">Bagian</th>
+<th class="py-3 px-4 font-medium text-slate-600">Status</th>
+<th class="py-3 px-4 font-medium text-slate-600">Tanggal</th>
+<th class="py-3 px-4 font-medium text-slate-600 text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="py-4 px-4 font-mono font-medium text-slate-900">
+                    #SRV-2026-0012
+                  </td>
+<td class="py-4 px-4 font-medium text-slate-800">
+                    Server Room AC Leakage
+                  </td>
+<td class="py-4 px-4 text-slate-600">
+                    Muhammad Faiz
+                  </td>
+<td class="py-4 px-4 text-slate-500">
+                    Facilities Ops
+                  </td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-red-50 text-red-600 border border-red-100">
+                      Terlambat
+                    </span>
+</td>
+<td class="py-4 px-4 text-slate-500">
+                    Hari ini, 08:15
+                  </td>
+<td class="py-4 px-4 text-right">
+<button class="text-xs font-medium text-primary hover:text-blue-800 hover:underline">
+                      Periksa
+                    </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="py-4 px-4 font-mono font-medium text-slate-900">
+                    #SRV-2026-0015
+                  </td>
+<td class="py-4 px-4 font-medium text-slate-800">
+                    VPN &amp; GitLab Onboarding
+                  </td>
+<td class="py-4 px-4 text-slate-600">
+                    Siti Aminah
+                  </td>
+<td class="py-4 px-4 text-slate-500">
+                    IT Security
+                  </td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-blue-50 text-blue-600 border border-blue-100">
+                      Menunggu
+                    </span>
+</td>
+<td class="py-4 px-4 text-slate-500">
+                    Hari ini, 08:40
+                  </td>
+<td class="py-4 px-4 text-right">
+<button class="text-xs font-medium text-primary hover:text-blue-800 hover:underline">
+                      Periksa
+                    </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="py-4 px-4 font-mono font-medium text-slate-900">
+                    #SRV-2026-0018
+                  </td>
+<td class="py-4 px-4 font-medium text-slate-800">
+                    Dual 4K Monitor Request
+                  </td>
+<td class="py-4 px-4 text-slate-600">
+                    Reza Pratama
+                  </td>
+<td class="py-4 px-4 text-slate-500">
+                    Hardware IT
+                  </td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-amber-50 text-amber-700 border border-amber-100">
+                      Sedang Diproses
+                    </span>
+</td>
+<td class="py-4 px-4 text-slate-500">
+                    Kemarin, 16:20
+                  </td>
+<td class="py-4 px-4 text-right">
+<button class="text-xs font-medium text-slate-600 hover:text-slate-900">
+                      Detail
+                    </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="py-4 px-4 font-mono font-medium text-slate-900">
+                    #SRV-2026-0021
+                  </td>
+<td class="py-4 px-4 font-medium text-slate-800">
+                    AutoCAD Civil 3D Seat
+                  </td>
+<td class="py-4 px-4 text-slate-600">
+                    Kevin Tandio
+                  </td>
+<td class="py-4 px-4 text-slate-500">
+                    Procurement / SW
+                  </td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-blue-50 text-blue-600 border border-blue-100">
+                      Menunggu
+                    </span>
+</td>
+<td class="py-4 px-4 text-slate-500">
+                    Hari ini, 09:02
+                  </td>
+<td class="py-4 px-4 text-right">
+<button class="text-xs font-medium text-primary hover:text-blue-800 hover:underline">
+                      Periksa
+                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section class="mb-12"><div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-4"><div class="flex flex-col"><div><div class="flex items-center gap-3"><h2 class="text-sm font-semibold text-slate-900 tracking-tight">Permintaan Selesai</h2><span class="text-[11px] font-medium text-emerald-600 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-full">Arsip Penyelesaian</span></div></div><p class="text-xs text-slate-500 mt-0.5">Daftar permintaan layanan yang telah diselesaikan oleh PIC.</p></div><a class="text-xs font-medium text-slate-500 hover:text-primary transition-colors" href="#">Lihat Semua →</a></div><div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4"><div class="bg-white border border-border-subtle rounded-lg p-4 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex items-center justify-between"><div class="flex flex-col"><span class="text-[11px] font-medium uppercase tracking-wider text-slate-400">Total Selesai</span><span class="text-xl font-semibold text-slate-900 tracking-tight mt-0.5">42</span></div><div class="w-8 h-8 rounded-md bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400"><span class="material-symbols-outlined text-[18px]">task_alt</span></div></div><div class="bg-white border border-border-subtle rounded-lg p-4 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex items-center justify-between"><div class="flex flex-col"><span class="text-[11px] font-medium uppercase tracking-wider text-slate-400">Selesai Hari Ini</span><span class="text-xl font-semibold text-slate-900 tracking-tight mt-0.5">5</span></div><div class="w-8 h-8 rounded-md bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600"><span class="material-symbols-outlined text-[18px]">today</span></div></div><div class="bg-white border border-border-subtle rounded-lg p-4 shadow-[0_1px_2px_rgba(0,0,0,0.02)] flex items-center justify-between"><div class="flex flex-col"><span class="text-[11px] font-medium uppercase tracking-wider text-slate-400">Selesai Bulan Ini</span><span class="text-xl font-semibold text-slate-900 tracking-tight mt-0.5">28</span></div><div class="w-8 h-8 rounded-md bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600"><span class="material-symbols-outlined text-[18px]">calendar_month</span></div></div></div><div class="bg-white border border-border-subtle rounded-lg shadow-[0_1px_2px_rgba(0,0,0,0.02)] overflow-hidden"><div class="p-3.5 border-b border-border-subtle bg-slate-50/50 flex flex-col lg:flex-row gap-3 items-stretch lg:items-center justify-between"><div class="relative flex-1 max-w-md"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[16px] text-slate-400">search</span><input type="text" class="w-full bg-white border border-slate-200/80 rounded-md pl-8 pr-3 py-1.5 text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-slate-300 transition-colors" placeholder="Cari ID permintaan, judul, atau nama pengaju..."></div><div class="flex items-center gap-2 overflow-x-auto pb-1 lg:pb-0"><select class="bg-white border border-slate-200/80 rounded-md px-2.5 py-1.5 text-xs text-slate-700 focus:outline-none focus:border-slate-300"><option value="">Semua Bagian</option><option>Assembly</option><option>GA</option><option>HR</option><option>IS</option><option>PE</option></select><select class="bg-white border border-slate-200/80 rounded-md px-2.5 py-1.5 text-xs text-slate-700 focus:outline-none focus:border-slate-300"><option value="">Semua Layanan</option><option>Perbaikan Fasilitas</option><option>Peralatan &amp; Perlengkapan</option><option>Fasilitas &amp; Gedung</option></select><select class="bg-white border border-slate-200/80 rounded-md px-2.5 py-1.5 text-xs text-slate-700 focus:outline-none focus:border-slate-300"><option value="">Semua Plant</option><option>Plant 1</option><option>Plant 2</option><option>Plant 3</option></select><select class="bg-white border border-slate-200/80 rounded-md px-2.5 py-1.5 text-xs text-slate-700 focus:outline-none focus:border-slate-300"><option value="">Semua Lantai</option><option>Lantai 1</option><option>Lantai 2</option><option>Lantai 3</option></select><button class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border border-slate-200/80 bg-white text-xs text-slate-600 hover:bg-slate-50 transition-colors"><span class="material-symbols-outlined text-[15px]">calendar_today</span><span class="">Tanggal</span></button></div></div><div class="overflow-x-auto"><table class="w-full text-left text-xs border-collapse min-w-[1050px]"><thead><tr class="border-b border-border-subtle bg-slate-50/60 text-slate-500"><th class="py-3 px-4 font-medium text-slate-600">ID Permintaan</th><th class="py-3 px-4 font-medium text-slate-600">Judul Permintaan</th><th class="py-3 px-4 font-medium text-slate-600">Layanan</th><th class="py-3 px-4 font-medium text-slate-600">Nama Pengaju</th><th class="py-3 px-4 font-medium text-slate-600">Bagian</th><th class="py-3 px-4 font-medium text-slate-600">Plant</th><th class="py-3 px-4 font-medium text-slate-600">Lantai</th><th class="py-3 px-4 font-medium text-slate-600">Tanggal Pengajuan</th><th class="py-3 px-4 font-medium text-slate-600">Tanggal Selesai</th><th class="py-3 px-4 font-medium text-slate-600">Status</th><th class="py-3 px-4 font-medium text-slate-600 text-right">Aksi</th></tr></thead><tbody class="divide-y divide-border-subtle"><tr class="hover:bg-slate-50/60 transition-colors"><td class="py-3.5 px-4 font-mono font-medium text-slate-900 whitespace-nowrap">REQ-2026-00124</td><td class="py-3.5 px-4 font-semibold text-slate-900">Perbaikan AC Ruang Assembly</td><td class="py-3.5 px-4 text-slate-600 whitespace-nowrap">Perbaikan Fasilitas</td><td class="py-3.5 px-4"><div class="flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-[10px] font-semibold text-slate-700">AF</div><span class="text-slate-800 font-medium whitespace-nowrap">Ahmad Fauzi</span></div></td><td class="py-3.5 px-4 text-slate-600 whitespace-nowrap">Assembly</td><td class="py-3.5 px-4 text-slate-600 whitespace-nowrap">Plant 2</td><td class="py-3.5 px-4 text-slate-600 whitespace-nowrap">Lantai 2</td><td class="py-3.5 px-4 text-slate-500 whitespace-nowrap">23 Agustus 2026, 08:24 WIB</td><td class="py-3.5 px-4 text-slate-500 whitespace-nowrap">24 Agustus 2026, 14:35 WIB</td><td class="py-3.5 px-4 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-emerald-50 text-emerald-600 border border-emerald-100">Selesai</span></td><td class="py-3.5 px-4 text-right whitespace-nowrap"><button class="text-xs font-medium text-slate-600 hover:text-slate-900">Detail</button></td></tr><tr class="hover:bg-slate-50/60 transition-colors"><td class="py-3.5 px-4 font-mono font-medium text-slate-900 whitespace-nowrap">REQ-2026-00121</td><td class="py-3.5 px-4 font-semibold text-slate-900">Permintaan Perlengkapan Kerja</td><td class="py-3.5 px-4 text-slate-600 whitespace-nowrap">Peralatan &amp; Perlengkapan</td><td class="py-3.5 px-4"><div class="flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-[10px] font-semibold text-slate-700">RP</div><span class="text-slate-800 font-medium whitespace-nowrap">Rizky Pratama</span></div></td><td class="py-3.5 px-4 text-slate-600 whitespace-nowrap">Assembly</td><td class="py-3.5 px-4 text-slate-600 whitespace-nowrap">Plant 1</td><td class="py-3.5 px-4 text-slate-600 whitespace-nowrap">Lantai 1</td><td class="py-3.5 px-4 text-slate-500 whitespace-nowrap">22 Agustus 2026, 09:15 WIB</td><td class="py-3.5 px-4 text-slate-500 whitespace-nowrap">23 Agustus 2026, 15:20 WIB</td><td class="py-3.5 px-4 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-emerald-50 text-emerald-600 border border-emerald-100">Selesai</span></td><td class="py-3.5 px-4 text-right whitespace-nowrap"><button class="text-xs font-medium text-slate-600 hover:text-slate-900">Detail</button></td></tr><tr class="hover:bg-slate-50/60 transition-colors"><td class="py-3.5 px-4 font-mono font-medium text-slate-900 whitespace-nowrap">REQ-2026-00118</td><td class="py-3.5 px-4 font-semibold text-slate-900">Perbaikan Lampu Ruangan</td><td class="py-3.5 px-4 text-slate-600 whitespace-nowrap">Fasilitas &amp; Gedung</td><td class="py-3.5 px-4"><div class="flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-[10px] font-semibold text-slate-700">SR</div><span class="text-slate-800 font-medium whitespace-nowrap">Siti Rahma</span></div></td><td class="py-3.5 px-4 text-slate-600 whitespace-nowrap">GA</td><td class="py-3.5 px-4 text-slate-600 whitespace-nowrap">Plant 3</td><td class="py-3.5 px-4 text-slate-600 whitespace-nowrap">Lantai 2</td><td class="py-3.5 px-4 text-slate-500 whitespace-nowrap">21 Agustus 2026, 10:05 WIB</td><td class="py-3.5 px-4 text-slate-500 whitespace-nowrap">22 Agustus 2026, 13:40 WIB</td><td class="py-3.5 px-4 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-emerald-50 text-emerald-600 border border-emerald-100">Selesai</span></td><td class="py-3.5 px-4 text-right whitespace-nowrap"><button class="text-xs font-medium text-slate-600 hover:text-slate-900">Detail</button></td></tr><tr class="hover:bg-slate-50/60 transition-colors"><td class="py-3.5 px-4 font-mono font-medium text-slate-900 whitespace-nowrap">REQ-2026-00115</td><td class="py-3.5 px-4 font-semibold text-slate-900">Permintaan Akses Sistem</td><td class="py-3.5 px-4 text-slate-600 whitespace-nowrap">Dukungan Sistem</td><td class="py-3.5 px-4"><div class="flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-[10px] font-semibold text-slate-700">BS</div><span class="text-slate-800 font-medium whitespace-nowrap">Budi Santoso</span></div></td><td class="py-3.5 px-4 text-slate-600 whitespace-nowrap">IS</td><td class="py-3.5 px-4 text-slate-600 whitespace-nowrap">Plant 2</td><td class="py-3.5 px-4 text-slate-600 whitespace-nowrap">Lantai 3</td><td class="py-3.5 px-4 text-slate-500 whitespace-nowrap">20 Agustus 2026, 11:20 WIB</td><td class="py-3.5 px-4 text-slate-500 whitespace-nowrap">21 Agustus 2026, 09:45 WIB</td><td class="py-3.5 px-4 whitespace-nowrap"><span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-emerald-50 text-emerald-600 border border-emerald-100">Selesai</span></td><td class="py-3.5 px-4 text-right whitespace-nowrap"><button class="text-xs font-medium text-slate-600 hover:text-slate-900">Detail</button></td></tr></tbody></table></div></div></section>
+<!-- Secondary Section: Two-Column Minimalist Split -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+<!-- Left: Processing Overview -->
+<div class="bg-white border border-border-subtle rounded-lg p-6 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-semibold text-slate-900 tracking-tight">Ringkasan Proses</h3>
+<span class="text-xs font-medium text-slate-500">14 Permintaan Aktif</span>
+</div>
+<!-- Quiet Segmented Progress Bar -->
+<div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden flex gap-0.5 mb-6">
+<div class="bg-blue-600 h-full rounded-sm" style="width: 57%;" title="Technical Repair: 57%"></div>
+<div class="bg-amber-500 h-full rounded-sm" style="width: 29%;" title="Awaiting Approval: 29%"></div>
+<div class="bg-emerald-500 h-full rounded-sm" style="width: 14%;" title="Quality Check: 14%"></div>
+</div>
+<!-- Breakdown Metrics -->
+<div class="space-y-3 text-xs">
+<div class="flex items-center justify-between py-1 border-b border-slate-50">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-blue-600"></span>
+<span class="text-slate-600">Perbaikan &amp; pemeliharaan teknis</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-medium text-slate-900">8 permintaan</span>
+<span class="text-slate-400">(57%)</span>
+</div>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-slate-50">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span class="text-slate-600">Menunggu persetujuan / tanggapan pengguna</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-medium text-slate-900">4 permintaan</span>
+<span class="text-slate-400">(29%)</span>
+</div>
+</div>
+<div class="flex items-center justify-between py-1">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="text-slate-600">Pemeriksaan kualitas akhir &amp; penyelesaian</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-medium text-slate-900">2 permintaan</span>
+<span class="text-slate-400">(14%)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Recent Activity Timeline -->
+<div class="bg-white border border-border-subtle rounded-lg p-6 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+<div class="flex items-center justify-between mb-5">
+<h3 class="text-sm font-semibold text-slate-900 tracking-tight">Aktivitas Terbaru</h3>
+<span class="text-xs text-slate-400 font-normal">Log waktu nyata</span>
+</div>
+<!-- Minimal Vertical Timeline -->
+<div class="relative pl-5 border-l border-border-subtle space-y-5 text-xs">
+<!-- Item 1 -->
+<div class="relative">
+<div class="absolute -left-[25px] top-0.5 w-2 h-2 rounded-full bg-blue-600 ring-4 ring-white"></div>
+<div class="flex flex-col">
+<p class="text-slate-800 leading-snug">
+<span class="font-medium text-slate-900">Dewi Sartika</span> menerima permintaan <span class="font-mono text-slate-600">#SRV-2026-0009</span>
+</p>
+<span class="text-[11px] text-slate-400 mt-0.5">12 menit yang lalu</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="relative">
+<div class="absolute -left-[25px] top-0.5 w-2 h-2 rounded-full bg-slate-300 ring-4 ring-white"></div>
+<div class="flex flex-col">
+<p class="text-slate-800 leading-snug">
+<span class="font-medium text-slate-900">Budi Santoso</span> menambahkan catatan pada <span class="font-mono text-slate-600">#SRV-2026-0012</span>
+</p>
+<span class="text-[11px] text-slate-400 mt-0.5">45 menit yang lalu</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="relative">
+<div class="absolute -left-[25px] top-0.5 w-2 h-2 rounded-full bg-slate-300 ring-4 ring-white"></div>
+<div class="flex flex-col">
+<p class="text-slate-800 leading-snug">
+<span class="font-medium text-slate-900">Agus Wibowo</span> mengalihkan <span class="font-mono text-slate-600">#SRV-2026-0004</span> ke HR Helpdesk
+                </p>
+<span class="text-[11px] text-slate-400 mt-0.5">2 jam yang lalu</span>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="relative">
+<div class="absolute -left-[25px] top-0.5 w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-white"></div>
+<div class="flex flex-col">
+<p class="text-slate-800 leading-snug">
+<span class="font-medium text-slate-900">Rina Wijaya</span> menandai <span class="font-mono text-slate-600">#SRV-2026-0001</span> sebagai selesai
+                </p>
+<span class="text-[11px] text-slate-400 mt-0.5">3 jam yang lalu</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Quiet Minimal Footer -->
+<footer class="w-full border-t border-border-subtle bg-white py-4 px-8 mt-auto">
+<div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-slate-400">
+<p class="">© 2026 Sistem Manajemen Layanan Internal. Ruang Kerja PIC Minimalis.</p>
+<div class="flex items-center gap-5">
+<a class="hover:text-slate-600 transition-colors" href="#">Privasi</a>
+<a class="hover:text-slate-600 transition-colors" href="#">Ketentuan</a>
+<a class="hover:text-slate-600 transition-colors" href="#">Status Sistem</a>
+</div>
+</div>
+</footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+</body></html>

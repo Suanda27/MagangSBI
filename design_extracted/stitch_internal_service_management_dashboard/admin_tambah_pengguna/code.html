@@ -1,0 +1,585 @@
+<!DOCTYPE html><html lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { 'colors': { 'secondary-container': '#d0e1fb', 'on-primary': '#ffffff', 'surface-tint': '#3755c3', 'tertiary-container': '#434b60', 'surface-variant': '#e0e3e5', 'surface-container-high': '#e6e8ea', 'outline': '#757684', 'tertiary': '#2d3449', 'primary-fixed': '#dde1ff', 'on-error-container': '#93000a', 'inverse-on-surface': '#eff1f3', 'on-background': '#191c1e', 'on-tertiary-container': '#b4bbd5', 'on-secondary': '#ffffff', 'error': '#ba1a1a', 'secondary': '#505f76', 'error-container': '#ffdad6', 'surface': '#f7f9fb', 'surface-container-lowest': '#ffffff', 'on-secondary-fixed': '#0b1c30', 'surface-bright': '#f7f9fb', 'on-tertiary-fixed-variant': '#3f465c', 'tertiary-fixed': '#dae2fd', 'outline-variant': '#c4c5d5', 'inverse-surface': '#2d3133', 'secondary-fixed-dim': '#b7c8e1', 'inverse-primary': '#b8c4ff', 'surface-dim': '#d8dadc', 'on-primary-fixed': '#001453', 'on-primary-container': '#a8b8ff', 'primary-container': '#1e40af', 'on-primary-fixed-variant': '#173bab', 'tertiary-fixed-dim': '#bec6e0', 'surface-container-highest': '#e0e3e5', 'on-surface-variant': '#444653', 'on-secondary-fixed-variant': '#38485d', 'secondary-fixed': '#d3e4fe', 'on-surface': '#191c1e', 'on-tertiary': '#ffffff', 'primary': '#00288e', 'surface-container': '#eceef0', 'surface-container-low': '#f2f4f6', 'on-tertiary-fixed': '#131b2e', 'on-secondary-container': '#54647a', 'on-error': '#ffffff', 'background': '#f7f9fb', 'primary-fixed-dim': '#b8c4ff' }, 'borderRadius': { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, 'spacing': { 'gutter': '20px', 'xl': '32px', 'sm': '8px', 'xs': '4px', 'md': '16px', 'lg': '24px', 'base': '4px', 'container-max': '1440px' }, 'fontFamily': { 'body-lg': ['Inter'], 'headline-lg': ['Inter'], 'headline-md': ['Inter'], 'caption': ['Inter'], 'display': ['Inter'], 'body-md': ['Inter'], 'label-md': ['Inter'] }, 'fontSize': { 'body-lg': ['16px', { 'lineHeight': '24px', 'fontWeight': '400' }], 'headline-lg': ['28px', { 'lineHeight': '36px', 'letterSpacing': '-0.01em', 'fontWeight': '600' }], 'headline-md': ['20px', { 'lineHeight': '28px', 'fontWeight': '600' }], 'caption': ['12px', { 'lineHeight': '16px', 'fontWeight': '400' }], 'display': ['36px', { 'lineHeight': '44px', 'letterSpacing': '-0.02em', 'fontWeight': '700' }], 'body-md': ['14px', { 'lineHeight': '20px', 'fontWeight': '400' }], 'label-md': ['12px', { 'lineHeight': '16px', 'letterSpacing': '0.05em', 'fontWeight': '600' }] } } } }</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-16 px-md flex items-center gap-xs"><div class="w-8 h-8 rounded bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[20px]">corporate_fare</span></div><div class="flex flex-col ml-xs"><span class="font-headline-md text-body-md font-semibold text-on-surface leading-tight">ISM System</span><span class="font-caption text-caption text-secondary">Internal Service</span></div></div><div class="px-md pt-sm pb-md space-y-md"><div class="space-y-xs"><span class="px-xs font-label-md text-caption uppercase text-secondary font-semibold">MAIN</span><nav class="space-y-base" data-active-classes="bg-secondary-container text-on-secondary-fixed font-semibold rounded-lg"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="">Dashboard</span></a></nav></div><div class="space-y-xs"><span class="px-xs font-label-md text-caption uppercase text-secondary font-semibold">MASTER DATA</span><nav class="space-y-base" data-active-classes="bg-secondary-container text-on-secondary-fixed font-semibold rounded-lg"><a aria-current="page" class="flex items-center gap-sm px-sm py-xs transition-colors bg-secondary-container text-on-secondary-fixed font-semibold rounded-lg" data-path="pengguna" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="">Pengguna</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="section" href="#"><span class="material-symbols-outlined text-[20px]">apartment</span><span class="">Section</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="layanan" href="#"><span class="material-symbols-outlined text-[20px]">build</span><span class="">Layanan</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="pic" href="#"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="">PIC</span></a></nav></div><div class="space-y-xs"><span class="px-xs font-label-md text-caption uppercase text-secondary font-semibold">PERMINTAAN</span><nav class="space-y-base" data-active-classes="bg-secondary-container text-on-secondary-fixed font-semibold rounded-lg"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="semua-permintaan" href="#"><span class="material-symbols-outlined text-[20px]">inbox</span><span class="">Semua Permintaan</span></a></nav></div><div class="space-y-xs"><span class="px-xs font-label-md text-caption uppercase text-secondary font-semibold">ANALISIS</span><nav class="space-y-base" data-active-classes="bg-secondary-container text-on-secondary-fixed font-semibold rounded-lg"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="laporan" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="">Laporan</span></a></nav></div><div class="space-y-xs"><span class="px-xs font-label-md text-caption uppercase text-secondary font-semibold">SYSTEM</span><nav class="space-y-base" data-active-classes="bg-secondary-container text-on-secondary-fixed font-semibold rounded-lg"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="">Settings</span></a></nav></div></div></div><div class="p-md"><nav data-active-classes="bg-error-container text-on-error-container font-semibold rounded-lg"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-secondary hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="login" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="">Logout</span></a></nav></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-lg"><div class="flex items-center gap-xs font-body-md text-caption text-secondary"><span class="hover:text-on-surface cursor-pointer">Portal</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="hover:text-on-surface cursor-pointer">Console</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="hover:text-on-surface cursor-pointer">Master Data</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-on-surface font-medium">Pengguna</span></div><div class="flex items-center gap-md"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-sm text-[18px] text-secondary">search</span><input class="w-64 pl-xl pr-sm py-xs rounded bg-surface-container-low font-body-md text-caption text-on-surface placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest transition-colors" placeholder="Cari NIK, ID, nama..." type="text"></div><button aria-label="Notifications" class="relative p-xs rounded hover:bg-surface-container-high text-secondary hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-xs right-xs w-2 h-2 rounded-full bg-error"></span></button><div class="flex items-center gap-sm pl-xs"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col text-left"><span class="font-body-md text-caption font-semibold text-on-surface leading-none">AD - Admin</span><span class="font-caption text-[10px] text-secondary leading-tight">ISM Administrator</span></div></div></div></header><main class="w-full pt-16 bg-background min-h-screen px-lg py-lg max-w-container-max mx-auto"><div class="flex flex-col w-full pb-xl">
+<!-- Toast Notification Container -->
+<div class="fixed bottom-lg right-lg z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 flex items-start gap-md p-md rounded-xl bg-surface-container-lowest shadow-2xl max-w-md" id="toastNotification">
+<div class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0 pr-xs">
+<span class="font-headline-md text-body-md font-semibold text-on-surface">Pengguna berhasil ditambahkan</span>
+<span class="font-body-md text-caption text-secondary mt-base">Data pengguna baru telah berhasil didaftarkan ke direktori sistem. Mengalihkan...</span>
+</div>
+<button class="text-secondary hover:text-on-surface p-xs rounded" onclick="dismissToast()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Header Section with Breadcrumb & Context Indicator -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-lg">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs font-body-md text-caption text-secondary mb-xs">
+<span class="hover:text-primary cursor-pointer transition-colors">Portal</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="hover:text-primary cursor-pointer transition-colors">Console</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<a class="hover:text-primary cursor-pointer transition-colors" data-path="pengguna" href="#">Pengguna</a>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Tambah</span>
+</div>
+<h1 class="font-display text-display text-on-surface tracking-tight font-bold">Tambah Pengguna</h1>
+<p class="font-body-lg text-body-lg text-secondary">Tambahkan akun pengguna baru ke dalam sistem direktori internal.</p>
+</div>
+<!-- Live System Directory Metadata Badge -->
+
+</div>
+<!-- Main Grid Layout: Form Body + Contextual Assistant Rail -->
+<form class="grid grid-cols-1 xl:grid-cols-12 gap-lg items-start" id="addUserForm" onsubmit="handleFormSubmit(event)">
+<!-- Left 8 Columns: Multi-section Interactive Form -->
+<div class="xl:col-span-8 flex flex-col gap-lg">
+<!-- Realtime Client Validation Summary (Hidden by default) -->
+<div class="hidden p-md rounded-xl bg-error-container text-on-error-container shadow-sm flex items-start gap-md" id="validationBanner">
+<span class="material-symbols-outlined text-error text-[22px] shrink-0 mt-base">error</span>
+<div class="flex flex-col gap-base flex-1">
+<span class="font-headline-md text-body-md font-semibold text-error">Mohon lengkapi isian formulir dengan benar</span>
+<ul class="list-disc list-inside font-body-md text-caption text-on-error-container space-y-base" id="validationList">
+<!-- Populated via JS -->
+</ul>
+</div>
+</div>
+<!-- SECTION 1: Identitas Akun Pengguna -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-lg relative overflow-hidden">
+<div class="flex items-center justify-between pb-md mb-md bg-surface-container-low/40 -mx-lg px-lg -mt-lg pt-lg">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">badge</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Identitas Akun Pengguna</h2>
+<p class="font-caption text-caption text-secondary">Data identifikasi karyawan &amp; pemetaan unit organisasi</p>
+</div>
+</div>
+<span class="font-label-md text-caption uppercase tracking-wider text-secondary bg-surface-container px-sm py-xs rounded-full font-semibold">Bagian 1/2</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Nama Lengkap -->
+<div class="md:col-span-2 flex flex-col gap-xs">
+<label class="font-headline-md text-caption font-semibold text-on-surface flex items-center gap-xs" for="namaLengkap">
+              Nama Lengkap
+              <span class="text-error">*</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-md text-[18px] text-secondary">person_outline</span>
+<input class="w-full pl-[42px] pr-md py-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm focus:outline-none focus:bg-surface-container-low transition-all placeholder:text-secondary" id="namaLengkap" name="namaLengkap" oninput="clearFieldError('namaLengkap')" placeholder="Masukkan nama lengkap karyawan" required="" type="text">
+</div>
+<span class="hidden font-caption text-caption text-error mt-base flex items-center gap-xs" id="error-namaLengkap">
+<span class="material-symbols-outlined text-[14px]">info</span> Nama wajib diisi
+            </span>
+</div>
+<!-- NIK -->
+<div class="flex flex-col gap-xs">
+<label class="font-headline-md text-caption font-semibold text-on-surface flex items-center gap-xs" for="nik">
+              Nomor Induk Karyawan (NIK)
+              <span class="text-error">*</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-md text-[18px] text-secondary">pin</span>
+<input class="w-full pl-[42px] pr-md py-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm focus:outline-none focus:bg-surface-container-low transition-all placeholder:text-secondary" id="nik" name="nik" oninput="checkNikRealtime(this.value)" placeholder="Contoh: 22010456" required="" type="text">
+</div>
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-secondary">NIK harus unik dan terdaftar di database HR</span>
+<span class="hidden font-label-md text-[10px] uppercase font-semibold px-xs py-base rounded bg-surface-container text-secondary" id="nikBadge">Mengecek...</span>
+</div>
+<span class="hidden font-caption text-caption text-error mt-base flex items-center gap-xs" id="error-nik">
+<span class="material-symbols-outlined text-[14px]">info</span> NIK wajib diisi &amp; harus unik (minimal 6 karakter)
+            </span>
+</div>
+<!-- Email Perusahaan -->
+<div class="flex flex-col gap-xs">
+<label class="font-headline-md text-caption font-semibold text-on-surface flex items-center gap-xs" for="email">
+              Email Perusahaan
+              <span class="text-error">*</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-md text-[18px] text-secondary">alternate_email</span>
+<input class="w-full pl-[42px] pr-md py-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm focus:outline-none focus:bg-surface-container-low transition-all placeholder:text-secondary" id="email" name="email" oninput="clearFieldError('email')" placeholder="nama@company.com" required="" type="email">
+</div>
+<span class="font-caption text-caption text-secondary">Gunakan format email resmi korporat (@company.com)</span>
+<span class="hidden font-caption text-caption text-error mt-base flex items-center gap-xs" id="error-email">
+<span class="material-symbols-outlined text-[14px]">info</span> Format email tidak valid
+            </span>
+</div>
+<!-- Section Dropdown -->
+<div class="flex flex-col gap-xs">
+<label class="font-headline-md text-caption font-semibold text-on-surface flex items-center gap-xs" for="sectionSelect">
+              Section Unit
+              <span class="text-error">*</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-md text-[18px] text-secondary pointer-events-none">apartment</span>
+<select class="w-full appearance-none pl-[42px] pr-xl py-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm focus:outline-none focus:bg-surface-container-low transition-all cursor-pointer" id="sectionSelect" name="section" onchange="updateSectionPreview(this.value)" required="">
+<option disabled="" selected="" value="">Pilih Section Unit...</option>
+<option value="Assembly">Assembly - Produksi &amp; Manufaktur</option>
+<option value="HR">HR - Human Resources</option>
+<option value="IS">IS - Information Systems</option>
+<option value="PE">PE - Production Engineering</option>
+<option value="GA">GA - General Affairs</option>
+</select>
+<span class="material-symbols-outlined absolute right-md text-[18px] text-secondary pointer-events-none">expand_more</span>
+</div>
+<span class="font-caption text-caption text-secondary">Pilih divisi operasional tempat user bertugas</span>
+</div>
+<!-- Role Pengguna Dropdown -->
+<div class="flex flex-col gap-xs">
+<label class="font-headline-md text-caption font-semibold text-on-surface flex items-center gap-xs" for="roleSelect">
+              Role Pengguna
+              <span class="text-error">*</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-md text-[18px] text-secondary pointer-events-none">admin_panel_settings</span>
+<select class="w-full appearance-none pl-[42px] pr-xl py-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm focus:outline-none focus:bg-surface-container-low transition-all cursor-pointer" id="roleSelect" name="role" onchange="updateRolePreview(this.value)" required="">
+<option disabled="" selected="" value="">Pilih Level Akses Role...</option>
+<option value="Karyawan">Karyawan (Standard Requester)</option>
+<option value="PIC">PIC (Service Executor / Solver)</option>
+<option value="Supervisor">Supervisor (Approval &amp; Monitor)</option>
+<option value="Admin">Admin (Full Access Console)</option>
+</select>
+<span class="material-symbols-outlined absolute right-md text-[18px] text-secondary pointer-events-none">expand_more</span>
+</div>
+<span class="font-caption text-caption text-secondary">Role menentukan otorisasi &amp; modul yang dapat diakses</span>
+</div>
+</div>
+</div>
+<!-- SECTION 2: Keamanan Akun -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-lg relative overflow-hidden">
+<div class="flex items-center justify-between pb-md mb-md bg-surface-container-low/40 -mx-lg px-lg -mt-lg pt-lg">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">lock_reset</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Keamanan Akun</h2>
+<p class="font-caption text-caption text-secondary">Kredensial login awal untuk autentikasi pertama kali</p>
+</div>
+</div>
+<span class="font-label-md text-caption uppercase tracking-wider text-secondary bg-surface-container px-sm py-xs rounded-full font-semibold">Bagian 2/2</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Password -->
+<div class="flex flex-col gap-xs">
+<label class="font-headline-md text-caption font-semibold text-on-surface flex items-center gap-xs" for="password">
+              Kata Sandi / Password
+              <span class="text-error">*</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-md text-[18px] text-secondary">key</span>
+<input class="w-full pl-[42px] pr-xl py-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm focus:outline-none focus:bg-surface-container-low transition-all placeholder:text-secondary" id="password" name="password" oninput="evaluatePasswordStrength(this.value)" placeholder="Minimal 8 karakter" required="" type="password">
+<button class="absolute right-md text-secondary hover:text-on-surface p-xs flex items-center justify-center transition-colors" onclick="togglePasswordVisibility('password', this)" title="Lihat Password" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+<!-- Password strength indicator bars -->
+<div class="flex items-center gap-xs mt-xs">
+<div class="h-1 flex-1 rounded bg-surface-container transition-colors" id="str-1"></div>
+<div class="h-1 flex-1 rounded bg-surface-container transition-colors" id="str-2"></div>
+<div class="h-1 flex-1 rounded bg-surface-container transition-colors" id="str-3"></div>
+<div class="h-1 flex-1 rounded bg-surface-container transition-colors" id="str-4"></div>
+<span class="font-caption text-[11px] text-secondary ml-xs" id="str-label">Sangat Lemah</span>
+</div>
+</div>
+<!-- Konfirmasi Password -->
+<div class="flex flex-col gap-xs">
+<label class="font-headline-md text-caption font-semibold text-on-surface flex items-center gap-xs" for="confirmPassword">
+              Konfirmasi Kata Sandi
+              <span class="text-error">*</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-md text-[18px] text-secondary">lock_clock</span>
+<input class="w-full pl-[42px] pr-xl py-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm focus:outline-none focus:bg-surface-container-low transition-all placeholder:text-secondary" id="confirmPassword" name="confirmPassword" oninput="checkPasswordMatch()" placeholder="Ulangi kata sandi" required="" type="password">
+<button class="absolute right-md text-secondary hover:text-on-surface p-xs flex items-center justify-center transition-colors" onclick="togglePasswordVisibility('confirmPassword', this)" title="Lihat Password" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+<span class="font-caption text-caption text-secondary" id="passwordMatchText">Harus persis sama dengan kata sandi sebelumnya</span>
+<span class="hidden font-caption text-caption text-error mt-base flex items-center gap-xs" id="error-confirmPassword">
+<span class="material-symbols-outlined text-[14px]">close</span> Kata sandi tidak cocok
+            </span>
+</div>
+</div>
+<div class="mt-md p-sm rounded-lg bg-surface-container-low flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary text-[18px]">info</span>
+<span class="font-caption text-caption text-secondary">Karyawan akan diminta untuk memperbarui kata sandi ini saat pertama kali melakukan login ke ISM System.</span>
+</div>
+</div>
+<!-- SECTION 3: Status Pengguna -->
+
+<!-- Bottom Form Actions (Footer Sticky on Mobile) -->
+<div class="flex items-center justify-between pt-md bg-surface-container-lowest p-md rounded-xl shadow-sm gap-sm">
+<a class="inline-flex items-center gap-xs px-lg py-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-md text-body-md transition-colors" data-path="pengguna" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span class="">Batal</span>
+</a>
+<div class="flex items-center gap-md">
+<button class="hidden sm:inline-flex items-center gap-xs px-md py-sm rounded-lg text-secondary hover:text-on-surface font-body-md text-caption transition-colors" onclick="resetAddUserForm()" type="button">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span class="">Reset Isian</span>
+</button>
+<button class="inline-flex items-center justify-center gap-sm px-xl py-sm rounded-lg bg-primary-container hover:bg-primary text-on-primary font-headline-md text-body-md shadow-md hover:shadow-lg transition-all active:scale-[0.98]" id="submitBtn" type="submit">
+<span class="material-symbols-outlined text-[20px]" id="submitIcon">check_circle</span>
+<span id="submitLabel" class="">Selesai</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right 4 Columns: Dynamic ID Card Preview & Enterprise Guidelines -->
+<div class="xl:col-span-4 flex flex-col gap-lg sticky top-20">
+<!-- Interactive Virtual ID Badge Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md p-lg relative overflow-hidden">
+<div class="absolute -right-6 -top-6 w-32 h-32 bg-primary/5 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-md">
+<span class="font-label-md text-[11px] uppercase tracking-wider text-secondary font-semibold flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-primary"></span> Pratinjau ID Card
+          </span>
+<span class="inline-flex items-center px-xs py-base rounded text-[11px] font-label-md uppercase font-semibold bg-surface-tint/10 text-primary" id="previewStatusBadge">
+            Aktif
+          </span>
+</div>
+<!-- Identity Visual Badge -->
+<div class="p-md rounded-xl bg-surface-container-low flex flex-col items-center text-center relative overflow-hidden">
+<div class="relative mb-sm">
+<div class="w-20 h-20 rounded-full bg-secondary-container flex items-center justify-center text-primary font-display text-headline-lg font-bold shadow-inner" id="previewAvatar">
+              --
+            </div>
+<div class="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm" id="previewRoleIcon">
+<span class="material-symbols-outlined text-[14px]">person</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md font-semibold text-on-surface truncate w-full" id="previewName">Nama Pengguna</h3>
+<p class="font-caption text-caption text-secondary font-mono mt-base" id="previewNik">NIK: 2201XXXX</p>
+<span class="font-body-md text-caption text-primary font-medium mt-xs" id="previewEmail">user@company.com</span>
+<!-- Department Chips -->
+<div class="flex items-center gap-xs mt-md">
+<div class="px-sm py-xs rounded bg-surface-container-lowest shadow-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary text-[14px]">apartment</span>
+<span class="font-caption text-caption font-semibold text-on-surface" id="previewSection">Belum Ada Section</span>
+</div>
+<div class="px-sm py-xs rounded bg-surface-container-lowest shadow-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary text-[14px]">security</span>
+<span class="font-caption text-caption font-semibold text-on-surface" id="previewRole">Karyawan</span>
+</div>
+</div>
+</div>
+<!-- Role Authority Description Box -->
+<div class="mt-md p-sm rounded-lg bg-surface-container text-on-surface-variant flex flex-col gap-base">
+<span class="font-label-md text-[10px] uppercase font-bold text-secondary">Cakupan Hak Akses Role</span>
+<p class="font-body-md text-caption text-secondary leading-relaxed" id="roleDescriptionText">
+            Karyawan dapat mengajukan tiket layanan ISM, melihat perkembangan permintaan mereka sendiri, dan memberikan penilaian kepuasan layanan.
+          </p>
+</div>
+</div>
+<!-- Quick Security & Validation Guide Checklist -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-lg">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary text-[20px]">verified_user</span>
+<h4 class="font-headline-md text-body-md font-semibold text-on-surface">Ketentuan Pendaftaran</h4>
+</div>
+<ul class="space-y-sm font-body-md text-caption text-secondary">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-[16px] text-surface-tint shrink-0 mt-base">check_circle</span>
+<span class="">NIK wajib unik dan belum pernah didaftarkan dalam sistem.</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-[16px] text-surface-tint shrink-0 mt-base">check_circle</span>
+<span class="">Email harus berdomain korporat resmi dan aktif menerima instruksi verifikasi.</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-[16px] text-surface-tint shrink-0 mt-base">check_circle</span>
+<span class="">Kata sandi memenuhi standar minimal 8 karakter dengan kombinasi alfanumerik.</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-[16px] text-surface-tint shrink-0 mt-base">check_circle</span>
+<span class="">Penetapan role Admin atau Supervisor memerlukan validasi otorisasi Section Head.</span>
+</li>
+</ul>
+<!-- Fast Link to Bulk User Import -->
+<div class="mt-lg pt-md bg-surface-container-low -mx-lg -mb-lg p-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-headline-md text-caption font-semibold text-on-surface">Tambah Banyak Karyawan?</span>
+<span class="font-caption text-[11px] text-secondary">Impor data dari spreadsheet Excel/CSV</span>
+</div>
+<button class="p-xs bg-surface-container-lowest hover:bg-primary-fixed text-primary rounded-lg transition-colors flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[18px]">upload_file</span>
+</button>
+</div>
+</div>
+</div>
+</form>
+</div>
+<script>
+  // Real-time synchronization between form fields and the Preview ID Badge
+  const inputName = document.getElementById('namaLengkap');
+  const inputNik = document.getElementById('nik');
+  const inputEmail = document.getElementById('email');
+  const previewName = document.getElementById('previewName');
+  const previewNik = document.getElementById('previewNik');
+  const previewEmail = document.getElementById('previewEmail');
+  const previewAvatar = document.getElementById('previewAvatar');
+  const previewSection = document.getElementById('previewSection');
+  const previewRole = document.getElementById('previewRole');
+  const previewRoleIcon = document.getElementById('previewRoleIcon');
+  const previewStatusBadge = document.getElementById('previewStatusBadge');
+  const roleDescriptionText = document.getElementById('roleDescriptionText');
+
+  const roleDescriptions = {
+    'Karyawan': 'Karyawan memiliki izin standar untuk mengirimkan tiket permintaan layanan internal, memantau kemajuan proses secara mandiri, serta memberikan tinjauan rating.',
+    'PIC': 'PIC (Person In Charge) ditugaskan untuk menerima penugasan tiket perbaikan/layanan di section terkait, memperbarui log tindakan, dan menyelesaikan kendala.',
+    'Supervisor': 'Supervisor dapat meninjau semua permohonan yang masuk dari seksi terkait, melakukan eskalasi tugas, serta menandatangani persetujuan pengadaan.',
+    'Admin': 'Administrator memiliki wewenang penuh atas konsol konfigurasi Master Data, audit log, perizinan pengguna, dan laporan analitik global ISM.'
+  };
+
+  const roleIcons = {
+    'Karyawan': 'person',
+    'PIC': 'engineering',
+    'Supervisor': 'verified_user',
+    'Admin': 'shield_person'
+  };
+
+  if (inputName) {
+    inputName.addEventListener('input', (e) => {
+      const val = e.target.value.trim();
+      previewName.textContent = val || 'Nama Pengguna';
+      if (val) {
+        const parts = val.split(' ');
+        const initials = parts.length > 1 ? (parts[0][0] + parts[1][0]).toUpperCase() : parts[0].substring(0, 2).toUpperCase();
+        previewAvatar.textContent = initials;
+      } else {
+        previewAvatar.textContent = '--';
+      }
+    });
+  }
+
+  if (inputNik) {
+    inputNik.addEventListener('input', (e) => {
+      const val = e.target.value.trim();
+      previewNik.textContent = val ? 'NIK: ' + val : 'NIK: 2201XXXX';
+    });
+  }
+
+  if (inputEmail) {
+    inputEmail.addEventListener('input', (e) => {
+      const val = e.target.value.trim();
+      previewEmail.textContent = val || 'user@company.com';
+    });
+  }
+
+  function updateSectionPreview(section) {
+    if (previewSection) {
+      previewSection.textContent = section ? 'Sec: ' + section : 'Belum Ada Section';
+    }
+  }
+
+  function updateRolePreview(role) {
+    if (previewRole) {
+      previewRole.textContent = role;
+    }
+    if (roleDescriptionText && roleDescriptions[role]) {
+      roleDescriptionText.textContent = roleDescriptions[role];
+    }
+    if (previewRoleIcon && roleIcons[role]) {
+      previewRoleIcon.innerHTML = `<span class="material-symbols-outlined text-[14px]">${roleIcons[role]}</span>`;
+    }
+  }
+
+  function updateStatusPreview(status) {
+    if (previewStatusBadge) {
+      if (status === 'Aktif') {
+        previewStatusBadge.textContent = 'Aktif';
+        previewStatusBadge.className = 'inline-flex items-center px-xs py-base rounded text-[11px] font-label-md uppercase font-semibold bg-surface-tint/10 text-primary';
+      } else {
+        previewStatusBadge.textContent = 'Nonaktif';
+        previewStatusBadge.className = 'inline-flex items-center px-xs py-base rounded text-[11px] font-label-md uppercase font-semibold bg-surface-container-high text-secondary';
+      }
+    }
+  }
+
+  // Password visibility toggle
+  function togglePasswordVisibility(fieldId, btnElement) {
+    const field = document.getElementById(fieldId);
+    if (!field) return;
+    const icon = btnElement.querySelector('span');
+    if (field.type === 'password') {
+      field.type = 'text';
+      if (icon) icon.textContent = 'visibility_off';
+    } else {
+      field.type = 'password';
+      if (icon) icon.textContent = 'visibility';
+    }
+  }
+
+  // Real-time password strength meter
+  function evaluatePasswordStrength(val) {
+    const s1 = document.getElementById('str-1');
+    const s2 = document.getElementById('str-2');
+    const s3 = document.getElementById('str-3');
+    const s4 = document.getElementById('str-4');
+    const label = document.getElementById('str-label');
+
+    // Reset styles
+    [s1, s2, s3, s4].forEach(bar => bar.className = 'h-1 flex-1 rounded bg-surface-container transition-colors');
+    if (!val) {
+      label.textContent = 'Sangat Lemah';
+      return;
+    }
+
+    let score = 0;
+    if (val.length >= 8) score++;
+    if (/[A-Z]/.test(val)) score++;
+    if (/[0-9]/.test(val)) score++;
+    if (/[^A-Za-z0-9]/.test(val)) score++;
+
+    if (score >= 1) s1.className = 'h-1 flex-1 rounded bg-error transition-colors';
+    if (score >= 2) s2.className = 'h-1 flex-1 rounded bg-surface-tint transition-colors';
+    if (score >= 3) s3.className = 'h-1 flex-1 rounded bg-primary transition-colors';
+    if (score >= 4) s4.className = 'h-1 flex-1 rounded bg-primary-container transition-colors';
+
+    const labels = ['Sangat Lemah', 'Cukup', 'Kuat', 'Sangat Aman'];
+    label.textContent = labels[score - 1] || 'Sangat Lemah';
+
+    checkPasswordMatch();
+  }
+
+  function checkPasswordMatch() {
+    const pwd = document.getElementById('password').value;
+    const confirm = document.getElementById('confirmPassword').value;
+    const errText = document.getElementById('error-confirmPassword');
+    const matchText = document.getElementById('passwordMatchText');
+
+    if (!confirm) {
+      errText.classList.add('hidden');
+      matchText.classList.remove('hidden');
+      return true;
+    }
+
+    if (pwd !== confirm) {
+      errText.classList.remove('hidden');
+      matchText.classList.add('hidden');
+      return false;
+    } else {
+      errText.classList.add('hidden');
+      matchText.classList.remove('hidden');
+      return true;
+    }
+  }
+
+  function checkNikRealtime(val) {
+    const badge = document.getElementById('nikBadge');
+    const err = document.getElementById('error-nik');
+    if (!val) {
+      badge.classList.add('hidden');
+      err.classList.add('hidden');
+      return;
+    }
+    badge.classList.remove('hidden');
+    badge.textContent = 'Memeriksa NIK...';
+    
+    // Simulate instantaneous debounce verification
+    setTimeout(() => {
+      if (val.length >= 6) {
+        badge.textContent = 'Tersedia';
+        badge.className = 'font-label-md text-[10px] uppercase font-semibold px-xs py-base rounded bg-surface-tint/10 text-primary';
+        err.classList.add('hidden');
+      } else {
+        badge.textContent = 'Format Tidak Sesuai';
+        badge.className = 'font-label-md text-[10px] uppercase font-semibold px-xs py-base rounded bg-error-container text-error';
+      }
+    }, 200);
+  }
+
+  function clearFieldError(fieldId) {
+    const err = document.getElementById('error-' + fieldId);
+    if (err) err.classList.add('hidden');
+  }
+
+  function resetAddUserForm() {
+    document.getElementById('addUserForm').reset();
+    previewName.textContent = 'Nama Pengguna';
+    previewNik.textContent = 'NIK: 2201XXXX';
+    previewEmail.textContent = 'user@company.com';
+    previewAvatar.textContent = '--';
+    previewSection.textContent = 'Belum Ada Section';
+    previewRole.textContent = 'Karyawan';
+    updateRolePreview('Karyawan');
+    updateStatusPreview('Aktif');
+    evaluatePasswordStrength('');
+    document.getElementById('validationBanner').classList.add('hidden');
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('namaLengkap').value.trim();
+    const nik = document.getElementById('nik').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const pwd = document.getElementById('password').value;
+    const confirm = document.getElementById('confirmPassword').value;
+
+    const validationBanner = document.getElementById('validationBanner');
+    const validationList = document.getElementById('validationList');
+    validationList.innerHTML = '';
+    const errors = [];
+
+    if (!name) errors.push('Nama Lengkap wajib diisi');
+    if (!nik || nik.length < 6) errors.push('NIK wajib diisi minimal 6 karakter');
+    if (!email || !email.includes('@')) errors.push('Email perusahaan harus valid formatnya');
+    if (!pwd || pwd.length < 8) errors.push('Kata sandi minimal 8 karakter');
+    if (pwd !== confirm) errors.push('Kesesuaian konfirmasi kata sandi tidak cocok');
+
+    if (errors.length > 0) {
+      errors.forEach(err => {
+        const li = document.createElement('li');
+        li.textContent = err;
+        validationList.appendChild(li);
+      });
+      validationBanner.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    validationBanner.classList.add('hidden');
+
+    // Trigger loading spinner on submission button
+    const submitBtn = document.getElementById('submitBtn');
+    const submitIcon = document.getElementById('submitIcon');
+    const submitLabel = document.getElementById('submitLabel');
+
+    submitBtn.disabled = true;
+    submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
+    submitIcon.textContent = 'progress_activity';
+    submitIcon.classList.add('animate-spin');
+    submitLabel.textContent = 'Menyimpan...';
+
+    // Simulated enterprise API submission delay
+    setTimeout(() => {
+      submitIcon.classList.remove('animate-spin');
+      submitIcon.textContent = 'done';
+      submitLabel.textContent = 'Tersimpan!';
+
+      // Display Success Toast
+      const toast = document.getElementById('toastNotification');
+      toast.classList.remove('opacity-0', 'translate-y-20', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      // Navigate back to user list view
+      setTimeout(() => {
+        const userNavAnchor = document.querySelector('a[data-path="pengguna"]');
+        if (userNavAnchor) {
+          userNavAnchor.click();
+        } else {
+          window.location.hash = 'pengguna';
+        }
+      }, 1400);
+    }, 1100);
+  }
+
+  function dismissToast() {
+    const toast = document.getElementById('toastNotification');
+    toast.classList.add('opacity-0', 'translate-y-20', 'pointer-events-none');
+  }
+</script></main></div></body></html>

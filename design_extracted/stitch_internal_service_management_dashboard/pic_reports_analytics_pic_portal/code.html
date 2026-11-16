@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-highest":"#e0e3e5","on-surface-variant":"#444653","on-background":"#191c1e","on-secondary":"#ffffff","surface":"#f7f9fb","on-secondary-fixed-variant":"#38485d","background":"#f7f9fb","on-primary":"#ffffff","on-tertiary":"#ffffff","surface-dim":"#d8dadc","primary-container":"#1e40af","surface-container-lowest":"#ffffff","inverse-primary":"#b8c4ff","tertiary-container":"#434b60","surface-tint":"#3755c3","inverse-on-surface":"#eff1f3","on-tertiary-fixed-variant":"#3f465c","error-container":"#ffdad6","surface-variant":"#e0e3e5","on-secondary-container":"#54647a","primary-fixed-dim":"#b8c4ff","on-error-container":"#93000a","on-secondary-fixed":"#0b1c30","outline-variant":"#c4c5d5","tertiary-fixed":"#dae2fd","on-primary-container":"#a8b8ff","outline":"#757684","on-primary-fixed-variant":"#173bab","on-primary-fixed":"#001453","primary-fixed":"#dde1ff","on-tertiary-container":"#b4bbd5","tertiary":"#2d3449","on-tertiary-fixed":"#131b2e","error":"#ba1a1a","surface-bright":"#f7f9fb","secondary-fixed":"#d3e4fe","on-error":"#ffffff","inverse-surface":"#2d3133","secondary-fixed-dim":"#b7c8e1","secondary-container":"#d0e1fb","primary":"#00288e","surface-container":"#eceef0","surface-container-low":"#f2f4f6","tertiary-fixed-dim":"#bec6e0","secondary":"#505f76","on-surface":"#191c1e","surface-container-high":"#e6e8ea"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"container-max":"1440px","xs":"4px","lg":"24px","md":"16px","gutter":"20px","xl":"32px","sm":"8px","base":"4px"},fontFamily:{"body-lg":["Inter"],"body-md":["Inter"],"headline-lg":["Inter"],"label-md":["Inter"],"display":["Inter"],"caption":["Inter"],"headline-md":["Inter"]},fontSize:{"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"headline-lg":["28px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.05em",fontWeight:"600"}],"display":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}],"caption":["12px",{lineHeight:"16px",fontWeight:"400"}],"headline-md":["20px",{lineHeight:"28px",fontWeight:"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 flex items-center gap-3 px-md border-b border-surface-container"><img alt="ISM System" class="w-8 h-8 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WqT4Xm90exopNBfjIj_cnCKS1qNqUqfSrXDch2gTScDZ32xaNJsPk8nhJXens9g3alBPgSpOatGFxWY4sgemkbjbg3mkyPGm8cXAYUhTvyyG1p71gmUcdcBbIzCUKnTF4Z3fozgm1cbE7V2rPMPfT2NOhJPDnlas2DcLdluFjvy2DUylS43W4cODc7zXM1puukA4D8eV3IAUlWkhvb-ATiu1fYa2pHMqh5Rm8skHC_8e0i3nNog-Fs-Xc"/><div class="flex flex-col"><span class="font-headline-md text-body-md text-primary font-bold leading-tight">ISM System</span><span class="font-label-md text-caption text-on-surface-variant">PIC Portal</span></div></div><nav class="flex flex-col gap-1 p-sm mt-2" data-active-classes="bg-secondary-container text-on-secondary-fixed font-semibold relative before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary-container before:rounded-r"><a class="flex items-center gap-3 px-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-xl">dashboard</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center justify-between px-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="incoming-requests" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-xl">move_to_inbox</span><span class="font-body-md text-body-md">Incoming Requests</span></div><span class="font-label-md text-caption bg-secondary-container text-on-secondary-fixed px-1.5 py-0.5 rounded-full">12</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="my-requests" href="#"><span class="material-symbols-outlined text-xl">assignment_ind</span><span class="font-body-md text-body-md">My Requests</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="processing" href="#"><span class="material-symbols-outlined text-xl">sync_alt</span><span class="font-body-md text-body-md">Processing</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="completed" href="#"><span class="material-symbols-outlined text-xl">task_alt</span><span class="font-body-md text-body-md">Completed</span></a><a aria-current="page" class="flex items-center gap-3 px-3 py-2.5 rounded transition-all bg-secondary-container text-on-secondary-fixed font-semibold relative before:content-[''] before:absolute before:left-0 before:top-2 before:bottom-2 before:w-1 before:bg-primary-container before:rounded-r" data-path="reports" href="#"><span class="material-symbols-outlined text-xl">insights</span><span class="font-body-md text-body-md">Reports</span></a></nav></div><div class="p-sm border-t border-surface-container flex flex-col gap-1"><a class="flex items-center gap-3 px-3 py-2.5 rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="settings" href="#"><span class="material-symbols-outlined text-xl">settings</span><span class="font-body-md text-body-md">Settings</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded text-on-surface-variant hover:bg-error-container hover:text-on-error-container transition-all" data-path="logout" href="#"><span class="material-symbols-outlined text-xl">logout</span><span class="font-body-md text-body-md">Logout</span></a></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-lg flex items-center justify-between border-b border-surface-container"><div class="flex items-center flex-1 max-w-md"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span><input class="w-full pl-9 pr-4 py-1.5 rounded bg-surface-container-low border border-surface-container-highest text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container text-body-md transition-colors" placeholder="Search requests, tickets, or service tags..." type="text"/></div></div><div class="flex items-center gap-lg"><button class="relative p-1.5 rounded-full text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-2xl">notifications</span><span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span></button><div class="h-8 w-px bg-surface-container-highest"></div><div class="flex items-center gap-3"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WqT4Xm90exopNBfjIj_cnCKS1qNqUqfSrXDch2gTScDZ32xaNJsPk8nhJXens9g3alBPgSpOatGFxWY4sgemkbjbg3mkyPGm8cXAYUhTvyyG1p71gmUcdcBbIzCUKnTF4Z3fozgm1cbE7V2rPMPfT2NOhJPDnlas2DcLdluFjvy2DUylS43W4cODc7zXM1puukA4D8eV3IAUlWkhvb-ATiu1fYa2pHMqh5Rm8skHC_8e0i3nNog-Fs-Xc"/><div class="flex flex-col text-left"><span class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Budi Santoso</span><span class="font-label-md text-caption text-secondary font-medium">PIC - IT Support & Facilities</span></div><button class="text-on-surface-variant hover:text-on-surface ml-1"><span class="material-symbols-outlined text-lg">expand_more</span></button></div></div></header><main class="w-full pt-16 flex-1 px-lg py-lg max-w-container-max mx-auto"><div class="flex flex-col w-full gap-lg">
+<!-- Header & Executive Controls -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-caption">
+<span class="material-symbols-outlined text-sm">analytics</span>
+<span>PIC OPERATIONS INTELLIGENCE</span>
+<span>•</span>
+<span class="text-primary-container font-semibold">SEPTEMBER 2026 AUDIT CYCLE</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Operational Reports</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Service performance, resolution rates, and SLA compliance metrics for PIC operations.</p>
+</div>
+<!-- Export Action -->
+<div class="flex items-center gap-sm">
+<button class="flex items-center gap-2 bg-surface-container hover:bg-surface-container-high text-on-surface px-4 py-2 rounded-lg font-label-md text-body-md transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg">print</span>
+<span>Print View</span>
+</button>
+<button class="flex items-center gap-2 bg-primary-container hover:bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md text-body-md transition-all shadow-md hover:shadow-lg">
+<span class="material-symbols-outlined text-lg">download</span>
+<span>Download Full Executive Summary</span>
+</button>
+</div>
+</div>
+<!-- Scope & Filter Console -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-md">
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-md flex-1">
+<!-- Timeframe Selector -->
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-caption text-secondary">REPORT TIMEFRAME</span>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-secondary text-lg">calendar_month</span>
+<select class="w-full pl-9 pr-8 py-2 bg-surface-container-low hover:bg-surface-container text-on-surface font-body-md text-body-md rounded-lg appearance-none cursor-pointer focus:outline-none transition-colors">
+<option selected="">This Month (September 2026)</option>
+<option>Last Month (August 2026)</option>
+<option>Q3 2026 (Jul - Sep)</option>
+<option>Year to Date 2026</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 text-secondary text-base pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Service Department -->
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-caption text-secondary">SERVICE DEPARTMENT</span>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-secondary text-lg">hub</span>
+<select class="w-full pl-9 pr-8 py-2 bg-surface-container-low hover:bg-surface-container text-on-surface font-body-md text-body-md rounded-lg appearance-none cursor-pointer focus:outline-none transition-colors">
+<option selected="">All Services (IT, Facilities, Admin)</option>
+<option>IT Support & Infrastructure</option>
+<option>Facilities & Physical Assets</option>
+<option>General Administration</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 text-secondary text-base pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Departmental Section -->
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-caption text-secondary">REQUESTING SECTION</span>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-secondary text-lg">corporate_fare</span>
+<select class="w-full pl-9 pr-8 py-2 bg-surface-container-low hover:bg-surface-container text-on-surface font-body-md text-body-md rounded-lg appearance-none cursor-pointer focus:outline-none transition-colors">
+<option selected="">All Sections</option>
+<option>Information Systems (IS)</option>
+<option>Human Resources (HR)</option>
+<option>Assembly Plant A & B</option>
+<option>Marketing & Strategy</option>
+<option>Production Engineering (PE)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 text-secondary text-base pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Refresh / Quick Filter Tag -->
+<div class="flex items-center justify-end md:self-end pt-1 gap-2">
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-lg transition-colors" title="Sync live updates">
+<span class="material-symbols-outlined text-xl">sync</span>
+</button>
+<div class="h-6 w-px bg-surface-container-highest hidden md:block"></div>
+<span class="font-label-md text-caption text-on-surface-variant bg-surface-container px-2.5 py-1.5 rounded-md">Live Data Sync: 09:42 AM</span>
+</div>
+</div>
+<!-- KPI Metric Cards Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Total Requests -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-caption text-secondary tracking-wider">TOTAL TICKETS HANDLED</span>
+<span class="font-display text-display text-on-surface font-bold mt-1">56</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-xl">confirmation_number</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between text-body-md">
+<div class="flex items-center gap-1 text-primary-container font-label-md">
+<span class="material-symbols-outlined text-base">arrow_upward</span>
+<span>+12%</span>
+<span class="font-caption text-caption text-secondary font-normal ml-1">vs Aug 2026</span>
+</div>
+<!-- Sparkline -->
+<svg class="w-20 h-6 text-primary-container" fill="none" viewbox="0 0 80 24">
+<path d="M0 18 L15 14 L30 19 L45 8 L60 11 L80 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</div>
+</div>
+<!-- Average Resolution Time -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-caption text-secondary tracking-wider">AVG RESOLUTION TIME</span>
+<span class="font-display text-display text-on-surface font-bold mt-1">4.2 <span class="font-headline-md text-headline-md font-semibold text-secondary">hrs</span></span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-xl">schedule</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<span class="font-label-md text-caption bg-secondary-container text-on-secondary-fixed-variant px-2 py-0.5 rounded">
+          Target: < 6.0 hrs
+        </span>
+<span class="font-label-md text-caption text-primary-container font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-sm">check_circle</span> SLA MET
+        </span>
+</div>
+</div>
+<!-- SLA Compliance Rate -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-caption text-secondary tracking-wider">SLA COMPLIANCE RATE</span>
+<span class="font-display text-display text-on-surface font-bold mt-1">96.4%</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-xl">verified</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-caption text-caption text-secondary">54 of 56 on schedule</span>
+</div>
+<span class="font-label-md text-caption text-primary-container font-semibold">+1.8%</span>
+</div>
+</div>
+<!-- First Contact Resolution -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-caption text-secondary tracking-wider">FIRST-CONTACT RESOLUTION</span>
+<span class="font-display text-display text-on-surface font-bold mt-1">78.5%</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-xl">quickreply</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden mr-3">
+<div class="bg-primary-container h-full rounded-full" style="width: 78.5%"></div>
+</div>
+<span class="font-label-md text-caption text-secondary whitespace-nowrap">44 Cases</span>
+</div>
+</div>
+</div>
+<!-- Operational Breakdown Section (Bento Grid) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Category Distribution & Visual Pie Breakdown -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Volume by Category</h2>
+<p class="font-caption text-caption text-secondary">Distribution of inbound tickets</p>
+</div>
+<span class="font-label-md text-caption bg-surface-container px-2 py-1 rounded text-on-surface-variant">56 Total</span>
+</div>
+<!-- Donut Visual SVG -->
+<div class="relative flex items-center justify-center my-4">
+<svg class="w-48 h-48 transform -rotate-90" viewbox="0 0 100 100">
+<!-- Background Track -->
+<circle class="text-surface-container" cx="50" cy="50" fill="transparent" r="38" stroke="currentColor" stroke-width="12"></circle>
+<!-- IT Hardware (42%) - offset 0 -->
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#1e40af" stroke-dasharray="100.28 238.76" stroke-dashoffset="0" stroke-width="12"></circle>
+<!-- Facility (31%) - offset 42% -> 100.28 -->
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#505f76" stroke-dasharray="74.02 238.76" stroke-dashoffset="-100.28" stroke-width="12"></circle>
+<!-- Access & Sec (18%) - offset 73% -> 174.30 -->
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#a8b8ff" stroke-dasharray="42.98 238.76" stroke-dashoffset="-174.30" stroke-width="12"></circle>
+<!-- Admin (9%) - offset 91% -> 217.27 -->
+<circle cx="50" cy="50" fill="transparent" r="38" stroke="#d8dadc" stroke-dasharray="21.49 238.76" stroke-dashoffset="-217.27" stroke-width="12"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center">
+<span class="font-display text-display text-primary-container font-bold leading-tight">42%</span>
+<span class="font-label-md text-caption text-secondary uppercase">IT Leading</span>
+</div>
+</div>
+<!-- Legend & Specific Values -->
+<div class="flex flex-col gap-2.5 mt-2">
+<div class="flex items-center justify-between text-body-md">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded bg-primary-container"></span>
+<span class="text-on-surface font-body-md">IT Support & Hardware</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body-md font-semibold text-on-surface">24</span>
+<span class="font-caption text-caption text-secondary">(42%)</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-body-md">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded bg-secondary"></span>
+<span class="text-on-surface font-body-md">Facility & Maintenance</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body-md font-semibold text-on-surface">17</span>
+<span class="font-caption text-caption text-secondary">(31%)</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-body-md">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded bg-on-primary-container"></span>
+<span class="text-on-surface font-body-md">System Access & Security</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body-md font-semibold text-on-surface">10</span>
+<span class="font-caption text-caption text-secondary">(18%)</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-body-md">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded bg-surface-dim"></span>
+<span class="text-on-surface font-body-md">Admin & Documents</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body-md font-semibold text-on-surface">5</span>
+<span class="font-caption text-caption text-secondary">(9%)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Request Status Distribution & Operational Flow -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Status Lifecycle</h2>
+<p class="font-caption text-caption text-secondary">Pipeline velocity & pending resolutions</p>
+</div>
+<span class="material-symbols-outlined text-secondary">tune</span>
+</div>
+<!-- Progress Bars by Status -->
+<div class="flex flex-col gap-5 mt-4">
+<!-- Completed -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center text-body-md">
+<span class="font-label-md text-body-md text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-base">check_circle</span>
+                Completed & Handed Over
+              </span>
+<span class="font-body-md font-bold text-on-surface">42 <span class="font-caption text-caption text-secondary font-normal">(75.0%)</span></span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-3 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 75%"></div>
+</div>
+</div>
+<!-- In Progress -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center text-body-md">
+<span class="font-label-md text-body-md text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-base">pending</span>
+                Actively Processing
+              </span>
+<span class="font-body-md font-bold text-on-surface">14 <span class="font-caption text-caption text-secondary font-normal">(25.0%)</span></span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-3 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 25%"></div>
+</div>
+</div>
+<!-- Rejected / Cancelled -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center text-body-md">
+<span class="font-label-md text-body-md text-on-surface font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-error text-base">cancel</span>
+                Rejected / Invalid Scope
+              </span>
+<span class="font-body-md font-bold text-on-surface">2 <span class="font-caption text-caption text-secondary font-normal">(3.5%)</span></span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-3 overflow-hidden">
+<div class="bg-error h-full rounded-full" style="width: 3.5%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Turnaround Snapshot Box -->
+<div class="bg-surface-container-low p-md rounded-lg mt-6 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded bg-secondary-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-xl">speed</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-caption text-secondary">PEAK PROCESSING TIME</span>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Tuesdays (10:00 - 12:00)</span>
+</div>
+</div>
+<span class="font-label-md text-caption text-primary-container bg-surface-container-lowest px-2 py-1 rounded">Optimal Shift</span>
+</div>
+</div>
+<!-- SLA Performance By Section -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">SLA by Department</h2>
+<p class="font-caption text-caption text-secondary">Compliance & turnaround comparison</p>
+</div>
+<span class="material-symbols-outlined text-secondary">domain</span>
+</div>
+<div class="flex flex-col gap-4 mt-2">
+<!-- IS -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-md">
+<span class="font-body-md font-medium text-on-surface">Information Systems (IS)</span>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-caption text-secondary">3.4 hrs avg</span>
+<span class="font-body-md font-bold text-primary-container">98.2%</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-primary-container h-full rounded-full" style="width: 98.2%"></div>
+</div>
+</div>
+<!-- HR -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-md">
+<span class="font-body-md font-medium text-on-surface">Human Resources (HR)</span>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-caption text-secondary">4.1 hrs avg</span>
+<span class="font-body-md font-bold text-primary-container">96.0%</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-primary-container h-full rounded-full" style="width: 96%"></div>
+</div>
+</div>
+<!-- Assembly -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-md">
+<span class="font-body-md font-medium text-on-surface">Assembly Plant A & B</span>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-caption text-secondary">5.2 hrs avg</span>
+<span class="font-body-md font-bold text-primary-container">94.8%</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-primary-container h-full rounded-full" style="width: 94.8%"></div>
+</div>
+</div>
+<!-- Marketing -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-md">
+<span class="font-body-md font-medium text-on-surface">Marketing & Strategy</span>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-caption text-secondary">2.8 hrs avg</span>
+<span class="font-body-md font-bold text-primary-container">99.1%</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-primary-container h-full rounded-full" style="width: 99.1%"></div>
+</div>
+</div>
+<!-- PE -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-md">
+<span class="font-body-md font-medium text-on-surface">Production Eng. (PE)</span>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-caption text-secondary">4.8 hrs avg</span>
+<span class="font-body-md font-bold text-primary-container">95.0%</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-primary-container h-full rounded-full" style="width: 95%"></div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-secondary font-caption text-caption">
+<span>Section baseline SLA: 92.0%</span>
+<span class="text-primary-container font-semibold">All Targets Compliant</span>
+</div>
+</div>
+</div>
+<!-- Operational Diagnostics & Strategic Action Plan -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Recurring Issues Intelligence Table -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-lg rounded-xl shadow-sm flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Top Recurring Issues & Bottlenecks</h2>
+<p class="font-caption text-caption text-secondary">Root causes diagnosed during September 2026 operations</p>
+</div>
+<span class="font-label-md text-caption text-on-surface-variant bg-surface-container px-2.5 py-1 rounded">Ranked by Incident Count</span>
+</div>
+<!-- High-Density Analytical Table -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-md text-caption">
+<th class="py-2.5 px-3 rounded-l">CATEGORY / INCIDENT</th>
+<th class="py-2.5 px-3">FREQUENCY</th>
+<th class="py-2.5 px-3">AVG RESOLUTION</th>
+<th class="py-2.5 px-3">SEVERITY</th>
+<th class="py-2.5 px-3 rounded-r">ACTION OWNER</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md divide-y divide-surface-container">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">VPN Client Certificate Expired</span>
+<span class="font-caption text-caption text-secondary">IS - Remote Infrastructure</span>
+</div>
+</td>
+<td class="py-3 px-3 font-semibold text-on-surface">14 tickets</td>
+<td class="py-3 px-3 text-secondary">1.2 hrs</td>
+<td class="py-3 px-3">
+<span class="font-label-md text-caption bg-secondary-container text-on-secondary-fixed-variant px-2 py-0.5 rounded">Moderate</span>
+</td>
+<td class="py-3 px-3 text-on-surface-variant">IS Security PIC</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Line 3 HVAC Air Pressure Calibration</span>
+<span class="font-caption text-caption text-secondary">Facility - Assembly Floor</span>
+</div>
+</td>
+<td class="py-3 px-3 font-semibold text-on-surface">9 tickets</td>
+<td class="py-3 px-3 text-secondary">6.5 hrs</td>
+<td class="py-3 px-3">
+<span class="font-label-md text-caption bg-error-container text-on-error-container px-2 py-0.5 rounded font-semibold">High Priority</span>
+</td>
+<td class="py-3 px-3 text-on-surface-variant">Plant Tech PIC</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">ERP Access Request for Contractors</span>
+<span class="font-caption text-caption text-secondary">Admin - Vendor Clearance</span>
+</div>
+</td>
+<td class="py-3 px-3 font-semibold text-on-surface">7 tickets</td>
+<td class="py-3 px-3 text-secondary">3.8 hrs</td>
+<td class="py-3 px-3">
+<span class="font-label-md text-caption bg-surface-container text-on-surface-variant px-2 py-0.5 rounded">Standard</span>
+</td>
+<td class="py-3 px-3 text-on-surface-variant">Enterprise Apps PIC</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3 px-3">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Barcode Scanner Driver Disconnects</span>
+<span class="font-caption text-caption text-secondary">IT - Hardware Maintenance</span>
+</div>
+</td>
+<td class="py-3 px-3 font-semibold text-on-surface">6 tickets</td>
+<td class="py-3 px-3 text-secondary">2.1 hrs</td>
+<td class="py-3 px-3">
+<span class="font-label-md text-caption bg-surface-container text-on-surface-variant px-2 py-0.5 rounded">Standard</span>
+</td>
+<td class="py-3 px-3 text-on-surface-variant">Shopfloor IT PIC</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Recommendations & Strategic Actions Card -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary-container text-xl">tips_and_updates</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Action Items</h2>
+</div>
+<p class="font-caption text-caption text-secondary mb-4">Targeted interventions to prevent SLA degradation</p>
+<div class="flex flex-col gap-3">
+<!-- Item 1 -->
+<div class="p-3 bg-surface-container-low rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-caption text-primary-container font-semibold">AUTOMATION INITIATIVE</span>
+<span class="font-label-md text-caption text-secondary">Impact: High</span>
+</div>
+<p class="font-body-md text-body-md font-medium text-on-surface">Auto-renew VPN Certificates</p>
+<p class="font-caption text-caption text-on-surface-variant">Deploy automated renewal agent to eliminate 25% of recurring IS tickets before Q4 starts.</p>
+</div>
+<!-- Item 2 -->
+<div class="p-3 bg-surface-container-low rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-caption text-secondary font-semibold">PREVENTIVE SERVICE</span>
+<span class="font-label-md text-caption text-secondary">Impact: Medium</span>
+</div>
+<p class="font-body-md text-body-md font-medium text-on-surface">Preventive Assembly HVAC Overhaul</p>
+<p class="font-caption text-caption text-on-surface-variant">Schedule maintenance on Line 3 compressors during scheduled Saturday downtime.</p>
+</div>
+<!-- Item 3 -->
+<div class="p-3 bg-surface-container-low rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-caption text-primary-container font-semibold">SELF-SERVICE PORTAL</span>
+<span class="font-label-md text-caption text-secondary">Impact: Medium</span>
+</div>
+<p class="font-body-md text-body-md font-medium text-on-surface">Standardize Contractor Forms</p>
+<p class="font-caption text-caption text-on-surface-variant">Pre-clear repetitive vendor identity documents through HR portal single sign-on.</p>
+</div>
+</div>
+</div>
+<!-- Execution Affirmation -->
+<button class="mt-4 w-full py-2.5 bg-secondary-container hover:bg-secondary-fixed text-on-secondary-fixed font-label-md text-body-md rounded-lg flex items-center justify-center gap-2 transition-colors">
+<span>Publish Recommendations to Leads</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Operational Audit Footer Notes -->
+<div class="bg-surface-container p-md rounded-lg flex flex-col sm:flex-row items-center justify-between gap-2 text-on-surface-variant font-caption text-caption">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-base">verified_user</span>
+<span>Calculated using ISM Standard SLA Methodology v3.4. All metrics validated by Head of Operations.</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="hover:text-primary cursor-pointer transition-colors">View Audit Log</span>
+<span>•</span>
+<span class="hover:text-primary cursor-pointer transition-colors">Configure SLA Targets</span>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-lowest py-4 px-lg border-t border-surface-container mt-auto"><div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center justify-between gap-4"><p class="font-caption text-caption text-on-surface-variant">© 2026 Internal Service Management. All rights reserved.</p><div class="flex items-center gap-6"><a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a><a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a><a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a></div></div></footer></div></body></html>

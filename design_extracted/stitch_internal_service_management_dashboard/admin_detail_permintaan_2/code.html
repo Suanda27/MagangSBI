@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "error": "#ba1a1a",
+        "surface-container-high": "#e6e8ea",
+        "surface-variant": "#e0e3e5",
+        "on-surface": "#191c1e",
+        "secondary-fixed": "#d3e4fe",
+        "surface-dim": "#d8dadc",
+        "on-tertiary-fixed-variant": "#3f465c",
+        "on-background": "#191c1e",
+        "on-tertiary-container": "#b4bbd5",
+        "on-secondary": "#ffffff",
+        "on-primary-fixed": "#001453",
+        "secondary": "#505f76",
+        "primary-container": "#1e40af",
+        "error-container": "#ffdad6",
+        "surface-bright": "#f7f9fb",
+        "inverse-on-surface": "#eff1f3",
+        "on-error-container": "#93000a",
+        "primary-fixed": "#dde1ff",
+        "primary-fixed-dim": "#b8c4ff",
+        "on-secondary-fixed-variant": "#38485d",
+        "on-primary-container": "#a8b8ff",
+        "surface": "#f7f9fb",
+        "background": "#f7f9fb",
+        "inverse-primary": "#b8c4ff",
+        "surface-tint": "#3755c3",
+        "secondary-fixed-dim": "#b7c8e1",
+        "on-primary": "#ffffff",
+        "tertiary-container": "#434b60",
+        "outline": "#757684",
+        "on-tertiary-fixed": "#131b2e",
+        "surface-container": "#eceef0",
+        "tertiary": "#2d3449",
+        "inverse-surface": "#2d3133",
+        "surface-container-low": "#f2f4f6",
+        "surface-container-highest": "#e0e3e5",
+        "on-primary-fixed-variant": "#173bab",
+        "secondary-container": "#d0e1fb",
+        "tertiary-fixed": "#dae2fd",
+        "on-error": "#ffffff",
+        "primary": "#00288e",
+        "on-secondary-container": "#54647a",
+        "on-tertiary": "#ffffff",
+        "tertiary-fixed-dim": "#bec6e0",
+        "surface-container-lowest": "#ffffff",
+        "outline-variant": "#c4c5d5",
+        "on-surface-variant": "#444653",
+        "on-secondary-fixed": "#0b1c30"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "lg": "24px",
+        "gutter": "20px",
+        "xs": "4px",
+        "base": "4px",
+        "sm": "8px",
+        "md": "16px",
+        "container-max": "1440px",
+        "xl": "32px"
+      },
+      "fontFamily": {
+        "caption": ["Inter"],
+        "label-md": ["Inter"],
+        "body-lg": ["Inter"],
+        "body-md": ["Inter"],
+        "display": ["Inter"],
+        "headline-md": ["Inter"],
+        "headline-lg": ["Inter"]
+      },
+      "fontSize": {
+        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+      }
+    }
+  }
+}</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-16 px-md flex items-center gap-sm"><div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[20px]">verified_user</span></div><div class="flex flex-col min-w-0"><span class="font-headline-md text-headline-md leading-none text-primary font-bold tracking-tight truncate">ISM System</span><span class="font-caption text-caption text-secondary truncate mt-xs">Internal Service</span></div></div><nav class="flex flex-col gap-xs px-md py-sm flex-1" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Dashboard</span></a><div class="pt-md pb-xs px-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">MASTER DATA</span></div><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="karyawan" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span>Karyawan</span></a><a aria-current="page" class="flex items-center gap-sm px-md py-sm rounded-lg transition-colors bg-primary-container text-on-primary font-semibold shadow-sm" data-path="section" href="#"><span class="material-symbols-outlined text-[20px]">layers</span><span>Section</span></a><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="layanan" href="#"><span class="material-symbols-outlined text-[20px]">settings_suggest</span><span>Layanan</span></a><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="pic" href="#"><span class="material-symbols-outlined text-[20px]">how_to_reg</span><span>PIC</span></a><div class="pt-md pb-xs px-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">PERMINTAAN</span></div><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="semua-permintaan" href="#"><span class="material-symbols-outlined text-[20px]">description</span><span>Semua Permintaan</span></a><div class="pt-md pb-xs px-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">ANALISIS</span></div><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="laporan" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span>Laporan</span></a></nav></div><div class="p-md flex flex-col gap-xs bg-surface-container-lowest"><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-error hover:bg-error-container hover:text-on-error-container transition-colors" data-path="logout" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span>Logout</span></a></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-lg"><nav aria-label="Breadcrumb" class="flex items-center gap-xs font-body-md text-body-md"><span class="text-secondary">Portal</span><span class="material-symbols-outlined text-secondary text-[16px]">chevron_right</span><span class="text-secondary">Console</span><span class="material-symbols-outlined text-secondary text-[16px]">chevron_right</span><span class="text-secondary">Master Data</span><span class="material-symbols-outlined text-secondary text-[16px]">chevron_right</span><span class="font-semibold text-on-surface">Section</span></nav><div class="flex items-center gap-lg"><div class="relative flex items-center"><span class="material-symbols-outlined text-secondary absolute left-3 text-[20px]">search</span><input class="w-72 pl-10 pr-4 py-1.5 bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface placeholder:text-secondary outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" placeholder="Cari NIK, ID, nama..." type="text"/></div><button class="relative p-2 rounded-lg text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-sm pl-2 cursor-pointer"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-[13px]">AD</div><div class="flex flex-col text-left"><span class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Admin ISM</span><span class="font-caption text-caption text-secondary leading-tight">(Administrator)</span></div><span class="material-symbols-outlined text-secondary text-[18px]">expand_more</span></div></div></header><main class="w-full pt-16 flex-1 bg-surface"><div class="max-w-container-max mx-auto p-lg"><div class="flex flex-col w-full gap-lg">
+<!-- Top Bar & Breadcrumb Navigation -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs font-caption text-caption text-secondary">
+<a class="hover:text-primary transition-colors" href="#">Portal</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Console</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Permintaan</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="font-semibold text-on-surface">REQ-2026-001</span>
+</div>
+<div class="flex items-center gap-md pt-xs">
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">Detail Permintaan</h1>
+<div class="flex items-center gap-xs">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md" id="badge-status-top">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse" id="badge-dot-top"></span>
+<span id="badge-text-top">Sedang Diproses</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+<span>Read-Only Monitoring (Admin)</span>
+</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-secondary">Informasi lengkap dan riwayat audit permintaan layanan internal secara real-time.</p>
+</div>
+<!-- Quick Navigation Link back to Dashboard/All Requests -->
+<div class="flex items-center gap-sm shrink-0">
+<a class="inline-flex items-center gap-xs px-md py-2 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-all shadow-sm font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Kembali ke Dashboard</span>
+</a>
+<a class="inline-flex items-center gap-xs px-md py-2 rounded-lg bg-primary text-on-primary hover:bg-primary-container transition-all shadow-sm font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[18px]">list_alt</span>
+<span>Semua Permintaan</span>
+</a>
+</div>
+</div>
+<!-- Interactive Demo Switcher Bar (For showcasing states without page refresh) -->
+<div class="bg-surface-container-lowest p-sm rounded-xl shadow-sm flex flex-wrap items-center justify-between gap-md">
+<div class="flex items-center gap-sm px-sm">
+<div class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Simulasi Mode Penanganan (Demo State):</p>
+<p class="font-caption text-caption text-secondary">Ubah status untuk menginspeksi tampilan admin pada fase siklus hidup yang berbeda.</p>
+</div>
+</div>
+<div class="inline-flex p-1 bg-surface-container rounded-lg gap-1">
+<button class="state-tab-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded font-label-md text-label-md bg-surface-container-lowest text-primary shadow-sm transition-all" id="btn-state-processing" onclick="setViewState('processing')" type="button">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>Sedang Diproses</span>
+</button>
+<button class="state-tab-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded font-label-md text-label-md text-secondary hover:text-on-surface transition-all" id="btn-state-completed" onclick="setViewState('completed')" type="button">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Selesai</span>
+</button>
+<button class="state-tab-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded font-label-md text-label-md text-secondary hover:text-on-surface transition-all" id="btn-state-rejected" onclick="setViewState('rejected')" type="button">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Ditolak</span>
+</button>
+</div>
+</div>
+<!-- Main 2-Column Content Layout (70% Left / 30% Right) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-start">
+<!-- LEFT / MAIN WORKSPACE COLUMN (8 of 12 cols = 66.6%) -->
+<div class="lg:col-span-8 flex flex-col gap-lg min-w-0">
+<!-- SECTION 1: Informasi Permintaan Header Panel -->
+<div class="bg-surface-container-lowest rounded-xl p-lg shadow-sm flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md font-semibold text-on-surface leading-snug">Informasi Permintaan</h2>
+<p class="font-caption text-caption text-secondary">Parameter operasional dan data registrasi unit tiket.</p>
+</div>
+</div>
+<span class="font-caption text-caption px-2.5 py-1 rounded bg-surface-container-low text-secondary font-mono font-medium">TIKET #REQ-2026-001</span>
+</div>
+<!-- Metadata Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-md pt-xs">
+<div class="p-md rounded-lg bg-surface-container-low flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">ID Permintaan</span>
+<span class="font-body-lg text-body-lg font-semibold text-primary font-mono">REQ-2026-001</span>
+</div>
+<div class="p-md rounded-lg bg-surface-container-low flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Layanan</span>
+<span class="font-body-lg text-body-lg font-semibold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">ac_unit</span>
+<span>Perbaikan AC</span>
+</span>
+</div>
+<div class="p-md rounded-lg bg-surface-container-low flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Section Tujuan</span>
+<span class="font-body-lg text-body-lg font-semibold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-secondary">layers</span>
+<span>Assembly</span>
+</span>
+</div>
+<div class="p-md rounded-lg bg-surface-container-low flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Lokasi Fasilitas</span>
+<span class="font-body-lg text-body-lg font-semibold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-secondary">location_on</span>
+<span>Plant 1 – Lantai 1</span>
+</span>
+</div>
+<div class="p-md rounded-lg bg-surface-container-low flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Tanggal Pengajuan</span>
+<span class="font-body-lg text-body-lg font-semibold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-secondary">calendar_today</span>
+<span>24 Agu 2026, 08:30</span>
+</span>
+</div>
+<div class="p-md rounded-lg bg-surface-container-low flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Status Pemrosesan</span>
+<span class="inline-flex items-center gap-1.5 font-body-lg text-body-lg font-semibold text-primary" id="badge-status-card">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+<span id="badge-status-card-text">Sedang Diproses</span>
+</span>
+</div>
+</div>
+<div class="mt-xs p-md rounded-lg bg-surface-container-low flex items-start gap-md">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary mt-0.5">
+<span class="material-symbols-outlined text-[18px]">build</span>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Judul Permintaan</span>
+<span class="font-headline-md text-headline-md font-semibold text-on-surface">Perbaikan AC Ruang Assembly</span>
+</div>
+</div>
+</div>
+<!-- SECTION 2: Detail Permintaan & Lampiran -->
+<div class="bg-surface-container-lowest rounded-xl p-lg shadow-sm flex flex-col gap-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md font-semibold text-on-surface">Detail Permintaan &amp; Lampiran</h2>
+<p class="font-caption text-caption text-secondary">Penjelasan masalah awal dan dokumen bukti dari pengaju.</p>
+</div>
+</div>
+<!-- Deskripsi Lengkap -->
+<div class="flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Deskripsi Lengkap</span>
+<div class="p-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md leading-relaxed">
+            AC pada area kerja Assembly tidak berfungsi dengan baik dan mengeluarkan suara bising serta tidak dingin, membutuhkan pemeriksaan dan penanganan teknis segera agar operasional kerja tetap optimal.
+          </div>
+</div>
+<!-- Lampiran Pengajuan (Cards) -->
+<div class="flex flex-col gap-xs pt-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Lampiran Pengajuan (2 Berkas)</span>
+<span class="font-caption text-caption text-secondary">Terverifikasi sistem ISM</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<!-- File 1: Image -->
+<div class="p-md rounded-lg bg-surface-container-low flex flex-col justify-between gap-md group hover:bg-surface-container transition-colors">
+<div class="flex items-start gap-md">
+<div class="relative w-16 h-16 rounded-lg bg-surface-container-high overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Industrial air conditioner indoor wall unit casing opened with exposed copper pipes and filters inside modern bright manufacturing facility assembly room clean engineering aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOV3m6mbXyqztUAQkojvs-B-vD4ryeqsChqUD2ClrQird0scfSggmwzgnGfdcV0lz86FAGyLErYokZ3-m8o2_f-tlTYaTF3Vuxt1IRZA0dOx83juhMdZJadZUlNZPVaE1IazNUaRbtOaVf6gYehc1BO8nzW7IDtpR7XAhv3blig-UBlQCAAlHCKn0iM69NOUWNprrapfwIxT0eGxO4xOvT9QmC1zAtHFqUQLlr1zoAw75zoTHLxfuw"/>
+<div class="absolute inset-0 bg-black/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[20px]">image</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-semibold text-on-surface truncate" title="foto_unit_ac_assembly.jpg">foto_unit_ac_assembly.jpg</span>
+<span class="font-caption text-caption text-secondary">Gambar JPEG • 2.4 MB</span>
+<span class="font-caption text-caption text-secondary mt-1">Diupload 24 Agu, 08:30</span>
+</div>
+</div>
+<div class="flex items-center justify-end gap-sm pt-xs">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">visibility</span>
+<span>Pratinjau</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-colors flex items-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Unduh</span>
+</button>
+</div>
+</div>
+<!-- File 2: PDF Document -->
+<div class="p-md rounded-lg bg-surface-container-low flex flex-col justify-between gap-md group hover:bg-surface-container transition-colors">
+<div class="flex items-start gap-md">
+<div class="w-16 h-16 rounded-lg bg-error-container/40 flex items-center justify-center text-error shrink-0">
+<span class="material-symbols-outlined text-[32px]">picture_as_pdf</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-semibold text-on-surface truncate" title="form_pengajuan_kerusakan.pdf">form_pengajuan_kerusakan.pdf</span>
+<span class="font-caption text-caption text-secondary">Dokumen PDF • 480 KB</span>
+<span class="font-caption text-caption text-secondary mt-1">Diupload 24 Agu, 08:30</span>
+</div>
+</div>
+<div class="flex items-center justify-end gap-sm pt-xs">
+<button class="px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md transition-colors flex items-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Unduh</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 3: Hasil Penyelesaian Layanan / Outcome Panel (Dynamic State Container) -->
+<div class="bg-surface-container-lowest rounded-xl p-lg shadow-sm flex flex-col gap-md" id="outcome-container">
+<!-- State: SEDANG DIPROSES (Default) -->
+<div class="flex flex-col gap-md" id="state-processing-view">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md font-semibold text-on-surface">Progres Penanganan Layanan</h2>
+<p class="font-caption text-caption text-secondary">Status operasional terkini di lapangan.</p>
+</div>
+</div>
+<span class="font-label-md text-label-md px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container">Dalam Pengerjaan Teknisi</span>
+</div>
+<div class="p-lg rounded-xl bg-surface-container-low flex flex-col md:flex-row items-center gap-lg">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[36px] animate-spin" style="animation-duration: 6s;">autorenew</span>
+</div>
+<div class="flex flex-col gap-xs text-center md:text-left flex-1">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface">PIC Sedang Melakukan Perbaikan Lapangan</span>
+<p class="font-body-md text-body-md text-secondary">
+                Teknisi PIC (Andi Pratama) saat ini sedang melakukan diagnosa sirkulasi freon dan perbaikan modul motor kipas pada unit AC di Assembly Lantai 1. Laporan hasil akhir serta foto pekerjaan akan diperbarui setelah tuntas.
+              </p>
+<div class="pt-xs flex flex-wrap items-center gap-md font-caption text-caption text-secondary justify-center md:justify-start">
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+                  Mulai dikerjakan: 24 Agu 2026, 10:00 WIB
+                </span>
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">assignment_ind</span>
+                  Pelaksana: Andi Pratama (PIC)
+                </span>
+</div>
+</div>
+</div>
+</div>
+<!-- State: SELESAI (Hidden by default, shown when toggled) -->
+<div class="hidden flex-col gap-md" id="state-completed-view">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">task_alt</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md font-semibold text-on-surface">Hasil Penyelesaian Layanan</h2>
+<p class="font-caption text-caption text-secondary">Bukti dan rekap pekerjaan yang telah dituntaskan oleh PIC.</p>
+</div>
+</div>
+<span class="font-label-md text-label-md px-3 py-1 rounded-full bg-surface-container-high text-primary font-bold">Tiket Selesai</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="p-md rounded-lg bg-surface-container-low flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Catatan Penyelesaian PIC</span>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                Penggantian kapasitor fan motor 4uF dan pembersihan koil kondensor telah selesai dilakukan. Suhu ruangan kini kembali normal di level 21°C tanpa suara bising.
+              </p>
+<div class="mt-auto pt-sm flex flex-col gap-1 font-caption text-caption text-secondary">
+<span>Diselesaikan oleh: <strong class="text-on-surface">Andi Pratama (PIC)</strong></span>
+<span>Waktu Selesai: <strong>24 Agu 2026, 14:15 WIB</strong></span>
+</div>
+</div>
+<!-- Bukti Foto Hasil Pekerjaan -->
+<div class="p-md rounded-lg bg-surface-container-low flex flex-col justify-between gap-md">
+<div>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider block mb-2">Bukti Foto Hasil Pekerjaan</span>
+<div class="flex items-start gap-md">
+<div class="relative w-20 h-20 rounded-lg bg-surface-container-high overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up photograph of a newly serviced industrial air conditioner compressor with clean coils and blue pressure gauge attached inside factory assembly room clean lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRm50J_SHP2RsEsCiWCM_2oKOgT9WfhRbzW102yrlWneiwTsE52HWa1iiMj0Tt00RqiJAqVqlVY2XpnuTFDwQA_f4AxpZ1Tqxf5hUpnQy_WuddTawPvUr2XEwTdQ8DKWcZcDeUmMEBLluf2M-FDfu-KGb6gSQKZFXCxcclCJhtH6pACB0URwQANkKw9cqoiEe1zgZjYtSL1PDCq6hH0KWdLUF8_WSyNSLvssvHyuWwWSAlZIotecUS"/>
+<div class="absolute inset-0 bg-black/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[20px]">verified</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-semibold text-on-surface truncate">hasil_perbaikan_kompresor.jpg</span>
+<span class="font-caption text-caption text-secondary">Resolusi Tinggi • 3.1 MB</span>
+<span class="font-caption text-caption text-primary mt-1 font-medium">Verifikasi Lapangan OK</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-end gap-sm">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-bright shadow-sm flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">visibility</span>
+<span>Lihat Foto</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container shadow-sm flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Unduh Bukti</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- State: DITOLAK (Hidden by default, shown when toggled) -->
+<div class="hidden flex-col gap-md" id="state-rejected-view">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined text-[20px]">cancel</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md font-semibold text-on-surface">Informasi Penolakan Permintaan</h2>
+<p class="font-caption text-caption text-secondary">Rincian alasan operasional penolakan permintaan tiket.</p>
+</div>
+</div>
+<span class="font-label-md text-label-md px-3 py-1 rounded-full bg-error-container text-on-error-container font-semibold">Permintaan Ditolak</span>
+</div>
+<div class="p-md rounded-lg bg-error-container/20 flex flex-col gap-sm">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-error text-[20px] mt-0.5">error</span>
+<div class="flex flex-col gap-xs flex-1">
+<span class="font-label-md text-label-md text-error uppercase tracking-wider">Alasan Resmi Penolakan</span>
+<p class="font-body-md text-body-md text-on-surface font-medium leading-relaxed">
+                  "Permintaan tidak dapat diproses karena fasilitas pendingin tersebut berada di luar area wewenang tanggung jawab section Assembly (masuk inventaris General Affairs Plant 2)."
+                </p>
+</div>
+</div>
+<div class="pt-sm border-t-0 flex flex-wrap items-center justify-between gap-sm font-caption text-caption text-secondary">
+<span>Ditolak oleh: <strong class="text-on-surface">Andi Pratama (PIC)</strong></span>
+<span>Waktu Penolakan: <strong>24 Agu 2026, 09:18 WIB</strong></span>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 4: Riwayat Aktivitas (Chronological System Activity Log) -->
+<div class="bg-surface-container-lowest rounded-xl p-lg shadow-sm flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">history</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md font-semibold text-on-surface">Riwayat Aktivitas</h2>
+<p class="font-caption text-caption text-secondary">Catatan audit jejak operasional secara kronologis dari sistem ISM.</p>
+</div>
+</div>
+<span class="font-caption text-caption text-secondary">3 Entri Log</span>
+</div>
+<div class="relative pl-6 flex flex-col gap-lg before:absolute before:left-2 before:top-3 before:bottom-3 before:w-0.5 before:bg-surface-container-high">
+<!-- Event 1 (Most Recent) -->
+<div class="relative flex flex-col gap-xs">
+<div class="absolute -left-6 top-1.5 w-3.5 h-3.5 rounded-full bg-primary ring-4 ring-surface-container-lowest"></div>
+<div class="flex flex-wrap items-baseline gap-x-2">
+<span class="font-label-md text-label-md text-primary font-semibold">24 Agu 2026, 10:00 WIB</span>
+<span class="font-caption text-caption text-secondary">• Pembaruan Status</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">
+              PIC memperbarui status menjadi <span class="text-primary font-semibold">Sedang Diproses</span>.
+            </p>
+<p class="font-caption text-caption text-secondary">
+              Pemeriksaan kompresor dan penggantian komponen filter pendingin dimulai di ruang Assembly.
+            </p>
+</div>
+<!-- Event 2 -->
+<div class="relative flex flex-col gap-xs">
+<div class="absolute -left-6 top-1.5 w-3.5 h-3.5 rounded-full bg-secondary ring-4 ring-surface-container-lowest"></div>
+<div class="flex flex-wrap items-baseline gap-x-2">
+<span class="font-label-md text-label-md text-secondary font-semibold">24 Agu 2026, 09:10 WIB</span>
+<span class="font-caption text-caption text-secondary">• Penugasan Diterima</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">
+              Permintaan diterima oleh PIC <strong class="text-on-surface">Andi Pratama</strong>.
+            </p>
+<p class="font-caption text-caption text-secondary">
+              PIC mengonfirmasi kesiapan jadwal dan kelengkapan suku cadang terkait.
+            </p>
+</div>
+<!-- Event 3 (Initial Submission) -->
+<div class="relative flex flex-col gap-xs">
+<div class="absolute -left-6 top-1.5 w-3.5 h-3.5 rounded-full bg-secondary-container ring-4 ring-surface-container-lowest"></div>
+<div class="flex flex-wrap items-baseline gap-x-2">
+<span class="font-label-md text-label-md text-secondary font-semibold">24 Agu 2026, 08:30 WIB</span>
+<span class="font-caption text-caption text-secondary">• Tiket Masuk</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">
+              Permintaan dibuat oleh <strong class="text-on-surface">Muhammad Faiz Difa Suanda</strong>.
+            </p>
+<p class="font-caption text-caption text-secondary">
+              Pengajuan awal disertai 2 berkas lampiran (foto unit AC &amp; formulir laporan gangguan).
+            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT SIDEBAR / CONTEXT COLUMN (4 of 12 cols = 33.3%) -->
+<div class="lg:col-span-4 flex flex-col gap-lg min-w-0">
+<!-- CARD 1: Informasi Pengaju -->
+<div class="bg-surface-container-lowest rounded-xl p-lg shadow-sm flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px] text-primary">person</span>
+<h3 class="font-headline-md text-headline-md font-semibold text-on-surface">Informasi Pengaju</h3>
+</div>
+<span class="font-label-md text-label-md px-2.5 py-0.5 rounded-full bg-surface-container text-secondary">Karyawan</span>
+</div>
+<div class="flex items-center gap-md p-md rounded-lg bg-surface-container-low">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary font-headline-md text-headline-md font-bold shadow-sm shrink-0">
+            MF
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-lg text-body-lg font-semibold text-on-surface truncate">Muhammad Faiz Difa S.</span>
+<span class="font-caption text-caption text-secondary">Departemen Operasional</span>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex items-center justify-between p-sm rounded bg-surface-container-low/60 text-body-md font-body-md">
+<span class="text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">badge</span>
+              NIK
+            </span>
+<span class="font-mono font-medium text-on-surface">12345678</span>
+</div>
+<div class="flex items-center justify-between p-sm rounded bg-surface-container-low/60 text-body-md font-body-md">
+<span class="text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+              Email
+            </span>
+<span class="text-on-surface font-medium truncate max-w-[160px]" title="faiz@example.com">faiz@example.com</span>
+</div>
+<div class="flex items-center justify-between p-sm rounded bg-surface-container-low/60 text-body-md font-body-md">
+<span class="text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">layers</span>
+              Section
+            </span>
+<span class="font-semibold text-on-surface">Assembly</span>
+</div>
+</div>
+</div>
+<!-- CARD 2: PIC Penanggung Jawab -->
+<div class="bg-surface-container-lowest rounded-xl p-lg shadow-sm flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px] text-primary">engineering</span>
+<h3 class="font-headline-md text-headline-md font-semibold text-on-surface">PIC Penanggung Jawab</h3>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-md text-label-md text-primary font-bold">Aktif</span>
+</div>
+</div>
+<div class="flex items-center gap-md p-md rounded-lg bg-surface-container-low">
+<div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-on-secondary font-headline-md text-headline-md font-bold shadow-sm shrink-0">
+            AP
+          </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-body-lg text-body-lg font-semibold text-on-surface truncate">Andi Pratama</span>
+<span class="px-1.5 py-0.5 rounded bg-primary text-on-primary text-[10px] font-bold tracking-wider uppercase">PIC</span>
+</div>
+<span class="font-caption text-caption text-secondary">Teknisi Utilitas Assembly (PE)</span>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex items-center justify-between p-sm rounded bg-surface-container-low/60 text-body-md font-body-md">
+<span class="text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">badge</span>
+              NIK PIC
+            </span>
+<span class="font-mono font-medium text-on-surface">12345679</span>
+</div>
+<div class="flex items-center justify-between p-sm rounded bg-surface-container-low/60 text-body-md font-body-md">
+<span class="text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">domain</span>
+              Section PIC
+            </span>
+<span class="font-semibold text-on-surface">Assembly / PE</span>
+</div>
+</div>
+<!-- Read-Only Notice Box for Admin -->
+<div class="p-md rounded-lg bg-surface-container-low flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">shield</span>
+<p class="font-caption text-caption text-secondary leading-relaxed">
+<strong class="text-on-surface">Kebijakan Admin:</strong> Admin hanya bertindak sebagai pemantau (monitoring) tiket ini. Aksi operasional seperti penerimaan, penolakan, atau penyelesaian pekerjaan dikelola secara mandiri oleh PIC terkait.
+          </p>
+</div>
+</div>
+<!-- CARD 3: Timeline Permintaan (Vertical Stepper) -->
+<div class="bg-surface-container-lowest rounded-xl p-lg shadow-sm flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px] text-primary">timeline</span>
+<h3 class="font-headline-md text-headline-md font-semibold text-on-surface">Timeline Permintaan</h3>
+</div>
+<span class="font-caption text-caption text-secondary">Step 3 of 4</span>
+</div>
+<div class="flex flex-col gap-md pt-xs">
+<!-- Step 1: Permintaan Dibuat (Completed) -->
+<div class="flex items-start gap-md relative pb-md before:absolute before:left-3.5 before:top-7 before:bottom-0 before:w-0.5 before:bg-primary">
+<div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Permintaan Dibuat</span>
+<span class="font-caption text-caption text-secondary">24 Agu 2026, 08:30 WIB</span>
+<span class="font-caption text-caption text-primary mt-0.5">Oleh Muhammad Faiz</span>
+</div>
+</div>
+<!-- Step 2: Permintaan Diterima (Completed) -->
+<div class="flex items-start gap-md relative pb-md before:absolute before:left-3.5 before:top-7 before:bottom-0 before:w-0.5 before:bg-primary">
+<div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Permintaan Diterima</span>
+<span class="font-caption text-caption text-secondary">24 Agu 2026, 09:10 WIB</span>
+<span class="font-caption text-caption text-primary mt-0.5">Oleh Andi Pratama (PIC)</span>
+</div>
+</div>
+<!-- Step 3: Sedang Diproses (Active) -->
+<div class="flex items-start gap-md relative pb-md before:absolute before:left-3.5 before:top-7 before:bottom-0 before:w-0.5 before:bg-surface-container-high" id="timeline-step-3">
+<div class="w-7 h-7 rounded-full bg-primary ring-4 ring-primary/20 flex items-center justify-center text-on-primary shrink-0 shadow-sm" id="timeline-step-3-dot">
+<span class="material-symbols-outlined text-[16px]">autorenew</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-bold text-primary" id="timeline-step-3-title">Sedang Diproses</span>
+<span class="font-caption text-caption text-secondary" id="timeline-step-3-date">24 Agu 2026, 10:00 WIB</span>
+<span class="font-caption text-caption text-on-surface-variant mt-0.5" id="timeline-step-3-desc">Teknisi memeriksa unit di lokasi Assembly</span>
+</div>
+</div>
+<!-- Step 4: Permintaan Selesai (Pending) -->
+<div class="flex items-start gap-md" id="timeline-step-4">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-secondary shrink-0" id="timeline-step-4-dot">
+<span class="material-symbols-outlined text-[16px]">flag</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-medium text-secondary" id="timeline-step-4-title">Permintaan Selesai</span>
+<span class="font-caption text-caption text-secondary" id="timeline-step-4-desc">Menunggu konfirmasi penyelesaian PIC</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function setViewState(state) {
+    // Buttons state
+    const tabs = ['processing', 'completed', 'rejected'];
+    tabs.forEach(t => {
+      const btn = document.getElementById(`btn-state-${t}`);
+      if (t === state) {
+        btn.className = 'state-tab-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded font-label-md text-label-md bg-surface-container-lowest text-primary shadow-sm transition-all';
+      } else {
+        btn.className = 'state-tab-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded font-label-md text-label-md text-secondary hover:text-on-surface transition-all';
+      }
+    });
+
+    // Containers view
+    const viewProc = document.getElementById('state-processing-view');
+    const viewComp = document.getElementById('state-completed-view');
+    const viewRej = document.getElementById('state-rejected-view');
+
+    // Badges
+    const badgeTop = document.getElementById('badge-status-top');
+    const badgeTextTop = document.getElementById('badge-text-top');
+    const badgeDotTop = document.getElementById('badge-dot-top');
+    const badgeCard = document.getElementById('badge-status-card');
+    const badgeCardText = document.getElementById('badge-status-card-text');
+
+    // Timeline elements
+    const step3Dot = document.getElementById('timeline-step-3-dot');
+    const step3Title = document.getElementById('timeline-step-3-title');
+    const step3Desc = document.getElementById('timeline-step-3-desc');
+    const step4Dot = document.getElementById('timeline-step-4-dot');
+    const step4Title = document.getElementById('timeline-step-4-title');
+    const step4Desc = document.getElementById('timeline-step-4-desc');
+
+    if (state === 'processing') {
+      viewProc.classList.remove('hidden');
+      viewComp.classList.add('hidden');
+      viewRej.classList.add('hidden');
+
+      badgeTop.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md';
+      badgeDotTop.className = 'w-2 h-2 rounded-full bg-primary animate-pulse';
+      badgeTextTop.textContent = 'Sedang Diproses';
+
+      badgeCard.className = 'inline-flex items-center gap-1.5 font-body-lg text-body-lg font-semibold text-primary';
+      badgeCard.innerHTML = '<span class="material-symbols-outlined text-[18px]">sync</span><span>Sedang Diproses</span>';
+
+      step3Dot.className = 'w-7 h-7 rounded-full bg-primary ring-4 ring-primary/20 flex items-center justify-center text-on-primary shrink-0 shadow-sm';
+      step3Dot.innerHTML = '<span class="material-symbols-outlined text-[16px]">autorenew</span>';
+      step3Title.className = 'font-body-md text-body-md font-bold text-primary';
+      step3Title.textContent = 'Sedang Diproses';
+      step3Desc.textContent = 'Teknisi memeriksa unit di lokasi Assembly';
+
+      step4Dot.className = 'w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-secondary shrink-0';
+      step4Title.className = 'font-body-md text-body-md font-medium text-secondary';
+      step4Desc.textContent = 'Menunggu konfirmasi penyelesaian PIC';
+    } 
+    else if (state === 'completed') {
+      viewProc.classList.add('hidden');
+      viewComp.classList.remove('hidden');
+      viewRej.classList.add('hidden');
+
+      badgeTop.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-primary font-label-md text-label-md font-bold';
+      badgeDotTop.className = 'w-2 h-2 rounded-full bg-primary';
+      badgeTextTop.textContent = 'Selesai';
+
+      badgeCard.className = 'inline-flex items-center gap-1.5 font-body-lg text-body-lg font-semibold text-primary';
+      badgeCard.innerHTML = '<span class="material-symbols-outlined text-[18px]">check_circle</span><span>Selesai</span>';
+
+      step3Dot.className = 'w-7 h-7 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0 shadow-sm';
+      step3Dot.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span>';
+      step3Title.className = 'font-body-md text-body-md font-semibold text-on-surface';
+
+      step4Dot.className = 'w-7 h-7 rounded-full bg-primary ring-4 ring-primary/20 flex items-center justify-center text-on-primary shrink-0 shadow-sm';
+      step4Dot.innerHTML = '<span class="material-symbols-outlined text-[16px]">check</span>';
+      step4Title.className = 'font-body-md text-body-md font-bold text-primary';
+      step4Desc.textContent = 'Diselesaikan 24 Agu 2026, 14:15 WIB oleh Andi Pratama';
+    } 
+    else if (state === 'rejected') {
+      viewProc.classList.add('hidden');
+      viewComp.classList.add('hidden');
+      viewRej.classList.remove('hidden');
+
+      badgeTop.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-md text-label-md font-semibold';
+      badgeDotTop.className = 'w-2 h-2 rounded-full bg-error';
+      badgeTextTop.textContent = 'Ditolak';
+
+      badgeCard.className = 'inline-flex items-center gap-1.5 font-body-lg text-body-lg font-semibold text-error';
+      badgeCard.innerHTML = '<span class="material-symbols-outlined text-[18px]">cancel</span><span>Ditolak</span>';
+
+      step3Dot.className = 'w-7 h-7 rounded-full bg-error-container text-on-error-container flex items-center justify-center shrink-0 shadow-sm';
+      step3Dot.innerHTML = '<span class="material-symbols-outlined text-[16px]">close</span>';
+      step3Title.className = 'font-body-md text-body-md font-bold text-error';
+      step3Title.textContent = 'Permintaan Ditolak';
+      step3Desc.textContent = 'Ditolak pada 24 Agu 2026, 09:18 WIB (Di luar wewenang section)';
+
+      step4Dot.className = 'w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-secondary shrink-0';
+      step4Title.className = 'font-body-md text-body-md font-medium text-secondary line-through';
+      step4Desc.textContent = 'Siklus ditutup tanpa penyelesaian fisik';
+    }
+  }
+</script></div></main></div></body></html>

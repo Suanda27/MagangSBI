@@ -1,0 +1,835 @@
+<!DOCTYPE html><html lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Admin - Edit Layanan | ISM System</title>
+<!-- Inter Google Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 with forms plugin -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Typography & Layout Tweaks -->
+<style data-purpose="typography">
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+<style data-purpose="form-inputs">
+    /* Subtle custom ring and transition styling for enterprise look */
+    .form-input-custom:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+<!-- BEGIN: AppLayoutWrapper -->
+<div class="flex flex-1 min-h-screen">
+<!-- BEGIN: SidebarNavigation -->
+<aside class="w-64 bg-white border-r border-slate-200 flex flex-col shrink-0 select-none z-20">
+<!-- Logo Header -->
+<div class="h-16 px-6 flex items-center gap-3 border-b border-slate-100">
+<div class="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-sm shrink-0">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-slate-900 leading-tight text-base tracking-tight">ISM System</span>
+<span class="text-xs text-slate-400 font-medium leading-tight">Internal Service</span>
+</div>
+</div>
+<!-- Navigation Links Container -->
+<div class="flex-1 py-4 px-3 space-y-6 overflow-y-auto">
+<!-- Main Section -->
+<div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 text-sm font-medium transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+            Dashboard
+          </a>
+</div>
+<!-- Master Data Section Group -->
+<div class="space-y-1">
+<div class="px-3 text-[11px] font-bold tracking-wider text-slate-400 uppercase">Master Data</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 text-sm font-medium transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+            Karyawan
+          </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 text-sm font-medium transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+            Section
+          </a>
+<!-- Active Link: Layanan -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-blue-50 text-blue-700 text-sm font-semibold transition-colors" href="#">
+<svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+            Layanan
+          </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 text-sm font-medium transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+            PIC
+          </a>
+</div>
+<!-- Permintaan Section Group -->
+<div class="space-y-1">
+<div class="px-3 text-[11px] font-bold tracking-wider text-slate-400 uppercase">Permintaan</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 text-sm font-medium transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+            Semua Permintaan
+          </a>
+</div>
+<!-- Analisis Section Group -->
+<div class="space-y-1">
+<div class="px-3 text-[11px] font-bold tracking-wider text-slate-400 uppercase">Analisis</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 text-sm font-medium transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+            Laporan
+          </a>
+</div>
+</div>
+<!-- Bottom System Nav (Settings & Logout) -->
+<div class="p-3 border-t border-slate-100 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 text-sm font-medium transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+          Settings
+        </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-rose-600 hover:bg-rose-50 text-sm font-medium transition-colors" href="#">
+<svg class="w-5 h-5 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+          Logout
+        </a>
+</div>
+</aside>
+<!-- END: SidebarNavigation -->
+<!-- BEGIN: MainContentArea -->
+<div class="flex-1 flex flex-col min-w-0 bg-[#f8fafc]">
+<!-- BEGIN: TopBar -->
+<header class="h-16 bg-white border-b border-slate-200 px-8 flex items-center justify-between sticky top-0 z-10">
+<!-- Breadcrumbs Navigation -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm" id="breadcrumbs-nav">
+<a class="text-slate-500 hover:text-slate-700" href="#">Portal</a>
+<svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<a class="text-slate-500 hover:text-slate-700" href="#">Console</a>
+<svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<a class="text-slate-500 hover:text-slate-700" href="#">Master Data</a>
+<svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<a class="text-slate-500 hover:text-slate-700" href="javascript:void(0)" onclick="switchToEditView()">Layanan</a>
+<svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="text-blue-700 font-medium" id="breadcrumb-current-action">Edit</span>
+</nav>
+<!-- Right Side: Global Search, Notification, Profile -->
+<div class="flex items-center gap-4">
+<!-- Quick Search Box -->
+<div class="relative w-64">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</span>
+<input class="w-full text-xs pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder-slate-400 transition" placeholder="Cari NIK, ID, nama..." type="text">
+</div>
+<!-- Notification Bell with Alert Badge -->
+<button class="relative p-2 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-50 transition" title="Notifikasi" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full ring-2 ring-white"></span>
+</button>
+<!-- User Badge -->
+<div class="flex items-center gap-3 pl-2 border-l border-slate-200">
+<div class="w-8 h-8 rounded-full bg-slate-800 text-white font-semibold text-xs flex items-center justify-center tracking-wider shrink-0">
+              AD
+            </div>
+<div class="flex flex-col text-left">
+<span class="text-xs font-semibold text-slate-900 leading-tight">Admin ISM</span>
+<span class="text-[11px] text-slate-400 leading-tight">Administrator</span>
+</div>
+<svg class="w-4 h-4 text-slate-400 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</header>
+<!-- END: TopBar -->
+<!-- BEGIN: ScrollablePageContent -->
+<main class="flex-1 p-8 overflow-y-auto max-w-6xl w-full mx-auto pb-24">
+<!-- EDIT VIEW CONTAINER -->
+<div id="view-edit-layanan">
+<!-- BEGIN: PageHeader -->
+<div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="text-xs font-semibold tracking-wider text-blue-700 uppercase mb-1">Master Data / Layanan / Edit</div>
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight">Edit Layanan</h1>
+<p class="text-sm text-slate-500 mt-1">Perbarui informasi dan konfigurasi layanan.</p>
+</div>
+<!-- Top Status and System Badges -->
+<div class="flex items-center gap-2.5">
+<!-- Unsaved indicator pill (Dynamic) -->
+<div class="items-center gap-1.5 px-3 py-1 bg-amber-50 border border-amber-200 text-amber-800 rounded-full text-xs font-medium animate-pulse hidden" id="unsaved-badge">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+              Perubahan belum disimpan
+            </div>
+<!-- Active Status Pill -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200" id="badge-header-status">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              Aktif
+            </span>
+<!-- Service ID Chip -->
+<span class="px-2.5 py-1 rounded-md text-xs font-semibold font-mono bg-slate-100 text-slate-700 border border-slate-200">
+              SRV-001
+            </span>
+</div>
+</div>
+<!-- END: PageHeader -->
+<!-- BEGIN: CompactServiceIdentificationBanner -->
+<section class="bg-white border border-slate-200 rounded-xl p-4.5 mb-6 shadow-xs" data-purpose="identification-banner">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-3.5">
+<div class="w-11 h-11 rounded-lg bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center shrink-0">
+<!-- Chip / CPU outline icon -->
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 3v2m6-2v2M9 19v2m6-2v2M3 9h2m-2 6h2m14-6h2m-2 6h2M7 5h10a2 2 0 012 2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"></path>
+<path d="M9 9h6v6H9z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"></path>
+</svg>
+</div>
+<div>
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-bold text-slate-900 text-base" id="banner-service-name">Sensor &amp; Otomasi</span>
+<span class="text-xs bg-slate-100 text-slate-600 font-medium px-2 py-0.5 rounded border border-slate-200">Layanan Internal</span>
+</div>
+<div class="text-xs text-slate-500 mt-1 flex flex-wrap items-center gap-x-2.5 gap-y-1">
+<span class="">ID: <strong class="font-mono text-slate-700">SRV-001</strong></span>
+<span class="text-slate-300">•</span>
+<span class="">Kategori: <strong class="text-slate-700 font-medium" id="banner-kategori">Peralatan &amp; Otomasi</strong></span>
+<span class="text-slate-300">•</span>
+<span class="">Section: <strong class="text-slate-700 font-medium" id="banner-section">Assembly</strong></span>
+</div>
+</div>
+</div>
+<!-- Right meta info -->
+<div class="text-left md:text-right border-t md:border-t-0 pt-3 md:pt-0 border-slate-100">
+<span class="text-[11px] text-slate-400 block font-normal">Terakhir diperbarui</span>
+<span class="text-xs text-slate-600 font-medium block">12 Februari 2025, 14:20 WIB oleh <strong class="text-slate-700">Admin ISM</strong></span>
+</div>
+</div>
+</section>
+<!-- END: CompactServiceIdentificationBanner -->
+<!-- BEGIN: MainEditFormCard -->
+<form class="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden" data-purpose="edit-form" id="edit-layanan-form" onsubmit="event.preventDefault(); handleFormSubmit();">
+<div class="p-6 md:p-8 space-y-8">
+<!-- SECTION 1: INFORMASI LAYANAN -->
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-6">
+<div>
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-700">Informasi Layanan</h2>
+<p class="text-xs text-slate-400 mt-0.5">Identitas utama dan grup divisi penanggung jawab layanan.</p>
+</div>
+<span class="text-xs text-slate-400">Section ID: <span class="font-mono font-medium text-slate-600">SEC-ASM-02</span></span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Col 1: Nama Layanan -->
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="nama_layanan">
+                    Nama Layanan <span class="text-rose-500">*</span>
+</label>
+<input class="form-input-custom w-full h-[42px] px-3.5 text-sm rounded-lg border border-slate-300 focus:outline-none transition text-slate-800 placeholder-slate-400" id="nama_layanan" name="nama_layanan" oninput="handleInputChange()" placeholder="Masukkan nama layanan..." required="" type="text" value="Sensor &amp; Otomasi">
+<!-- Inline validation slot -->
+<p class="text-xs text-rose-600 mt-1.5 flex items-center gap-1 font-medium hidden" id="nama_layanan_error">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Nama layanan wajib diisi tidak boleh kosong.</span>
+</p>
+</div>
+<!-- Col 2: ID Layanan (Read-only) -->
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="id_layanan">
+                    ID Layanan
+                  </label>
+<div class="relative">
+<input class="w-full h-[42px] pl-3.5 pr-10 text-sm font-mono rounded-lg border border-slate-200 bg-slate-50 text-slate-500 cursor-not-allowed select-none focus:outline-none" id="id_layanan" name="id_layanan" readonly="" tabindex="-1" type="text" value="SRV-001">
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<p class="text-[11px] text-slate-400 mt-1.5 leading-normal">
+                    ID layanan dibuat otomatis oleh sistem dan tidak dapat diubah.
+                  </p>
+</div>
+<!-- Col 3: Kategori -->
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="kategori">
+                    Kategori <span class="text-rose-500">*</span>
+</label>
+<select class="form-input-custom w-full h-[42px] px-3.5 text-sm rounded-lg border border-slate-300 focus:outline-none transition text-slate-800 bg-white" id="kategori" name="kategori" onchange="handleInputChange()">
+<option value="">Pilih Kategori...</option>
+<option value="Fasilitas &amp; Gedung">Fasilitas &amp; Gedung</option>
+<option value="Peralatan &amp; Inventaris">Peralatan &amp; Inventaris</option>
+<option value="Administrasi Karyawan">Administrasi Karyawan</option>
+<option value="Dokumen &amp; Surat">Dokumen &amp; Surat</option>
+<option value="Dukungan Sistem">Dukungan Sistem</option>
+<option value="Maintenance &amp; Perbaikan">Maintenance &amp; Perbaikan</option>
+<option selected="" value="Peralatan &amp; Otomasi">Peralatan &amp; Otomasi</option>
+<option value="Layanan Karyawan">Layanan Karyawan</option>
+</select>
+<p class="text-xs text-rose-600 mt-1.5 flex items-center gap-1 font-medium hidden" id="kategori_error">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Kategori wajib dipilih.</span>
+</p>
+</div>
+<!-- Col 4: Section Penanggung Jawab -->
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1.5" for="section_penanggung_jawab">
+                    Section Penanggung Jawab <span class="text-rose-500">*</span>
+</label>
+<select class="form-input-custom w-full h-[42px] px-3.5 text-sm rounded-lg border border-slate-300 focus:outline-none transition text-slate-800 bg-white" id="section_penanggung_jawab" name="section_penanggung_jawab" onchange="handleInputChange()">
+<option value="">Pilih Section...</option>
+<option selected="" value="Assembly">Assembly</option>
+<option value="HR">HR</option>
+<option value="IS">IS</option>
+<option value="PE">PE</option>
+<option value="GA">GA</option>
+</select>
+<p class="text-xs text-rose-600 mt-1.5 flex items-center gap-1 font-medium hidden" id="section_error">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Section penanggung jawab wajib dipilih.</span>
+</p>
+</div>
+<!-- Row: Status Layanan Segmented Controls -->
+<div class="md:col-span-2 pt-2">
+<label class="block text-xs font-semibold text-slate-700 mb-2">
+                    Status Layanan
+                  </label>
+<div class="flex items-center gap-3">
+<!-- Option Aktif -->
+<label class="relative flex items-center p-3 rounded-lg border border-slate-200 hover:border-blue-400 bg-white cursor-pointer transition has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50/40 has-[:checked]:ring-1 has-[:checked]:ring-blue-600">
+<input checked="" class="w-4 h-4 text-blue-600 border-slate-300 focus:ring-blue-500" name="status_layanan" onchange="handleStatusRadioChange('aktif')" type="radio" value="aktif">
+<span class="ml-2.5 text-xs font-semibold text-slate-800 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        Aktif
+                      </span>
+</label>
+<!-- Option Nonaktif -->
+<label class="relative flex items-center p-3 rounded-lg border border-slate-200 hover:border-blue-400 bg-white cursor-pointer transition has-[:checked]:border-slate-600 has-[:checked]:bg-slate-100/60 has-[:checked]:ring-1 has-[:checked]:ring-slate-500">
+<input class="w-4 h-4 text-slate-600 border-slate-300 focus:ring-slate-500" name="status_layanan" onchange="handleStatusRadioChange('nonaktif')" type="radio" value="nonaktif">
+<span class="ml-2.5 text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                        Nonaktif
+                      </span>
+</label>
+</div>
+<p class="text-[11px] text-slate-400 mt-1.5">
+                    Jika aktif, layanan tersedia untuk pengajuan baru oleh karyawan.
+                  </p>
+</div>
+</div>
+</div>
+<!-- SECTION 3: KONFIGURASI LAYANAN -->
+<div class="pt-6 border-t border-slate-100">
+<div class="mb-5">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-700">Konfigurasi Layanan</h2>
+<p class="text-xs text-slate-400 mt-0.5">Pengaturan visibilitas pada portal pemohon seluruh karyawan.</p>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-3">
+                  Status Visibilitas
+                </label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
+<!-- Radio 1: Publik & Aktif -->
+<label class="relative flex items-start p-4 rounded-xl border border-slate-200 hover:border-blue-300 bg-white cursor-pointer transition has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50/30 has-[:checked]:ring-1 has-[:checked]:ring-blue-600">
+<input checked="" class="w-4 h-4 mt-0.5 text-blue-600 border-slate-300 focus:ring-blue-500" name="visibilitas" onchange="handleInputChange()" type="radio" value="publik">
+<div class="ml-3">
+<span class="block text-xs font-semibold text-slate-900 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        Publik &amp; Aktif
+                      </span>
+<span class="block text-[11px] text-slate-500 mt-0.5 leading-normal">
+                        Tampak di katalog formulir permohonan seluruh karyawan.
+                      </span>
+</div>
+</label>
+<!-- Radio 2: Tidak Aktif / Sembunyikan -->
+<label class="relative flex items-start p-4 rounded-xl border border-slate-200 hover:border-blue-300 bg-white cursor-pointer transition has-[:checked]:border-slate-500 has-[:checked]:bg-slate-50 has-[:checked]:ring-1 has-[:checked]:ring-slate-500">
+<input class="w-4 h-4 mt-0.5 text-slate-600 border-slate-300 focus:ring-slate-500" name="visibilitas" onchange="handleInputChange()" type="radio" value="sembunyi">
+<div class="ml-3">
+<span class="block text-xs font-semibold text-slate-800 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                        Tidak Aktif
+                      </span>
+<span class="block text-[11px] text-slate-500 mt-0.5 leading-normal">
+                        Disembunyikan dari katalog formulir pemohon.
+                      </span>
+</div>
+</label>
+</div>
+<p class="text-[11px] text-slate-400 mt-2.5">
+                  Menentukan apakah layanan dapat dipilih oleh karyawan saat membuat permintaan baru.
+                </p>
+</div>
+</div>
+</div>
+<!-- BEGIN: FormCardBottomBar -->
+<div class="px-6 md:px-8 py-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
+<!-- Left: Batal button -->
+<button class="px-5 py-2.5 rounded-lg border border-slate-300 text-slate-700 bg-white hover:bg-slate-100 font-medium text-xs tracking-wide transition shadow-xs cursor-pointer" onclick="triggerCancelModal()" type="button">
+              Batal
+            </button>
+<!-- Right: Selesai button with corporate blue primary style -->
+<button class="px-6 py-2.5 rounded-lg bg-[#1e40af] hover:bg-[#1e3a8a] text-white font-medium text-xs tracking-wide transition shadow-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed" id="btn-submit" type="submit">
+<svg class="w-4 h-4 animate-spin hidden" fill="none" id="submit-spinner" viewBox="0 0 24 24">
+<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+<path class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"></path>
+</svg>
+<span id="submit-text">Selesai</span>
+</button>
+</div>
+<!-- END: FormCardBottomBar -->
+</form>
+<!-- END: MainEditFormCard -->
+</div>
+<!-- END: EDIT VIEW CONTAINER -->
+<!-- BEGIN: DETAIL VIEW CONTAINER (Transitions here on Selesai) -->
+<div class="hidden animate-in fade-in duration-200" id="view-detail-layanan">
+<!-- Page Header Detail -->
+<div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="text-xs font-semibold tracking-wider text-blue-700 uppercase mb-1">Master Data / Layanan / Detail</div>
+<div class="flex items-center gap-3">
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight" id="detail-page-title">Sensor &amp; Otomasi</h1>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200" id="detail-page-status-badge">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              Aktif
+            </span>
+</div>
+<p class="text-sm text-slate-500 mt-1">Detail konfigurasi dan master data layanan internal ISM.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 rounded-lg border border-slate-300 text-slate-700 bg-white hover:bg-slate-50 font-medium text-xs transition inline-flex items-center gap-2 shadow-xs" onclick="switchToEditView()" type="button">
+<svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+            Edit Layanan
+          </button>
+<span class="px-3 py-2 rounded-lg text-xs font-mono font-semibold bg-slate-100 text-slate-700 border border-slate-200">
+            SRV-001
+          </span>
+</div>
+</div>
+<!-- Detailed Information Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+<!-- Card 1: Informasi Utama -->
+<div class="md:col-span-2 bg-white border border-slate-200 rounded-xl p-6 shadow-xs space-y-6">
+<div class="flex items-center justify-between pb-3 border-b border-slate-100">
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-700">Informasi Layanan</h3>
+<span class="text-xs text-slate-400">ID: <span class="font-mono font-medium text-slate-700">SRV-001</span></span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5 text-sm">
+<div>
+<span class="text-xs text-slate-400 block mb-1">Nama Layanan</span>
+<span class="text-sm font-semibold text-slate-900" id="detail-view-name">Sensor &amp; Otomasi</span>
+</div>
+<div>
+<span class="text-xs text-slate-400 block mb-1">Kategori</span>
+<span class="text-sm font-semibold text-slate-900" id="detail-view-kategori">Peralatan &amp; Otomasi</span>
+</div>
+<div>
+<span class="text-xs text-slate-400 block mb-1">Section Penanggung Jawab</span>
+<span class="text-sm font-semibold text-slate-900" id="detail-view-section">Assembly</span>
+</div>
+<div>
+<span class="text-xs text-slate-400 block mb-1">Section ID</span>
+<span class="text-sm font-mono font-medium text-slate-700">SEC-ASM-02</span>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100">
+<h4 class="text-xs font-semibold text-slate-700 uppercase tracking-wider mb-3">Status &amp; Konfigurasi Visibilitas</h4>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="p-3.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between">
+<span class="text-xs text-slate-600 font-medium">Status Operasional:</span>
+<span class="text-xs font-semibold text-emerald-700 bg-emerald-100/70 px-2.5 py-0.5 rounded-full inline-flex items-center gap-1" id="detail-view-status">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Aktif
+                </span>
+</div>
+<div class="p-3.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between">
+<span class="text-xs text-slate-600 font-medium">Visibilitas Portal:</span>
+<span class="text-xs font-semibold text-blue-700 bg-blue-100/70 px-2.5 py-0.5 rounded-full" id="detail-view-visibilitas">
+                  Publik &amp; Aktif
+                </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Status Audit & PIC ringkas -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 shadow-xs flex flex-col justify-between space-y-6">
+<div>
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-700 pb-3 border-b border-slate-100 mb-4">Informasi Audit</h3>
+<div class="space-y-3.5 text-xs">
+<div>
+<span class="text-slate-400 block text-[11px]">Terakhir Diperbarui</span>
+<span class="text-slate-700 font-semibold" id="detail-last-updated">Baru saja</span>
+</div>
+<div>
+<span class="text-slate-400 block text-[11px]">Diperbarui Oleh</span>
+<span class="text-slate-700 font-semibold">Admin ISM (Administrator)</span>
+</div>
+<div>
+<span class="text-slate-400 block text-[11px]">Dibuat Pada</span>
+<span class="text-slate-700 font-medium">10 Januari 2024, 09:00 WIB</span>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100">
+<button class="w-full py-2.5 px-4 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 text-xs font-semibold transition text-center" onclick="switchToEditView()" type="button">
+              Kembali ke Edit Layanan
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- END: DETAIL VIEW CONTAINER -->
+</main>
+<!-- END: ScrollablePageContent -->
+</div>
+<!-- END: MainContentArea -->
+</div>
+<!-- END: AppLayoutWrapper -->
+<!-- BEGIN: ModalsAndOverlays -->
+<!-- Modal 1: Konfirmasi Batal Perubahan -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs hidden transition-opacity" id="modal-cancel">
+<div class="bg-white rounded-xl max-w-md w-full p-6 shadow-xl border border-slate-200 relative animate-in fade-in zoom-in duration-150">
+<div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center mb-4">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-base font-bold text-slate-900 mb-1">Perubahan Belum Disimpan?</h3>
+<p class="text-xs text-slate-500 leading-relaxed mb-6">
+        Anda memiliki perubahan form yang belum disimpan. Jika Anda meninggalkan halaman ini sekarang, semua perubahan yang dilakukan akan hilang.
+      </p>
+<div class="flex items-center justify-end gap-3">
+<button class="px-4 py-2 rounded-lg border border-slate-300 text-slate-700 bg-white hover:bg-slate-50 font-medium text-xs transition cursor-pointer" onclick="closeModal('modal-cancel')" type="button">
+          Lanjutkan Mengedit
+        </button>
+<button class="px-4 py-2 rounded-lg bg-rose-600 hover:bg-rose-700 text-white font-medium text-xs transition shadow-xs cursor-pointer" onclick="discardChangesAndRedirect()" type="button">
+          Tinggalkan Halaman
+        </button>
+</div>
+</div>
+</div>
+<!-- TOP-RIGHT SUCCESS TOAST NOTIFICATION -->
+<div class="fixed top-6 right-6 z-50 max-w-md w-full sm:w-96 bg-white border border-emerald-200 rounded-xl shadow-xl p-4 flex items-start gap-3.5 transform -translate-y-12 opacity-0 pointer-events-none transition-all duration-300 ease-out" id="toast-notification" role="alert">
+<div class="w-9 h-9 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+<!-- Success Green Checkmark Icon -->
+<svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1 pr-1">
+<h4 class="text-xs font-bold text-slate-900" id="toast-title">Layanan berhasil diperbarui</h4>
+<p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed" id="toast-subtitle">Perubahan informasi layanan telah berhasil disimpan.</p>
+</div>
+<button class="text-slate-400 hover:text-slate-600 p-1 rounded transition cursor-pointer" onclick="hideToast()" title="Tutup Notifikasi" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<!-- END: ModalsAndOverlays -->
+<!-- BEGIN: ClientSideLogic -->
+<script data-purpose="form-interactivity">
+    // State Tracker
+    let isDirty = false;
+
+    function handleInputChange() {
+      if (!isDirty) {
+        setUnsavedState(true);
+      }
+      
+      // Update top banner in real-time
+      const namaVal = document.getElementById('nama_layanan').value;
+      const kategoriVal = document.getElementById('kategori').value;
+      const sectionVal = document.getElementById('section_penanggung_jawab').value;
+
+      document.getElementById('banner-service-name').textContent = namaVal.trim() || 'Sensor & Otomasi';
+      if (kategoriVal) document.getElementById('banner-kategori').textContent = kategoriVal;
+      if (sectionVal) document.getElementById('banner-section').textContent = sectionVal;
+
+      // Clear inline error if user types
+      if (namaVal.trim().length > 0) {
+        document.getElementById('nama_layanan_error').classList.add('hidden');
+        document.getElementById('nama_layanan').classList.remove('border-rose-500');
+      }
+      if (kategoriVal) {
+        document.getElementById('kategori_error').classList.add('hidden');
+        document.getElementById('kategori').classList.remove('border-rose-500');
+      }
+      if (sectionVal) {
+        document.getElementById('section_error').classList.add('hidden');
+        document.getElementById('section_penanggung_jawab').classList.remove('border-rose-500');
+      }
+    }
+
+    function setUnsavedState(dirty) {
+      isDirty = dirty;
+      const badge = document.getElementById('unsaved-badge');
+      if (dirty) {
+        badge.classList.remove('hidden');
+        badge.classList.add('inline-flex');
+      } else {
+        badge.classList.add('hidden');
+        badge.classList.remove('inline-flex');
+      }
+    }
+
+    function handleStatusRadioChange(status) {
+      setUnsavedState(true);
+      const headerBadge = document.getElementById('badge-header-status');
+      if (status === 'aktif') {
+        headerBadge.className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200";
+        headerBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Aktif`;
+      } else {
+        headerBadge.className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600 border border-slate-200";
+        headerBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> Nonaktif`;
+      }
+    }
+
+    function triggerCancelModal() {
+      if (isDirty) {
+        openModal('modal-cancel');
+      } else {
+        switchToDetailView();
+      }
+    }
+
+    function discardChangesAndRedirect() {
+      closeModal('modal-cancel');
+      setDemoDefault();
+      switchToDetailView();
+    }
+
+    // Step 1: Validation on required fields
+    function handleFormSubmit() {
+      const namaInput = document.getElementById('nama_layanan');
+      const kategoriInput = document.getElementById('kategori');
+      const sectionInput = document.getElementById('section_penanggung_jawab');
+
+      const namaError = document.getElementById('nama_layanan_error');
+      const kategoriError = document.getElementById('kategori_error');
+      const sectionError = document.getElementById('section_error');
+
+      let isValid = true;
+
+      // Check nama layanan
+      if (!namaInput.value.trim()) {
+        namaError.classList.remove('hidden');
+        namaInput.classList.add('border-rose-500');
+        namaInput.focus();
+        isValid = false;
+      } else {
+        namaError.classList.add('hidden');
+        namaInput.classList.remove('border-rose-500');
+      }
+
+      // Check kategori
+      if (!kategoriInput.value.trim()) {
+        kategoriError.classList.remove('hidden');
+        kategoriInput.classList.add('border-rose-500');
+        if (isValid) kategoriInput.focus();
+        isValid = false;
+      } else {
+        kategoriError.classList.add('hidden');
+        kategoriInput.classList.remove('border-rose-500');
+      }
+
+      // Check section
+      if (!sectionInput.value.trim()) {
+        sectionError.classList.remove('hidden');
+        sectionInput.classList.add('border-rose-500');
+        if (isValid) sectionInput.focus();
+        isValid = false;
+      } else {
+        sectionError.classList.add('hidden');
+        sectionInput.classList.remove('border-rose-500');
+      }
+
+      if (!isValid) return;
+
+      // Step 2: Trigger saving state
+      triggerSavingFlow();
+    }
+
+    function triggerSavingFlow() {
+      const btn = document.getElementById('btn-submit');
+      const spinner = document.getElementById('submit-spinner');
+      const text = document.getElementById('submit-text');
+      const form = document.getElementById('edit-layanan-form');
+
+      // Disable inputs & buttons
+      btn.disabled = true;
+      spinner.classList.remove('hidden');
+      text.textContent = 'Menyimpan...';
+
+      const inputs = form.querySelectorAll('input, select, button');
+      inputs.forEach(el => {
+        if (el !== btn) el.disabled = true;
+      });
+
+      // After ~1.2 seconds, display modern toast & navigate to Detail Layanan
+      setTimeout(() => {
+        btn.disabled = false;
+        spinner.classList.add('hidden');
+        text.textContent = 'Selesai';
+
+        inputs.forEach(el => {
+          el.disabled = false;
+        });
+
+        setUnsavedState(false);
+
+        // Display top-right toast notification
+        showSuccessToast("Layanan berhasil diperbarui", "Perubahan informasi layanan telah berhasil disimpan.");
+
+        // Automatically transition to Detail Layanan view
+        setTimeout(() => {
+          updateAndShowDetailView();
+        }, 500);
+
+      }, 1200);
+    }
+
+    let toastTimeout;
+    function showSuccessToast(title, subtitle) {
+      const toast = document.getElementById('toast-notification');
+      if (title) document.getElementById('toast-title').textContent = title;
+      if (subtitle) document.getElementById('toast-subtitle').textContent = subtitle;
+
+      toast.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-12');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        hideToast();
+      }, 4500);
+    }
+
+    function hideToast() {
+      const toast = document.getElementById('toast-notification');
+      toast.classList.add('opacity-0', 'pointer-events-none', '-translate-y-12');
+      toast.classList.remove('opacity-100', 'translate-y-0');
+    }
+
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    function updateAndShowDetailView() {
+      const namaVal = document.getElementById('nama_layanan').value.trim() || 'Sensor & Otomasi';
+      const kategoriVal = document.getElementById('kategori').value;
+      const sectionVal = document.getElementById('section_penanggung_jawab').value;
+      const statusAktif = document.querySelector('input[name="status_layanan"][value="aktif"]').checked;
+      const visibilitasPublik = document.querySelector('input[name="visibilitas"][value="publik"]').checked;
+
+      // Populate detail elements
+      document.getElementById('detail-page-title').textContent = namaVal;
+      document.getElementById('detail-view-name').textContent = namaVal;
+      document.getElementById('detail-view-kategori').textContent = kategoriVal;
+      document.getElementById('detail-view-section').textContent = sectionVal;
+
+      const statusBadge = document.getElementById('detail-page-status-badge');
+      const statusText = document.getElementById('detail-view-status');
+      if (statusAktif) {
+        statusBadge.className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200";
+        statusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Aktif`;
+        statusText.className = "text-xs font-semibold text-emerald-700 bg-emerald-100/70 px-2.5 py-0.5 rounded-full inline-flex items-center gap-1";
+        statusText.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Aktif`;
+      } else {
+        statusBadge.className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600 border border-slate-200";
+        statusBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> Nonaktif`;
+        statusText.className = "text-xs font-semibold text-slate-600 bg-slate-200/70 px-2.5 py-0.5 rounded-full inline-flex items-center gap-1";
+        statusText.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> Nonaktif`;
+      }
+
+      document.getElementById('detail-view-visibilitas').textContent = visibilitasPublik ? 'Publik & Aktif' : 'Disembunyikan';
+      
+      const now = new Date();
+      const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')} WIB`;
+      document.getElementById('detail-last-updated').textContent = `Hari ini, ${timeStr}`;
+
+      // Switch views
+      document.getElementById('view-edit-layanan').classList.add('hidden');
+      document.getElementById('view-detail-layanan').classList.remove('hidden');
+      document.getElementById('breadcrumb-current-action').textContent = 'Detail';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function switchToEditView() {
+      document.getElementById('view-detail-layanan').classList.add('hidden');
+      document.getElementById('view-edit-layanan').classList.remove('hidden');
+      document.getElementById('breadcrumb-current-action').textContent = 'Edit';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function switchToDetailView() {
+      updateAndShowDetailView();
+    }
+
+    function setDemoDefault() {
+      document.getElementById('nama_layanan').value = "Sensor & Otomasi";
+      document.getElementById('kategori').value = "Peralatan & Otomasi";
+      document.getElementById('section_penanggung_jawab').value = "Assembly";
+      document.querySelector('input[name="status_layanan"][value="aktif"]').checked = true;
+      document.querySelector('input[name="visibilitas"][value="publik"]').checked = true;
+
+      handleStatusRadioChange('aktif');
+      handleInputChange();
+      setUnsavedState(false);
+    }
+  </script>
+<!-- END: ClientSideLogic -->
+</body></html>

@@ -1,0 +1,687 @@
+<!DOCTYPE html><html class="h-full bg-slate-50" lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Selesai - PIC Operations | ISM System</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Core Styles -->
+<style data-purpose="typography">
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #0f172a;
+    }
+  </style>
+<style data-purpose="scrollbar">
+    /* Custom subtle scrollbar for tables */
+    ::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="h-full flex flex-col antialiased">
+<!-- BEGIN: MainLayoutWrapper -->
+<div class="flex-1 flex overflow-hidden">
+<!-- BEGIN: Sidebar -->
+<aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 select-none" data-purpose="sidebar">
+<div>
+<!-- Brand Header -->
+<div class="h-16 flex items-center px-6 border-b border-slate-100 gap-3">
+<div class="w-9 h-9 rounded-lg bg-brand-800 flex items-center justify-center text-white shadow-sm font-bold text-lg">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<h1 class="text-sm font-bold text-slate-900 leading-tight">ISM System</h1>
+<p class="text-xs text-slate-500 font-medium">PIC Operations</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="px-3 py-5">
+<p class="px-3 text-[11px] font-semibold text-slate-400 tracking-wider uppercase mb-2">Workspace</p>
+<nav class="space-y-1">
+<!-- Dashboard (Inactive) -->
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Dashboard</span>
+</a>
+<!-- Permintaan Masuk (Inactive) -->
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Permintaan Masuk</span>
+</a>
+<!-- Permintaan Saya (Inactive) -->
+
+<!-- Sedang Diproses (Inactive) -->
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Sedang Diproses</span>
+</a>
+<!-- Selesai (ACTIVE Menu Item) -->
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-semibold rounded-lg bg-blue-50 text-brand-700 border-r-2 border-brand-700" href="#">
+<svg class="w-4 h-4 text-brand-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Selesai</span>
+</a>
+<!-- Laporan (Inactive) -->
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Laporan</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Bottom Account Section -->
+<div class="p-3 border-t border-slate-100">
+<p class="px-3 text-[11px] font-semibold text-slate-400 tracking-wider uppercase mb-2">Account</p>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg text-red-600 hover:bg-red-50 transition-colors" href="#">
+<svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Logout</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- END: Sidebar -->
+<!-- BEGIN: MainContentArea -->
+<div class="flex-1 flex flex-col min-w-0 bg-slate-50 overflow-hidden">
+<!-- BEGIN: TopBar -->
+<header class="h-16 bg-white border-b border-slate-200 px-8 flex items-center justify-between shrink-0" data-purpose="top-navigation">
+<!-- Global Search Input -->
+<div class="w-96 relative">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</span>
+<input class="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-brand-600 focus:border-brand-600 transition" placeholder="Search requests, ticket #, or keywords..." type="text">
+</div>
+<!-- Top Right Actions & User Info -->
+<div class="flex items-center gap-4">
+<!-- Notification Bell -->
+<button aria-label="Notifikasi" class="relative p-2 text-slate-400 hover:text-slate-600 rounded-full hover:bg-slate-50 transition" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+</button>
+<div class="h-6 w-px bg-slate-200"></div>
+<!-- User Profile -->
+<div class="flex items-center gap-3 cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-brand-800 text-white flex items-center justify-center font-semibold text-xs">
+              BS
+            </div>
+<div class="text-left leading-tight hidden sm:block">
+<p class="text-xs font-bold text-slate-800">Budi Santoso</p>
+<p class="text-[11px] text-slate-500">PIC Operations</p>
+</div>
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</header>
+<!-- END: TopBar -->
+<!-- BEGIN: ScrollableContent -->
+<main class="flex-1 overflow-y-auto p-8 space-y-6">
+<!-- Breadcrumb & Header Title Area -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+<div>
+<nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-xs text-slate-500 mb-1">
+<span class="">Portal</span>
+<span class="text-slate-300">/</span>
+<span class="text-slate-700 font-medium">Selesai</span>
+</nav>
+<h1 class="text-2xl font-bold text-slate-900">Selesai</h1>
+<p class="text-xs text-slate-500 mt-1">Daftar permintaan layanan yang telah selesai ditangani.</p>
+</div>
+<!-- Top Actions (Export & Refresh) -->
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-2 px-3.5 py-2 bg-white border border-slate-200 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 shadow-sm transition" type="button">
+<svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Export</span>
+</button>
+<button aria-label="Muat ulang" class="p-2 bg-white border border-slate-200 rounded-lg text-slate-700 hover:bg-slate-50 shadow-sm transition" type="button">
+<svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- BEGIN: SummaryCards -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-4" data-purpose="summary-cards">
+<!-- Card 1: Total Selesai -->
+<div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-start justify-between">
+<div>
+<p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Total Permintaan Selesai</p>
+<p class="text-3xl font-bold text-slate-900 mt-2">42</p>
+<p class="text-xs text-slate-500 mt-1">Permintaan terselesaikan tuntas</p>
+</div>
+<div class="p-2.5 bg-blue-50 text-brand-700 rounded-lg">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<!-- Card 2: Selesai Hari Ini -->
+<div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-start justify-between">
+<div>
+<p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Selesai Hari Ini</p>
+<p class="text-3xl font-bold text-slate-900 mt-2">5</p>
+<p class="text-xs text-emerald-600 font-medium mt-1">Diselesaikan pada hari ini</p>
+</div>
+<div class="p-2.5 bg-emerald-50 text-emerald-700 rounded-lg">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<!-- Card 3: Selesai Bulan Ini -->
+<div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-start justify-between">
+<div>
+<p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Selesai Bulan Ini</p>
+<p class="text-3xl font-bold text-slate-900 mt-2">28</p>
+<p class="text-xs text-slate-500 mt-1">Penyelesaian periode bulan ini</p>
+</div>
+<div class="p-2.5 bg-indigo-50 text-indigo-700 rounded-lg">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</section>
+<!-- END: SummaryCards -->
+<!-- BEGIN: FilterSection -->
+<section class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-3" data-purpose="search-and-filters">
+<div class="flex flex-wrap items-center gap-3"><!-- Search Filter -->
+<div class="flex-1 min-w-[240px] relative">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</span>
+<input class="w-full pl-9 pr-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-brand-600 focus:border-brand-600" id="search-filter-input" placeholder="Cari ID, judul, atau nama pengaju..." type="text">
+</div>
+<!-- Dropdown: Section -->
+<div class="w-36">
+<select class="w-full py-1.5 px-2.5 bg-white border border-slate-300 rounded-lg text-xs text-slate-700 focus:ring-1 focus:ring-brand-600 focus:border-brand-600">
+<option selected="">Semua Section</option>
+<option>Assembly</option>
+<option>HR</option>
+<option>IS</option>
+<option>PE</option>
+<option>GA</option>
+</select>
+</div>
+<!-- Dropdown: Plant -->
+<div class="w-36">
+<select class="w-full py-1.5 px-2.5 bg-white border border-slate-300 rounded-lg text-xs text-slate-700 focus:ring-1 focus:ring-brand-600 focus:border-brand-600">
+<option selected="">Semua Plant</option>
+<option>Plant 1</option>
+<option>Plant 2</option>
+<option>Plant 3</option>
+</select>
+</div>
+<!-- Dropdown: Lantai -->
+<div class="w-36">
+<select class="w-full py-1.5 px-2.5 bg-white border border-slate-300 rounded-lg text-xs text-slate-700 focus:ring-1 focus:ring-brand-600 focus:border-brand-600">
+<option selected="">Semua Lantai</option>
+<option>Lantai 1</option>
+<option>Lantai 2</option>
+<option>Lantai 3</option>
+</select>
+</div>
+<!-- Reset Filter Button -->
+<button class="text-xs font-semibold text-brand-700 hover:text-brand-900 px-2 py-1.5 transition" type="button">
+              Reset Filter
+            </button></div>
+</section>
+<!-- END: FilterSection -->
+<!-- BEGIN: TableCard -->
+<section class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col" data-purpose="completed-requests-table-container">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[1200px]">
+<thead>
+<tr class="bg-slate-50 border-b border-slate-200 text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+<th class="py-3.5 px-4">ID Permintaan</th>
+<th class="py-3.5 px-4">Judul Permintaan</th>
+<th class="py-3.5 px-4">Layanan</th>
+<th class="py-3.5 px-4">Nama Pengaju</th>
+<th class="py-3.5 px-4">Bagian</th>
+<th class="py-3.5 px-4">Plant</th>
+<th class="py-3.5 px-4">Lantai</th>
+<th class="py-3.5 px-4">Tanggal Pengajuan</th>
+<th class="py-3.5 px-4">Tanggal Selesai</th>
+<th class="py-3.5 px-4">Status</th>
+<th class="py-3.5 px-4 text-center">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-xs text-slate-600">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50/75 transition-colors">
+<td class="py-3.5 px-4 font-semibold text-brand-700 whitespace-nowrap">
+<a class="hover:underline" href="#" onclick="openDetailModal('REQ-2026-00124', 'Perbaikan AC Ruang Assembly', 'Perbaikan Fasilitas', 'Ahmad Fauzi', 'Assembly', 'Plant 2', 'Lantai 2', '23 Agustus 2026, 08:24 WIB', '24 Agustus 2026, 14:35 WIB')">REQ-2026-00124</a>
+</td>
+<td class="py-3.5 px-4 font-semibold text-slate-800">Perbaikan AC Ruang Assembly</td>
+<td class="py-3.5 px-4">Perbaikan Fasilitas</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-blue-100 text-brand-800 font-bold flex items-center justify-center text-[10px]">AF</span>
+<span class="font-medium text-slate-800">Ahmad Fauzi</span>
+</div>
+</td>
+<td class="py-3.5 px-4">Assembly</td>
+<td class="py-3.5 px-4 whitespace-nowrap">Plant 2</td>
+<td class="py-3.5 px-4 whitespace-nowrap">Lantai 2</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-500">23 Agustus 2026, 08:24 WIB</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-500">24 Agustus 2026, 14:35 WIB</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      Selesai
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-center whitespace-nowrap">
+<button class="px-2.5 py-1 text-xs font-medium text-slate-600 hover:text-brand-700 bg-white hover:bg-brand-50 border border-slate-200 rounded-md transition" onclick="openDetailModal('REQ-2026-00124', 'Perbaikan AC Ruang Assembly', 'Perbaikan Fasilitas', 'Ahmad Fauzi', 'Assembly', 'Plant 2', 'Lantai 2', '23 Agustus 2026, 08:24 WIB', '24 Agustus 2026, 14:35 WIB')" type="button">
+                      Detail
+                    </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50/75 transition-colors">
+<td class="py-3.5 px-4 font-semibold text-brand-700 whitespace-nowrap">
+<a class="hover:underline" href="#" onclick="openDetailModal('REQ-2026-00121', 'Permintaan Perlengkapan Kerja', 'Peralatan &amp; Perlengkapan', 'Rizky Pratama', 'Assembly', 'Plant 1', 'Lantai 1', '22 Agustus 2026, 09:15 WIB', '23 Agustus 2026, 15:20 WIB')">REQ-2026-00121</a>
+</td>
+<td class="py-3.5 px-4 font-semibold text-slate-800">Permintaan Perlengkapan Kerja</td>
+<td class="py-3.5 px-4">Peralatan &amp; Perlengkapan</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-[10px]">RP</span>
+<span class="font-medium text-slate-800">Rizky Pratama</span>
+</div>
+</td>
+<td class="py-3.5 px-4">Assembly</td>
+<td class="py-3.5 px-4 whitespace-nowrap">Plant 1</td>
+<td class="py-3.5 px-4 whitespace-nowrap">Lantai 1</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-500">22 Agustus 2026, 09:15 WIB</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-500">23 Agustus 2026, 15:20 WIB</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      Selesai
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-center whitespace-nowrap">
+<button class="px-2.5 py-1 text-xs font-medium text-slate-600 hover:text-brand-700 bg-white hover:bg-brand-50 border border-slate-200 rounded-md transition" onclick="openDetailModal('REQ-2026-00121', 'Permintaan Perlengkapan Kerja', 'Peralatan &amp; Perlengkapan', 'Rizky Pratama', 'Assembly', 'Plant 1', 'Lantai 1', '22 Agustus 2026, 09:15 WIB', '23 Agustus 2026, 15:20 WIB')" type="button">
+                      Detail
+                    </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50/75 transition-colors">
+<td class="py-3.5 px-4 font-semibold text-brand-700 whitespace-nowrap">
+<a class="hover:underline" href="#" onclick="openDetailModal('REQ-2026-00118', 'Perbaikan Lampu Ruangan', 'Fasilitas &amp; Gedung', 'Siti Rahma', 'GA', 'Plant 3', 'Lantai 2', '21 Agustus 2026, 10:05 WIB', '22 Agustus 2026, 13:40 WIB')">REQ-2026-00118</a>
+</td>
+<td class="py-3.5 px-4 font-semibold text-slate-800">Perbaikan Lampu Ruangan</td>
+<td class="py-3.5 px-4">Fasilitas &amp; Gedung</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-purple-100 text-purple-800 font-bold flex items-center justify-center text-[10px]">SR</span>
+<span class="font-medium text-slate-800">Siti Rahma</span>
+</div>
+</td>
+<td class="py-3.5 px-4">GA</td>
+<td class="py-3.5 px-4 whitespace-nowrap">Plant 3</td>
+<td class="py-3.5 px-4 whitespace-nowrap">Lantai 2</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-500">21 Agustus 2026, 10:05 WIB</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-500">22 Agustus 2026, 13:40 WIB</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      Selesai
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-center whitespace-nowrap">
+<button class="px-2.5 py-1 text-xs font-medium text-slate-600 hover:text-brand-700 bg-white hover:bg-brand-50 border border-slate-200 rounded-md transition" onclick="openDetailModal('REQ-2026-00118', 'Perbaikan Lampu Ruangan', 'Fasilitas &amp; Gedung', 'Siti Rahma', 'GA', 'Plant 3', 'Lantai 2', '21 Agustus 2026, 10:05 WIB', '22 Agustus 2026, 13:40 WIB')" type="button">
+                      Detail
+                    </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50/75 transition-colors">
+<td class="py-3.5 px-4 font-semibold text-brand-700 whitespace-nowrap">
+<a class="hover:underline" href="#" onclick="openDetailModal('REQ-2026-00115', 'Permintaan Akses Sistem', 'Dukungan Sistem', 'Budi Santoso', 'IS', 'Plant 2', 'Lantai 3', '20 Agustus 2026, 11:20 WIB', '21 Agustus 2026, 09:45 WIB')">REQ-2026-00115</a>
+</td>
+<td class="py-3.5 px-4 font-semibold text-slate-800">Permintaan Akses Sistem</td>
+<td class="py-3.5 px-4">Dukungan Sistem</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-[10px]">BS</span>
+<span class="font-medium text-slate-800">Budi Santoso</span>
+</div>
+</td>
+<td class="py-3.5 px-4">IS</td>
+<td class="py-3.5 px-4 whitespace-nowrap">Plant 2</td>
+<td class="py-3.5 px-4 whitespace-nowrap">Lantai 3</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-500">20 Agustus 2026, 11:20 WIB</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-500">21 Agustus 2026, 09:45 WIB</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      Selesai
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-center whitespace-nowrap">
+<button class="px-2.5 py-1 text-xs font-medium text-slate-600 hover:text-brand-700 bg-white hover:bg-brand-50 border border-slate-200 rounded-md transition" onclick="openDetailModal('REQ-2026-00115', 'Permintaan Akses Sistem', 'Dukungan Sistem', 'Budi Santoso', 'IS', 'Plant 2', 'Lantai 3', '20 Agustus 2026, 11:20 WIB', '21 Agustus 2026, 09:45 WIB')" type="button">
+                      Detail
+                    </button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-slate-50/75 transition-colors">
+<td class="py-3.5 px-4 font-semibold text-brand-700 whitespace-nowrap">
+<a class="hover:underline" href="#" onclick="openDetailModal('REQ-2026-00112', 'Perbaikan Peralatan Kerja', 'Maintenance &amp; Perbaikan', 'Dimas Pratama', 'PE', 'Plant 1', 'Lantai 2', '19 Agustus 2026, 13:10 WIB', '20 Agustus 2026, 16:25 WIB')">REQ-2026-00112</a>
+</td>
+<td class="py-3.5 px-4 font-semibold text-slate-800">Perbaikan Peralatan Kerja</td>
+<td class="py-3.5 px-4">Maintenance &amp; Perbaikan</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-800 font-bold flex items-center justify-center text-[10px]">DP</span>
+<span class="font-medium text-slate-800">Dimas Pratama</span>
+</div>
+</td>
+<td class="py-3.5 px-4">PE</td>
+<td class="py-3.5 px-4 whitespace-nowrap">Plant 1</td>
+<td class="py-3.5 px-4 whitespace-nowrap">Lantai 2</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-500">19 Agustus 2026, 13:10 WIB</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-500">20 Agustus 2026, 16:25 WIB</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      Selesai
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-center whitespace-nowrap">
+<button class="px-2.5 py-1 text-xs font-medium text-slate-600 hover:text-brand-700 bg-white hover:bg-brand-50 border border-slate-200 rounded-md transition" onclick="openDetailModal('REQ-2026-00112', 'Perbaikan Peralatan Kerja', 'Maintenance &amp; Perbaikan', 'Dimas Pratama', 'PE', 'Plant 1', 'Lantai 2', '19 Agustus 2026, 13:10 WIB', '20 Agustus 2026, 16:25 WIB')" type="button">
+                      Detail
+                    </button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-slate-50/75 transition-colors">
+<td class="py-3.5 px-4 font-semibold text-brand-700 whitespace-nowrap">
+<a class="hover:underline" href="#" onclick="openDetailModal('REQ-2026-00108', 'Penggantian Komponen Sensor', 'Otomasi Industri', 'Kevin Tandio', 'Assembly', 'Plant 2', 'Lantai 1', '18 Agustus 2026, 14:00 WIB', '19 Agustus 2026, 11:15 WIB')">REQ-2026-00108</a>
+</td>
+<td class="py-3.5 px-4 font-semibold text-slate-800">Penggantian Komponen Sensor</td>
+<td class="py-3.5 px-4">Otomasi Industri</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-teal-100 text-teal-800 font-bold flex items-center justify-center text-[10px]">KT</span>
+<span class="font-medium text-slate-800">Kevin Tandio</span>
+</div>
+</td>
+<td class="py-3.5 px-4">Assembly</td>
+<td class="py-3.5 px-4 whitespace-nowrap">Plant 2</td>
+<td class="py-3.5 px-4 whitespace-nowrap">Lantai 1</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-500">18 Agustus 2026, 14:00 WIB</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-slate-500">19 Agustus 2026, 11:15 WIB</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      Selesai
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-center whitespace-nowrap">
+<button class="px-2.5 py-1 text-xs font-medium text-slate-600 hover:text-brand-700 bg-white hover:bg-brand-50 border border-slate-200 rounded-md transition" onclick="openDetailModal('REQ-2026-00108', 'Penggantian Komponen Sensor', 'Otomasi Industri', 'Kevin Tandio', 'Assembly', 'Plant 2', 'Lantai 1', '18 Agustus 2026, 14:00 WIB', '19 Agustus 2026, 11:15 WIB')" type="button">
+                      Detail
+                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- BEGIN: PaginationFooter -->
+<div class="px-5 py-3.5 border-t border-slate-200 bg-white flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500" data-purpose="table-pagination">
+<div class="">
+              Menampilkan <span class="font-semibold text-slate-700">1–6</span> dari <span class="font-semibold text-slate-700">42</span> permintaan
+            </div>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1.5 rounded text-slate-400 hover:text-slate-700 disabled:opacity-50 cursor-not-allowed" disabled="" type="button">
+                ← Sebelumnya
+              </button>
+<button class="w-7 h-7 rounded bg-brand-800 text-white font-medium flex items-center justify-center shadow-xs" type="button">
+                1
+              </button>
+<button class="w-7 h-7 rounded text-slate-600 hover:bg-slate-100 flex items-center justify-center" type="button">
+                2
+              </button>
+<button class="w-7 h-7 rounded text-slate-600 hover:bg-slate-100 flex items-center justify-center" type="button">
+                3
+              </button>
+<button class="w-7 h-7 rounded text-slate-600 hover:bg-slate-100 flex items-center justify-center" type="button">
+                4
+              </button>
+<button class="w-7 h-7 rounded text-slate-600 hover:bg-slate-100 flex items-center justify-center" type="button">
+                5
+              </button>
+<button class="px-2.5 py-1.5 rounded text-slate-600 hover:text-slate-900 font-medium" type="button">
+                Selanjutnya →
+              </button>
+</div>
+</div>
+<!-- END: PaginationFooter -->
+</section>
+<!-- END: TableCard -->
+</main>
+<!-- END: ScrollableContent -->
+<!-- BEGIN: SiteFooter -->
+<footer class="bg-white border-t border-slate-200 py-3.5 px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 shrink-0" data-purpose="system-footer">
+<div class="">
+          © 2026 Internal Service Management. PIC Operations Workspace.
+        </div>
+<div class="flex items-center gap-5 mt-2 sm:mt-0 font-medium">
+<a class="hover:text-slate-800 transition" href="#">SLA Guidelines</a>
+<a class="hover:text-slate-800 transition" href="#">Privacy Policy</a>
+<a class="hover:text-slate-800 transition" href="#">Support</a>
+</div>
+</footer>
+<!-- END: SiteFooter -->
+</div>
+<!-- END: MainContentArea -->
+</div>
+<!-- END: MainLayoutWrapper -->
+<!-- BEGIN: DetailModal (Read-Only) -->
+<div class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4" id="detail-modal">
+<div class="bg-white rounded-xl shadow-xl border border-slate-200 max-w-2xl w-full overflow-hidden transform transition-all">
+<!-- Modal Header -->
+<div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+<div class="flex items-center gap-2">
+<span class="p-1.5 bg-emerald-100 text-emerald-700 rounded-lg">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</span>
+<div>
+<h3 class="text-sm font-bold text-slate-900">Detail Permintaan Selesai</h3>
+<p class="text-[11px] text-slate-500" id="modal-req-id">REQ-2026-00124</p>
+</div>
+</div>
+<button class="text-slate-400 hover:text-slate-600 p-1 rounded-md hover:bg-slate-100 transition" onclick="closeDetailModal()" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+<!-- Modal Body (Pure Read-Only Overview) -->
+<div class="p-6 space-y-5 text-xs">
+<!-- Status Banner -->
+<div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="font-semibold text-emerald-800">Status: Telah Selesai Ditangani</span>
+</div>
+<span class="text-[11px] text-emerald-700 font-medium" id="modal-req-finish-date">Selesai pada: 24 Agustus 2026</span>
+</div>
+<!-- Section 1: Ringkasan Tiket -->
+<div class="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-lg border border-slate-200/70">
+<div>
+<span class="text-slate-400 font-medium block">Judul Permintaan</span>
+<span class="text-slate-900 font-semibold text-sm mt-0.5 block" id="modal-req-title">Perbaikan AC Ruang Assembly</span>
+</div>
+<div>
+<span class="text-slate-400 font-medium block">Kategori Layanan</span>
+<span class="text-slate-800 font-medium mt-0.5 block" id="modal-req-service">Perbaikan Fasilitas</span>
+</div>
+<div>
+<span class="text-slate-400 font-medium block">Lokasi Unit</span>
+<span class="text-slate-800 font-medium mt-0.5 block" id="modal-req-location">Plant 2 - Lantai 2</span>
+</div>
+<div>
+<span class="text-slate-400 font-medium block">Waktu Pengajuan</span>
+<span class="text-slate-800 font-medium mt-0.5 block" id="modal-req-created-date">23 Agustus 2026, 08:24 WIB</span>
+</div>
+</div>
+<!-- Section 2: Pemohon & PIC -->
+<div class="grid grid-cols-2 gap-4">
+<div class="p-3 border border-slate-200 rounded-lg">
+<span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block mb-1">Informasi Pemohon</span>
+<div class="flex items-center gap-2 mt-2">
+<div class="w-7 h-7 rounded-full bg-slate-200 text-slate-700 font-bold flex items-center justify-center text-xs" id="modal-requester-avatar">
+                AF
+              </div>
+<div>
+<p class="font-semibold text-slate-800" id="modal-requester-name">Ahmad Fauzi</p>
+<p class="text-[11px] text-slate-500" id="modal-requester-dept">Bagian: Assembly</p>
+</div>
+</div>
+</div>
+<div class="p-3 border border-slate-200 rounded-lg">
+<span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block mb-1">PIC Penanggung Jawab</span>
+<div class="flex items-center gap-2 mt-2">
+<div class="w-7 h-7 rounded-full bg-brand-100 text-brand-800 font-bold flex items-center justify-center text-xs">
+                BS
+              </div>
+<div>
+<p class="font-semibold text-slate-800">Budi Santoso</p>
+<p class="text-[11px] text-slate-500">PIC Operations Workspace</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3: Catatan Penyelesaian (Read Only) -->
+<div class="border border-slate-200 rounded-lg p-3 bg-white">
+<span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block mb-1">Catatan Penyelesaian (Resolution Notes)</span>
+<p class="text-slate-700 leading-relaxed mt-1 text-xs">
+            Pemeriksaan dan penggantian freon R32 telah dilakukan. Filter udara dibersihkan secara menyeluruh dan suhu operasional AC telah stabil pada 22°C. Unit telah diuji fungsi bersama PIC terkait dan bekerja normal.
+          </p>
+</div>
+</div>
+<!-- Modal Footer (Close only, strictly NO action buttons like Terima/Tolak) -->
+<div class="px-6 py-3 bg-slate-50 border-t border-slate-200 flex justify-end">
+<button class="px-4 py-2 bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 text-xs font-semibold rounded-lg transition" onclick="closeDetailModal()" type="button">
+          Tutup
+        </button>
+</div>
+</div>
+</div>
+<!-- END: DetailModal -->
+<!-- BEGIN: ClientScript -->
+<script data-purpose="modal-handlers">
+    function openDetailModal(id, title, service, requester, dept, plant, floor, submitted, finished) {
+      document.getElementById('modal-req-id').textContent = id;
+      document.getElementById('modal-req-title').textContent = title;
+      document.getElementById('modal-req-service').textContent = service;
+      document.getElementById('modal-req-location').textContent = plant + ' - ' + floor;
+      document.getElementById('modal-req-created-date').textContent = submitted;
+      document.getElementById('modal-req-finish-date').textContent = 'Selesai pada: ' + finished;
+      
+      document.getElementById('modal-requester-name').textContent = requester;
+      document.getElementById('modal-requester-dept').textContent = 'Bagian: ' + dept;
+      
+      // Initials for requester avatar
+      const initials = requester.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+      document.getElementById('modal-requester-avatar').textContent = initials;
+
+      const modal = document.getElementById('detail-modal');
+      modal.classList.remove('hidden');
+    }
+
+    function closeDetailModal() {
+      const modal = document.getElementById('detail-modal');
+      modal.classList.add('hidden');
+    }
+
+    // Close on outside click
+    window.addEventListener('click', function(event) {
+      const modal = document.getElementById('detail-modal');
+      if (event.target === modal) {
+        closeDetailModal();
+      }
+    });
+  </script>
+<!-- END: ClientScript -->
+
+
+
+
+
+
+</body></html>

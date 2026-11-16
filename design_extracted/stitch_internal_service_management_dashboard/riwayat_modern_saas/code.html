@@ -1,0 +1,377 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ISM System - Riwayat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#edeeef",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#dde1ff",
+                      "primary-fixed-dim": "#b8c4ff",
+                      "text-muted": "#64748B",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#dde1ff",
+                      "secondary-fixed-dim": "#b8c4ff",
+                      "surface-container-highest": "#e1e3e4",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "surface-dim": "#d9dadb",
+                      "primary-container": "#00288e",
+                      "text-main": "#0F172A",
+                      "background": "#f8f9fa",
+                      "tertiary-fixed": "#d3e4fe",
+                      "surface-tint": "#3d57ba",
+                      "on-surface-variant": "#444652",
+                      "on-primary-fixed-variant": "#213da0",
+                      "on-secondary-fixed": "#001453",
+                      "outline-variant": "#c5c5d4",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "secondary-container": "#708cfd",
+                      "on-secondary-fixed-variant": "#173bab",
+                      "surface-container-high": "#e7e8e9",
+                      "surface-variant": "#e1e3e4",
+                      "tertiary-container": "#253549",
+                      "surface": "#f8f9fa",
+                      "on-primary": "#ffffff",
+                      "inverse-primary": "#b8c4ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-error": "#ffffff",
+                      "border-subtle": "#E2E8F0",
+                      "on-tertiary-container": "#8d9eb6",
+                      "on-error-container": "#93000a",
+                      "surface-container-low": "#f3f4f5",
+                      "on-primary-container": "#7e97fe",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#191c1d",
+                      "tertiary": "#0f2033",
+                      "on-primary-fixed": "#001453",
+                      "surface-white": "#FFFFFF",
+                      "on-secondary-container": "#00217a",
+                      "secondary": "#3755c3",
+                      "on-background": "#191c1d",
+                      "inverse-on-surface": "#f0f1f2",
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "outline": "#757684",
+                      "surface-bright": "#f8f9fa",
+                      "inverse-surface": "#2e3132",
+                      "on-secondary": "#ffffff",
+                      "primary": "#00175c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "base": "4px",
+                      "gutter": "24px",
+                      "container-max": "1440px",
+                      "xl": "48px",
+                      "sm": "8px",
+                      "lg": "24px",
+                      "md": "16px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "caption": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-text-main font-body-md h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low dark:bg-surface-container-low fixed left-0 top-0 h-full w-[240px] border-r border-border-subtle dark:border-outline-variant hidden md:flex flex-col py-lg px-md z-20">
+<div class="mb-xl">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">ISM System</h1>
+<p class="font-caption text-caption text-text-muted mt-1">Internal Service</p>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+<span class="font-body-md text-body-md">Pengajuan Layanan</span>
+</a>
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-body-md text-body-md">Permintaan Saya</span>
+</a>
+<a class="flex items-center gap-3 bg-surface-container-high dark:bg-surface-container-highest text-primary dark:text-primary-fixed border-l-2 border-primary dark:border-primary-fixed rounded-r-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined icon-fill" data-icon="history" data-weight="fill">history</span>
+<span class="font-body-md text-body-md font-bold">Riwayat</span>
+</a>
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-body-md text-body-md">Profile</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col gap-2 border-t border-border-subtle pt-4">
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-[240px] h-full relative">
+<!-- TopAppBar -->
+<header class="bg-surface-white dark:bg-surface border-b border-border-subtle dark:border-outline-variant flex justify-between items-center h-16 px-lg max-w-[1440px] w-full sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-text-muted">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed md:hidden">ISM System</span>
+</div>
+<div class="flex items-center gap-4 ml-auto">
+<button class="text-text-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A small circular avatar placeholder image showing a generic user silhouette or simple abstract geometric pattern in muted corporate blue tones on a white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAReFCnqDgMsDSQj1OvsrCCkUb2-WmGuYrN3NzfYlNRfEi1VTw3uCFn8s85c0sVe2FBUxz03jIclmem05clBF_1_3eRjH7ZiPDw7z-KGvJkIerPvvyRRMxW-SlqNzppLUQzR1WYFpEPGdg6RmG82X2jMlXzkWAmYbdczHoQ-8z12PP0t6Uk5h0_Xg1qiBGJN0kUOZAyqeJhmk-cRT4L0r9N8ekbX5e_s-NdtW0F3mRQr8nK1ZTDBn9M">
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<main class="flex-1 overflow-y-auto p-md md:p-lg">
+<div class="max-w-[1000px] mx-auto w-full flex flex-col gap-lg">
+<!-- Header & Filters -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-text-main">Riwayat</h2>
+<p class="font-body-md text-body-md text-text-muted mt-1">Lacak semua aktivitas permintaan layanan Anda.</p>
+</div>
+<div class="flex flex-wrap gap-3 w-full md:w-auto">
+<div class="relative w-full md:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-[20px]" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-white border border-border-subtle rounded-lg text-body-md focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed-dim transition-all" placeholder="Cari ID atau Aktivitas..." type="text">
+</div>
+<div class="relative">
+<select class="appearance-none pl-4 pr-10 py-2 bg-surface-white border border-border-subtle rounded-lg text-body-md text-text-main focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed-dim transition-all cursor-pointer">
+<option>Semua Status</option>
+<option>Selesai</option>
+<option>Ditolak</option>
+<option>Diproses</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none" data-icon="arrow_drop_down">arrow_drop_down</span>
+</div>
+<div class="relative">
+<select class="appearance-none pl-4 pr-10 py-2 bg-surface-white border border-border-subtle rounded-lg text-body-md text-text-main focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed-dim transition-all cursor-pointer">
+<option>Bulan Ini</option>
+<option>Bulan Lalu</option>
+<option>Tahun Ini</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none" data-icon="calendar_today">calendar_today</span>
+</div>
+</div>
+</div>
+<!-- Timeline Container -->
+<div class="bg-surface-white border border-border-subtle rounded-xl p-md md:p-lg relative">
+<!-- Vertical Line -->
+<div class="absolute left-[39px] md:left-[47px] top-8 bottom-8 w-px bg-border-subtle"></div>
+<div class="flex flex-col gap-6 relative">
+<!-- Timeline Item 1 -->
+<div class="flex gap-4 relative group">
+<!-- Dot -->
+<div class="mt-1 w-10 h-10 md:w-12 md:h-12 rounded-full bg-surface-container flex items-center justify-center shrink-0 border-4 border-surface-white z-10 group-hover:border-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-icon="check_circle">check_circle</span>
+</div>
+<!-- Content Card -->
+<div class="flex-1 bg-surface-white border border-border-subtle rounded-lg p-4 hover:border-primary-fixed-dim transition-colors">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2 gap-2">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-text-main font-bold bg-surface-container px-2 py-1 rounded">REQ-2024-089</span>
+<span class="font-caption text-caption text-text-muted">24 Okt 2024, 14:30</span>
+</div>
+<div class="bg-[#00288E]/10 text-primary-container px-2 py-1 rounded-full font-label-md text-label-md inline-block">Selesai</div>
+</div>
+<h4 class="font-body-lg text-body-lg font-semibold text-text-main mb-1">Permintaan Akses VPN Disetujui</h4>
+<p class="font-body-md text-body-md text-text-muted">Tim IT Support telah menyetujui dan memberikan akses VPN sesuai dengan permintaan yang diajukan.</p>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="flex gap-4 relative group">
+<div class="mt-1 w-10 h-10 md:w-12 md:h-12 rounded-full bg-surface-container flex items-center justify-center shrink-0 border-4 border-surface-white z-10 group-hover:border-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-icon="update">update</span>
+</div>
+<div class="flex-1 bg-surface-white border border-border-subtle rounded-lg p-4 hover:border-primary-fixed-dim transition-colors">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2 gap-2">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-text-main font-bold bg-surface-container px-2 py-1 rounded">REQ-2024-092</span>
+<span class="font-caption text-caption text-text-muted">22 Okt 2024, 09:15</span>
+</div>
+<div class="bg-[#708cfd]/10 text-secondary-container px-2 py-1 rounded-full font-label-md text-label-md inline-block">Diproses</div>
+</div>
+<h4 class="font-body-lg text-body-lg font-semibold text-text-main mb-1">Perbaikan Printer Lantai 3</h4>
+<p class="font-body-md text-body-md text-text-muted">Teknisi sedang melakukan pengecekan terhadap printer yang dilaporkan mengalami paper jam.</p>
+</div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="flex gap-4 relative group">
+<div class="mt-1 w-10 h-10 md:w-12 md:h-12 rounded-full bg-surface-container flex items-center justify-center shrink-0 border-4 border-surface-white z-10 group-hover:border-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-error text-[20px]" data-icon="cancel">cancel</span>
+</div>
+<div class="flex-1 bg-surface-white border border-border-subtle rounded-lg p-4 hover:border-primary-fixed-dim transition-colors">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2 gap-2">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-text-main font-bold bg-surface-container px-2 py-1 rounded">REQ-2024-085</span>
+<span class="font-caption text-caption text-text-muted">18 Okt 2024, 16:45</span>
+</div>
+<div class="bg-error/10 text-error px-2 py-1 rounded-full font-label-md text-label-md inline-block">Ditolak</div>
+</div>
+<h4 class="font-body-lg text-body-lg font-semibold text-text-main mb-1">Pengajuan Software Lisensi Adobe</h4>
+<p class="font-body-md text-body-md text-text-muted">Ditolak oleh manajer terkait karena kuota lisensi departemen telah penuh untuk tahun ini.</p>
+</div>
+</div>
+<!-- Timeline Item 4 -->
+<div class="flex gap-4 relative group">
+<div class="mt-1 w-10 h-10 md:w-12 md:h-12 rounded-full bg-surface-container flex items-center justify-center shrink-0 border-4 border-surface-white z-10 group-hover:border-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-text-muted text-[20px]" data-icon="post_add">post_add</span>
+</div>
+<div class="flex-1 bg-surface-white border border-border-subtle rounded-lg p-4 hover:border-primary-fixed-dim transition-colors">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-2 gap-2">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-text-main font-bold bg-surface-container px-2 py-1 rounded">REQ-2024-092</span>
+<span class="font-caption text-caption text-text-muted">21 Okt 2024, 10:00</span>
+</div>
+<div class="bg-surface-container-high text-text-muted px-2 py-1 rounded-full font-label-md text-label-md inline-block">Dibuat</div>
+</div>
+<h4 class="font-body-lg text-body-lg font-semibold text-text-main mb-1">Permintaan Perbaikan Printer Dibuat</h4>
+<p class="font-body-md text-body-md text-text-muted">Tiket baru telah dibuat dan sedang menunggu untuk ditugaskan kepada teknisi.</p>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-center">
+<button class="bg-surface-white border border-border-subtle text-text-main font-label-md text-label-md px-6 py-2 rounded-lg hover:border-primary transition-colors">Muat Lebih Banyak</button>
+</div>
+</div>
+</div>
+<!-- Footer Spacer for bottom nav if mobile (not in this design, but good practice) -->
+<div class="h-24 md:h-8"></div>
+</main>
+<!-- Footer -->
+<footer class="bg-transparent border-t border-border-subtle dark:border-outline-variant flex justify-between items-center py-md px-lg w-full absolute bottom-0 bg-surface">
+<p class="font-caption text-caption text-text-muted dark:text-on-surface-variant">© 2024 Internal Service Management</p>
+<div class="flex gap-4">
+<a class="font-caption text-caption text-text-muted hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-caption text-caption text-text-muted hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-caption text-caption text-text-muted hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+</footer>
+</div>
+
+
+</body></html>

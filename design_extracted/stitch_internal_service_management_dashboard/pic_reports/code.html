@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline-variant": "#c4c5d5", "on-error-container": "#93000a", "inverse-surface": "#2d3133", "secondary": "#505f76", "tertiary-container": "#434b60", "surface-tint": "#3755c3", "surface-container-lowest": "#ffffff", "on-surface": "#191c1e", "inverse-on-surface": "#eff1f3", "surface-bright": "#f7f9fb", "primary-container": "#1e40af", "inverse-primary": "#b8c4ff", "on-tertiary": "#ffffff", "error": "#ba1a1a", "tertiary-fixed": "#dae2fd", "surface-dim": "#d8dadc", "surface-container-highest": "#e0e3e5", "outline": "#757684", "on-tertiary-container": "#b4bbd5", "secondary-fixed": "#d3e4fe", "on-primary-fixed": "#001453", "secondary-fixed-dim": "#b7c8e1", "secondary-container": "#d0e1fb", "primary": "#00288e", "on-surface-variant": "#444653", "background": "#f7f9fb", "tertiary": "#2d3449", "error-container": "#ffdad6", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#3f465c", "on-secondary-fixed": "#0b1c30", "surface-container": "#eceef0", "on-background": "#191c1e", "on-secondary": "#ffffff", "on-tertiary-fixed": "#131b2e", "on-error": "#ffffff", "tertiary-fixed-dim": "#bec6e0", "on-secondary-fixed-variant": "#38485d", "surface-variant": "#e0e3e5", "on-primary-fixed-variant": "#173bab", "on-primary-container": "#a8b8ff", "surface": "#f7f9fb", "primary-fixed-dim": "#b8c4ff", "surface-container-high": "#e6e8ea", "on-secondary-container": "#54647a", "primary-fixed": "#dde1ff", "surface-container-low": "#f2f4f6" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "base": "4px", "xs": "4px", "container-max": "1440px", "sm": "8px", "md": "16px", "lg": "24px", "xl": "32px", "gutter": "20px" }, "fontFamily": { "body-lg": [ "Inter" ], "display": [ "Inter" ], "label-md": [ "Inter" ], "headline-md": [ "Inter" ], "body-md": [ "Inter" ], "caption": [ "Inter" ], "headline-lg": [ "Inter" ] }, "fontSize": { "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "display": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" } ], "headline-md": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "caption": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-lowest flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50"><div class="flex flex-col"><div class="h-16 flex items-center px-md gap-sm"><div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[20px]">grid_view</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-md leading-none tracking-tight text-on-surface">ISM</span><span class="font-caption text-caption text-secondary">Operations PIC</span></div></div><div class="px-md pt-sm pb-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Workspace</span></div><nav class="flex flex-col gap-xs px-sm" data-active-classes="bg-surface-container text-primary font-bold"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="incoming-requests" href="#"><span class="material-symbols-outlined text-[20px]">inbox</span><span class="font-body-md text-body-md">Incoming Requests</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="processing" href="#"><span class="material-symbols-outlined text-[20px]">sync</span><span class="font-body-md text-body-md">Processing</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="completed" href="#"><span class="material-symbols-outlined text-[20px]">check_circle</span><span class="font-body-md text-body-md">Completed</span></a><a aria-current="page" class="flex items-center gap-sm px-sm py-xs rounded-lg transition-colors bg-surface-container text-primary font-bold" data-path="reports" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-body-md text-body-md">Reports</span></a></nav></div><div class="p-sm flex flex-col gap-xs bg-surface-container-lowest"><div class="px-sm py-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Account</span></div><nav class="flex flex-col gap-xs" data-active-classes="bg-surface-container text-primary font-bold"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="profile" href="#"><span class="material-symbols-outlined text-[20px]">person</span><span class="font-body-md text-body-md">Profile</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Settings</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-error hover:bg-error-container hover:text-on-error-container transition-colors" data-path="logout" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="font-body-md text-body-md">Logout</span></a></nav></div></aside><div class="pl-60 flex flex-col min-h-screen"><header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-lg"><div class="flex items-center w-full max-w-md"><div class="relative w-full flex items-center"><span class="material-symbols-outlined absolute left-sm text-secondary text-[20px] pointer-events-none">search</span><input class="w-full pl-xl pr-md py-xs rounded-lg bg-surface-container-low text-on-surface placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container text-body-md font-body-md transition-all" placeholder="Search requests, ticket #, or keywords..." type="text"/></div></div><div class="flex items-center gap-md"><a class="relative p-xs rounded-lg text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors flex items-center justify-center" data-path="notifications" href="#"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></a><div class="flex items-center gap-sm pl-sm border-l border-surface-container-high"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col text-left"><span class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Budi Santoso</span><span class="font-caption text-caption text-secondary leading-tight">PIC Operations</span></div><span class="material-symbols-outlined text-secondary text-[18px]">expand_more</span></div></div></header><main class="flex-1 pt-16 bg-surface px-lg py-lg max-w-[1440px] w-full mx-auto"><div class="flex flex-col w-full">
+<!-- Header & Meta Bar -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-md pb-lg">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs text-secondary font-caption text-caption uppercase tracking-wider">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+        Operational Intelligence
+        <span class="text-outline-variant">•</span>
+<span>PIC Operations Desk</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Reports</h1>
+<p class="font-body-md text-body-md text-secondary">Review service request performance, turnaround time, and operational SLA metrics.</p>
+</div>
+<div class="flex items-center gap-xs text-caption font-caption text-secondary self-start lg:self-auto bg-surface-container-low px-sm py-xs rounded-lg">
+<span class="material-symbols-outlined text-[16px] text-primary">verified</span>
+<span>Sync timestamp: <strong>Today, 14:32 WIB</strong></span>
+</div>
+</div>
+<!-- Filter & Action Controls -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm mb-lg flex flex-wrap items-center justify-between gap-md">
+<div class="flex flex-wrap items-center gap-sm">
+<!-- Date Range Selector -->
+<div class="relative min-w-[220px]">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-secondary text-[18px] pointer-events-none">calendar_month</span>
+<select class="w-full pl-xl pr-lg py-xs bg-surface-container-low text-on-surface text-body-md font-body-md rounded-lg appearance-none cursor-pointer focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container">
+<option selected="">This Month (September 2026)</option>
+<option>Last Quarter</option>
+<option>Year to Date</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-secondary text-[18px] pointer-events-none">arrow_drop_down</span>
+</div>
+<!-- Service Selector -->
+<div class="relative min-w-[170px]">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-secondary text-[18px] pointer-events-none">room_service</span>
+<select class="w-full pl-xl pr-lg py-xs bg-surface-container-low text-on-surface text-body-md font-body-md rounded-lg appearance-none cursor-pointer focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container">
+<option selected="">All Services</option>
+<option>IT Support &amp; Hardware</option>
+<option>Facility Repair</option>
+<option>System Access &amp; Security</option>
+<option>Administration</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-secondary text-[18px] pointer-events-none">arrow_drop_down</span>
+</div>
+<!-- Section Selector -->
+<div class="relative min-w-[160px]">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-secondary text-[18px] pointer-events-none">corporate_fare</span>
+<select class="w-full pl-xl pr-lg py-xs bg-surface-container-low text-on-surface text-body-md font-body-md rounded-lg appearance-none cursor-pointer focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container">
+<option selected="">All Sections</option>
+<option>Headquarters (HQ)</option>
+<option>Logistics Hub</option>
+<option>Branch Offices</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-secondary text-[18px] pointer-events-none">arrow_drop_down</span>
+</div>
+</div>
+<!-- Export Button -->
+<button class="flex items-center gap-xs px-md py-xs rounded-lg bg-primary-container text-on-primary hover:bg-primary font-body-md text-body-md transition-all shadow-sm active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export Report</span>
+</button>
+</div>
+<!-- Compact Summary Metrics Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-md mb-lg">
+<!-- Metric 1: Total Handled -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col justify-between group hover:shadow-md transition-all">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Total Handled</span>
+<span class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[16px]">all_inbox</span>
+</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-display text-display text-on-surface">56</span>
+<span class="font-caption text-caption text-secondary">tickets</span>
+</div>
+<div class="mt-xs pt-xs flex items-center gap-xs text-secondary font-caption text-caption">
+<span class="text-primary font-semibold flex items-center"><span class="material-symbols-outlined text-[14px]">trending_up</span>+12%</span>
+<span>vs last month</span>
+</div>
+</div>
+<!-- Metric 2: Completed -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col justify-between group hover:shadow-md transition-all">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Completed</span>
+<span class="w-7 h-7 rounded-lg bg-secondary-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[16px]">task_alt</span>
+</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-display text-display text-on-surface">42</span>
+<span class="font-body-md text-body-md font-semibold text-primary-container">75%</span>
+</div>
+<div class="mt-xs pt-xs">
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 75%"></div>
+</div>
+</div>
+</div>
+<!-- Metric 3: In Progress -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col justify-between group hover:shadow-md transition-all">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">In Progress</span>
+<span class="w-7 h-7 rounded-lg bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined text-[16px]">pending</span>
+</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-display text-display text-on-surface">14</span>
+<span class="font-body-md text-body-md font-semibold text-secondary">25%</span>
+</div>
+<div class="mt-xs pt-xs">
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 25%"></div>
+</div>
+</div>
+</div>
+<!-- Metric 4: Rejected -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col justify-between group hover:shadow-md transition-all">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Rejected</span>
+<span class="w-7 h-7 rounded-lg bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[16px]">cancel</span>
+</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-display text-display text-on-surface">2</span>
+<span class="font-body-md text-body-md font-semibold text-error">3.5%</span>
+</div>
+<div class="mt-xs pt-xs text-secondary font-caption text-caption">
+<span>Requires reviewer review</span>
+</div>
+</div>
+<!-- Metric 5: Overdue -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col justify-between group hover:shadow-md transition-all">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Overdue</span>
+<span class="w-7 h-7 rounded-lg bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-display text-display text-on-surface">2</span>
+<span class="font-body-md text-body-md font-semibold text-error">3.5%</span>
+</div>
+<div class="mt-xs pt-xs text-secondary font-caption text-caption flex items-center gap-xs">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-error"></span>
+<span>Escalation initiated</span>
+</div>
+</div>
+<!-- Metric 6: Avg Resolution Time -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col justify-between group hover:shadow-md transition-all">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Avg Turnaround</span>
+<span class="w-7 h-7 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[16px]">speed</span>
+</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-display text-display text-on-surface">3.8</span>
+<span class="font-body-md text-body-md text-secondary">hrs</span>
+</div>
+<div class="mt-xs pt-xs">
+<span class="inline-flex items-center px-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md">
+<span class="material-symbols-outlined text-[12px] mr-1">done</span>
+          SLA Met (Target ≤ 4.0h)
+        </span>
+</div>
+</div>
+</div>
+<!-- Focused Visual Analytics: Exactly 2 Restrained, Crisp Charts -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg mb-lg">
+<!-- Chart 1: Requests by Status -->
+<div class="lg:col-span-5 bg-surface-container-lowest p-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-xs">
+<h2 class="font-headline-md text-headline-md text-on-surface">Requests by Status</h2>
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Distribution</span>
+</div>
+<p class="font-caption text-caption text-secondary mb-md">Aggregate operational states for current period</p>
+</div>
+<!-- Segmented Bar Visualization -->
+<div class="flex flex-col gap-md py-sm">
+<div class="flex w-full h-5 rounded-lg overflow-hidden bg-surface-container-high p-0.5 gap-0.5 shadow-inner">
+<div class="bg-primary-container h-full rounded-l transition-all duration-500" style="width: 75%;" title="Completed: 42"></div>
+<div class="bg-secondary h-full transition-all duration-500" style="width: 25%;" title="In Progress: 14"></div>
+<div class="bg-on-surface-variant h-full transition-all duration-500" style="width: 3.5%;" title="Rejected: 2"></div>
+<div class="bg-error h-full rounded-r transition-all duration-500" style="width: 3.5%;" title="Overdue: 2"></div>
+</div>
+<!-- Metric Details List -->
+<div class="grid grid-cols-2 gap-sm pt-xs">
+<div class="p-sm rounded-lg bg-surface-container-low flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="font-body-md text-body-md text-on-surface">Completed</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-md text-headline-md text-on-surface">42</span>
+<span class="font-caption text-caption text-secondary">75.0%</span>
+</div>
+</div>
+<div class="p-sm rounded-lg bg-surface-container-low flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-body-md text-body-md text-on-surface">In Progress</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-md text-headline-md text-on-surface">14</span>
+<span class="font-caption text-caption text-secondary">25.0%</span>
+</div>
+</div>
+<div class="p-sm rounded-lg bg-surface-container-low flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-on-surface-variant"></span>
+<span class="font-body-md text-body-md text-on-surface">Rejected</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-md text-headline-md text-on-surface">2</span>
+<span class="font-caption text-caption text-secondary">3.5%</span>
+</div>
+</div>
+<div class="p-sm rounded-lg bg-surface-container-low flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="font-body-md text-body-md text-on-surface">Overdue</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-md text-headline-md text-on-surface">2</span>
+<span class="font-caption text-caption text-secondary">3.5%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-sm text-secondary font-caption text-caption flex items-center justify-between border-none">
+<span>Completion Ratio</span>
+<span class="font-semibold text-primary">3:1 Resolution Velocity</span>
+</div>
+</div>
+<!-- Chart 2: Requests Over Time (Weeks 1 to 4) -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-xs mb-xs">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Requests Over Time</h2>
+<p class="font-caption text-caption text-secondary">Weekly comparison: Inbound load vs. Resolved requests</p>
+</div>
+<div class="flex items-center gap-md self-start sm:self-auto">
+<div class="flex items-center gap-xs text-caption font-caption text-secondary">
+<span class="w-2.5 h-2.5 rounded bg-surface-container-high"></span>
+<span>Inbound</span>
+</div>
+<div class="flex items-center gap-xs text-caption font-caption text-secondary">
+<span class="w-2.5 h-2.5 rounded bg-primary-container"></span>
+<span>Resolved</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Minimal SVG Line & Bar Composite -->
+<div class="w-full pt-md pb-xs">
+<div class="relative w-full h-44 flex flex-col justify-between">
+<!-- Background Grid Guides -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-40">
+<div class="w-full h-px bg-surface-container-high"></div>
+<div class="w-full h-px bg-surface-container-high"></div>
+<div class="w-full h-px bg-surface-container-high"></div>
+<div class="w-full h-px bg-surface-container-high"></div>
+</div>
+<!-- Weekly Columns -->
+<div class="relative z-10 w-full h-full flex items-end justify-between px-md pt-xs">
+<!-- Week 1 -->
+<div class="flex flex-col items-center gap-xs w-16 h-full justify-end group">
+<div class="flex items-end gap-1.5 h-32 w-full justify-center">
+<!-- Inbound: 12 -->
+<div class="w-5 bg-surface-container-highest rounded-t hover:bg-secondary-fixed transition-all" style="height: 60%;" title="Week 1 Inbound: 12"></div>
+<!-- Resolved: 10 -->
+<div class="w-5 bg-primary-container rounded-t hover:bg-primary transition-all" style="height: 50%;" title="Week 1 Resolved: 10"></div>
+</div>
+<span class="font-caption text-caption text-secondary group-hover:text-on-surface font-medium">W1</span>
+</div>
+<!-- Week 2 -->
+<div class="flex flex-col items-center gap-xs w-16 h-full justify-end group">
+<div class="flex items-end gap-1.5 h-32 w-full justify-center">
+<!-- Inbound: 16 -->
+<div class="w-5 bg-surface-container-highest rounded-t hover:bg-secondary-fixed transition-all" style="height: 80%;" title="Week 2 Inbound: 16"></div>
+<!-- Resolved: 13 -->
+<div class="w-5 bg-primary-container rounded-t hover:bg-primary transition-all" style="height: 65%;" title="Week 2 Resolved: 13"></div>
+</div>
+<span class="font-caption text-caption text-secondary group-hover:text-on-surface font-medium">W2</span>
+</div>
+<!-- Week 3 -->
+<div class="flex flex-col items-center gap-xs w-16 h-full justify-end group">
+<div class="flex items-end gap-1.5 h-32 w-full justify-center">
+<!-- Inbound: 18 -->
+<div class="w-5 bg-surface-container-highest rounded-t hover:bg-secondary-fixed transition-all" style="height: 90%;" title="Week 3 Inbound: 18"></div>
+<!-- Resolved: 11 -->
+<div class="w-5 bg-primary-container rounded-t hover:bg-primary transition-all" style="height: 55%;" title="Week 3 Resolved: 11"></div>
+</div>
+<span class="font-caption text-caption text-secondary group-hover:text-on-surface font-medium">W3</span>
+</div>
+<!-- Week 4 -->
+<div class="flex flex-col items-center gap-xs w-16 h-full justify-end group">
+<div class="flex items-end gap-1.5 h-32 w-full justify-center">
+<!-- Inbound: 10 -->
+<div class="w-5 bg-surface-container-highest rounded-t hover:bg-secondary-fixed transition-all" style="height: 50%;" title="Week 4 Inbound: 10"></div>
+<!-- Resolved: 8 -->
+<div class="w-5 bg-primary-container rounded-t hover:bg-primary transition-all" style="height: 40%;" title="Week 4 Resolved: 8"></div>
+</div>
+<span class="font-caption text-caption text-secondary group-hover:text-on-surface font-medium">W4</span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-sm text-secondary font-caption text-caption flex items-center justify-between">
+<span class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-primary">info</span>
+          Peak operational load observed during Week 3
+        </span>
+<span class="font-label-md text-label-md text-primary">SLA Stability: High</span>
+</div>
+</div>
+</div>
+<!-- Service Summary Table Section -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-sm mb-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Service Category Summary</h2>
+<p class="font-caption text-caption text-secondary">Breakdown of operational volume, disposition, and SLA compliance index</p>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-caption text-caption text-secondary">4 active categories</span>
+</div>
+</div>
+<!-- Spacious Enterprise Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-md text-label-md uppercase tracking-wider">
+<th class="py-sm px-md rounded-l-lg font-semibold">Service Category</th>
+<th class="py-sm px-md text-right font-semibold">Total Received</th>
+<th class="py-sm px-md text-right font-semibold">Completed</th>
+<th class="py-sm px-md text-right font-semibold">In Progress</th>
+<th class="py-sm px-md text-right font-semibold">Rejected</th>
+<th class="py-sm px-md text-right rounded-r-lg font-semibold">SLA Compliance Rate</th>
+</tr>
+</thead>
+<tbody class="text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-md px-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">devices</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">IT Support &amp; Hardware</span>
+<span class="font-caption text-caption text-secondary">Desktops, peripherals, network provisioning</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md text-right font-semibold">24</td>
+<td class="py-md px-md text-right">
+<span class="inline-flex items-center gap-xs text-on-surface">
+<span>18</span>
+<span class="font-caption text-caption text-secondary">(75%)</span>
+</span>
+</td>
+<td class="py-md px-md text-right">
+<span class="inline-flex items-center gap-xs text-on-surface">
+<span>5</span>
+<span class="font-caption text-caption text-secondary">(21%)</span>
+</span>
+</td>
+<td class="py-md px-md text-right">
+<span class="inline-block px-xs py-0.5 rounded bg-error-container text-on-error-container font-caption text-caption font-semibold">1</span>
+</td>
+<td class="py-md px-md text-right">
+<div class="inline-flex items-center gap-sm justify-end">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface">98.2%</span>
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-surface-container-lowest">
+<td class="py-md px-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">build</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Facility Repair</span>
+<span class="font-caption text-caption text-secondary">HVAC, lighting, electrical &amp; plumbing repairs</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md text-right font-semibold">15</td>
+<td class="py-md px-md text-right">
+<span class="inline-flex items-center gap-xs text-on-surface">
+<span>11</span>
+<span class="font-caption text-caption text-secondary">(73%)</span>
+</span>
+</td>
+<td class="py-md px-md text-right">
+<span class="inline-flex items-center gap-xs text-on-surface">
+<span>3</span>
+<span class="font-caption text-caption text-secondary">(20%)</span>
+</span>
+</td>
+<td class="py-md px-md text-right">
+<span class="inline-block px-xs py-0.5 rounded bg-error-container text-on-error-container font-caption text-caption font-semibold">1</span>
+</td>
+<td class="py-md px-md text-right">
+<div class="inline-flex items-center gap-sm justify-end">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface">95.0%</span>
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-md px-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">key</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">System Access &amp; Security</span>
+<span class="font-caption text-caption text-secondary">ERP credentials, VPN setup, badge authorizations</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md text-right font-semibold">11</td>
+<td class="py-md px-md text-right">
+<span class="inline-flex items-center gap-xs text-on-surface">
+<span>8</span>
+<span class="font-caption text-caption text-secondary">(73%)</span>
+</span>
+</td>
+<td class="py-md px-md text-right">
+<span class="inline-flex items-center gap-xs text-on-surface">
+<span>3</span>
+<span class="font-caption text-caption text-secondary">(27%)</span>
+</span>
+</td>
+<td class="py-md px-md text-right">
+<span class="font-caption text-caption text-secondary font-semibold">0</span>
+</td>
+<td class="py-md px-md text-right">
+<div class="inline-flex items-center gap-sm justify-end">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface">99.1%</span>
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors bg-surface-container-lowest">
+<td class="py-md px-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">description</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Administration</span>
+<span class="font-caption text-caption text-secondary">Stationery procurement, logistics forms, document seal</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md text-right font-semibold">6</td>
+<td class="py-md px-md text-right">
+<span class="inline-flex items-center gap-xs text-on-surface">
+<span>5</span>
+<span class="font-caption text-caption text-secondary">(83%)</span>
+</span>
+</td>
+<td class="py-md px-md text-right">
+<span class="inline-flex items-center gap-xs text-on-surface">
+<span>3</span>
+<span class="font-caption text-caption text-secondary">(50%)</span>
+</span>
+</td>
+<td class="py-md px-md text-right">
+<span class="font-caption text-caption text-secondary font-semibold">0</span>
+</td>
+<td class="py-md px-md text-right">
+<div class="inline-flex items-center gap-sm justify-end">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface">100%</span>
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Meta -->
+<div class="mt-md pt-sm flex flex-col sm:flex-row items-center justify-between gap-sm text-caption font-caption text-secondary">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">security</span>
+<span>All records verified and signed off under PIC Operational SLA Framework 2026.</span>
+</div>
+<div class="flex items-center gap-md">
+<span>Average SLA Threshold: <strong>98.1%</strong></span>
+<button class="text-primary-container hover:text-primary font-semibold transition-colors flex items-center gap-xs">
+<span>View Detailed Audit Log</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple micro-interaction for Export button feedback
+  document.querySelector('button')?.addEventListener('click', function(e) {
+    const textSpan = this.querySelector('span:last-child');
+    if (textSpan && textSpan.innerText === 'Export Report') {
+      const originalText = textSpan.innerText;
+      textSpan.innerText = 'Generating PDF/CSV...';
+      this.classList.add('opacity-80');
+      setTimeout(() => {
+        textSpan.innerText = 'Downloaded';
+        setTimeout(() => {
+          textSpan.innerText = originalText;
+          this.classList.remove('opacity-80');
+        }, 1500);
+      }, 800);
+    }
+  });
+</script></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)] py-md px-lg mt-auto"><div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-sm text-secondary font-caption text-caption"><div>© 2026 Internal Service Management. PIC Operations Workspace.</div><div class="flex items-center gap-md"><a class="hover:text-on-surface transition-colors" data-path="sla-guidelines" href="#">SLA Guidelines</a><a class="hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="support" href="#">Support</a></div></div></footer></div></body></html>

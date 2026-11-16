@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline-variant": "#c4c5d5", "on-error-container": "#93000a", "inverse-surface": "#2d3133", "secondary": "#505f76", "tertiary-container": "#434b60", "surface-tint": "#3755c3", "surface-container-lowest": "#ffffff", "on-surface": "#191c1e", "inverse-on-surface": "#eff1f3", "surface-bright": "#f7f9fb", "primary-container": "#1e40af", "inverse-primary": "#b8c4ff", "on-tertiary": "#ffffff", "error": "#ba1a1a", "tertiary-fixed": "#dae2fd", "surface-dim": "#d8dadc", "surface-container-highest": "#e0e3e5", "outline": "#757684", "on-tertiary-container": "#b4bbd5", "secondary-fixed": "#d3e4fe", "on-primary-fixed": "#001453", "secondary-fixed-dim": "#b7c8e1", "secondary-container": "#d0e1fb", "primary": "#00288e", "on-surface-variant": "#444653", "background": "#f7f9fb", "tertiary": "#2d3449", "error-container": "#ffdad6", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#3f465c", "on-secondary-fixed": "#0b1c30", "surface-container": "#eceef0", "on-background": "#191c1e", "on-secondary": "#ffffff", "on-tertiary-fixed": "#131b2e", "on-error": "#ffffff", "tertiary-fixed-dim": "#bec6e0", "on-secondary-fixed-variant": "#38485d", "surface-variant": "#e0e3e5", "on-primary-fixed-variant": "#173bab", "on-primary-container": "#a8b8ff", "surface": "#f7f9fb", "primary-fixed-dim": "#b8c4ff", "surface-container-high": "#e6e8ea", "on-secondary-container": "#54647a", "primary-fixed": "#dde1ff", "surface-container-low": "#f2f4f6" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "base": "4px", "xs": "4px", "container-max": "1440px", "sm": "8px", "md": "16px", "lg": "24px", "xl": "32px", "gutter": "20px" }, "fontFamily": { "body-lg": [ "Inter" ], "display": [ "Inter" ], "label-md": [ "Inter" ], "headline-md": [ "Inter" ], "body-md": [ "Inter" ], "caption": [ "Inter" ], "headline-lg": [ "Inter" ] }, "fontSize": { "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "display": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" } ], "headline-md": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "caption": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-lowest flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50"><div class="flex flex-col"><div class="h-16 flex items-center px-md gap-sm"><div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[20px]">grid_view</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-md leading-none tracking-tight text-on-surface">ISM</span><span class="font-caption text-caption text-secondary">Operations PIC</span></div></div><div class="px-md pt-sm pb-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Workspace</span></div><nav class="flex flex-col gap-xs px-sm" data-active-classes="bg-surface-container text-primary font-bold"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="incoming-requests" href="#"><span class="material-symbols-outlined text-[20px]">inbox</span><span class="font-body-md text-body-md">Incoming Requests</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="processing" href="#"><span class="material-symbols-outlined text-[20px]">sync</span><span class="font-body-md text-body-md">Processing</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="completed" href="#"><span class="material-symbols-outlined text-[20px]">check_circle</span><span class="font-body-md text-body-md">Completed</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="reports" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-body-md text-body-md">Reports</span></a></nav></div><div class="p-sm flex flex-col gap-xs bg-surface-container-lowest"><div class="px-sm py-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Account</span></div><nav class="flex flex-col gap-xs" data-active-classes="bg-surface-container text-primary font-bold"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="profile" href="#"><span class="material-symbols-outlined text-[20px]">person</span><span class="font-body-md text-body-md">Profile</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Settings</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-error hover:bg-error-container hover:text-on-error-container transition-colors" data-path="logout" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="font-body-md text-body-md">Logout</span></a></nav></div></aside><div class="pl-60 flex flex-col min-h-screen"><header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-lg"><div class="flex items-center w-full max-w-md"><div class="relative w-full flex items-center"><span class="material-symbols-outlined absolute left-sm text-secondary text-[20px] pointer-events-none">search</span><input class="w-full pl-xl pr-md py-xs rounded-lg bg-surface-container-low text-on-surface placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container text-body-md font-body-md transition-all" placeholder="Search requests, ticket #, or keywords..." type="text"/></div></div><div class="flex items-center gap-md"><a class="relative p-xs rounded-lg text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors flex items-center justify-center" data-path="notifications" href="#"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></a><div class="flex items-center gap-sm pl-sm border-l border-surface-container-high"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col text-left"><span class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Budi Santoso</span><span class="font-caption text-caption text-secondary leading-tight">PIC Operations</span></div><span class="material-symbols-outlined text-secondary text-[18px]">expand_more</span></div></div></header><main class="flex-1 pt-16 bg-surface px-lg py-lg max-w-[1440px] w-full mx-auto"><div class="flex flex-col w-full gap-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs text-secondary font-caption text-caption uppercase tracking-wider">
+<span>Operations</span>
+<span>/</span>
+<span class="text-on-surface">Inbox Activity</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">Notifications</h1>
+<p class="font-body-md text-body-md text-secondary">
+        Stay updated on new request assignments, status transitions, and critical SLA alerts.
+      </p>
+</div>
+<div class="flex items-center gap-sm">
+<button class="flex items-center gap-xs px-md py-xs rounded-lg text-primary hover:bg-secondary-container/40 transition-colors font-label-md text-label-md" id="markAllReadBtn">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+<span>Mark all as read</span>
+</button>
+<button class="p-xs rounded-lg text-secondary hover:bg-surface-container hover:text-on-surface transition-colors" title="Notification Preferences">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-md">
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-secondary">Active Queue</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold">14 Tickets</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">inbox</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-secondary">Urgent Alerts</span>
+<span class="font-headline-md text-headline-md text-error font-bold" id="urgentCount">1 SLA Critical</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[22px]">timer</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-secondary">Awaiting Review</span>
+<span class="font-headline-md text-headline-md text-secondary font-bold">2 Pending</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">hourglass_empty</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-secondary">SLA Adherence</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold">98.4%</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-surface-tint">
+<span class="material-symbols-outlined text-[22px]">verified</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="flex items-center justify-between px-lg pt-md pb-xs border-none bg-surface-container-lowest">
+<div class="flex items-center gap-xs bg-surface-container-low p-xs rounded-lg">
+<button class="px-md py-xs rounded font-label-md text-label-md transition-all bg-surface-container-lowest text-primary shadow-sm flex items-center gap-xs" id="tabAll">
+<span>All Notifications</span>
+<span class="px-xs rounded-full bg-surface-container-highest text-secondary text-[11px] leading-tight font-semibold" id="badgeAll">6</span>
+</button>
+<button class="px-md py-xs rounded font-label-md text-label-md transition-all text-secondary hover:text-on-surface flex items-center gap-xs" id="tabUnread">
+<span>Unread</span>
+<span class="px-xs rounded-full bg-primary-container text-on-primary text-[11px] leading-tight font-semibold" id="badgeUnread">3</span>
+</button>
+</div>
+<div class="hidden sm:flex items-center gap-sm text-secondary font-caption text-caption">
+<span class="flex items-center gap-xs"><span class="w-2 h-2 rounded-full bg-primary-container"></span> Unread</span>
+<span class="flex items-center gap-xs"><span class="w-2 h-2 rounded-full bg-outline-variant"></span> Read</span>
+</div>
+</div>
+<div class="flex flex-col divide-y-0" id="notificationList">
+<article class="notification-item group relative p-md lg:px-lg lg:py-md hover:bg-surface-container-low/50 transition-colors flex items-start gap-md" data-category="urgent" data-read="false">
+<div class="mt-1 flex-shrink-0 relative">
+<div class="w-10 h-10 rounded-lg bg-error-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">crisis_alert</span>
+</div>
+<span class="status-dot absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-error ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex-1 min-w-0 flex flex-col gap-xs">
+<div class="flex flex-wrap items-center gap-xs">
+<span class="font-label-md text-label-md px-xs py-[2px] rounded bg-error/10 text-error uppercase">Urgent SLA Alert</span>
+<span class="text-secondary font-caption text-caption">#SRV-2026-0012</span>
+<span class="text-secondary font-caption text-caption">•</span>
+<time class="text-secondary font-caption text-caption">12 minutes ago</time>
+</div>
+<h2 class="font-body-lg text-body-lg font-semibold text-on-surface leading-snug">
+            Request #SRV-2026-0012 approaching 2h SLA deadline
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+            PLC Controller Sensor Failure at Station B requires immediate triage and dispatch. Technical backup on-site recommended.
+          </p>
+<div class="pt-xs flex items-center gap-md">
+<a class="inline-flex items-center gap-xs font-label-md text-label-md text-primary hover:text-primary-container font-semibold group/link" data-path="processing" href="#">
+<span>Review Request</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover/link:translate-x-0.5">arrow_forward</span>
+</a>
+<button class="mark-single-read text-secondary hover:text-on-surface font-caption text-caption">Mark as resolved</button>
+</div>
+</div>
+<div class="flex-shrink-0 self-center hidden sm:flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs rounded text-secondary hover:bg-surface-container hover:text-on-surface" title="Quick Options">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</article>
+<div class="h-[1px] bg-surface-container mx-lg"></div>
+<article class="notification-item group relative p-md lg:px-lg lg:py-md hover:bg-surface-container-low/50 transition-colors flex items-start gap-md" data-category="assignment" data-read="false">
+<div class="mt-1 flex-shrink-0 relative">
+<div class="w-10 h-10 rounded-lg bg-secondary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">assignment_ind</span>
+</div>
+<span class="status-dot absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-primary-container ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex-1 min-w-0 flex flex-col gap-xs">
+<div class="flex flex-wrap items-center gap-xs">
+<span class="font-label-md text-label-md px-xs py-[2px] rounded bg-secondary-container text-on-secondary-container uppercase">New Assignment</span>
+<span class="text-secondary font-caption text-caption">#SRV-2026-0014</span>
+<span class="text-secondary font-caption text-caption">•</span>
+<time class="text-secondary font-caption text-caption">45 minutes ago</time>
+</div>
+<h2 class="font-body-lg text-body-lg font-semibold text-on-surface leading-snug">
+            New service request assigned to you: #SRV-2026-0014
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+            Siti Rahmawati submitted ERP SAP Production Role Elevate. High business impact authorization required by EOD.
+          </p>
+<div class="pt-xs flex items-center gap-md">
+<a class="inline-flex items-center gap-xs font-label-md text-label-md text-primary hover:text-primary-container font-semibold group/link" data-path="incoming-requests" href="#">
+<span>View Request</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover/link:translate-x-0.5">arrow_forward</span>
+</a>
+<button class="mark-single-read text-secondary hover:text-on-surface font-caption text-caption">Acknowledge</button>
+</div>
+</div>
+<div class="flex-shrink-0 self-center hidden sm:flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs rounded text-secondary hover:bg-surface-container hover:text-on-surface" title="Quick Options">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</article>
+<div class="h-[1px] bg-surface-container mx-lg"></div>
+<article class="notification-item group relative p-md lg:px-lg lg:py-md hover:bg-surface-container-low/50 transition-colors flex items-start gap-md" data-category="update" data-read="false">
+<div class="mt-1 flex-shrink-0 relative">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">attach_file</span>
+</div>
+<span class="status-dot absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-primary-container ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex-1 min-w-0 flex flex-col gap-xs">
+<div class="flex flex-wrap items-center gap-xs">
+<span class="font-label-md text-label-md px-xs py-[2px] rounded bg-surface-container-high text-on-surface-variant uppercase">User Update</span>
+<span class="text-secondary font-caption text-caption">#SRV-2026-0008</span>
+<span class="text-secondary font-caption text-caption">•</span>
+<time class="text-secondary font-caption text-caption">2 hours ago</time>
+</div>
+<h2 class="font-body-lg text-body-lg font-semibold text-on-surface leading-snug">
+            Requester added diagnostic photo on #SRV-2026-0008
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+            Reza Pratama uploaded laptop serial barcode photo and power supply failure symptoms for Lenovo ThinkPad T14.
+          </p>
+<div class="pt-xs flex items-center gap-md">
+<div class="flex items-center gap-xs px-sm py-xs bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-secondary text-[16px]">image</span>
+<span class="font-caption text-caption text-secondary">t14_rear_barcode.jpg (1.8 MB)</span>
+</div>
+<a class="inline-flex items-center gap-xs font-label-md text-label-md text-primary hover:text-primary-container font-semibold" data-path="processing" href="#">
+<span>Open Attachment</span>
+</a>
+</div>
+</div>
+<div class="flex-shrink-0 self-center hidden sm:flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs rounded text-secondary hover:bg-surface-container hover:text-on-surface" title="Quick Options">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</article>
+<div class="h-[1px] bg-surface-container mx-lg"></div>
+<article class="notification-item group relative p-md lg:px-lg lg:py-md hover:bg-surface-container-low/50 transition-colors flex items-start gap-md opacity-85" data-category="status" data-read="true">
+<div class="mt-1 flex-shrink-0 relative">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span>
+</div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col gap-xs">
+<div class="flex flex-wrap items-center gap-xs">
+<span class="font-label-md text-label-md px-xs py-[2px] rounded bg-surface-container text-secondary uppercase">Status Waiting</span>
+<span class="text-secondary font-caption text-caption">#SRV-2026-0009</span>
+<span class="text-secondary font-caption text-caption">•</span>
+<time class="text-secondary font-caption text-caption">Yesterday, 16:40</time>
+</div>
+<h2 class="font-body-lg text-body-lg font-medium text-on-surface leading-snug">
+            Request #SRV-2026-0009 waiting for manager security approval
+          </h2>
+<p class="font-body-md text-body-md text-secondary max-w-3xl">
+            SAP ERP Finance access pending SecOps verification. Reminder ping dispatched to IT Compliance lead.
+          </p>
+<div class="pt-xs flex items-center gap-md">
+<span class="inline-flex items-center gap-xs font-caption text-caption text-secondary">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+              Next automated follow-up in 18 hours
+            </span>
+</div>
+</div>
+<div class="flex-shrink-0 self-center hidden sm:flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs rounded text-secondary hover:bg-surface-container hover:text-on-surface" title="Quick Options">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</article>
+<div class="h-[1px] bg-surface-container mx-lg"></div>
+<article class="notification-item group relative p-md lg:px-lg lg:py-md hover:bg-surface-container-low/50 transition-colors flex items-start gap-md opacity-85" data-category="completed" data-read="true">
+<div class="mt-1 flex-shrink-0 relative">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col gap-xs">
+<div class="flex flex-wrap items-center gap-xs">
+<span class="font-label-md text-label-md px-xs py-[2px] rounded bg-surface-container text-secondary uppercase">Completed</span>
+<span class="text-secondary font-caption text-caption">#SRV-2026-0001</span>
+<span class="text-secondary font-caption text-caption">•</span>
+<time class="text-secondary font-caption text-caption">2 days ago</time>
+</div>
+<h2 class="font-body-lg text-body-lg font-medium text-on-surface leading-snug">
+            Request #SRV-2026-0001 confirmed completed by requester
+          </h2>
+<p class="font-body-md text-body-md text-secondary max-w-3xl">
+            Ratna Kusuma gave 5-star rating for AC Leaking resolution. Ticket closed and archived in General Facilities ledger.
+          </p>
+<div class="pt-xs flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-caption text-caption text-secondary pl-xs">"Prompt assistance and cleaned the work area nicely."</span>
+</div>
+</div>
+<div class="flex-shrink-0 self-center hidden sm:flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs rounded text-secondary hover:bg-surface-container hover:text-on-surface" title="Quick Options">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</article>
+<div class="h-[1px] bg-surface-container mx-lg"></div>
+<article class="notification-item group relative p-md lg:px-lg lg:py-md hover:bg-surface-container-low/50 transition-colors flex items-start gap-md opacity-85" data-category="system" data-read="true">
+<div class="mt-1 flex-shrink-0 relative">
+<div class="w-10 h-10 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col gap-xs">
+<div class="flex flex-wrap items-center gap-xs">
+<span class="font-label-md text-label-md px-xs py-[2px] rounded bg-surface-container text-secondary uppercase">System</span>
+<span class="text-secondary font-caption text-caption">Infra Alert</span>
+<span class="text-secondary font-caption text-caption">•</span>
+<time class="text-secondary font-caption text-caption">3 days ago</time>
+</div>
+<h2 class="font-body-lg text-body-lg font-medium text-on-surface leading-snug">
+            Scheduled system maintenance announcement
+          </h2>
+<p class="font-body-md text-body-md text-secondary max-w-3xl">
+            Database maintenance on Sunday, 02:00 - 04:00 WIB. All automatic ticket routing rules will be briefly queued and processed right after downtime.
+          </p>
+</div>
+<div class="flex-shrink-0 self-center hidden sm:flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs rounded text-secondary hover:bg-surface-container hover:text-on-surface" title="Quick Options">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</article>
+</div>
+<div class="p-md bg-surface-container-low flex items-center justify-between font-caption text-caption text-secondary">
+<span>Displaying 6 notifications from the last 7 days</span>
+<div class="flex items-center gap-sm">
+<button class="hover:text-on-surface transition-colors">Audit Log</button>
+<span>•</span>
+<button class="hover:text-on-surface transition-colors">Notification Settings</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const tabAll = document.getElementById('tabAll');
+    const tabUnread = document.getElementById('tabUnread');
+    const markAllReadBtn = document.getElementById('markAllReadBtn');
+    const badgeUnread = document.getElementById('badgeUnread');
+    const items = document.querySelectorAll('.notification-item');
+    let currentFilter = 'all';
+
+    function updateCounters() {
+      const unreadCount = document.querySelectorAll('.notification-item[data-read="false"]').length;
+      if (badgeUnread) {
+        badgeUnread.textContent = unreadCount;
+        if (unreadCount === 0) {
+          badgeUnread.classList.remove('bg-primary-container', 'text-on-primary');
+          badgeUnread.classList.add('bg-surface-container-highest', 'text-secondary');
+        }
+      }
+    }
+
+    function applyFilter() {
+      items.forEach(item => {
+        const isRead = item.getAttribute('data-read') === 'true';
+        const nextDivider = item.nextElementSibling;
+        
+        if (currentFilter === 'unread' && isRead) {
+          item.classList.add('hidden');
+          if (nextDivider && nextDivider.classList.contains('h-[1px]')) {
+            nextDivider.classList.add('hidden');
+          }
+        } else {
+          item.classList.remove('hidden');
+          if (nextDivider && nextDivider.classList.contains('h-[1px]')) {
+            nextDivider.classList.remove('hidden');
+          }
+        }
+      });
+    }
+
+    tabAll.addEventListener('click', () => {
+      currentFilter = 'all';
+      tabAll.className = 'px-md py-xs rounded font-label-md text-label-md transition-all bg-surface-container-lowest text-primary shadow-sm flex items-center gap-xs';
+      tabUnread.className = 'px-md py-xs rounded font-label-md text-label-md transition-all text-secondary hover:text-on-surface flex items-center gap-xs';
+      applyFilter();
+    });
+
+    tabUnread.addEventListener('click', () => {
+      currentFilter = 'unread';
+      tabUnread.className = 'px-md py-xs rounded font-label-md text-label-md transition-all bg-surface-container-lowest text-primary shadow-sm flex items-center gap-xs';
+      tabAll.className = 'px-md py-xs rounded font-label-md text-label-md transition-all text-secondary hover:text-on-surface flex items-center gap-xs';
+      applyFilter();
+    });
+
+    markAllReadBtn.addEventListener('click', () => {
+      items.forEach(item => {
+        item.setAttribute('data-read', 'true');
+        item.classList.add('opacity-85');
+        const dot = item.querySelector('.status-dot');
+        if (dot) dot.remove();
+        const heading = item.querySelector('h2');
+        if (heading) {
+          heading.classList.remove('font-semibold');
+          heading.classList.add('font-medium');
+        }
+      });
+      updateCounters();
+      if (currentFilter === 'unread') {
+        applyFilter();
+      }
+    });
+
+    document.querySelectorAll('.mark-single-read').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const article = e.target.closest('.notification-item');
+        if (article) {
+          article.setAttribute('data-read', 'true');
+          article.classList.add('opacity-85');
+          const dot = article.querySelector('.status-dot');
+          if (dot) dot.remove();
+          const heading = article.querySelector('h2');
+          if (heading) {
+            heading.classList.remove('font-semibold');
+            heading.classList.add('font-medium');
+          }
+          btn.textContent = 'Acknowledged';
+          btn.disabled = true;
+          btn.classList.add('opacity-50', 'pointer-events-none');
+          updateCounters();
+          if (currentFilter === 'unread') {
+            applyFilter();
+          }
+        }
+      });
+    });
+  })();
+</script></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)] py-md px-lg mt-auto"><div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-sm text-secondary font-caption text-caption"><div>© 2026 Internal Service Management. PIC Operations Workspace.</div><div class="flex items-center gap-md"><a class="hover:text-on-surface transition-colors" data-path="sla-guidelines" href="#">SLA Guidelines</a><a class="hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="support" href="#">Support</a></div></div></footer></div></body></html>

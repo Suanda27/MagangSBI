@@ -1,0 +1,423 @@
+<!DOCTYPE html><html lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Buat Permintaan - ISM System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#edeeef",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#dde1ff",
+                    "primary-fixed-dim": "#b8c4ff",
+                    "text-muted": "#64748B",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#dde1ff",
+                    "secondary-fixed-dim": "#b8c4ff",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "surface-dim": "#d9dadb",
+                    "primary-container": "#00288e",
+                    "text-main": "#0F172A",
+                    "background": "#f8f9fa",
+                    "tertiary-fixed": "#d3e4fe",
+                    "surface-tint": "#3d57ba",
+                    "on-surface-variant": "#444652",
+                    "on-primary-fixed-variant": "#213da0",
+                    "on-secondary-fixed": "#001453",
+                    "outline-variant": "#c5c5d4",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "secondary-container": "#708cfd",
+                    "on-secondary-fixed-variant": "#173bab",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-variant": "#e1e3e4",
+                    "tertiary-container": "#253549",
+                    "surface": "#f8f9fa",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#b8c4ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "border-subtle": "#E2E8F0",
+                    "on-tertiary-container": "#8d9eb6",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f3f4f5",
+                    "on-primary-container": "#7e97fe",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#191c1d",
+                    "tertiary": "#0f2033",
+                    "on-primary-fixed": "#001453",
+                    "surface-white": "#FFFFFF",
+                    "on-secondary-container": "#00217a",
+                    "secondary": "#3755c3",
+                    "on-background": "#191c1d",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "outline": "#757684",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-surface": "#2e3132",
+                    "on-secondary": "#ffffff",
+                    "primary": "#00175c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "container-max": "1440px",
+                    "xl": "48px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "headline-lg-mobile": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "display": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "Inter"
+                    ],
+                    "caption": [
+                            "Inter"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "headline-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display": [
+                            "40px",
+                            {
+                                    "lineHeight": "48px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "caption": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-md": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+</style>
+</head>
+<body class="bg-surface text-text-main antialiased min-h-screen overflow-x-hidden flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 h-16 left-[240px] bg-surface-white dark:bg-surface border-b border-border-subtle dark:border-outline-variant flex justify-between items-center px-lg max-w-[1440px] ml-auto z-50">
+<div class="flex items-center gap-4">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">ISM System</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-text-muted hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A small circular avatar placeholder image showing a professional headshot or geometric pattern, suitable for a corporate application profile icon, clean white background, minimalistic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh_ToQvatkg45cjHzE8A_MmaLhsBqXuF0rmCA0JqeivnEdYkrHOnIqL69Rzcy5lTgXeUFpoWF1M-jVIZmF_Yi6qPQgZL5_u6r62UgEqduGAcRbcwDLTdxcyxGsLVSDJRWPkW0yPnLRkEPdlumdZaMuKx6_guLVLoduwR_vHVWS08G0jeSEOH6ffixIgUPfsB4-ZMgHcEYbFWtHAzvzgYdJ38zBUVszr1LfYIRmiWs0Aobmeqy2cOZp">
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-low dark:bg-surface-container-low border-r border-border-subtle dark:border-outline-variant flex flex-col py-lg px-md z-50">
+<div class="mb-8 px-4">
+<h2 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">ISM System</h2>
+<p class="font-caption text-caption text-text-muted">Internal Service</p>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<li class="">
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 bg-surface-container-high dark:bg-surface-container-highest text-primary dark:text-primary-fixed border-l-2 border-primary dark:border-primary-fixed rounded-r-lg py-2 px-4 opacity-80 scale-[0.98] transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_box</span>
+<span class="font-body-md text-body-md font-bold">Pengajuan Layanan</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="font-body-md text-body-md">Permintaan Saya</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-md text-body-md">Riwayat</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-md text-body-md">Profile</span>
+</a>
+</li>
+</ul>
+<ul class="flex flex-col gap-2 mt-auto border-t border-border-subtle pt-4">
+<li class="">
+<a class="flex items-center gap-3 text-text-muted hover:bg-surface-container rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 text-text-muted hover:bg-surface-container rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-[240px] pt-16 min-h-screen p-lg max-w-[1440px] pb-24">
+<!-- Page Header -->
+<div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-caption font-semibold bg-blue-50 text-[#00288E] border border-blue-100 mb-3">
+<span class="w-2 h-2 rounded-full bg-[#00288E] animate-pulse"></span>
+<span>Langkah 1 dari 2: Pilih Departemen</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary font-bold">Buat Permintaan Baru</h1>
+<p class="font-body-md text-body-md text-text-muted mt-1.5">Pilih bagian layanan yang sesuai dengan kebutuhan Anda.</p>
+</div>
+</div>
+<!-- 4 Department Cards (2x2 Grid) -->
+<div class="max-w-5xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1: Production Engineering (PE) -->
+<div class="dept-card group bg-surface-white border border-border-subtle rounded-xl p-6 md:p-8 cursor-pointer transition-all duration-200 hover:shadow-md hover:border-[#00288E] flex flex-col justify-between relative overflow-hidden" data-dept="pe">
+<div>
+<div class="flex items-start justify-between mb-5">
+<div class="w-12 h-12 rounded-lg bg-blue-50 text-[#00288E] flex items-center justify-center group-hover:bg-[#00288E] group-hover:text-white transition-colors duration-200">
+<span class="material-symbols-outlined text-[26px]">precision_manufacturing</span>
+</div>
+<div class="radio-indicator w-6 h-6 rounded-full border-2 border-slate-300 flex items-center justify-center transition-all group-hover:border-[#00288E]">
+<span class="radio-dot w-3 h-3 rounded-full bg-[#00288E] transform scale-0 transition-transform duration-150"></span>
+</div>
+</div>
+<h3 class="font-headline-md text-[18px] md:text-headline-md font-bold text-text-main group-hover:text-[#00288E] transition-colors mb-2">Production Engineering (PE)</h3>
+<p class="font-body-md text-body-md text-text-muted leading-relaxed">Permintaan terkait dukungan teknis dan kebutuhan Production Engineering.</p>
+</div>
+<div class="mt-6 pt-4 border-t border-border-subtle/80 flex items-center justify-between">
+<span class="font-label-md text-caption font-semibold text-text-muted group-hover:text-[#00288E] transition-colors">Pilih Departemen</span>
+<span class="material-symbols-outlined text-[#00288E] text-[20px] transition-transform duration-200 group-hover:translate-x-1">arrow_forward</span>
+</div>
+</div>
+<!-- Card 2: Human Resource (HR) -->
+<div class="dept-card group bg-surface-white border border-border-subtle rounded-xl p-6 md:p-8 cursor-pointer transition-all duration-200 hover:shadow-md hover:border-[#00288E] flex flex-col justify-between relative overflow-hidden" data-dept="hr">
+<div>
+<div class="flex items-start justify-between mb-5">
+<div class="w-12 h-12 rounded-lg bg-blue-50 text-[#00288E] flex items-center justify-center group-hover:bg-[#00288E] group-hover:text-white transition-colors duration-200">
+<span class="material-symbols-outlined text-[26px]">groups</span>
+</div>
+<div class="radio-indicator w-6 h-6 rounded-full border-2 border-slate-300 flex items-center justify-center transition-all group-hover:border-[#00288E]">
+<span class="radio-dot w-3 h-3 rounded-full bg-[#00288E] transform scale-0 transition-transform duration-150"></span>
+</div>
+</div>
+<h3 class="font-headline-md text-[18px] md:text-headline-md font-bold text-text-main group-hover:text-[#00288E] transition-colors mb-2">Human Resource (HR)</h3>
+<p class="font-body-md text-body-md text-text-muted leading-relaxed">Permintaan terkait administrasi dan kebutuhan karyawan.</p>
+</div>
+<div class="mt-6 pt-4 border-t border-border-subtle/80 flex items-center justify-between">
+<span class="font-label-md text-caption font-semibold text-text-muted group-hover:text-[#00288E] transition-colors">Pilih Departemen</span>
+<span class="material-symbols-outlined text-[#00288E] text-[20px] transition-transform duration-200 group-hover:translate-x-1">arrow_forward</span>
+</div>
+</div>
+<!-- Card 3: General Affairs (GA) -->
+<div class="dept-card group bg-surface-white border border-border-subtle rounded-xl p-6 md:p-8 cursor-pointer transition-all duration-200 hover:shadow-md hover:border-[#00288E] flex flex-col justify-between relative overflow-hidden" data-dept="ga">
+<div>
+<div class="flex items-start justify-between mb-5">
+<div class="w-12 h-12 rounded-lg bg-blue-50 text-[#00288E] flex items-center justify-center group-hover:bg-[#00288E] group-hover:text-white transition-colors duration-200">
+<span class="material-symbols-outlined text-[26px]">apartment</span>
+</div>
+<div class="radio-indicator w-6 h-6 rounded-full border-2 border-slate-300 flex items-center justify-center transition-all group-hover:border-[#00288E]">
+<span class="radio-dot w-3 h-3 rounded-full bg-[#00288E] transform scale-0 transition-transform duration-150"></span>
+</div>
+</div>
+<h3 class="font-headline-md text-[18px] md:text-headline-md font-bold text-text-main group-hover:text-[#00288E] transition-colors mb-2">General Affairs (GA)</h3>
+<p class="font-body-md text-body-md text-text-muted leading-relaxed">Permintaan terkait fasilitas, lingkungan kerja, dan layanan umum.</p>
+</div>
+<div class="mt-6 pt-4 border-t border-border-subtle/80 flex items-center justify-between">
+<span class="font-label-md text-caption font-semibold text-text-muted group-hover:text-[#00288E] transition-colors">Pilih Departemen</span>
+<span class="material-symbols-outlined text-[#00288E] text-[20px] transition-transform duration-200 group-hover:translate-x-1">arrow_forward</span>
+</div>
+</div>
+<!-- Card 4: Assembly -->
+<div class="dept-card group bg-surface-white border border-border-subtle rounded-xl p-6 md:p-8 cursor-pointer transition-all duration-200 hover:shadow-md hover:border-[#00288E] flex flex-col justify-between relative overflow-hidden" data-dept="assembly">
+<div>
+<div class="flex items-start justify-between mb-5">
+<div class="w-12 h-12 rounded-lg bg-blue-50 text-[#00288E] flex items-center justify-center group-hover:bg-[#00288E] group-hover:text-white transition-colors duration-200">
+<span class="material-symbols-outlined text-[26px]">account_tree</span>
+</div>
+<div class="radio-indicator w-6 h-6 rounded-full border-2 border-slate-300 flex items-center justify-center transition-all group-hover:border-[#00288E]">
+<span class="radio-dot w-3 h-3 rounded-full bg-[#00288E] transform scale-0 transition-transform duration-150"></span>
+</div>
+</div>
+<h3 class="font-headline-md text-[18px] md:text-headline-md font-bold text-text-main group-hover:text-[#00288E] transition-colors mb-2">Assembly</h3>
+<p class="font-body-md text-body-md text-text-muted leading-relaxed">Permintaan terkait kebutuhan dan dukungan area Assembly.</p>
+</div>
+<div class="mt-6 pt-4 border-t border-border-subtle/80 flex items-center justify-between">
+<span class="font-label-md text-caption font-semibold text-text-muted group-hover:text-[#00288E] transition-colors">Pilih Departemen</span>
+<span class="material-symbols-outlined text-[#00288E] text-[20px] transition-transform duration-200 group-hover:translate-x-1">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Interactive CTA Section -->
+<div class="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 md:p-5 bg-surface-white border border-border-subtle rounded-xl">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-text-muted" id="status-icon-container">
+<span class="material-symbols-outlined text-[20px]" id="status-icon">touch_app</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-semibold text-text-main" id="selected-dept-label">Belum ada departemen yang dipilih</p>
+<p class="font-caption text-caption text-text-muted">Klik salah satu departemen di atas untuk melanjutkan pengajuan.</p>
+</div>
+</div>
+<button class="w-full sm:w-auto px-6 py-3 bg-[#00288E] text-white rounded-lg font-label-md text-label-md font-semibold transition-all flex items-center justify-center gap-2 opacity-40 cursor-not-allowed shadow-sm hover:shadow" disabled="" id="submit-btn">
+<span>Lanjutkan ke Formulir Permintaan</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-auto ml-[240px] border-t border-border-subtle dark:border-outline-variant bg-transparent flex justify-between items-center py-md px-lg">
+<p class="font-caption text-caption text-text-muted dark:text-on-surface-variant">© 2024 Internal Service Management</p>
+<div class="flex gap-4">
+<a class="font-caption text-caption text-text-muted hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-caption text-caption text-text-muted hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-caption text-caption text-text-muted hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+</footer>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.dept-card');
+    const submitBtn = document.getElementById('submit-btn');
+    const selectedDeptLabel = document.getElementById('selected-dept-label');
+    const statusIcon = document.getElementById('status-icon');
+    const statusIconContainer = document.getElementById('status-icon-container');
+
+    const departmentNames = {
+      pe: 'Production Engineering (PE)',
+      hr: 'Human Resource (HR)',
+      ga: 'General Affairs (GA)',
+      assembly: 'Assembly'
+    };
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        // Deselect all
+        cards.forEach(c => {
+          c.classList.remove('border-[#00288E]', 'ring-2', 'ring-blue-100', 'bg-blue-50/20');
+          c.classList.add('border-border-subtle', 'bg-surface-white');
+          const dot = c.querySelector('.radio-dot');
+          const ring = c.querySelector('.radio-indicator');
+          if (dot) dot.classList.remove('scale-100');
+          if (dot) dot.classList.add('scale-0');
+          if (ring) ring.classList.remove('border-[#00288E]');
+          if (ring) ring.classList.add('border-slate-300');
+        });
+
+        // Select clicked card
+        card.classList.remove('border-border-subtle', 'bg-surface-white');
+        card.classList.add('border-[#00288E]', 'ring-2', 'ring-blue-100', 'bg-blue-50/20');
+        const activeDot = card.querySelector('.radio-dot');
+        const activeRing = card.querySelector('.radio-indicator');
+        if (activeDot) {
+          activeDot.classList.remove('scale-0');
+          activeDot.classList.add('scale-100');
+        }
+        if (activeRing) {
+          activeRing.classList.remove('border-slate-300');
+          activeRing.classList.add('border-[#00288E]');
+        }
+
+        const deptKey = card.dataset.dept;
+        selectedDeptLabel.textContent = `Departemen Terpilih: ${departmentNames[deptKey]}`;
+        statusIconContainer.className = 'w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-[#00288E]';
+        statusIcon.textContent = 'check_circle';
+
+        // Enable CTA
+        submitBtn.removeAttribute('disabled');
+        submitBtn.classList.remove('opacity-40', 'cursor-not-allowed');
+        submitBtn.classList.add('hover:bg-primary', 'cursor-pointer');
+      });
+    });
+  });
+</script>
+</body></html>

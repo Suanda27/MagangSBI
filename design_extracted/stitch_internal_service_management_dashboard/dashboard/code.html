@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard - ESM Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#d3e4fe",
+                        "on-background": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#d0e1fb",
+                        "outline": "#757684",
+                        "background": "#f7f9fb",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "tertiary": "#2d3449",
+                        "on-surface": "#191c1e",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "on-tertiary-fixed": "#131b2e",
+                        "inverse-surface": "#2d3133",
+                        "primary-fixed": "#dde1ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#434b60",
+                        "on-primary-fixed-variant": "#173bab",
+                        "on-primary-fixed": "#001453",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#1e40af",
+                        "surface-dim": "#d8dadc",
+                        "error": "#ba1a1a",
+                        "secondary": "#505f76",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "outline-variant": "#c4c5d5",
+                        "surface-tint": "#3755c3",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-container": "#eceef0",
+                        "tertiary-fixed": "#dae2fd",
+                        "inverse-primary": "#b8c4ff",
+                        "on-primary-container": "#a8b8ff",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "surface-container-low": "#f2f4f6",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface": "#f7f9fb",
+                        "on-surface-variant": "#444653",
+                        "on-error-container": "#93000a",
+                        "primary": "#00288e",
+                        "on-tertiary-container": "#b4bbd5",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "container-max": "1440px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "gutter": "20px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display": ["Inter"]
+                    },
+                    "fontSize": {
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-60 bg-surface shadow-sm border-r border-outline-variant flex flex-col z-20">
+<div class="p-6">
+<div class="flex items-center gap-3">
+<img alt="Company Logo" class="w-8 h-8 rounded" data-alt="A stylized logo icon for an enterprise portal, corporate minimalist aesthetic, shades of primary blue and crisp white, professional corporate vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxuI7nuvB5LTNJGSBvGGX7wW0RhmP3V_q74PvCVeZWPr8zn8ae_QTu7ygBywZ2S0lennMWaWcdLHCrUddcEuEk8BvllpLJoYP-M6ElgM-PY9qw5jjj9c58-OHqEHvuGLUXYbnoOtO9_nimRhlK3I_4jX1eLgIb_OPQWZhQbjL1d2INlXj8GYRcI00v0IDWy8raNCFqx-C8un8CkTQ6bJt5XME_-2789A8NgBdxla5gmkxK82VWTYGn"/>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">ESM Portal</h1>
+<p class="font-caption text-caption text-secondary">Employee Services</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto mt-4">
+<ul class="flex flex-col font-body-md text-body-md">
+<!-- Dashboard (Active) -->
+<li>
+<a class="flex items-center gap-3 px-4 py-3 bg-surface-container text-primary border-l-4 border-primary hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                        Dashboard
+                    </a>
+</li>
+<!-- Buat Permintaan -->
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                        Buat Permintaan
+                    </a>
+</li>
+<!-- Permintaan Saya -->
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+                        Permintaan Saya
+                    </a>
+</li>
+<!-- Riwayat -->
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                        Riwayat
+                    </a>
+</li>
+</ul>
+</nav>
+<div class="p-4 border-t border-outline-variant">
+<ul class="flex flex-col font-body-md text-body-md">
+<li>
+<a class="flex items-center gap-3 px-4 py-2 text-secondary hover:bg-surface-container-low transition-colors rounded" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                        Settings
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 text-secondary hover:bg-surface-container-low transition-colors rounded" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                        Help
+                    </a>
+</li>
+</ul>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col ml-60 h-screen overflow-hidden">
+<!-- TopNavBar -->
+<header class="docked full-width top-0 bg-surface shadow-sm border-b border-outline-variant flex justify-between items-center h-16 px-6 z-10">
+<div class="flex-1">
+<!-- Empty spacer to balance right side -->
+</div>
+<div class="flex items-center gap-4">
+<button class="text-secondary hover:bg-surface-container-low p-2 rounded-full transition-colors relative" id="notificationBtn">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-secondary hover:bg-surface-container-low p-2 rounded-full transition-colors flex items-center gap-2" id="profileBtn">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Main Canvas -->
+<main class="flex-1 overflow-y-auto p-lg bg-background">
+<div class="max-w-container-max mx-auto space-y-lg">
+<!-- Welcome Banner -->
+<div class="flex justify-between items-center bg-white rounded-lg p-md shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_10px_15px_-3px_rgba(0,0,0,0.05)]">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Selamat datang, Muhammad Faiz 👋</h2>
+<p class="font-body-md text-body-md text-secondary mt-1">Berikut adalah ringkasan permintaan layanan Anda hari ini.</p>
+</div>
+<button class="bg-primary-container text-white px-4 py-2 rounded-DEFAULT font-label-md text-label-md hover:bg-primary transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        Buat Permintaan
+                    </button>
+</div>
+<!-- Summary Cards (Bento style grid) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Total -->
+<div class="bg-white rounded-lg p-md shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_10px_15px_-3px_rgba(0,0,0,0.05)] border-l-4 border-outline-variant">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider">Total Permintaan</p>
+<h3 class="font-display text-display text-on-surface mt-2">12</h3>
+</div>
+<div class="p-2 bg-surface-container rounded-full text-secondary">
+<span class="material-symbols-outlined">folder</span>
+</div>
+</div>
+</div>
+<!-- Diajukan -->
+<div class="bg-white rounded-lg p-md shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_10px_15px_-3px_rgba(0,0,0,0.05)] border-l-4 border-[#F59E0B]">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider">Diajukan</p>
+<h3 class="font-display text-display text-on-surface mt-2">3</h3>
+</div>
+<div class="p-2 bg-[#FEF3C7] rounded-full text-[#D97706]">
+<span class="material-symbols-outlined">hourglass_empty</span>
+</div>
+</div>
+</div>
+<!-- Diproses -->
+<div class="bg-white rounded-lg p-md shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_10px_15px_-3px_rgba(0,0,0,0.05)] border-l-4 border-primary-container">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider">Diproses</p>
+<h3 class="font-display text-display text-on-surface mt-2">4</h3>
+</div>
+<div class="p-2 bg-primary-fixed rounded-full text-primary-container">
+<span class="material-symbols-outlined">sync</span>
+</div>
+</div>
+</div>
+<!-- Selesai -->
+<div class="bg-white rounded-lg p-md shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_10px_15px_-3px_rgba(0,0,0,0.05)] border-l-4 border-[#10B981]">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-wider">Selesai</p>
+<h3 class="font-display text-display text-on-surface mt-2">5</h3>
+</div>
+<div class="p-2 bg-[#D1FAE5] rounded-full text-[#059669]">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Requests Table -->
+<div class="bg-white rounded-lg shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_10px_15px_-3px_rgba(0,0,0,0.05)] overflow-hidden">
+<div class="p-md border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">Permintaan Terbaru</h3>
+<button class="text-primary font-label-md text-label-md hover:underline">Lihat Semua</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-outline-variant font-label-md text-label-md text-secondary">
+<th class="py-3 px-md font-semibold">ID</th>
+<th class="py-3 px-md font-semibold">Kategori</th>
+<th class="py-3 px-md font-semibold">Deskripsi</th>
+<th class="py-3 px-md font-semibold">Tanggal</th>
+<th class="py-3 px-md font-semibold">Status</th>
+<th class="py-3 px-md font-semibold text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface">
+<tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors h-[52px]">
+<td class="py-2 px-md font-semibold text-primary">P001</td>
+<td class="py-2 px-md">IT Support</td>
+<td class="py-2 px-md truncate max-w-[200px]">Permintaan Laptop Baru</td>
+<td class="py-2 px-md text-secondary">12 Okt 2024</td>
+<td class="py-2 px-md">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-label-md bg-[#FEF3C7] text-[#D97706]">Diajukan</span>
+</td>
+<td class="py-2 px-md text-right">
+<button class="text-primary hover:underline font-label-md">Detail</button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors h-[52px]">
+<td class="py-2 px-md font-semibold text-primary">P002</td>
+<td class="py-2 px-md">HR</td>
+<td class="py-2 px-md truncate max-w-[200px]">Surat Keterangan Karyawan</td>
+<td class="py-2 px-md text-secondary">10 Okt 2024</td>
+<td class="py-2 px-md">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-label-md bg-primary-fixed text-primary-container">Diproses</span>
+</td>
+<td class="py-2 px-md text-right">
+<button class="text-primary hover:underline font-label-md">Detail</button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors h-[52px]">
+<td class="py-2 px-md font-semibold text-primary">P003</td>
+<td class="py-2 px-md">Fasilitas</td>
+<td class="py-2 px-md truncate max-w-[200px]">Perbaikan AC Ruangan Meeting</td>
+<td class="py-2 px-md text-secondary">08 Okt 2024</td>
+<td class="py-2 px-md">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-label-md bg-[#D1FAE5] text-[#059669]">Selesai</span>
+</td>
+<td class="py-2 px-md text-right">
+<button class="text-primary hover:underline font-label-md">Detail</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors h-[52px]">
+<td class="py-2 px-md font-semibold text-primary">P004</td>
+<td class="py-2 px-md">Finance</td>
+<td class="py-2 px-md truncate max-w-[200px]">Reimbursement Perjalanan Dinas</td>
+<td class="py-2 px-md text-secondary">05 Okt 2024</td>
+<td class="py-2 px-md">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-label-md bg-[#D1FAE5] text-[#059669]">Selesai</span>
+</td>
+<td class="py-2 px-md text-right">
+<button class="text-primary hover:underline font-label-md">Detail</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low full-width bottom-0 border-t border-outline-variant flex justify-between items-center py-4 px-8">
+<p class="font-caption text-caption text-secondary">© 2024 Employee Service Management. All rights reserved.</p>
+<div class="flex gap-4 font-caption text-caption">
+<a class="text-secondary hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-secondary hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-secondary hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</footer>
+</div>
+<!-- Dropdowns (Hidden by default, simple JS simulation) -->
+<div class="hidden absolute top-16 right-20 w-80 bg-white rounded-lg shadow-lg border border-outline-variant z-50 overflow-hidden" id="notificationDropdown">
+<div class="p-3 border-b border-outline-variant bg-surface-container-low font-label-md text-label-md text-secondary">Notifications</div>
+<div class="p-4 font-body-md text-center text-secondary">No new notifications</div>
+</div>
+<div class="hidden absolute top-16 right-6 w-48 bg-white rounded-lg shadow-lg border border-outline-variant z-50 py-2" id="profileDropdown">
+<a class="block px-4 py-2 font-body-md text-on-surface hover:bg-surface-container-low transition-colors" href="#">Settings</a>
+<a class="block px-4 py-2 font-body-md text-error hover:bg-error-container hover:text-on-error-container transition-colors" href="#">Logout</a>
+</div>
+<script>
+        // Simple toggle for dropdowns
+        document.getElementById('notificationBtn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('notificationDropdown').classList.toggle('hidden');
+            document.getElementById('profileDropdown').classList.add('hidden');
+        });
+
+        document.getElementById('profileBtn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('profileDropdown').classList.toggle('hidden');
+            document.getElementById('notificationDropdown').classList.add('hidden');
+        });
+
+        document.addEventListener('click', function() {
+            document.getElementById('notificationDropdown').classList.add('hidden');
+            document.getElementById('profileDropdown').classList.add('hidden');
+        });
+    </script>
+</body></html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "error": "#ba1a1a",
+        "surface-container-high": "#e6e8ea",
+        "surface-variant": "#e0e3e5",
+        "on-surface": "#191c1e",
+        "secondary-fixed": "#d3e4fe",
+        "surface-dim": "#d8dadc",
+        "on-tertiary-fixed-variant": "#3f465c",
+        "on-background": "#191c1e",
+        "on-tertiary-container": "#b4bbd5",
+        "on-secondary": "#ffffff",
+        "on-primary-fixed": "#001453",
+        "secondary": "#505f76",
+        "primary-container": "#1e40af",
+        "error-container": "#ffdad6",
+        "surface-bright": "#f7f9fb",
+        "inverse-on-surface": "#eff1f3",
+        "on-error-container": "#93000a",
+        "primary-fixed": "#dde1ff",
+        "primary-fixed-dim": "#b8c4ff",
+        "on-secondary-fixed-variant": "#38485d",
+        "on-primary-container": "#a8b8ff",
+        "surface": "#f7f9fb",
+        "background": "#f7f9fb",
+        "inverse-primary": "#b8c4ff",
+        "surface-tint": "#3755c3",
+        "secondary-fixed-dim": "#b7c8e1",
+        "on-primary": "#ffffff",
+        "tertiary-container": "#434b60",
+        "outline": "#757684",
+        "on-tertiary-fixed": "#131b2e",
+        "surface-container": "#eceef0",
+        "tertiary": "#2d3449",
+        "inverse-surface": "#2d3133",
+        "surface-container-low": "#f2f4f6",
+        "surface-container-highest": "#e0e3e5",
+        "on-primary-fixed-variant": "#173bab",
+        "secondary-container": "#d0e1fb",
+        "tertiary-fixed": "#dae2fd",
+        "on-error": "#ffffff",
+        "primary": "#00288e",
+        "on-secondary-container": "#54647a",
+        "on-tertiary": "#ffffff",
+        "tertiary-fixed-dim": "#bec6e0",
+        "surface-container-lowest": "#ffffff",
+        "outline-variant": "#c4c5d5",
+        "on-surface-variant": "#444653",
+        "on-secondary-fixed": "#0b1c30"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "lg": "24px",
+        "gutter": "20px",
+        "xs": "4px",
+        "base": "4px",
+        "sm": "8px",
+        "md": "16px",
+        "container-max": "1440px",
+        "xl": "32px"
+      },
+      "fontFamily": {
+        "caption": ["Inter"],
+        "label-md": ["Inter"],
+        "body-lg": ["Inter"],
+        "body-md": ["Inter"],
+        "display": ["Inter"],
+        "headline-md": ["Inter"],
+        "headline-lg": ["Inter"]
+      },
+      "fontSize": {
+        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+      }
+    }
+  }
+}</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-16 px-md flex items-center gap-sm"><div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[20px]">verified_user</span></div><div class="flex flex-col min-w-0"><span class="font-headline-md text-headline-md leading-none text-primary font-bold tracking-tight truncate">ISM System</span><span class="font-caption text-caption text-secondary truncate mt-xs">Internal Service</span></div></div><nav class="flex flex-col gap-xs px-md py-sm flex-1" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Dashboard</span></a><div class="pt-md pb-xs px-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">MASTER DATA</span></div><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="karyawan" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span>Karyawan</span></a><a aria-current="page" class="flex items-center gap-sm px-md py-sm rounded-lg transition-colors bg-primary-container text-on-primary font-semibold shadow-sm" data-path="section" href="#"><span class="material-symbols-outlined text-[20px]">layers</span><span>Section</span></a><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="layanan" href="#"><span class="material-symbols-outlined text-[20px]">settings_suggest</span><span>Layanan</span></a><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="pic" href="#"><span class="material-symbols-outlined text-[20px]">how_to_reg</span><span>PIC</span></a><div class="pt-md pb-xs px-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">PERMINTAAN</span></div><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="semua-permintaan" href="#"><span class="material-symbols-outlined text-[20px]">description</span><span>Semua Permintaan</span></a><div class="pt-md pb-xs px-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">ANALISIS</span></div><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="laporan" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span>Laporan</span></a></nav></div><div class="p-md flex flex-col gap-xs bg-surface-container-lowest"><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-error hover:bg-error-container hover:text-on-error-container transition-colors" data-path="logout" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span>Logout</span></a></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-lg"><nav aria-label="Breadcrumb" class="flex items-center gap-xs font-body-md text-body-md"><span class="text-secondary">Portal</span><span class="material-symbols-outlined text-secondary text-[16px]">chevron_right</span><span class="text-secondary">Console</span><span class="material-symbols-outlined text-secondary text-[16px]">chevron_right</span><span class="text-secondary">Master Data</span><span class="material-symbols-outlined text-secondary text-[16px]">chevron_right</span><span class="font-semibold text-on-surface">Section</span></nav><div class="flex items-center gap-lg"><div class="relative flex items-center"><span class="material-symbols-outlined text-secondary absolute left-3 text-[20px]">search</span><input class="w-72 pl-10 pr-4 py-1.5 bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface placeholder:text-secondary outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" placeholder="Cari NIK, ID, nama..." type="text"></div><button class="relative p-2 rounded-lg text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-sm pl-2 cursor-pointer"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-[13px]">AD</div><div class="flex flex-col text-left"><span class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Admin ISM</span><span class="font-caption text-caption text-secondary leading-tight">(Administrator)</span></div><span class="material-symbols-outlined text-secondary text-[18px]">expand_more</span></div></div></header><main class="w-full pt-16 flex-1 bg-surface"><div class="max-w-container-max mx-auto p-lg"><div class="flex flex-col w-full relative">
+<!-- Toast Notification (Top-Right Simulation) -->
+<aside aria-label="Notifikasi Sistem" class="fixed top-20 right-8 z-50 flex items-start gap-md p-md bg-surface-container-lowest rounded-xl shadow-xl transition-all duration-300 transform translate-y-0 opacity-100 max-w-sm" id="successToast">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex flex-col pr-sm">
+<span class="font-headline-md text-body-md font-semibold text-on-surface">Section berhasil diperbarui</span>
+<span class="font-caption text-caption text-secondary mt-xs">Informasi section telah berhasil disimpan ke sistem pusat.</span>
+</div>
+<button aria-label="Tutup notifikasi" class="text-secondary hover:text-on-surface transition-colors p-1" onclick="document.getElementById('successToast').style.display='none'" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</aside>
+<!-- Page Header & Action Bar -->
+<header class="flex flex-col md:flex-row md:items-center justify-between gap-md pb-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-sm">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Edit Section</h1>
+<span class="inline-flex items-center gap-xs px-sm py-xs bg-surface-container-low text-secondary font-label-md text-caption rounded-full">
+          Draft ID: #SEC-008
+        </span>
+</div>
+<p class="font-body-md text-body-md text-secondary mt-xs">Perbarui informasi section dan kelola parameter akses operasional.</p>
+</div>
+<!-- Status Badge & Meta Identifiers -->
+<div class="flex items-center gap-sm self-start md:self-auto bg-surface-container-lowest p-1.5 rounded-xl shadow-sm">
+<div class="flex items-center gap-xs px-md py-1.5 rounded-lg bg-surface-container-low">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-md text-label-md text-primary tracking-wide" id="headerStatusText">Aktif</span>
+</div>
+<div class="px-md py-1.5 font-label-md text-label-md text-on-surface-variant bg-surface-container-high rounded-lg tracking-wider">
+        CODE: <span class="font-bold text-on-surface">ASM</span>
+</div>
+</div>
+</header>
+<!-- Service/Section Header Bar (Compact Metadata Banner) -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-md shadow-sm mb-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[26px]">precision_manufacturing</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-sm">
+<span class="font-headline-md text-headline-md text-on-surface leading-tight">Assembly</span>
+<span class="px-sm py-0.5 bg-primary-fixed text-on-primary-fixed-variant rounded font-caption text-caption font-semibold">Produksi Manufaktur</span>
+</div>
+<span class="font-caption text-caption text-secondary mt-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">history</span>
+          Terakhir diperbarui: 12 Februari 2025, 14:20 WIB oleh <strong class="text-on-surface-variant font-medium">Admin ISM</strong>
+</span>
+</div>
+</div>
+<!-- Operational Quick Metrics -->
+<div class="flex items-center gap-lg pl-md md:pl-0 md:border-l md:border-surface-container-high md:pl-lg">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-secondary uppercase tracking-wider">Total Staf</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">42 Karyawan</span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-secondary uppercase tracking-wider">Layanan Aktif</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">8 Modul</span>
+</div>
+</div>
+</div>
+<!-- Bento Form Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-start">
+<!-- Primary Form Container (8 Cols) -->
+<main class="lg:col-span-8 flex flex-col gap-lg">
+<form class="bg-surface-container-lowest rounded-xl p-lg md:p-xl shadow-sm flex flex-col" id="editSectionForm" onsubmit="event.preventDefault();">
+<!-- Form Header Section -->
+<div class="flex items-center justify-between pb-md mb-lg bg-surface-container-lowest">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">tune</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-bold">INFORMASI SECTION</span>
+</div>
+<span class="font-caption text-caption text-secondary">* Kolom wajib diisi</span>
+</div>
+<div class="flex flex-col gap-lg">
+<!-- Field 1: Nama Section -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-xs" for="namaSection">
+              Nama Section <span class="text-error">*</span>
+</label>
+<div class="relative flex items-center">
+<input class="w-full px-md py-sm rounded-lg bg-surface-container-low font-body-md text-body-md text-on-surface placeholder:text-outline focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px] focus:shadow-primary outline-none transition-all" id="namaSection" name="namaSection" placeholder="Contoh: Quality Assurance" required="" type="text" value="Assembly">
+<span class="material-symbols-outlined text-secondary absolute right-3 text-[20px] pointer-events-none">edit</span>
+</div>
+<span class="font-caption text-caption text-secondary">Nama resmi unit atau departemen kerja dalam struktur organisasi.</span>
+</div>
+<!-- Field 2: Kode Section (READ ONLY) -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-xs" for="kodeSection">
+              Kode Section <span class="font-caption text-caption text-secondary">(Read-only)</span>
+</label>
+<div class="relative flex items-center">
+<input class="w-full px-md py-sm pl-11 rounded-lg bg-surface-container-highest font-body-md text-body-md text-secondary font-mono tracking-wider cursor-not-allowed select-none outline-none" id="kodeSection" name="kodeSection" readonly="" type="text" value="ASM">
+<span class="material-symbols-outlined text-secondary absolute left-3.5 text-[18px]">lock</span>
+<span class="absolute right-3 px-sm py-0.5 bg-surface-container-high rounded text-caption font-caption text-secondary font-medium">Terkunci</span>
+</div>
+<span class="font-caption text-caption text-secondary">Kode section dibuat sebagai identitas unik permanen dan tidak dapat diubah setelah digunakan pada alur tiket.</span>
+</div>
+<!-- Field 3: Status Section (Segmented Control) -->
+<div class="flex flex-col gap-xs pt-xs">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Status Operasional Section</span>
+<div aria-label="Status Section" class="grid grid-cols-1 sm:grid-cols-2 gap-sm pt-xs" role="radiogroup">
+<!-- Option: Aktif -->
+<label class="relative flex items-center justify-between p-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer shadow-sm" id="labelAktif">
+<div class="flex items-center gap-md">
+<div class="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Aktif</span>
+<span class="font-caption text-caption text-secondary">Tersedia untuk penugasan</span>
+</div>
+</div>
+<input checked="" class="sr-only" name="statusSection" onchange="handleStatusChange('aktif')" type="radio" value="aktif">
+<span class="material-symbols-outlined text-primary text-[22px]">check_circle</span>
+</label>
+<!-- Option: Nonaktif -->
+<label class="relative flex items-center justify-between p-md rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all cursor-pointer" id="labelNonaktif">
+<div class="flex items-center gap-md">
+<div class="w-5 h-5 rounded-full bg-surface-container-high flex items-center justify-center"></div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-secondary">Nonaktif</span>
+<span class="font-caption text-caption text-secondary">Tangguhkan sementara</span>
+</div>
+</div>
+<input class="sr-only" name="statusSection" onchange="handleStatusChange('nonaktif')" type="radio" value="nonaktif">
+<span class="material-symbols-outlined text-outline-variant text-[22px]">block</span>
+</label>
+</div>
+<span class="font-caption text-caption text-secondary mt-xs">Jika nonaktif, section tidak dapat dipilih untuk formulir layanan atau penugasan tiket baru oleh karyawan.</span>
+</div>
+<!-- Organizational Hierarchy Context Card -->
+<div class="bg-surface-container-low rounded-xl p-md flex flex-col gap-sm mt-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Divisi Induk</span>
+<span class="font-caption text-caption text-primary font-medium">Manufaktur &amp; Rekayasa</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Cost Center ID</span>
+<span class="font-body-md text-body-md font-mono text-on-surface">CC-8820-ID</span>
+</div>
+</div>
+</div>
+<!-- Bottom Action Area -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-md pt-lg mt-xl bg-surface-container-lowest">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-xs px-lg py-sm rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-body-md text-body-md font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Batal</span>
+</a>
+<div class="flex items-center gap-sm w-full sm:w-auto">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-xs px-lg py-sm rounded-lg bg-primary hover:bg-primary-container text-on-primary font-body-md text-body-md font-medium shadow-sm hover:shadow transition-all" onclick="showToast()" type="button">
+<span class="material-symbols-outlined text-[20px]">save</span>
+<span>Selesai &amp; Simpan</span>
+</button>
+</div>
+</div>
+</form>
+</main>
+<!-- Side Context & Impact Panel (4 Cols) -->
+<aside class="lg:col-span-4 flex flex-col gap-lg">
+<!-- Section Impact Summary Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col gap-md">
+<div class="flex items-center gap-xs text-secondary">
+<span class="material-symbols-outlined text-[20px]">monitoring</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Aktivitas Berjalan</span>
+</div>
+<!-- Inline SVG Mini Bar Distribution -->
+<div class="bg-surface-container-low rounded-lg p-md flex flex-col gap-sm">
+<div class="flex items-center justify-between text-caption font-caption text-secondary">
+<span>Beban Tiket Permintaan</span>
+<span class="text-on-surface font-semibold">86% Kapasitas</span>
+</div>
+<svg class="w-full h-12 text-primary" fill="none" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
+<rect fill="currentColor" height="18" opacity="0.2" rx="2" width="16" x="0" y="22"></rect>
+<rect fill="currentColor" height="26" opacity="0.3" rx="2" width="16" x="24" y="14"></rect>
+<rect fill="currentColor" height="32" opacity="0.5" rx="2" width="16" x="48" y="8"></rect>
+<rect fill="currentColor" height="36" opacity="0.7" rx="2" width="16" x="72" y="4"></rect>
+<rect fill="currentColor" height="30" opacity="0.6" rx="2" width="16" x="96" y="10"></rect>
+<rect fill="currentColor" height="38" rx="2" width="16" x="120" y="2"></rect>
+<rect fill="currentColor" height="28" opacity="0.6" rx="2" width="16" x="144" y="12"></rect>
+<rect fill="currentColor" height="22" opacity="0.4" rx="2" width="16" x="168" y="18"></rect>
+<rect fill="currentColor" height="20" opacity="0.3" rx="2" width="8" x="192" y="20"></rect>
+</svg>
+<span class="font-caption text-caption text-secondary">Terdapat 14 permintaan pending yang terhubung langsung dengan section ini.</span>
+</div>
+<div class="flex flex-col gap-xs pt-xs">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Peringatan Ketergantungan Data</span>
+<p class="font-caption text-caption text-secondary">
+            Perubahan nama section akan diperbarui secara otomatis di seluruh rekap inventaris, log penugasan teknisi, dan cetak laporan bulanan.
+          </p>
+</div>
+</div>
+<!-- Quick Action Trigger Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col gap-sm">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Manajemen Bahaya</span>
+<p class="font-caption text-caption text-secondary">Nonaktifkan section secara instan jika lini produksi atau unit ini sedang mengalami reorganisasi struktural.</p>
+<button class="mt-xs inline-flex items-center justify-center gap-xs px-md py-sm bg-error-container hover:bg-error hover:text-on-error text-on-error-container font-body-md text-body-md font-semibold rounded-lg transition-colors" onclick="openConfirmModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">power_settings_new</span>
+<span>Nonaktifkan Section Ini</span>
+</button>
+</div>
+</aside>
+</div>
+<!-- Confirmation Modal Overlay: Nonaktifkan Section -->
+<dialog aria-describedby="modalDesc" aria-labelledby="modalTitle" class="fixed inset-0 z-50 m-auto p-0 bg-transparent backdrop:bg-on-surface/40 backdrop:backdrop-blur-sm open:flex open:items-center open:justify-center w-full h-full" id="confirmModal">
+<div class="bg-surface-container-lowest rounded-xl p-xl shadow-xl max-w-lg w-11/12 mx-auto flex flex-col gap-md">
+<div class="w-12 h-12 rounded-xl bg-error-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">warning</span>
+</div>
+<div class="flex flex-col gap-xs">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface" id="modalTitle">Nonaktifkan Section?</h2>
+<p class="font-body-md text-body-md text-secondary" id="modalDesc">
+          Section ini tidak dapat digunakan untuk data atau konfigurasi baru. Data karyawan, layanan, dan permintaan yang sudah ada tetap tersimpan.
+        </p>
+</div>
+<div class="p-md rounded-lg bg-surface-container-low flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0">info</span>
+<span class="font-caption text-caption text-secondary">
+          Tindakan ini akan menghentikan seluruh rute otomatisasi penugasan tiket masuk ke unit Assembly.
+        </span>
+</div>
+<div class="flex items-center justify-end gap-sm pt-md mt-xs">
+<button class="px-lg py-sm rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-body-md text-body-md font-medium transition-colors" onclick="closeConfirmModal()" type="button">
+          Batal
+        </button>
+<button class="px-lg py-sm rounded-lg bg-error hover:opacity-90 text-on-error font-body-md text-body-md font-semibold transition-opacity" onclick="applyDeactivate()" type="button">
+          Nonaktifkan
+        </button>
+</div>
+</div>
+</dialog>
+<!-- Dynamic Interaction Scripts -->
+<script>
+    function handleStatusChange(status) {
+      const labelAktif = document.getElementById('labelAktif');
+      const labelNonaktif = document.getElementById('labelNonaktif');
+      const headerStatus = document.getElementById('headerStatusText');
+
+      if (status === 'nonaktif') {
+        openConfirmModal();
+      } else {
+        setRadioUI('aktif');
+      }
+    }
+
+    function setRadioUI(status) {
+      const labelAktif = document.getElementById('labelAktif');
+      const labelNonaktif = document.getElementById('labelNonaktif');
+      const headerStatus = document.getElementById('headerStatusText');
+
+      if (status === 'aktif') {
+        labelAktif.className = "relative flex items-center justify-between p-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer shadow-sm";
+        labelNonaktif.className = "relative flex items-center justify-between p-md rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all cursor-pointer";
+        if (headerStatus) {
+          headerStatus.textContent = "Aktif";
+          headerStatus.className = "font-label-md text-label-md text-primary tracking-wide";
+        }
+      } else {
+        labelNonaktif.className = "relative flex items-center justify-between p-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer shadow-sm";
+        labelAktif.className = "relative flex items-center justify-between p-md rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all cursor-pointer";
+        if (headerStatus) {
+          headerStatus.textContent = "Nonaktif";
+          headerStatus.className = "font-label-md text-label-md text-error tracking-wide";
+        }
+      }
+    }
+
+    function openConfirmModal() {
+      const modal = document.getElementById('confirmModal');
+      if (modal) modal.showModal();
+    }
+
+    function closeConfirmModal() {
+      const modal = document.getElementById('confirmModal');
+      if (modal) modal.close();
+      // Revert radio to active if cancelled
+      const activeRadio = document.querySelector('input[name="statusSection"][value="aktif"]');
+      if (activeRadio) activeRadio.checked = true;
+      setRadioUI('aktif');
+    }
+
+    function applyDeactivate() {
+      const modal = document.getElementById('confirmModal');
+      if (modal) modal.close();
+      const nonaktifRadio = document.querySelector('input[name="statusSection"][value="nonaktif"]');
+      if (nonaktifRadio) nonaktifRadio.checked = true;
+      setRadioUI('nonaktif');
+      showToast();
+    }
+
+    function showToast() {
+      const toast = document.getElementById('successToast');
+      if (toast) {
+        toast.style.display = 'flex';
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateY(0)';
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          toast.style.transform = 'translateY(-10px)';
+          setTimeout(() => { toast.style.display = 'none'; }, 300);
+        }, 4000);
+      }
+    }
+  </script>
+</div></div></main></div></body></html>

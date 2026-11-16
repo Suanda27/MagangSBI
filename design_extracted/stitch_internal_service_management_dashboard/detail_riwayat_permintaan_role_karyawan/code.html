@@ -1,0 +1,617 @@
+<!DOCTYPE html><html lang="id"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Riwayat - Internal Service Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            slate: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              300: '#cbd5e1',
+              400: '#94a3b8',
+              500: '#64748b',
+              600: '#475569',
+              700: '#334155',
+              800: '#1e293b',
+              900: '#0f172a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-800 min-h-screen flex flex-col">
+
+  <!-- Main Container with Sidebar -->
+  <div class="flex min-h-screen">
+    
+    <!-- LEFT SIDEBAR (Employee Role Navigation) -->
+    <aside class="w-64 bg-white border-r border-slate-200 fixed inset-y-0 left-0 flex flex-col z-30">
+      <!-- App Brand / Logo -->
+      <div class="h-16 flex items-center px-6 border-b border-slate-100">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-primary-700 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+            <span class="material-symbols-outlined text-white text-[22px]">widgets</span>
+          </div>
+          <div>
+            <h1 class="font-bold text-slate-900 leading-tight text-base tracking-tight">ISM System</h1>
+            <p class="text-xs text-slate-500 font-normal">Internal Service</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors font-medium text-sm">
+          <span class="material-symbols-outlined text-[20px] text-slate-500">dashboard</span>
+          <span class="">Dashboard</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors font-medium text-sm">
+          <span class="material-symbols-outlined text-[20px] text-slate-500">add_box</span>
+          <span class="">Pengajuan Layanan</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors font-medium text-sm">
+          <span class="material-symbols-outlined text-[20px] text-slate-500">list_alt</span>
+          <span class="">Permintaan Saya</span>
+        </a>
+        <!-- Active Tab: Riwayat -->
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary-50 text-primary-700 font-semibold text-sm border-l-4 border-primary-700 transition-colors">
+          <span class="material-symbols-outlined text-[20px] text-primary-700 fill">history</span>
+          <span class="">Riwayat</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors font-medium text-sm">
+          <span class="material-symbols-outlined text-[20px] text-slate-500">person</span>
+          <span class="">Profile</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Bottom Menu -->
+      <div class="p-3 border-t border-slate-100 space-y-1">
+        <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors text-sm font-medium">
+          <span class="material-symbols-outlined text-[20px] text-slate-500">settings</span>
+          <span class="">Settings</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-red-50 hover:text-red-600 transition-colors text-sm font-medium">
+          <span class="material-symbols-outlined text-[20px] text-slate-500">logout</span>
+          <span class="">Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="flex-1 ml-64 flex flex-col min-h-screen">
+      
+      <!-- TOP APP BAR -->
+      <header class="h-16 bg-white border-b border-slate-200 sticky top-0 z-20 flex items-center justify-between px-8">
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-2 text-sm text-slate-500">
+          <a href="#" class="hover:text-primary-700 transition-colors">Riwayat</a>
+          <span class="text-slate-400">/</span>
+          <span class="font-semibold text-slate-800">#SRV-2026-0012</span>
+        </div>
+
+        <!-- Right Action / Notifications & User Profile -->
+        <div class="flex items-center gap-4">
+          <button class="relative p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-full transition-colors" title="Notifikasi">
+            <span class="material-symbols-outlined text-[22px]">notifications</span>
+            <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+          </button>
+          
+          <div class="h-6 w-px bg-slate-200"></div>
+
+          <div class="flex items-center gap-3 pl-1">
+            <div class="w-8 h-8 rounded-full bg-primary-100 text-primary-700 font-semibold text-xs flex items-center justify-center border border-primary-200">
+              MF
+            </div>
+            <div class="text-left hidden md:block">
+              <p class="text-sm font-semibold text-slate-800 leading-tight">Muhammad Faiz</p>
+              <p class="text-xs text-slate-500">Karyawan • Assembly</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- PAGE BODY CONTENT -->
+      <main class="flex-1 p-8 max-w-7xl w-full mx-auto space-y-6">
+        
+        <!-- Back Navigation & Header Section -->
+        <div class="space-y-3">
+          <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-primary-700 transition-colors py-1 group">
+            <span class="material-symbols-outlined text-[18px] group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
+            <span class="">Kembali ke Riwayat</span>
+          </a>
+
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+            <div>
+              <div class="flex items-center gap-3 mb-1.5 flex-wrap">
+                <span class="px-2.5 py-0.5 rounded-md text-xs font-bold uppercase tracking-wider bg-slate-100 text-slate-700 border border-slate-200">
+                  #SRV-2026-0012
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  Selesai
+                </span>
+                <span class="text-xs text-slate-500 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[14px] text-slate-400">schedule</span>
+                  Diajukan pada 23 Agustus 2026, 08:24 WIB
+                </span>
+              </div>
+              <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Sensor PLC Conveyor Rusak</h1>
+              <p class="text-sm text-slate-500 mt-0.5">Lihat detail proses dan hasil penyelesaian permintaan layanan.</p>
+            </div>
+
+            <!-- Read-Only Badge Info -->
+            <div class="flex items-center gap-2 bg-slate-50 px-3.5 py-2 rounded-lg border border-slate-200 text-xs text-slate-600 shrink-0">
+              <span class="material-symbols-outlined text-slate-400 text-[18px]">lock</span>
+              <span class="">Mode Tinjauan Karyawan (Hanya-Baca)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2-COLUMN BALANCED LAYOUT -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          
+          <!-- LEFT COLUMN: Main Request Information & Completion Proof (7 cols) -->
+          <div class="lg:col-span-7 space-y-6">
+
+            <!-- 1. HASIL PENYELESAIAN LAYANAN (MOST PROMINENT EMPHASIS) -->
+            <section class="bg-white rounded-xl border-2 border-emerald-500/80 shadow-sm overflow-hidden">
+              <!-- Card Header with Accent Badge -->
+              <div class="bg-emerald-50/70 border-b border-emerald-100 px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center shadow-xs">
+                    <span class="material-symbols-outlined text-[20px]">task_alt</span>
+                  </div>
+                  <div>
+                    <h2 class="font-bold text-slate-900 text-base">Hasil Penyelesaian Layanan</h2>
+                    <p class="text-xs text-emerald-800 font-medium">Pekerjaan telah diselesaikan dan diverifikasi oleh PIC</p>
+                  </div>
+                </div>
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-emerald-600 text-white shadow-xs">
+                  <span class="material-symbols-outlined text-[14px]">check</span>
+                  Selesai
+                </span>
+              </div>
+
+              <div class="p-6 space-y-6">
+                <!-- Resolution Meta Strip -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-lg bg-slate-50 border border-slate-200/80">
+                  <div>
+                    <p class="text-xs font-medium text-slate-500">Diselesaikan oleh</p>
+                    <p class="text-sm font-semibold text-slate-900 mt-0.5 flex items-center gap-1.5">
+                      <span class="material-symbols-outlined text-[16px] text-primary-700">verified_user</span>
+                      Budi Santoso (PIC)
+                    </p>
+                  </div>
+                  <div>
+                    <p class="text-xs font-medium text-slate-500">Waktu Penyelesaian</p>
+                    <p class="text-sm font-semibold text-slate-900 mt-0.5 flex items-center gap-1.5">
+                      <span class="material-symbols-outlined text-[16px] text-slate-500">event_available</span>
+                      23 Agustus 2026, 15:30 WIB
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Catatan Penyelesaian PIC (Full & Uncut) -->
+                <div>
+                  <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600 mb-2 flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px] text-emerald-600">note_alt</span>
+                    Catatan Penyelesaian dari PIC
+                  </h3>
+                  <div class="p-4 rounded-lg bg-emerald-50/40 border border-emerald-200/60 text-sm text-slate-800 leading-relaxed font-normal">
+                    “Kerusakan sensor proximity PLC telah selesai diperiksa dan diperbaiki. Modul controller pengganti telah dipasang dan dilakukan kalibrasi ulang. Pengujian jalur conveyor telah dilakukan dan sistem berjalan normal tanpa error.”
+                  </div>
+                </div>
+
+                <!-- Bukti Penyelesaian (Files Uploaded by PIC) -->
+                <div>
+                  <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600 mb-3 flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px] text-primary-700">attach_file</span>
+                    Berkas Bukti Penyelesaian (2 Berkas)
+                  </h3>
+                  <div class="space-y-2.5">
+                    <!-- File 1: PDF Document -->
+                    <div class="flex items-center justify-between p-3.5 rounded-lg border border-slate-200 bg-white hover:border-slate-300 transition-colors">
+                      <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-10 h-10 rounded-lg bg-red-50 text-red-600 flex items-center justify-center shrink-0 border border-red-100">
+                          <span class="material-symbols-outlined text-[24px]">picture_as_pdf</span>
+                        </div>
+                        <div class="truncate">
+                          <p class="text-sm font-semibold text-slate-900 truncate">Berita_Acara_Penyelesaian.pdf</p>
+                          <p class="text-xs text-slate-500">1.2 MB • Dokumen Penyelesaian • Diunggah oleh PIC</p>
+                        </div>
+                      </div>
+                      <div class="flex items-center gap-2 shrink-0 ml-3">
+                        <button class="px-2.5 py-1.5 text-xs font-medium text-slate-700 hover:text-primary-700 hover:bg-slate-100 rounded-md border border-slate-200 flex items-center gap-1 transition-colors" title="Lihat Pratinjau">
+                          <span class="material-symbols-outlined text-[15px]">visibility</span>
+                          <span class="">Preview</span>
+                        </button>
+                        <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-primary-700 hover:bg-primary-800 rounded-md flex items-center gap-1 transition-colors" title="Unduh Berkas">
+                          <span class="material-symbols-outlined text-[15px]">download</span>
+                          <span class="">Download</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- File 2: JPG Image Document -->
+                    <div class="flex items-center justify-between p-3.5 rounded-lg border border-slate-200 bg-white hover:border-slate-300 transition-colors">
+                      <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-10 h-10 rounded-lg bg-blue-50 text-primary-700 flex items-center justify-center shrink-0 border border-blue-100">
+                          <span class="material-symbols-outlined text-[24px]">image</span>
+                        </div>
+                        <div class="truncate">
+                          <p class="text-sm font-semibold text-slate-900 truncate">foto_sensor_selesai.jpg</p>
+                          <p class="text-xs text-slate-500">1.8 MB • Foto Hasil Pekerjaan • Diunggah oleh PIC</p>
+                        </div>
+                      </div>
+                      <div class="flex items-center gap-2 shrink-0 ml-3">
+                        <button class="px-2.5 py-1.5 text-xs font-medium text-slate-700 hover:text-primary-700 hover:bg-slate-100 rounded-md border border-slate-200 flex items-center gap-1 transition-colors" title="Lihat Pratinjau">
+                          <span class="material-symbols-outlined text-[15px]">visibility</span>
+                          <span class="">Preview</span>
+                        </button>
+                        <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-primary-700 hover:bg-primary-800 rounded-md flex items-center gap-1 transition-colors" title="Unduh Foto">
+                          <span class="material-symbols-outlined text-[15px]">download</span>
+                          <span class="">Download</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Foto Hasil Pekerjaan (Visual Gallery Grid) -->
+                <div>
+                  <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600 mb-3 flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px] text-primary-700">photo_library</span>
+                    Foto Hasil Pekerjaan di Lapangan
+                  </h3>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <!-- Photo 1 -->
+                    <div class="group relative rounded-lg border border-slate-200 overflow-hidden bg-slate-100 hover:shadow-md transition-all cursor-pointer">
+                      <div class="h-32 bg-slate-200 flex flex-col items-center justify-center relative">
+                        <!-- Technical Illustration Placeholder -->
+                        <div class="w-full h-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-slate-400 group-hover:scale-105 transition-transform duration-300">
+                          <span class="material-symbols-outlined text-[36px] text-slate-500">precision_manufacturing</span>
+                        </div>
+                        <span class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium gap-1">
+                          <span class="material-symbols-outlined text-[18px]">zoom_in</span> Pratinjau
+                        </span>
+                      </div>
+                      <div class="p-2.5 bg-white border-t border-slate-100">
+                        <p class="text-xs font-semibold text-slate-800 truncate">Kondisi setelah perbaikan</p>
+                        <p class="text-[11px] text-slate-400 mt-0.5">Jalur conveyor normal</p>
+                      </div>
+                    </div>
+
+                    <!-- Photo 2 -->
+                    <div class="group relative rounded-lg border border-slate-200 overflow-hidden bg-slate-100 hover:shadow-md transition-all cursor-pointer">
+                      <div class="h-32 bg-slate-200 flex flex-col items-center justify-center relative">
+                        <div class="w-full h-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-slate-400 group-hover:scale-105 transition-transform duration-300">
+                          <span class="material-symbols-outlined text-[36px] text-emerald-600">sensors</span>
+                        </div>
+                        <span class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium gap-1">
+                          <span class="material-symbols-outlined text-[18px]">zoom_in</span> Pratinjau
+                        </span>
+                      </div>
+                      <div class="p-2.5 bg-white border-t border-slate-100">
+                        <p class="text-xs font-semibold text-slate-800 truncate">Sensor yang telah diganti</p>
+                        <p class="text-[11px] text-slate-400 mt-0.5">Modul proximity baru</p>
+                      </div>
+                    </div>
+
+                    <!-- Photo 3 -->
+                    <div class="group relative rounded-lg border border-slate-200 overflow-hidden bg-slate-100 hover:shadow-md transition-all cursor-pointer">
+                      <div class="h-32 bg-slate-200 flex flex-col items-center justify-center relative">
+                        <div class="w-full h-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center text-slate-400 group-hover:scale-105 transition-transform duration-300">
+                          <span class="material-symbols-outlined text-[36px] text-blue-600">checklist_rtl</span>
+                        </div>
+                        <span class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium gap-1">
+                          <span class="material-symbols-outlined text-[18px]">zoom_in</span> Pratinjau
+                        </span>
+                      </div>
+                      <div class="p-2.5 bg-white border-t border-slate-100">
+                        <p class="text-xs font-semibold text-slate-800 truncate">Hasil pengujian operasi</p>
+                        <p class="text-[11px] text-slate-400 mt-0.5">Uji coba lolos 100%</p>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-[11px] text-slate-400 mt-2 italic">* Klik foto untuk memperbesar tampilan pratinjau bukti pekerjaan lapangan.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 2. INFORMASI PERMINTAAN (ORIGINAL SUBMISSION DATA) -->
+            <section class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-5">
+              <div class="flex items-center justify-between border-b border-slate-100 pb-3.5">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-primary-700 text-[22px]">description</span>
+                  <h2 class="font-bold text-slate-900 text-base">Informasi Permintaan</h2>
+                </div>
+                <span class="text-xs text-slate-400 font-medium">Diajukan oleh Karyawan</span>
+              </div>
+
+              <!-- Metadata Grid -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                <div class="p-3 rounded-lg bg-slate-50 border border-slate-100">
+                  <p class="text-xs text-slate-500 font-medium">Kategori Layanan</p>
+                  <p class="font-semibold text-slate-800 mt-0.5">Peralatan &amp; Otomasi</p>
+                </div>
+
+                <div class="p-3 rounded-lg bg-slate-50 border border-slate-100">
+                  <p class="text-xs text-slate-500 font-medium">Layanan Spesifik</p>
+                  <p class="font-semibold text-slate-800 mt-0.5">Sensor &amp; Otomasi</p>
+                </div>
+
+                <div class="p-3 rounded-lg bg-slate-50 border border-slate-100">
+                  <p class="text-xs text-slate-500 font-medium">Section Pengaju</p>
+                  <p class="font-semibold text-slate-800 mt-0.5">Assembly</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2">
+  <div class="p-3 rounded-lg bg-slate-50 border border-slate-100">
+    <p class="text-xs text-slate-500 font-medium">Plant</p>
+    <p class="font-semibold text-slate-800 mt-0.5">Plant 2</p>
+  </div>
+  <div class="p-3 rounded-lg bg-slate-50 border border-slate-100">
+    <p class="text-xs text-slate-500 font-medium">Lantai</p>
+    <p class="font-semibold text-slate-800 mt-0.5">Lantai 1</p>
+  </div>
+</div>
+              </div>
+
+              <!-- Judul & Deskripsi Lengkap -->
+              <div class="space-y-3 pt-2">
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Judul Permintaan</p>
+                  <p class="text-sm font-semibold text-slate-900 bg-slate-50 px-3.5 py-2.5 rounded-lg border border-slate-200/80">
+                    Sensor PLC Conveyor Rusak
+                  </p>
+                </div>
+
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Deskripsi Masalah</p>
+                  <div class="text-sm text-slate-700 bg-slate-50 px-3.5 py-3 rounded-lg border border-slate-200/80 leading-relaxed font-normal">
+                    Sensor proximity PLC pada jalur conveyor mengalami error dan sering berhenti mendadak sejak pagi.
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 3. COMPLETION CONFIRMATION STRIP -->
+            <div class="bg-emerald-50 rounded-xl border border-emerald-200 p-4 flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0">
+                  <span class="material-symbols-outlined text-[20px]">check_circle</span>
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-emerald-950">Permintaan telah selesai ditangani.</p>
+                  <p class="text-xs text-emerald-800 mt-0.5">Pekerjaan telah diselesaikan oleh PIC dan bukti penyelesaian tersedia secara lengkap.</p>
+                </div>
+              </div>
+              <a href="#" class="px-3.5 py-2 bg-white text-slate-700 hover:text-primary-700 hover:border-slate-300 font-medium text-xs rounded-lg border border-slate-200 transition-colors shrink-0 shadow-xs">
+                Kembali ke Riwayat
+              </a>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: PIC in Charge, Process Timeline & Activity History (5 cols) -->
+          <div class="lg:col-span-5 space-y-6">
+
+            <!-- 1. PIC PENANGGUNG JAWAB (INFORMATIONAL CARD) -->
+            <section class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-primary-700 text-[20px]">badge</span>
+                  <h2 class="font-bold text-slate-900 text-sm">PIC Penanggung Jawab</h2>
+                </div>
+                <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                  Pekerjaan Selesai
+                </span>
+              </div>
+
+              <div class="flex items-center gap-3.5 pt-1">
+                <div class="w-12 h-12 rounded-full bg-slate-900 text-white font-bold text-sm flex items-center justify-center ring-2 ring-primary-100 shrink-0">
+                  BS
+                </div>
+                <div class="min-w-0">
+                  <h3 class="text-sm font-bold text-slate-900 leading-snug">Budi Santoso</h3>
+                  <p class="text-xs text-slate-500">Role: PIC Pelaksana</p>
+                  <p class="text-xs font-medium text-primary-700 mt-0.5">IS / Automation PIC</p>
+                </div>
+              </div>
+
+              <div class="pt-2 border-t border-slate-100 space-y-2 text-xs">
+                <div class="flex justify-between py-1">
+                  <span class="text-slate-500">Status Pekerjaan:</span>
+                  <span class="font-semibold text-emerald-700">Tuntas &amp; Terkalibrasi</span>
+                </div>
+                <div class="flex justify-between py-1">
+                  <span class="text-slate-500">Waktu Penyelesaian:</span>
+                  <span class="font-medium text-slate-800">23 Agu 2026, 15:30 WIB</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- 2. PROCESS TIMELINE (VERTICAL STEP TRACKER) -->
+            <section class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-4">
+              <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
+                <span class="material-symbols-outlined text-primary-700 text-[20px]">timeline</span>
+                <h2 class="font-bold text-slate-900 text-sm">Proses &amp; Alur Penanganan</h2>
+              </div>
+
+              <!-- Vertical Timeline List -->
+              <div class="relative pl-6 space-y-6 before:absolute before:left-2.5 before:top-2.5 before:bottom-2.5 before:w-0.5 before:bg-emerald-500">
+                
+                <!-- Step 1 -->
+                <div class="relative group">
+                  <div class="absolute -left-[27px] top-0.5 w-4 h-4 rounded-full bg-white border-2 border-emerald-600 flex items-center justify-center">
+                    <div class="w-1.5 h-1.5 rounded-full bg-emerald-600"></div>
+                  </div>
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <p class="text-xs font-bold text-slate-900">1. Permintaan Dibuat</p>
+                      <span class="text-[11px] text-slate-400">08:24 WIB</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 font-medium">23 Agustus 2026</p>
+                    <p class="text-xs text-slate-600 mt-1 leading-relaxed">Permintaan berhasil dibuat oleh karyawan.</p>
+                  </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative group">
+                  <div class="absolute -left-[27px] top-0.5 w-4 h-4 rounded-full bg-white border-2 border-emerald-600 flex items-center justify-center">
+                    <div class="w-1.5 h-1.5 rounded-full bg-emerald-600"></div>
+                  </div>
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <p class="text-xs font-bold text-slate-900">2. Permintaan Diterima</p>
+                      <span class="text-[11px] text-slate-400">09:10 WIB</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 font-medium">23 Agustus 2026</p>
+                    <p class="text-xs text-slate-600 mt-1 leading-relaxed">Permintaan diterima dan ditangani oleh PIC.</p>
+                  </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative group">
+                  <div class="absolute -left-[27px] top-0.5 w-4 h-4 rounded-full bg-white border-2 border-emerald-600 flex items-center justify-center">
+                    <div class="w-1.5 h-1.5 rounded-full bg-emerald-600"></div>
+                  </div>
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <p class="text-xs font-bold text-slate-900">3. Sedang Diproses</p>
+                      <span class="text-[11px] text-slate-400">14:30 WIB</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 font-medium">23 Agustus 2026</p>
+                    <p class="text-xs text-slate-600 mt-1 leading-relaxed">PIC melakukan pemeriksaan dan penanganan terhadap permintaan.</p>
+                  </div>
+                </div>
+
+                <!-- Step 4 (Final Completed) -->
+                <div class="relative group">
+                  <div class="absolute -left-[29px] top-0 w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-xs">
+                    <span class="material-symbols-outlined text-[13px] font-bold">check</span>
+                  </div>
+                  <div class="bg-emerald-50/60 p-2.5 rounded-lg border border-emerald-200/60">
+                    <div class="flex items-center justify-between">
+                      <p class="text-xs font-bold text-emerald-950">4. Permintaan Selesai</p>
+                      <span class="text-[11px] font-semibold text-emerald-800">15:30 WIB</span>
+                    </div>
+                    <p class="text-[11px] text-emerald-700 font-medium">23 Agustus 2026</p>
+                    <p class="text-xs text-emerald-900 mt-1 leading-relaxed font-normal">PIC menyelesaikan pekerjaan dan memberikan hasil penyelesaian.</p>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+
+            <!-- 3. RIWAYAT AKTIVITAS (AUDIT LOG / TRANSPARENCY) -->
+            <section class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-slate-500 text-[20px]">receipt_long</span>
+                  <h2 class="font-bold text-slate-900 text-sm">Riwayat Aktivitas</h2>
+                </div>
+                <span class="text-[11px] text-slate-400">4 Catatan</span>
+              </div>
+
+              <div class="space-y-3.5 text-xs">
+                <!-- Activity Item 1 -->
+                <div class="flex items-start gap-2.5">
+                  <div class="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 shrink-0"></div>
+                  <div>
+                    <p class="font-semibold text-slate-800">Permintaan ditandai selesai oleh Budi Santoso</p>
+                    <p class="text-[11px] text-slate-400 mt-0.5">23 Agustus 2026, 15:30 WIB</p>
+                  </div>
+                </div>
+
+                <!-- Activity Item 2 -->
+                <div class="flex items-start gap-2.5">
+                  <div class="w-2 h-2 rounded-full bg-blue-500 mt-1.5 shrink-0"></div>
+                  <div>
+                    <p class="font-semibold text-slate-800">PIC memperbarui proses penanganan</p>
+                    <p class="text-[11px] text-slate-400 mt-0.5">23 Agustus 2026, 14:30 WIB</p>
+                  </div>
+                </div>
+
+                <!-- Activity Item 3 -->
+                <div class="flex items-start gap-2.5">
+                  <div class="w-2 h-2 rounded-full bg-blue-500 mt-1.5 shrink-0"></div>
+                  <div>
+                    <p class="font-semibold text-slate-800">Permintaan diterima oleh Budi Santoso</p>
+                    <p class="text-[11px] text-slate-400 mt-0.5">23 Agustus 2026, 09:10 WIB</p>
+                  </div>
+                </div>
+
+                <!-- Activity Item 4 -->
+                <div class="flex items-start gap-2.5">
+                  <div class="w-2 h-2 rounded-full bg-slate-400 mt-1.5 shrink-0"></div>
+                  <div>
+                    <p class="font-semibold text-slate-800">Permintaan dibuat oleh Muhammad Faiz</p>
+                    <p class="text-[11px] text-slate-400 mt-0.5">23 Agustus 2026, 08:24 WIB</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+        </div>
+
+      </main>
+
+      <!-- GLOBAL FOOTER (Matching Employee Portal) -->
+      <footer class="mt-auto border-t border-slate-200 bg-white py-4 px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
+        <p class="">© 2026 Internal Service Management. Hak cipta dilindungi.</p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-primary-700 transition-colors">Pedoman Layanan</a>
+          <a href="#" class="hover:text-primary-700 transition-colors">Kebijakan Privasi</a>
+          <a href="#" class="hover:text-primary-700 transition-colors">Pusat Bantuan</a>
+        </div>
+      </footer>
+
+    </div>
+
+  </div>
+
+
+
+
+</body></html>

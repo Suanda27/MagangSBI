@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile - ESM Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#d3e4fe",
+                        "on-background": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#d0e1fb",
+                        "outline": "#757684",
+                        "background": "#f7f9fb",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "tertiary": "#2d3449",
+                        "on-surface": "#191c1e",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "on-tertiary-fixed": "#131b2e",
+                        "inverse-surface": "#2d3133",
+                        "primary-fixed": "#dde1ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#434b60",
+                        "on-primary-fixed-variant": "#173bab",
+                        "on-primary-fixed": "#001453",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#1e40af",
+                        "surface-dim": "#d8dadc",
+                        "error": "#ba1a1a",
+                        "secondary": "#505f76",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "outline-variant": "#c4c5d5",
+                        "surface-tint": "#3755c3",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-container": "#eceef0",
+                        "tertiary-fixed": "#dae2fd",
+                        "inverse-primary": "#b8c4ff",
+                        "on-primary-container": "#a8b8ff",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "surface-container-low": "#f2f4f6",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface": "#f7f9fb",
+                        "on-surface-variant": "#444653",
+                        "on-error-container": "#93000a",
+                        "primary": "#00288e",
+                        "on-tertiary-container": "#b4bbd5",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "container-max": "1440px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "gutter": "20px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .font-caption { font-family: theme('fontFamily.caption'); font-size: 12px; line-height: 16px; font-weight: 400; }
+            .text-caption { font-size: 12px; line-height: 16px; }
+            .font-headline-md { font-family: theme('fontFamily.headline-md'); font-size: 20px; line-height: 28px; font-weight: 600; }
+            .text-headline-md { font-size: 20px; line-height: 28px; }
+            .font-label-md { font-family: theme('fontFamily.label-md'); font-size: 12px; line-height: 16px; letter-spacing: 0.05em; font-weight: 600; }
+            .text-label-md { font-size: 12px; line-height: 16px; }
+            .font-headline-lg { font-family: theme('fontFamily.headline-lg'); font-size: 28px; line-height: 36px; letter-spacing: -0.01em; font-weight: 600; }
+            .text-headline-lg { font-size: 28px; line-height: 36px; }
+            .font-body-md { font-family: theme('fontFamily.body-md'); font-size: 14px; line-height: 20px; font-weight: 400; }
+            .text-body-md { font-size: 14px; line-height: 20px; }
+            .font-body-lg { font-family: theme('fontFamily.body-lg'); font-size: 16px; line-height: 24px; font-weight: 400; }
+            .text-body-lg { font-size: 16px; line-height: 24px; }
+            .font-display { font-family: theme('fontFamily.display'); font-size: 36px; line-height: 44px; letter-spacing: -0.02em; font-weight: 700; }
+            .text-display { font-size: 36px; line-height: 44px; }
+            
+            .shadow-ambient { box-shadow: 0px 1px 3px rgba(0,0,0,0.05), 0px 10px 15px -3px rgba(0,0,0,0.05); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex font-body-md">
+<!-- SideNavBar -->
+<nav class="bg-surface dark:bg-on-background shadow-sm fixed left-0 top-0 h-screen w-60 z-20 flex flex-col border-r border-outline-variant hidden md:flex">
+<div class="p-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">
+                    E
+                </div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">ESM Portal</h1>
+<p class="font-caption text-caption text-secondary">Employee Services</p>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto py-4">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span>Buat Permintaan</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+<span>Permintaan Saya</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Riwayat</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="mt-auto py-4 border-t border-outline-variant">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-low transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Help</span>
+</a>
+</li>
+<!-- Note: Based on intent, Profile is active, but it's not in the JSON sidebar labels. We will inject it to satisfy the user prompt's active state requirement logically within the Settings cluster context, or assume it's accessed via TopNav avatar. The prompt explicitly says 'active sidebar: Profile'. Since JSON doesn't have it, we add it to the footer section as an active state. -->
+<li>
+<a class="flex items-center gap-3 px-4 py-3 bg-surface-container dark:bg-secondary-container text-primary dark:text-on-secondary-container border-l-4 border-primary scale-95 transition-transform duration-150 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span>Profile</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-60 min-w-0">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-on-background border-b border-outline-variant shadow-sm sticky top-0 z-10 h-16 px-6 flex justify-between items-center">
+<div class="flex items-center md:hidden">
+<button class="p-2 text-secondary hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="ml-4 font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">ESM Portal</span>
+</div>
+<div class="hidden md:block font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">
+<!-- Empty left side on desktop, sidebar handles brand -->
+</div>
+<div class="flex items-center gap-4 ml-auto">
+<button class="text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-secondary dark:text-secondary-fixed-dim hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-primary dark:text-primary-fixed font-bold hover:bg-surface-container-low dark:hover:bg-on-secondary-fixed-variant p-2 rounded-full transition-opacity opacity-80">
+<span class="material-symbols-outlined" data-icon="account_circle" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 p-4 md:p-8 max-w-container-max mx-auto w-full">
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Employee Profile</h2>
+<p class="font-body-md text-body-md text-secondary mt-1">Manage your professional identity and contact details.</p>
+</div>
+<!-- Profile Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Identity Card (Main) -->
+<div class="lg:col-span-4 bg-on-primary rounded-lg shadow-ambient p-md flex flex-col items-center text-center">
+<div class="relative mb-6 mt-4">
+<img class="w-32 h-32 rounded-full object-cover border-4 border-surface shadow-sm" data-alt="A professional corporate headshot of a Southeast Asian male employee wearing a neat, light blue button-down shirt. The background is a clean, modern office interior with soft natural lighting, reflecting a corporate minimal aesthetic. The image is brightly lit, evoking a sense of calm reliability and high professionalism suitable for an enterprise directory." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqgCEULILK7baLkoIcWQN_iu35h_NssCWzMt82GXKkOR6f6hToddowCyV0Iemd3h8zHy3rlugX4lLvpqtG0hTkQp_5ZdJ08xRxnFdTHs7vuQdllV3OJly46LPH--bJmGFiA9x_5o6ethQaYlt0cLX5RQFtM4g93SJ5A28Co0UJ6ONT-eYhNQTkZ_mlUYfMalNvkradMGJBkv6n1mUzsQ0mgMzDFJYl4avK2sXzcOhU6nX9Ga94IfXI"/>
+<button class="absolute bottom-0 right-0 bg-primary-container text-on-primary p-2 rounded-full shadow-sm hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="photo_camera">photo_camera</span>
+</button>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Muhammad Faiz Difa Suanda</h3>
+<div class="bg-primary/10 text-primary px-3 py-1 rounded-full font-label-md text-label-md mb-6">
+                        Karyawan
+                    </div>
+<div class="w-full border-t border-outline-variant/50 pt-4 mt-auto">
+<button class="w-full bg-primary-container text-on-primary py-2 rounded font-label-md text-label-md shadow-sm hover:bg-primary transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+                            Edit Profile
+                        </button>
+</div>
+</div>
+<!-- Details Card -->
+<div class="lg:col-span-8 bg-on-primary rounded-lg shadow-ambient p-md">
+<div class="flex items-center gap-2 mb-6 border-b border-outline-variant/50 pb-4">
+<span class="material-symbols-outlined text-secondary" data-icon="badge">badge</span>
+<h4 class="font-headline-md text-headline-md text-on-surface text-lg">Personal Information</h4>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Detail Item -->
+<div>
+<label class="font-label-md text-label-md text-secondary block mb-1">Nama Lengkap</label>
+<div class="font-body-lg text-body-lg text-on-surface p-3 bg-surface-container-lowest border border-surface-variant rounded">
+                                Muhammad Faiz Difa Suanda
+                            </div>
+</div>
+<!-- Detail Item -->
+<div>
+<label class="font-label-md text-label-md text-secondary block mb-1">Nomor Induk Karyawan (NIK)</label>
+<div class="font-body-lg text-body-lg text-on-surface p-3 bg-surface-container-lowest border border-surface-variant rounded font-mono">
+                                EMP-2023-0842
+                            </div>
+</div>
+<!-- Detail Item -->
+<div>
+<label class="font-label-md text-label-md text-secondary block mb-1">Bagian / Departemen</label>
+<div class="font-body-lg text-body-lg text-on-surface p-3 bg-surface-container-lowest border border-surface-variant rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="corporate_fare">corporate_fare</span>
+                                IS (Information Systems)
+                            </div>
+</div>
+<!-- Detail Item -->
+<div>
+<label class="font-label-md text-label-md text-secondary block mb-1">System Role</label>
+<div class="font-body-lg text-body-lg text-on-surface p-3 bg-surface-container-lowest border border-surface-variant rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="admin_panel_settings">admin_panel_settings</span>
+                                Karyawan
+                            </div>
+</div>
+</div>
+<div class="mt-8 bg-surface-container-low p-4 rounded border border-surface-variant flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1" data-icon="info">info</span>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface">Data Verification</h5>
+<p class="font-caption text-caption text-secondary mt-1">To change critical information such as your NIK or Department, please submit a formal request through the 'Buat Permintaan' module targeting HR Services.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-on-background border-t border-outline-variant py-4 px-8 flex flex-col md:flex-row justify-between items-center mt-auto">
+<span class="font-label-md text-label-md font-semibold text-secondary">
+                © 2024 Employee Service Management. All rights reserved.
+            </span>
+<div class="flex gap-4 mt-2 md:mt-0">
+<a class="font-caption text-caption text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="font-caption text-caption text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="font-caption text-caption text-secondary dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Support</a>
+</div>
+</footer>
+</div>
+</body></html>

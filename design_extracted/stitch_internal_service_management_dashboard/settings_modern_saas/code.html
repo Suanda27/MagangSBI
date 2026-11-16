@@ -1,0 +1,257 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ISM System - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#edeeef",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#dde1ff",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "text-muted": "#64748B",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dde1ff",
+                        "secondary-fixed-dim": "#b8c4ff",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "surface-dim": "#d9dadb",
+                        "primary-container": "#00288e",
+                        "text-main": "#0F172A",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed": "#d3e4fe",
+                        "surface-tint": "#3d57ba",
+                        "on-surface-variant": "#444652",
+                        "on-primary-fixed-variant": "#213da0",
+                        "on-secondary-fixed": "#001453",
+                        "outline-variant": "#c5c5d4",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "secondary-container": "#708cfd",
+                        "on-secondary-fixed-variant": "#173bab",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary-container": "#253549",
+                        "surface": "#f8f9fa",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#b8c4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "border-subtle": "#E2E8F0",
+                        "on-tertiary-container": "#8d9eb6",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f3f4f5",
+                        "on-primary-container": "#7e97fe",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#191c1d",
+                        "tertiary": "#0f2033",
+                        "on-primary-fixed": "#001453",
+                        "surface-white": "#FFFFFF",
+                        "on-secondary-container": "#00217a",
+                        "secondary": "#3755c3",
+                        "on-background": "#191c1d",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "outline": "#757684",
+                        "surface-bright": "#f8f9fa",
+                        "inverse-surface": "#2e3132",
+                        "on-secondary": "#ffffff",
+                        "primary": "#00175c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "xl": "48px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "caption": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-full py-lg px-md bg-surface-container-low dark:bg-surface-container-low font-body-md text-body-md fixed left-0 top-0 w-[240px] border-r border-border-subtle dark:border-outline-variant z-20">
+<div class="mb-8 px-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" style="font-variation-settings: 'FILL' 1;">widgets</span>
+<div>
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">ISM System</div>
+<div class="font-caption text-caption text-text-muted">Internal Service</div>
+</div>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<li class=""><a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#"><span class="material-symbols-outlined">dashboard</span>Dashboard</a></li>
+<li class=""><a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#"><span class="material-symbols-outlined">add_box</span>Pengajuan Layanan</a></li>
+<li class=""><a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#"><span class="material-symbols-outlined">list_alt</span>Permintaan Saya</a></li>
+<li class=""><a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#"><span class="material-symbols-outlined">history</span>Riwayat</a></li>
+<li class=""><a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#"><span class="material-symbols-outlined">person</span>Profile</a></li>
+</ul>
+<ul class="flex flex-col gap-2 mt-auto">
+<li class=""><a class="flex items-center gap-3 bg-surface-container-high dark:bg-surface-container-highest text-primary dark:text-primary-fixed border-l-2 border-primary dark:border-primary-fixed rounded-r-lg py-2 px-4 hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors duration-200" href="#"><span class="material-symbols-outlined">settings</span>Settings</a></li>
+<li class=""><a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#"><span class="material-symbols-outlined">logout</span>Logout</a></li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-grow md:ml-[240px] flex flex-col min-h-screen relative pb-20 md:pb-0">
+<!-- TopAppBar -->
+<header class="hidden md:flex justify-between items-center h-16 px-lg max-w-[1440px] w-full bg-surface-white dark:bg-surface text-primary dark:text-primary-fixed-dim font-headline-md text-headline-md border-b border-border-subtle dark:border-outline-variant z-10 sticky top-0 bg-opacity-90 backdrop-blur-sm">
+<div class="font-bold text-primary dark:text-primary-fixed">Settings</div>
+<div class="flex items-center gap-4">
+<button class="text-text-muted dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-border-subtle">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a corporate employee on a clean white background. High-key lighting, modern and polished aesthetic. The user is looking directly at the camera with a subtle smile. High resolution, professional photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARNIeTfK81iEqDN92705CALPj9m3dQoIbzUInyEjdni4LX-PWcPUy2zJagk2Vf2-0l5ngqvAaFHMohmfU249ai4UAw0IEzR_CFEKtwzmTYhv2eqj0PNNtnEyj89AxrhNf-xl3A3dLxsL7eV56Q1AUiqUu1dkMMmLeYyH2ii4_3uCaek0JWzVDPg8ZrAt3rGiGHt3XsO5sa6vXYgCswuPIRiG0gdRjpQWXoe_NawZMRwABMKsDKT0M5">
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow p-4 md:p-lg max-w-[1440px] w-full mx-auto pb-32">
+<div class="max-w-4xl mx-auto space-y-8">
+<div class="mb-8">
+<h1 class="font-headline-lg text-headline-lg text-text-main mb-2">Settings</h1>
+<p class="font-body-md text-body-md text-text-muted">Manage your account preferences and system configuration.</p>
+</div>
+<!-- Account Section -->
+<section class="bg-surface-white border border-border-subtle rounded-lg p-lg">
+<h2 class="font-headline-md text-headline-md text-text-main mb-6 border-b border-border-subtle pb-4">Account</h2>
+<div class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-label-md text-label-md text-text-main mb-2">Current Password</label>
+<input class="w-full bg-surface-white border border-border-subtle rounded-lg px-4 py-2 font-body-md text-body-md focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed-dim transition-shadow" placeholder="••••••••" type="password">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-label-md text-label-md text-text-main mb-2">New Password</label>
+<input class="w-full bg-surface-white border border-border-subtle rounded-lg px-4 py-2 font-body-md text-body-md focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed-dim transition-shadow" placeholder="••••••••" type="password">
+</div>
+<div>
+<label class="block font-label-md text-label-md text-text-main mb-2">Confirm New Password</label>
+<input class="w-full bg-surface-white border border-border-subtle rounded-lg px-4 py-2 font-body-md text-body-md focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed-dim transition-shadow" placeholder="••••••••" type="password">
+</div>
+</div>
+</div>
+</section>
+<!-- Preferences Section (Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Notifications -->
+<section class="bg-surface-white border border-border-subtle rounded-lg p-lg flex flex-col">
+<h2 class="font-headline-md text-headline-md text-text-main mb-6 border-b border-border-subtle pb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted">notifications</span> Notifications
+                        </h2>
+<div class="space-y-4 flex-grow">
+<div class="flex items-center justify-between">
+<div>
+<div class="font-label-md text-label-md text-text-main">Email Notifications</div>
+<div class="font-caption text-caption text-text-muted">Receive updates via email.</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value="">
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary-fixed-dim rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-border-subtle after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<div class="font-label-md text-label-md text-text-main">Push Notifications</div>
+<div class="font-caption text-caption text-text-muted">Alerts in your browser.</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value="">
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary-fixed-dim rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-border-subtle after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Appearance & Localization -->
+<section class="bg-surface-white border border-border-subtle rounded-lg p-lg flex flex-col">
+<h2 class="font-headline-md text-headline-md text-text-main mb-6 border-b border-border-subtle pb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted">palette</span> Appearance &amp; Locale
+                        </h2>
+<div class="space-y-6 flex-grow">
+<div>
+<label class="block font-label-md text-label-md text-text-main mb-2">Theme Preference</label>
+<select class="w-full bg-surface-white border border-border-subtle rounded-lg px-4 py-2 font-body-md text-body-md focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed-dim transition-shadow appearance-none">
+<option>System Default</option>
+<option>Light Mode</option>
+<option>Dark Mode</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-text-main mb-2">Language</label>
+<select class="w-full bg-surface-white border border-border-subtle rounded-lg px-4 py-2 font-body-md text-body-md focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-fixed-dim transition-shadow appearance-none">
+<option>English (US)</option>
+<option>Bahasa Indonesia</option>
+<option>Spanish</option>
+</select>
+</div>
+</div>
+</section>
+</div>
+<!-- Action Bar -->
+<div class="flex justify-end pt-6 border-t border-border-subtle">
+<button class="bg-surface-white border border-border-subtle text-text-main font-label-md text-label-md py-2 px-6 rounded-lg mr-4 hover:bg-surface-container-low transition-colors">Cancel</button>
+<button class="bg-primary-container text-on-primary font-label-md text-label-md py-2 px-6 rounded-lg hover:bg-primary transition-colors">Save Changes</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="absolute bottom-0 right-0 left-0 md:left-[240px] flex justify-between items-center py-md px-lg bg-transparent border-t border-border-subtle dark:border-outline-variant font-caption text-caption text-text-muted dark:text-on-surface-variant z-10">
+<div class="">© 2024 Internal Service Management</div>
+<div class="flex gap-4">
+<a class="text-text-muted hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-text-muted hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-text-muted hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+</footer>
+</div>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-low border-t border-border-subtle flex justify-around items-center h-16 z-20">
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#"><span class="material-symbols-outlined">dashboard</span><span class="font-caption text-caption">Dash</span></a>
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#"><span class="material-symbols-outlined">add_box</span><span class="font-caption text-caption">Buat</span></a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span><span class="font-caption text-caption font-bold">Settings</span></a>
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#"><span class="material-symbols-outlined">person</span><span class="font-caption text-caption">Profile</span></a>
+</nav>
+
+
+</body></html>

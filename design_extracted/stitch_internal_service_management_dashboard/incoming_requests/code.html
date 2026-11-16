@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline-variant": "#c4c5d5", "on-error-container": "#93000a", "inverse-surface": "#2d3133", "secondary": "#505f76", "tertiary-container": "#434b60", "surface-tint": "#3755c3", "surface-container-lowest": "#ffffff", "on-surface": "#191c1e", "inverse-on-surface": "#eff1f3", "surface-bright": "#f7f9fb", "primary-container": "#1e40af", "inverse-primary": "#b8c4ff", "on-tertiary": "#ffffff", "error": "#ba1a1a", "tertiary-fixed": "#dae2fd", "surface-dim": "#d8dadc", "surface-container-highest": "#e0e3e5", "outline": "#757684", "on-tertiary-container": "#b4bbd5", "secondary-fixed": "#d3e4fe", "on-primary-fixed": "#001453", "secondary-fixed-dim": "#b7c8e1", "secondary-container": "#d0e1fb", "primary": "#00288e", "on-surface-variant": "#444653", "background": "#f7f9fb", "tertiary": "#2d3449", "error-container": "#ffdad6", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#3f465c", "on-secondary-fixed": "#0b1c30", "surface-container": "#eceef0", "on-background": "#191c1e", "on-secondary": "#ffffff", "on-tertiary-fixed": "#131b2e", "on-error": "#ffffff", "tertiary-fixed-dim": "#bec6e0", "on-secondary-fixed-variant": "#38485d", "surface-variant": "#e0e3e5", "on-primary-fixed-variant": "#173bab", "on-primary-container": "#a8b8ff", "surface": "#f7f9fb", "primary-fixed-dim": "#b8c4ff", "surface-container-high": "#e6e8ea", "on-secondary-container": "#54647a", "primary-fixed": "#dde1ff", "surface-container-low": "#f2f4f6" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "base": "4px", "xs": "4px", "container-max": "1440px", "sm": "8px", "md": "16px", "lg": "24px", "xl": "32px", "gutter": "20px" }, "fontFamily": { "body-lg": [ "Inter" ], "display": [ "Inter" ], "label-md": [ "Inter" ], "headline-md": [ "Inter" ], "body-md": [ "Inter" ], "caption": [ "Inter" ], "headline-lg": [ "Inter" ] }, "fontSize": { "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "display": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" } ], "headline-md": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "caption": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-lowest flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50"><div class="flex flex-col"><div class="h-16 flex items-center px-md gap-sm"><div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[20px]">grid_view</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-md leading-none tracking-tight text-on-surface">ISM</span><span class="font-caption text-caption text-secondary">Operations PIC</span></div></div><div class="px-md pt-sm pb-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Workspace</span></div><nav class="flex flex-col gap-xs px-sm" data-active-classes="bg-surface-container text-primary font-bold"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body-md text-body-md">Dashboard</span></a><a aria-current="page" class="flex items-center gap-sm px-sm py-xs rounded-lg transition-colors bg-surface-container text-primary font-bold" data-path="incoming-requests" href="#"><span class="material-symbols-outlined text-[20px]">inbox</span><span class="font-body-md text-body-md">Incoming Requests</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="processing" href="#"><span class="material-symbols-outlined text-[20px]">sync</span><span class="font-body-md text-body-md">Processing</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="completed" href="#"><span class="material-symbols-outlined text-[20px]">check_circle</span><span class="font-body-md text-body-md">Completed</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="reports" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-body-md text-body-md">Reports</span></a></nav></div><div class="p-sm flex flex-col gap-xs bg-surface-container-lowest"><div class="px-sm py-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Account</span></div><nav class="flex flex-col gap-xs" data-active-classes="bg-surface-container text-primary font-bold"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="profile" href="#"><span class="material-symbols-outlined text-[20px]">person</span><span class="font-body-md text-body-md">Profile</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Settings</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-error hover:bg-error-container hover:text-on-error-container transition-colors" data-path="logout" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="font-body-md text-body-md">Logout</span></a></nav></div></aside><div class="pl-60 flex flex-col min-h-screen"><header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-lg"><div class="flex items-center w-full max-w-md"><div class="relative w-full flex items-center"><span class="material-symbols-outlined absolute left-sm text-secondary text-[20px] pointer-events-none">search</span><input class="w-full pl-xl pr-md py-xs rounded-lg bg-surface-container-low text-on-surface placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container text-body-md font-body-md transition-all" placeholder="Search requests, ticket #, or keywords..." type="text"/></div></div><div class="flex items-center gap-md"><a class="relative p-xs rounded-lg text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors flex items-center justify-center" data-path="notifications" href="#"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></a><div class="flex items-center gap-sm pl-sm border-l border-surface-container-high"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col text-left"><span class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Budi Santoso</span><span class="font-caption text-caption text-secondary leading-tight">PIC Operations</span></div><span class="material-symbols-outlined text-secondary text-[18px]">expand_more</span></div></div></header><main class="flex-1 pt-16 bg-surface px-lg py-lg max-w-[1440px] w-full mx-auto"><div class="flex flex-col w-full">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-xs text-secondary font-label-md text-label-md uppercase tracking-wider mb-xs">
+<span>Operations Hub</span>
+<span>/</span>
+<span class="text-primary font-bold">Queue Ingestion</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">Incoming Requests</h1>
+<p class="font-body-md text-body-md text-secondary mt-xs">Review and manage service requests assigned to your department.</p>
+</div>
+<div class="flex items-center gap-sm">
+<div class="flex items-center gap-xs px-sm py-xs rounded-lg bg-surface-container-low text-secondary text-caption font-caption">
+<span class="inline-block w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span>4 Critical SLAs Pending Action</span>
+</div>
+<button class="flex items-center gap-xs px-md py-xs rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export Queue</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md mb-lg">
+<div class="p-md rounded-xl bg-surface-container-lowest shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_10px_15px_-3px_rgba(0,0,0,0.05)] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Unassigned Queue</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold mt-xs">24</span>
+<span class="font-caption text-caption text-secondary mt-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-error">trending_up</span> +6 from yesterday
+        </span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">inbox</span>
+</div>
+</div>
+<div class="p-md rounded-xl bg-surface-container-lowest shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_10px_15px_-3px_rgba(0,0,0,0.05)] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Urgent Priority</span>
+<span class="font-headline-lg text-headline-lg text-error font-bold mt-xs">05</span>
+<span class="font-caption text-caption text-secondary mt-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-error">timer</span> &lt; 2h SLA deadline
+        </span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">crisis_alert</span>
+</div>
+</div>
+<div class="p-md rounded-xl bg-surface-container-lowest shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_10px_15px_-3px_rgba(0,0,0,0.05)] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Average Triage Time</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold mt-xs">14<span class="font-body-md text-body-md text-secondary font-normal ml-xs">mins</span></span>
+<span class="font-caption text-caption text-secondary mt-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-secondary">check_circle</span> Target ≤ 30 mins
+        </span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">pace</span>
+</div>
+</div>
+<div class="p-md rounded-xl bg-surface-container-lowest shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_10px_15px_-3px_rgba(0,0,0,0.05)] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Department Ingestion</span>
+<div class="flex items-baseline gap-xs mt-xs">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">98.2%</span>
+<span class="font-caption text-caption text-secondary">on-track</span>
+</div>
+<div class="w-28 h-1.5 bg-surface-container-high rounded-full mt-xs overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 98.2%;"></div>
+</div>
+</div>
+<div class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary">
+<svg class="w-7 h-7 text-primary-container" viewbox="0 0 36 36">
+<path class="text-surface-container-high" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.8"></path>
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="98, 100" stroke-linecap="round" stroke-width="3.8"></path>
+</svg>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-md mb-lg shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_10px_15px_-3px_rgba(0,0,0,0.05)]">
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center gap-sm">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-secondary text-[20px] pointer-events-none">search</span>
+<input class="w-full pl-xl pr-md py-xs rounded-lg bg-surface-container-low text-on-surface placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container text-body-md font-body-md transition-all" id="searchInput" placeholder="Search by ID, requester, keyword..." type="text"/>
+</div>
+<div class="flex flex-wrap items-center gap-sm">
+<div class="relative min-w-[140px]">
+<select class="w-full appearance-none pl-sm pr-lg py-xs rounded-lg bg-surface-container-low text-on-surface text-body-md font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container cursor-pointer transition-colors" id="statusFilter">
+<option value="">All Statuses</option>
+<option value="pending">Pending Review</option>
+<option value="urgent">Urgent</option>
+<option value="queue">In Queue</option>
+</select>
+<span class="material-symbols-outlined absolute right-xs top-1/2 -translate-y-1/2 text-secondary text-[18px] pointer-events-none">expand_more</span>
+</div>
+<div class="relative min-w-[150px]">
+<select class="w-full appearance-none pl-sm pr-lg py-xs rounded-lg bg-surface-container-low text-on-surface text-body-md font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container cursor-pointer transition-colors" id="serviceFilter">
+<option value="">All Services</option>
+<option value="it">IT Support</option>
+<option value="facility">Facility Repair</option>
+<option value="access">System Access</option>
+<option value="engineering">Engineering</option>
+</select>
+<span class="material-symbols-outlined absolute right-xs top-1/2 -translate-y-1/2 text-secondary text-[18px] pointer-events-none">expand_more</span>
+</div>
+<div class="relative min-w-[130px]">
+<select class="w-full appearance-none pl-sm pr-lg py-xs rounded-lg bg-surface-container-low text-on-surface text-body-md font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container cursor-pointer transition-colors" id="sectionFilter">
+<option value="">All Sections</option>
+<option value="assembly">Assembly</option>
+<option value="hr">HR</option>
+<option value="pe">PE</option>
+<option value="is">IS</option>
+<option value="marketing">Marketing</option>
+</select>
+<span class="material-symbols-outlined absolute right-xs top-1/2 -translate-y-1/2 text-secondary text-[18px] pointer-events-none">expand_more</span>
+</div>
+<div class="relative min-w-[130px]">
+<select class="w-full appearance-none pl-sm pr-lg py-xs rounded-lg bg-surface-container-low text-on-surface text-body-md font-body-md focus:outline-none focus:ring-1 focus:ring-primary-container cursor-pointer transition-colors" id="dateFilter">
+<option value="week">This Week</option>
+<option value="today">Today</option>
+<option value="month">This Month</option>
+</select>
+<span class="material-symbols-outlined absolute right-xs top-1/2 -translate-y-1/2 text-secondary text-[18px] pointer-events-none">expand_more</span>
+</div>
+<button class="flex items-center gap-xs px-sm py-xs rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low font-label-md text-label-md transition-colors" id="clearFiltersBtn" title="Reset active filters" type="button">
+<span class="material-symbols-outlined text-[16px]">filter_alt_off</span>
+<span>Clear</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_10px_15px_-3px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-md text-label-md tracking-wider uppercase select-none">
+<th class="py-md px-md w-36">Request ID</th>
+<th class="py-md px-md min-w-[220px]">Service</th>
+<th class="py-md px-md min-w-[180px]">Requester &amp; NIK</th>
+<th class="py-md px-md w-28">Section</th>
+<th class="py-md px-md w-28">Priority</th>
+<th class="py-md px-md min-w-[220px]">Submitted Date</th>
+<th class="py-md px-md w-36">Status</th>
+<th class="py-md px-md w-36 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-transparent font-body-md text-body-md text-on-surface" id="requestTableBody">
+<tr class="group hover:bg-surface-container-low/70 transition-colors cursor-pointer bg-surface-container-lowest" data-href="request-detail?id=SRV-2026-0012">
+<td class="py-md px-md align-middle">
+<span class="font-semibold text-primary font-body-md text-body-md">#SRV-2026-0012</span>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface leading-tight">PLC Controller Sensor Failure</span>
+<span class="font-caption text-caption text-secondary">Line 3 Automated Packaging Rig</span>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex items-center gap-sm">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-caption font-bold">
+                  MF
+                </div>
+<div class="flex flex-col leading-tight">
+<span class="font-semibold text-on-surface">Muhammad Faiz</span>
+<span class="font-caption text-caption text-secondary">EMP-0842</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center px-xs py-base rounded bg-surface-container text-on-surface-variant font-label-md text-label-md">Assembly</span>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-error-container text-on-error-container font-label-md text-label-md font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                Urgent
+              </span>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface leading-tight">Today 08:24</span>
+<div class="flex items-center gap-xs text-error font-caption text-caption font-semibold mt-xs">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>1h 14m SLA remaining</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center px-sm py-xs rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md">
+                Pending Review
+              </span>
+</td>
+<td class="py-md px-md align-middle text-right">
+<a class="inline-flex items-center justify-center gap-xs px-md py-xs rounded-lg bg-surface-container hover:bg-primary-container hover:text-on-primary text-primary font-label-md text-label-md transition-all shadow-sm" data-path="request-detail" href="#">
+<span>Triage</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low/70 transition-colors cursor-pointer bg-surface-container-lowest" data-href="request-detail?id=SRV-2026-0014">
+<td class="py-md px-md align-middle">
+<span class="font-semibold text-primary font-body-md text-body-md">#SRV-2026-0014</span>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface leading-tight">ERP Role Elevation</span>
+<span class="font-caption text-caption text-secondary">SAP MM Purchase Requisition Approver</span>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex items-center gap-sm">
+<div class="w-7 h-7 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center text-caption font-bold">
+                  SR
+                </div>
+<div class="flex flex-col leading-tight">
+<span class="font-semibold text-on-surface">Siti Rahmawati</span>
+<span class="font-caption text-caption text-secondary">EMP-0419</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center px-xs py-base rounded bg-surface-container text-on-surface-variant font-label-md text-label-md">PE</span>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                High
+              </span>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface leading-tight">Today 08:45</span>
+<div class="flex items-center gap-xs text-secondary font-caption text-caption mt-xs">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>3h 40m SLA remaining</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center px-sm py-xs rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md">
+                Pending Review
+              </span>
+</td>
+<td class="py-md px-md align-middle text-right">
+<a class="inline-flex items-center justify-center gap-xs px-md py-xs rounded-lg bg-surface-container hover:bg-primary-container hover:text-on-primary text-primary font-label-md text-label-md transition-all shadow-sm" data-path="request-detail" href="#">
+<span>Triage</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low/70 transition-colors cursor-pointer bg-surface-container-lowest" data-href="request-detail?id=SRV-2026-0019">
+<td class="py-md px-md align-middle">
+<span class="font-semibold text-primary font-body-md text-body-md">#SRV-2026-0019</span>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface leading-tight">Engineering Laptop Replacement</span>
+<span class="font-caption text-caption text-secondary">Battery Swell &amp; Overheating issue</span>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex items-center gap-sm">
+<div class="w-7 h-7 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center text-caption font-bold">
+                  DA
+                </div>
+<div class="flex flex-col leading-tight">
+<span class="font-semibold text-on-surface">Dimas Anggara</span>
+<span class="font-caption text-caption text-secondary">EMP-1102</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center px-xs py-base rounded bg-surface-container text-on-surface-variant font-label-md text-label-md">IS</span>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-surface-container text-secondary font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Medium
+              </span>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface leading-tight">Yesterday 16:10</span>
+<div class="flex items-center gap-xs text-secondary font-caption text-caption mt-xs">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>7h 20m SLA remaining</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center px-sm py-xs rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md">
+                In Queue
+              </span>
+</td>
+<td class="py-md px-md align-middle text-right">
+<a class="inline-flex items-center justify-center gap-xs px-md py-xs rounded-lg bg-surface-container hover:bg-primary-container hover:text-on-primary text-primary font-label-md text-label-md transition-all shadow-sm" data-path="request-detail" href="#">
+<span>Triage</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low/70 transition-colors cursor-pointer bg-surface-container-lowest" data-href="request-detail?id=SRV-2026-0022">
+<td class="py-md px-md align-middle">
+<span class="font-semibold text-primary font-body-md text-body-md">#SRV-2026-0022</span>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface leading-tight">HVAC Airflow Error</span>
+<span class="font-caption text-caption text-secondary">Cleanroom Suite B Zone 4</span>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex items-center gap-sm">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-caption font-bold">
+                  LW
+                </div>
+<div class="flex flex-col leading-tight">
+<span class="font-semibold text-on-surface">Lestari Wahyuni</span>
+<span class="font-caption text-caption text-secondary">EMP-0633</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center px-xs py-base rounded bg-surface-container text-on-surface-variant font-label-md text-label-md">HR</span>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-error-container text-on-error-container font-label-md text-label-md font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                Urgent
+              </span>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface leading-tight">Yesterday 17:30</span>
+<div class="flex items-center gap-xs text-error font-caption text-caption font-semibold mt-xs">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>45m SLA remaining</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center px-sm py-xs rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md">
+                Pending Review
+              </span>
+</td>
+<td class="py-md px-md align-middle text-right">
+<a class="inline-flex items-center justify-center gap-xs px-md py-xs rounded-lg bg-surface-container hover:bg-primary-container hover:text-on-primary text-primary font-label-md text-label-md transition-all shadow-sm" data-path="request-detail" href="#">
+<span>Triage</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low/70 transition-colors cursor-pointer bg-surface-container-lowest" data-href="request-detail?id=SRV-2026-0025">
+<td class="py-md px-md align-middle">
+<span class="font-semibold text-primary font-body-md text-body-md">#SRV-2026-0025</span>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface leading-tight">Barcode Label Printer</span>
+<span class="font-caption text-caption text-secondary">Zebra Thermal Head Jammed</span>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex items-center gap-sm">
+<div class="w-7 h-7 rounded-full bg-surface-container-high text-secondary flex items-center justify-center text-caption font-bold">
+                  HG
+                </div>
+<div class="flex flex-col leading-tight">
+<span class="font-semibold text-on-surface">Hendra Gunawan</span>
+<span class="font-caption text-caption text-secondary">EMP-0219</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center px-xs py-base rounded bg-surface-container text-on-surface-variant font-label-md text-label-md">Assembly</span>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-surface-container text-secondary font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Low
+              </span>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface leading-tight">24 Feb 14:15</span>
+<div class="flex items-center gap-xs text-secondary font-caption text-caption mt-xs">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>14h SLA remaining</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center px-sm py-xs rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md">
+                In Queue
+              </span>
+</td>
+<td class="py-md px-md align-middle text-right">
+<a class="inline-flex items-center justify-center gap-xs px-md py-xs rounded-lg bg-surface-container hover:bg-primary-container hover:text-on-primary text-primary font-label-md text-label-md transition-all shadow-sm" data-path="request-detail" href="#">
+<span>Triage</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</td>
+</tr>
+<tr class="group hover:bg-surface-container-low/70 transition-colors cursor-pointer bg-surface-container-lowest" data-href="request-detail?id=SRV-2026-0028">
+<td class="py-md px-md align-middle">
+<span class="font-semibold text-primary font-body-md text-body-md">#SRV-2026-0028</span>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface leading-tight">Remote VPN Provisioning</span>
+<span class="font-caption text-caption text-secondary">SecOps MFA Token Renewal</span>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex items-center gap-sm">
+<div class="w-7 h-7 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center text-caption font-bold">
+                  RT
+                </div>
+<div class="flex flex-col leading-tight">
+<span class="font-semibold text-on-surface">Rian Triadi</span>
+<span class="font-caption text-caption text-secondary">EMP-0771</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center px-xs py-base rounded bg-surface-container text-on-surface-variant font-label-md text-label-md">Marketing</span>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                High
+              </span>
+</td>
+<td class="py-md px-md align-middle">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface leading-tight">24 Feb 11:30</span>
+<div class="flex items-center gap-xs text-secondary font-caption text-caption mt-xs">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>5h 15m SLA remaining</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-middle">
+<span class="inline-flex items-center px-sm py-xs rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md">
+                Pending Review
+              </span>
+</td>
+<td class="py-md px-md align-middle text-right">
+<a class="inline-flex items-center justify-center gap-xs px-md py-xs rounded-lg bg-surface-container hover:bg-primary-container hover:text-on-primary text-primary font-label-md text-label-md transition-all shadow-sm" data-path="request-detail" href="#">
+<span>Triage</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-md bg-surface-container-lowest flex flex-col sm:flex-row items-center justify-between gap-md">
+<div class="font-caption text-caption text-secondary">
+        Showing <span class="font-semibold text-on-surface">1-6</span> of <span class="font-semibold text-on-surface">24</span> incoming requests
+      </div>
+<div class="flex items-center gap-xs">
+<button class="flex items-center justify-center px-sm py-xs rounded-lg text-secondary/40 cursor-not-allowed font-label-md text-label-md" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+<span>Previous</span>
+</button>
+<div class="flex items-center gap-xs px-xs">
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md flex items-center justify-center font-bold" type="button">1</button>
+<button class="w-8 h-8 rounded-lg text-secondary hover:bg-surface-container hover:text-on-surface font-label-md text-label-md flex items-center justify-center transition-colors" type="button">2</button>
+<button class="w-8 h-8 rounded-lg text-secondary hover:bg-surface-container hover:text-on-surface font-label-md text-label-md flex items-center justify-center transition-colors" type="button">3</button>
+<button class="w-8 h-8 rounded-lg text-secondary hover:bg-surface-container hover:text-on-surface font-label-md text-label-md flex items-center justify-center transition-colors" type="button">4</button>
+</div>
+<button class="flex items-center justify-center px-sm py-xs rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors" type="button">
+<span>Next</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-lg grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="rounded-xl p-md bg-surface-container-lowest shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_10px_15px_-3px_rgba(0,0,0,0.05)] flex items-start gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">assignment_turned_in</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-body-lg font-semibold text-on-surface">Auto-Dispatch Criteria</span>
+<span class="font-caption text-caption text-secondary mt-xs">PLC Sensor &amp; Critical facility tickets route directly to duty line engineers. Check rule sets in Settings.</span>
+</div>
+</div>
+<div class="rounded-xl p-md bg-surface-container-lowest shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_10px_15px_-3px_rgba(0,0,0,0.05)] flex items-start gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">rule</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-body-lg font-semibold text-on-surface">Standard Operating SLAs</span>
+<span class="font-caption text-caption text-secondary mt-xs">Priority P1 requests hold a 2-hour acknowledgement threshold. Contact line supervisors for escalations.</span>
+</div>
+</div>
+<div class="rounded-xl p-md bg-surface-container-lowest shadow-[0px_1px_3px_rgba(0,0,0,0.05),0px_10px_15px_-3px_rgba(0,0,0,0.05)] flex items-start gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-body-lg font-semibold text-on-surface">Shift Handover</span>
+<span class="font-caption text-caption text-secondary mt-xs">Duty rotation active: Budi Santoso (Morning PIC). Next shift sync occurs at 16:00 WIB with PE Team.</span>
+</div>
+</div>
+</div>
+<script>
+    (function() {
+      const rows = document.querySelectorAll('#requestTableBody tr[data-href]');
+      rows.forEach(row => {
+        row.addEventListener('click', (e) => {
+          if (e.target.closest('button') || e.target.closest('a')) {
+            return;
+          }
+          const destination = row.getAttribute('data-href');
+          if (destination) {
+            window.location.hash = destination;
+          }
+        });
+      });
+
+      const clearBtn = document.getElementById('clearFiltersBtn');
+      const searchInput = document.getElementById('searchInput');
+      const statusFilter = document.getElementById('statusFilter');
+      const serviceFilter = document.getElementById('serviceFilter');
+      const sectionFilter = document.getElementById('sectionFilter');
+      const dateFilter = document.getElementById('dateFilter');
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          if (searchInput) searchInput.value = '';
+          if (statusFilter) statusFilter.selectedIndex = 0;
+          if (serviceFilter) serviceFilter.selectedIndex = 0;
+          if (sectionFilter) sectionFilter.selectedIndex = 0;
+          if (dateFilter) dateFilter.selectedIndex = 0;
+        });
+      }
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)] py-md px-lg mt-auto"><div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-sm text-secondary font-caption text-caption"><div>© 2026 Internal Service Management. PIC Operations Workspace.</div><div class="flex items-center gap-md"><a class="hover:text-on-surface transition-colors" data-path="sla-guidelines" href="#">SLA Guidelines</a><a class="hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="support" href="#">Support</a></div></div></footer></div></body></html>

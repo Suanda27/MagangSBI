@@ -1,0 +1,436 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-error": "#ffffff", "on-surface-variant": "#444653", "surface-variant": "#e0e3e5", "on-primary-fixed-variant": "#173bab", "primary-fixed": "#dde1ff", "surface": "#f7f9fb", "on-primary": "#ffffff", "inverse-surface": "#2d3133", "surface-container-lowest": "#ffffff", "on-tertiary-fixed": "#131b2e", "on-tertiary": "#ffffff", "surface-bright": "#f7f9fb", "tertiary-fixed-dim": "#bec6e0", "on-primary-container": "#a8b8ff", "on-primary-fixed": "#001453", "outline": "#757684", "tertiary-container": "#434b60", "primary-fixed-dim": "#b8c4ff", "error-container": "#ffdad6", "on-tertiary-fixed-variant": "#3f465c", "on-tertiary-container": "#b4bbd5", "surface-tint": "#3755c3", "background": "#f7f9fb", "on-secondary-container": "#54647a", "tertiary": "#2d3449", "primary": "#00288e", "surface-container-high": "#e6e8ea", "on-surface": "#191c1e", "on-background": "#191c1e", "inverse-primary": "#b8c4ff", "outline-variant": "#c4c5d5", "on-error-container": "#93000a", "inverse-on-surface": "#eff1f3", "secondary-container": "#d0e1fb", "secondary-fixed": "#d3e4fe", "on-secondary-fixed-variant": "#38485d", "secondary-fixed-dim": "#b7c8e1", "error": "#ba1a1a", "surface-container": "#eceef0", "secondary": "#505f76", "tertiary-fixed": "#dae2fd", "primary-container": "#1e40af", "surface-dim": "#d8dadc", "on-secondary-fixed": "#0b1c30", "on-secondary": "#ffffff", "surface-container-highest": "#e0e3e5", "surface-container-low": "#f2f4f6" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "gutter": "20px", "md": "16px", "sm": "8px", "container-max": "1440px", "xs": "4px", "base": "4px", "lg": "24px", "xl": "32px" }, fontFamily: { "caption": ["Inter"], "display": ["Inter"], "body-md": ["Inter"], "headline-md": ["Inter"], "headline-lg": ["Inter"], "body-lg": ["Inter"], "label-md": ["Inter"] }, fontSize: { "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-60 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between select-none"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-16 flex items-center px-lg gap-sm bg-surface-container-lowest"><div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[20px]">verified_user</span></div><div class="flex flex-col"><span class="font-headline-md text-body-md font-bold text-on-surface leading-tight tracking-tight">ISM System</span><span class="font-caption text-caption text-secondary uppercase tracking-wider font-semibold">Internal Service</span></div></div><div class="px-md py-sm flex flex-col gap-xs"><nav class="flex flex-col gap-xs" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span>Dashboard</span></a></nav><div class="pt-md pb-xs px-md"><span class="font-label-md text-caption uppercase text-secondary font-semibold tracking-wider">Master Data</span></div><nav class="flex flex-col gap-xs" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="karyawan" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span>Karyawan</span></a><a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="section" href="#"><span class="material-symbols-outlined text-[20px]">layers</span><span>Section</span></a><a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="layanan" href="#"><span class="material-symbols-outlined text-[20px]">settings_suggest</span><span>Layanan</span></a><a aria-current="page" class="flex items-center gap-md px-md py-sm rounded-lg transition-colors bg-primary-container text-on-primary font-semibold shadow-sm" data-path="pic" href="#"><span class="material-symbols-outlined text-[20px]">how_to_reg</span><span>PIC</span></a></nav><div class="pt-md pb-xs px-md"><span class="font-label-md text-caption uppercase text-secondary font-semibold tracking-wider">Permintaan</span></div><nav class="flex flex-col gap-xs" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="semua-permintaan" href="#"><span class="material-symbols-outlined text-[20px]">description</span><span>Semua Permintaan</span></a></nav><div class="pt-md pb-xs px-md"><span class="font-label-md text-caption uppercase text-secondary font-semibold tracking-wider">Analisis</span></div><nav class="flex flex-col gap-xs" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="laporan" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span>Laporan</span></a></nav></div></div><div class="p-md flex flex-col gap-xs bg-surface-container-lowest"><nav class="flex flex-col gap-xs" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-md text-body-md" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a></nav><a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-error-container hover:text-on-error-container transition-colors font-body-md text-body-md" data-path="login" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span>Logout</span></a></div></aside><div class="pl-60 min-h-screen flex flex-col bg-background"><header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-xl"><div class="flex items-center gap-sm text-secondary font-caption text-caption select-none"><span>Portal</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span>Console</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span>Master Data</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="font-body-md text-body-md text-on-surface font-medium">PIC</span></div><div class="flex items-center gap-lg"><div class="relative w-72"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[18px]">search</span><input class="w-full pl-9 pr-md py-xs bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface placeholder:text-secondary focus:outline-none focus:ring-2 focus:ring-primary-container/20" placeholder="Cari NIK, ID, nama..." type="text"></div><button class="relative p-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-sm pl-sm cursor-pointer select-none"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="hidden md:flex flex-col"><span class="font-body-md text-body-md font-semibold text-on-surface leading-snug">Admin ISM</span><span class="font-caption text-caption text-secondary">Administrator</span></div><span class="material-symbols-outlined text-secondary text-[18px]">expand_more</span></div></div></header><main class="w-full pt-16 px-xl py-lg flex-1 bg-background"><div class="flex flex-col w-full gap-lg">
+<!-- Header Action Bar -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">MASTER DATA</span>
+<span class="text-secondary font-caption text-caption">/</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-primary font-bold">PIC</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">PIC</h1>
+<p class="font-body-md text-body-md text-secondary">Kelola data PIC yang bertanggung jawab menangani layanan internal.</p>
+</div>
+<div class="flex items-center gap-sm">
+<button class="inline-flex items-center gap-sm px-lg py-sm rounded-lg bg-primary-container text-on-primary font-body-md text-body-md font-semibold shadow-sm hover:opacity-95 active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>Tambah PIC</span>
+</button>
+</div>
+</div>
+<!-- Summary Metric Bento Strip -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-24 h-24 bg-primary-fixed/40 rounded-full blur-2xl -mr-8 -mt-8 pointer-events-none"></div>
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md uppercase text-secondary font-semibold">Total PIC</span>
+<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed shadow-xs">
+<span class="material-symbols-outlined text-[18px]">how_to_reg</span>
+</div>
+</div>
+<div class="mt-md flex flex-col">
+<span class="font-display text-display font-bold text-on-surface leading-none">14</span>
+<span class="font-caption text-caption text-secondary mt-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-primary">verified</span>
+          Terdaftar di sistem
+        </span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md uppercase text-secondary font-semibold">PIC Aktif</span>
+<span class="inline-flex items-center px-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md font-bold">92.8%</span>
+</div>
+<div class="mt-md flex flex-col">
+<span class="font-display text-display font-bold text-on-surface leading-none">13</span>
+<span class="font-caption text-caption text-secondary mt-xs flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+          Siap bertugas operasional
+        </span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md uppercase text-secondary font-semibold">PIC Nonaktif</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">archive</span>
+</div>
+</div>
+<div class="mt-md flex flex-col">
+<span class="font-display text-display font-bold text-on-surface leading-none">1</span>
+<span class="font-caption text-caption text-secondary mt-xs">Nonaktif sementara</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md uppercase text-secondary font-semibold">Section dengan PIC</span>
+<div class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined text-[18px]">layers</span>
+</div>
+</div>
+<div class="mt-md flex flex-col">
+<span class="font-display text-display font-bold text-on-surface leading-none">5</span>
+<span class="font-caption text-caption text-secondary mt-xs">Tersebar di 5 section</span>
+</div>
+</div>
+</div>
+<!-- Search & Filter Controls -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-md">
+<div class="flex flex-wrap items-center gap-sm flex-1">
+<!-- Search Input -->
+<div class="relative min-w-[260px] flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[18px]">search</span>
+<input class="w-full pl-9 pr-8 py-xs bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest shadow-xs transition-colors" id="search-pic" placeholder="Cari nama PIC atau NIK..." type="text">
+<button class="absolute right-2.5 top-1/2 -translate-y-1/2 text-secondary hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<!-- Filter Section -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low text-on-surface font-body-md text-body-md px-md py-xs pr-8 rounded-lg focus:outline-none cursor-pointer">
+<option>Semua Section</option>
+<option>Assembly</option>
+<option>PE</option>
+<option>HR</option>
+<option>GA</option>
+<option>IS</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-secondary pointer-events-none text-[18px]">expand_more</span>
+</div>
+<!-- Filter Status -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low text-on-surface font-body-md text-body-md px-md py-xs pr-8 rounded-lg focus:outline-none cursor-pointer">
+<option>Semua Status</option>
+<option>Aktif</option>
+<option>Nonaktif</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-secondary pointer-events-none text-[18px]">expand_more</span>
+</div>
+<!-- Reset -->
+<button class="p-xs rounded-lg bg-surface-container-low hover:bg-surface-container-high text-secondary hover:text-on-surface transition-colors flex items-center justify-center" title="Reset Filter" type="button">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+</button>
+</div>
+<!-- Assigned Ratio Highlight -->
+<div class="flex items-center gap-xs px-md py-xs rounded-lg bg-surface-container-low self-start lg:self-auto">
+<span class="material-symbols-outlined text-primary text-[18px]">analytics</span>
+<span class="font-caption text-caption text-secondary">Rasio Penugasan:</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">2.8 PIC / Section</span>
+</div>
+</div>
+<!-- Master Data Table Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-visible">
+<div class="overflow-x-auto min-w-full">
+<table class="w-full text-left font-body-md text-body-md">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-md text-label-md uppercase tracking-wider">
+<th class="py-md px-lg font-semibold">Nama PIC</th>
+<th class="py-md px-md font-semibold">NIK</th>
+<th class="py-md px-md font-semibold">Section</th>
+<th class="py-md px-md font-semibold">Layanan Ditangani</th>
+<th class="py-md px-md font-semibold">Plant</th>
+<th class="py-md px-md font-semibold">Status</th>
+<th class="py-md px-lg text-right font-semibold">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y-0">
+<!-- Row 1: Budi Santoso with Active Floating Dropdown Menu -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-md px-lg">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold text-body-md shadow-xs flex-shrink-0">
+                  BS
+                </div>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-on-surface truncate">Budi Santoso</span>
+<span class="font-caption text-caption text-secondary">Person in Charge</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md font-caption text-caption font-semibold">
+<span class="px-sm py-xs bg-surface-container-high text-on-surface-variant rounded">EMP-001</span>
+</td>
+<td class="py-md px-md">
+<span class="px-sm py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-md text-caption font-semibold">Assembly</span>
+</td>
+<td class="py-md px-md">
+<div class="inline-flex items-center gap-xs px-sm py-0.5 rounded-full bg-surface-container-high text-on-surface font-caption text-caption font-medium">
+<span class="material-symbols-outlined text-[14px] text-primary">handyman</span>
+                4 Layanan
+              </div>
+</td>
+<td class="py-md px-md">
+<span class="px-sm py-0.5 rounded bg-surface-container-low text-on-surface-variant font-caption text-caption">Plant 2</span>
+</td>
+<td class="py-md px-md">
+<span class="inline-flex items-center gap-1.5 px-sm py-0.5 rounded-full bg-surface-container-low text-on-surface font-label-md text-caption font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                Aktif
+              </span>
+</td>
+<td class="py-md px-lg text-right relative">
+<!-- Trigger button -->
+<button class="p-xs rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors" onclick="const menu = document.getElementById('pic-action-menu-1'); menu.classList.toggle('hidden');" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+<!-- Interactive Dropdown Action Card -->
+<div class="absolute right-lg top-12 w-48 bg-surface-container-lowest rounded-xl shadow-xl p-xs z-30 flex flex-col text-left" id="pic-action-menu-1">
+<a class="flex items-center gap-sm px-md py-xs rounded-lg hover:bg-surface-container-high text-on-surface font-body-md text-body-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-secondary">visibility</span>
+<span>Lihat Detail</span>
+</a>
+<a class="flex items-center gap-sm px-md py-xs rounded-lg hover:bg-surface-container-high text-on-surface font-body-md text-body-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px] text-secondary">edit</span>
+<span>Edit PIC</span>
+</a>
+<a class="flex items-center gap-sm px-md py-xs rounded-lg hover:bg-error-container text-on-error-container font-body-md text-body-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">block</span>
+<span>Nonaktifkan</span>
+</a>
+</div>
+</td>
+</tr>
+<!-- Row 2: Doni Prasetyo -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-md px-lg">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-body-md shadow-xs flex-shrink-0">
+                  DP
+                </div>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-on-surface truncate">Doni Prasetyo</span>
+<span class="font-caption text-caption text-secondary">Person in Charge</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md font-caption text-caption font-semibold">
+<span class="px-sm py-xs bg-surface-container-high text-on-surface-variant rounded">EMP-002</span>
+</td>
+<td class="py-md px-md">
+<span class="px-sm py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-md text-caption font-semibold">PE</span>
+</td>
+<td class="py-md px-md">
+<div class="inline-flex items-center gap-xs px-sm py-0.5 rounded-full bg-surface-container-high text-on-surface font-caption text-caption font-medium">
+<span class="material-symbols-outlined text-[14px] text-primary">handyman</span>
+                3 Layanan
+              </div>
+</td>
+<td class="py-md px-md">
+<span class="px-sm py-0.5 rounded bg-surface-container-low text-on-surface-variant font-caption text-caption">Plant 3</span>
+</td>
+<td class="py-md px-md">
+<span class="inline-flex items-center gap-1.5 px-sm py-0.5 rounded-full bg-surface-container-low text-on-surface font-label-md text-caption font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                Aktif
+              </span>
+</td>
+<td class="py-md px-lg text-right">
+<button class="p-xs rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Hendra Wijaya -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-md px-lg">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed text-on-primary-fixed font-bold flex items-center justify-center text-body-md shadow-xs flex-shrink-0">
+                  HW
+                </div>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-on-surface truncate">Hendra Wijaya</span>
+<span class="font-caption text-caption text-secondary">Person in Charge</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md font-caption text-caption font-semibold">
+<span class="px-sm py-xs bg-surface-container-high text-on-surface-variant rounded">EMP-003</span>
+</td>
+<td class="py-md px-md">
+<span class="px-sm py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-md text-caption font-semibold">HR</span>
+</td>
+<td class="py-md px-md">
+<div class="inline-flex items-center gap-xs px-sm py-0.5 rounded-full bg-surface-container-high text-on-surface font-caption text-caption font-medium">
+<span class="material-symbols-outlined text-[14px] text-primary">handyman</span>
+                5 Layanan
+              </div>
+</td>
+<td class="py-md px-md">
+<span class="px-sm py-0.5 rounded bg-surface-container-low text-on-surface-variant font-caption text-caption">Plant 1</span>
+</td>
+<td class="py-md px-md">
+<span class="inline-flex items-center gap-1.5 px-sm py-0.5 rounded-full bg-surface-container-low text-on-surface font-label-md text-caption font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                Aktif
+              </span>
+</td>
+<td class="py-md px-lg text-right">
+<button class="p-xs rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Rina Wulandari -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-md px-lg">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-body-md shadow-xs flex-shrink-0">
+                  RW
+                </div>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-on-surface truncate">Rina Wulandari</span>
+<span class="font-caption text-caption text-secondary">Person in Charge</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md font-caption text-caption font-semibold">
+<span class="px-sm py-xs bg-surface-container-high text-on-surface-variant rounded">EMP-004</span>
+</td>
+<td class="py-md px-md">
+<span class="px-sm py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-md text-caption font-semibold">GA</span>
+</td>
+<td class="py-md px-md">
+<div class="inline-flex items-center gap-xs px-sm py-0.5 rounded-full bg-surface-container-high text-on-surface font-caption text-caption font-medium">
+<span class="material-symbols-outlined text-[14px] text-primary">handyman</span>
+                4 Layanan
+              </div>
+</td>
+<td class="py-md px-md">
+<span class="px-sm py-0.5 rounded bg-surface-container-low text-on-surface-variant font-caption text-caption">Plant 1</span>
+</td>
+<td class="py-md px-md">
+<span class="inline-flex items-center gap-1.5 px-sm py-0.5 rounded-full bg-surface-container-low text-on-surface font-label-md text-caption font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                Aktif
+              </span>
+</td>
+<td class="py-md px-lg text-right">
+<button class="p-xs rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Ahmad Fauzi (Nonaktif) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors opacity-80">
+<td class="py-md px-lg">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-secondary flex items-center justify-center font-bold text-body-md shadow-xs flex-shrink-0">
+                  AF
+                </div>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-on-surface truncate">Ahmad Fauzi</span>
+<span class="font-caption text-caption text-secondary">Person in Charge</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md font-caption text-caption font-semibold">
+<span class="px-sm py-xs bg-surface-container-high text-on-surface-variant rounded">EMP-005</span>
+</td>
+<td class="py-md px-md">
+<span class="px-sm py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-md text-caption font-semibold">Assembly</span>
+</td>
+<td class="py-md px-md">
+<div class="inline-flex items-center gap-xs px-sm py-0.5 rounded-full bg-surface-container-high text-secondary font-caption text-caption font-medium">
+<span class="material-symbols-outlined text-[14px]">handyman</span>
+                2 Layanan
+              </div>
+</td>
+<td class="py-md px-md">
+<span class="px-sm py-0.5 rounded bg-surface-container-low text-on-surface-variant font-caption text-caption">Plant 2</span>
+</td>
+<td class="py-md px-md">
+<span class="inline-flex items-center gap-1.5 px-sm py-0.5 rounded-full bg-surface-container-high text-secondary font-label-md text-caption font-semibold">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+                Nonaktif
+              </span>
+</td>
+<td class="py-md px-lg text-right">
+<button class="inline-flex items-center gap-xs px-sm py-xs rounded-lg hover:bg-surface-container-high text-primary font-caption text-caption font-semibold transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                Aktifkan
+              </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-md p-md bg-surface-container-lowest">
+<span class="font-caption text-caption text-secondary">
+        Menampilkan <span class="font-semibold text-on-surface">1-5</span> dari <span class="font-semibold text-on-surface">14</span> PIC
+      </span>
+<div class="flex items-center gap-xs select-none">
+<button class="px-md py-xs rounded-lg bg-surface-container-low text-secondary hover:text-on-surface font-body-md text-body-md transition-colors disabled:opacity-50" type="button">
+          Sebelumnya
+        </button>
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary font-body-md text-body-md font-semibold flex items-center justify-center shadow-xs" type="button">
+          1
+        </button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-high text-on-surface font-body-md text-body-md flex items-center justify-center transition-colors" type="button">
+          2
+        </button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-high text-on-surface font-body-md text-body-md flex items-center justify-center transition-colors" type="button">
+          3
+        </button>
+<button class="px-md py-xs rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container-high font-body-md text-body-md transition-colors" type="button">
+          Selanjutnya
+        </button>
+</div>
+</div>
+</div>
+<!-- Corporate Guidelines Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Guideline 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col gap-sm relative overflow-hidden">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[18px]">rule</span>
+</div>
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary font-bold">Aturan Penugasan</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+        PIC bertugas menangani SLA permohonan sesuai section dan plant operasional.
+      </p>
+<div class="mt-auto pt-xs flex items-center gap-xs font-caption text-caption text-secondary">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+        Monitoring SLA 24/7
+      </div>
+</div>
+<!-- Guideline 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col gap-sm relative overflow-hidden">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-[18px]">sync_alt</span>
+</div>
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary font-bold">Relasi Master Data</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+        Karyawan resmi (1:1) dapat ditunjuk sebagai PIC tanpa duplikasi data profil.
+      </p>
+<div class="mt-auto pt-xs flex items-center gap-xs font-caption text-caption text-secondary">
+<span class="material-symbols-outlined text-[14px]">link</span>
+        Single Source of Truth
+      </div>
+</div>
+<!-- Guideline 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col gap-sm relative overflow-hidden">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</div>
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary font-bold">Kebijakan Nonaktif</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+        Menonaktifkan PIC tidak menghapus riwayat tiket permohonan yang telah selesai.
+      </p>
+<div class="mt-auto pt-xs flex items-center gap-xs font-caption text-caption text-secondary">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+        Integritas Audit Log Terjaga
+      </div>
+</div>
+</div>
+</div></main></div></body></html>

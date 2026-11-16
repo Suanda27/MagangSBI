@@ -1,0 +1,810 @@
+<!DOCTYPE html><html lang="en" style="font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" class="">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+  @layer base { 
+    html, body { 
+      margin: 0; 
+      padding: 0; 
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    } 
+    body { overscroll-behavior: none; } 
+    main > :first-child { margin-top: 0 !important; } 
+    main > :last-child { margin-bottom: 0 !important; } 
+  } 
+  ::-webkit-scrollbar { display: none; }
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+tailwind.config = { 
+  darkMode: "class", 
+  theme: { 
+    extend: { 
+      "colors": { 
+        "outline-variant": "#c4c5d5", 
+        "on-error-container": "#93000a", 
+        "inverse-surface": "#2d3133", 
+        "secondary": "#505f76", 
+        "tertiary-container": "#434b60", 
+        "surface-tint": "#3755c3", 
+        "surface-container-lowest": "#ffffff", 
+        "on-surface": "#191c1e", 
+        "inverse-on-surface": "#eff1f3", 
+        "surface-bright": "#f7f9fb", 
+        "primary-container": "#1e40af", 
+        "inverse-primary": "#b8c4ff", 
+        "on-tertiary": "#ffffff", 
+        "error": "#ba1a1a", 
+        "tertiary-fixed": "#dae2fd", 
+        "surface-dim": "#d8dadc", 
+        "surface-container-highest": "#e0e3e5", 
+        "outline": "#757684", 
+        "on-tertiary-container": "#b4bbd5", 
+        "secondary-fixed": "#d3e4fe", 
+        "on-primary-fixed": "#001453", 
+        "secondary-fixed-dim": "#b7c8e1", 
+        "secondary-container": "#d0e1fb", 
+        "primary": "#00288e", 
+        "on-surface-variant": "#444653", 
+        "background": "#f7f9fb", 
+        "tertiary": "#2d3449", 
+        "error-container": "#ffdad6", 
+        "on-primary": "#ffffff", 
+        "on-tertiary-fixed-variant": "#3f465c", 
+        "on-secondary-fixed": "#0b1c30", 
+        "surface-container": "#eceef0", 
+        "on-background": "#191c1e", 
+        "on-secondary": "#ffffff", 
+        "on-tertiary-fixed": "#131b2e", 
+        "on-error": "#ffffff", 
+        "tertiary-fixed-dim": "#bec6e0", 
+        "on-secondary-fixed-variant": "#38485d", 
+        "surface-variant": "#e0e3e5", 
+        "on-primary-fixed-variant": "#173bab", 
+        "on-primary-container": "#a8b8ff", 
+        "surface": "#f7f9fb", 
+        "primary-fixed-dim": "#b8c4ff", 
+        "surface-container-high": "#e6e8ea", 
+        "on-secondary-container": "#54647a", 
+        "primary-fixed": "#dde1ff", 
+        "surface-container-low": "#f2f4f6" 
+      }, 
+      "borderRadius": { 
+        "DEFAULT": "0.25rem", 
+        "lg": "0.5rem", 
+        "xl": "0.75rem", 
+        "full": "9999px" 
+      }, 
+      "spacing": { 
+        "base": "4px", 
+        "xs": "4px", 
+        "container-max": "1440px", 
+        "sm": "8px", 
+        "md": "16px", 
+        "lg": "24px", 
+        "xl": "32px", 
+        "gutter": "20px" 
+      }, 
+      "fontFamily": { 
+        sans: ["Inter", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+        "body-lg": [ "Inter", "sans-serif" ], 
+        "display": [ "Inter", "sans-serif" ], 
+        "label-md": [ "Inter", "sans-serif" ], 
+        "headline-md": [ "Inter", "sans-serif" ], 
+        "body-md": [ "Inter", "sans-serif" ], 
+        "caption": [ "Inter", "sans-serif" ], 
+        "headline-lg": [ "Inter", "sans-serif" ] 
+      }, 
+      "fontSize": { 
+        "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], 
+        "display": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], 
+        "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" } ], 
+        "headline-md": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ], 
+        "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], 
+        "caption": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], 
+        "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" } ] 
+      } 
+    } 
+  } 
+};
+</script>
+</head><body class="bg-surface font-sans text-body-md text-on-surface antialiased">
+<aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-lowest flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50">
+<div class="flex flex-col">
+<div class="h-16 flex items-center px-md gap-sm border-b border-surface-container-low">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary text-[20px]">grid_view</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-[16px] leading-tight tracking-tight text-on-surface">ISM System</span>
+<span class="text-[11px] font-medium text-secondary">PIC Operations</span>
+</div>
+</div>
+<div class="px-md pt-sm pb-xs">
+<span class="text-[11px] font-semibold uppercase tracking-wider text-secondary">Workspace</span>
+</div>
+<nav class="flex flex-col gap-0.5 px-sm">
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-medium text-[13px]" data-path="dashboard" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-medium text-[13px]" data-path="permintaan-masuk" href="#">
+<span class="material-symbols-outlined text-[20px]">inbox</span>
+<span class="">Permintaan Masuk</span>
+</a>
+<a aria-current="page" class="flex items-center gap-sm px-sm py-2 rounded-lg bg-surface-container text-primary font-semibold text-[13px] transition-colors" data-path="permintaan-saya" href="#">
+<span class="material-symbols-outlined text-[20px]">assignment</span>
+<span class="">Permintaan Saya</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-medium text-[13px]" data-path="sedang-diproses" href="#">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+<span class="">Sedang Diproses</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-medium text-[13px]" data-path="selesai" href="#">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span class="">Selesai</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-medium text-[13px]" data-path="laporan" href="#">
+<span class="material-symbols-outlined text-[20px]">bar_chart</span>
+<span class="">Laporan</span>
+</a>
+</nav>
+</div>
+<div class="p-sm flex flex-col gap-xs bg-surface-container-lowest border-t border-surface-container-low">
+<div class="px-sm py-xs">
+<span class="text-[11px] font-semibold uppercase tracking-wider text-secondary">Account</span>
+</div>
+<nav class="flex flex-col gap-0.5">
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-medium text-[13px]" data-path="settings" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="">Settings</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-error hover:bg-error-container hover:text-on-error-container transition-colors font-medium text-[13px]" data-path="logout" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span class="">Logout</span>
+</a>
+</nav>
+</div>
+</aside>
+<div class="pl-60 flex flex-col min-h-screen font-sans">
+<header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest/95 backdrop-blur-md border-b border-surface-container-low z-40 flex items-center justify-between px-lg">
+<div class="flex items-center w-full max-w-md">
+<div class="relative w-full flex items-center">
+<span class="material-symbols-outlined absolute left-sm text-secondary text-[20px] pointer-events-none">search</span>
+<input class="w-full pl-9 pr-md py-1.5 rounded-lg bg-surface-container-low text-on-surface placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container text-[13px] transition-all font-sans" placeholder="Search requests, ticket #, or keywords..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-md">
+<a class="relative p-2 rounded-lg text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors flex items-center justify-center" data-path="notifications" href="#">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span>
+</a>
+<div class="flex items-center gap-sm pl-sm border-l border-surface-container-high cursor-pointer hover:opacity-90">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-xs overflow-hidden">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+<div class="flex flex-col text-left">
+<span class="text-[13px] font-semibold text-on-surface leading-tight">Budi Santoso</span>
+<span class="text-[11px] text-secondary leading-tight">PIC Operations</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">expand_more</span>
+</div>
+</div>
+</header>
+<main class="flex-1 pt-16 bg-surface px-lg py-lg max-w-[1440px] w-full mx-auto">
+<div class="flex flex-col w-full">
+<!-- Top Navigation Sub-bar / Breadcrumbs & PIC Profile Context -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-sm mb-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5 text-xs text-secondary mb-1">
+<span class="hover:text-primary transition-colors cursor-pointer font-medium">Portal</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Permintaan Saya</span>
+</div>
+<h1 class="font-semibold text-2xl text-slate-900 tracking-tight">Permintaan Saya</h1>
+<p class="text-sm text-secondary mt-1">Kelola dan pantau seluruh permintaan yang menjadi tanggung jawab Anda.</p>
+</div>
+<div class="flex items-center gap-sm self-start md:self-auto">
+<button class="flex items-center gap-1.5 px-3 py-2 bg-surface-container-lowest border border-surface-container-high text-on-surface-variant font-medium text-xs rounded-lg shadow-sm hover:bg-surface-container-low transition-colors" id="btn-toggle-filter" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span class="">Filter</span>
+</button>
+<button class="p-2 bg-surface-container-lowest border border-surface-container-high text-on-surface-variant hover:text-primary rounded-lg shadow-sm hover:bg-surface-container-low transition-colors flex items-center justify-center" title="Muat ulang data" type="button">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+</div>
+</div>
+<!-- Metric Overview Cards (Compact 4-Column Grid) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md mb-lg"><!-- Card 1: Total Permintaan -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-surface-container-low shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-medium uppercase text-secondary tracking-wider">Total Permintaan Saya</span>
+<span class="text-3xl font-semibold text-slate-900 mt-1 leading-tight tracking-tight">18</span>
+<span class="text-xs text-secondary mt-1 font-normal">Semua permintaan tanggung jawab Anda</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[22px]">assignment</span>
+</div>
+</div>
+<!-- Card 2: Sedang Diproses -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-surface-container-low shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-medium uppercase text-secondary tracking-wider">Sedang Diproses</span>
+<span class="text-3xl font-semibold text-primary mt-1 leading-tight tracking-tight">6</span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs text-secondary font-normal">Dalam penanganan aktif</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[22px]">sync</span>
+</div>
+</div>
+<!-- Card 3: Selesai -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-surface-container-low shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-medium uppercase text-secondary tracking-wider">Selesai</span>
+<span class="text-3xl font-semibold text-slate-900 mt-1 leading-tight tracking-tight">11</span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="text-xs text-secondary font-normal">Telah diselesaikan tuntas</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[22px]">check_circle</span>
+</div>
+</div>
+<!-- Card 4: Ditolak -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-surface-container-low shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-medium uppercase text-secondary tracking-wider">Ditolak</span>
+<span class="text-3xl font-semibold text-error mt-1 leading-tight tracking-tight">1</span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span class="text-xs text-secondary font-normal">Ditolak dengan catatan</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-error-container flex items-center justify-center text-on-error-container shrink-0">
+<span class="material-symbols-outlined text-[22px]">cancel</span>
+</div>
+</div></div>
+<!-- Interactive Status Tabs -->
+<div class="flex items-center gap-sm mb-md overflow-x-auto pb-xs"><button class="tab-btn flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-xs bg-surface-container-lowest text-secondary hover:text-on-surface border border-surface-container-low shadow-sm transition-all whitespace-nowrap" data-tab="all" type="button">
+<span class="">Semua</span>
+<span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-full text-[11px] font-semibold">18</span>
+</button>
+<button class="tab-btn flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-xs bg-surface-container-lowest text-secondary hover:text-on-surface border border-surface-container-low shadow-sm transition-all whitespace-nowrap" data-tab="processing" type="button">
+<span class="">Sedang Diproses</span>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full text-[11px] font-semibold">6</span>
+</button>
+<button class="tab-btn flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-xs bg-primary-container text-on-primary shadow-sm transition-all whitespace-nowrap" data-tab="completed" type="button">
+<span class="">Selesai</span>
+<span class="bg-surface-container-lowest/20 px-2 py-0.5 rounded-full text-[11px] font-semibold">11</span>
+</button>
+<button class="tab-btn flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-xs bg-surface-container-lowest text-secondary hover:text-on-surface border border-surface-container-low shadow-sm transition-all whitespace-nowrap" data-tab="rejected" type="button">
+<span class="">Ditolak</span>
+<span class="bg-error-container text-on-error-container px-2 py-0.5 rounded-full text-[11px] font-semibold">1</span>
+</button></div>
+<!-- Search & Filter Controls Toolbar -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-surface-container-low shadow-sm mb-md flex flex-col lg:flex-row lg:items-center justify-between gap-md">
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-secondary text-[18px] pointer-events-none">search</span>
+<input class="w-full pl-9 pr-md py-2 bg-surface-container-low text-on-surface font-normal text-xs md:text-sm rounded-lg placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container transition-all" id="filter-search" placeholder="Cari ID permintaan, judul, atau nama pengaju..." type="text">
+</div>
+<div class="flex flex-wrap items-center gap-sm"><div class="flex items-center gap-1.5 bg-surface-container-low px-3 py-1.5 rounded-lg border border-transparent focus-within:border-primary-container">
+<span class="text-xs text-secondary font-medium">Status:</span>
+<select class="bg-transparent text-xs font-semibold text-on-surface focus:outline-none cursor-pointer" id="select-status">
+<option value="Selesai" selected="">Selesai</option>
+<option value="">Semua Status</option>
+<option value="Sedang Diproses">Sedang Diproses</option>
+<option value="Ditolak">Ditolak</option>
+</select>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-low px-3 py-1.5 rounded-lg border border-transparent">
+<span class="text-xs text-secondary font-medium">Section:</span>
+<select class="bg-transparent text-xs font-semibold text-on-surface focus:outline-none cursor-pointer" id="select-section">
+<option value="">Semua Section</option>
+<option value="Assembly">Assembly</option>
+<option value="PE">PE</option>
+<option value="Production">Production</option>
+<option value="IS">IS</option>
+<option value="Logistik">Logistik</option>
+<option value="GA">GA</option>
+</select>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-low px-3 py-1.5 rounded-lg border border-transparent">
+<span class="text-xs text-secondary font-medium">Plant:</span>
+<select class="bg-transparent text-xs font-semibold text-on-surface focus:outline-none cursor-pointer" id="select-plant">
+<option value="">Semua Plant</option>
+<option value="Plant 1">Plant 1</option>
+<option value="Plant 2">Plant 2</option>
+<option value="Plant 3">Plant 3</option>
+</select>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-low px-3 py-1.5 rounded-lg border border-transparent">
+<span class="text-xs text-secondary font-medium">Lantai:</span>
+<select class="bg-transparent text-xs font-semibold text-on-surface focus:outline-none cursor-pointer" id="select-floor">
+<option value="">Semua Lantai</option>
+<option value="Lantai 1">Lantai 1</option>
+<option value="Lantai 2">Lantai 2</option>
+<option value="Lantai 3">Lantai 3</option>
+</select>
+</div>
+<button class="text-xs font-semibold text-primary hover:underline px-2 py-1" id="btn-reset-filter" type="button">Reset Filter</button></div>
+</div>
+<!-- Primary Request Data Table -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-container-low shadow-sm overflow-hidden mb-lg">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse" id="requests-table">
+<thead><tr class="bg-surface-container-low/60 border-b border-surface-container-low text-secondary font-medium text-xs uppercase tracking-wider">
+<th class="py-3.5 px-md whitespace-nowrap">ID Permintaan</th>
+<th class="py-3.5 px-md whitespace-nowrap">Judul Permintaan</th>
+<th class="py-3.5 px-md whitespace-nowrap">Layanan</th>
+<th class="py-3.5 px-md whitespace-nowrap">Nama Pengaju</th>
+<th class="py-3.5 px-md whitespace-nowrap">Bagian</th>
+<th class="py-3.5 px-md whitespace-nowrap">Plant</th>
+<th class="py-3.5 px-md whitespace-nowrap">Lantai</th>
+<th class="py-3.5 px-md whitespace-nowrap">Tanggal Pengajuan</th>
+<th class="py-3.5 px-md whitespace-nowrap">Tanggal Selesai</th>
+<th class="py-3.5 px-md whitespace-nowrap">Status</th>
+<th class="py-3.5 px-md whitespace-nowrap text-right">Aksi</th>
+</tr></thead>
+<tbody class="divide-y divide-surface-container-low text-[13px] font-normal" id="table-body"><!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors" data-location="Plant 2" data-section="Assembly" data-service="Perbaikan Fasilitas" data-status="Selesai">
+<td class="py-3.5 px-md font-semibold text-primary whitespace-nowrap">REQ-2026-00124</td>
+<td class="py-3.5 px-md font-medium text-slate-900 max-w-xs">
+<span class="line-clamp-1">Perbaikan AC Ruang Assembly</span>
+</td>
+<td class="py-3.5 px-md text-on-surface-variant whitespace-nowrap">Perbaikan Fasilitas</td>
+<td class="py-3.5 px-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[10px]">AF</div>
+<span class="text-on-surface font-medium">Ahmad Fauzi</span>
+</div>
+</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Assembly</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Plant 2</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Lantai 2</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">23 Agustus 2026, 08:24 WIB</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">24 Agustus 2026, 14:35 WIB</td>
+<td class="py-3.5 px-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-surface-container-high text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+Selesai
+</span>
+</td>
+<td class="py-3.5 px-md text-right whitespace-nowrap">
+<button class="btn-open-detail px-3 py-1 rounded-lg text-xs font-semibold bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button" onclick="document.getElementById('detail-modal').classList.remove('hidden')">
+Detail
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors" data-location="Plant 1" data-section="Assembly" data-service="Peralatan &amp; Perlengkapan" data-status="Selesai">
+<td class="py-3.5 px-md font-semibold text-primary whitespace-nowrap">REQ-2026-00121</td>
+<td class="py-3.5 px-md font-medium text-slate-900 max-w-xs">
+<span class="line-clamp-1">Permintaan Perlengkapan Kerja</span>
+</td>
+<td class="py-3.5 px-md text-on-surface-variant whitespace-nowrap">Peralatan &amp; Perlengkapan</td>
+<td class="py-3.5 px-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[10px]">RP</div>
+<span class="text-on-surface font-medium">Rizky Pratama</span>
+</div>
+</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Assembly</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Plant 1</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Lantai 1</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">22 Agustus 2026, 09:15 WIB</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">23 Agustus 2026, 15:20 WIB</td>
+<td class="py-3.5 px-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-surface-container-high text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+Selesai
+</span>
+</td>
+<td class="py-3.5 px-md text-right whitespace-nowrap">
+<button class="btn-open-detail px-3 py-1 rounded-lg text-xs font-semibold bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button" onclick="document.getElementById('detail-modal').classList.remove('hidden')">
+Detail
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors" data-location="Plant 3" data-section="GA" data-service="Fasilitas &amp; Gedung" data-status="Selesai">
+<td class="py-3.5 px-md font-semibold text-primary whitespace-nowrap">REQ-2026-00118</td>
+<td class="py-3.5 px-md font-medium text-slate-900 max-w-xs">
+<span class="line-clamp-1">Perbaikan Lampu Ruangan</span>
+</td>
+<td class="py-3.5 px-md text-on-surface-variant whitespace-nowrap">Fasilitas &amp; Gedung</td>
+<td class="py-3.5 px-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[10px]">SR</div>
+<span class="text-on-surface font-medium">Siti Rahma</span>
+</div>
+</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">GA</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Plant 3</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Lantai 2</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">21 Agustus 2026, 10:05 WIB</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">22 Agustus 2026, 13:40 WIB</td>
+<td class="py-3.5 px-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-surface-container-high text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+Selesai
+</span>
+</td>
+<td class="py-3.5 px-md text-right whitespace-nowrap">
+<button class="btn-open-detail px-3 py-1 rounded-lg text-xs font-semibold bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button" onclick="document.getElementById('detail-modal').classList.remove('hidden')">
+Detail
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors" data-location="Plant 2" data-section="IS" data-service="Dukungan Sistem" data-status="Selesai">
+<td class="py-3.5 px-md font-semibold text-primary whitespace-nowrap">REQ-2026-00115</td>
+<td class="py-3.5 px-md font-medium text-slate-900 max-w-xs">
+<span class="line-clamp-1">Permintaan Akses Sistem</span>
+</td>
+<td class="py-3.5 px-md text-on-surface-variant whitespace-nowrap">Dukungan Sistem</td>
+<td class="py-3.5 px-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[10px]">BS</div>
+<span class="text-on-surface font-medium">Budi Santoso</span>
+</div>
+</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">IS</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Plant 2</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Lantai 3</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">20 Agustus 2026, 11:20 WIB</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">21 Agustus 2026, 09:45 WIB</td>
+<td class="py-3.5 px-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-surface-container-high text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+Selesai
+</span>
+</td>
+<td class="py-3.5 px-md text-right whitespace-nowrap">
+<button class="btn-open-detail px-3 py-1 rounded-lg text-xs font-semibold bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button" onclick="document.getElementById('detail-modal').classList.remove('hidden')">
+Detail
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors" data-location="Plant 1" data-section="PE" data-service="Dukungan IT" data-status="Selesai">
+<td class="py-3.5 px-md font-semibold text-primary whitespace-nowrap">REQ-2026-00110</td>
+<td class="py-3.5 px-md font-medium text-slate-900 max-w-xs">
+<span class="line-clamp-1">Penggantian Keyboard &amp; Mouse</span>
+</td>
+<td class="py-3.5 px-md text-on-surface-variant whitespace-nowrap">Dukungan IT</td>
+<td class="py-3.5 px-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[10px]">DA</div>
+<span class="text-on-surface font-medium">Dimas Anggara</span>
+</div>
+</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">PE</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Plant 1</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Lantai 2</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">19 Agustus 2026, 13:10 WIB</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">20 Agustus 2026, 16:00 WIB</td>
+<td class="py-3.5 px-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-surface-container-high text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+Selesai
+</span>
+</td>
+<td class="py-3.5 px-md text-right whitespace-nowrap">
+<button class="btn-open-detail px-3 py-1 rounded-lg text-xs font-semibold bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button" onclick="document.getElementById('detail-modal').classList.remove('hidden')">
+Detail
+</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors" data-location="Plant 2" data-section="Assembly" data-service="Otomasi Industri" data-status="Selesai">
+<td class="py-3.5 px-md font-semibold text-primary whitespace-nowrap">REQ-2026-00104</td>
+<td class="py-3.5 px-md font-medium text-slate-900 max-w-xs">
+<span class="line-clamp-1">Kalibrasi Sensor Suhu</span>
+</td>
+<td class="py-3.5 px-md text-on-surface-variant whitespace-nowrap">Otomasi Industri</td>
+<td class="py-3.5 px-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[10px]">KT</div>
+<span class="text-on-surface font-medium">Kevin Tandio</span>
+</div>
+</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Assembly</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Plant 2</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Lantai 1</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">18 Agustus 2026, 08:30 WIB</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">19 Agustus 2026, 11:15 WIB</td>
+<td class="py-3.5 px-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-surface-container-high text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+Selesai
+</span>
+</td>
+<td class="py-3.5 px-md text-right whitespace-nowrap">
+<button class="btn-open-detail px-3 py-1 rounded-lg text-xs font-semibold bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button" onclick="document.getElementById('detail-modal').classList.remove('hidden')">
+Detail
+</button>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors" data-location="Plant 1" data-section="PE" data-service="Perangkat Lunak" data-status="Selesai">
+<td class="py-3.5 px-md font-semibold text-primary whitespace-nowrap">REQ-2026-00098</td>
+<td class="py-3.5 px-md font-medium text-slate-900 max-w-xs">
+<span class="line-clamp-1">Instalasi Lisensi CAD CAM</span>
+</td>
+<td class="py-3.5 px-md text-on-surface-variant whitespace-nowrap">Perangkat Lunak</td>
+<td class="py-3.5 px-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[10px]">RT</div>
+<span class="text-on-surface font-medium">Rian Triadi</span>
+</div>
+</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">PE</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Plant 1</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Lantai 3</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">17 Agustus 2026, 10:00 WIB</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">18 Agustus 2026, 14:20 WIB</td>
+<td class="py-3.5 px-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-surface-container-high text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+Selesai
+</span>
+</td>
+<td class="py-3.5 px-md text-right whitespace-nowrap">
+<button class="btn-open-detail px-3 py-1 rounded-lg text-xs font-semibold bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button" onclick="document.getElementById('detail-modal').classList.remove('hidden')">
+Detail
+</button>
+</td>
+</tr>
+<!-- Row 8 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors" data-location="Plant 1" data-section="GA" data-service="Pengadaan Perangkat" data-status="Selesai">
+<td class="py-3.5 px-md font-semibold text-primary whitespace-nowrap">REQ-2026-00092</td>
+<td class="py-3.5 px-md font-medium text-slate-900 max-w-xs">
+<span class="line-clamp-1">Pengadaan Kursi Ergonomis</span>
+</td>
+<td class="py-3.5 px-md text-on-surface-variant whitespace-nowrap">Pengadaan Perangkat</td>
+<td class="py-3.5 px-md whitespace-nowrap">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[10px]">BS</div>
+<span class="text-on-surface font-medium">Bagus Santiko</span>
+</div>
+</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">GA</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Plant 1</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap">Lantai 1</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">16 Agustus 2026, 09:00 WIB</td>
+<td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">17 Agustus 2026, 15:30 WIB</td>
+<td class="py-3.5 px-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-surface-container-high text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+Selesai
+</span>
+</td>
+<td class="py-3.5 px-md text-right whitespace-nowrap">
+<button class="btn-open-detail px-3 py-1 rounded-lg text-xs font-semibold bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button" onclick="document.getElementById('detail-modal').classList.remove('hidden')">
+Detail
+</button>
+</td>
+</tr></tbody>
+</table>
+</div>
+<!-- Table Pagination & Count Footer -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-sm px-md py-3.5 bg-surface-container-lowest border-t border-surface-container-low">
+<span class="text-xs text-secondary font-medium" id="showing-indicator">Menampilkan 1–8 dari 11 permintaan</span>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded-lg text-xs text-secondary font-medium hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button">
+              ← Sebelumnya
+            </button>
+<button class="w-7 h-7 rounded-lg text-xs font-bold bg-primary text-on-primary flex items-center justify-center shadow-xs" type="button">
+              1
+            </button>
+<button class="w-7 h-7 rounded-lg text-xs font-medium text-secondary hover:bg-surface-container-low hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+              2
+            </button>
+<button class="px-2.5 py-1 rounded-lg text-xs text-secondary font-medium hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button">
+              Selanjutnya →
+            </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+      (function() {
+        const searchInput = document.getElementById('filter-search');
+        const selectStatus = document.getElementById('select-status');
+        const selectService = document.getElementById('select-service');
+        const selectSection = document.getElementById('select-section');
+        const selectPlant = document.getElementById('select-plant');
+        const resetBtn = document.getElementById('btn-reset-filter');
+        const tableRows = document.querySelectorAll('#table-body tr');
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const showingIndicator = document.getElementById('showing-indicator');
+
+        let currentTab = 'all';
+
+        function filterTable() {
+          const searchVal = (searchInput?.value || '').toLowerCase().trim();
+          const statusVal = selectStatus?.value || '';
+          const serviceVal = selectService?.value || '';
+          const sectionVal = selectSection?.value || '';
+          const plantVal = selectPlant?.value || '';
+
+          let visibleCount = 0;
+
+          tableRows.forEach(row => {
+            const rowStatus = row.getAttribute('data-status') || '';
+            const rowService = row.getAttribute('data-service') || '';
+            const rowSection = row.getAttribute('data-section') || '';
+            const rowLocation = row.getAttribute('data-location') || '';
+            const rowText = row.innerText.toLowerCase();
+
+            let matchesTab = true;
+            if (currentTab === 'processing' && rowStatus !== 'Sedang Diproses') matchesTab = false;
+            if (currentTab === 'completed' && rowStatus !== 'Selesai') matchesTab = false;
+            if (currentTab === 'rejected' && rowStatus !== 'Ditolak') matchesTab = false;
+
+            const matchesSearch = !searchVal || rowText.includes(searchVal);
+            const matchesStatus = !statusVal || rowStatus === statusVal;
+            const matchesService = !serviceVal || rowService === serviceVal;
+            const matchesSection = !sectionVal || rowSection === sectionVal;
+            const matchesPlant = !plantVal || rowLocation.includes(plantVal);
+
+            if (matchesTab && matchesSearch && matchesStatus && matchesService && matchesSection && matchesPlant) {
+              row.style.display = '';
+              visibleCount++;
+            } else {
+              row.style.display = 'none';
+            }
+          });
+
+          if (showingIndicator) {
+            showingIndicator.innerText = 'Menampilkan 1–' + visibleCount + ' dari 18 permintaan';
+          }
+        }
+
+        tabButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            tabButtons.forEach(b => {
+              b.classList.remove('bg-primary-container', 'text-on-primary');
+              b.classList.add('bg-surface-container-lowest', 'text-secondary');
+            });
+            btn.classList.add('bg-primary-container', 'text-on-primary');
+            btn.classList.remove('bg-surface-container-lowest', 'text-secondary');
+
+            currentTab = btn.getAttribute('data-tab');
+            filterTable();
+          });
+        });
+
+        [searchInput, selectStatus, selectService, selectSection, selectPlant].forEach(el => {
+          if (el) {
+            el.addEventListener('input', filterTable);
+            el.addEventListener('change', filterTable);
+          }
+        });
+
+        if (resetBtn) {
+          resetBtn.addEventListener('click', () => {
+            if (searchInput) searchInput.value = '';
+            if (selectStatus) selectStatus.value = '';
+            if (selectService) selectService.value = '';
+            if (selectSection) selectSection.value = '';
+            if (selectPlant) selectPlant.value = '';
+            currentTab = 'all';
+            tabButtons.forEach((b, idx) => {
+              if (idx === 0) {
+                b.classList.add('bg-primary-container', 'text-on-primary');
+                b.classList.remove('bg-surface-container-lowest', 'text-secondary');
+              } else {
+                b.classList.remove('bg-primary-container', 'text-on-primary');
+                b.classList.add('bg-surface-container-lowest', 'text-secondary');
+              }
+            });
+            filterTable();
+          });
+        }
+      })();
+    </script>
+<!-- Detail Modal (Read-Only Completed State) -->
+<div class="fixed inset-0 bg-inverse-surface/40 backdrop-blur-xs z-50 flex items-center justify-center p-md hidden" id="detail-modal">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-surface-container-low max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden">
+<!-- Modal Header -->
+<div class="flex items-center justify-between px-lg py-md border-b border-surface-container-low bg-surface-container-lowest">
+<div class="flex items-center gap-sm">
+<span class="font-semibold text-[16px] text-on-surface">Detail Permintaan Selesai</span>
+<span class="text-xs font-semibold text-primary px-2 py-0.5 rounded-md bg-secondary-container">REQ-2026-00124</span>
+</div>
+<button class="p-1 text-secondary hover:text-on-surface rounded-lg hover:bg-surface-container-low transition-colors" onclick="document.getElementById('detail-modal').classList.add('hidden')" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Modal Body -->
+<div class="p-lg overflow-y-auto flex flex-col gap-md text-xs">
+<!-- Status Banner -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container border border-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<div>
+<div class="font-semibold text-on-surface text-[13px]">Permintaan Telah Selesai Ditangani</div>
+<div class="text-secondary text-[11px]">Selesai pada 24 Agustus 2026, 14:35 WIB</div>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-surface-container-high text-secondary">Selesai</span>
+</div>
+<!-- Request Info Grid -->
+<div class="grid grid-cols-2 gap-md p-md bg-surface-container-low rounded-lg">
+<div>
+<span class="text-secondary text-[11px] block">Judul Permintaan</span>
+<span class="font-semibold text-on-surface text-[13px]">Perbaikan AC Ruang Assembly</span>
+</div>
+<div>
+<span class="text-secondary text-[11px] block">Layanan</span>
+<span class="font-medium text-on-surface">Perbaikan Fasilitas</span>
+</div>
+<div>
+<span class="text-secondary text-[11px] block">Pengaju / Bagian</span>
+<span class="font-medium text-on-surface">Ahmad Fauzi · Assembly</span>
+</div>
+<div>
+<span class="text-secondary text-[11px] block">Lokasi</span>
+<span class="font-medium text-on-surface">Plant 2 · Lantai 2</span>
+</div>
+<div>
+<span class="text-secondary text-[11px] block">Tanggal Pengajuan</span>
+<span class="font-medium text-on-surface">23 Agustus 2026, 08:24 WIB</span>
+</div>
+<div>
+<span class="text-secondary text-[11px] block">Tanggal Selesai</span>
+<span class="font-medium text-on-surface">24 Agustus 2026, 14:35 WIB</span>
+</div>
+</div>
+<!-- Description -->
+<div>
+<span class="font-semibold text-on-surface block mb-1">Deskripsi Permintaan:</span>
+<p class="text-on-surface-variant bg-surface-container-low p-3 rounded-lg leading-relaxed">Unit AC sentral di ruang perakitan line 2 mengalami kendala penurunan daya pendingin dan terdapat kebisingan pada kompresor unit outdoor.</p>
+</div>
+<!-- Completion Note & PIC Info -->
+<div class="border-t border-surface-container-low pt-3">
+<span class="font-semibold text-on-surface block mb-1">Catatan Penyelesaian PIC:</span>
+<div class="bg-surface-container-low p-3 rounded-lg flex flex-col gap-1.5">
+<p class="text-on-surface leading-relaxed">Pekerjaan perbaikan selesai dilakukan sesuai prosedur operasional standar dan telah diverifikasi oleh pemohon.</p>
+<div class="flex items-center justify-between text-[11px] text-secondary mt-1 pt-1.5 border-t border-surface-container-high">
+<span class="">Diselesaikan oleh: <strong class="text-on-surface font-semibold">Budi Santoso - PIC Operations</strong></span>
+<span class="">24 Agustus 2026, 14:35 WIB</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal Footer (Read-only: only back/close) -->
+<div class="flex items-center justify-between px-lg py-3 bg-surface-container-low border-t border-surface-container-high">
+<span class="text-[11px] text-secondary">Mode Pratinjau · Arsip Selesai</span>
+<button class="px-4 py-2 bg-surface-container-lowest border border-surface-container-high text-on-surface font-medium text-xs rounded-lg hover:bg-surface-container-high transition-colors flex items-center gap-1.5 shadow-xs" onclick="document.getElementById('detail-modal').classList.add('hidden')" type="button">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span class="">← Kembali</span>
+</button>
+</div>
+</div>
+</div></main>
+<footer class="w-full bg-surface-container-lowest border-t border-surface-container-low py-4 px-lg mt-auto">
+<div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-sm text-secondary text-xs">
+<div class="">© 2026 Internal Service Management. PIC Operations Workspace.</div>
+<div class="flex items-center gap-md">
+<a class="hover:text-on-surface transition-colors" data-path="sla-guidelines" href="#">SLA Guidelines</a>
+<a class="hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a>
+<a class="hover:text-on-surface transition-colors" data-path="support" href="#">Support</a>
+</div>
+</div>
+</footer>
+</div>
+
+
+
+
+
+
+</body></html>

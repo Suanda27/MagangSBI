@@ -1,0 +1,1100 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "error": "#ba1a1a",
+        "surface-container-high": "#e6e8ea",
+        "surface-variant": "#e0e3e5",
+        "on-surface": "#191c1e",
+        "secondary-fixed": "#d3e4fe",
+        "surface-dim": "#d8dadc",
+        "on-tertiary-fixed-variant": "#3f465c",
+        "on-background": "#191c1e",
+        "on-tertiary-container": "#b4bbd5",
+        "on-secondary": "#ffffff",
+        "on-primary-fixed": "#001453",
+        "secondary": "#505f76",
+        "primary-container": "#1e40af",
+        "error-container": "#ffdad6",
+        "surface-bright": "#f7f9fb",
+        "inverse-on-surface": "#eff1f3",
+        "on-error-container": "#93000a",
+        "primary-fixed": "#dde1ff",
+        "primary-fixed-dim": "#b8c4ff",
+        "on-secondary-fixed-variant": "#38485d",
+        "on-primary-container": "#a8b8ff",
+        "surface": "#f7f9fb",
+        "background": "#f7f9fb",
+        "inverse-primary": "#b8c4ff",
+        "surface-tint": "#3755c3",
+        "secondary-fixed-dim": "#b7c8e1",
+        "on-primary": "#ffffff",
+        "tertiary-container": "#434b60",
+        "outline": "#757684",
+        "on-tertiary-fixed": "#131b2e",
+        "surface-container": "#eceef0",
+        "tertiary": "#2d3449",
+        "inverse-surface": "#2d3133",
+        "surface-container-low": "#f2f4f6",
+        "surface-container-highest": "#e0e3e5",
+        "on-primary-fixed-variant": "#173bab",
+        "secondary-container": "#d0e1fb",
+        "tertiary-fixed": "#dae2fd",
+        "on-error": "#ffffff",
+        "primary": "#00288e",
+        "on-secondary-container": "#54647a",
+        "on-tertiary": "#ffffff",
+        "tertiary-fixed-dim": "#bec6e0",
+        "surface-container-lowest": "#ffffff",
+        "outline-variant": "#c4c5d5",
+        "on-surface-variant": "#444653",
+        "on-secondary-fixed": "#0b1c30"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "lg": "24px",
+        "gutter": "20px",
+        "xs": "4px",
+        "base": "4px",
+        "sm": "8px",
+        "md": "16px",
+        "container-max": "1440px",
+        "xl": "32px"
+      },
+      "fontFamily": {
+        "caption": ["Inter"],
+        "label-md": ["Inter"],
+        "body-lg": ["Inter"],
+        "body-md": ["Inter"],
+        "display": ["Inter"],
+        "headline-md": ["Inter"],
+        "headline-lg": ["Inter"]
+      },
+      "fontSize": {
+        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+        "display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+      }
+    }
+  }
+}</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-16 px-md flex items-center gap-sm"><div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[20px]">verified_user</span></div><div class="flex flex-col min-w-0"><span class="font-headline-md text-headline-md leading-none text-primary font-bold tracking-tight truncate">ISM System</span><span class="font-caption text-caption text-secondary truncate mt-xs">Internal Service</span></div></div><nav class="flex flex-col gap-xs px-md py-sm flex-1" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Dashboard</span></a><div class="pt-md pb-xs px-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">MASTER DATA</span></div><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="karyawan" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span>Karyawan</span></a><a aria-current="page" class="flex items-center gap-sm px-md py-sm rounded-lg transition-colors bg-primary-container text-on-primary font-semibold shadow-sm" data-path="section" href="#"><span class="material-symbols-outlined text-[20px]">layers</span><span>Section</span></a><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="layanan" href="#"><span class="material-symbols-outlined text-[20px]">settings_suggest</span><span>Layanan</span></a><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="pic" href="#"><span class="material-symbols-outlined text-[20px]">how_to_reg</span><span>PIC</span></a><div class="pt-md pb-xs px-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">PERMINTAAN</span></div><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="semua-permintaan" href="#"><span class="material-symbols-outlined text-[20px]">description</span><span>Semua Permintaan</span></a><div class="pt-md pb-xs px-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">ANALISIS</span></div><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="laporan" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span>Laporan</span></a></nav></div><div class="p-md flex flex-col gap-xs bg-surface-container-lowest"><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a><a class="flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md text-error hover:bg-error-container hover:text-on-error-container transition-colors" data-path="logout" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span>Logout</span></a></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-lg"><nav aria-label="Breadcrumb" class="flex items-center gap-xs font-body-md text-body-md"><span class="text-secondary">Portal</span><span class="material-symbols-outlined text-secondary text-[16px]">chevron_right</span><span class="text-secondary">Console</span><span class="material-symbols-outlined text-secondary text-[16px]">chevron_right</span><span class="text-secondary">Master Data</span><span class="material-symbols-outlined text-secondary text-[16px]">chevron_right</span><span class="font-semibold text-on-surface">Section</span></nav><div class="flex items-center gap-lg"><div class="relative flex items-center"><span class="material-symbols-outlined text-secondary absolute left-3 text-[20px]">search</span><input class="w-72 pl-10 pr-4 py-1.5 bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface placeholder:text-secondary outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary transition-all" placeholder="Cari NIK, ID, nama..." type="text"></div><button class="relative p-2 rounded-lg text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-sm pl-2 cursor-pointer"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-[13px]">AD</div><div class="flex flex-col text-left"><span class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Admin ISM</span><span class="font-caption text-caption text-secondary leading-tight">(Administrator)</span></div><span class="material-symbols-outlined text-secondary text-[18px]">expand_more</span></div></div></header><main class="w-full pt-16 flex-1 bg-surface"><div class="max-w-container-max mx-auto p-lg"><div class="flex flex-col w-full">
+<!-- Interactive Toast Notification -->
+<div class="fixed top-20 right-6 z-50 flex items-center gap-sm px-md py-sm bg-surface-container-lowest shadow-xl rounded-lg transition-all duration-300 translate-y-[-120%] opacity-0 pointer-events-none" id="toastNotification">
+<div class="w-7 h-7 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+<div class="flex flex-col pr-sm">
+<span class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Laporan berhasil diekspor</span>
+<span class="font-caption text-caption text-secondary">File laporan ISM_Report_30d.xlsx siap dibuka.</span>
+</div>
+<button class="text-secondary hover:text-on-surface p-1" onclick="hideToast()">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md pb-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-sm">
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">Laporan</h1>
+<span class="font-label-md text-label-md px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container">Live Metric</span>
+</div>
+<p class="font-body-md text-body-md text-secondary mt-xs">Analisis komprehensif dan ringkasan distribusi data permintaan layanan internal.</p>
+</div>
+<!-- Header Actions -->
+<div class="flex items-center gap-sm flex-wrap">
+<button class="flex items-center gap-xs px-md py-2 bg-surface-container-lowest hover:bg-surface-container-low text-on-surface-variant font-label-md text-label-md rounded-lg shadow-sm transition-all" id="btnRefresh" onclick="triggerRefreshAnimation()">
+<span class="material-symbols-outlined text-[18px]" id="refreshIcon">refresh</span>
+<span>Perbarui Data</span>
+</button>
+<button class="flex items-center gap-xs px-md py-2 bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md rounded-lg shadow-sm transition-all" onclick="toggleModal(true)">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export Laporan</span>
+</button>
+</div>
+</div>
+<!-- Filter Toolbar -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-md mb-lg">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-md">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-sm flex-1">
+<!-- Filter: Periode -->
+<div class="flex flex-col gap-xs">
+<label class="font-caption text-caption text-secondary font-medium">Periode</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-[18px] text-secondary pointer-events-none">calendar_month</span>
+<select class="w-full pl-8 pr-8 py-1.5 bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg appearance-none cursor-pointer focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary outline-none transition-all">
+<option>30 Hari Terakhir</option>
+<option>Hari Ini</option>
+<option>7 Hari Terakhir</option>
+<option>Bulan Ini</option>
+<option>Bulan Lalu</option>
+<option>Tahun Ini</option>
+<option>Custom Rentang</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 text-[18px] text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Filter: Section -->
+<div class="flex flex-col gap-xs">
+<label class="font-caption text-caption text-secondary font-medium">Section</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-[18px] text-secondary pointer-events-none">domain</span>
+<select class="w-full pl-8 pr-8 py-1.5 bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg appearance-none cursor-pointer focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary outline-none transition-all">
+<option>Semua Section</option>
+<option>Assembly (ASM)</option>
+<option>Human Resources (HR)</option>
+<option>Information System (IS)</option>
+<option>Production Eng (PE)</option>
+<option>General Affairs (GA)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 text-[18px] text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Filter: Plant -->
+<div class="flex flex-col gap-xs">
+<label class="font-caption text-caption text-secondary font-medium">Plant Fasilitas</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-[18px] text-secondary pointer-events-none">factory</span>
+<select class="w-full pl-8 pr-8 py-1.5 bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg appearance-none cursor-pointer focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary outline-none transition-all">
+<option>Semua Plant</option>
+<option>Plant 1 - Karawang</option>
+<option>Plant 2 - Cikarang</option>
+<option>Plant 3 - Sunter</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 text-[18px] text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Filter: Status -->
+<div class="flex flex-col gap-xs">
+<label class="font-caption text-caption text-secondary font-medium">Status Pengajuan</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-[18px] text-secondary pointer-events-none">tune</span>
+<select class="w-full pl-8 pr-8 py-1.5 bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg appearance-none cursor-pointer focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary outline-none transition-all">
+<option>Semua Status</option>
+<option>Menunggu Pemeriksaan</option>
+<option>Sedang Diproses</option>
+<option>Selesai</option>
+<option>Ditolak</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 text-[18px] text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Action & Metadata Timestamp -->
+<div class="flex lg:flex-col items-end justify-between lg:justify-center gap-xs pt-2 lg:pt-0 pl-0 lg:pl-md">
+<button class="flex items-center gap-xs text-secondary hover:text-primary font-caption text-caption font-semibold py-1 px-2 rounded hover:bg-surface-container-low transition-colors" onclick="resetFilters()">
+<span class="material-symbols-outlined text-[16px]">filter_alt_off</span>
+<span>Reset Filter</span>
+</button>
+<div class="flex items-center gap-1.5 text-secondary font-caption text-caption">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span>Update: Hari ini, 14:30 WIB</span>
+</div>
+</div>
+</div>
+</section>
+<!-- VIEW CONTAINER: Normal Data Mode -->
+<div class="flex flex-col w-full" id="analyticsMainView">
+<!-- Summary Metrics Cards -->
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md mb-lg">
+<!-- Metric 1: Total Permintaan -->
+<div class="p-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Total Permintaan</span>
+<span class="font-display text-display text-on-surface font-bold mt-1">128</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">description</span>
+</div>
+</div>
+<div class="mt-md pt-sm flex items-center justify-between">
+<span class="font-caption text-caption text-secondary">Seluruh permintaan periode ini</span>
+<span class="font-caption text-caption font-semibold text-primary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +14.2%
+          </span>
+</div>
+</div>
+<!-- Metric 2: Sedang Diproses -->
+<div class="p-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Sedang Diproses</span>
+<span class="font-display text-display text-primary font-bold mt-1">34</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">hourglass_top</span>
+</div>
+</div>
+<div class="mt-md pt-sm flex items-center justify-between">
+<span class="font-caption text-caption text-secondary">Dalam penanganan PIC</span>
+<span class="font-label-md text-label-md px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant">26.5% Antrean</span>
+</div>
+</div>
+<!-- Metric 3: Selesai -->
+<div class="p-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Selesai</span>
+<span class="font-display text-display text-on-surface font-bold mt-1">68</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">check_circle</span>
+</div>
+</div>
+<div class="mt-md pt-sm flex items-center justify-between">
+<span class="font-caption text-caption text-secondary">Telah terselesaikan</span>
+<span class="font-label-md text-label-md px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 font-semibold">53.1% Selesai</span>
+</div>
+</div>
+<!-- Metric 4: Ditolak -->
+<div class="p-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Ditolak</span>
+<span class="font-display text-display text-error font-bold mt-1">14</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">cancel</span>
+</div>
+</div>
+<div class="mt-md pt-sm flex items-center justify-between">
+<span class="font-caption text-caption text-secondary">Tidak valid / duplikat</span>
+<span class="font-label-md text-label-md px-2 py-0.5 rounded-full bg-error-container text-on-error-container">10.9% Tolak</span>
+</div>
+</div>
+</section>
+<!-- CHARTS ROW 1: Trends & Distribution Donut -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-md mb-lg">
+<!-- Area / Line Trend Chart (8 cols) -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-xl shadow-sm p-md flex flex-col justify-between">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-sm pb-md">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Tren Permintaan</h2>
+<p class="font-caption text-caption text-secondary">Volume pengajuan dan penyelesaian permintaan 6 pekan terakhir.</p>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-xs">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span>
+<span class="font-caption text-caption text-secondary font-medium">Permintaan Masuk</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="w-3 h-3 rounded-full bg-emerald-600"></span>
+<span class="font-caption text-caption text-secondary font-medium">Permintaan Selesai</span>
+</div>
+</div>
+</div>
+<!-- Inline SVG Area Chart -->
+<div class="relative w-full h-64 mt-2">
+<svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 700 240">
+<defs>
+<linearGradient id="gradientIncoming" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#1e40af" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#1e40af" stop-opacity="0.0"></stop>
+</linearGradient>
+<linearGradient id="gradientCompleted" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#059669" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#059669" stop-opacity="0.0"></stop>
+</linearGradient>
+</defs>
+<!-- Dashed Grid Lines -->
+<line stroke="#eceef0" stroke-dasharray="4 4" stroke-width="1" x1="30" x2="680" y1="20" y2="20"></line>
+<line stroke="#eceef0" stroke-dasharray="4 4" stroke-width="1" x1="30" x2="680" y1="70" y2="70"></line>
+<line stroke="#eceef0" stroke-dasharray="4 4" stroke-width="1" x1="30" x2="680" y1="120" y2="120"></line>
+<line stroke="#eceef0" stroke-dasharray="4 4" stroke-width="1" x1="30" x2="680" y1="170" y2="170"></line>
+<line stroke="#e0e3e5" stroke-width="1" x1="30" x2="680" y1="210" y2="210"></line>
+<!-- Y-Axis Labels -->
+<text class="text-[10px] fill-secondary font-sans" x="5" y="24">45</text>
+<text class="text-[10px] fill-secondary font-sans" x="5" y="74">30</text>
+<text class="text-[10px] fill-secondary font-sans" x="5" y="124">20</text>
+<text class="text-[10px] fill-secondary font-sans" x="5" y="174">10</text>
+<text class="text-[10px] fill-secondary font-sans" x="12" y="214">0</text>
+<!-- Area & Line: Permintaan Selesai (W1:16, W2:22, W3:21, W4:29, W5:31, W6:26) -->
+<path d="M 60 148 L 180 118 L 300 122 L 420 84 L 540 76 L 660 100 L 660 210 L 60 210 Z" fill="url(#gradientCompleted)"></path>
+<path d="M 60 148 L 180 118 L 300 122 L 420 84 L 540 76 L 660 100" fill="none" stroke="#059669" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<!-- Area & Line: Permintaan Masuk (W1:22, W2:31, W3:28, W4:35, W5:40, W6:32) -->
+<path d="M 60 118 L 180 72 L 300 86 L 420 54 L 540 32 L 660 68 L 660 210 L 60 210 Z" fill="url(#gradientIncoming)"></path>
+<path d="M 60 118 L 180 72 L 300 86 L 420 54 L 540 32 L 660 68" fill="none" stroke="#1e40af" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<!-- Coordinate Points: Masuk -->
+<circle cx="60" cy="118" fill="#ffffff" r="4.5" stroke="#1e40af" stroke-width="2"></circle>
+<circle cx="180" cy="72" fill="#ffffff" r="4.5" stroke="#1e40af" stroke-width="2"></circle>
+<circle cx="300" cy="86" fill="#ffffff" r="4.5" stroke="#1e40af" stroke-width="2"></circle>
+<circle cx="420" cy="54" fill="#ffffff" r="4.5" stroke="#1e40af" stroke-width="2"></circle>
+<circle cx="540" cy="32" fill="#ffffff" r="4.5" stroke="#1e40af" stroke-width="2"></circle>
+<circle cx="660" cy="68" fill="#ffffff" r="4.5" stroke="#1e40af" stroke-width="2"></circle>
+<!-- Coordinate Points: Selesai -->
+<circle cx="60" cy="148" fill="#ffffff" r="3.5" stroke="#059669" stroke-width="2"></circle>
+<circle cx="180" cy="118" fill="#ffffff" r="3.5" stroke="#059669" stroke-width="2"></circle>
+<circle cx="300" cy="122" fill="#ffffff" r="3.5" stroke="#059669" stroke-width="2"></circle>
+<circle cx="420" cy="84" fill="#ffffff" r="3.5" stroke="#059669" stroke-width="2"></circle>
+<circle cx="540" cy="76" fill="#ffffff" r="3.5" stroke="#059669" stroke-width="2"></circle>
+<circle cx="660" cy="100" fill="#ffffff" r="3.5" stroke="#059669" stroke-width="2"></circle>
+<!-- Peak Indicator Badge -->
+<rect fill="#00288e" height="18" rx="4" width="50" x="515" y="10"></rect>
+<text class="text-[10px] fill-white font-semibold" text-anchor="middle" x="540" y="22">W5: 40</text>
+<!-- X-Axis Labels -->
+<text class="text-[11px] fill-secondary font-medium" text-anchor="middle" x="60" y="228">Minggu 1</text>
+<text class="text-[11px] fill-secondary font-medium" text-anchor="middle" x="180" y="228">Minggu 2</text>
+<text class="text-[11px] fill-secondary font-medium" text-anchor="middle" x="300" y="228">Minggu 3</text>
+<text class="text-[11px] fill-secondary font-medium" text-anchor="middle" x="420" y="228">Minggu 4</text>
+<text class="text-[11px] fill-secondary font-medium" text-anchor="middle" x="540" y="228">Minggu 5</text>
+<text class="text-[11px] fill-secondary font-medium" text-anchor="middle" x="660" y="228">Minggu 6</text>
+</svg>
+</div>
+</div>
+<!-- Donut Chart: Status Distribution (4 cols) -->
+<div class="lg:col-span-4 bg-surface-container-lowest rounded-xl shadow-sm p-md flex flex-col justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Berdasarkan Status</h2>
+<p class="font-caption text-caption text-secondary">Distribusi status pemrosesan tiket.</p>
+</div>
+<!-- SVG Donut Chart -->
+<div class="relative flex items-center justify-center my-md">
+<svg class="transform -rotate-90" height="190" viewBox="0 0 190 190" width="190">
+<!-- Radius 70, Circumference ~ 439.8 -->
+<!-- Background base circle -->
+<circle cx="95" cy="95" fill="transparent" r="70" stroke="#f2f4f6" stroke-width="24"></circle>
+<!-- Segment 1: Selesai 53.1% -> 233.5 -->
+<circle cx="95" cy="95" fill="transparent" r="70" stroke="#059669" stroke-dasharray="233.5 439.8" stroke-dashoffset="0" stroke-width="24"></circle>
+<!-- Segment 2: Sedang Diproses 26.5% -> 116.5 -->
+<circle cx="95" cy="95" fill="transparent" r="70" stroke="#1e40af" stroke-dasharray="116.5 439.8" stroke-dashoffset="-233.5" stroke-width="24"></circle>
+<!-- Segment 3: Ditolak 10.9% -> 47.9 -->
+<circle cx="95" cy="95" fill="transparent" r="70" stroke="#ba1a1a" stroke-dasharray="47.9 439.8" stroke-dashoffset="-350.0" stroke-width="24"></circle>
+<!-- Segment 4: Menunggu 9.4% -> 41.3 -->
+<circle cx="95" cy="95" fill="transparent" r="70" stroke="#d97706" stroke-dasharray="41.3 439.8" stroke-dashoffset="-397.9" stroke-width="24"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center pointer-events-none text-center">
+<span class="font-caption text-caption text-secondary uppercase font-semibold">Total</span>
+<span class="font-display text-[26px] leading-tight font-bold text-on-surface">128</span>
+<span class="font-caption text-caption text-secondary">Tiket</span>
+</div>
+</div>
+<!-- Legend with Metrics -->
+<div class="grid grid-cols-2 gap-sm pt-xs">
+<div class="p-2 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+<span class="font-caption text-caption text-on-surface font-medium">Selesai</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">68 <span class="text-secondary font-normal text-[11px]">(53%)</span></span>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="font-caption text-caption text-on-surface font-medium">Diproses</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">34 <span class="text-secondary font-normal text-[11px]">(27%)</span></span>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="font-caption text-caption text-on-surface font-medium">Ditolak</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">14 <span class="text-secondary font-normal text-[11px]">(11%)</span></span>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+<span class="font-caption text-caption text-on-surface font-medium">Menunggu</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">12 <span class="text-secondary font-normal text-[11px]">(9%)</span></span>
+</div>
+</div>
+</div>
+</section>
+<!-- CHARTS ROW 2: Section Breakdown & Plant Distribution -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-md mb-lg">
+<!-- Section Horizontal Bar Breakdown (6 cols) -->
+<div class="lg:col-span-6 bg-surface-container-lowest rounded-xl shadow-sm p-md flex flex-col justify-between">
+<div class="flex items-center justify-between pb-md">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Permintaan Berdasarkan Section</h2>
+<p class="font-caption text-caption text-secondary">Perbandingan total volume per unit operasional.</p>
+</div>
+<span class="font-label-md text-label-md px-2 py-0.5 rounded bg-surface-container-low text-secondary">5 Section</span>
+</div>
+<div class="flex flex-col gap-md my-auto pt-sm">
+<!-- Assembly -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between text-body-md">
+<div class="flex items-center gap-sm">
+<span class="font-label-md text-label-md text-primary font-bold">Assembly (ASM)</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-bold">42 tiket <span class="text-secondary font-normal text-[11px]">(32.8%)</span></span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container-low overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 85%;"></div>
+</div>
+</div>
+<!-- Production Engineering -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between text-body-md">
+<div class="flex items-center gap-sm">
+<span class="font-label-md text-label-md text-on-surface font-bold">Production Eng (PE)</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-bold">27 tiket <span class="text-secondary font-normal text-[11px]">(21.1%)</span></span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container-low overflow-hidden">
+<div class="h-full bg-primary-container rounded-full transition-all duration-500" style="width: 55%;"></div>
+</div>
+</div>
+<!-- Information System -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between text-body-md">
+<div class="flex items-center gap-sm">
+<span class="font-label-md text-label-md text-on-surface font-bold">Information System (IS)</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-bold">24 tiket <span class="text-secondary font-normal text-[11px]">(18.7%)</span></span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container-low overflow-hidden">
+<div class="h-full bg-surface-tint rounded-full transition-all duration-500" style="width: 48%;"></div>
+</div>
+</div>
+<!-- Human Resources -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between text-body-md">
+<div class="flex items-center gap-sm">
+<span class="font-label-md text-label-md text-on-surface font-bold">Human Resources (HR)</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-bold">18 tiket <span class="text-secondary font-normal text-[11px]">(14.1%)</span></span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container-low overflow-hidden">
+<div class="h-full bg-secondary rounded-full transition-all duration-500" style="width: 36%;"></div>
+</div>
+</div>
+<!-- General Affairs -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between text-body-md">
+<div class="flex items-center gap-sm">
+<span class="font-label-md text-label-md text-on-surface font-bold">General Affairs (GA)</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-bold">17 tiket <span class="text-secondary font-normal text-[11px]">(13.3%)</span></span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container-low overflow-hidden">
+<div class="h-full bg-secondary-fixed-dim rounded-full transition-all duration-500" style="width: 34%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Plant Summary Matrix Table (6 cols) -->
+<div class="lg:col-span-6 bg-surface-container-lowest rounded-xl shadow-sm p-md flex flex-col justify-between">
+<div class="flex items-center justify-between pb-md">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Permintaan Berdasarkan Plant</h2>
+<p class="font-caption text-caption text-secondary">Distribusi beban kerja berdasarkan lokasi fasilitas pabrik.</p>
+</div>
+<span class="font-label-md text-label-md px-2 py-0.5 rounded bg-surface-container-low text-secondary">3 Pabrik</span>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-md text-label-md">
+<th class="py-2.5 px-3 rounded-l-lg">LOKASI PLANT</th>
+<th class="py-2.5 px-2 text-center">TOTAL</th>
+<th class="py-2.5 px-2 text-center">DIPROSES</th>
+<th class="py-2.5 px-2 text-center">SELESAI</th>
+<th class="py-2.5 px-2 text-center">DITOLAK</th>
+<th class="py-2.5 px-3 text-right rounded-r-lg">EFEKTIVITAS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr class="hover:bg-surface-container-low transition-colors font-body-md text-body-md">
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">domain</span>
+<div>
+<div class="font-semibold text-on-surface">Plant 1</div>
+<div class="font-caption text-caption text-secondary">Karawang Center</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-2 text-center font-bold text-on-surface">48</td>
+<td class="py-3 px-2 text-center text-primary-container font-semibold">12</td>
+<td class="py-3 px-2 text-center text-emerald-700 font-semibold">27</td>
+<td class="py-3 px-2 text-center text-error font-medium">5</td>
+<td class="py-3 px-3 text-right">
+<span class="font-label-md text-label-md px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 font-semibold">56.2% Selesai</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors font-body-md text-body-md">
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">domain</span>
+<div>
+<div class="font-semibold text-on-surface">Plant 2</div>
+<div class="font-caption text-caption text-secondary">Cikarang Barat</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-2 text-center font-bold text-on-surface">44</td>
+<td class="py-3 px-2 text-center text-primary-container font-semibold">11</td>
+<td class="py-3 px-2 text-center text-emerald-700 font-semibold">24</td>
+<td class="py-3 px-2 text-center text-error font-medium">5</td>
+<td class="py-3 px-3 text-right">
+<span class="font-label-md text-label-md px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 font-semibold">54.5% Selesai</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors font-body-md text-body-md">
+<td class="py-3 px-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">domain</span>
+<div>
+<div class="font-semibold text-on-surface">Plant 3</div>
+<div class="font-caption text-caption text-secondary">Sunter Logistics</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-2 text-center font-bold text-on-surface">36</td>
+<td class="py-3 px-2 text-center text-primary-container font-semibold">11</td>
+<td class="py-3 px-2 text-center text-emerald-700 font-semibold">17</td>
+<td class="py-3 px-2 text-center text-error font-medium">4</td>
+<td class="py-3 px-3 text-right">
+<span class="font-label-md text-label-md px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 font-semibold">47.2% Selesai</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pt-2 flex items-center justify-between text-secondary font-caption text-caption">
+<span>*Seluruh plant aktif beroperasi normal</span>
+<span class="font-medium text-primary">3 Plant Tercatat</span>
+</div>
+</div>
+</section>
+<!-- DATA TABLE 1: Layanan Paling Banyak Diminta -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-md mb-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-sm pb-md">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Layanan Paling Banyak Diminta</h2>
+<p class="font-caption text-caption text-secondary">Katalog layanan dengan frekuensi permohonan tertinggi periode ini.</p>
+</div>
+<span class="font-label-md text-label-md px-2.5 py-1 rounded-lg bg-surface-container-low text-primary font-semibold self-start sm:self-auto">
+          Top 5 Layanan Teratas
+        </span>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-md text-label-md">
+<th class="py-3 px-4 rounded-l-lg">NAMA LAYANAN</th>
+<th class="py-3 px-3">SECTION</th>
+<th class="py-3 px-3 text-center">TOTAL DIMINTA</th>
+<th class="py-3 px-3 text-center">SELESAI</th>
+<th class="py-3 px-3 text-center">SEDANG DIPROSES</th>
+<th class="py-3 px-4 rounded-r-lg text-right">TINGKAT PENYELESAIAN</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors font-body-md text-body-md">
+<td class="py-3.5 px-4 font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">home_repair_service</span>
+<span>Perbaikan Fasilitas Gedung</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="font-label-md text-label-md px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-medium">GA</span>
+</td>
+<td class="py-3.5 px-3 text-center font-bold text-on-surface">32</td>
+<td class="py-3.5 px-3 text-center font-semibold text-emerald-700">24</td>
+<td class="py-3.5 px-3 text-center font-semibold text-primary">8</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-3">
+<div class="w-28 h-2 bg-surface-container-low rounded-full overflow-hidden hidden sm:block">
+<div class="h-full bg-emerald-600 rounded-full" style="width: 75%;"></div>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">75%</span>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors font-body-md text-body-md">
+<td class="py-3.5 px-4 font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">build</span>
+<span>Permintaan Alat Kerja Lapangan</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="font-label-md text-label-md px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-medium">ASM</span>
+</td>
+<td class="py-3.5 px-3 text-center font-bold text-on-surface">27</td>
+<td class="py-3.5 px-3 text-center font-semibold text-emerald-700">19</td>
+<td class="py-3.5 px-3 text-center font-semibold text-primary">8</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-3">
+<div class="w-28 h-2 bg-surface-container-low rounded-full overflow-hidden hidden sm:block">
+<div class="h-full bg-emerald-600 rounded-full" style="width: 70.3%;"></div>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">70%</span>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors font-body-md text-body-md">
+<td class="py-3.5 px-4 font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">article</span>
+<span>Dokumen &amp; Surat Keterangan Kerja</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="font-label-md text-label-md px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-medium">HR</span>
+</td>
+<td class="py-3.5 px-3 text-center font-bold text-on-surface">21</td>
+<td class="py-3.5 px-3 text-center font-semibold text-emerald-700">18</td>
+<td class="py-3.5 px-3 text-center font-semibold text-primary">3</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-3">
+<div class="w-28 h-2 bg-surface-container-low rounded-full overflow-hidden hidden sm:block">
+<div class="h-full bg-emerald-600 rounded-full" style="width: 85.7%;"></div>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">86%</span>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors font-body-md text-body-md">
+<td class="py-3.5 px-4 font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">key</span>
+<span>Permintaan Akses Sistem &amp; VPN</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="font-label-md text-label-md px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed-variant font-medium">IS</span>
+</td>
+<td class="py-3.5 px-3 text-center font-bold text-on-surface">18</td>
+<td class="py-3.5 px-3 text-center font-semibold text-emerald-700">12</td>
+<td class="py-3.5 px-3 text-center font-semibold text-primary">6</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-3">
+<div class="w-28 h-2 bg-surface-container-low rounded-full overflow-hidden hidden sm:block">
+<div class="h-full bg-emerald-600 rounded-full" style="width: 66.6%;"></div>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">67%</span>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors font-body-md text-body-md">
+<td class="py-3.5 px-4 font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">precision_manufacturing</span>
+<span>Permintaan Peralatan Kalibrasi</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="font-label-md text-label-md px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-medium">PE</span>
+</td>
+<td class="py-3.5 px-3 text-center font-bold text-on-surface">15</td>
+<td class="py-3.5 px-3 text-center font-semibold text-emerald-700">9</td>
+<td class="py-3.5 px-3 text-center font-semibold text-primary">6</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-3">
+<div class="w-28 h-2 bg-surface-container-low rounded-full overflow-hidden hidden sm:block">
+<div class="h-full bg-emerald-600 rounded-full" style="width: 60%;"></div>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">60%</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- DATA TABLE 2: Ringkasan Penanganan PIC -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-md mb-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-sm pb-md">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Ringkasan Penanganan PIC</h2>
+<p class="font-caption text-caption text-secondary">Monitoring volume penanganan tiket operasional per petugas aktif.</p>
+</div>
+<div class="flex items-center gap-xs font-caption text-caption text-secondary">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Beban operasional aktual</span>
+</div>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-md text-label-md">
+<th class="py-3 px-4 rounded-l-lg">NAMA PIC</th>
+<th class="py-3 px-3">SECTION</th>
+<th class="py-3 px-3 text-center">SEDANG DIPROSES</th>
+<th class="py-3 px-3 text-center">SELESAI</th>
+<th class="py-3 px-3 text-center">DITOLAK</th>
+<th class="py-3 px-3 text-center">TOTAL BEBAN</th>
+<th class="py-3 px-4 rounded-r-lg text-right">STATUS OPERASIONAL</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Row 1: Budi Santoso -->
+<tr class="hover:bg-surface-container-low transition-colors font-body-md text-body-md">
+<td class="py-3 px-4">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary font-semibold text-[12px] flex items-center justify-center">
+                    BS
+                  </div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface leading-tight">Budi Santoso</span>
+<span class="font-caption text-caption text-secondary leading-tight">NIK: 210882</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="font-caption text-caption font-medium text-secondary">Assembly</span>
+</td>
+<td class="py-3 px-3 text-center font-bold text-primary">5</td>
+<td class="py-3 px-3 text-center font-semibold text-emerald-700">18</td>
+<td class="py-3 px-3 text-center font-medium text-secondary">2</td>
+<td class="py-3 px-3 text-center font-bold text-on-surface">25</td>
+<td class="py-3 px-4 text-right">
+<span class="font-label-md text-label-md px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 font-semibold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Aktif
+                </span>
+</td>
+</tr>
+<!-- Row 2: Agus Setiawan -->
+<tr class="hover:bg-surface-container-low transition-colors font-body-md text-body-md">
+<td class="py-3 px-4">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary font-semibold text-[12px] flex items-center justify-center">
+                    AS
+                  </div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface leading-tight">Agus Setiawan</span>
+<span class="font-caption text-caption text-secondary leading-tight">NIK: 210450</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="font-caption text-caption font-medium text-secondary">Information System</span>
+</td>
+<td class="py-3 px-3 text-center font-bold text-primary">6</td>
+<td class="py-3 px-3 text-center font-semibold text-emerald-700">16</td>
+<td class="py-3 px-3 text-center font-medium text-secondary">2</td>
+<td class="py-3 px-3 text-center font-bold text-on-surface">24</td>
+<td class="py-3 px-4 text-right">
+<span class="font-label-md text-label-md px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 font-semibold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Aktif
+                </span>
+</td>
+</tr>
+<!-- Row 3: Siti Rahma -->
+<tr class="hover:bg-surface-container-low transition-colors font-body-md text-body-md">
+<td class="py-3 px-4">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-tertiary text-on-tertiary font-semibold text-[12px] flex items-center justify-center">
+                    SR
+                  </div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface leading-tight">Siti Rahma</span>
+<span class="font-caption text-caption text-secondary leading-tight">NIK: 210119</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="font-caption text-caption font-medium text-secondary">Human Resources</span>
+</td>
+<td class="py-3 px-3 text-center font-bold text-primary">3</td>
+<td class="py-3 px-3 text-center font-semibold text-emerald-700">14</td>
+<td class="py-3 px-3 text-center font-medium text-secondary">1</td>
+<td class="py-3 px-3 text-center font-bold text-on-surface">18</td>
+<td class="py-3 px-4 text-right">
+<span class="font-label-md text-label-md px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 font-semibold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Aktif
+                </span>
+</td>
+</tr>
+<!-- Row 4: Doni Prasetyo -->
+<tr class="hover:bg-surface-container-low transition-colors font-body-md text-body-md">
+<td class="py-3 px-4">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary font-semibold text-[12px] flex items-center justify-center">
+                    DP
+                  </div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface leading-tight">Doni Prasetyo</span>
+<span class="font-caption text-caption text-secondary leading-tight">NIK: 210943</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="font-caption text-caption font-medium text-secondary">Production Eng</span>
+</td>
+<td class="py-3 px-3 text-center font-bold text-primary">8</td>
+<td class="py-3 px-3 text-center font-semibold text-emerald-700">11</td>
+<td class="py-3 px-3 text-center font-medium text-secondary">3</td>
+<td class="py-3 px-3 text-center font-bold text-on-surface">22</td>
+<td class="py-3 px-4 text-right">
+<span class="font-label-md text-label-md px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 font-semibold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Aktif
+                </span>
+</td>
+</tr>
+<!-- Row 5: Hendra Wijaya -->
+<tr class="hover:bg-surface-container-low transition-colors font-body-md text-body-md">
+<td class="py-3 px-4">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-on-surface-variant text-surface font-semibold text-[12px] flex items-center justify-center">
+                    HW
+                  </div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface leading-tight">Hendra Wijaya</span>
+<span class="font-caption text-caption text-secondary leading-tight">NIK: 210332</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<span class="font-caption text-caption font-medium text-secondary">General Affairs</span>
+</td>
+<td class="py-3 px-3 text-center font-bold text-primary">4</td>
+<td class="py-3 px-3 text-center font-semibold text-emerald-700">9</td>
+<td class="py-3 px-3 text-center font-medium text-secondary">1</td>
+<td class="py-3 px-3 text-center font-bold text-on-surface">14</td>
+<td class="py-3 px-4 text-right">
+<span class="font-label-md text-label-md px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 font-semibold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Aktif
+                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- VIEW CONTAINER: Empty State (Initially Hidden) -->
+<div class="hidden flex flex-col items-center justify-center p-xl bg-surface-container-lowest rounded-xl shadow-sm my-lg text-center" id="analyticsEmptyView">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-secondary mb-md">
+<span class="material-symbols-outlined text-[32px]">query_stats</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface">Tidak Ada Data Ditemukan</h3>
+<p class="font-body-md text-body-md text-secondary max-w-md mt-xs">
+      Tidak ada rekaman permintaan internal yang sesuai dengan kombinasi filter terpilih. Silakan ubah rentang tanggal atau reset filter Anda.
+    </p>
+<button class="mt-lg px-lg py-2 bg-primary text-on-primary font-label-md text-label-md rounded-lg shadow-sm" onclick="setViewMode('default')">
+      Kembalikan Filter Default
+    </button>
+</div>
+<!-- VIEW CONTAINER: Skeleton Shimmer View (Initially Hidden) -->
+<div class="hidden flex flex-col w-full animate-pulse" id="analyticsSkeletonView">
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md mb-lg">
+<div class="h-28 rounded-xl bg-surface-container"></div>
+<div class="h-28 rounded-xl bg-surface-container"></div>
+<div class="h-28 rounded-xl bg-surface-container"></div>
+<div class="h-28 rounded-xl bg-surface-container"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-md mb-lg">
+<div class="lg:col-span-8 h-72 rounded-xl bg-surface-container"></div>
+<div class="lg:col-span-4 h-72 rounded-xl bg-surface-container"></div>
+</div>
+<div class="h-64 rounded-xl bg-surface-container mb-lg"></div>
+</div>
+<!-- MODAL: Export Laporan -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-md transition-opacity duration-200 hidden opacity-0" id="exportModalBackdrop">
+<div class="w-full max-w-lg bg-surface-container-lowest rounded-xl shadow-2xl p-lg flex flex-col gap-md transform scale-95 transition-transform duration-200" id="exportModalDialog">
+<!-- Modal Header -->
+<div class="flex items-center justify-between pb-xs">
+<div class="flex items-center gap-sm">
+<div class="w-9 h-9 rounded-lg bg-secondary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface leading-tight">Export Laporan</h3>
+<p class="font-caption text-caption text-secondary">Pilih format berkas laporan yang ingin diunduh.</p>
+</div>
+</div>
+<button class="p-1 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low transition-colors" onclick="toggleModal(false)">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Active Filters Summary Pill Box -->
+<div class="p-sm bg-surface-container-low rounded-lg flex flex-col gap-1">
+<span class="font-caption text-caption font-semibold text-secondary uppercase tracking-wider">Cakupan Filter Aktif:</span>
+<div class="flex flex-wrap gap-1.5 mt-0.5">
+<span class="font-caption text-caption px-2 py-0.5 rounded bg-surface-container-lowest text-on-surface font-medium">Periode: 30 Hari Terakhir</span>
+<span class="font-caption text-caption px-2 py-0.5 rounded bg-surface-container-lowest text-on-surface font-medium">Section: Semua</span>
+<span class="font-caption text-caption px-2 py-0.5 rounded bg-surface-container-lowest text-on-surface font-medium">Plant: Semua</span>
+<span class="font-caption text-caption px-2 py-0.5 rounded bg-surface-container-lowest text-on-surface font-medium">Status: Semua</span>
+</div>
+</div>
+<!-- Format Radio Options -->
+<div class="flex flex-col gap-sm">
+<!-- PDF Option -->
+<label class="relative flex items-start gap-md p-md rounded-xl bg-surface-container-low hover:bg-surface-container cursor-pointer transition-all has-[:checked]:ring-2 has-[:checked]:ring-primary has-[:checked]:bg-primary-fixed/20">
+<input checked="" class="mt-1 text-primary focus:ring-primary h-4 w-4" name="exportFormat" type="radio" value="pdf">
+<div class="flex flex-col">
+<div class="flex items-center gap-xs">
+<span class="font-body-md text-body-md font-bold text-on-surface">PDF Document (.pdf)</span>
+<span class="font-caption text-caption px-1.5 py-0.2 rounded bg-error-container text-on-error-container font-semibold">Siap Cetak</span>
+</div>
+<p class="font-caption text-caption text-secondary mt-0.5">Ringkasan eksekutif berformat rapi dengan grafik tren, visualisasi distribusi, dan tabel terangkum.</p>
+</div>
+</label>
+<!-- Excel Option -->
+<label class="relative flex items-start gap-md p-md rounded-xl bg-surface-container-low hover:bg-surface-container cursor-pointer transition-all has-[:checked]:ring-2 has-[:checked]:ring-primary has-[:checked]:bg-primary-fixed/20">
+<input class="mt-1 text-primary focus:ring-primary h-4 w-4" name="exportFormat" type="radio" value="xlsx">
+<div class="flex flex-col">
+<div class="flex items-center gap-xs">
+<span class="font-body-md text-body-md font-bold text-on-surface">Excel Spreadsheet (.xlsx)</span>
+<span class="font-caption text-caption px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 font-semibold">Data Mentah</span>
+</div>
+<p class="font-caption text-caption text-secondary mt-0.5">Kumpulan data terperinci seluruh baris tiket siap olah pivot table dan analisis mendalam.</p>
+</div>
+</label>
+</div>
+<!-- Modal Footer -->
+<div class="flex items-center justify-end gap-sm pt-sm">
+<button class="px-md py-2 rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-colors" onclick="toggleModal(false)" type="button">
+          Batal
+        </button>
+<button class="flex items-center gap-xs px-lg py-2 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md shadow-sm transition-all" onclick="handleExportSubmit()" type="button">
+<span class="material-symbols-outlined text-[18px]">download_for_offline</span>
+<span>Download Berkas</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Interactive State Switcher Preview Bar (Bottom utility toolbar) -->
+<div class="sticky bottom-4 mx-auto mt-xl z-30 p-1.5 rounded-full bg-inverse-surface/90 backdrop-blur text-inverse-on-surface shadow-2xl flex items-center gap-1 font-caption text-caption">
+<span class="px-2.5 font-semibold text-secondary-fixed-dim uppercase text-[10px] tracking-wider">Preview State:</span>
+<button class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface font-semibold shadow-xs" id="btnStateDefault" onclick="setViewMode('default')">
+      Default Laporan
+    </button>
+<button class="px-3 py-1 rounded-full hover:bg-surface-variant/20 text-inverse-on-surface transition-colors" onclick="toggleModal(true)">
+      Modal Export
+    </button>
+<button class="px-3 py-1 rounded-full hover:bg-surface-variant/20 text-inverse-on-surface transition-colors" id="btnStateEmpty" onclick="setViewMode('empty')">
+      Empty State
+    </button>
+<button class="px-3 py-1 rounded-full hover:bg-surface-variant/20 text-inverse-on-surface transition-colors" id="btnStateSkeleton" onclick="setViewMode('skeleton')">
+      Skeleton Load
+    </button>
+</div>
+</div>
+<script>
+  // Ensure Sidebar State points to Laporan active
+  document.addEventListener('DOMContentLoaded', () => {
+    const navItems = document.querySelectorAll('aside nav a');
+    navItems.forEach(item => {
+      if (item.getAttribute('data-path') === 'laporan') {
+        item.className = 'flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md bg-primary-container text-on-primary font-semibold shadow-sm';
+      } else {
+        item.classList.remove('bg-primary-container', 'text-on-primary', 'font-semibold');
+        item.classList.add('text-on-surface-variant');
+      }
+    });
+  });
+
+  // Modal Control
+  function toggleModal(show) {
+    const backdrop = document.getElementById('exportModalBackdrop');
+    const dialog = document.getElementById('exportModalDialog');
+    if (!backdrop || !dialog) return;
+
+    if (show) {
+      backdrop.classList.remove('hidden');
+      setTimeout(() => {
+        backdrop.classList.remove('opacity-0');
+        dialog.classList.remove('scale-95');
+        dialog.classList.add('scale-100');
+      }, 10);
+    } else {
+      backdrop.classList.add('opacity-0');
+      dialog.classList.remove('scale-100');
+      dialog.classList.add('scale-95');
+      setTimeout(() => {
+        backdrop.classList.add('hidden');
+      }, 200);
+    }
+  }
+
+  // Toast Notification
+  function showToast() {
+    const toast = document.getElementById('toastNotification');
+    if (!toast) return;
+    toast.classList.remove('translate-y-[-120%]', 'opacity-0', 'pointer-events-none');
+    toast.classList.add('translate-y-0', 'opacity-100');
+    setTimeout(() => {
+      hideToast();
+    }, 4500);
+  }
+
+  function hideToast() {
+    const toast = document.getElementById('toastNotification');
+    if (!toast) return;
+    toast.classList.add('translate-y-[-120%]', 'opacity-0', 'pointer-events-none');
+    toast.classList.remove('translate-y-0', 'opacity-100');
+  }
+
+  // Export Confirmation
+  function handleExportSubmit() {
+    toggleModal(false);
+    setTimeout(() => {
+      showToast();
+    }, 300);
+  }
+
+  // View Mode Switcher
+  function setViewMode(mode) {
+    const mainView = document.getElementById('analyticsMainView');
+    const emptyView = document.getElementById('analyticsEmptyView');
+    const skeletonView = document.getElementById('analyticsSkeletonView');
+
+    const btnDefault = document.getElementById('btnStateDefault');
+    const btnEmpty = document.getElementById('btnStateEmpty');
+    const btnSkeleton = document.getElementById('btnStateSkeleton');
+
+    // Reset button pills
+    [btnDefault, btnEmpty, btnSkeleton].forEach(btn => {
+      btn.className = 'px-3 py-1 rounded-full hover:bg-surface-variant/20 text-inverse-on-surface transition-colors';
+    });
+
+    if (mode === 'default') {
+      mainView.classList.remove('hidden');
+      emptyView.classList.add('hidden');
+      skeletonView.classList.add('hidden');
+      btnDefault.className = 'px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface font-semibold shadow-xs';
+    } else if (mode === 'empty') {
+      mainView.classList.add('hidden');
+      emptyView.classList.remove('hidden');
+      skeletonView.classList.add('hidden');
+      btnEmpty.className = 'px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface font-semibold shadow-xs';
+    } else if (mode === 'skeleton') {
+      mainView.classList.add('hidden');
+      emptyView.classList.add('hidden');
+      skeletonView.classList.remove('hidden');
+      btnSkeleton.className = 'px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface font-semibold shadow-xs';
+    }
+  }
+
+  // Quick Reset Filter
+  function resetFilters() {
+    const selects = document.querySelectorAll('section select');
+    selects.forEach(s => s.selectedIndex = 0);
+    triggerRefreshAnimation();
+  }
+
+  // Refresh Micro-Interaction
+  function triggerRefreshAnimation() {
+    const icon = document.getElementById('refreshIcon');
+    if (!icon) return;
+    icon.classList.add('animate-spin');
+    setTimeout(() => {
+      icon.classList.remove('animate-spin');
+      showToast();
+    }, 700);
+  }
+</script></div></main></div></body></html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Admin - Edit Section | ISM System</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style data-purpose="base-typography">
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+  </style>
+<style data-purpose="custom-scroll">
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased text-slate-800 bg-slate-50">
+<!-- BEGIN: MainContainer -->
+<div class="flex flex-1 min-h-screen overflow-hidden">
+<!-- BEGIN: Sidebar -->
+<aside class="w-64 bg-white border-r border-slate-200 flex flex-col shrink-0 z-20">
+<!-- Logo Branding -->
+<div class="h-16 flex items-center px-6 border-b border-slate-100 gap-3">
+<div class="w-9 h-9 rounded-lg bg-brand-800 flex items-center justify-center text-white shadow-sm font-bold">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<div class="text-sm font-bold text-slate-900 leading-tight">ISM System</div>
+<div class="text-[11px] text-slate-500 font-medium leading-none">Internal Service</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 py-4 px-3 space-y-6 overflow-y-auto">
+<!-- Main Section -->
+<div>
+<div class="px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-2">Main</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-slate-600 rounded-lg hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+              Dashboard
+            </a>
+</nav>
+</div>
+<!-- Master Data Section -->
+<div>
+<div class="px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-2">Master Data</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-slate-600 rounded-lg hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+              Karyawan / Pengguna
+            </a>
+<!-- Active Section Navigation Link -->
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-semibold text-white bg-brand-800 rounded-lg shadow-sm" href="#">
+<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+              Section
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-slate-600 rounded-lg hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+              Layanan
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-slate-600 rounded-lg hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+              PIC
+            </a>
+</nav>
+</div>
+<!-- Permintaan & Analisis -->
+<div>
+<div class="px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-2">Permintaan</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-slate-600 rounded-lg hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+              Semua Permintaan
+            </a>
+</nav>
+</div>
+<div>
+<div class="px-3 text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-2">Analisis</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-slate-600 rounded-lg hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+              Laporan
+            </a>
+</nav>
+</div>
+</div>
+<!-- Footer Menu -->
+<div class="p-4 border-t border-slate-100 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-slate-600 rounded-lg hover:bg-slate-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+          Settings
+        </a>
+<a class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-rose-600 rounded-lg hover:bg-rose-50 transition-colors" href="#">
+<svg class="w-5 h-5 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+          Logout
+        </a>
+</div>
+</aside>
+<!-- END: Sidebar -->
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+<!-- BEGIN: TopBar -->
+<header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 sticky top-0 z-30">
+<!-- Breadcrumb Navigation -->
+<nav aria-label="Breadcrumb" class="flex items-center text-xs text-slate-500 font-medium space-x-2">
+<span>Portal</span>
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Console</span>
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Master Data</span>
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<a class="hover:text-slate-700" href="#">Section</a>
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="text-slate-900 font-semibold">Edit Section</span>
+</nav>
+<!-- Search and Profile Area -->
+<div class="flex items-center space-x-4">
+<div class="relative w-64">
+<input class="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-100 border border-transparent rounded-lg focus:bg-white focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-all" placeholder="Cari NIK, ID, nama..." type="text">
+<svg class="w-4 h-4 text-slate-400 absolute left-2.5 top-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- Notification Bell -->
+<button class="relative p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-lg">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full ring-2 ring-white"></span>
+</button>
+<!-- User Badge -->
+<div class="flex items-center gap-2 pl-2 border-l border-slate-200">
+<div class="w-8 h-8 rounded-full bg-brand-900 text-white font-semibold text-xs flex items-center justify-center">
+              AD
+            </div>
+<div class="hidden sm:block text-left">
+<div class="text-xs font-semibold text-slate-900 leading-tight">Admin ISM</div>
+<div class="text-[10px] text-slate-500 font-medium leading-none">(Administrator)</div>
+</div>
+</div>
+</div>
+</header>
+<!-- END: TopBar -->
+<!-- Main Layout Body -->
+<main class="flex-1 p-8 max-w-7xl w-full mx-auto pb-28">
+<!-- BEGIN: PageHeader -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<div class="flex items-center gap-2.5">
+<h1 class="text-2xl font-bold text-slate-900">Edit Section</h1>
+<span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-200/70 text-slate-700 border border-slate-300/60">
+                #SEC-ASM
+              </span>
+</div>
+<p class="text-sm text-slate-500 mt-1">Perbarui informasi section dan kelola parameter akses operasional.</p>
+</div>
+<!-- Status Indicators -->
+<div class="flex items-center gap-2 self-start md:self-auto">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span>
+              Aktif
+            </span>
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-semibold bg-slate-100 text-slate-700 border border-slate-200">
+              CODE: ASM
+            </span>
+</div>
+</div>
+<!-- END: PageHeader -->
+<!-- BEGIN: SectionHeaderBanner -->
+<div class="bg-white rounded-xl border border-slate-200 p-4 mb-6 shadow-xs flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-brand-900 text-white flex items-center justify-center shrink-0 shadow-sm">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2">
+<h2 class="text-lg font-bold text-slate-900 truncate">Assembly</h2>
+<span class="text-xs px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-medium border border-blue-200">
+                Produksi Manufaktur
+              </span>
+</div>
+<div class="flex items-center gap-3 text-xs text-slate-500 mt-1">
+<span>Kode: <strong class="font-medium text-slate-700">ASM</strong></span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                Terakhir diperbarui: 20 Agustus 2026 oleh Admin ISM
+              </span>
+</div>
+</div>
+</div>
+<!-- END: SectionHeaderBanner -->
+<!-- BEGIN: FormAndSideGrid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Primary Edit Form (7 cols) -->
+<div class="lg:col-span-8 space-y-6">
+<div class="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden">
+<!-- Card Header -->
+<div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<svg class="w-5 h-5 text-brand-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<h3 class="font-bold text-slate-900 text-sm tracking-wide">INFORMASI SECTION</h3>
+</div>
+<span class="text-xs text-rose-500 font-medium">* Kolom wajib diisi</span>
+</div>
+<!-- Form Fields Body -->
+<form class="p-6 space-y-6" id="section-form">
+<!-- Field 1: Nama Section -->
+<div>
+<label class="block text-xs font-semibold uppercase text-slate-600 tracking-wider mb-2" for="section-name">
+                    Nama Section <span class="text-rose-500">*</span>
+</label>
+<div class="relative">
+<input class="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-2.5 text-sm font-medium text-slate-900 focus:bg-white focus:border-brand-600 focus:ring-1 focus:ring-brand-600 outline-none transition-colors" id="section-name" name="section_name" required="" type="text" value="Assembly">
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<p class="text-xs text-slate-500 mt-1.5 flex items-center gap-1">
+<svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                    Nama resmi unit atau departemen kerja dalam struktur organisasi.
+                  </p>
+</div>
+<!-- Field 2: Kode Section (Locked) -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<label class="block text-xs font-semibold uppercase text-slate-600 tracking-wider">
+                      Kode Section <span class="text-slate-400 font-normal">(Read-only)</span>
+</label>
+<span class="text-[11px] font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                      Terkunci / Read-only
+                    </span>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<input class="w-full pl-10 pr-4 py-2.5 bg-slate-100 border border-slate-200 rounded-lg text-sm font-semibold font-mono text-slate-600 cursor-not-allowed select-none" disabled="" type="text" value="ASM">
+</div>
+<p class="text-xs text-amber-700 bg-amber-50/80 border border-amber-200/70 p-2.5 rounded-lg mt-2 leading-relaxed flex items-start gap-2">
+<svg class="w-4 h-4 text-amber-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                    Kode Section tidak dapat diubah karena digunakan sebagai identitas section dalam sistem.
+                  </p>
+</div>
+<!-- Field 3: Status Operasional Section -->
+<div>
+<label class="block text-xs font-semibold uppercase text-slate-600 tracking-wider mb-2">
+                    Status Operasional Section <span class="text-rose-500">*</span>
+</label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3" data-purpose="status-selector">
+<!-- Status Active Card (Selected) -->
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="status" type="radio" value="active">
+<div class="p-4 rounded-xl border border-slate-200 bg-white peer-checked:border-brand-600 peer-checked:bg-blue-50/40 peer-checked:ring-2 peer-checked:ring-brand-600 transition-all flex flex-col justify-between h-full">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+<span class="text-sm font-bold text-slate-900">Aktif</span>
+</div>
+<div class="w-4 h-4 rounded-full border-2 border-brand-600 flex items-center justify-center peer-checked:bg-brand-600">
+<div class="w-2 h-2 rounded-full bg-brand-600"></div>
+</div>
+</div>
+<p class="text-xs text-slate-500 leading-normal">Tersedia untuk penugasan dan permohonan layanan baru.</p>
+</div>
+</label>
+<!-- Status Inactive Card -->
+<label class="cursor-pointer">
+<input class="peer sr-only" name="status" type="radio" value="inactive">
+<div class="p-4 rounded-xl border border-slate-200 bg-white peer-checked:border-brand-600 peer-checked:bg-blue-50/40 peer-checked:ring-2 peer-checked:ring-brand-600 transition-all flex flex-col justify-between h-full">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span>
+<span class="text-sm font-bold text-slate-700">Nonaktif</span>
+</div>
+<div class="w-4 h-4 rounded-full border border-slate-300"></div>
+</div>
+<p class="text-xs text-slate-500 leading-normal">Tangguhkan sementara. Section tidak dapat dipilih untuk data baru.</p>
+</div>
+</label>
+</div>
+</div>
+<!-- Division Meta Info Table -->
+<div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 text-xs">
+<div class="grid grid-cols-2 gap-3">
+<div>
+<div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Divisi Induk</div>
+<div class="font-medium text-slate-800 mt-0.5">Manufaktur &amp; Rekayasa</div>
+</div>
+<div>
+<div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Cost Center ID</div>
+<div class="font-mono font-medium text-slate-800 mt-0.5">CC-8820-ID</div>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+<!-- Right Column: Activity & Safety Panels (4 cols) -->
+<div class="lg:col-span-4 space-y-6">
+<!-- BEGIN: RunningActivityCard -->
+<div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-brand-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<h4 class="text-xs font-bold uppercase tracking-wider text-slate-900">Aktivitas Berjalan</h4>
+</div>
+<span class="text-[11px] font-semibold text-brand-700 bg-brand-50 px-2 py-0.5 rounded border border-brand-200">
+                  Real-time
+                </span>
+</div>
+<!-- Mini Bar Chart Simulator -->
+<div class="bg-slate-50 p-4 rounded-xl border border-slate-100 mb-3">
+<div class="flex items-center justify-between text-xs mb-3">
+<span class="text-slate-600 font-medium">Beban Tiket Permintaan</span>
+<span class="font-bold text-slate-900">86% Kapasitas</span>
+</div>
+<!-- Visual Bars -->
+<div class="h-16 flex items-end justify-between gap-1.5 pt-2 pb-1 px-1">
+<div class="w-full bg-brand-200 rounded-t h-[45%]"></div>
+<div class="w-full bg-brand-300 rounded-t h-[60%]"></div>
+<div class="w-full bg-brand-400 rounded-t h-[75%]"></div>
+<div class="w-full bg-brand-600 rounded-t h-[95%]"></div>
+<div class="w-full bg-brand-700 rounded-t h-[80%]"></div>
+<div class="w-full bg-brand-900 rounded-t h-[100%]"></div>
+<div class="w-full bg-brand-600 rounded-t h-[70%]"></div>
+<div class="w-full bg-brand-400 rounded-t h-[50%]"></div>
+<div class="w-full bg-brand-300 rounded-t h-[40%]"></div>
+</div>
+<div class="text-[11px] text-slate-500 mt-2 text-center">
+<strong>12 permintaan pending</strong> terhubung langsung dengan section ini.
+                </div>
+</div>
+<div class="text-xs text-slate-500 leading-relaxed border-t border-slate-100 pt-3 flex items-start gap-2">
+<svg class="w-4 h-4 text-slate-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                Semua tiket yang aktif akan tetap berjalan normal saat metadata section diperbarui.
+              </div>
+</div>
+<!-- END: RunningActivityCard -->
+<!-- BEGIN: DependencyNoticeCard -->
+<div class="bg-blue-50/60 border border-blue-200 rounded-xl p-5">
+<div class="flex items-start gap-3">
+<div class="p-2 rounded-lg bg-blue-100 text-brand-800 shrink-0">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<h4 class="text-xs font-bold text-brand-900 uppercase tracking-wider">Peringatan Ketergantungan Data</h4>
+<p class="text-xs text-brand-900/80 mt-1 leading-relaxed">
+                    Perubahan nama section akan diperbarui secara otomatis di seluruh rekap inventaris, log penugasan teknisi, dan cetak laporan bulanan.
+                  </p>
+</div>
+</div>
+</div>
+<!-- END: DependencyNoticeCard -->
+<!-- BEGIN: DangerManagementCard -->
+<div class="bg-white border border-rose-200 rounded-xl p-5 shadow-xs">
+<div class="flex items-center gap-2 mb-2 text-rose-700">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<h4 class="text-xs font-bold uppercase tracking-wider">Manajemen Bahaya / Status</h4>
+</div>
+<p class="text-xs text-slate-500 mb-4 leading-relaxed">
+                Nonaktifkan section secara instan jika lini produksi atau unit ini sedang mengalami reorganisasi struktural.
+              </p>
+<!-- Soft deactivation button -->
+<button class="w-full py-2.5 px-4 bg-rose-50 hover:bg-rose-100 text-rose-700 font-semibold text-xs rounded-lg border border-rose-200 transition-colors flex items-center justify-center gap-2" onclick="document.getElementById('deactivate-modal').classList.remove('hidden')" type="button">
+<svg class="w-4 h-4 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                Nonaktifkan Section Ini
+              </button>
+</div>
+<!-- END: DangerManagementCard -->
+</div>
+</div>
+<!-- END: FormAndSideGrid -->
+</main>
+<!-- BEGIN: StickyActionBar -->
+<div class="fixed bottom-0 right-0 left-64 bg-white/95 backdrop-blur-md border-t border-slate-200 px-8 py-3.5 flex items-center justify-between z-20 shadow-lg">
+<div class="flex items-center gap-2 text-xs text-slate-500 font-medium">
+<span class="w-2 h-2 rounded-full bg-amber-400"></span>
+<span>Perubahan belum tersimpan di server</span>
+</div>
+<div class="flex items-center gap-3">
+<a class="px-5 py-2 text-xs font-semibold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors" href="#">
+            Batal
+          </a>
+<button class="px-6 py-2 text-xs font-semibold text-white bg-brand-800 hover:bg-brand-900 rounded-lg transition-colors shadow-sm flex items-center gap-2" id="save-button" onclick="triggerSaveAction()" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Selesai &amp; Simpan</span>
+</button>
+</div>
+</div>
+<!-- END: StickyActionBar -->
+</div>
+</div>
+<!-- END: MainContainer -->
+<!-- BEGIN: SuccessToastNotification -->
+<div class="fixed top-6 right-6 z-50 transform transition-all duration-300 ease-out translate-y-0 opacity-100 flex items-start p-4 mb-4 w-full max-w-md text-slate-700 bg-white rounded-xl shadow-xl border border-slate-200" id="toast-success" role="alert">
+<div class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-emerald-600 bg-emerald-100 rounded-lg mr-3">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</div>
+<div class="text-xs flex-1 mr-2">
+<div class="font-bold text-slate-900 text-sm">Section berhasil diperbarui</div>
+<div class="mt-0.5 text-slate-600">Perubahan informasi section telah berhasil disimpan ke database master ISM.</div>
+</div>
+<button class="ml-auto -mx-1.5 -my-1.5 bg-white text-slate-400 hover:text-slate-900 rounded-lg p-1.5 hover:bg-slate-100 inline-flex h-7 w-7 items-center justify-center" onclick="document.getElementById('toast-success').classList.add('hidden')" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<!-- END: SuccessToastNotification -->
+<!-- BEGIN: DeactivateModalConfirmation -->
+<div class="hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4" id="deactivate-modal">
+<div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 transform transition-all animate-in fade-in zoom-in-95">
+<div class="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mx-auto mb-4">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="text-center">
+<h3 class="text-base font-bold text-slate-900">Konfirmasi Penonaktifan Section</h3>
+<p class="text-xs text-slate-500 mt-2 leading-relaxed">
+          Apakah Anda yakin ingin menonaktifkan section <strong>Assembly (ASM)</strong>? Pengguna baru tidak akan dapat memilih section ini saat mengajukan layanan.
+        </p>
+</div>
+<div class="mt-6 flex items-center justify-center gap-3">
+<button class="w-full py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors" onclick="document.getElementById('deactivate-modal').classList.add('hidden')" type="button">
+          Batalkan
+        </button>
+<button class="w-full py-2 text-xs font-semibold text-white bg-rose-600 hover:bg-rose-700 rounded-lg transition-colors shadow-xs" onclick="executeDeactivation()" type="button">
+          Ya, Nonaktifkan
+        </button>
+</div>
+</div>
+</div>
+<!-- END: DeactivateModalConfirmation -->
+<!-- BEGIN: InteractiveScripts -->
+<script data-purpose="form-actions">
+    function triggerSaveAction() {
+      const saveBtn = document.getElementById('save-button');
+      const toast = document.getElementById('toast-success');
+      
+      // Visual saving state
+      saveBtn.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span>Menyimpan...</span>
+      `;
+      saveBtn.disabled = true;
+
+      // Simulate API Response delay
+      setTimeout(() => {
+        saveBtn.innerHTML = `
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span>Selesai & Simpan</span>
+        `;
+        saveBtn.disabled = false;
+
+        // Show Toast
+        toast.classList.remove('hidden');
+        toast.classList.remove('opacity-0');
+        toast.classList.add('opacity-100');
+
+        // Optional auto-dismiss
+        setTimeout(() => {
+          toast.classList.add('opacity-0');
+          setTimeout(() => toast.classList.add('hidden'), 300);
+        }, 4000);
+      }, 750);
+    }
+
+    function executeDeactivation() {
+      document.getElementById('deactivate-modal').classList.add('hidden');
+      
+      // Auto-toggle status radio to inactive
+      const inactiveRadio = document.querySelector('input[name="status"][value="inactive"]');
+      if (inactiveRadio) {
+        inactiveRadio.checked = true;
+      }
+      
+      triggerSaveAction();
+    }
+  </script>
+<!-- END: InteractiveScripts -->
+</body></html>

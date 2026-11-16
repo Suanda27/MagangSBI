@@ -1,0 +1,285 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Request Detail - P001</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#edeeef",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#dde1ff",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "text-muted": "#64748B",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dde1ff",
+                        "secondary-fixed-dim": "#b8c4ff",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "surface-dim": "#d9dadb",
+                        "primary-container": "#00288e",
+                        "text-main": "#0F172A",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed": "#d3e4fe",
+                        "surface-tint": "#3d57ba",
+                        "on-surface-variant": "#444652",
+                        "on-primary-fixed-variant": "#213da0",
+                        "on-secondary-fixed": "#001453",
+                        "outline-variant": "#c5c5d4",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "secondary-container": "#708cfd",
+                        "on-secondary-fixed-variant": "#173bab",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary-container": "#253549",
+                        "surface": "#f8f9fa",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#b8c4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "border-subtle": "#E2E8F0",
+                        "on-tertiary-container": "#8d9eb6",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f3f4f5",
+                        "on-primary-container": "#7e97fe",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#191c1d",
+                        "tertiary": "#0f2033",
+                        "on-primary-fixed": "#001453",
+                        "surface-white": "#FFFFFF",
+                        "on-secondary-container": "#00217a",
+                        "secondary": "#3755c3",
+                        "on-background": "#191c1d",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "outline": "#757684",
+                        "surface-bright": "#f8f9fa",
+                        "inverse-surface": "#2e3132",
+                        "on-secondary": "#ffffff",
+                        "primary": "#00175c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "xl": "48px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "caption": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .icon-fill { font-variation-settings: 'FILL' 1; }
+    </style>
+</head>
+<body class="bg-background text-text-main flex min-h-screen antialiased">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-low dark:bg-surface-container-low flex flex-col h-full py-lg px-md border-r border-border-subtle dark:border-outline-variant hidden md:flex z-50">
+<div class="mb-xl px-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" style="font-size: 32px;">corporate_fare</span>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">ISM System</h1>
+<p class="font-caption text-caption text-text-muted">Internal Service</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors duration-200 rounded-lg py-2 px-4" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors duration-200 rounded-lg py-2 px-4" href="#">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+<span class="font-body-md text-body-md">Pengajuan Layanan</span>
+</a>
+<a class="flex items-center gap-3 bg-surface-container-high dark:bg-surface-container-highest text-primary dark:text-primary-fixed border-l-2 border-primary dark:border-primary-fixed rounded-r-lg py-2 px-4 opacity-80 scale-[0.98] transition-all" href="#">
+<span class="material-symbols-outlined icon-fill text-primary" data-icon="list_alt">list_alt</span>
+<span class="font-body-md text-body-md font-semibold">Permintaan Saya</span>
+</a>
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors duration-200 rounded-lg py-2 px-4" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-body-md text-body-md">Riwayat</span>
+</a>
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors duration-200 rounded-lg py-2 px-4" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-body-md text-body-md">Profile</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col gap-2 pt-4 border-t border-border-subtle">
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors duration-200 rounded-lg py-2 px-4" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors duration-200 rounded-lg py-2 px-4" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col min-h-screen md:ml-[240px]">
+<!-- TopAppBar -->
+<header class="sticky top-0 bg-surface-white dark:bg-surface border-b border-border-subtle dark:border-outline-variant z-40 flex justify-between items-center h-16 px-lg max-w-[1440px] w-full">
+<div class="flex items-center md:hidden">
+<span class="material-symbols-outlined text-primary text-[28px] mr-2">corporate_fare</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">ISM System</span>
+</div>
+<div class="hidden md:flex items-center text-text-muted font-body-sm">
+<a class="hover:text-primary transition-colors" href="#">Permintaan Saya</a>
+<span class="material-symbols-outlined mx-2 text-[16px]">chevron_right</span>
+<span class="text-text-main font-semibold">P001</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-text-muted dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container overflow-hidden border border-border-subtle">
+<img alt="User Avatar" class="object-cover w-full h-full" data-alt="A professional corporate headshot of a young professional in a light, modern office setting. The lighting is soft and bright, emphasizing a clean, minimalist aesthetic. The image uses a professional color palette with subtle blue accents against a neutral white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDohSHwvx7_xQPR_eM0wK6rEPx3XhLm_PuNJ6Ia6pJi902ZXTTtvuQxnSe4I10aehg7NPUwLYqbTndF8W_rnd48eYJst618AT9fdkl8a8nl-YQF_WN4iHgt-o0ToS5dXhZ8iQXkMHPdZoKb__5S3PDWCc5lgJPeBXPtoB3-rrDExiqey68_oQEBaNvDF98HKx20QQv69eTxWeMRTGnTpSGU30b2hFopYNsjwKaYXa32P5uxjWBcOhex">
+</div>
+</div>
+</header>
+<!-- Canvas / Content -->
+<main class="flex-1 p-md md:p-lg max-w-[1440px] w-full mx-auto">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-lg gap-4">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-text-main">Permintaan Peralatan IT Baru</h2>
+<span class="bg-blue-100 text-primary-container px-2 py-1 rounded font-label-md text-label-md inline-flex items-center border border-blue-200">
+                            In Progress
+                        </span>
+</div>
+<p class="font-body-md text-body-md text-text-muted">Ref: P001 • Diajukan pada 12 Okt 2024</p>
+</div>
+
+</div>
+<!-- Main Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Left Column (Wider) -->
+<div class="lg:col-span-2 flex flex-col gap-lg">
+<!-- Timeline (Minimalist Horizontal) -->
+<section class="bg-surface-white border border-border-subtle rounded-lg p-lg">
+<h3 class="font-headline-md text-headline-md mb-6">Status Timeline</h3>
+<div class="relative flex justify-between items-center w-full px-4"><!-- Track line -->
+<div class="absolute top-1/2 left-8 right-8 h-0.5 bg-border-subtle -z-10 -translate-y-1/2"></div>
+<div class="absolute top-1/2 left-8 w-[50%] h-0.5 bg-primary -z-10 -translate-y-1/2"></div>
+<!-- Steps -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<span class="font-label-md text-label-md text-text-main">Diajukan</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-white border-2 border-primary flex items-center justify-center text-primary relative">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<div class="absolute -inset-1 rounded-full border-2 border-primary opacity-20 animate-ping"></div>
+</div>
+<span class="font-label-md text-label-md text-primary-container">Diproses oleh PIC</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-white border-2 border-border-subtle flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined text-[16px]">inventory_2</span>
+</div>
+<span class="font-label-md text-label-md text-text-muted">Selesai</span>
+</div></div>
+</section>
+<!-- Request Info & Description -->
+<section class="bg-surface-white border border-border-subtle rounded-lg p-lg flex flex-col gap-6"><div class="border-b border-border-subtle pb-4 flex items-center justify-between"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">receipt_long</span><div><h3 class="font-headline-md text-headline-md font-semibold text-text-main">Ringkasan Permintaan</h3><p class="font-caption text-caption text-text-muted">Informasi lengkap detail pengajuan layanan</p></div></div><span class="font-label-md text-label-md text-primary bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">P001</span></div><div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-surface-container-low rounded-lg p-4 border border-border-subtle"><div class="space-y-1"><p class="font-caption text-caption text-text-muted">Kategori Layanan</p><p class="font-body-md text-body-md font-semibold text-text-main">Peralatan &amp; Perlengkapan</p></div><div class="space-y-1"><p class="font-caption text-caption text-text-muted">Layanan</p><p class="font-body-md text-body-md font-semibold text-text-main">Pengadaan Hardware IT</p></div><div class="space-y-1"><p class="font-caption text-caption text-text-muted">Plant</p><p class="font-body-md text-body-md font-semibold text-text-main">Plant 1</p></div><div class="space-y-1"><p class="font-caption text-caption text-text-muted">Lantai</p><p class="font-body-md text-body-md font-semibold text-text-main">Lantai 2</p></div><div class="space-y-1 md:col-span-2"><p class="font-caption text-caption text-text-muted">Judul Permintaan</p><p class="font-body-md text-body-md font-semibold text-text-main">Permintaan Peralatan IT Baru</p></div></div><div><h4 class="font-headline-md text-body-lg font-semibold text-text-main mb-2">Deskripsi</h4><div class="font-body-md text-body-md text-text-main leading-relaxed bg-surface-container-low/50 rounded-lg p-4 border border-border-subtle"><p class="mb-2">Mohon pengadaan 1 unit laptop baru untuk karyawan baru di tim Marketing (Sdr. Reza).</p><p class="mb-2 font-medium">Spesifikasi minimal yang dibutuhkan:</p><ul class="list-disc pl-5 mb-2 space-y-1 text-text-main"><li class="">Processor Intel Core i7 atau setara</li><li class="">RAM minimal 16GB</li><li class="">Storage SSD 512GB</li><li class="">Layar 14 inch</li></ul><p class="mt-3">Mohon dapat diproses segera karena karyawan akan mulai bekerja minggu depan.</p></div></div><div class="border-t border-border-subtle pt-4 space-y-4"><div><h4 class="font-label-md text-label-md font-semibold text-text-muted mb-3 flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">attach_file</span>File Pendukung</h4><div class="border border-border-subtle rounded-lg p-3 flex items-center justify-between hover:border-primary transition-colors cursor-pointer group bg-surface-white"><div class="flex items-center gap-3 overflow-hidden"><div class="w-10 h-10 rounded bg-red-50 text-red-600 flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined">picture_as_pdf</span></div><div class="overflow-hidden"><p class="font-label-md text-label-md truncate text-text-main group-hover:text-primary transition-colors">Form_Approval_IT_Procurement.pdf</p><p class="font-caption text-caption text-text-muted">1.2 MB • Dokumen Persetujuan</p></div></div><button class="flex items-center gap-1 text-text-muted group-hover:text-primary transition-colors px-2 py-1 rounded hover:bg-surface-container"><span class="material-symbols-outlined">download</span></button></div></div><div><h4 class="font-label-md text-label-md font-semibold text-text-muted mb-3 flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">image</span>Foto Pendukung</h4><div class="border border-border-subtle rounded-lg p-3 flex items-center justify-between hover:border-primary transition-colors cursor-pointer group bg-surface-white"><div class="flex items-center gap-3 overflow-hidden"><div class="w-10 h-10 rounded bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined">photo_camera</span></div><div class="overflow-hidden"><p class="font-label-md text-label-md truncate text-text-main group-hover:text-primary transition-colors">foto_spesifikasi_laptop.jpg</p><p class="font-caption text-caption text-text-muted">840 KB • Lampiran Gambar</p></div></div><div class="flex items-center gap-2"><button class="flex items-center gap-1 text-text-muted group-hover:text-primary transition-colors px-2 py-1 rounded hover:bg-surface-container"><span class="material-symbols-outlined">visibility</span></button><button class="flex items-center gap-1 text-text-muted group-hover:text-primary transition-colors px-2 py-1 rounded hover:bg-surface-container"><span class="material-symbols-outlined">download</span></button></div></div></div></div></section>
+<!-- Attachments -->
+
+</div>
+<!-- Right Column (Sidebar) -->
+<div class="lg:col-span-1">
+<!-- Activity History -->
+<section class="bg-surface-white border border-border-subtle rounded-lg p-lg h-full max-h-[800px] overflow-y-auto">
+<h3 class="font-headline-md text-headline-md mb-6 sticky top-0 bg-surface-white z-10 pb-2">Riwayat Aktivitas</h3>
+<div class="relative pl-4 border-l border-border-subtle ml-2 space-y-6"><!-- Activity Item -->
+<div class="relative">
+<div class="absolute -left-[25px] top-1 w-4 h-4 rounded-full bg-primary border-4 border-surface-white"></div>
+<div class="pl-4">
+<p class="font-label-md text-label-md text-text-main">Permintaan Sedang Diproses</p>
+<p class="font-caption text-caption text-text-muted mt-0.5">Oleh Andi (IT Dept)</p>
+<p class="font-caption text-caption text-text-muted mt-1 text-xs">13 Okt 2024, 09:15 WIB</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="relative">
+<div class="absolute -left-[25px] top-1 w-4 h-4 rounded-full bg-surface-container-high border-4 border-surface-white"></div>
+<div class="pl-4">
+<p class="font-label-md text-label-md text-text-main">Permintaan Dialokasikan ke PIC</p>
+<p class="font-caption text-caption text-text-muted mt-0.5">Sistem Otomatis</p>
+<p class="font-caption text-caption text-text-muted mt-1 text-xs">12 Okt 2024, 14:30 WIB</p>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="relative">
+<div class="absolute -left-[25px] top-1 w-4 h-4 rounded-full bg-surface-container-high border-4 border-surface-white"></div>
+<div class="pl-4">
+<p class="font-label-md text-label-md text-text-main">Permintaan Dibuat</p>
+<p class="font-caption text-caption text-text-muted mt-0.5">Oleh Budi Santoso</p>
+<p class="font-caption text-caption text-text-muted mt-1 text-xs">12 Okt 2024, 10:00 WIB</p>
+</div>
+</div></div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-auto border-t border-border-subtle dark:border-outline-variant py-md px-lg flex flex-col md:flex-row justify-between items-center text-text-muted dark:text-on-surface-variant font-caption text-caption">
+<p class="">© 2024 Internal Service Management</p>
+<div class="flex gap-4 mt-2 md:mt-0">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+</footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+</body></html>

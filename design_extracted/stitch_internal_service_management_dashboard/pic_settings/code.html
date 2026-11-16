@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline-variant": "#c4c5d5", "on-error-container": "#93000a", "inverse-surface": "#2d3133", "secondary": "#505f76", "tertiary-container": "#434b60", "surface-tint": "#3755c3", "surface-container-lowest": "#ffffff", "on-surface": "#191c1e", "inverse-on-surface": "#eff1f3", "surface-bright": "#f7f9fb", "primary-container": "#1e40af", "inverse-primary": "#b8c4ff", "on-tertiary": "#ffffff", "error": "#ba1a1a", "tertiary-fixed": "#dae2fd", "surface-dim": "#d8dadc", "surface-container-highest": "#e0e3e5", "outline": "#757684", "on-tertiary-container": "#b4bbd5", "secondary-fixed": "#d3e4fe", "on-primary-fixed": "#001453", "secondary-fixed-dim": "#b7c8e1", "secondary-container": "#d0e1fb", "primary": "#00288e", "on-surface-variant": "#444653", "background": "#f7f9fb", "tertiary": "#2d3449", "error-container": "#ffdad6", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#3f465c", "on-secondary-fixed": "#0b1c30", "surface-container": "#eceef0", "on-background": "#191c1e", "on-secondary": "#ffffff", "on-tertiary-fixed": "#131b2e", "on-error": "#ffffff", "tertiary-fixed-dim": "#bec6e0", "on-secondary-fixed-variant": "#38485d", "surface-variant": "#e0e3e5", "on-primary-fixed-variant": "#173bab", "on-primary-container": "#a8b8ff", "surface": "#f7f9fb", "primary-fixed-dim": "#b8c4ff", "surface-container-high": "#e6e8ea", "on-secondary-container": "#54647a", "primary-fixed": "#dde1ff", "surface-container-low": "#f2f4f6" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "base": "4px", "xs": "4px", "container-max": "1440px", "sm": "8px", "md": "16px", "lg": "24px", "xl": "32px", "gutter": "20px" }, "fontFamily": { "body-lg": [ "Inter" ], "display": [ "Inter" ], "label-md": [ "Inter" ], "headline-md": [ "Inter" ], "body-md": [ "Inter" ], "caption": [ "Inter" ], "headline-lg": [ "Inter" ] }, "fontSize": { "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "display": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" } ], "headline-md": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "caption": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-lowest flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50"><div class="flex flex-col"><div class="h-16 flex items-center px-md gap-sm"><div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[20px]">grid_view</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-md leading-none tracking-tight text-on-surface">ISM</span><span class="font-caption text-caption text-secondary">Operations PIC</span></div></div><div class="px-md pt-sm pb-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Workspace</span></div><nav class="flex flex-col gap-xs px-sm" data-active-classes="bg-surface-container text-primary font-bold"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="incoming-requests" href="#"><span class="material-symbols-outlined text-[20px]">inbox</span><span class="font-body-md text-body-md">Incoming Requests</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="processing" href="#"><span class="material-symbols-outlined text-[20px]">sync</span><span class="font-body-md text-body-md">Processing</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="completed" href="#"><span class="material-symbols-outlined text-[20px]">check_circle</span><span class="font-body-md text-body-md">Completed</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="reports" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-body-md text-body-md">Reports</span></a></nav></div><div class="p-sm flex flex-col gap-xs bg-surface-container-lowest"><div class="px-sm py-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Account</span></div><nav class="flex flex-col gap-xs" data-active-classes="bg-surface-container text-primary font-bold"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="profile" href="#"><span class="material-symbols-outlined text-[20px]">person</span><span class="font-body-md text-body-md">Profile</span></a><a aria-current="page" class="flex items-center gap-sm px-sm py-xs rounded-lg transition-colors bg-surface-container text-primary font-bold" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Settings</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-error hover:bg-error-container hover:text-on-error-container transition-colors" data-path="logout" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="font-body-md text-body-md">Logout</span></a></nav></div></aside><div class="pl-60 flex flex-col min-h-screen"><header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-lg"><div class="flex items-center w-full max-w-md"><div class="relative w-full flex items-center"><span class="material-symbols-outlined absolute left-sm text-secondary text-[20px] pointer-events-none">search</span><input class="w-full pl-xl pr-md py-xs rounded-lg bg-surface-container-low text-on-surface placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container text-body-md font-body-md transition-all" placeholder="Search requests, ticket #, or keywords..." type="text"/></div></div><div class="flex items-center gap-md"><a class="relative p-xs rounded-lg text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors flex items-center justify-center" data-path="notifications" href="#"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></a><div class="flex items-center gap-sm pl-sm border-l border-surface-container-high"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col text-left"><span class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Budi Santoso</span><span class="font-caption text-caption text-secondary leading-tight">PIC Operations</span></div><span class="material-symbols-outlined text-secondary text-[18px]">expand_more</span></div></div></header><main class="flex-1 pt-16 bg-surface px-lg py-lg max-w-[1440px] w-full mx-auto"><div class="flex flex-col w-full">
+<!-- Toast Notification Feedback Container -->
+<div class="fixed bottom-8 right-8 z-50 flex items-center gap-md px-md py-sm bg-primary text-on-primary rounded-lg shadow-xl translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="toast-banner">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md">Configuration Updated</span>
+<span class="font-caption text-caption text-on-primary-container">Security and notification preferences have been saved.</span>
+</div>
+</div>
+<!-- Header Region with Visual KPI / Breadcrumb Accent -->
+<div class="relative w-full rounded-xl bg-surface-container-lowest shadow-sm p-lg mb-lg overflow-hidden">
+<div class="absolute -right-12 -top-12 w-64 h-64 rounded-full bg-secondary-container opacity-40 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div>
+<div class="flex items-center gap-xs text-secondary font-caption text-caption uppercase tracking-wider mb-xs">
+<span>Workspace</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-semibold">Account Administration</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Settings</h1>
+<p class="font-body-md text-body-md text-secondary mt-xs max-w-2xl">
+          Manage your account security, notification alerts, and application preferences.
+        </p>
+</div>
+<!-- Quick Session Badge / Context Indicator -->
+<div class="flex items-center gap-md self-start md:self-auto bg-surface-container-low px-md py-sm rounded-lg">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label-md text-label-md font-bold">
+          BS
+        </div>
+<div class="flex flex-col text-left">
+<div class="flex items-center gap-xs">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Budi Santoso</span>
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+</div>
+<span class="font-caption text-caption text-secondary">PIC Ops • ID #8492</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Settings Vertical Flow -->
+<div class="flex flex-col gap-lg pb-xl">
+<!-- SECTION 1: Account & Security -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-lg">
+<div class="flex items-center gap-sm mb-lg pb-sm bg-surface-container-low px-md py-xs rounded-lg">
+<span class="material-symbols-outlined text-primary text-[22px]">shield_lock</span>
+<div class="flex flex-col">
+<h2 class="font-headline-md text-headline-md text-on-surface">Account &amp; Security</h2>
+<span class="font-caption text-caption text-secondary">Password management, biometric access, and authenticated sessions</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Left Sub-panel: Password Modification -->
+<div class="lg:col-span-7 flex flex-col gap-md">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Credential Update</span>
+<div class="flex flex-col gap-xs">
+<label class="font-body-md text-body-md font-semibold text-on-surface">Current Password</label>
+<div class="relative flex items-center">
+<input class="w-full pl-md pr-xl py-sm bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none transition-colors" id="input-curr-pw" type="password" value="CurrentCorporatePass#1"/>
+<button class="absolute right-sm p-xs text-secondary hover:text-on-surface transition-colors" onclick="togglePass('input-curr-pw', this)" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md pt-xs">
+<div class="flex flex-col gap-xs">
+<label class="font-body-md text-body-md font-semibold text-on-surface">New Password</label>
+<div class="relative flex items-center">
+<input class="w-full pl-md pr-xl py-sm bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none transition-colors" id="input-new-pw" placeholder="Enter new strong password" type="password"/>
+<button class="absolute right-sm p-xs text-secondary hover:text-on-surface transition-colors" onclick="togglePass('input-new-pw', this)" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-body-md text-body-md font-semibold text-on-surface">Confirm New Password</label>
+<div class="relative flex items-center">
+<input class="w-full pl-md pr-xl py-sm bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none transition-colors" id="input-confirm-pw" placeholder="Repeat new password" type="password"/>
+<button class="absolute right-sm p-xs text-secondary hover:text-on-surface transition-colors" onclick="togglePass('input-confirm-pw', this)" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Strength Hint Pill Bar -->
+<div class="p-sm bg-surface-container rounded-lg flex items-center justify-between text-secondary">
+<span class="font-caption text-caption flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-primary">info</span>
+              Minimum 12 characters, including capital, number, and symbol.
+            </span>
+<span class="font-label-md text-label-md text-primary font-bold">Standard SLA Compliance</span>
+</div>
+<!-- Two-Factor Authentication Box -->
+<div class="mt-md p-md bg-surface-container-low rounded-xl flex items-center justify-between gap-md">
+<div class="flex items-start gap-md">
+<div class="w-10 h-10 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Two-Factor Authentication</span>
+<span class="font-caption text-caption text-secondary">Mandatory protection via Corporate Authenticator App (TOTP).</span>
+</div>
+</div>
+<button aria-checked="true" class="w-12 h-6 bg-primary-container rounded-full p-0.5 transition-colors relative focus:outline-none cursor-pointer" onclick="toggleSwitch(this)" role="switch" type="button">
+<div class="w-5 h-5 bg-surface-container-lowest rounded-full shadow-sm transform translate-x-6 transition-transform"></div>
+</button>
+</div>
+</div>
+<!-- Right Sub-panel: Active Devices & Visual Status -->
+<div class="lg:col-span-5 flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Active Sessions</span>
+<span class="font-caption text-caption text-primary cursor-pointer hover:underline">Revoke All Others</span>
+</div>
+<!-- Session Card 1 (Current) -->
+<div class="p-md rounded-xl bg-surface-container-low flex items-start gap-md relative">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm shrink-0">
+<span class="material-symbols-outlined text-[20px]">laptop_mac</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-xs">
+<span class="font-body-md text-body-md font-semibold text-on-surface truncate">Chrome on MacOS - Jakarta</span>
+<span class="font-label-md text-label-md px-xs py-0.5 rounded bg-secondary-container text-on-secondary-container shrink-0">Current</span>
+</div>
+<span class="font-caption text-caption text-secondary">IP: 103.14.28.109 • Jakarta, ID</span>
+<span class="font-caption text-caption text-primary mt-xs font-semibold">Active right now</span>
+</div>
+</div>
+<!-- Session Card 2 (Mobile) -->
+<div class="p-md rounded-xl bg-surface-container-low flex items-start gap-md">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest flex items-center justify-center text-secondary shadow-sm shrink-0">
+<span class="material-symbols-outlined text-[20px]">smartphone</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-xs">
+<span class="font-body-md text-body-md font-semibold text-on-surface truncate">ISM Mobile App on iPhone 15</span>
+<button class="text-error hover:text-on-error-container text-caption font-caption" type="button">Sign out</button>
+</div>
+<span class="font-caption text-caption text-secondary">Last synchronized: Today at 08:14 WIB</span>
+<span class="font-caption text-caption text-secondary mt-xs">Jakarta, Indonesia</span>
+</div>
+</div>
+<!-- Security Analytics Minimal Gauge -->
+<div class="p-md rounded-xl bg-surface-container flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface uppercase">Security Health</span>
+<span class="font-body-md text-body-md text-secondary">All corporate policies enforced</span>
+</div>
+<div class="flex items-center gap-xs text-primary font-bold font-body-lg text-body-lg">
+<svg class="w-6 h-6" fill="none" viewbox="0 0 24 24">
+<circle class="text-primary-container" cx="12" cy="12" r="9" stroke="currentColor" stroke-dasharray="56" stroke-dashoffset="6" stroke-width="3"></circle>
+</svg>
+              95%
+            </div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Operational Notification Preferences -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-lg">
+<div class="flex items-center gap-sm mb-lg pb-sm bg-surface-container-low px-md py-xs rounded-lg">
+<span class="material-symbols-outlined text-primary text-[22px]">notifications_active</span>
+<div class="flex flex-col">
+<h2 class="font-headline-md text-headline-md text-on-surface">Operational Notification Preferences</h2>
+<span class="font-caption text-caption text-secondary">Real-time alerts, SLA warnings, and shift handover digest triggers</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Switches Grid -->
+<div class="lg:col-span-8 flex flex-col gap-sm">
+<!-- Item 1: Urgent SLA -->
+<div class="p-md rounded-lg bg-surface-container-low flex items-center justify-between gap-md transition-colors hover:bg-surface-container">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded bg-error-container text-on-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">timer_off</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Urgent SLA Deadline Warning (&lt; 2 hours remaining)</span>
+<span class="font-caption text-caption text-secondary">Triggers desktop priority alert and sound ping to prevent SLA breaches.</span>
+</div>
+</div>
+<button aria-checked="true" class="w-12 h-6 bg-primary-container rounded-full p-0.5 transition-colors relative focus:outline-none shrink-0 cursor-pointer" onclick="toggleSwitch(this)" role="switch" type="button">
+<div class="w-5 h-5 bg-surface-container-lowest rounded-full shadow-sm transform translate-x-6 transition-transform"></div>
+</button>
+</div>
+<!-- Item 2: Request Assigned -->
+<div class="p-md rounded-lg bg-surface-container-low flex items-center justify-between gap-md transition-colors hover:bg-surface-container">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">move_to_inbox</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">New Request Assigned to My Queue</span>
+<span class="font-caption text-caption text-secondary">Notify when automated load balancer or supervisor assigns incoming ticket.</span>
+</div>
+</div>
+<button aria-checked="true" class="w-12 h-6 bg-primary-container rounded-full p-0.5 transition-colors relative focus:outline-none shrink-0 cursor-pointer" onclick="toggleSwitch(this)" role="switch" type="button">
+<div class="w-5 h-5 bg-surface-container-lowest rounded-full shadow-sm transform translate-x-6 transition-transform"></div>
+</button>
+</div>
+<!-- Item 3: Comments and Updates -->
+<div class="p-md rounded-lg bg-surface-container-low flex items-center justify-between gap-md transition-colors hover:bg-surface-container">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded bg-surface-container-high text-on-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">forum</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Requester Comment / File Update Notification</span>
+<span class="font-caption text-caption text-secondary">Immediate prompt when internal customer responds or attaches supplementary proof.</span>
+</div>
+</div>
+<button aria-checked="true" class="w-12 h-6 bg-primary-container rounded-full p-0.5 transition-colors relative focus:outline-none shrink-0 cursor-pointer" onclick="toggleSwitch(this)" role="switch" type="button">
+<div class="w-5 h-5 bg-surface-container-lowest rounded-full shadow-sm transform translate-x-6 transition-transform"></div>
+</button>
+</div>
+<!-- Item 4: Daily Digest -->
+<div class="p-md rounded-lg bg-surface-container-low flex items-center justify-between gap-md transition-colors hover:bg-surface-container">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded bg-surface-container-high text-on-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">newspaper</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Daily Morning Digest &amp; Handover Summary</span>
+<span class="font-caption text-caption text-secondary">Automated briefing dispatched daily at 07:45 WIB before operational shift commencement.</span>
+</div>
+</div>
+<button aria-checked="true" class="w-12 h-6 bg-primary-container rounded-full p-0.5 transition-colors relative focus:outline-none shrink-0 cursor-pointer" onclick="toggleSwitch(this)" role="switch" type="button">
+<div class="w-5 h-5 bg-surface-container-lowest rounded-full shadow-sm transform translate-x-6 transition-transform"></div>
+</button>
+</div>
+</div>
+<!-- Right Side: Frequency Controls & Visual Notification Preview -->
+<div class="lg:col-span-4 flex flex-col justify-between gap-md">
+<div class="p-md bg-surface-container-low rounded-xl flex flex-col gap-sm">
+<label class="font-body-md text-body-md font-semibold text-on-surface">Email Delivery Frequency</label>
+<span class="font-caption text-caption text-secondary">Consolidate incoming operational dispatch volume into bundled emails.</span>
+<div class="relative mt-xs">
+<select class="w-full px-md py-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md appearance-none focus:outline-none cursor-pointer" id="select-delivery-freq">
+<option selected="">Real-time Instant Alerts</option>
+<option>Hourly Digest</option>
+<option>Daily Summary</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-2.5 text-secondary pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+<!-- Notification Preview Slate -->
+<div class="p-md bg-surface-container rounded-xl flex flex-col gap-xs">
+<div class="flex items-center gap-xs text-secondary font-label-md text-label-md uppercase">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+              Notification Preview
+            </div>
+<div class="p-sm rounded bg-surface-container-lowest text-on-surface shadow-sm mt-xs">
+<div class="flex items-center justify-between text-caption font-caption text-error font-semibold">
+<span>[URGENT SLA] REQ-92819</span>
+<span>Just now</span>
+</div>
+<p class="text-caption font-caption text-secondary mt-0.5 leading-snug">
+                Approaching breach threshold (1h 45m left). Requester: Finance Div.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: Appearance & Workspace -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-lg">
+<div class="flex items-center gap-sm mb-lg pb-sm bg-surface-container-low px-md py-xs rounded-lg">
+<span class="material-symbols-outlined text-primary text-[22px]">tune</span>
+<div class="flex flex-col">
+<h2 class="font-headline-md text-headline-md text-on-surface">Appearance &amp; Workspace</h2>
+<span class="font-caption text-caption text-secondary">Custom display density, localization, and theme settings</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Field: Theme Preference -->
+<div class="flex flex-col gap-xs p-md rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-xs mb-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">palette</span>
+<label class="font-body-md text-body-md font-semibold text-on-surface">Theme Preference</label>
+</div>
+<span class="font-caption text-caption text-secondary mb-xs">Select user interface tonal layout</span>
+<div class="relative">
+<select class="w-full px-md py-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md appearance-none focus:outline-none cursor-pointer" id="select-theme">
+<option>System Default</option>
+<option selected="">Light Mode</option>
+<option>Dark Mode</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-2.5 text-secondary pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+<!-- Field: Language -->
+<div class="flex flex-col gap-xs p-md rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-xs mb-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">translate</span>
+<label class="font-body-md text-body-md font-semibold text-on-surface">Language</label>
+</div>
+<span class="font-caption text-caption text-secondary mb-xs">Preferred interface vernacular</span>
+<div class="relative">
+<select class="w-full px-md py-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md appearance-none focus:outline-none cursor-pointer" id="select-lang">
+<option>Bahasa Indonesia</option>
+<option selected="">English (US)</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-2.5 text-secondary pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+<!-- Field: Rows Per Page -->
+<div class="flex flex-col gap-xs p-md rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-xs mb-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">table_rows</span>
+<label class="font-body-md text-body-md font-semibold text-on-surface">Rows Per Page Default</label>
+</div>
+<span class="font-caption text-caption text-secondary mb-xs">Data table baseline query page size</span>
+<div class="relative">
+<select class="w-full px-md py-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md appearance-none focus:outline-none cursor-pointer" id="select-rows">
+<option>10 rows</option>
+<option selected="">25 rows</option>
+<option>50 rows</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-2.5 text-secondary pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Operational Action Confirmation Bar -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-md flex flex-col sm:flex-row items-center justify-between gap-md">
+<div class="flex items-center gap-sm text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>Settings last altered: Yesterday at 16:42 WIB by PIC Operations.</span>
+</div>
+<div class="flex items-center gap-md w-full sm:w-auto justify-end">
+<button class="px-lg py-sm rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low font-body-md text-body-md transition-colors cursor-pointer" onclick="handleCancel()" type="button">
+          Cancel
+        </button>
+<button class="px-lg py-sm rounded-lg bg-primary-container hover:bg-primary text-on-primary font-body-md text-body-md font-semibold shadow-sm transition-all flex items-center gap-xs cursor-pointer" id="btn-save-changes" onclick="handleSave()" type="button">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>Save Changes</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+    function togglePass(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const icon = btn.querySelector('.material-symbols-outlined');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.textContent = 'visibility_off';
+      } else {
+        input.type = 'password';
+        icon.textContent = 'visibility';
+      }
+    }
+
+    function toggleSwitch(btn) {
+      const isChecked = btn.getAttribute('aria-checked') === 'true';
+      const knob = btn.firstElementChild;
+      if (isChecked) {
+        btn.setAttribute('aria-checked', 'false');
+        btn.classList.remove('bg-primary-container');
+        btn.classList.add('bg-outline-variant');
+        knob.classList.remove('translate-x-6');
+        knob.classList.add('translate-x-0');
+      } else {
+        btn.setAttribute('aria-checked', 'true');
+        btn.classList.add('bg-primary-container');
+        btn.classList.remove('bg-outline-variant');
+        knob.classList.add('translate-x-6');
+        knob.classList.remove('translate-x-0');
+      }
+    }
+
+    function handleSave() {
+      const toast = document.getElementById('toast-banner');
+      const btn = document.getElementById('btn-save-changes');
+      
+      btn.classList.add('opacity-80', 'pointer-events-none');
+      btn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span><span>Saving...</span>';
+
+      setTimeout(() => {
+        btn.classList.remove('opacity-80', 'pointer-events-none');
+        btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">save</span><span>Save Changes</span>';
+        
+        // Show Toast
+        toast.classList.remove('translate-y-24', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+
+        setTimeout(() => {
+          toast.classList.add('translate-y-24', 'opacity-0');
+          toast.classList.remove('translate-y-0', 'opacity-100');
+        }, 3200);
+      }, 500);
+    }
+
+    function handleCancel() {
+      const confirmReset = window.confirm('Discard all unsaved preferences?');
+      if (confirmReset) {
+        document.getElementById('input-new-pw').value = '';
+        document.getElementById('input-confirm-pw').value = '';
+      }
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)] py-md px-lg mt-auto"><div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-sm text-secondary font-caption text-caption"><div>© 2026 Internal Service Management. PIC Operations Workspace.</div><div class="flex items-center gap-md"><a class="hover:text-on-surface transition-colors" data-path="sla-guidelines" href="#">SLA Guidelines</a><a class="hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="support" href="#">Support</a></div></div></footer></div></body></html>

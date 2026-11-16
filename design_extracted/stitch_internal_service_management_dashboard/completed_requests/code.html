@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline-variant": "#c4c5d5", "on-error-container": "#93000a", "inverse-surface": "#2d3133", "secondary": "#505f76", "tertiary-container": "#434b60", "surface-tint": "#3755c3", "surface-container-lowest": "#ffffff", "on-surface": "#191c1e", "inverse-on-surface": "#eff1f3", "surface-bright": "#f7f9fb", "primary-container": "#1e40af", "inverse-primary": "#b8c4ff", "on-tertiary": "#ffffff", "error": "#ba1a1a", "tertiary-fixed": "#dae2fd", "surface-dim": "#d8dadc", "surface-container-highest": "#e0e3e5", "outline": "#757684", "on-tertiary-container": "#b4bbd5", "secondary-fixed": "#d3e4fe", "on-primary-fixed": "#001453", "secondary-fixed-dim": "#b7c8e1", "secondary-container": "#d0e1fb", "primary": "#00288e", "on-surface-variant": "#444653", "background": "#f7f9fb", "tertiary": "#2d3449", "error-container": "#ffdad6", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#3f465c", "on-secondary-fixed": "#0b1c30", "surface-container": "#eceef0", "on-background": "#191c1e", "on-secondary": "#ffffff", "on-tertiary-fixed": "#131b2e", "on-error": "#ffffff", "tertiary-fixed-dim": "#bec6e0", "on-secondary-fixed-variant": "#38485d", "surface-variant": "#e0e3e5", "on-primary-fixed-variant": "#173bab", "on-primary-container": "#a8b8ff", "surface": "#f7f9fb", "primary-fixed-dim": "#b8c4ff", "surface-container-high": "#e6e8ea", "on-secondary-container": "#54647a", "primary-fixed": "#dde1ff", "surface-container-low": "#f2f4f6" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "base": "4px", "xs": "4px", "container-max": "1440px", "sm": "8px", "md": "16px", "lg": "24px", "xl": "32px", "gutter": "20px" }, "fontFamily": { "body-lg": [ "Inter" ], "display": [ "Inter" ], "label-md": [ "Inter" ], "headline-md": [ "Inter" ], "body-md": [ "Inter" ], "caption": [ "Inter" ], "headline-lg": [ "Inter" ] }, "fontSize": { "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "display": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" } ], "headline-md": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "caption": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-lowest flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50"><div class="flex flex-col"><div class="h-16 flex items-center px-md gap-sm"><div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[20px]">grid_view</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-md leading-none tracking-tight text-on-surface">ISM</span><span class="font-caption text-caption text-secondary">Operations PIC</span></div></div><div class="px-md pt-sm pb-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Workspace</span></div><nav class="flex flex-col gap-xs px-sm" data-active-classes="bg-surface-container text-primary font-bold"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="incoming-requests" href="#"><span class="material-symbols-outlined text-[20px]">inbox</span><span class="font-body-md text-body-md">Incoming Requests</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="processing" href="#"><span class="material-symbols-outlined text-[20px]">sync</span><span class="font-body-md text-body-md">Processing</span></a><a aria-current="page" class="flex items-center gap-sm px-sm py-xs rounded-lg transition-colors bg-surface-container text-primary font-bold" data-path="completed" href="#"><span class="material-symbols-outlined text-[20px]">check_circle</span><span class="font-body-md text-body-md">Completed</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="reports" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-body-md text-body-md">Reports</span></a></nav></div><div class="p-sm flex flex-col gap-xs bg-surface-container-lowest"><div class="px-sm py-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Account</span></div><nav class="flex flex-col gap-xs" data-active-classes="bg-surface-container text-primary font-bold"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="profile" href="#"><span class="material-symbols-outlined text-[20px]">person</span><span class="font-body-md text-body-md">Profile</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Settings</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-error hover:bg-error-container hover:text-on-error-container transition-colors" data-path="logout" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="font-body-md text-body-md">Logout</span></a></nav></div></aside><div class="pl-60 flex flex-col min-h-screen"><header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-lg"><div class="flex items-center w-full max-w-md"><div class="relative w-full flex items-center"><span class="material-symbols-outlined absolute left-sm text-secondary text-[20px] pointer-events-none">search</span><input class="w-full pl-xl pr-md py-xs rounded-lg bg-surface-container-low text-on-surface placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container text-body-md font-body-md transition-all" placeholder="Search requests, ticket #, or keywords..." type="text"/></div></div><div class="flex items-center gap-md"><a class="relative p-xs rounded-lg text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors flex items-center justify-center" data-path="notifications" href="#"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></a><div class="flex items-center gap-sm pl-sm border-l border-surface-container-high"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col text-left"><span class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Budi Santoso</span><span class="font-caption text-caption text-secondary leading-tight">PIC Operations</span></div><span class="material-symbols-outlined text-secondary text-[18px]">expand_more</span></div></div></header><main class="flex-1 pt-16 bg-surface px-lg py-lg max-w-[1440px] w-full mx-auto"><div class="flex flex-col w-full">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-md pb-md">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs text-secondary font-label-md text-label-md uppercase tracking-wider">
+<span>Operations PIC</span>
+<span>/</span>
+<span class="text-primary font-semibold">Audit Archive</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Completed Requests</h1>
+<p class="font-body-md text-body-md text-secondary max-w-2xl">
+        View and audit historical service requests that have been successfully resolved.
+      </p>
+</div>
+<div class="flex items-center gap-xs">
+<div class="flex items-center bg-surface-container-low rounded-lg p-xs text-secondary font-label-md text-label-md">
+<span class="inline-flex items-center gap-xs px-sm py-xs bg-surface-container-lowest rounded shadow-sm text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-tint"></span>
+          Audit Log Active
+        </span>
+<span class="px-sm py-xs text-secondary">ISO 20000 Compliant</span>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-xs bg-primary text-on-primary font-label-md text-label-md px-md py-xs rounded-lg shadow-sm hover:bg-primary-container transition-all" id="exportDropdownBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export Records</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<div class="hidden absolute right-0 mt-xs w-48 bg-surface-container-lowest rounded-lg shadow-md p-xs z-30" id="exportDropdownMenu">
+<a class="flex items-center gap-xs px-sm py-xs rounded hover:bg-surface-container-low text-on-surface font-body-md text-body-md" data-path="export-csv" href="#">
+<span class="material-symbols-outlined text-secondary text-[18px]">table_view</span>
+            Export as CSV (.csv)
+          </a>
+<a class="flex items-center gap-xs px-sm py-xs rounded hover:bg-surface-container-low text-on-surface font-body-md text-body-md" data-path="export-pdf" href="#">
+<span class="material-symbols-outlined text-secondary text-[18px]">picture_as_pdf</span>
+            Audit Report (.pdf)
+          </a>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-lg">
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col gap-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Resolved Volume</span>
+<div class="flex items-baseline gap-xs">
+<span class="font-display text-display text-on-surface leading-none">42</span>
+<span class="font-body-md text-body-md text-secondary">tickets</span>
+</div>
+<div class="flex items-center gap-xs text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+14% vs Aug (37 tickets)</span>
+</div>
+</div>
+<div class="w-14 h-14 rounded-xl bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">task_alt</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col gap-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Avg SLA Turnaround</span>
+<div class="flex items-baseline gap-xs">
+<span class="font-display text-display text-on-surface leading-none">2.4</span>
+<span class="font-body-md text-body-md text-secondary">hrs</span>
+</div>
+<div class="flex items-center gap-xs text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px] text-surface-tint">verified</span>
+<span>Target &lt; 4.0 hrs (98.2% compliance)</span>
+</div>
+</div>
+<div class="w-14 h-14 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary">
+<svg class="w-10 h-10 -rotate-90" viewbox="0 0 36 36">
+<circle class="stroke-surface-container-high" cx="18" cy="18" fill="none" r="14" stroke-width="3"></circle>
+<circle class="stroke-primary" cx="18" cy="18" fill="none" r="14" stroke-dasharray="88" stroke-dashoffset="34" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col gap-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Satisfaction Score</span>
+<div class="flex items-baseline gap-xs">
+<span class="font-display text-display text-on-surface leading-none">4.9</span>
+<span class="font-body-md text-body-md text-secondary">/ 5.0</span>
+</div>
+<div class="flex items-center gap-xs text-secondary font-label-md text-label-md">
+<span class="flex text-amber-500">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</span>
+<span>Employee verified (39 ratings)</span>
+</div>
+</div>
+<div class="w-14 h-14 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[28px]">sentiment_very_satisfied</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm mb-lg">
+<div class="p-md flex flex-col md:flex-row items-stretch md:items-center justify-between gap-md">
+<div class="relative flex-1 max-w-lg">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-secondary text-[20px] pointer-events-none">search</span>
+<input class="w-full pl-xl pr-md py-xs rounded-lg bg-surface-container-low text-on-surface placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest text-body-md font-body-md transition-all" id="ticketSearch" placeholder="Search completed ticket ID, keyword..." type="text"/>
+</div>
+<div class="flex flex-wrap items-center gap-xs">
+<div class="relative">
+<select class="appearance-none bg-surface-container-low text-on-surface font-body-md text-body-md pl-sm pr-lg py-xs rounded-lg focus:outline-none cursor-pointer" id="dateFilter">
+<option value="sep-2026">September 2026</option>
+<option value="last-30">Last 30 Days</option>
+<option value="q3-2026">Q3 2026</option>
+<option value="all">All Time</option>
+</select>
+<span class="material-symbols-outlined absolute right-xs top-1/2 -translate-y-1/2 text-secondary text-[18px] pointer-events-none">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container-low text-on-surface font-body-md text-body-md pl-sm pr-lg py-xs rounded-lg focus:outline-none cursor-pointer" id="serviceFilter">
+<option value="all">All Services</option>
+<option value="facilities">Facilities &amp; HVAC</option>
+<option value="network">Network Infrastructure</option>
+<option value="it-hardware">IT Hardware Support</option>
+<option value="electrical">General Electrical</option>
+</select>
+<span class="material-symbols-outlined absolute right-xs top-1/2 -translate-y-1/2 text-secondary text-[18px] pointer-events-none">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container-low text-on-surface font-body-md text-body-md pl-sm pr-lg py-xs rounded-lg focus:outline-none cursor-pointer" id="sectionFilter">
+<option value="all">All Sections</option>
+<option value="finance">Finance</option>
+<option value="ops-plant-2">Ops Plant 2</option>
+<option value="marketing">Marketing</option>
+<option value="hr">HR</option>
+</select>
+<span class="material-symbols-outlined absolute right-xs top-1/2 -translate-y-1/2 text-secondary text-[18px] pointer-events-none">expand_more</span>
+</div>
+<button class="p-xs text-secondary hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" id="resetFilters" title="Reset Filters" type="button">
+<span class="material-symbols-outlined text-[20px]">filter_alt_off</span>
+</button>
+</div>
+</div>
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md">
+<thead class="bg-surface-container-low text-secondary font-label-md text-label-md uppercase tracking-wider">
+<tr>
+<th class="py-sm px-md font-semibold">Request ID</th>
+<th class="py-sm px-md font-semibold">Service</th>
+<th class="py-sm px-md font-semibold">Requester &amp; Section</th>
+<th class="py-sm px-md font-semibold">Completed &amp; Duration</th>
+<th class="py-sm px-md font-semibold">Resolution Summary</th>
+<th class="py-sm px-md font-semibold">Rating</th>
+<th class="py-sm px-md font-semibold text-right">Action</th>
+</tr>
+</thead>
+<tbody id="completedTableBody">
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-md px-md align-top">
+<div class="flex flex-col gap-xs">
+<span class="font-semibold text-primary font-body-md text-body-md">#SRV-2026-0001</span>
+<span class="inline-flex items-center px-xs py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-md text-label-md w-max">HVAC</span>
+</div>
+</td>
+<td class="py-md px-md align-top">
+<div class="flex flex-col max-w-xs">
+<span class="font-semibold text-on-surface">AC Leaking &amp; Insufficient Cooling</span>
+<span class="text-secondary font-caption text-caption">Tower 1, Lantai 4 - Room 402</span>
+</div>
+</td>
+<td class="py-md px-md align-top">
+<div class="flex items-center gap-xs">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-secondary font-semibold font-caption text-caption">
+                  RK
+                </div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Ratna Kusuma</span>
+<span class="text-secondary font-caption text-caption">Finance Section</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-top">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">1 Sep 2026, 14:15</span>
+<div class="flex items-center gap-xs text-secondary font-caption text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+<span>Resolved in 2.5 hrs</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-top">
+<p class="text-on-surface-variant font-body-md text-body-md max-w-sm line-clamp-2">
+                Replaced thermistor sensor and cleared condensation line blockage. Unit pressure tested normal at 18°C output.
+              </p>
+</td>
+<td class="py-md px-md align-top">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="font-semibold text-on-surface">5.0</span>
+<div class="flex text-amber-500">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<span class="text-secondary font-caption text-caption">"Fast response and clean work!"</span>
+</div>
+</td>
+<td class="py-md px-md align-top text-right">
+<button class="inline-flex items-center gap-xs px-sm py-xs rounded-lg text-primary hover:bg-surface-container text-label-md font-label-md transition-colors" onclick="openArchiveModal('SRV-2026-0001', 'AC Leaking &amp; Insufficient Cooling', 'Ratna Kusuma', 'Finance', '1 Sep 2026, 14:15', '2.5 hrs', 'Replaced thermistor sensor and cleared condensation line blockage. Unit pressure tested normal at 18°C output.', '5.0', 'Fast response and clean work!')" type="button">
+<span>View Archive</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-md px-md align-top">
+<div class="flex flex-col gap-xs">
+<span class="font-semibold text-primary font-body-md text-body-md">#SRV-2026-0002</span>
+<span class="inline-flex items-center px-xs py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-md text-label-md w-max">Network</span>
+</div>
+</td>
+<td class="py-md px-md align-top">
+<div class="flex flex-col max-w-xs">
+<span class="font-semibold text-on-surface">Rack Switch 24-Port Failure</span>
+<span class="text-secondary font-caption text-caption">Plant 2 Server Enclosure B</span>
+</div>
+</td>
+<td class="py-md px-md align-top">
+<div class="flex items-center gap-xs">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-secondary font-semibold font-caption text-caption">
+                  AW
+                </div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Agus Wicaksono</span>
+<span class="text-secondary font-caption text-caption">Ops Plant 2</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-top">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">3 Sep 2026, 09:40</span>
+<div class="flex items-center gap-xs text-secondary font-caption text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+<span>Resolved in 1.2 hrs</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-top">
+<p class="text-on-surface-variant font-body-md text-body-md max-w-sm line-clamp-2">
+                Swapped blown power supply module with hot-spare PSU-200W. Restored VLAN configurations and verified all 24 ports operational.
+              </p>
+</td>
+<td class="py-md px-md align-top">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="font-semibold text-on-surface">5.0</span>
+<div class="flex text-amber-500">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<span class="text-secondary font-caption text-caption">"Minimal line downtime, thank you."</span>
+</div>
+</td>
+<td class="py-md px-md align-top text-right">
+<button class="inline-flex items-center gap-xs px-sm py-xs rounded-lg text-primary hover:bg-surface-container text-label-md font-label-md transition-colors" onclick="openArchiveModal('SRV-2026-0002', 'Rack Switch 24-Port Failure', 'Agus Wicaksono', 'Ops Plant 2', '3 Sep 2026, 09:40', '1.2 hrs', 'Swapped blown power supply module with hot-spare PSU-200W. Restored VLAN configurations and verified all 24 ports operational.', '5.0', 'Minimal line downtime, thank you.')" type="button">
+<span>View Archive</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-md px-md align-top">
+<div class="flex flex-col gap-xs">
+<span class="font-semibold text-primary font-body-md text-body-md">#SRV-2026-0003</span>
+<span class="inline-flex items-center px-xs py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-md text-label-md w-max">IT Support</span>
+</div>
+</td>
+<td class="py-md px-md align-top">
+<div class="flex flex-col max-w-xs">
+<span class="font-semibold text-on-surface">Executive Laptop SSD Upgrade</span>
+<span class="text-secondary font-caption text-caption">ThinkPad X1 Carbon Gen 10</span>
+</div>
+</td>
+<td class="py-md px-md align-top">
+<div class="flex items-center gap-xs">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-secondary font-semibold font-caption text-caption">
+                  MA
+                </div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Maya Anggraini</span>
+<span class="text-secondary font-caption text-caption">Marketing Section</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-top">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">5 Sep 2026, 17:00</span>
+<div class="flex items-center gap-xs text-secondary font-caption text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+<span>Resolved in 4.0 hrs</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-top">
+<p class="text-on-surface-variant font-body-md text-body-md max-w-sm line-clamp-2">
+                Cloned 512GB encrypted drive onto 2TB NVMe PCIe Gen4 SSD. Verified BitLocker keys backed up to Azure AD, user verified data integrity.
+              </p>
+</td>
+<td class="py-md px-md align-top">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="font-semibold text-on-surface">4.0</span>
+<div class="flex text-amber-500">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px] text-surface-container-highest">star</span>
+</div>
+</div>
+<span class="text-secondary font-caption text-caption">"Everything moved cleanly, smooth transition."</span>
+</div>
+</td>
+<td class="py-md px-md align-top text-right">
+<button class="inline-flex items-center gap-xs px-sm py-xs rounded-lg text-primary hover:bg-surface-container text-label-md font-label-md transition-colors" onclick="openArchiveModal('SRV-2026-0003', 'Executive Laptop SSD Upgrade', 'Maya Anggraini', 'Marketing', '5 Sep 2026, 17:00', '4.0 hrs', 'Cloned 512GB encrypted drive onto 2TB NVMe PCIe Gen4 SSD. Verified BitLocker keys backed up to Azure AD, user verified data integrity.', '4.0', 'Everything moved cleanly, smooth transition.')" type="button">
+<span>View Archive</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-md px-md align-top">
+<div class="flex flex-col gap-xs">
+<span class="font-semibold text-primary font-body-md text-body-md">#SRV-2026-0004</span>
+<span class="inline-flex items-center px-xs py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-md text-label-md w-max">Electrical</span>
+</div>
+</td>
+<td class="py-md px-md align-top">
+<div class="flex flex-col max-w-xs">
+<span class="font-semibold text-on-surface">Meeting Room 4B Power Socket</span>
+<span class="text-secondary font-caption text-caption">Floor pop-up box shorted</span>
+</div>
+</td>
+<td class="py-md px-md align-top">
+<div class="flex items-center gap-xs">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-secondary font-semibold font-caption text-caption">
+                  DS
+                </div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Dian Sastro</span>
+<span class="text-secondary font-caption text-caption">HR Section</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-top">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">6 Sep 2026, 11:30</span>
+<div class="flex items-center gap-xs text-secondary font-caption text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+<span>Resolved in 1.8 hrs</span>
+</div>
+</div>
+</td>
+<td class="py-md px-md align-top">
+<p class="text-on-surface-variant font-body-md text-body-md max-w-sm line-clamp-2">
+                Replaced damaged floor pop-up socket assembly, tested earthing ground resistance, reset MCB-4 in sub-panel.
+              </p>
+</td>
+<td class="py-md px-md align-top">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="font-semibold text-on-surface">5.0</span>
+<div class="flex text-amber-500">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<span class="text-secondary font-caption text-caption">"Safe and ready for next board meeting."</span>
+</div>
+</td>
+<td class="py-md px-md align-top text-right">
+<button class="inline-flex items-center gap-xs px-sm py-xs rounded-lg text-primary hover:bg-surface-container text-label-md font-label-md transition-colors" onclick="openArchiveModal('SRV-2026-0004', 'Meeting Room 4B Power Socket', 'Dian Sastro', 'HR', '6 Sep 2026, 11:30', '1.8 hrs', 'Replaced damaged floor pop-up socket assembly, tested earthing ground resistance, reset MCB-4 in sub-panel.', '5.0', 'Safe and ready for next board meeting.')" type="button">
+<span>View Archive</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-md py-sm bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-sm text-secondary font-caption text-caption rounded-b-xl">
+<div class="flex items-center gap-xs">
+<span>Showing <strong class="text-on-surface">1-4</strong> of <strong class="text-on-surface">42</strong> completed tickets</span>
+<span class="px-xs">|</span>
+<span class="inline-flex items-center gap-xs text-secondary">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+          Read-Only Audit Mode
+        </span>
+</div>
+<div class="flex items-center gap-xs">
+<button class="p-xs rounded hover:bg-surface-container text-secondary disabled:opacity-40" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="px-sm py-xs rounded bg-surface-container-lowest text-primary font-semibold shadow-sm">1</span>
+<button class="px-sm py-xs rounded hover:bg-surface-container text-secondary" type="button">2</button>
+<button class="px-sm py-xs rounded hover:bg-surface-container text-secondary" type="button">3</button>
+<button class="p-xs rounded hover:bg-surface-container text-secondary" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-md">
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm lg:col-span-2 flex flex-col justify-between">
+<div class="flex items-center justify-between pb-sm">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface">Resolution Velocity Breakdown</span>
+<span class="font-caption text-caption text-secondary">Turnaround performance against 4.0 hr SLA standard</span>
+</div>
+<span class="font-label-md text-label-md text-primary bg-secondary-container px-sm py-xs rounded">Q3 Standard</span>
+</div>
+<div class="flex flex-col gap-sm my-md">
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface">Within 2 Hours (Fast Track)</span>
+<span class="text-secondary">28 tickets (66.7%)</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 66.7%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface">2 to 4 Hours (Target Window)</span>
+<span class="text-secondary">13 tickets (31.0%)</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-surface-tint rounded-full" style="width: 31%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface">Exceeded 4 Hours (Escalations)</span>
+<span class="text-secondary">1 ticket (2.3%)</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 2.3%"></div>
+</div>
+</div>
+</div>
+<div class="p-sm bg-surface-container-low rounded-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">shield</span>
+<span class="font-caption text-caption text-on-surface-variant">
+          Audit verification hash: <span class="font-mono text-on-surface">SHA256-e82b79a0d81c4e</span>. All timestamps synchronized with Master NTP Server.
+        </span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-headline-md text-on-surface">PIC Officer Sign-off</span>
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+</div>
+<span class="font-caption text-caption text-secondary">Current active auditor session</span>
+</div>
+<div class="flex items-center gap-md my-md p-sm bg-surface-container-low rounded-xl">
+<div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[24px]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface font-body-md text-body-md">Budi Santoso</span>
+<span class="font-caption text-caption text-secondary">Badge #PIC-OPS-8841</span>
+<span class="font-caption text-caption text-primary">Shift: 07:00 - 16:00 WIB</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<a class="w-full flex items-center justify-center gap-xs py-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" data-path="processing" href="#">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+<span>Return to Processing Queue</span>
+</a>
+</div>
+</div>
+</div>
+<div class="hidden fixed inset-0 bg-inverse-surface/40 backdrop-blur-sm z-50 flex items-center justify-center p-md" id="archiveModal">
+<div class="bg-surface-container-lowest w-full max-w-2xl rounded-2xl shadow-xl overflow-hidden flex flex-col">
+<div class="px-lg py-md bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-xs">
+<span class="font-semibold text-primary font-headline-md text-headline-md" id="modalTicketId">#SRV-2026-0001</span>
+<span class="px-xs py-0.5 rounded bg-emerald-100 text-emerald-800 font-label-md text-label-md">RESOLVED &amp; ARCHIVED</span>
+</div>
+<span class="font-caption text-caption text-secondary">Historical Record • Read-Only</span>
+</div>
+</div>
+<button class="p-xs text-secondary hover:text-on-surface rounded-lg" onclick="closeArchiveModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-lg flex flex-col gap-md">
+<div class="grid grid-cols-2 gap-md p-md bg-surface-container-low rounded-xl">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase">Requester</span>
+<span class="font-semibold text-on-surface" id="modalRequester">Ratna Kusuma</span>
+<span class="font-caption text-caption text-secondary" id="modalSection">Finance</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase">Completion Timestamp</span>
+<span class="font-semibold text-on-surface" id="modalCompletedAt">1 Sep 2026, 14:15</span>
+<span class="font-caption text-caption text-primary" id="modalDuration">Turnaround: 2.5 hrs</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-secondary uppercase">Service Request Scope</span>
+<p class="font-body-md text-body-md text-on-surface font-semibold" id="modalServiceName">AC Leaking &amp; Insufficient Cooling</p>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-label-md text-label-md text-secondary uppercase">Resolution Action Log</span>
+<div class="p-md bg-surface-container-low rounded-xl">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed" id="modalSummary">
+              Replaced thermistor sensor and cleared condensation line blockage. Unit pressure tested normal at 18°C output.
+            </p>
+</div>
+</div>
+<div class="p-md bg-surface-container-low rounded-xl flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase">Requester Rating &amp; Feedback</span>
+<p class="font-body-md text-body-md text-on-surface italic" id="modalFeedback">"Fast response and clean work!"</p>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-headline-md text-headline-md font-bold text-on-surface" id="modalRating">5.0</span>
+<span class="material-symbols-outlined text-amber-500 text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<div class="px-lg py-md bg-surface-container-low flex items-center justify-between">
+<span class="font-caption text-caption text-secondary">Signed off by PIC Budi Santoso</span>
+<button class="px-md py-xs bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors" onclick="closeArchiveModal()" type="button">
+          Close Archive View
+        </button>
+</div>
+</div>
+</div>
+<script>
+    const exportBtn = document.getElementById('exportDropdownBtn');
+    const exportMenu = document.getElementById('exportDropdownMenu');
+
+    if (exportBtn && exportMenu) {
+      exportBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        exportMenu.classList.toggle('hidden');
+      });
+
+      document.addEventListener('click', () => {
+        if (!exportMenu.classList.contains('hidden')) {
+          exportMenu.classList.add('hidden');
+        }
+      });
+    }
+
+    function openArchiveModal(ticketId, service, requester, section, completedAt, duration, summary, rating, feedback) {
+      document.getElementById('modalTicketId').textContent = '#' + ticketId;
+      document.getElementById('modalServiceName').textContent = service;
+      document.getElementById('modalRequester').textContent = requester;
+      document.getElementById('modalSection').textContent = section + ' Section';
+      document.getElementById('modalCompletedAt').textContent = completedAt;
+      document.getElementById('modalDuration').textContent = 'Turnaround: ' + duration;
+      document.getElementById('modalSummary').textContent = summary;
+      document.getElementById('modalRating').textContent = rating;
+      document.getElementById('modalFeedback').textContent = '"' + feedback + '"';
+
+      const modal = document.getElementById('archiveModal');
+      modal.classList.remove('hidden');
+    }
+
+    function closeArchiveModal() {
+      const modal = document.getElementById('archiveModal');
+      modal.classList.add('hidden');
+    }
+
+    const searchInput = document.getElementById('ticketSearch');
+    const tableBody = document.getElementById('completedTableBody');
+    const rows = tableBody ? tableBody.getElementsByTagName('tr') : [];
+
+    if (searchInput) {
+      searchInput.addEventListener('input', function (e) {
+        const term = e.target.value.toLowerCase().trim();
+        for (let i = 0; i < rows.length; i++) {
+          const rowText = rows[i].innerText.toLowerCase();
+          if (rowText.indexOf(term) > -1) {
+            rows[i].style.display = '';
+          } else {
+            rows[i].style.display = 'none';
+          }
+        }
+      });
+    }
+
+    const resetBtn = document.getElementById('resetFilters');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        if (searchInput) searchInput.value = '';
+        document.getElementById('dateFilter').selectedIndex = 0;
+        document.getElementById('serviceFilter').selectedIndex = 0;
+        document.getElementById('sectionFilter').selectedIndex = 0;
+        for (let i = 0; i < rows.length; i++) {
+          rows[i].style.display = '';
+        }
+      });
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)] py-md px-lg mt-auto"><div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-sm text-secondary font-caption text-caption"><div>© 2026 Internal Service Management. PIC Operations Workspace.</div><div class="flex items-center gap-md"><a class="hover:text-on-surface transition-colors" data-path="sla-guidelines" href="#">SLA Guidelines</a><a class="hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="support" href="#">Support</a></div></div></footer></div></body></html>

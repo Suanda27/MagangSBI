@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="en" style="font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+  @layer base { 
+    html, body { 
+      margin: 0; 
+      padding: 0; 
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    } 
+    body { overscroll-behavior: none; } 
+    main > :first-child { margin-top: 0 !important; } 
+    main > :last-child { margin-bottom: 0 !important; } 
+  } 
+  ::-webkit-scrollbar { display: none; }
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+tailwind.config = { 
+  darkMode: "class", 
+  theme: { 
+    extend: { 
+      "colors": { 
+        "outline-variant": "#c4c5d5", 
+        "on-error-container": "#93000a", 
+        "inverse-surface": "#2d3133", 
+        "secondary": "#505f76", 
+        "tertiary-container": "#434b60", 
+        "surface-tint": "#3755c3", 
+        "surface-container-lowest": "#ffffff", 
+        "on-surface": "#191c1e", 
+        "inverse-on-surface": "#eff1f3", 
+        "surface-bright": "#f7f9fb", 
+        "primary-container": "#1e40af", 
+        "inverse-primary": "#b8c4ff", 
+        "on-tertiary": "#ffffff", 
+        "error": "#ba1a1a", 
+        "tertiary-fixed": "#dae2fd", 
+        "surface-dim": "#d8dadc", 
+        "surface-container-highest": "#e0e3e5", 
+        "outline": "#757684", 
+        "on-tertiary-container": "#b4bbd5", 
+        "secondary-fixed": "#d3e4fe", 
+        "on-primary-fixed": "#001453", 
+        "secondary-fixed-dim": "#b7c8e1", 
+        "secondary-container": "#d0e1fb", 
+        "primary": "#00288e", 
+        "on-surface-variant": "#444653", 
+        "background": "#f7f9fb", 
+        "tertiary": "#2d3449", 
+        "error-container": "#ffdad6", 
+        "on-primary": "#ffffff", 
+        "on-tertiary-fixed-variant": "#3f465c", 
+        "on-secondary-fixed": "#0b1c30", 
+        "surface-container": "#eceef0", 
+        "on-background": "#191c1e", 
+        "on-secondary": "#ffffff", 
+        "on-tertiary-fixed": "#131b2e", 
+        "on-error": "#ffffff", 
+        "tertiary-fixed-dim": "#bec6e0", 
+        "on-secondary-fixed-variant": "#38485d", 
+        "surface-variant": "#e0e3e5", 
+        "on-primary-fixed-variant": "#173bab", 
+        "on-primary-container": "#a8b8ff", 
+        "surface": "#f7f9fb", 
+        "primary-fixed-dim": "#b8c4ff", 
+        "surface-container-high": "#e6e8ea", 
+        "on-secondary-container": "#54647a", 
+        "primary-fixed": "#dde1ff", 
+        "surface-container-low": "#f2f4f6" 
+      }, 
+      "borderRadius": { 
+        "DEFAULT": "0.25rem", 
+        "lg": "0.5rem", 
+        "xl": "0.75rem", 
+        "full": "9999px" 
+      }, 
+      "spacing": { 
+        "base": "4px", 
+        "xs": "4px", 
+        "container-max": "1440px", 
+        "sm": "8px", 
+        "md": "16px", 
+        "lg": "24px", 
+        "xl": "32px", 
+        "gutter": "20px" 
+      }, 
+      "fontFamily": { 
+        sans: ["Inter", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+        "body-lg": [ "Inter", "sans-serif" ], 
+        "display": [ "Inter", "sans-serif" ], 
+        "label-md": [ "Inter", "sans-serif" ], 
+        "headline-md": [ "Inter", "sans-serif" ], 
+        "body-md": [ "Inter", "sans-serif" ], 
+        "caption": [ "Inter", "sans-serif" ], 
+        "headline-lg": [ "Inter", "sans-serif" ] 
+      }, 
+      "fontSize": { 
+        "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], 
+        "display": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], 
+        "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" } ], 
+        "headline-md": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ], 
+        "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], 
+        "caption": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], 
+        "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" } ] 
+      } 
+    } 
+  } 
+};
+</script>
+</head><body class="bg-surface font-sans text-body-md text-on-surface antialiased">
+<aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-lowest flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50">
+<div class="flex flex-col">
+<div class="h-16 flex items-center px-md gap-sm border-b border-surface-container-low">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary text-[20px]">grid_view</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-[16px] leading-tight tracking-tight text-on-surface">ISM System</span>
+<span class="text-[11px] font-medium text-secondary">PIC Operations</span>
+</div>
+</div>
+<div class="px-md pt-sm pb-xs">
+<span class="text-[11px] font-semibold uppercase tracking-wider text-secondary">Workspace</span>
+</div>
+<nav class="flex flex-col gap-0.5 px-sm">
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-medium text-[13px]" data-path="dashboard" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-medium text-[13px]" data-path="permintaan-masuk" href="#">
+<span class="material-symbols-outlined text-[20px]">inbox</span>
+<span class="">Permintaan Masuk</span>
+</a>
+
+<a aria-current="page" class="flex items-center gap-sm px-sm py-2 rounded-lg bg-surface-container text-primary font-semibold text-[13px] transition-colors" data-path="sedang-diproses" href="#"><span class="material-symbols-outlined text-[20px]">sync</span><span class="">Sedang Diproses</span></a>
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-medium text-[13px]" data-path="selesai" href="#">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span class="">Selesai</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-medium text-[13px]" data-path="laporan" href="#">
+<span class="material-symbols-outlined text-[20px]">bar_chart</span>
+<span class="">Laporan</span>
+</a>
+</nav>
+</div>
+<div class="p-sm flex flex-col gap-xs bg-surface-container-lowest border-t border-surface-container-low">
+<div class="px-sm py-xs">
+<span class="text-[11px] font-semibold uppercase tracking-wider text-secondary">Account</span>
+</div>
+<nav class="flex flex-col gap-0.5">
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-medium text-[13px]" data-path="settings" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="">Settings</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-error hover:bg-error-container hover:text-on-error-container transition-colors font-medium text-[13px]" data-path="logout" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span class="">Logout</span>
+</a>
+</nav>
+</div>
+</aside>
+<div class="pl-60 flex flex-col min-h-screen font-sans">
+<header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest/95 backdrop-blur-md border-b border-surface-container-low z-40 flex items-center justify-between px-lg">
+<div class="flex items-center w-full max-w-md">
+<div class="relative w-full flex items-center">
+<span class="material-symbols-outlined absolute left-sm text-secondary text-[20px] pointer-events-none">search</span>
+<input class="w-full pl-9 pr-md py-1.5 rounded-lg bg-surface-container-low text-on-surface placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container text-[13px] transition-all font-sans" placeholder="Search requests, ticket #, or keywords..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-md">
+<a class="relative p-2 rounded-lg text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors flex items-center justify-center" data-path="notifications" href="#">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span>
+</a>
+<div class="flex items-center gap-sm pl-sm border-l border-surface-container-high cursor-pointer hover:opacity-90">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-semibold text-xs overflow-hidden">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+<div class="flex flex-col text-left">
+<span class="text-[13px] font-semibold text-on-surface leading-tight">Budi Santoso</span>
+<span class="text-[11px] text-secondary leading-tight">PIC Operations</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">expand_more</span>
+</div>
+</div>
+</header>
+<main class="flex-1 pt-16 bg-surface px-lg py-lg max-w-[1440px] w-full mx-auto"><div class="flex flex-col w-full"><div class="flex flex-col md:flex-row md:items-center justify-between gap-sm mb-lg"><div class="flex flex-col"><div class="flex items-center gap-1.5 text-xs text-secondary mb-1"><span class="hover:text-primary transition-colors cursor-pointer font-medium">Portal</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="text-on-surface font-semibold">Sedang Diproses</span></div><h1 class="font-semibold text-2xl text-slate-900 tracking-tight">Sedang Diproses</h1><p class="text-sm text-secondary mt-1">Daftar permintaan layanan yang sedang Anda tangani.</p></div><div class="flex items-center gap-sm self-start md:self-auto"><button class="flex items-center gap-1.5 px-3 py-2 bg-surface-container-lowest border border-surface-container-high text-on-surface-variant font-medium text-xs rounded-lg shadow-sm hover:bg-surface-container-low transition-colors" id="btn-toggle-filter" type="button"><span class="material-symbols-outlined text-[18px]">tune</span><span class="">Filter</span></button><button class="p-2 bg-surface-container-lowest border border-surface-container-high text-on-surface-variant hover:text-primary rounded-lg shadow-sm hover:bg-surface-container-low transition-colors flex items-center justify-center" title="Muat ulang data" type="button"><span class="material-symbols-outlined text-[18px]">refresh</span></button></div></div><div class="grid grid-cols-1 sm:grid-cols-3 gap-md mb-lg"><div class="bg-surface-container-lowest p-5 rounded-xl border border-surface-container-low shadow-sm flex items-center justify-between"><div class="flex flex-col"><span class="text-xs font-medium uppercase text-secondary tracking-wider">Total Sedang Diproses</span><span class="text-3xl font-semibold text-slate-900 mt-1 leading-tight tracking-tight">14</span><div class="flex items-center gap-1.5 mt-1"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span><span class="text-xs text-secondary font-normal">Permintaan aktif dalam penanganan</span></div></div><div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container shrink-0"><span class="material-symbols-outlined text-[22px]">sync</span></div></div><div class="bg-surface-container-lowest p-5 rounded-xl border border-surface-container-low shadow-sm flex items-center justify-between"><div class="flex flex-col"><span class="text-xs font-medium uppercase text-secondary tracking-wider">Masuk Bulan Ini</span><span class="text-3xl font-semibold text-slate-900 mt-1 leading-tight tracking-tight">8</span><span class="text-xs text-secondary mt-1 font-normal">Permintaan baru diterima</span></div><div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-primary shrink-0"><span class="material-symbols-outlined text-[22px]">inbox</span></div></div><div class="bg-surface-container-lowest p-5 rounded-xl border border-surface-container-low shadow-sm flex items-center justify-between"><div class="flex flex-col"><span class="text-xs font-medium uppercase text-secondary tracking-wider">Selesai Bulan Ini</span><span class="text-3xl font-semibold text-slate-900 mt-1 leading-tight tracking-tight">42</span><div class="flex items-center gap-1.5 mt-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span class="text-xs text-secondary font-normal">Permintaan telah tuntas</span></div></div><div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary shrink-0"><span class="material-symbols-outlined text-[22px]">check_circle</span></div></div></div><div class="flex flex-col gap-sm mb-md"><div class="bg-surface-container-lowest p-md rounded-xl border border-surface-container-low shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-md"><div class="relative flex-1 max-w-md"><span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-secondary text-[18px] pointer-events-none">search</span><input class="w-full pl-9 pr-md py-2 bg-surface-container-low text-on-surface font-normal text-xs md:text-sm rounded-lg placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container transition-all" id="filter-search" placeholder="Cari ID permintaan, judul, atau nama pengaju..." type="text"></div><div class="flex flex-wrap items-center gap-sm"><div class="flex items-center gap-1.5 bg-surface-container-low px-3 py-1.5 rounded-lg border border-transparent"><span class="text-xs text-secondary font-medium">Section:</span><select class="bg-transparent text-xs font-semibold text-on-surface focus:outline-none cursor-pointer" id="select-section"><option value="">Semua Section</option><option value="Assembly">Assembly</option><option value="HR">HR</option><option value="IS">IS</option><option value="PE">PE</option><option value="GA">GA</option></select></div><div class="flex items-center gap-1.5 bg-surface-container-low px-3 py-1.5 rounded-lg border border-transparent"><span class="text-xs text-secondary font-medium">Plant:</span><select class="bg-transparent text-xs font-semibold text-on-surface focus:outline-none cursor-pointer" id="select-plant"><option value="">Semua Plant</option><option value="Plant 1">Plant 1</option><option value="Plant 2">Plant 2</option></select></div><div class="flex items-center gap-1.5 bg-surface-container-low px-3 py-1.5 rounded-lg border border-transparent"><span class="text-xs text-secondary font-medium">Lantai:</span><select class="bg-transparent text-xs font-semibold text-on-surface focus:outline-none cursor-pointer" id="select-floor"><option value="">Semua Lantai</option><option value="Lantai 1">Lantai 1</option><option value="Lantai 2">Lantai 2</option><option value="Lantai 3">Lantai 3</option><option value="Bay 4">Bay 4</option></select></div><button class="text-xs font-semibold text-primary hover:underline px-2 py-1" id="btn-reset-filter" type="button">Reset Filter</button></div></div></div><div class="flex items-center justify-between mb-sm px-1"><div class="flex items-center gap-2"><span class="text-xs font-semibold text-on-surface" id="showing-indicator-header">Menampilkan 14 Permintaan Sedang Diproses</span></div></div><div class="bg-surface-container-lowest rounded-xl border border-surface-container-low shadow-sm overflow-hidden mb-lg"><div class="overflow-x-auto"><table class="w-full text-left border-collapse" id="requests-table"><thead><tr class="bg-surface-container-low/60 border-b border-surface-container-low text-secondary font-medium text-xs uppercase tracking-wider"><th class="py-3.5 px-md whitespace-nowrap">ID Permintaan</th><th class="py-3.5 px-md whitespace-nowrap">Judul Permintaan</th><th class="py-3.5 px-md whitespace-nowrap">Layanan</th><th class="py-3.5 px-md whitespace-nowrap">Pengaju</th><th class="py-3.5 px-md whitespace-nowrap">Bagian</th><th class="py-3.5 px-md whitespace-nowrap">Lokasi</th><th class="py-3.5 px-md whitespace-nowrap">Tanggal Pengajuan</th><th class="py-3.5 px-md whitespace-nowrap">Terakhir Diperbarui</th><th class="py-3.5 px-md whitespace-nowrap">Status</th><th class="py-3.5 px-md whitespace-nowrap text-right">Aksi</th></tr></thead><tbody class="divide-y divide-surface-container-low text-[13px] font-normal" id="table-body"><tr class="hover:bg-surface-container-low/40 transition-colors"><td class="py-3.5 px-md font-semibold text-primary whitespace-nowrap">#SRV-2026-0012</td><td class="py-3.5 px-md font-medium text-slate-900 max-w-xs"><span class="line-clamp-1">Sensor PLC Conveyor Rusak</span></td><td class="py-3.5 px-md text-on-surface-variant whitespace-nowrap">Perbaikan &amp; Pemeliharaan</td><td class="py-3.5 px-md whitespace-nowrap"><div class="flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[10px]">MF</div><span class="text-on-surface font-medium">Muhammad Faiz</span></div></td><td class="py-3.5 px-md text-secondary whitespace-nowrap">Assembly</td><td class="py-3.5 px-md text-secondary whitespace-nowrap">Plant 2 – Lantai 1</td><td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">23 Agustus 2026, 08:24 WIB</td><td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">23 Agustus 2026, 14:30 WIB</td><td class="py-3.5 px-md whitespace-nowrap"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-secondary-container text-primary"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Sedang Diproses</span></td><td class="py-3.5 px-md text-right whitespace-nowrap"><button class="px-3 py-1 rounded-lg text-xs font-semibold bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button" data-path="detail-sedang-diproses">Detail</button></td></tr><tr class="hover:bg-surface-container-low/40 transition-colors"><td class="py-3.5 px-md font-semibold text-primary whitespace-nowrap">#SRV-2026-0018</td><td class="py-3.5 px-md font-medium text-slate-900 max-w-xs"><span class="line-clamp-1">Perbaikan AC Ruang Meeting</span></td><td class="py-3.5 px-md text-on-surface-variant whitespace-nowrap">Perbaikan Fasilitas</td><td class="py-3.5 px-md whitespace-nowrap"><div class="flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[10px]">SR</div><span class="text-on-surface font-medium">Siti Rahmawati</span></div></td><td class="py-3.5 px-md text-secondary whitespace-nowrap">HR</td><td class="py-3.5 px-md text-secondary whitespace-nowrap">Plant 1 – Lantai 2</td><td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">21 Agustus 2026, 10:15 WIB</td><td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">22 Agustus 2026, 13:20 WIB</td><td class="py-3.5 px-md whitespace-nowrap"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-secondary-container text-primary"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Sedang Diproses</span></td><td class="py-3.5 px-md text-right whitespace-nowrap"><button class="px-3 py-1 rounded-lg text-xs font-semibold bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button" data-path="detail-sedang-diproses">Detail</button></td></tr><tr class="hover:bg-surface-container-low/40 transition-colors"><td class="py-3.5 px-md font-semibold text-primary whitespace-nowrap">#SRV-2026-0021</td><td class="py-3.5 px-md font-medium text-slate-900 max-w-xs"><span class="line-clamp-1">Permintaan Akses Sistem</span></td><td class="py-3.5 px-md text-on-surface-variant whitespace-nowrap">Akses Sistem</td><td class="py-3.5 px-md whitespace-nowrap"><div class="flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[10px]">DA</div><span class="text-on-surface font-medium">Dimas Anggara</span></div></td><td class="py-3.5 px-md text-secondary whitespace-nowrap">IS</td><td class="py-3.5 px-md text-secondary whitespace-nowrap">Plant 1 – Lantai 3</td><td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">20 Agustus 2026, 09:10 WIB</td><td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">23 Agustus 2026, 11:45 WIB</td><td class="py-3.5 px-md whitespace-nowrap"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-secondary-container text-primary"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Sedang Diproses</span></td><td class="py-3.5 px-md text-right whitespace-nowrap"><button class="px-3 py-1 rounded-lg text-xs font-semibold bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button" data-path="detail-sedang-diproses">Detail</button></td></tr><tr class="hover:bg-surface-container-low/40 transition-colors"><td class="py-3.5 px-md font-semibold text-primary whitespace-nowrap">#SRV-2026-0024</td><td class="py-3.5 px-md font-medium text-slate-900 max-w-xs"><span class="line-clamp-1">Penggantian Kartu Akses Pintu Masuk</span></td><td class="py-3.5 px-md text-on-surface-variant whitespace-nowrap">Keamanan Fisik</td><td class="py-3.5 px-md whitespace-nowrap"><div class="flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[10px]">KT</div><span class="text-on-surface font-medium">Kevin Tandio</span></div></td><td class="py-3.5 px-md text-secondary whitespace-nowrap">Assembly</td><td class="py-3.5 px-md text-secondary whitespace-nowrap">Plant 2 – Lantai 1</td><td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">19 Agustus 2026, 11:00 WIB</td><td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">21 Agustus 2026, 16:15 WIB</td><td class="py-3.5 px-md whitespace-nowrap"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-secondary-container text-primary"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Sedang Diproses</span></td><td class="py-3.5 px-md text-right whitespace-nowrap"><button class="px-3 py-1 rounded-lg text-xs font-semibold bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button" data-path="detail-sedang-diproses">Detail</button></td></tr><tr class="hover:bg-surface-container-low/40 transition-colors"><td class="py-3.5 px-md font-semibold text-primary whitespace-nowrap">#SRV-2026-0027</td><td class="py-3.5 px-md font-medium text-slate-900 max-w-xs"><span class="line-clamp-1">Kalibrasi Controller Robot Welding</span></td><td class="py-3.5 px-md text-on-surface-variant whitespace-nowrap">Otomasi Industri</td><td class="py-3.5 px-md whitespace-nowrap"><div class="flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[10px]">HG</div><span class="text-on-surface font-medium">Hendra Gunawan</span></div></td><td class="py-3.5 px-md text-secondary whitespace-nowrap">PE</td><td class="py-3.5 px-md text-secondary whitespace-nowrap">Plant 1 – Lantai 1</td><td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">18 Agustus 2026, 14:20 WIB</td><td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">22 Agustus 2026, 09:30 WIB</td><td class="py-3.5 px-md whitespace-nowrap"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-secondary-container text-primary"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Sedang Diproses</span></td><td class="py-3.5 px-md text-right whitespace-nowrap"><button class="px-3 py-1 rounded-lg text-xs font-semibold bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button" data-path="detail-sedang-diproses">Detail</button></td></tr><tr class="hover:bg-surface-container-low/40 transition-colors"><td class="py-3.5 px-md font-semibold text-primary whitespace-nowrap">#SRV-2026-0031</td><td class="py-3.5 px-md font-medium text-slate-900 max-w-xs"><span class="line-clamp-1">Penambahan Switch Port LAN Meja QC</span></td><td class="py-3.5 px-md text-on-surface-variant whitespace-nowrap">Jaringan &amp; Komunikasi</td><td class="py-3.5 px-md whitespace-nowrap"><div class="flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[10px]">DS</div><span class="text-on-surface font-medium">Dewi Sartika</span></div></td><td class="py-3.5 px-md text-secondary whitespace-nowrap">GA</td><td class="py-3.5 px-md text-secondary whitespace-nowrap">Plant 2 – Lantai 2</td><td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">17 Agustus 2026, 13:40 WIB</td><td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">20 Agustus 2026, 10:15 WIB</td><td class="py-3.5 px-md whitespace-nowrap"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-secondary-container text-primary"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Sedang Diproses</span></td><td class="py-3.5 px-md text-right whitespace-nowrap"><button class="px-3 py-1 rounded-lg text-xs font-semibold bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button" data-path="detail-sedang-diproses">Detail</button></td></tr><tr class="hover:bg-surface-container-low/40 transition-colors"><td class="py-3.5 px-md font-semibold text-primary whitespace-nowrap">#SRV-2026-0035</td><td class="py-3.5 px-md font-medium text-slate-900 max-w-xs"><span class="line-clamp-1">Instalasi Driver &amp; Software CAD Workstation</span></td><td class="py-3.5 px-md text-on-surface-variant whitespace-nowrap">Dukungan Perangkat Lunak</td><td class="py-3.5 px-md whitespace-nowrap"><div class="flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[10px]">RT</div><span class="text-on-surface font-medium">Rian Triadi</span></div></td><td class="py-3.5 px-md text-secondary whitespace-nowrap">PE</td><td class="py-3.5 px-md text-secondary whitespace-nowrap">Plant 1 – Lantai 3</td><td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">16 Agustus 2026, 09:05 WIB</td><td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">19 Agustus 2026, 15:40 WIB</td><td class="py-3.5 px-md whitespace-nowrap"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-secondary-container text-primary"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Sedang Diproses</span></td><td class="py-3.5 px-md text-right whitespace-nowrap"><button class="px-3 py-1 rounded-lg text-xs font-semibold bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button" data-path="detail-sedang-diproses">Detail</button></td></tr><tr class="hover:bg-surface-container-low/40 transition-colors"><td class="py-3.5 px-md font-semibold text-primary whitespace-nowrap">#SRV-2026-0039</td><td class="py-3.5 px-md font-medium text-slate-900 max-w-xs"><span class="line-clamp-1">Perbaikan Sensor Suhu Chiller Produksi</span></td><td class="py-3.5 px-md text-on-surface-variant whitespace-nowrap">Perbaikan &amp; Pemeliharaan</td><td class="py-3.5 px-md whitespace-nowrap"><div class="flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-[10px]">BS</div><span class="text-on-surface font-medium">Bagus Santiko</span></div></td><td class="py-3.5 px-md text-secondary whitespace-nowrap">Assembly</td><td class="py-3.5 px-md text-secondary whitespace-nowrap">Plant 1 – Bay 4</td><td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">15 Agustus 2026, 08:30 WIB</td><td class="py-3.5 px-md text-secondary whitespace-nowrap text-xs font-normal">18 Agustus 2026, 11:20 WIB</td><td class="py-3.5 px-md whitespace-nowrap"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-secondary-container text-primary"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Sedang Diproses</span></td><td class="py-3.5 px-md text-right whitespace-nowrap"><button class="px-3 py-1 rounded-lg text-xs font-semibold bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button" data-path="detail-sedang-diproses">Detail</button></td></tr></tbody></table></div><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-sm px-md py-3.5 bg-surface-container-lowest border-t border-surface-container-low"><span class="text-xs text-secondary font-medium" id="showing-indicator">Menampilkan 1–8 dari 14 permintaan</span><div class="flex items-center gap-1"><button class="px-2.5 py-1 rounded-lg text-xs text-secondary font-medium hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button">← Sebelumnya</button><button class="w-7 h-7 rounded-lg text-xs font-bold bg-primary text-on-primary flex items-center justify-center shadow-xs" type="button">1</button><button class="w-7 h-7 rounded-lg text-xs font-medium text-secondary hover:bg-surface-container-low hover:text-on-surface flex items-center justify-center transition-colors" type="button">2</button><button class="px-2.5 py-1 rounded-lg text-xs text-secondary font-medium hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button">Selanjutnya →</button></div></div></div></div></main>
+<footer class="w-full bg-surface-container-lowest border-t border-surface-container-low py-4 px-lg mt-auto">
+<div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-sm text-secondary text-xs"><div class="">© 2026 Internal Service Management. PIC Operations Workspace.</div><div class="flex items-center gap-md"><a class="hover:text-on-surface transition-colors" data-path="sla-guidelines" href="#">Pedoman SLA</a><a class="hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privasi</a><a class="hover:text-on-surface transition-colors" data-path="support" href="#">Bantuan &amp; Dukungan</a></div></div>
+</footer>
+</div>
+
+
+
+
+
+
+</body></html>

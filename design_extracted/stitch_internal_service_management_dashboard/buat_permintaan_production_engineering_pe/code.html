@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Buat Permintaan - ISM System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#edeeef",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#dde1ff",
+                    "primary-fixed-dim": "#b8c4ff",
+                    "text-muted": "#64748B",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#dde1ff",
+                    "secondary-fixed-dim": "#b8c4ff",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "surface-dim": "#d9dadb",
+                    "primary-container": "#00288e",
+                    "text-main": "#0F172A",
+                    "background": "#f8f9fa",
+                    "tertiary-fixed": "#d3e4fe",
+                    "surface-tint": "#3d57ba",
+                    "on-surface-variant": "#444652",
+                    "on-primary-fixed-variant": "#213da0",
+                    "on-secondary-fixed": "#001453",
+                    "outline-variant": "#c5c5d4",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "secondary-container": "#708cfd",
+                    "on-secondary-fixed-variant": "#173bab",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-variant": "#e1e3e4",
+                    "tertiary-container": "#253549",
+                    "surface": "#f8f9fa",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#b8c4ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "border-subtle": "#E2E8F0",
+                    "on-tertiary-container": "#8d9eb6",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f3f4f5",
+                    "on-primary-container": "#7e97fe",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#191c1d",
+                    "tertiary": "#0f2033",
+                    "on-primary-fixed": "#001453",
+                    "surface-white": "#FFFFFF",
+                    "on-secondary-container": "#00217a",
+                    "secondary": "#3755c3",
+                    "on-background": "#191c1d",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "outline": "#757684",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-surface": "#2e3132",
+                    "on-secondary": "#ffffff",
+                    "primary": "#00175c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "container-max": "1440px",
+                    "xl": "48px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "headline-lg-mobile": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "display": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "Inter"
+                    ],
+                    "caption": [
+                            "Inter"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "headline-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display": [
+                            "40px",
+                            {
+                                    "lineHeight": "48px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "caption": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-md": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-text-main antialiased min-h-screen overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 h-16 left-[240px] bg-surface-white dark:bg-surface border-b border-border-subtle dark:border-outline-variant flex justify-between items-center px-lg max-w-[1440px] ml-auto z-50">
+<div class="flex items-center gap-4">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">ISM System</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-text-muted hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A small circular avatar placeholder image showing a professional headshot or geometric pattern, suitable for a corporate application profile icon, clean white background, minimalistic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh_ToQvatkg45cjHzE8A_MmaLhsBqXuF0rmCA0JqeivnEdYkrHOnIqL69Rzcy5lTgXeUFpoWF1M-jVIZmF_Yi6qPQgZL5_u6r62UgEqduGAcRbcwDLTdxcyxGsLVSDJRWPkW0yPnLRkEPdlumdZaMuKx6_guLVLoduwR_vHVWS08G0jeSEOH6ffixIgUPfsB4-ZMgHcEYbFWtHAzvzgYdJ38zBUVszr1LfYIRmiWs0Aobmeqy2cOZp">
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-low dark:bg-surface-container-low border-r border-border-subtle dark:border-outline-variant flex flex-col py-lg px-md z-50">
+<div class="mb-8 px-4">
+<h2 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">ISM System</h2>
+<p class="font-caption text-caption text-text-muted">Internal Service</p>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<li class="">
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 bg-surface-container-high dark:bg-surface-container-highest text-primary dark:text-primary-fixed border-l-2 border-primary dark:border-primary-fixed rounded-r-lg py-2 px-4 opacity-80 scale-[0.98] transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_box</span>
+<span class="font-body-md text-body-md font-bold">Pengajuan Layanan</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="font-body-md text-body-md">Permintaan Saya</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-md text-body-md">Riwayat</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 text-text-muted dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-md text-body-md">Profile</span>
+</a>
+</li>
+</ul>
+<ul class="flex flex-col gap-2 mt-auto border-t border-border-subtle pt-4">
+<li class="">
+<a class="flex items-center gap-3 text-text-muted hover:bg-surface-container rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 text-text-muted hover:bg-surface-container rounded-lg py-2 px-4 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-[240px] pt-16 min-h-screen p-lg max-w-[1440px] mx-auto">
+<div class="mb-8"><div class="flex flex-wrap items-center justify-between gap-4 mb-3"><div class="flex items-center gap-2"><span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-caption font-label-md bg-surface-container text-primary border border-border-subtle"><span class="material-symbols-outlined text-[16px]">build_circle</span>Production Engineering (PE)</span><span class="inline-flex items-center px-3 py-1 rounded-full text-caption font-label-md bg-secondary-fixed text-on-secondary-container border border-primary-fixed-dim">Langkah 2 dari 2: Formulir Permintaan PE</span></div></div><h1 class="font-headline-lg text-headline-lg text-primary">Buat Permintaan - Production Engineering (PE)</h1><p class="font-body-md text-body-md text-text-muted mt-2">Isi detail permintaan layanan Production Engineering sesuai kebutuhan Anda.</p></div>
+<div class="grid grid-cols-1 gap-gutter"><div class="flex flex-col gap-lg w-full max-w-4xl mx-auto"><form class="flex flex-col gap-lg" id="pe-request-form"><section class="bg-surface-white border border-border-subtle rounded-lg p-lg shadow-sm"><div class="flex items-center justify-between mb-6 border-b border-border-subtle pb-4"><div><h2 class="font-headline-md text-headline-md text-text-main">Informasi Permintaan</h2><p class="font-caption text-caption text-text-muted mt-1">Lengkapi kategori layanan dan rincian lokasi penanganan fasilitas PE.</p></div><span class="px-2.5 py-1 text-caption font-label-md bg-primary-fixed text-primary rounded-full">Wajib Diisi</span></div><div class="space-y-6"><div><label class="block font-label-md text-label-md text-text-main mb-2" for="pe-kategori">Kategori Layanan *</label><div class="relative"><select class="w-full appearance-none bg-surface-white border border-border-subtle rounded-lg py-3 px-4 font-body-md text-body-md text-text-main focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim transition-all" id="pe-kategori" name="kategori" required=""><option disabled="" value="">Pilih kategori layanan PE...</option><option selected="" value="perbaikan">Perbaikan &amp; Pemeliharaan</option><option value="modifikasi">Modifikasi &amp; Improvement</option><option value="instalasi">Instalasi &amp; Penyesuaian</option><option value="sparepart">Peralatan &amp; Sparepart</option><option value="dukungan">Dukungan Teknis</option></select><div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-text-muted"><span class="material-symbols-outlined">expand_more</span></div></div><p class="hidden text-caption text-error mt-1" id="kategori-error">Silakan pilih kategori layanan.</p></div><div><label class="block font-label-md text-label-md text-text-main mb-2">Lokasi Penanganan *</label><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label class="block font-caption text-caption text-text-muted mb-1" for="pe-plant">Plant *</label><div class="relative"><select class="w-full appearance-none bg-surface-white border border-border-subtle rounded-lg py-2.5 px-3.5 font-body-md text-body-md text-text-main focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim transition-all" id="pe-plant" name="plant" required=""><option selected="" value="plant1">Plant 1</option><option value="plant2">Plant 2</option><option value="plant3">Plant 3</option></select><div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-text-muted"><span class="material-symbols-outlined text-[20px]">expand_more</span></div></div></div><div><label class="block font-caption text-caption text-text-muted mb-1" for="pe-lantai">Lantai *</label><div class="relative"><select class="w-full appearance-none bg-surface-white border border-border-subtle rounded-lg py-2.5 px-3.5 font-body-md text-body-md text-text-main focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim transition-all" id="pe-lantai" name="lantai" required=""><option value="Lantai 1">Lantai 1</option><option selected="" value="Lantai 2">Lantai 2</option></select><div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-text-muted"><span class="material-symbols-outlined text-[20px]">expand_more</span></div></div></div></div><div class="mt-2.5 flex items-center gap-2 p-2 px-3 bg-surface-container-low border border-border-subtle rounded-lg"><span class="material-symbols-outlined text-secondary text-[18px]">location_on</span><span class="font-caption text-caption text-text-muted">Lokasi Terpilih:</span><span class="font-label-md text-caption text-primary font-semibold" id="lokasi-preview-badge">Plant 1 – Lantai 2</span></div></div><div><label class="block font-label-md text-label-md text-text-main mb-2" for="pe-judul">Judul Permintaan *</label><input class="w-full bg-surface-white border border-border-subtle rounded-lg py-3 px-4 font-body-md text-body-md text-text-main placeholder-text-muted focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim transition-all" id="pe-judul" name="judul" placeholder="Contoh: Permintaan perbaikan peralatan" required="" type="text" value="Permintaan perbaikan peralatan mesin press utama"><p class="hidden text-caption text-error mt-1" id="judul-error">Judul permintaan wajib diisi.</p></div><div><div class="flex items-center justify-between mb-2"><label class="font-label-md text-label-md text-text-main" for="pe-deskripsi">Deskripsi *</label><span class="font-caption text-caption text-text-muted">Jelaskan masalah, kondisi, &amp; detail PIC</span></div><textarea class="w-full bg-surface-white border border-border-subtle rounded-lg py-3 px-4 font-body-md text-body-md text-text-main placeholder-text-muted focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim transition-all resize-y min-h-[130px]" id="pe-deskripsi" name="deskripsi" placeholder="Jelaskan kebutuhan atau masalah yang Anda alami secara detail..." required="" rows="5">Mesin press jalur 2 mengalami getaran abnormal dan kebocoran oli hidrolik pada katup tekanan saat beroperasi di shift 1. Memerlukan inspeksi dan kalibrasi oleh teknisi PE sesegera mungkin.</textarea><p class="hidden text-caption text-error mt-1" id="deskripsi-error">Deskripsi kebutuhan wajib diisi.</p></div></div></section><section class="bg-surface-white border border-border-subtle rounded-lg p-lg shadow-sm"><div class="flex items-center justify-between mb-6 border-b border-border-subtle pb-4"><div><h2 class="font-headline-md text-headline-md text-text-main">Lampiran Pendukung (Opsional)</h2><p class="font-caption text-caption text-text-muted mt-1">Lampirkan foto kondisi aktual dan dokumen pendukung jika diperlukan oleh PIC.</p></div><span class="px-2.5 py-1 text-caption font-label-md bg-surface-container-low text-text-muted rounded-full border border-border-subtle">Opsional</span></div><div class="space-y-6"><div><div class="flex items-center justify-between mb-1"><label class="font-label-md text-label-md text-text-main flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px] text-text-muted">photo_camera</span>Upload Foto</label><span class="font-caption text-caption text-text-muted">Format: JPG, JPEG, PNG (Maksimal 5MB)</span></div><p class="font-caption text-caption text-text-muted mb-3">Tambahkan foto sebagai bukti atau gambaran kondisi yang berkaitan dengan permintaan.</p><div class="mb-3 bg-surface-white border border-border-subtle rounded-lg p-3 flex items-center justify-between shadow-[0_1px_2px_rgba(0,0,0,0.05)]" id="photo-preview-card"><div class="flex items-center gap-3 min-w-0"><div class="w-14 h-14 rounded-lg bg-surface-container-high overflow-hidden flex-shrink-0 border border-border-subtle relative group"><img alt="Foto Bukti Mesin Press" class="w-full h-full object-cover" src="data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 24 24' fill='%2364748B'&gt;&lt;path d='M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z'/&gt;&lt;/svg&gt;"><span class="absolute bottom-1 right-1 bg-surface-white/90 rounded px-1 text-[9px] font-bold text-primary shadow-sm">JPG</span></div><div class="min-w-0"><div class="flex items-center gap-2"><p class="font-body-md text-body-md font-semibold text-text-main truncate">foto_mesin_press_lt2.jpg</p><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-label-md bg-[#EDF7ED] text-[#1E4620] border border-[#C8E6C9]"><span class="material-symbols-outlined text-[13px]">check_circle</span>Siap Diunggah</span></div><p class="font-caption text-caption text-text-muted mt-0.5">2.4 MB • Resolusi 1920×1080 • Terlampir</p></div></div><div class="flex items-center gap-2 flex-shrink-0 ml-3"><button class="px-3 py-1.5 border border-border-subtle rounded-lg font-label-md text-caption text-text-main hover:bg-surface-container transition-colors inline-flex items-center gap-1" type="button"><span class="material-symbols-outlined text-[15px]">sync</span>Ganti Foto</button><button class="p-1.5 text-error hover:bg-error-container/30 rounded-lg transition-colors inline-flex items-center justify-center" id="btn-remove-photo" title="Hapus foto" type="button"><span class="material-symbols-outlined text-[18px]">delete</span></button></div></div><div class="border border-dashed border-border-subtle hover:border-primary rounded-lg py-3.5 px-5 flex items-center justify-center gap-3 bg-surface hover:bg-surface-container transition-colors cursor-pointer group"><span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[20px]">add_a_photo</span><p class="font-body-md text-body-md text-text-main font-medium"><span class="text-primary font-semibold">Klik untuk tambah foto lain</span> atau seret file gambar ke sini</p></div></div><div class="pt-4 border-t border-border-subtle"><div class="flex items-center justify-between mb-1"><label class="font-label-md text-label-md text-text-main flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px] text-text-muted">description</span>Upload File</label><span class="font-caption text-caption text-text-muted">Format didukung: PDF, DOC, DOCX, XLS, XLSX (Maksimal 10MB)</span></div><p class="font-caption text-caption text-text-muted mb-3">Tambahkan dokumen pendukung jika diperlukan.</p><div class="mb-3 bg-surface-white border border-border-subtle rounded-lg p-3 flex items-center justify-between shadow-[0_1px_2px_rgba(0,0,0,0.05)]" id="doc-preview-card"><div class="flex items-center gap-3 min-w-0"><div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary flex-shrink-0 border border-border-subtle"><span class="material-symbols-outlined text-[22px]">picture_as_pdf</span></div><div class="min-w-0"><div class="flex items-center gap-2"><p class="font-body-md text-body-md font-semibold text-text-main truncate">Manual_Kalibrasi_Press_2026.pdf</p><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-label-md bg-[#EDF7ED] text-[#1E4620] border border-[#C8E6C9]"><span class="material-symbols-outlined text-[13px]">check_circle</span>Siap</span></div><p class="font-caption text-caption text-text-muted mt-0.5">1.8 MB • Dokumen PDF Terunggah</p></div></div><div class="flex items-center gap-2 flex-shrink-0 ml-3"><button class="p-1.5 text-error hover:bg-error-container/30 rounded-lg transition-colors inline-flex items-center justify-center" id="btn-remove-doc" title="Hapus dokumen" type="button"><span class="material-symbols-outlined text-[18px]">delete</span></button></div></div><div class="border-2 border-dashed border-border-subtle hover:border-primary rounded-lg p-5 flex flex-col items-center justify-center bg-surface hover:bg-surface-container transition-colors cursor-pointer group"><div class="w-10 h-10 bg-surface-container rounded-full flex items-center justify-center mb-2 group-hover:bg-primary-fixed transition-colors"><span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[22px]">upload_file</span></div><p class="font-body-md text-body-md text-text-main font-semibold mb-0.5 text-center">Klik untuk mengunggah dokumen <span class="font-normal text-text-muted">atau seret file ke sini</span></p><p class="font-caption text-caption text-text-muted text-center">PDF, DOC, DOCX, XLS, XLSX hingga 10MB</p></div></div></div></section><div class="flex items-center justify-between gap-4 mt-2 pb-12"><button class="px-6 py-3 border border-border-subtle rounded-lg font-label-md text-label-md text-text-main bg-surface-white hover:bg-surface-container transition-colors" id="btn-batal-pe" type="button">Batal</button><button class="px-7 py-3 bg-[#00288E] text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary transition-colors flex items-center gap-2 shadow-sm" id="btn-submit-pe" type="submit"><span class="material-symbols-outlined text-[18px]">send</span><span id="btn-submit-text">Kirim Permintaan</span></button></div></form></div><div class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4 backdrop-blur-sm" id="success-modal"><div class="bg-surface-white border border-border-subtle rounded-xl max-w-md w-full p-6 text-center shadow-xl"><div class="w-16 h-16 rounded-full bg-[#EDF7ED] border border-[#C8E6C9] flex items-center justify-center mx-auto mb-4"><span class="material-symbols-outlined text-[#1E4620] text-[36px]">check_circle</span></div><h3 class="font-headline-md text-headline-md text-text-main font-bold mb-2">Permintaan Berhasil Dikirim!</h3><p class="font-body-md text-body-md text-text-muted mb-5 leading-relaxed">Permintaan layanan Anda telah diteruskan ke tim PIC Production Engineering (PE).</p><div class="bg-surface-container-low border border-border-subtle rounded-lg p-3 mb-6"><p class="font-caption text-caption text-text-muted">Nomor Tiket Layanan</p><p class="font-headline-md text-[18px] font-bold text-primary mt-0.5">ID Permintaan: #SRV-2026-0048</p><p class="font-caption text-caption text-text-muted mt-1">Departemen: Production Engineering (PE)</p></div><div class="flex flex-col sm:flex-row gap-3"><button class="flex-1 px-4 py-2.5 bg-[#00288E] text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary transition-colors flex items-center justify-center gap-1.5" id="modal-view-btn" type="button"><span class="material-symbols-outlined text-[18px]">visibility</span>Lihat Permintaan</button><button class="flex-1 px-4 py-2.5 border border-border-subtle bg-surface-white text-text-main rounded-lg font-label-md text-label-md hover:bg-surface-container transition-colors" id="modal-close-btn" type="button">Kembali ke Dashboard</button></div></div></div></div>
+</main>
+<!-- Footer -->
+<footer class="absolute bottom-0 right-0 left-[240px] border-t border-border-subtle dark:border-outline-variant bg-transparent flex justify-between items-center py-md px-lg">
+<p class="font-caption text-caption text-text-muted dark:text-on-surface-variant">© 2024 Internal Service Management</p>
+<div class="flex gap-4">
+<a class="font-caption text-caption text-text-muted hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-caption text-caption text-text-muted hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-caption text-caption text-text-muted hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+</footer>
+<script>(function initPeForm() { const plantSelect = document.getElementById('pe-plant'); const lantaiSelect = document.getElementById('pe-lantai'); const previewBadge = document.getElementById('lokasi-preview-badge'); const form = document.getElementById('pe-request-form'); const modal = document.getElementById('success-modal'); const submitBtn = document.getElementById('btn-submit-pe'); const submitText = document.getElementById('btn-submit-text'); const floorsByPlant = { plant1: ['Lantai 1', 'Lantai 2'], plant2: ['Lantai 1', 'Lantai 2', 'Lantai 3'], plant3: ['Lantai 1', 'Lantai 2', 'Lantai 3'] }; function updateFloorOptions() { if (!plantSelect || !lantaiSelect) return; const selectedPlant = plantSelect.value; const plantName = plantSelect.options[plantSelect.selectedIndex].text; const floors = floorsByPlant[selectedPlant] || ['Lantai 1']; const prevFloor = lantaiSelect.value; lantaiSelect.innerHTML = ''; floors.forEach(floor => { const opt = document.createElement('option'); opt.value = floor; opt.textContent = floor; if (floor === prevFloor) opt.selected = true; lantaiSelect.appendChild(opt); }); if (!floors.includes(lantaiSelect.value)) { lantaiSelect.value = floors[0]; } if (previewBadge) { previewBadge.textContent = plantName + ' – ' + lantaiSelect.value; } } if (plantSelect) { plantSelect.addEventListener('change', updateFloorOptions); } if (lantaiSelect) { lantaiSelect.addEventListener('change', function() { if (previewBadge && plantSelect) { previewBadge.textContent = plantSelect.options[plantSelect.selectedIndex].text + ' – ' + lantaiSelect.value; } }); } const removePhoto = document.getElementById('btn-remove-photo'); const photoCard = document.getElementById('photo-preview-card'); if (removePhoto && photoCard) { removePhoto.addEventListener('click', function() { photoCard.style.display = 'none'; }); } const removeDoc = document.getElementById('btn-remove-doc'); const docCard = document.getElementById('doc-preview-card'); if (removeDoc && docCard) { removeDoc.addEventListener('click', function() { docCard.style.display = 'none'; }); } const btnBatal = document.getElementById('btn-batal-pe'); if (btnBatal) { btnBatal.addEventListener('click', function() { if (confirm('Batalkan pengajuan permintaan Production Engineering ini?')) { form.reset(); updateFloorOptions(); } }); } if (form) { form.addEventListener('submit', function(e) { e.preventDefault(); const judul = document.getElementById('pe-judul').value.trim(); const deskripsi = document.getElementById('pe-deskripsi').value.trim(); if (!judul || !deskripsi) return; submitBtn.disabled = true; submitText.textContent = 'Mengirim Permintaan...'; setTimeout(function() { submitBtn.disabled = false; submitText.textContent = 'Kirim Permintaan'; if (modal) { modal.classList.remove('hidden'); modal.classList.add('flex'); } }, 700); }); } const modalCloseBtn = document.getElementById('modal-close-btn'); const modalViewBtn = document.getElementById('modal-view-btn'); if (modalCloseBtn) { modalCloseBtn.addEventListener('click', function() { modal.classList.add('hidden'); modal.classList.remove('flex'); }); } if (modalViewBtn) { modalViewBtn.addEventListener('click', function() { modal.classList.add('hidden'); modal.classList.remove('flex'); alert('Mengarahkan ke rincian permintaan #SRV-2026-0048...'); }); } })();</script></body></html>

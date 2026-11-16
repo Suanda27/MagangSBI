@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline-variant": "#c4c5d5", "on-error-container": "#93000a", "inverse-surface": "#2d3133", "secondary": "#505f76", "tertiary-container": "#434b60", "surface-tint": "#3755c3", "surface-container-lowest": "#ffffff", "on-surface": "#191c1e", "inverse-on-surface": "#eff1f3", "surface-bright": "#f7f9fb", "primary-container": "#1e40af", "inverse-primary": "#b8c4ff", "on-tertiary": "#ffffff", "error": "#ba1a1a", "tertiary-fixed": "#dae2fd", "surface-dim": "#d8dadc", "surface-container-highest": "#e0e3e5", "outline": "#757684", "on-tertiary-container": "#b4bbd5", "secondary-fixed": "#d3e4fe", "on-primary-fixed": "#001453", "secondary-fixed-dim": "#b7c8e1", "secondary-container": "#d0e1fb", "primary": "#00288e", "on-surface-variant": "#444653", "background": "#f7f9fb", "tertiary": "#2d3449", "error-container": "#ffdad6", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#3f465c", "on-secondary-fixed": "#0b1c30", "surface-container": "#eceef0", "on-background": "#191c1e", "on-secondary": "#ffffff", "on-tertiary-fixed": "#131b2e", "on-error": "#ffffff", "tertiary-fixed-dim": "#bec6e0", "on-secondary-fixed-variant": "#38485d", "surface-variant": "#e0e3e5", "on-primary-fixed-variant": "#173bab", "on-primary-container": "#a8b8ff", "surface": "#f7f9fb", "primary-fixed-dim": "#b8c4ff", "surface-container-high": "#e6e8ea", "on-secondary-container": "#54647a", "primary-fixed": "#dde1ff", "surface-container-low": "#f2f4f6" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "base": "4px", "xs": "4px", "container-max": "1440px", "sm": "8px", "md": "16px", "lg": "24px", "xl": "32px", "gutter": "20px" }, "fontFamily": { "body-lg": [ "Inter" ], "display": [ "Inter" ], "label-md": [ "Inter" ], "headline-md": [ "Inter" ], "body-md": [ "Inter" ], "caption": [ "Inter" ], "headline-lg": [ "Inter" ] }, "fontSize": { "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "display": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" } ], "headline-md": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "caption": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-lowest flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50"><div class="flex flex-col"><div class="h-16 flex items-center px-md gap-sm"><div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[20px]">grid_view</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-md leading-none tracking-tight text-on-surface">ISM</span><span class="font-caption text-caption text-secondary">Operations PIC</span></div></div><div class="px-md pt-sm pb-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Workspace</span></div><nav class="flex flex-col gap-xs px-sm" data-active-classes="bg-surface-container text-primary font-bold"><a aria-current="page" class="flex items-center gap-sm px-sm py-xs rounded-lg transition-colors bg-surface-container text-primary font-bold" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="incoming-requests" href="#"><span class="material-symbols-outlined text-[20px]">inbox</span><span class="font-body-md text-body-md">Incoming Requests</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="processing" href="#"><span class="material-symbols-outlined text-[20px]">sync</span><span class="font-body-md text-body-md">Processing</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="completed" href="#"><span class="material-symbols-outlined text-[20px]">check_circle</span><span class="font-body-md text-body-md">Completed</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="reports" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-body-md text-body-md">Reports</span></a></nav></div><div class="p-sm flex flex-col gap-xs bg-surface-container-lowest"><div class="px-sm py-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Account</span></div><nav class="flex flex-col gap-xs" data-active-classes="bg-surface-container text-primary font-bold"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="profile" href="#"><span class="material-symbols-outlined text-[20px]">person</span><span class="font-body-md text-body-md">Profile</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Settings</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-error hover:bg-error-container hover:text-on-error-container transition-colors" data-path="logout" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="font-body-md text-body-md">Logout</span></a></nav></div></aside><div class="pl-60 flex flex-col min-h-screen"><header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-lg"><div class="flex items-center w-full max-w-md"><div class="relative w-full flex items-center"><span class="material-symbols-outlined absolute left-sm text-secondary text-[20px] pointer-events-none">search</span><input class="w-full pl-xl pr-md py-xs rounded-lg bg-surface-container-low text-on-surface placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container text-body-md font-body-md transition-all" placeholder="Search requests, ticket #, or keywords..." type="text"/></div></div><div class="flex items-center gap-md"><a class="relative p-xs rounded-lg text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors flex items-center justify-center" data-path="notifications" href="#"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></a><div class="flex items-center gap-sm pl-sm border-l border-surface-container-high"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col text-left"><span class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Budi Santoso</span><span class="font-caption text-caption text-secondary leading-tight">PIC Operations</span></div><span class="material-symbols-outlined text-secondary text-[18px]">expand_more</span></div></div></header><main class="flex-1 pt-16 bg-surface px-lg py-lg max-w-[1440px] w-full mx-auto"><div class="flex flex-col w-full">
+<!-- Header & Greeting -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md pb-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-xs text-secondary mb-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider">Operations Command</span>
+<span class="text-secondary font-caption text-caption">•</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-primary-container">Shift A</span>
+</div>
+<h1 class="font-display text-display text-on-surface tracking-tight leading-tight">Dashboard</h1>
+<p class="font-body-lg text-body-lg text-secondary mt-xs">
+<span class="text-on-surface font-semibold">Good morning, Budi.</span> Here's an overview of the service requests that need your attention.
+      </p>
+</div>
+<!-- Quick Action / Triage Velocity Indicator -->
+<div class="flex items-center gap-sm bg-surface-container-lowest px-md py-sm rounded-xl shadow-sm">
+<div class="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse"></div>
+<div class="flex flex-col">
+<span class="font-caption text-caption text-secondary">Queue Velocity</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">98.4% SLA Adherence</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px] ml-xs">tune</span>
+</div>
+</div>
+<!-- Four Compact Horizontal Summary Metric Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md mb-xl">
+<!-- Incoming Requests -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Incoming Requests</span>
+<div class="flex items-baseline gap-xs mt-xs">
+<span class="font-display text-display font-semibold text-on-surface tracking-tight">8</span>
+<span class="font-caption text-caption text-primary-container font-semibold">+3 new</span>
+</div>
+</div>
+<div class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]">inbox</span>
+</div>
+</div>
+<div class="mt-md pt-xs flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="font-caption text-caption text-secondary">Needs triage / review</span>
+</div>
+</div>
+<!-- In Progress -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">In Progress</span>
+<div class="flex items-baseline gap-xs mt-xs">
+<span class="font-display text-display font-semibold text-on-surface tracking-tight">14</span>
+<span class="font-caption text-caption text-secondary font-medium">active PICs</span>
+</div>
+</div>
+<div class="w-8 h-8 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+</div>
+</div>
+<div class="mt-md pt-xs flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="font-caption text-caption text-secondary">Currently being handled</span>
+</div>
+</div>
+<!-- Completed -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Completed</span>
+<div class="flex items-baseline gap-xs mt-xs">
+<span class="font-display text-display font-semibold text-on-surface tracking-tight">42</span>
+<span class="font-caption text-caption text-secondary font-medium">MTTR 2.4h</span>
+</div>
+</div>
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+</div>
+<div class="mt-md pt-xs flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-caption text-caption text-secondary">Resolved this month</span>
+</div>
+</div>
+<!-- Overdue -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Overdue</span>
+<div class="flex items-baseline gap-xs mt-xs">
+<span class="font-display text-display font-semibold text-error tracking-tight">2</span>
+<span class="font-caption text-caption text-error font-semibold">Critical</span>
+</div>
+</div>
+<div class="w-8 h-8 rounded-lg bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">priority_high</span>
+</div>
+</div>
+<div class="mt-md pt-xs flex items-center gap-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span class="font-caption text-caption text-error font-medium">Requires immediate action</span>
+</div>
+</div>
+</div>
+<!-- Main Section: Requests Requiring Attention -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm mb-xl overflow-hidden">
+<!-- Header -->
+<div class="px-lg py-md flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface">Requests Requiring Attention</h2>
+<span class="bg-surface-container-high text-on-surface px-sm py-0.5 rounded-full font-label-md text-label-md">4 pending triage</span>
+</div>
+<a class="group flex items-center gap-xs text-primary-container hover:text-primary font-body-md text-body-md font-semibold transition-colors" data-path="incoming-requests" href="#">
+<span>View All Incoming</span>
+<span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-0.5">arrow_forward</span>
+</a>
+</div>
+<!-- Clean, Airy Table -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-md text-label-md uppercase tracking-wider">
+<th class="py-sm px-lg font-semibold">Request ID</th>
+<th class="py-sm px-md font-semibold">Service</th>
+<th class="py-sm px-md font-semibold">Requester</th>
+<th class="py-sm px-md font-semibold">Section</th>
+<th class="py-sm px-md font-semibold">Status</th>
+<th class="py-sm px-md font-semibold">Submitted</th>
+<th class="py-sm px-lg text-right font-semibold">Action</th>
+</tr>
+</thead>
+<tbody class="text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors cursor-pointer group" onclick="window.location.hash = 'request-detail-0012'">
+<td class="py-md px-lg font-mono font-medium text-primary-container">
+<span class="group-hover:underline">#SRV-2026-0012</span>
+</td>
+<td class="py-md px-md">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">PLC Sensor Alignment</span>
+<span class="font-caption text-caption text-secondary">Assembly Line B Calibration</span>
+</div>
+</td>
+<td class="py-md px-md">
+<div class="flex items-center gap-sm">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-md text-label-md font-bold">
+                  MF
+                </div>
+<span class="font-body-md text-body-md text-on-surface">Muhammad Faiz</span>
+</div>
+</td>
+<td class="py-md px-md">
+<span class="bg-surface-container text-on-surface-variant font-label-md text-label-md px-sm py-xs rounded">Assembly</span>
+</td>
+<td class="py-md px-md">
+<span class="inline-flex items-center gap-1.5 px-sm py-xs rounded-full bg-error-container text-error font-label-md text-label-md font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                Urgent
+              </span>
+</td>
+<td class="py-md px-md text-secondary font-caption text-caption">
+              Today, 08:24
+            </td>
+<td class="py-md px-lg text-right">
+<a class="inline-flex items-center gap-xs px-md py-xs rounded-lg bg-primary-container text-on-primary font-body-md text-body-md font-medium hover:bg-primary shadow-sm transition-colors" data-path="request-detail" href="#" onclick="event.stopPropagation();">
+<span>Review &amp; Triage</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors cursor-pointer group" onclick="window.location.hash = 'request-detail-0015'">
+<td class="py-md px-lg font-mono font-medium text-primary-container">
+<span class="group-hover:underline">#SRV-2026-0015</span>
+</td>
+<td class="py-md px-md">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">ERP Access Provisioning</span>
+<span class="font-caption text-caption text-secondary">SAP Finance Module Roles</span>
+</div>
+</td>
+<td class="py-md px-md">
+<div class="flex items-center gap-sm">
+<div class="w-7 h-7 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center font-label-md text-label-md font-bold">
+                  SA
+                </div>
+<span class="font-body-md text-body-md text-on-surface">Siti Aminah</span>
+</div>
+</td>
+<td class="py-md px-md">
+<span class="bg-surface-container text-on-surface-variant font-label-md text-label-md px-sm py-xs rounded">HR</span>
+</td>
+<td class="py-md px-md">
+<span class="inline-flex items-center gap-1.5 px-sm py-xs rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Pending Review
+              </span>
+</td>
+<td class="py-md px-md text-secondary font-caption text-caption">
+              Today, 08:45
+            </td>
+<td class="py-md px-lg text-right">
+<a class="inline-flex items-center gap-xs px-md py-xs rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest font-body-md text-body-md font-medium transition-colors" data-path="request-detail" href="#" onclick="event.stopPropagation();">
+<span>Review &amp; Triage</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors cursor-pointer group" onclick="window.location.hash = 'request-detail-0018'">
+<td class="py-md px-lg font-mono font-medium text-primary-container">
+<span class="group-hover:underline">#SRV-2026-0018</span>
+</td>
+<td class="py-md px-md">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Server Room AC Leakage</span>
+<span class="font-caption text-caption text-secondary">Data Center Tier-2 Rack 4</span>
+</div>
+</td>
+<td class="py-md px-md">
+<div class="flex items-center gap-sm">
+<div class="w-7 h-7 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-label-md text-label-md font-bold">
+                  DA
+                </div>
+<span class="font-body-md text-body-md text-on-surface">Dimas Anggara</span>
+</div>
+</td>
+<td class="py-md px-md">
+<span class="bg-surface-container text-on-surface-variant font-label-md text-label-md px-sm py-xs rounded">IS</span>
+</td>
+<td class="py-md px-md">
+<span class="inline-flex items-center gap-1.5 px-sm py-xs rounded-full bg-error-container text-error font-label-md text-label-md font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                Urgent
+              </span>
+</td>
+<td class="py-md px-md text-secondary font-caption text-caption">
+              Yesterday, 16:10
+            </td>
+<td class="py-md px-lg text-right">
+<a class="inline-flex items-center gap-xs px-md py-xs rounded-lg bg-primary-container text-on-primary font-body-md text-body-md font-medium hover:bg-primary shadow-sm transition-colors" data-path="request-detail" href="#" onclick="event.stopPropagation();">
+<span>Review &amp; Triage</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors cursor-pointer group" onclick="window.location.hash = 'request-detail-0021'">
+<td class="py-md px-lg font-mono font-medium text-primary-container">
+<span class="group-hover:underline">#SRV-2026-0021</span>
+</td>
+<td class="py-md px-md">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">AutoCAD Civil License</span>
+<span class="font-caption text-caption text-secondary">Workstation R-12 seat renewal</span>
+</div>
+</td>
+<td class="py-md px-md">
+<div class="flex items-center gap-sm">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-md text-label-md font-bold">
+                  KT
+                </div>
+<span class="font-body-md text-body-md text-on-surface">Kevin Tandio</span>
+</div>
+</td>
+<td class="py-md px-md">
+<span class="bg-surface-container text-on-surface-variant font-label-md text-label-md px-sm py-xs rounded">PE</span>
+</td>
+<td class="py-md px-md">
+<span class="inline-flex items-center gap-1.5 px-sm py-xs rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                Pending Review
+              </span>
+</td>
+<td class="py-md px-md text-secondary font-caption text-caption">
+              Yesterday, 17:30
+            </td>
+<td class="py-md px-lg text-right">
+<a class="inline-flex items-center gap-xs px-md py-xs rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest font-body-md text-body-md font-medium transition-colors" data-path="request-detail" href="#" onclick="event.stopPropagation();">
+<span>Review &amp; Triage</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Micro Summary -->
+<div class="px-lg py-sm bg-surface-container-low flex flex-col sm:flex-row items-center justify-between text-secondary font-caption text-caption gap-xs">
+<div class="flex items-center gap-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span>Average triage turnaround time today: <strong>18 minutes</strong></span>
+</div>
+<div class="flex items-center gap-md">
+<span class="font-medium text-on-surface">Showing 4 of 8 incoming requests</span>
+</div>
+</div>
+</div>
+<!-- Bottom Secondary Section: Two Balanced Columns -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+<!-- Left Column: Processing Overview -->
+<div class="bg-surface-container-lowest rounded-xl p-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-md">
+<div class="flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface">Processing Overview</h3>
+<span class="font-caption text-caption text-secondary">Active workloads distributed across operational hubs</span>
+</div>
+<a class="text-primary-container hover:text-primary font-label-md text-label-md font-semibold" data-path="processing" href="#">
+            All Queues →
+          </a>
+</div>
+<!-- Metric Distribution Bar -->
+<div class="my-md">
+<div class="flex items-center justify-between text-caption font-caption text-secondary mb-xs">
+<span>Total Active: 14 Tickets</span>
+<span>Capacity: 70%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden flex">
+<div class="bg-primary-container h-full" style="width: 57.1%;"></div>
+<div class="bg-secondary h-full" style="width: 28.6%;"></div>
+<div class="bg-tertiary h-full" style="width: 14.3%;"></div>
+</div>
+</div>
+<!-- Detailed Breakdown Rows -->
+<div class="flex flex-col gap-md mt-lg">
+<!-- Item 1 -->
+<div class="p-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center justify-between mb-xs">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Technical Support</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface">8</span>
+<span class="font-caption text-caption text-secondary">tickets</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-caption font-caption text-secondary">
+<span>Assembly, Quality &amp; Production Floor</span>
+<span class="text-primary-container font-medium">Within SLA</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="p-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center justify-between mb-xs">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Vendor Parts Procurement</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface">4</span>
+<span class="font-caption text-caption text-secondary">tickets</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-caption font-caption text-secondary">
+<span>External lead-time verification</span>
+<span class="text-on-surface font-medium">1 awaiting supplier PO</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="p-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center justify-between mb-xs">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Quality Sign-off</span>
+</div>
+<div class="flex items-baseline gap-xs">
+<span class="font-headline-md text-headline-md font-semibold text-on-surface">2</span>
+<span class="font-caption text-caption text-secondary">tickets</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-caption font-caption text-secondary">
+<span>QA Head review &amp; calibration tests</span>
+<span class="text-error font-medium">1 nearing SLA limit</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Section Footer -->
+<div class="mt-lg pt-sm flex items-center justify-between text-secondary font-caption text-caption">
+<span class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-primary-container">info</span>
+          Shift handover scheduled in 4 hours
+        </span>
+<a class="text-secondary hover:text-on-surface font-medium" data-path="reports" href="#">SLA Report →</a>
+</div>
+</div>
+<!-- Right Column: Recent Activity (Minimalist Vertical Timeline) -->
+<div class="bg-surface-container-lowest rounded-xl p-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-md">
+<div class="flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface">Recent Activity</h3>
+<span class="font-caption text-caption text-secondary">Live stream of operations updates and ticket actions</span>
+</div>
+<span class="inline-flex items-center gap-1 font-label-md text-label-md text-secondary bg-surface-container px-sm py-xs rounded-full">
+<span class="w-2 h-2 rounded-full bg-surface-tint"></span>
+            Real-time
+          </span>
+</div>
+<!-- Minimalist Vertical Timeline -->
+<div class="relative pl-md mt-md flex flex-col gap-lg before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-surface-container">
+<!-- Event 1 -->
+<div class="relative flex items-start gap-md group">
+<div class="absolute -left-[21px] mt-1 w-4 h-4 rounded-full bg-surface-container-lowest flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-primary-container ring-4 ring-surface-container-lowest"></span>
+</div>
+<div class="flex-1">
+<div class="flex items-baseline justify-between">
+<p class="font-body-md text-body-md text-on-surface">
+<span class="font-semibold text-on-surface">Budi Santoso</span> updated
+                  <a class="font-mono text-primary-container hover:underline font-medium" data-path="request-detail" href="#">#SRV-2026-0012</a>
+</p>
+<span class="font-caption text-caption text-secondary shrink-0 ml-sm">8m ago</span>
+</div>
+<p class="font-caption text-caption text-secondary mt-0.5">Assigned priority level to Urgent and notified Assembly engineering lead.</p>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="relative flex items-start gap-md group">
+<div class="absolute -left-[21px] mt-1 w-4 h-4 rounded-full bg-surface-container-lowest flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-secondary ring-4 ring-surface-container-lowest"></span>
+</div>
+<div class="flex-1">
+<div class="flex items-baseline justify-between">
+<p class="font-body-md text-body-md text-on-surface">
+<span class="font-semibold text-on-surface">Agus Priyono</span> closed
+                  <a class="font-mono text-primary-container hover:underline font-medium" data-path="request-detail" href="#">#SRV-2026-0008</a>
+</p>
+<span class="font-caption text-caption text-secondary shrink-0 ml-sm">34m ago</span>
+</div>
+<p class="font-caption text-caption text-secondary mt-0.5">Hydraulic Valve B3 calibrated and test pass verified by requester.</p>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="relative flex items-start gap-md group">
+<div class="absolute -left-[21px] mt-1 w-4 h-4 rounded-full bg-surface-container-lowest flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-tertiary ring-4 ring-surface-container-lowest"></span>
+</div>
+<div class="flex-1">
+<div class="flex items-baseline justify-between">
+<p class="font-body-md text-body-md text-on-surface">
+<span class="font-semibold text-on-surface">Dewi Lestari</span> routed
+                  <a class="font-mono text-primary-container hover:underline font-medium" data-path="request-detail" href="#">#SRV-2026-0015</a>
+</p>
+<span class="font-caption text-caption text-secondary shrink-0 ml-sm">1h ago</span>
+</div>
+<p class="font-caption text-caption text-secondary mt-0.5">Transferred security clearance request to IS Compliance Desk.</p>
+</div>
+</div>
+<!-- Event 4 -->
+<div class="relative flex items-start gap-md group">
+<div class="absolute -left-[21px] mt-1 w-4 h-4 rounded-full bg-surface-container-lowest flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-error ring-4 ring-surface-container-lowest"></span>
+</div>
+<div class="flex-1">
+<div class="flex items-baseline justify-between">
+<p class="font-body-md text-body-md text-on-surface">
+<span class="font-semibold text-on-surface">System Watchdog</span> flagged
+                  <a class="font-mono text-primary-container hover:underline font-medium" data-path="request-detail" href="#">#SRV-2026-0004</a>
+</p>
+<span class="font-caption text-caption text-secondary shrink-0 ml-sm">2h ago</span>
+</div>
+<p class="font-caption text-caption text-secondary mt-0.5">SLA threshold breach alert dispatched to operations supervisor.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Section Footer -->
+<div class="mt-lg pt-sm flex items-center justify-between text-secondary font-caption text-caption">
+<span>Automatic feed refresh enabled</span>
+<button class="text-primary-container hover:underline font-medium flex items-center gap-0.5" onclick="this.classList.toggle('animate-spin')" type="button">
+<span class="material-symbols-outlined text-[14px]">refresh</span>
+          Sync Now
+        </button>
+</div>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)] py-md px-lg mt-auto"><div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-sm text-secondary font-caption text-caption"><div>© 2026 Internal Service Management. PIC Operations Workspace.</div><div class="flex items-center gap-md"><a class="hover:text-on-surface transition-colors" data-path="sla-guidelines" href="#">SLA Guidelines</a><a class="hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="support" href="#">Support</a></div></div></footer></div></body></html>

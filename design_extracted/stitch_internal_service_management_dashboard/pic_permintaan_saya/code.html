@@ -1,0 +1,484 @@
+<!DOCTYPE html><html lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline-variant": "#c4c5d5", "on-error-container": "#93000a", "inverse-surface": "#2d3133", "secondary": "#505f76", "tertiary-container": "#434b60", "surface-tint": "#3755c3", "surface-container-lowest": "#ffffff", "on-surface": "#191c1e", "inverse-on-surface": "#eff1f3", "surface-bright": "#f7f9fb", "primary-container": "#1e40af", "inverse-primary": "#b8c4ff", "on-tertiary": "#ffffff", "error": "#ba1a1a", "tertiary-fixed": "#dae2fd", "surface-dim": "#d8dadc", "surface-container-highest": "#e0e3e5", "outline": "#757684", "on-tertiary-container": "#b4bbd5", "secondary-fixed": "#d3e4fe", "on-primary-fixed": "#001453", "secondary-fixed-dim": "#b7c8e1", "secondary-container": "#d0e1fb", "primary": "#00288e", "on-surface-variant": "#444653", "background": "#f7f9fb", "tertiary": "#2d3449", "error-container": "#ffdad6", "on-primary": "#ffffff", "on-tertiary-fixed-variant": "#3f465c", "on-secondary-fixed": "#0b1c30", "surface-container": "#eceef0", "on-background": "#191c1e", "on-secondary": "#ffffff", "on-tertiary-fixed": "#131b2e", "on-error": "#ffffff", "tertiary-fixed-dim": "#bec6e0", "on-secondary-fixed-variant": "#38485d", "surface-variant": "#e0e3e5", "on-primary-fixed-variant": "#173bab", "on-primary-container": "#a8b8ff", "surface": "#f7f9fb", "primary-fixed-dim": "#b8c4ff", "surface-container-high": "#e6e8ea", "on-secondary-container": "#54647a", "primary-fixed": "#dde1ff", "surface-container-low": "#f2f4f6" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "base": "4px", "xs": "4px", "container-max": "1440px", "sm": "8px", "md": "16px", "lg": "24px", "xl": "32px", "gutter": "20px" }, "fontFamily": { "body-lg": [ "Inter" ], "display": [ "Inter" ], "label-md": [ "Inter" ], "headline-md": [ "Inter" ], "body-md": [ "Inter" ], "caption": [ "Inter" ], "headline-lg": [ "Inter" ] }, "fontSize": { "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "display": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" } ], "headline-md": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "caption": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-screen w-60 bg-surface-container-lowest flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50"><div class="flex flex-col"><div class="h-16 flex items-center px-md gap-sm"><div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[20px]">grid_view</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-md leading-none tracking-tight text-on-surface">ISM</span><span class="font-caption text-caption text-secondary">Operations PIC</span></div></div><div class="px-md pt-sm pb-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Workspace</span></div><nav class="flex flex-col gap-xs px-sm" data-active-classes="bg-surface-container text-primary font-bold"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="permintaan-masuk" href="#"><span class="material-symbols-outlined text-[20px]">inbox</span><span class="font-body-md text-body-md">Permintaan Masuk</span></a><a aria-current="page" class="flex items-center gap-sm px-sm py-xs rounded-lg transition-colors bg-surface-container text-primary font-bold" data-path="permintaan-saya" href="#"><span class="material-symbols-outlined text-[20px]">assignment</span><span class="font-body-md text-body-md">Permintaan Saya</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="sedang-diproses" href="#"><span class="material-symbols-outlined text-[20px]">sync</span><span class="font-body-md text-body-md">Sedang Diproses</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="selesai" href="#"><span class="material-symbols-outlined text-[20px]">check_circle</span><span class="font-body-md text-body-md">Selesai</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="laporan" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-body-md text-body-md">Laporan</span></a></nav></div><div class="p-sm flex flex-col gap-xs bg-surface-container-lowest"><div class="px-sm py-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Account</span></div><nav class="flex flex-col gap-xs" data-active-classes="bg-surface-container text-primary font-bold"><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Settings</span></a><a class="flex items-center gap-sm px-sm py-xs rounded-lg text-error hover:bg-error-container hover:text-on-error-container transition-colors" data-path="logout" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span class="font-body-md text-body-md">Logout</span></a></nav></div></aside><div class="pl-60 flex flex-col min-h-screen"><header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-lg"><div class="flex items-center w-full max-w-md"><div class="relative w-full flex items-center"><span class="material-symbols-outlined absolute left-sm text-secondary text-[20px] pointer-events-none">search</span><input class="w-full pl-xl pr-md py-xs rounded-lg bg-surface-container-low text-on-surface placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container text-body-md font-body-md transition-all" placeholder="Search requests, ticket #, or keywords..." type="text"></div></div><div class="flex items-center gap-md"><a class="relative p-xs rounded-lg text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors flex items-center justify-center" data-path="notifications" href="#"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></a><div class="flex items-center gap-sm pl-sm border-l border-surface-container-high"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col text-left"><span class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Budi Santoso</span><span class="font-caption text-caption text-secondary leading-tight">PIC Operations</span></div><span class="material-symbols-outlined text-secondary text-[18px]">expand_more</span></div></div></header><main class="flex-1 pt-16 bg-surface px-lg py-lg max-w-[1440px] w-full mx-auto"><div class="flex flex-col w-full">
+<!-- Top Navigation Sub-bar / Breadcrumbs & PIC Profile Context -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-sm mb-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-xs font-caption text-caption text-secondary mb-xs">
+<span class="hover:text-primary transition-colors cursor-pointer">Portal</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Permintaan Saya</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Permintaan Saya</h1>
+<p class="font-body-md text-body-md text-secondary mt-xs">Kelola dan pantau seluruh permintaan yang menjadi tanggung jawab Anda.</p>
+</div>
+<div class="flex items-center gap-sm self-start md:self-auto">
+<button class="flex items-center gap-xs px-md py-sm bg-surface-container-lowest text-on-surface-variant font-label-md text-label-md rounded-lg shadow-sm hover:bg-surface-container-low transition-colors" id="btn-toggle-filter" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span class="">Filter</span>
+</button>
+<button class="p-sm bg-surface-container-lowest text-on-surface-variant hover:text-primary rounded-lg shadow-sm hover:bg-surface-container-low transition-colors flex items-center justify-center" title="Muat ulang data" type="button">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+</div>
+</div>
+<!-- Metric Overview Cards (Compact 4-Column Grid) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md mb-lg">
+<!-- Card 1: Total Permintaan -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase text-secondary tracking-wider">Total Permintaan Saya</span>
+<span class="font-display text-display text-on-surface font-bold mt-xs leading-none">18</span>
+<span class="font-caption text-caption text-secondary mt-xs">Semua permintaan tanggung jawab Anda</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">assignment</span>
+</div>
+</div>
+<!-- Card 2: Sedang Diproses -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase text-secondary tracking-wider">Sedang Diproses</span>
+<span class="font-display text-display text-primary font-bold mt-xs leading-none">6</span>
+<div class="flex items-center gap-xs mt-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-caption text-caption text-secondary">Dalam penanganan aktif</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[22px]">sync</span>
+</div>
+</div>
+<!-- Card 3: Selesai -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase text-secondary tracking-wider">Selesai</span>
+<span class="font-display text-display text-on-surface font-bold mt-xs leading-none">11</span>
+<div class="flex items-center gap-xs mt-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-caption text-caption text-secondary">Telah diselesaikan tuntas</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">check_circle</span>
+</div>
+</div>
+<!-- Card 4: Ditolak -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase text-secondary tracking-wider">Ditolak</span>
+<span class="font-display text-display text-error font-bold mt-xs leading-none">1</span>
+<div class="flex items-center gap-xs mt-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span class="font-caption text-caption text-secondary">Ditolak dengan catatan</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined text-[22px]">cancel</span>
+</div>
+</div>
+</div>
+<!-- Interactive Status Tabs -->
+<div class="flex items-center gap-sm mb-md overflow-x-auto pb-xs">
+<button class="tab-btn flex items-center gap-xs px-md py-sm rounded-lg font-label-md text-label-md bg-primary-container text-on-primary shadow-sm transition-all" data-tab="all" type="button">
+<span class="">Semua</span>
+<span class="bg-surface-container-lowest/20 px-xs py-0.5 rounded-full text-[10px] font-bold">18</span>
+</button>
+<button class="tab-btn flex items-center gap-xs px-md py-sm rounded-lg font-label-md text-label-md bg-surface-container-lowest text-secondary hover:text-on-surface shadow-sm transition-all" data-tab="processing" type="button">
+<span class="">Sedang Diproses</span>
+<span class="bg-secondary-container text-on-secondary-container px-xs py-0.5 rounded-full text-[10px] font-bold">6</span>
+</button>
+<button class="tab-btn flex items-center gap-xs px-md py-sm rounded-lg font-label-md text-label-md bg-surface-container-lowest text-secondary hover:text-on-surface shadow-sm transition-all" data-tab="completed" type="button">
+<span class="">Selesai</span>
+<span class="bg-surface-container-high text-on-surface-variant px-xs py-0.5 rounded-full text-[10px] font-bold">11</span>
+</button>
+<button class="tab-btn flex items-center gap-xs px-md py-sm rounded-lg font-label-md text-label-md bg-surface-container-lowest text-secondary hover:text-on-surface shadow-sm transition-all" data-tab="rejected" type="button">
+<span class="">Ditolak</span>
+<span class="bg-error-container text-on-error-container px-xs py-0.5 rounded-full text-[10px] font-bold">1</span>
+</button>
+</div>
+<!-- Search & Filter Controls Toolbar -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm mb-md flex flex-col lg:flex-row lg:items-center justify-between gap-md">
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-secondary text-[18px] pointer-events-none">search</span>
+<input class="w-full pl-xl pr-md py-xs bg-surface-container-low text-on-surface font-body-md text-body-md rounded-lg placeholder:text-secondary focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary-container transition-all" id="filter-search" placeholder="Cari ID permintaan, judul, atau nama pengaju..." type="text">
+</div>
+<div class="flex flex-wrap items-center gap-sm"><div class="flex items-center gap-xs bg-surface-container-low px-sm py-xs rounded-lg"><span class="font-caption text-caption text-secondary">Status:</span><select class="bg-transparent font-label-md text-label-md text-on-surface focus:outline-none cursor-pointer" id="select-status"><option value="">Semua Status</option><option value="Sedang Diproses">Sedang Diproses</option><option value="Selesai">Selesai</option><option value="Ditolak">Ditolak</option></select></div><div class="flex items-center gap-xs bg-surface-container-low px-sm py-xs rounded-lg"><span class="font-caption text-caption text-secondary">Layanan:</span><select class="bg-transparent font-label-md text-label-md text-on-surface focus:outline-none cursor-pointer" id="select-service"><option value="">Semua Layanan</option><option value="Perbaikan &amp; Pemeliharaan">Perbaikan &amp; Pemeliharaan</option><option value="Dukungan IT">Dukungan IT</option><option value="Otomasi Industri">Otomasi Industri</option><option value="Akses Sistem">Akses Sistem</option><option value="Jaringan &amp; Komunikasi">Jaringan &amp; Komunikasi</option><option value="Perangkat Lunak">Perangkat Lunak</option><option value="Pengadaan Perangkat">Pengadaan Perangkat</option></select></div><div class="flex items-center gap-xs bg-surface-container-low px-sm py-xs rounded-lg"><span class="font-caption text-caption text-secondary">Bagian:</span><select class="bg-transparent font-label-md text-label-md text-on-surface focus:outline-none cursor-pointer" id="select-section"><option value="">Semua Bagian</option><option value="Assembly">Assembly</option><option value="PE">PE</option><option value="Production">Production</option><option value="Logistik">Logistik</option><option value="GA">GA</option></select></div><div class="flex items-center gap-xs bg-surface-container-low px-sm py-xs rounded-lg"><span class="font-caption text-caption text-secondary">Plant:</span><select class="bg-transparent font-label-md text-label-md text-on-surface focus:outline-none cursor-pointer" id="select-plant"><option value="">Semua Plant</option><option value="Plant 1">Plant 1</option><option value="Plant 2">Plant 2</option></select></div><div class="flex items-center gap-xs bg-surface-container-low px-sm py-xs rounded-lg"><span class="font-caption text-caption text-secondary">Lantai:</span><select class="bg-transparent font-label-md text-label-md text-on-surface focus:outline-none cursor-pointer" id="select-floor"><option value="">Semua Lantai</option><option value="Lantai 1">Lantai 1</option><option value="Lantai 2">Lantai 2</option><option value="Lantai 3">Lantai 3</option><option value="Bay 4">Bay 4</option></select></div><div class="flex items-center gap-xs bg-surface-container-low px-sm py-xs rounded-lg"><span class="font-caption text-caption text-secondary">Tanggal:</span><select class="bg-transparent font-label-md text-label-md text-on-surface focus:outline-none cursor-pointer" id="select-date"><option value="">Semua Tanggal</option><option value="Hari Ini">Hari Ini</option><option value="Minggu Ini">Minggu Ini</option><option value="Bulan Ini">Bulan Ini</option></select></div><button class="font-label-md text-label-md text-primary hover:underline px-xs py-xs" id="btn-reset-filter" type="button">Reset Filter</button></div>
+</div>
+<!-- Primary Request Data Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden mb-lg">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse" id="requests-table">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-md text-label-md uppercase tracking-wider">
+<th class="py-md px-md whitespace-nowrap">ID Permintaan</th>
+<th class="py-md px-md whitespace-nowrap">Judul Permintaan</th>
+<th class="py-md px-md whitespace-nowrap">Layanan</th>
+<th class="py-md px-md whitespace-nowrap">Pengaju</th>
+<th class="py-md px-md whitespace-nowrap">Bagian</th>
+<th class="py-md px-md whitespace-nowrap">Lokasi</th>
+<th class="py-md px-md whitespace-nowrap">Tanggal</th>
+<th class="py-md px-md whitespace-nowrap">Status</th>
+<th class="py-md px-md whitespace-nowrap text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low text-body-md font-body-md" id="table-body">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-bright transition-colors" data-location="Plant 1" data-section="Assembly" data-service="Perbaikan &amp; Pemeliharaan" data-status="Sedang Diproses">
+<td class="py-md px-md font-semibold text-primary">#SRV-2026-0012</td>
+<td class="py-md px-md font-medium text-on-surface max-w-xs">
+<span class="line-clamp-1">Sensor PLC Conveyor Rusak</span>
+</td>
+<td class="py-md px-md text-on-surface-variant whitespace-nowrap">Perbaikan &amp; Pemeliharaan</td>
+<td class="py-md px-md whitespace-nowrap">
+<div class="flex items-center gap-xs">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-md text-[10px]">MF</div>
+<span class="text-on-surface">Muhammad Faiz</span>
+</div>
+</td>
+<td class="py-md px-md text-secondary whitespace-nowrap">Assembly</td>
+<td class="py-md px-md text-secondary whitespace-nowrap">Plant 1 – Lantai 2</td>
+<td class="py-md px-md text-secondary whitespace-nowrap font-caption text-caption">23 Aug 2026, 08:24</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-sm py-0.5 rounded-full font-label-md text-label-md bg-secondary-container text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Sedang Diproses
+              </span>
+</td>
+<td class="py-md px-md text-right whitespace-nowrap">
+<button class="px-md py-xs rounded-lg font-label-md text-label-md bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button">
+                Detail
+              </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-bright transition-colors" data-location="Plant 1" data-section="PE" data-service="Dukungan IT" data-status="Sedang Diproses">
+<td class="py-md px-md font-semibold text-primary">#SRV-2026-0019</td>
+<td class="py-md px-md font-medium text-on-surface max-w-xs">
+<span class="line-clamp-1">Penggantian Laptop CAD Engineering</span>
+</td>
+<td class="py-md px-md text-on-surface-variant whitespace-nowrap">Dukungan IT</td>
+<td class="py-md px-md whitespace-nowrap">
+<div class="flex items-center gap-xs">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-md text-[10px]">DA</div>
+<span class="text-on-surface">Dimas Anggara</span>
+</div>
+</td>
+<td class="py-md px-md text-secondary whitespace-nowrap">PE</td>
+<td class="py-md px-md text-secondary whitespace-nowrap">Plant 1 – Lantai 3</td>
+<td class="py-md px-md text-secondary whitespace-nowrap font-caption text-caption">22 Aug 2026, 14:10</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-sm py-0.5 rounded-full font-label-md text-label-md bg-secondary-container text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Sedang Diproses
+              </span>
+</td>
+<td class="py-md px-md text-right whitespace-nowrap">
+<button class="px-md py-xs rounded-lg font-label-md text-label-md bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button">
+                Detail
+              </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-bright transition-colors" data-location="Plant 2" data-section="Assembly" data-service="Otomasi Industri" data-status="Sedang Diproses">
+<td class="py-md px-md font-semibold text-primary">#SRV-2026-0021</td>
+<td class="py-md px-md font-medium text-on-surface max-w-xs">
+<span class="line-clamp-1">Kalibrasi Controller Robot Welding</span>
+</td>
+<td class="py-md px-md text-on-surface-variant whitespace-nowrap">Otomasi Industri</td>
+<td class="py-md px-md whitespace-nowrap">
+<div class="flex items-center gap-xs">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-md text-[10px]">KT</div>
+<span class="text-on-surface">Kevin Tandio</span>
+</div>
+</td>
+<td class="py-md px-md text-secondary whitespace-nowrap">Assembly</td>
+<td class="py-md px-md text-secondary whitespace-nowrap">Plant 2 – Lantai 1</td>
+<td class="py-md px-md text-secondary whitespace-nowrap font-caption text-caption">22 Aug 2026, 11:30</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-sm py-0.5 rounded-full font-label-md text-label-md bg-secondary-container text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Sedang Diproses
+              </span>
+</td>
+<td class="py-md px-md text-right whitespace-nowrap">
+<button class="px-md py-xs rounded-lg font-label-md text-label-md bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button">
+                Detail
+              </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-bright transition-colors" data-location="Plant 1" data-section="Production" data-service="Akses Sistem" data-status="Selesai">
+<td class="py-md px-md font-semibold text-primary">#SRV-2026-0015</td>
+<td class="py-md px-md font-medium text-on-surface max-w-xs">
+<span class="line-clamp-1">Konfigurasi Akses Server Scada</span>
+</td>
+<td class="py-md px-md text-on-surface-variant whitespace-nowrap">Akses Sistem</td>
+<td class="py-md px-md whitespace-nowrap">
+<div class="flex items-center gap-xs">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-md text-[10px]">SA</div>
+<span class="text-on-surface">Siti Aminah</span>
+</div>
+</td>
+<td class="py-md px-md text-secondary whitespace-nowrap">Production</td>
+<td class="py-md px-md text-secondary whitespace-nowrap">Plant 1 – Lantai 2</td>
+<td class="py-md px-md text-secondary whitespace-nowrap font-caption text-caption">21 Aug 2026, 16:45</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-sm py-0.5 rounded-full font-label-md text-label-md bg-surface-container-high text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Selesai
+              </span>
+</td>
+<td class="py-md px-md text-right whitespace-nowrap">
+<button class="px-md py-xs rounded-lg font-label-md text-label-md bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button">
+                Detail
+              </button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-bright transition-colors" data-location="Plant 2" data-section="Logistik" data-service="Jaringan &amp; Komunikasi" data-status="Selesai">
+<td class="py-md px-md font-semibold text-primary">#SRV-2026-0009</td>
+<td class="py-md px-md font-medium text-on-surface max-w-xs">
+<span class="line-clamp-1">Penggantian Kabel LAN Switch Rak B</span>
+</td>
+<td class="py-md px-md text-on-surface-variant whitespace-nowrap">Jaringan &amp; Komunikasi</td>
+<td class="py-md px-md whitespace-nowrap">
+<div class="flex items-center gap-xs">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-md text-[10px]">HG</div>
+<span class="text-on-surface">Hendra Gunawan</span>
+</div>
+</td>
+<td class="py-md px-md text-secondary whitespace-nowrap">Logistik</td>
+<td class="py-md px-md text-secondary whitespace-nowrap">Plant 2 – Bay 4</td>
+<td class="py-md px-md text-secondary whitespace-nowrap font-caption text-caption">21 Aug 2026, 09:15</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-sm py-0.5 rounded-full font-label-md text-label-md bg-surface-container-high text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Selesai
+              </span>
+</td>
+<td class="py-md px-md text-right whitespace-nowrap">
+<button class="px-md py-xs rounded-lg font-label-md text-label-md bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button">
+                Detail
+              </button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-bright transition-colors" data-location="Plant 1" data-section="PE" data-service="Perangkat Lunak" data-status="Selesai">
+<td class="py-md px-md font-semibold text-primary">#SRV-2026-0008</td>
+<td class="py-md px-md font-medium text-on-surface max-w-xs">
+<span class="line-clamp-1">Instalasi Lisensi CAD SolidWorks</span>
+</td>
+<td class="py-md px-md text-on-surface-variant whitespace-nowrap">Perangkat Lunak</td>
+<td class="py-md px-md whitespace-nowrap">
+<div class="flex items-center gap-xs">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-md text-[10px]">RT</div>
+<span class="text-on-surface">Rian Triadi</span>
+</div>
+</td>
+<td class="py-md px-md text-secondary whitespace-nowrap">PE</td>
+<td class="py-md px-md text-secondary whitespace-nowrap">Plant 1 – Lantai 3</td>
+<td class="py-md px-md text-secondary whitespace-nowrap font-caption text-caption">20 Aug 2026, 13:00</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-sm py-0.5 rounded-full font-label-md text-label-md bg-surface-container-high text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Selesai
+              </span>
+</td>
+<td class="py-md px-md text-right whitespace-nowrap">
+<button class="px-md py-xs rounded-lg font-label-md text-label-md bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button">
+                Detail
+              </button>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-surface-bright transition-colors" data-location="Plant 2" data-section="Assembly" data-service="Otomasi Industri" data-status="Selesai">
+<td class="py-md px-md font-semibold text-primary">#SRV-2026-0004</td>
+<td class="py-md px-md font-medium text-on-surface max-w-xs">
+<span class="line-clamp-1">Reset Kredensial HMI Touchscreen</span>
+</td>
+<td class="py-md px-md text-on-surface-variant whitespace-nowrap">Otomasi Industri</td>
+<td class="py-md px-md whitespace-nowrap">
+<div class="flex items-center gap-xs">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-md text-[10px]">DS</div>
+<span class="text-on-surface">Dewi Sartika</span>
+</div>
+</td>
+<td class="py-md px-md text-secondary whitespace-nowrap">Assembly</td>
+<td class="py-md px-md text-secondary whitespace-nowrap">Plant 2 – Lantai 2</td>
+<td class="py-md px-md text-secondary whitespace-nowrap font-caption text-caption">19 Aug 2026, 10:20</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-sm py-0.5 rounded-full font-label-md text-label-md bg-surface-container-high text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Selesai
+              </span>
+</td>
+<td class="py-md px-md text-right whitespace-nowrap">
+<button class="px-md py-xs rounded-lg font-label-md text-label-md bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button">
+                Detail
+              </button>
+</td>
+</tr>
+<!-- Row 8 -->
+<tr class="hover:bg-surface-bright transition-colors" data-location="Plant 1" data-section="GA" data-service="Pengadaan Perangkat" data-status="Ditolak">
+<td class="py-md px-md font-semibold text-primary">#SRV-2026-0002</td>
+<td class="py-md px-md font-medium text-on-surface max-w-xs">
+<span class="line-clamp-1">Permintaan iPad Personal untuk Tim Shift</span>
+</td>
+<td class="py-md px-md text-on-surface-variant whitespace-nowrap">Pengadaan Perangkat</td>
+<td class="py-md px-md whitespace-nowrap">
+<div class="flex items-center gap-xs">
+<div class="w-6 h-6 rounded-full bg-error-container text-on-error-container flex items-center justify-center font-label-md text-[10px]">BS</div>
+<span class="text-on-surface">Bagus Santiko</span>
+</div>
+</td>
+<td class="py-md px-md text-secondary whitespace-nowrap">GA</td>
+<td class="py-md px-md text-secondary whitespace-nowrap">Plant 1 – Lantai 1</td>
+<td class="py-md px-md text-secondary whitespace-nowrap font-caption text-caption">18 Aug 2026, 15:40</td>
+<td class="py-md px-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-sm py-0.5 rounded-full font-label-md text-label-md bg-error-container text-on-error-container">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                Ditolak
+              </span>
+</td>
+<td class="py-md px-md text-right whitespace-nowrap">
+<button class="px-md py-xs rounded-lg font-label-md text-label-md bg-secondary-container text-primary hover:bg-primary-fixed transition-colors" type="button">
+                Detail
+              </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination & Count Footer -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-sm px-md py-md bg-surface-container-lowest">
+<span class="font-caption text-caption text-secondary" id="showing-indicator">
+        Menampilkan 1–8 dari 18 permintaan
+      </span>
+<div class="flex items-center gap-xs">
+<button class="px-sm py-xs rounded-lg font-caption text-caption text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button">
+          ← Sebelumnya
+        </button>
+<button class="w-7 h-7 rounded-lg font-label-md text-label-md bg-primary text-on-primary flex items-center justify-center" type="button">
+          1
+        </button>
+<button class="w-7 h-7 rounded-lg font-label-md text-label-md text-secondary hover:bg-surface-container-low hover:text-on-surface flex items-center justify-center transition-colors" type="button">
+          2
+        </button>
+<button class="px-sm py-xs rounded-lg font-caption text-caption text-secondary hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button">
+          Selanjutnya →
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Dynamic Tab and Filter Synchronizer
+  (function() {
+    const searchInput = document.getElementById('filter-search');
+    const selectStatus = document.getElementById('select-status');
+    const selectService = document.getElementById('select-service');
+    const selectSection = document.getElementById('select-section');
+    const selectLocation = document.getElementById('select-location');
+    const resetBtn = document.getElementById('btn-reset-filter');
+    const tableRows = document.querySelectorAll('#table-body tr');
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const showingIndicator = document.getElementById('showing-indicator');
+
+    let currentTab = 'all';
+
+    function filterTable() {
+      const searchVal = (searchInput.value || '').toLowerCase().trim();
+      const statusVal = selectStatus.value;
+      const serviceVal = selectService.value;
+      const sectionVal = selectSection.value;
+      const locationVal = selectLocation.value;
+
+      let visibleCount = 0;
+
+      tableRows.forEach(row => {
+        const rowStatus = row.getAttribute('data-status') || '';
+        const rowService = row.getAttribute('data-service') || '';
+        const rowSection = row.getAttribute('data-section') || '';
+        const rowLocation = row.getAttribute('data-location') || '';
+        const rowText = row.innerText.toLowerCase();
+
+        // Check tab alignment
+        let matchesTab = true;
+        if (currentTab === 'processing' && rowStatus !== 'Sedang Diproses') matchesTab = false;
+        if (currentTab === 'completed' && rowStatus !== 'Selesai') matchesTab = false;
+        if (currentTab === 'rejected' && rowStatus !== 'Ditolak') matchesTab = false;
+
+        // Check filters
+        const matchesSearch = !searchVal || rowText.includes(searchVal);
+        const matchesStatus = !statusVal || rowStatus === statusVal;
+        const matchesService = !serviceVal || rowService === serviceVal;
+        const matchesSection = !sectionVal || rowSection === sectionVal;
+        const matchesLocation = !locationVal || rowLocation.includes(locationVal);
+
+        if (matchesTab && matchesSearch && matchesStatus && matchesService && matchesSection && matchesLocation) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      if (showingIndicator) {
+        showingIndicator.innerText = 'Menampilkan 1–' + visibleCount + ' dari 18 permintaan';
+      }
+    }
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => {
+          b.classList.remove('bg-primary-container', 'text-on-primary');
+          b.classList.add('bg-surface-container-lowest', 'text-secondary');
+        });
+        btn.classList.add('bg-primary-container', 'text-on-primary');
+        btn.classList.remove('bg-surface-container-lowest', 'text-secondary');
+
+        currentTab = btn.getAttribute('data-tab');
+        filterTable();
+      });
+    });
+
+    [searchInput, selectStatus, selectService, selectSection, selectLocation].forEach(el => {
+      if (el) {
+        el.addEventListener('input', filterTable);
+        el.addEventListener('change', filterTable);
+      }
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        if (selectStatus) selectStatus.value = '';
+        if (selectService) selectService.value = '';
+        if (selectSection) selectSection.value = '';
+        if (selectLocation) selectLocation.value = '';
+        currentTab = 'all';
+        tabButtons.forEach((b, idx) => {
+          if (idx === 0) {
+            b.classList.add('bg-primary-container', 'text-on-primary');
+            b.classList.remove('bg-surface-container-lowest', 'text-secondary');
+          } else {
+            b.classList.remove('bg-primary-container', 'text-on-primary');
+            b.classList.add('bg-surface-container-lowest', 'text-secondary');
+          }
+        });
+        filterTable();
+      });
+    }
+
+    // Set active link visually on sidebar if present in the shell
+    const asideLinks = document.querySelectorAll('aside nav a');
+    asideLinks.forEach(link => {
+      if (link.getAttribute('data-path') === 'processing') {
+        link.classList.remove('text-on-surface-variant');
+        link.classList.add('bg-surface-container', 'text-primary', 'font-bold');
+      }
+    });
+  })();
+</script></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)] py-md px-lg mt-auto"><div class="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-sm text-secondary font-caption text-caption"><div class="">© 2026 Internal Service Management. PIC Operations Workspace.</div><div class="flex items-center gap-md"><a class="hover:text-on-surface transition-colors" data-path="sla-guidelines" href="#">SLA Guidelines</a><a class="hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="support" href="#">Support</a></div></div></footer></div>
+
+</body></html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ESM Portal - Buat Permintaan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#d3e4fe",
+                        "on-background": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#d0e1fb",
+                        "outline": "#757684",
+                        "background": "#f7f9fb",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "tertiary": "#2d3449",
+                        "on-surface": "#191c1e",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "on-tertiary-fixed": "#131b2e",
+                        "inverse-surface": "#2d3133",
+                        "primary-fixed": "#dde1ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#434b60",
+                        "on-primary-fixed-variant": "#173bab",
+                        "on-primary-fixed": "#001453",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#1e40af",
+                        "surface-dim": "#d8dadc",
+                        "error": "#ba1a1a",
+                        "secondary": "#505f76",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "outline-variant": "#c4c5d5",
+                        "surface-tint": "#3755c3",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-container": "#eceef0",
+                        "tertiary-fixed": "#dae2fd",
+                        "inverse-primary": "#b8c4ff",
+                        "on-primary-container": "#a8b8ff",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "surface-container-low": "#f2f4f6",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-secondary-container": "#54647a",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface": "#f7f9fb",
+                        "on-surface-variant": "#444653",
+                        "on-error-container": "#93000a",
+                        "primary": "#00288e",
+                        "on-tertiary-container": "#b4bbd5",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "container-max": "1440px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "gutter": "20px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display": ["Inter"]
+                    },
+                    "fontSize": {
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .custom-shadow { box-shadow: 0px 1px 3px rgba(0,0,0,0.05), 0px 10px 15px -3px rgba(0,0,0,0.05); }
+        .input-halo:focus { outline: none; border-color: #1E40AF; box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.2); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen overflow-x-hidden">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-screen w-60 fixed left-0 top-0 bg-surface shadow-sm border-r border-outline-variant z-40">
+<div class="p-6">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">ESM Portal</h1>
+<p class="font-caption text-caption text-secondary mt-1">Employee Services</p>
+</div>
+<div class="flex-1 mt-4 space-y-1 px-3">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-surface-container text-primary border-l-4 border-primary rounded-lg font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+                Buat Permintaan
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">pending_actions</span>
+                Permintaan Saya
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">history</span>
+                Riwayat
+            </a>
+</div>
+<div class="p-3 border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+                Help
+            </a>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="hidden md:flex justify-between items-center h-16 px-6 ml-60 w-[calc(100%-15rem)] bg-surface border-b border-outline-variant fixed top-0 z-30 shadow-sm">
+<h2 class="font-headline-md text-headline-md text-primary font-bold">Buat Permintaan</h2>
+<div class="flex items-center gap-4">
+<button class="text-secondary hover:bg-surface-container-low p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-secondary hover:bg-surface-container-low p-2 rounded-full transition-colors flex items-center">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-0 md:ml-60 pt-20 px-6 pb-24 max-w-container-max mx-auto">
+<div class="bg-surface-container-lowest rounded-lg custom-shadow p-md lg:p-lg mb-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Formulir Permintaan Baru</h3>
+<form class="space-y-6" id="requestForm">
+<!-- Layanan Dropdown -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-secondary" for="layanan">Kategori Layanan *</label>
+<select class="w-full h-12 px-4 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface input-halo font-body-md transition-all appearance-none cursor-pointer" id="layanan" required="">
+<option disabled="" selected="" value="">Pilih Kategori Layanan</option>
+<option value="akses_sistem">Akses Sistem &amp; IT</option>
+<option value="perbaikan_fasilitas">Perbaikan Fasilitas Kantor</option>
+<option value="hr_services">Layanan HR &amp; Administrasi</option>
+<option value="lainnya">Lainnya</option>
+</select>
+</div>
+<!-- Judul Permintaan Input -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-secondary" for="judul">Judul Permintaan *</label>
+<input class="w-full h-12 px-4 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface input-halo font-body-md transition-all placeholder:text-outline" id="judul" placeholder="Contoh: Perbaikan AC di Ruang Rapat A" required="" type="text"/>
+</div>
+<!-- Deskripsi Textarea -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-secondary" for="deskripsi">Deskripsi Detail *</label>
+<textarea class="w-full p-4 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface input-halo font-body-md transition-all placeholder:text-outline resize-y" id="deskripsi" placeholder="Jelaskan secara detail permintaan atau masalah yang Anda hadapi..." required="" rows="5"></textarea>
+</div>
+<!-- Lampiran Upload -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-secondary">Lampiran Dokumen/Foto (Opsional)</label>
+<div class="border-2 border-dashed border-outline-variant rounded-lg p-8 flex flex-col items-center justify-center text-center bg-surface hover:bg-surface-container-low transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-4xl text-outline mb-2 group-hover:text-primary transition-colors">cloud_upload</span>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Tarik dan lepas file di sini</p>
+<p class="font-caption text-caption text-secondary mt-1">atau klik untuk memilih file (Maks. 10MB, JPG/PNG/PDF)</p>
+<input class="hidden" id="fileUpload" type="file"/>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex justify-end gap-4 pt-6 border-t border-outline-variant">
+<button class="px-6 py-2.5 rounded-lg border border-primary-container text-primary-container font-label-md text-label-md hover:bg-surface-container transition-colors focus:ring-2 focus:ring-primary-container focus:ring-offset-1" type="button">
+                        Batalkan
+                    </button>
+<button class="px-6 py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-1 shadow-sm" type="submit">
+                        Kirim Permintaan
+                    </button>
+</div>
+</form>
+</div>
+</main>
+<!-- Footer -->
+<footer class="hidden md:flex justify-between items-center py-4 px-8 ml-60 w-[calc(100%-15rem)] bg-surface-container-low border-t border-outline-variant fixed bottom-0 z-30">
+<span class="font-label-md text-label-md font-semibold text-secondary">ESM Portal</span>
+<p class="font-caption text-caption text-secondary">© 2024 Employee Service Management. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="font-caption text-caption text-secondary hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-caption text-caption text-secondary hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-caption text-caption text-secondary hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</footer>
+<!-- Confirmation Modal (Hidden by default) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-on-background/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" id="confirmationModal">
+<div class="bg-surface-container-lowest rounded-lg custom-shadow p-8 max-w-md w-full mx-4 transform scale-95 transition-transform duration-300">
+<div class="flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-5xl text-primary mb-4" style="font-variation-settings: 'FILL' 1;">help_center</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Konfirmasi Pengiriman</h3>
+<p class="font-body-md text-body-md text-secondary mb-8">Apakah Anda yakin semua informasi yang dimasukkan sudah benar? Permintaan akan diteruskan ke tim terkait.</p>
+<div class="flex w-full gap-4">
+<button class="flex-1 py-2.5 rounded-lg border border-primary-container text-primary-container font-label-md text-label-md hover:bg-surface-container transition-colors" id="cancelConfirmBtn">
+                        Kembali
+                    </button>
+<button class="flex-1 py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary transition-colors shadow-sm" id="confirmSubmitBtn">
+                        Ya, Kirim
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Success Modal (Hidden by default) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-on-background/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300" id="successModal">
+<div class="bg-surface-container-lowest rounded-lg custom-shadow p-8 max-w-md w-full mx-4 transform scale-95 transition-transform duration-300">
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Permintaan Berhasil Dibuat!</h3>
+<p class="font-body-md text-body-md text-secondary mb-4">Tim kami akan segera memproses permintaan Anda.</p>
+<div class="bg-surface-container p-4 rounded-lg w-full mb-8 border border-outline-variant">
+<p class="font-caption text-caption text-secondary mb-1">Nomor Tiket (Request ID)</p>
+<p class="font-headline-md text-headline-md font-bold text-primary">REQ-2024-0892</p>
+</div>
+<button class="w-full py-3 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary transition-colors shadow-sm" onclick="window.location.reload()">
+                    Lihat Detail Permintaan
+                </button>
+</div>
+</div>
+</div>
+<script>
+        const form = document.getElementById('requestForm');
+        const confirmationModal = document.getElementById('confirmationModal');
+        const successModal = document.getElementById('successModal');
+        const cancelConfirmBtn = document.getElementById('cancelConfirmBtn');
+        const confirmSubmitBtn = document.getElementById('confirmSubmitBtn');
+
+        // Show Confirmation Modal
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (form.checkValidity()) {
+                confirmationModal.classList.remove('hidden');
+                // Trigger reflow for animation
+                void confirmationModal.offsetWidth;
+                confirmationModal.classList.remove('opacity-0');
+                confirmationModal.querySelector('div').classList.remove('scale-95');
+                confirmationModal.querySelector('div').classList.add('scale-100');
+            }
+        });
+
+        // Hide Confirmation Modal
+        cancelConfirmBtn.addEventListener('click', () => {
+            confirmationModal.classList.add('opacity-0');
+            confirmationModal.querySelector('div').classList.remove('scale-100');
+            confirmationModal.querySelector('div').classList.add('scale-95');
+            setTimeout(() => {
+                confirmationModal.classList.add('hidden');
+            }, 300);
+        });
+
+        // Show Success Modal
+        confirmSubmitBtn.addEventListener('click', () => {
+            // Hide Confirmation
+            confirmationModal.classList.add('opacity-0');
+            setTimeout(() => {
+                confirmationModal.classList.add('hidden');
+                
+                // Show Success
+                successModal.classList.remove('hidden');
+                void successModal.offsetWidth;
+                successModal.classList.remove('opacity-0');
+                successModal.querySelector('div').classList.remove('scale-95');
+                successModal.querySelector('div').classList.add('scale-100');
+            }, 300);
+        });
+    </script>
+</body></html>

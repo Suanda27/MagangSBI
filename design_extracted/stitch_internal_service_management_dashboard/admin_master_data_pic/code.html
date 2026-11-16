@@ -1,0 +1,458 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-dim":"#d8dadc","on-secondary-container":"#54647a","on-secondary":"#ffffff","inverse-surface":"#2d3133","tertiary":"#2d3449","surface-tint":"#3755c3","on-primary":"#ffffff","error-container":"#ffdad6","background":"#f7f9fb","outline-variant":"#c4c5d5","on-error":"#ffffff","primary-container":"#1e40af","on-tertiary":"#ffffff","on-background":"#191c1e","secondary":"#505f76","surface-container-high":"#e6e8ea","tertiary-fixed":"#dae2fd","on-error-container":"#93000a","surface-container":"#eceef0","on-tertiary-container":"#b4bbd5","error":"#ba1a1a","secondary-container":"#d0e1fb","inverse-primary":"#b8c4ff","on-primary-fixed":"#001453","primary-fixed-dim":"#b8c4ff","secondary-fixed-dim":"#b7c8e1","on-tertiary-fixed":"#131b2e","surface":"#f7f9fb","outline":"#757684","on-primary-container":"#a8b8ff","surface-bright":"#f7f9fb","on-surface-variant":"#444653","on-secondary-fixed":"#0b1c30","tertiary-container":"#434b60","primary":"#00288e","on-tertiary-fixed-variant":"#3f465c","on-surface":"#191c1e","on-secondary-fixed-variant":"#38485d","tertiary-fixed-dim":"#bec6e0","primary-fixed":"#dde1ff","secondary-fixed":"#d3e4fe","surface-container-highest":"#e0e3e5","surface-container-lowest":"#ffffff","on-primary-fixed-variant":"#173bab","surface-container-low":"#f2f4f6","inverse-on-surface":"#eff1f3","surface-variant":"#e0e3e5"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"base":"4px","md":"16px","gutter":"20px","sm":"8px","xs":"4px","lg":"24px","xl":"32px","container-max":"1440px"},"fontFamily":{"caption":["Inter"],"display":["Inter"],"body-lg":["Inter"],"body-md":["Inter"],"label-md":["Inter"],"headline-md":["Inter"],"headline-lg":["Inter"]},"fontSize":{"caption":["12px",{"lineHeight":"16px","fontWeight":"400"}],"display":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.05em","fontWeight":"600"}],"headline-md":["20px",{"lineHeight":"28px","fontWeight":"600"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"600"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest border-r border-outline-variant/40 z-50 flex flex-col justify-between"><div class="flex flex-col flex-1 overflow-y-auto"><div class="h-16 flex items-center px-md gap-sm border-b border-outline-variant/30"><div class="w-9 h-9 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-headline-md text-headline-md font-bold shadow-sm">S</div><div class="flex flex-col"><span class="font-headline-md text-body-md font-bold tracking-tight text-primary">ISM System</span><span class="font-caption text-caption text-on-surface-variant font-medium">Enterprise Service Desk</span></div></div><nav class="flex flex-col gap-xs p-md" data-active-classes="bg-primary-container text-on-primary font-medium rounded-lg"><div class="px-sm pt-xs pb-base font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Main</div><a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-body-md text-body-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Dashboard</span></a><div class="px-sm pt-md pb-base font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Master Data</div><a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-body-md text-body-md" data-path="pengguna" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span>Pengguna</span></a><a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-body-md text-body-md" data-path="section" href="#"><span class="material-symbols-outlined text-[20px]">lan</span><span>Section</span></a><a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-body-md text-body-md" data-path="layanan" href="#"><span class="material-symbols-outlined text-[20px]">design_services</span><span>Layanan</span></a><a aria-current="page" class="flex items-center gap-sm px-md py-sm transition-colors bg-primary-container text-on-primary font-medium rounded-lg" data-path="pic" href="#"><span class="material-symbols-outlined text-[20px]">badge</span><span>PIC</span></a><div class="px-sm pt-md pb-base font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Permintaan</div><a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-body-md text-body-md" data-path="semua-permintaan" href="#"><span class="material-symbols-outlined text-[20px]">confirmation_number</span><span>Semua Permintaan</span></a><div class="px-sm pt-md pb-base font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Analisis</div><a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-body-md text-body-md" data-path="laporan" href="#"><span class="material-symbols-outlined text-[20px]">analytics</span><span>Laporan</span></a></nav></div><div class="p-md border-t border-outline-variant/30"><div class="px-sm pb-base font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">System</div><div class="flex flex-col gap-xs"><a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-body-md text-body-md" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a><a class="flex items-center gap-sm px-md py-sm rounded-lg text-error hover:bg-error-container hover:text-on-error-container transition-colors font-body-md text-body-md" data-path="logout" href="#"><span class="material-symbols-outlined text-[20px]">logout</span><span>Logout</span></a></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/40 z-40 flex items-center justify-between px-lg"><div class="flex items-center w-96"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span><input class="w-full pl-10 pr-md py-1.5 bg-surface-container-low/60 rounded-lg text-body-md font-body-md text-on-surface placeholder:text-outline border border-outline-variant/40 focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="Cari NIK, ID, nama..." type="text"></div></div><div class="flex items-center gap-lg"><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="h-8 w-px bg-outline-variant/40"></div><div class="flex items-center gap-md"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col text-left"><span class="font-label-md text-body-md font-semibold text-on-surface leading-tight">Admin ISM</span><span class="font-caption text-caption text-on-surface-variant leading-tight">Super Administrator</span></div></div></div></header><main class="w-full pt-16 bg-background min-h-screen"><div class="flex flex-col w-full">
+<div class="max-w-[1440px] w-full mx-auto px-lg py-xl flex flex-col gap-lg">
+<!-- Top Bar: Breadcrumb & Title & Action -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div class="flex flex-col gap-xs">
+<nav class="flex items-center gap-xs font-caption text-caption text-on-surface-variant">
+<span>Portal</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Console</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Master Data</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-medium">PIC</span>
+</nav>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">PIC</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Kelola data PIC yang bertanggung jawab menangani layanan internal.</p>
+</div>
+<div class="flex items-center gap-sm">
+<button class="inline-flex items-center gap-xs bg-primary-container text-on-primary hover:bg-primary font-body-md text-body-md font-semibold px-md py-2.5 rounded-lg shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-primary-container/40 active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Tambah PIC</span>
+</button>
+</div>
+</div>
+<!-- Summary Metric Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Card 1: Total PIC -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Total PIC</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</div>
+</div>
+<div class="mt-base flex flex-col">
+<div class="font-display text-display text-on-surface leading-none">14</div>
+<span class="mt-xs font-caption text-caption text-on-surface-variant">Terdokumentasi dalam sistem</span>
+</div>
+</div>
+<!-- Card 2: PIC Aktif -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">PIC Aktif</span>
+<div class="inline-flex items-center gap-xs px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-caption">
+<span>92.8%</span>
+</div>
+</div>
+<div class="mt-base flex flex-col">
+<div class="font-display text-display text-primary-container leading-none">13</div>
+<span class="mt-xs font-caption text-caption text-on-surface-variant">Siap bertugas operasional</span>
+</div>
+</div>
+<!-- Card 3: PIC Nonaktif -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">PIC Nonaktif</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">person_off</span>
+</div>
+</div>
+<div class="mt-base flex flex-col">
+<div class="font-display text-display text-on-surface-variant leading-none">1</div>
+<span class="mt-xs font-caption text-caption text-on-surface-variant">Cuti / nonaktif sementara</span>
+</div>
+</div>
+<!-- Card 4: Total Layanan Ditangani -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Layanan Ditangani</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+</div>
+</div>
+<div class="mt-base flex flex-col">
+<div class="flex items-baseline gap-xs">
+<span class="font-display text-display text-on-surface leading-none">32</span>
+<span class="font-label-md text-body-md text-on-surface font-semibold">Layanan</span>
+</div>
+<span class="mt-xs font-caption text-caption text-on-surface-variant">Terdistribusi di 5 Section</span>
+</div>
+</div>
+</div>
+<!-- Main Content Container: Filter Bar + Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Filters Toolbar -->
+<div class="p-md flex flex-col lg:flex-row gap-sm items-stretch lg:items-center justify-between bg-surface-container-lowest">
+<!-- Search Field -->
+<div class="relative flex-1 min-w-[280px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px] pointer-events-none">search</span>
+<input class="w-full pl-10 pr-md py-2 bg-surface-container-low/50 rounded-lg font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container transition-all" placeholder="Cari nama PIC, NIK, atau ID PIC..." type="text">
+</div>
+<!-- Filter Dropdowns & Reset -->
+<div class="flex flex-wrap items-center gap-xs">
+<!-- Section Dropdown -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low/50 text-on-surface font-body-md text-body-md rounded-lg pl-3 pr-8 py-2 focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container cursor-pointer transition-all">
+<option value="">Semua Section</option>
+<option value="assembly">Assembly</option>
+<option value="hr">HR</option>
+<option value="is">IS</option>
+<option value="pe">PE</option>
+<option value="ga">GA</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+<!-- Plant Dropdown -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low/50 text-on-surface font-body-md text-body-md rounded-lg pl-3 pr-8 py-2 focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container cursor-pointer transition-all">
+<option value="">Semua Plant</option>
+<option value="plant-1">Plant 1</option>
+<option value="plant-2">Plant 2</option>
+<option value="plant-3">Plant 3</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+<!-- Status Dropdown -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low/50 text-on-surface font-body-md text-body-md rounded-lg pl-3 pr-8 py-2 focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container cursor-pointer transition-all">
+<option value="">Semua Status</option>
+<option value="aktif">Aktif</option>
+<option value="nonaktif">Nonaktif</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+<!-- Reset Filter Button -->
+<button class="h-9 w-9 rounded-lg bg-surface-container-low/50 hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container" title="Reset Filter" type="button">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left font-body-md text-body-md border-collapse">
+<thead>
+<tr class="bg-surface-container-low/70 text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<th class="py-3 px-md" scope="col">ID PIC</th>
+<th class="py-3 px-md" scope="col">Nama PIC</th>
+<th class="py-3 px-md" scope="col">NIK</th>
+<th class="py-3 px-md" scope="col">Section</th>
+<th class="py-3 px-md" scope="col">Plant</th>
+<th class="py-3 px-md" scope="col">Layanan Ditangani</th>
+<th class="py-3 px-md" scope="col">Status</th>
+<th class="py-3 px-md text-right" scope="col">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="py-3 px-md font-label-md text-body-md font-semibold text-primary">
+                PIC-001
+              </td>
+<td class="py-3 px-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary font-label-md text-caption flex items-center justify-center font-bold">
+                    BS
+                  </div>
+<span class="font-medium text-on-surface">Budi Santoso</span>
+</div>
+</td>
+<td class="py-3 px-md text-on-surface-variant font-caption text-body-md">
+                22010321
+              </td>
+<td class="py-3 px-md text-on-surface">
+                Assembly
+              </td>
+<td class="py-3 px-md text-on-surface">
+                Plant 2
+              </td>
+<td class="py-3 px-md text-on-surface">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low text-on-surface font-caption text-caption font-medium">4 Layanan</span>
+</td>
+<td class="py-3 px-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                  Aktif
+                </span>
+</td>
+<td class="py-3 px-md text-right relative">
+<div class="inline-block text-left" data-dropdown-container="">
+<button class="p-1 rounded-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors focus:outline-none" onclick="toggleMenu(this)" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+<div class="hidden absolute right-4 top-10 w-36 bg-surface-container-lowest rounded-lg shadow-lg py-1 z-30 flex flex-col text-left">
+<a class="px-md py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">visibility</span> Lihat Detail
+                    </a>
+<a class="px-md py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">edit</span> Edit PIC
+                    </a>
+<a class="px-md py-1.5 font-body-md text-body-md text-error hover:bg-error-container hover:text-on-error-container flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">block</span> Nonaktifkan
+                    </a>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="py-3 px-md font-label-md text-body-md font-semibold text-primary">
+                PIC-002
+              </td>
+<td class="py-3 px-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary font-label-md text-caption flex items-center justify-center font-bold">
+                    SA
+                  </div>
+<span class="font-medium text-on-surface">Siti Aminah</span>
+</div>
+</td>
+<td class="py-3 px-md text-on-surface-variant font-caption text-body-md">
+                22010345
+              </td>
+<td class="py-3 px-md text-on-surface">
+                IS
+              </td>
+<td class="py-3 px-md text-on-surface">
+                Plant 2
+              </td>
+<td class="py-3 px-md text-on-surface">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low text-on-surface font-caption text-caption font-medium">3 Layanan</span>
+</td>
+<td class="py-3 px-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                  Aktif
+                </span>
+</td>
+<td class="py-3 px-md text-right relative">
+<div class="inline-block text-left" data-dropdown-container="">
+<button class="p-1 rounded-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors focus:outline-none" onclick="toggleMenu(this)" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+<div class="hidden absolute right-4 top-10 w-36 bg-surface-container-lowest rounded-lg shadow-lg py-1 z-30 flex flex-col text-left">
+<a class="px-md py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">visibility</span> Lihat Detail
+                    </a>
+<a class="px-md py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">edit</span> Edit PIC
+                    </a>
+<a class="px-md py-1.5 font-body-md text-body-md text-error hover:bg-error-container hover:text-on-error-container flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">block</span> Nonaktifkan
+                    </a>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="py-3 px-md font-label-md text-body-md font-semibold text-primary">
+                PIC-003
+              </td>
+<td class="py-3 px-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-tertiary text-on-tertiary font-label-md text-caption flex items-center justify-center font-bold">
+                    RP
+                  </div>
+<span class="font-medium text-on-surface">Rizky Pratama</span>
+</div>
+</td>
+<td class="py-3 px-md text-on-surface-variant font-caption text-body-md">
+                22010367
+              </td>
+<td class="py-3 px-md text-on-surface">
+                PE
+              </td>
+<td class="py-3 px-md text-on-surface">
+                Plant 1
+              </td>
+<td class="py-3 px-md text-on-surface">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low text-on-surface font-caption text-caption font-medium">5 Layanan</span>
+</td>
+<td class="py-3 px-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                  Aktif
+                </span>
+</td>
+<td class="py-3 px-md text-right relative">
+<div class="inline-block text-left" data-dropdown-container="">
+<button class="p-1 rounded-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors focus:outline-none" onclick="toggleMenu(this)" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+<div class="hidden absolute right-4 top-10 w-36 bg-surface-container-lowest rounded-lg shadow-lg py-1 z-30 flex flex-col text-left">
+<a class="px-md py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">visibility</span> Lihat Detail
+                    </a>
+<a class="px-md py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">edit</span> Edit PIC
+                    </a>
+<a class="px-md py-1.5 font-body-md text-body-md text-error hover:bg-error-container hover:text-on-error-container flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">block</span> Nonaktifkan
+                    </a>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="py-3 px-md font-label-md text-body-md font-semibold text-primary">
+                PIC-004
+              </td>
+<td class="py-3 px-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-caption flex items-center justify-center font-bold">
+                    RW
+                  </div>
+<span class="font-medium text-on-surface">Rina Wulandari</span>
+</div>
+</td>
+<td class="py-3 px-md text-on-surface-variant font-caption text-body-md">
+                22010389
+              </td>
+<td class="py-3 px-md text-on-surface">
+                GA
+              </td>
+<td class="py-3 px-md text-on-surface">
+                Plant 1
+              </td>
+<td class="py-3 px-md text-on-surface">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low text-on-surface font-caption text-caption font-medium">4 Layanan</span>
+</td>
+<td class="py-3 px-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                  Aktif
+                </span>
+</td>
+<td class="py-3 px-md text-right relative">
+<div class="inline-block text-left" data-dropdown-container="">
+<button class="p-1 rounded-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors focus:outline-none" onclick="toggleMenu(this)" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+<div class="hidden absolute right-4 top-10 w-36 bg-surface-container-lowest rounded-lg shadow-lg py-1 z-30 flex flex-col text-left">
+<a class="px-md py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">visibility</span> Lihat Detail
+                    </a>
+<a class="px-md py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">edit</span> Edit PIC
+                    </a>
+<a class="px-md py-1.5 font-body-md text-body-md text-error hover:bg-error-container hover:text-on-error-container flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">block</span> Nonaktifkan
+                    </a>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="py-3 px-md font-label-md text-body-md font-semibold text-primary">
+                PIC-005
+              </td>
+<td class="py-3 px-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-dim text-on-surface font-label-md text-caption flex items-center justify-center font-bold">
+                    AF
+                  </div>
+<span class="font-medium text-on-surface">Ahmad Fauzi</span>
+</div>
+</td>
+<td class="py-3 px-md text-on-surface-variant font-caption text-body-md">
+                22010412
+              </td>
+<td class="py-3 px-md text-on-surface">
+                Assembly
+              </td>
+<td class="py-3 px-md text-on-surface">
+                Plant 2
+              </td>
+<td class="py-3 px-md text-on-surface">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-low text-on-surface font-caption text-caption font-medium">2 Layanan</span>
+</td>
+<td class="py-3 px-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-caption">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                  Nonaktif
+                </span>
+</td>
+<td class="py-3 px-md text-right relative">
+<div class="inline-block text-left" data-dropdown-container="">
+<button class="p-1 rounded-md text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors focus:outline-none" onclick="toggleMenu(this)" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+<div class="hidden absolute right-4 top-10 w-36 bg-surface-container-lowest rounded-lg shadow-lg py-1 z-30 flex flex-col text-left">
+<a class="px-md py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">visibility</span> Lihat Detail
+                    </a>
+<a class="px-md py-1.5 font-body-md text-body-md text-on-surface hover:bg-surface-container-low flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">edit</span> Edit PIC
+                    </a>
+<a class="px-md py-1.5 font-body-md text-body-md text-primary hover:bg-secondary-container hover:text-on-secondary-container flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Aktifkan
+                    </a>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="p-md flex flex-col sm:flex-row items-center justify-between gap-md bg-surface-container-lowest">
+<span class="font-body-md text-body-md text-on-surface-variant">
+          Menampilkan <span class="font-semibold text-on-surface">1-5</span> dari <span class="font-semibold text-on-surface">14</span> PIC
+        </span>
+<div class="inline-flex items-center gap-1">
+<!-- Button: Sebelumnya -->
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant opacity-50 cursor-not-allowed font-body-md text-body-md flex items-center gap-xs" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+<span>Sebelumnya</span>
+</button>
+<!-- Number 1 (Active) -->
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary font-body-md text-body-md font-semibold flex items-center justify-center shadow-sm" type="button">
+            1
+          </button>
+<!-- Number 2 -->
+<button class="w-8 h-8 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-body-md text-body-md transition-colors flex items-center justify-center" type="button">
+            2
+          </button>
+<!-- Number 3 -->
+<button class="w-8 h-8 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-body-md text-body-md transition-colors flex items-center justify-center" type="button">
+            3
+          </button>
+<!-- Button: Selanjutnya -->
+<button class="px-3 py-1.5 rounded-lg text-on-surface hover:bg-surface-container-low font-body-md text-body-md transition-colors flex items-center gap-xs" type="button">
+<span>Selanjutnya</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function toggleMenu(button) {
+    const container = button.closest('[data-dropdown-container]');
+    const dropdown = container.querySelector('div');
+    const isHidden = dropdown.classList.contains('hidden');
+    
+    // Close all open dropdowns first
+    document.querySelectorAll('[data-dropdown-container] div').forEach(el => {
+      el.classList.add('hidden');
+    });
+
+    if (isHidden) {
+      dropdown.classList.remove('hidden');
+    }
+  }
+
+  // Click outside listener to dismiss dropdowns
+  window.addEventListener('click', function(e) {
+    if (!e.target.closest('[data-dropdown-container]')) {
+      document.querySelectorAll('[data-dropdown-container] div').forEach(el => {
+        el.classList.add('hidden');
+      });
+    }
+  });
+</script></main></div></body></html>

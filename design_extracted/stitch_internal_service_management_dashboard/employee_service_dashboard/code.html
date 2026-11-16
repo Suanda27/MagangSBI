@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ServiceHub - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#d0e1fb",
+                        "on-surface": "#191c1e",
+                        "on-tertiary-fixed-variant": "#3f465c",
+                        "outline-variant": "#c4c5d5",
+                        "inverse-on-surface": "#eff1f3",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#dde1ff",
+                        "surface-container": "#eceef0",
+                        "surface-dim": "#d8dadc",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "inverse-surface": "#2d3133",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#54647a",
+                        "outline": "#757684",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#bec6e0",
+                        "primary": "#00288e",
+                        "on-tertiary-fixed": "#131b2e",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "primary-container": "#1e40af",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1e",
+                        "on-primary-fixed": "#001453",
+                        "background": "#f7f9fb",
+                        "tertiary-container": "#434b60",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary": "#2d3449",
+                        "on-primary-container": "#a8b8ff",
+                        "surface": "#f7f9fb",
+                        "on-primary-fixed-variant": "#173bab",
+                        "primary-fixed-dim": "#b8c4ff",
+                        "on-tertiary-container": "#b4bbd5",
+                        "on-surface-variant": "#444653",
+                        "tertiary-fixed": "#dae2fd",
+                        "secondary": "#505f76",
+                        "surface-variant": "#e0e3e5",
+                        "surface-tint": "#3755c3",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-primary": "#b8c4ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "sm": "8px",
+                        "gutter": "20px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "base": "4px",
+                        "container-max": "1440px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "caption": ["Inter"],
+                        "display": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "display": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        [data-weight="fill"] .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-screen w-[240px] bg-surface dark:bg-inverse-surface flex flex-col border-r border-outline-variant shadow-sm z-50">
+<div class="p-lg flex flex-col items-start gap-4">
+<img class="h-10 object-contain" data-alt="A clean, modern corporate logo for ServiceHub featuring abstract geometric shapes representing connectivity and workflow, rendered in a professional blue and white color palette, isolated on a clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGP7Yx_CaI61Y_5A4ptmpao6mR6gKbJ5GxmajbAOJEkjIRhcO4c6mn9B62owr7hLeV0Nj_sWqZBEfFUrsENi9tyGZYElJ9yjdW-zARyYYSpGQ-T12gtSOEK9yY5dbZ8w6rSE3C_J372UW8swEATYX2RvLht5XLP6zifv1nKDlEdgWHF1Mci1RFL3XznqNZLO5uVqWFSEplqhVlwu0JQqLfv4y5SKHHgBZbIAKWZsBjL5RXddxNoTcF"/>
+<div>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary">ServiceHub</h1>
+<p class="text-label-md font-label-md text-on-surface-variant mt-xs">Employee Portal</p>
+</div>
+</div>
+<div class="flex-1 py-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 border-l-4 border-primary bg-surface-container-low text-primary font-bold scale-[0.99] transition-transform" href="#">
+<span class="material-symbols-outlined" data-weight="fill">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-lowest border-l-4 border-transparent hover:border-outline-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-label-md font-label-md">Buat Permintaan</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-lowest border-l-4 border-transparent hover:border-outline-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">pending_actions</span>
+<span class="text-label-md font-label-md">Permintaan Saya</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-lowest border-l-4 border-transparent hover:border-outline-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">Riwayat</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="ml-[240px] flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-lg h-16 max-w-[calc(1440px-240px)] bg-surface dark:bg-surface-dim shadow-sm sticky top-0 z-40">
+<div>
+<h2 class="text-headline-md font-headline-md font-extrabold text-on-surface">Dashboard</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-all p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="flex items-center gap-3 border-l border-outline-variant pl-4">
+<div class="flex flex-col items-end">
+<span class="text-label-md font-label-md font-bold text-on-surface">Muhammad Faiz Difa Suanda</span>
+<span class="text-caption font-caption text-on-surface-variant">Employee</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-label-md font-label-md font-bold uppercase overflow-hidden">
+                        MF
+                    </div>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 p-lg max-w-[calc(1440px-240px)] w-full mx-auto flex flex-col gap-lg">
+<!-- Welcome Section -->
+<section class="bg-surface-container-lowest rounded-lg p-lg shadow-sm border border-outline-variant flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative overflow-hidden">
+<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#1e40af 1px, transparent 1px); background-size: 16px 16px;"></div>
+<div class="relative z-10">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-xs">Selamat datang, Muhammad Faiz 👋</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Kelola dan pantau permintaan layanan internal Anda.</p>
+</div>
+<button class="relative z-10 bg-primary-container text-on-primary hover:bg-primary transition-colors px-6 py-2.5 rounded-lg text-label-md font-label-md flex items-center gap-2 whitespace-nowrap shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Buat Permintaan
+                </button>
+</section>
+<!-- Summary Cards -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Total Card -->
+<div class="bg-surface-container-lowest rounded-lg p-md shadow-sm border border-outline-variant flex flex-col gap-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-center">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Total Permintaan</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">folder_open</span>
+</div>
+</div>
+<div class="text-display font-display text-on-surface">12</div>
+</div>
+<!-- Diajukan Card -->
+<div class="bg-surface-container-lowest rounded-lg p-md shadow-sm border border-outline-variant flex flex-col gap-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-center">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Diajukan</span>
+<div class="w-8 h-8 rounded-full bg-[#fffbeb] flex items-center justify-center text-[#d97706]">
+<span class="material-symbols-outlined text-[18px]">outbox</span>
+</div>
+</div>
+<div class="text-display font-display text-on-surface">3</div>
+</div>
+<!-- Diproses Card -->
+<div class="bg-surface-container-lowest rounded-lg p-md shadow-sm border border-outline-variant flex flex-col gap-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-center">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Diproses</span>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">autorenew</span>
+</div>
+</div>
+<div class="text-display font-display text-on-surface">4</div>
+</div>
+<!-- Selesai Card -->
+<div class="bg-surface-container-lowest rounded-lg p-md shadow-sm border border-outline-variant flex flex-col gap-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-center">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Selesai</span>
+<div class="w-8 h-8 rounded-full bg-[#f0fdf4] flex items-center justify-center text-[#16a34a]">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+</div>
+<div class="text-display font-display text-on-surface">5</div>
+</div>
+</section>
+<!-- Recent Requests Table -->
+<section class="bg-surface-container-lowest rounded-lg shadow-sm border border-outline-variant overflow-hidden flex flex-col">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-[#F8FAFC]">
+<h3 class="text-headline-md font-headline-md text-on-surface">Permintaan Terbaru</h3>
+<a class="text-label-md font-label-md text-primary hover:underline flex items-center gap-1" href="#">
+                        Lihat Semua <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#F8FAFC] border-b border-[#F1F5F9]">
+<th class="py-3 px-4 text-label-md font-label-md text-[#64748B] font-semibold">ID</th>
+<th class="py-3 px-4 text-label-md font-label-md text-[#64748B] font-semibold">Kategori</th>
+<th class="py-3 px-4 text-label-md font-label-md text-[#64748B] font-semibold">Deskripsi</th>
+<th class="py-3 px-4 text-label-md font-label-md text-[#64748B] font-semibold">Status</th>
+<th class="py-3 px-4 text-label-md font-label-md text-[#64748B] font-semibold">Tanggal</th>
+<th class="py-3 px-4 text-label-md font-label-md text-[#64748B] font-semibold text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="text-body-md font-body-md divide-y divide-[#F1F5F9]">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-bright transition-colors h-[52px]">
+<td class="py-2 px-4 font-semibold text-on-surface">P001</td>
+<td class="py-2 px-4 text-on-surface-variant">Akses Sistem</td>
+<td class="py-2 px-4 text-on-surface-variant">Permintaan akses sistem</td>
+<td class="py-2 px-4">
+<span class="inline-flex items-center px-2 py-1 rounded bg-secondary-container text-primary-container text-label-md font-label-md font-bold whitespace-nowrap">
+                                        Diproses
+                                    </span>
+</td>
+<td class="py-2 px-4 text-on-surface-variant text-sm whitespace-nowrap">01 Sep 2026</td>
+<td class="py-2 px-4 text-right">
+<button class="text-label-md font-label-md text-primary hover:text-primary-container transition-colors">Detail</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-bright transition-colors h-[52px]">
+<td class="py-2 px-4 font-semibold text-on-surface">P002</td>
+<td class="py-2 px-4 text-on-surface-variant">Dokumen &amp; Surat</td>
+<td class="py-2 px-4 text-on-surface-variant">Permintaan surat magang</td>
+<td class="py-2 px-4">
+<span class="inline-flex items-center px-2 py-1 rounded bg-[#dcfce7] text-[#166534] text-label-md font-label-md font-bold whitespace-nowrap">
+                                        Selesai
+                                    </span>
+</td>
+<td class="py-2 px-4 text-on-surface-variant text-sm whitespace-nowrap">30 Aug 2026</td>
+<td class="py-2 px-4 text-right">
+<button class="text-label-md font-label-md text-primary hover:text-primary-container transition-colors">Detail</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-bright transition-colors h-[52px]">
+<td class="py-2 px-4 font-semibold text-on-surface">P003</td>
+<td class="py-2 px-4 text-on-surface-variant">Fasilitas</td>
+<td class="py-2 px-4 text-on-surface-variant">Perbaikan fasilitas</td>
+<td class="py-2 px-4">
+<span class="inline-flex items-center px-2 py-1 rounded bg-[#fef3c7] text-[#92400e] text-label-md font-label-md font-bold whitespace-nowrap">
+                                        Diajukan
+                                    </span>
+</td>
+<td class="py-2 px-4 text-on-surface-variant text-sm whitespace-nowrap">29 Aug 2026</td>
+<td class="py-2 px-4 text-right">
+<button class="text-label-md font-label-md text-primary hover:text-primary-container transition-colors">Detail</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-bright transition-colors h-[52px]">
+<td class="py-2 px-4 font-semibold text-on-surface">P004</td>
+<td class="py-2 px-4 text-on-surface-variant">Peralatan</td>
+<td class="py-2 px-4 text-on-surface-variant">Permintaan alat kerja</td>
+<td class="py-2 px-4">
+<span class="inline-flex items-center px-2 py-1 rounded bg-secondary-container text-primary-container text-label-md font-label-md font-bold whitespace-nowrap">
+                                        Diproses
+                                    </span>
+</td>
+<td class="py-2 px-4 text-on-surface-variant text-sm whitespace-nowrap">28 Aug 2026</td>
+<td class="py-2 px-4 text-right">
+<button class="text-label-md font-label-md text-primary hover:text-primary-container transition-colors">Detail</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="flex justify-between items-center px-lg py-md max-w-[calc(1440px-240px)] w-full mx-auto bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant mt-auto">
+<div class="text-label-md font-bold text-on-surface-variant">
+                © 2024 Enterprise Service Management. All rights reserved.
+            </div>
+<div class="flex gap-4">
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Help Desk</a>
+</div>
+</footer>
+</div>
+</body></html>
