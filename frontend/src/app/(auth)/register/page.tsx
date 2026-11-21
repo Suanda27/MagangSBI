@@ -138,7 +138,7 @@ export default function RegisterPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-blue-700/20 via-transparent to-[#0a142e]/80 pointer-events-none"></div>
 
         {/* Center Branding / Value Proposition */}
-        <div className="my-auto py-10 md:py-0 relative z-10 max-w-lg animate-in fade-in slide-in-from-left-6 duration-700">
+        <div className="my-auto py-10 md:py-0 relative z-10 max-w-lg">
           <img 
             alt="Logo" 
             className="h-16 sm:h-20 w-auto mb-6 sm:mb-8 object-contain drop-shadow-2xl filter brightness-110" 
@@ -186,7 +186,7 @@ export default function RegisterPage() {
 
       {/* RIGHT SIDE: REGISTRATION FORM / SUCCESS STATE */}
       <div className="w-full md:w-1/2 bg-white flex flex-col justify-center items-center p-6 sm:p-12 lg:p-14 overflow-y-auto">
-        <div className="w-full max-w-[500px] animate-in fade-in slide-in-from-right-6 duration-700">
+        <div className="w-full max-w-[500px]">
           {!isSuccess ? (
             /* FORM VIEW */
             <div>
@@ -200,9 +200,12 @@ export default function RegisterPage() {
 
               {/* General Alert Box */}
               {generalError && (
-                <div className="mb-5 p-3.5 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3 text-sm text-red-700 animate-in fade-in zoom-in-95 duration-200">
-                  <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-                  <p className="text-xs font-medium text-red-800">{generalError}</p>
+                <div className="mb-6 p-3.5 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3 text-sm text-red-700 animate-in fade-in zoom-in-95 duration-200">
+                  <AlertCircle className="text-red-600 w-5 h-5 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-medium text-red-800">Pendaftaran Gagal</p>
+                    <p className="text-xs text-red-600 mt-0.5">{generalError}</p>
+                  </div>
                 </div>
               )}
 
