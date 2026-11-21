@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -293,7 +294,10 @@ export default function LoginPage() {
 
           {/* Prototype Navigations */}
           <div className="mt-8 text-center text-sm text-slate-600 pt-6 border-t border-slate-100">
-            Belum memiliki akun? <a href="#" className="font-semibold text-blue-700 hover:text-blue-800 hover:underline">Hubungi Tim IT Internal</a>
+            Belum memiliki akun?{" "}
+            <Link href="/register" className="font-semibold text-blue-700 hover:text-blue-800 hover:underline">
+              Daftar Akun Baru
+            </Link>
           </div>
 
           <div className="mt-6 pt-4 text-center">
