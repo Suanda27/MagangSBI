@@ -1,25 +1,60 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { 
-  CheckCircle2, 
-  AlertCircle, 
-  Eye, 
-  EyeOff, 
-  Loader2, 
-  IdCard, 
-  Mail, 
-  Lock, 
-  User, 
-  Building2, 
+import {
+  CheckCircle2,
+  AlertCircle,
+  Eye,
+  EyeOff,
+  Loader2,
+  IdCard,
+  Mail,
+  Lock,
+  User,
   ChevronDown,
-  ArrowRight
+  ArrowRight,
 } from "lucide-react";
+
+// Helper untuk delay animasi bertahap (stagger) — sama dengan halaman login
+const d = (ms: number, extra: Record<string, string> = {}) =>
+  ({ "--delay": `${ms}ms`, ...extra } as React.CSSProperties);
+
+// Partikel latar dengan posisi deterministik (aman untuk SSR/hydration)
+const PARTICLES = [
+  { left: "8%", size: 3, dur: 16, delay: 0 },
+  { left: "18%", size: 2, dur: 20, delay: 4 },
+  { left: "29%", size: 4, dur: 18, delay: 8 },
+  { left: "41%", size: 2, dur: 22, delay: 2 },
+  { left: "53%", size: 3, dur: 17, delay: 10 },
+  { left: "64%", size: 2, dur: 21, delay: 6 },
+  { left: "76%", size: 4, dur: 19, delay: 12 },
+  { left: "88%", size: 2, dur: 15, delay: 3 },
+  { left: "95%", size: 3, dur: 23, delay: 9 },
+];
+
+const REQUIREMENTS = [
+  "Alamat email resmi perusahaan (@sbi.co.id / @company.com)",
+  "Nomor Induk Karyawan (NIK) yang masih aktif",
+  "Verifikasi departemen / section penempatan kerja",
+];
+
+const iconCls =
+  "absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 group-focus-within:scale-110 transition-all duration-300 z-10";
+
+const inputCls = (hasError: boolean, withToggle = false) =>
+  `${withToggle ? "pl-10 pr-11" : "pl-10"} h-12 bg-white rounded-lg text-sm transition-all duration-300 ${
+    hasError
+      ? "border-red-500 hover:border-red-500 focus-visible:ring-0 focus-visible:border-red-500"
+      : "border-slate-300 hover:border-slate-400 focus-visible:ring-0 focus-visible:border-blue-500"
+  }`;
+
+const submitCls =
+  "group/btn relative overflow-hidden w-full h-12 text-white font-medium rounded-lg shadow-md focus-visible:ring-blue-600 text-base transition-all duration-300 bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-600 bg-[length:200%_100%] bg-left hover:bg-right hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-700/30 active:translate-y-0 active:scale-[0.99]";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -36,15 +71,27 @@ export default function RegisterPage() {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [generalError, setGeneralError] = useState("");
+  const [shakeKey, setShakeKey] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  // Efek spotlight mengikuti kursor di panel branding (tanpa re-render)
+  const brandRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const handleBrandMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = brandRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    el.style.setProperty("--my", `${e.clientY - rect.top}px`);
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    
+
     // Clear specific error on change
     if (errors[name]) {
       setErrors((prev) => {
@@ -98,6 +145,14 @@ export default function RegisterPage() {
 
     if (!validate()) {
       setGeneralError("Mohon periksa kembali kolom formulir yang belum sesuai.");
+      setShakeKey((k) => k + 1);
+      // Re-trigger animasi getar tanpa me-remount form (sama seperti login)
+      const form = formRef.current;
+      if (form) {
+        form.classList.remove("login-shake");
+        void form.offsetWidth;
+        form.classList.add("login-shake");
+      }
       return;
     }
 
@@ -123,58 +178,85 @@ export default function RegisterPage() {
     setGeneralError("");
   };
 
-  return (
-    <div className="min-h-screen w-full flex flex-col md:flex-row bg-white text-slate-900 font-sans antialiased">
-      {/* LEFT SIDE: BRANDING AREA (Harmonized with Login Page) */}
-      <div className="w-full md:w-1/2 bg-[#102046] border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-between p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-2xl text-white">
-        
-        {/* Ambient Glowing Background Elements */}
-        <div className="absolute -top-32 -left-32 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute top-1/3 -right-24 w-80 h-80 bg-indigo-400/25 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute -bottom-28 left-1/4 w-[420px] h-[420px] bg-blue-400/20 rounded-full blur-3xl pointer-events-none"></div>
+  const fieldError = (key: string) =>
+    errors[key] ? (
+      <p className="text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-2 duration-300">
+        {errors[key]}
+      </p>
+    ) : null;
 
-        {/* Subtle Technological Grid Overlay */}
-        <div className="absolute inset-0 opacity-[0.1] pointer-events-none bg-[radial-gradient(#93c5fd_1px,transparent_1px)] [background-size:24px_24px]"></div>
+  return (
+    <div className="min-h-screen w-full flex flex-col md:flex-row bg-white text-slate-900 font-sans antialiased overflow-hidden">
+      {/* LEFT SIDE: BRANDING AREA (sama dengan Login) */}
+      <div
+        ref={brandRef}
+        onMouseMove={handleBrandMouseMove}
+        className="group/brand w-full md:w-1/2 bg-[#102046] border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-between p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-2xl text-white"
+      >
+        {/* Ambient background glow elements (animated) */}
+        <div className="login-blob absolute -top-32 -left-32 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl pointer-events-none" style={d(0, { "--dur": "20s" })}></div>
+        <div className="login-blob absolute top-1/3 -right-24 w-80 h-80 bg-indigo-400/25 rounded-full blur-3xl pointer-events-none" style={d(0, { "--dur": "24s", "--delay": "-6s" })}></div>
+        <div className="login-blob absolute -bottom-28 left-1/4 w-[420px] h-[420px] bg-blue-400/20 rounded-full blur-3xl pointer-events-none" style={d(0, { "--dur": "28s", "--delay": "-12s" })}></div>
+
+        {/* Subtle technological grid / node overlay (drifting) */}
+        <div className="login-grid absolute inset-0 opacity-[0.1] pointer-events-none bg-[radial-gradient(#93c5fd_1px,transparent_1px)] [background-size:24px_24px]"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-blue-700/20 via-transparent to-[#0a142e]/80 pointer-events-none"></div>
+
+        {/* Cursor spotlight */}
+        <div className="login-spotlight absolute inset-0 pointer-events-none opacity-0 group-hover/brand:opacity-100"></div>
+
+        {/* Floating particles */}
+        {PARTICLES.map((p, i) => (
+          <span
+            key={i}
+            className="login-particle"
+            style={{
+              left: p.left,
+              width: p.size,
+              height: p.size,
+              ...d(0, { "--dur": `${p.dur}s`, "--delay": `-${p.delay}s` }),
+            }}
+          />
+        ))}
 
         {/* Center Branding / Value Proposition */}
         <div className="my-auto py-10 md:py-0 relative z-10 max-w-lg">
-          <img 
-            alt="Logo" 
-            className="h-16 sm:h-20 w-auto mb-6 sm:mb-8 object-contain drop-shadow-2xl filter brightness-110" 
-            src="/LogoSBI.png" 
+          <img
+            alt="Logo"
+            className="login-logo h-16 sm:h-20 w-auto mb-6 sm:mb-8 object-contain drop-shadow-2xl filter brightness-110"
+            src="/LogoSBI.png"
           />
 
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight drop-shadow-sm">
-            Sederhanakan layanan permintaan internal Anda.
+          <h1 className="login-reveal text-3xl sm:text-4xl font-bold tracking-tight leading-tight drop-shadow-sm" style={d(200)}>
+            <span className="login-gradient-text">Sederhanakan layanan permintaan internal Anda.</span>
           </h1>
-          <p className="mt-4 text-blue-100/80 text-base leading-relaxed font-normal">
+          <p className="login-reveal mt-4 text-blue-100/80 text-base leading-relaxed font-normal" style={d(350)}>
             Ajukan, pantau, dan kelola permintaan layanan internal melalui satu platform terpusat. Daftarkan akun korporat Anda untuk memulai.
           </p>
 
-          {/* Frosted Glass Requirements Card */}
-          <div className="mt-8 p-5 bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl space-y-3 shadow-lg">
-            <div className="text-xs font-semibold text-white/90 uppercase tracking-wider flex items-center gap-2">
+          {/* Requirements */}
+          <div className="mt-8 pt-6 border-t border-white/15 space-y-3.5">
+            <div className="login-reveal text-xs font-semibold text-white/90 uppercase tracking-wider flex items-center gap-2" style={d(450)}>
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
               Persyaratan Registrasi Karyawan
             </div>
-            <div className="flex items-center gap-2.5 text-xs text-blue-100/90 font-medium">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-              <span>Alamat email resmi perusahaan (@sbi.co.id / @company.com)</span>
-            </div>
-            <div className="flex items-center gap-2.5 text-xs text-blue-100/90 font-medium">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-              <span>Nomor Induk Karyawan (NIK) yang masih aktif</span>
-            </div>
-            <div className="flex items-center gap-2.5 text-xs text-blue-100/90 font-medium">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-              <span>Verifikasi departemen / section penempatan kerja</span>
-            </div>
+            {REQUIREMENTS.map((label, i) => (
+              <div
+                key={label}
+                className="login-reveal-x group/feat flex items-center gap-3 text-sm text-blue-100 font-medium rounded-xl p-1.5 -m-1.5 transition-all duration-300 hover:bg-white/5 hover:translate-x-1 cursor-default"
+                style={d(550 + i * 110)}
+              >
+                <span className="w-8 h-8 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center flex-shrink-0 text-blue-300 shadow-sm transition-all duration-300 group-hover/feat:bg-blue-500/30 group-hover/feat:text-white group-hover/feat:scale-110 group-hover/feat:rotate-6 group-hover/feat:shadow-[0_0_16px_rgba(96,165,250,0.6)]">
+                  <CheckCircle2 className="w-[18px] h-[18px]" />
+                </span>
+                <span className="transition-colors duration-300 group-hover/feat:text-white">{label}</span>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Bottom Copyright */}
-        <div className="relative z-10 text-xs text-blue-200/60 flex items-center justify-between pt-6">
+        {/* Bottom copyright / metadata */}
+        <div className="login-reveal relative z-10 text-xs text-blue-200/60 flex items-center justify-between pt-6" style={d(1000)}>
           <span>© 2026 PT Solusi Bangun Indonesia Tbk</span>
           <div className="flex gap-4 font-medium text-blue-200/70">
             <a href="#" className="hover:text-white transition-colors">Privasi</a>
@@ -185,22 +267,31 @@ export default function RegisterPage() {
       </div>
 
       {/* RIGHT SIDE: REGISTRATION FORM / SUCCESS STATE */}
-      <div className="w-full md:w-1/2 bg-white flex flex-col justify-center items-center p-6 sm:p-12 lg:p-14 overflow-y-auto">
-        <div className="w-full max-w-[500px]">
+      <div className="w-full md:w-1/2 bg-white flex flex-col justify-center items-center p-6 sm:p-12 lg:p-14 relative">
+        {/* Soft decorative background on form side */}
+        <div className="absolute top-0 right-0 w-72 h-72 bg-blue-100/50 rounded-full blur-3xl pointer-events-none login-blob" style={d(0, { "--dur": "26s" })}></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-100/40 rounded-full blur-3xl pointer-events-none login-blob" style={d(0, { "--dur": "30s", "--delay": "-10s" })}></div>
+
+        <div className="w-full max-w-[500px] relative z-10">
           {!isSuccess ? (
             /* FORM VIEW */
             <div>
               {/* Header */}
               <div className="mb-8">
-                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Buat Akun Baru</h2>
-                <p className="text-sm text-slate-500 mt-2">
+                <h2 className="login-reveal text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight" style={d(150)}>
+                  Buat Akun Baru
+                </h2>
+                <p className="login-reveal text-sm text-slate-500 mt-2" style={d(250)}>
                   Daftarkan akun karyawan Anda untuk mengakses layanan internal ISM.
                 </p>
               </div>
 
               {/* General Alert Box */}
               {generalError && (
-                <div className="mb-6 p-3.5 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3 text-sm text-red-700 animate-in fade-in zoom-in-95 duration-200">
+                <div
+                  key={`err-${shakeKey}`}
+                  className="mb-6 p-3.5 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3 text-sm text-red-700 animate-in fade-in slide-in-from-top-2 duration-300"
+                >
                   <AlertCircle className="text-red-600 w-5 h-5 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-medium text-red-800">Pendaftaran Gagal</p>
@@ -210,16 +301,15 @@ export default function RegisterPage() {
               )}
 
               {/* Form */}
-              <form onSubmit={handleRegister} className="space-y-5">
+              <form ref={formRef} onSubmit={handleRegister} className="space-y-5">
                 {/* Row 1: Full Name & Employee NIK */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Field 1: Full Name */}
-                  <div className="space-y-1">
-                    <Label htmlFor="fullName" className="text-sm font-semibold text-slate-700">
+                <div className="login-reveal grid grid-cols-1 sm:grid-cols-2 gap-4" style={d(350)}>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="fullName" className="text-slate-700 font-semibold">
                       Nama Lengkap <span className="text-red-500">*</span>
                     </Label>
-                    <div className="relative group">
-                      <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
+                    <div className="login-input-wrap group">
+                      <span className={iconCls}>
                         <User className="w-5 h-5" />
                       </span>
                       <Input
@@ -229,21 +319,18 @@ export default function RegisterPage() {
                         placeholder="Masukkan nama lengkap"
                         value={formData.fullName}
                         onChange={handleChange}
-                        className={`pl-10 h-12 bg-white border-slate-300 rounded-lg text-sm focus-visible:ring-blue-600 focus-visible:border-transparent transition-all ${errors.fullName ? "border-red-500 focus-visible:ring-red-400" : ""}`}
+                        className={inputCls(!!errors.fullName)}
                       />
                     </div>
-                    {errors.fullName && (
-                      <p className="text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-1 duration-200">{errors.fullName}</p>
-                    )}
+                    {fieldError("fullName")}
                   </div>
 
-                  {/* Field 2: Employee NIK */}
-                  <div className="space-y-1">
-                    <Label htmlFor="nik" className="text-sm font-semibold text-slate-700">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="nik" className="text-slate-700 font-semibold">
                       NIK Karyawan <span className="text-red-500">*</span>
                     </Label>
-                    <div className="relative group">
-                      <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
+                    <div className="login-input-wrap group">
+                      <span className={iconCls}>
                         <IdCard className="w-5 h-5" />
                       </span>
                       <Input
@@ -253,24 +340,21 @@ export default function RegisterPage() {
                         placeholder="contoh: EMP-2023-0842"
                         value={formData.nik}
                         onChange={handleChange}
-                        className={`pl-10 h-12 bg-white border-slate-300 rounded-lg text-sm focus-visible:ring-blue-600 focus-visible:border-transparent transition-all ${errors.nik ? "border-red-500 focus-visible:ring-red-400" : ""}`}
+                        className={inputCls(!!errors.nik)}
                       />
                     </div>
-                    {errors.nik && (
-                      <p className="text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-1 duration-200">{errors.nik}</p>
-                    )}
+                    {fieldError("nik")}
                   </div>
                 </div>
 
                 {/* Row 2: Email & Section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Field 3: Email */}
-                  <div className="space-y-1">
-                    <Label htmlFor="email" className="text-sm font-semibold text-slate-700">
+                <div className="login-reveal grid grid-cols-1 sm:grid-cols-2 gap-4" style={d(450)}>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="email" className="text-slate-700 font-semibold">
                       Email Perusahaan <span className="text-red-500">*</span>
                     </Label>
-                    <div className="relative group">
-                      <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
+                    <div className="login-input-wrap group">
+                      <span className={iconCls}>
                         <Mail className="w-5 h-5" />
                       </span>
                       <Input
@@ -280,27 +364,26 @@ export default function RegisterPage() {
                         placeholder="nama@sbi.co.id"
                         value={formData.email}
                         onChange={handleChange}
-                        className={`pl-10 h-12 bg-white border-slate-300 rounded-lg text-sm focus-visible:ring-blue-600 focus-visible:border-transparent transition-all ${errors.email ? "border-red-500 focus-visible:ring-red-400" : ""}`}
+                        className={inputCls(!!errors.email)}
                       />
                     </div>
-                    {errors.email && (
-                      <p className="text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-1 duration-200">{errors.email}</p>
-                    )}
+                    {fieldError("email")}
                   </div>
 
-                  {/* Field 4: Section */}
-                  <div className="space-y-1">
-                    <Label htmlFor="section" className="text-sm font-semibold text-slate-700">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="section" className="text-slate-700 font-semibold">
                       Section / Unit <span className="text-red-500">*</span>
                     </Label>
-                    <div className="relative">
+                    <div className="login-input-wrap group">
                       <select
                         id="section"
                         name="section"
                         value={formData.section}
                         onChange={handleChange}
-                        className={`w-full h-12 px-3.5 bg-white border rounded-lg text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all appearance-none pr-9 ${
-                          errors.section ? "border-red-500 focus:ring-red-400" : "border-slate-300"
+                        className={`w-full h-12 px-3.5 pr-9 bg-white border rounded-lg text-sm text-slate-900 focus:outline-none appearance-none transition-all duration-300 ${
+                          errors.section
+                            ? "border-red-500 hover:border-red-500 focus:border-red-500"
+                            : "border-slate-300 hover:border-slate-400 focus:border-blue-500"
                         }`}
                       >
                         <option value="" disabled>Pilih section</option>
@@ -310,24 +393,22 @@ export default function RegisterPage() {
                         <option value="PE">PE (Plant Engineering)</option>
                         <option value="GA">GA (General Affairs)</option>
                       </select>
-                      <ChevronDown className="w-5 h-5 absolute right-3 top-3.5 text-slate-400 pointer-events-none" />
+                      <ChevronDown className="w-5 h-5 absolute right-3 top-3.5 text-slate-400 pointer-events-none transition-colors duration-300 group-focus-within:text-blue-600" />
                     </div>
-                    {errors.section && (
-                      <p className="text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-1 duration-200">{errors.section}</p>
-                    )}
+                    {fieldError("section")}
                   </div>
                 </div>
 
-                {/* Field 5: Password */}
-                <div className="space-y-1">
+                {/* Password */}
+                <div className="login-reveal space-y-1.5" style={d(550)}>
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="password" className="text-sm font-semibold text-slate-700">
+                    <Label htmlFor="password" className="text-slate-700 font-semibold">
                       Kata Sandi <span className="text-red-500">*</span>
                     </Label>
-                    <span className="text-[11px] text-slate-400">Min. 8 karakter</span>
+                    <span className="text-xs text-slate-400">Min. 8 karakter</span>
                   </div>
-                  <div className="relative group">
-                    <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
+                  <div className="login-input-wrap group">
+                    <span className={iconCls}>
                       <Lock className="w-5 h-5" />
                     </span>
                     <Input
@@ -337,28 +418,28 @@ export default function RegisterPage() {
                       placeholder="Masukkan kata sandi baru"
                       value={formData.password}
                       onChange={handleChange}
-                      className={`pl-10 pr-11 h-12 bg-white border-slate-300 rounded-lg text-sm focus-visible:ring-blue-600 focus-visible:border-transparent transition-all ${errors.password ? "border-red-500 focus-visible:ring-red-400" : ""}`}
+                      className={inputCls(!!errors.password, true)}
                     />
                     <button
                       type="button"
-                      className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 focus:outline-none"
+                      className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-blue-600 focus:outline-none z-10 transition-colors"
                       onClick={() => setShowPassword(!showPassword)}
                     >
-                      {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      <span key={showPassword ? "off" : "on"} className="animate-in fade-in zoom-in-50 spin-in-45 duration-300">
+                        {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </span>
                     </button>
                   </div>
-                  {errors.password && (
-                    <p className="text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-1 duration-200">{errors.password}</p>
-                  )}
+                  {fieldError("password")}
                 </div>
 
-                {/* Field 6: Confirm Password */}
-                <div className="space-y-1">
-                  <Label htmlFor="confirmPassword" className="text-sm font-semibold text-slate-700">
+                {/* Confirm Password */}
+                <div className="login-reveal space-y-1.5" style={d(650)}>
+                  <Label htmlFor="confirmPassword" className="text-slate-700 font-semibold">
                     Konfirmasi Kata Sandi <span className="text-red-500">*</span>
                   </Label>
-                  <div className="relative group">
-                    <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
+                  <div className="login-input-wrap group">
+                    <span className={iconCls}>
                       <Lock className="w-5 h-5" />
                     </span>
                     <Input
@@ -368,23 +449,23 @@ export default function RegisterPage() {
                       placeholder="Ketik ulang kata sandi"
                       value={formData.confirmPassword}
                       onChange={handleChange}
-                      className={`pl-10 pr-11 h-12 bg-white border-slate-300 rounded-lg text-sm focus-visible:ring-blue-600 focus-visible:border-transparent transition-all ${errors.confirmPassword ? "border-red-500 focus-visible:ring-red-400" : ""}`}
+                      className={inputCls(!!errors.confirmPassword, true)}
                     />
                     <button
                       type="button"
-                      className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 focus:outline-none"
+                      className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-blue-600 focus:outline-none z-10 transition-colors"
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     >
-                      {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      <span key={showConfirmPassword ? "off" : "on"} className="animate-in fade-in zoom-in-50 spin-in-45 duration-300">
+                        {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </span>
                     </button>
                   </div>
-                  {errors.confirmPassword && (
-                    <p className="text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-1 duration-200">{errors.confirmPassword}</p>
-                  )}
+                  {fieldError("confirmPassword")}
                 </div>
 
                 {/* Quick Demo Autofill */}
-                <div className="flex justify-end pt-1">
+                <div className="login-reveal flex justify-end pt-1" style={d(700)}>
                   <button
                     type="button"
                     onClick={fillSampleData}
@@ -395,28 +476,33 @@ export default function RegisterPage() {
                 </div>
 
                 {/* Submit Button */}
-                <Button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full h-12 bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg shadow-sm focus-visible:ring-blue-600 transition-all text-base mt-2 flex items-center justify-center gap-2"
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      <span>Sedang Mendaftarkan Akun...</span>
-                    </>
-                  ) : (
-                    <span>Daftar Akun</span>
-                  )}
-                </Button>
+                <div className="login-reveal" style={d(750)}>
+                  <Button
+                    type="submit"
+                    disabled={isLoading}
+                    className={`${submitCls} mt-2 ${!isLoading ? "login-shimmer" : ""}`}
+                  >
+                    {isLoading ? (
+                      <span className="flex items-center justify-center animate-in fade-in duration-200">
+                        <Loader2 className="w-5 h-5 animate-spin mr-2" />
+                        Sedang Mendaftarkan Akun...
+                      </span>
+                    ) : (
+                      <span className="flex items-center justify-center">
+                        Daftar Akun
+                        <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                      </span>
+                    )}
+                  </Button>
+                </div>
               </form>
 
               {/* Secondary CTA: Back to Login */}
-              <div className="mt-6 text-center text-sm text-slate-600 pt-5 border-t border-slate-100">
+              <div className="login-reveal mt-8 text-center text-sm text-slate-600 pt-6 border-t border-slate-100" style={d(850)}>
                 Sudah memiliki akun?{" "}
                 <Link
                   href="/login"
-                  className="font-semibold text-blue-700 hover:text-blue-800 hover:underline transition-all"
+                  className="font-semibold text-blue-700 hover:text-blue-800 hover:underline underline-offset-4"
                 >
                   Masuk ke Sistem
                 </Link>
@@ -426,7 +512,7 @@ export default function RegisterPage() {
             /* SUCCESS STATE VIEW */
             <div className="text-center py-6 animate-in fade-in zoom-in-95 duration-300">
               <div className="w-16 h-16 bg-green-50 text-emerald-600 border border-green-200 rounded-full flex items-center justify-center mx-auto mb-5 shadow-sm">
-                <CheckCircle2 className="w-9 h-9" />
+                <CheckCircle2 className="login-pop w-9 h-9" />
               </div>
 
               <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Registrasi Berhasil</h2>
@@ -463,10 +549,12 @@ export default function RegisterPage() {
               <Button
                 type="button"
                 onClick={() => router.push("/login")}
-                className="w-full max-w-sm h-12 bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg shadow-sm transition-all text-base flex items-center justify-center gap-2 mx-auto"
+                className={`${submitCls} login-shimmer max-w-sm mx-auto`}
               >
-                <span>Masuk Sekarang</span>
-                <ArrowRight className="w-4 h-4" />
+                <span className="flex items-center justify-center">
+                  Masuk Sekarang
+                  <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                </span>
               </Button>
             </div>
           )}
