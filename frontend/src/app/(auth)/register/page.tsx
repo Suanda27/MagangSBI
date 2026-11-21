@@ -138,7 +138,7 @@ export default function RegisterPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-blue-700/20 via-transparent to-[#0a142e]/80 pointer-events-none"></div>
 
         {/* Center Branding / Value Proposition */}
-        <div className="my-auto py-10 md:py-0 relative z-10 max-w-lg">
+        <div className="my-auto py-10 md:py-0 relative z-10 max-w-lg animate-in fade-in slide-in-from-left-6 duration-700">
           <img 
             alt="Logo" 
             className="h-16 sm:h-20 w-auto mb-6 sm:mb-8 object-contain drop-shadow-2xl filter brightness-110" 
@@ -186,38 +186,38 @@ export default function RegisterPage() {
 
       {/* RIGHT SIDE: REGISTRATION FORM / SUCCESS STATE */}
       <div className="w-full md:w-1/2 bg-white flex flex-col justify-center items-center p-6 sm:p-12 lg:p-14 overflow-y-auto">
-        <div className="w-full max-w-[500px]">
+        <div className="w-full max-w-[500px] animate-in fade-in slide-in-from-right-6 duration-700">
           {!isSuccess ? (
             /* FORM VIEW */
             <div>
               {/* Header */}
-              <div className="mb-6">
+              <div className="mb-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">Buat Akun Baru</h2>
-                <p className="text-sm text-slate-500 mt-1.5">
+                <p className="text-sm text-slate-500 mt-2">
                   Daftarkan akun karyawan Anda untuk mengakses layanan internal ISM.
                 </p>
               </div>
 
               {/* General Alert Box */}
               {generalError && (
-                <div className="mb-5 p-3.5 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3 text-sm text-red-700 animate-in fade-in duration-200">
+                <div className="mb-5 p-3.5 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3 text-sm text-red-700 animate-in fade-in zoom-in-95 duration-200">
                   <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
                   <p className="text-xs font-medium text-red-800">{generalError}</p>
                 </div>
               )}
 
               {/* Form */}
-              <form onSubmit={handleRegister} className="space-y-4">
+              <form onSubmit={handleRegister} className="space-y-5">
                 {/* Row 1: Full Name & Employee NIK */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Field 1: Full Name */}
                   <div className="space-y-1">
-                    <Label htmlFor="fullName" className="text-xs font-semibold text-slate-700">
+                    <Label htmlFor="fullName" className="text-sm font-semibold text-slate-700">
                       Nama Lengkap <span className="text-red-500">*</span>
                     </Label>
                     <div className="relative group">
-                      <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
-                        <User className="w-4 h-4" />
+                      <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
+                        <User className="w-5 h-5" />
                       </span>
                       <Input
                         id="fullName"
@@ -226,22 +226,22 @@ export default function RegisterPage() {
                         placeholder="Masukkan nama lengkap"
                         value={formData.fullName}
                         onChange={handleChange}
-                        className={`pl-9 h-10 text-sm ${errors.fullName ? "border-red-500 focus-visible:ring-red-400" : ""}`}
+                        className={`pl-10 h-12 bg-white border-slate-300 rounded-lg text-sm focus-visible:ring-blue-600 focus-visible:border-transparent transition-all ${errors.fullName ? "border-red-500 focus-visible:ring-red-400" : ""}`}
                       />
                     </div>
                     {errors.fullName && (
-                      <p className="text-[11px] text-red-600 font-medium">{errors.fullName}</p>
+                      <p className="text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-1 duration-200">{errors.fullName}</p>
                     )}
                   </div>
 
                   {/* Field 2: Employee NIK */}
                   <div className="space-y-1">
-                    <Label htmlFor="nik" className="text-xs font-semibold text-slate-700">
+                    <Label htmlFor="nik" className="text-sm font-semibold text-slate-700">
                       NIK Karyawan <span className="text-red-500">*</span>
                     </Label>
                     <div className="relative group">
-                      <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
-                        <IdCard className="w-4 h-4" />
+                      <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
+                        <IdCard className="w-5 h-5" />
                       </span>
                       <Input
                         id="nik"
@@ -250,25 +250,25 @@ export default function RegisterPage() {
                         placeholder="contoh: EMP-2023-0842"
                         value={formData.nik}
                         onChange={handleChange}
-                        className={`pl-9 h-10 text-sm ${errors.nik ? "border-red-500 focus-visible:ring-red-400" : ""}`}
+                        className={`pl-10 h-12 bg-white border-slate-300 rounded-lg text-sm focus-visible:ring-blue-600 focus-visible:border-transparent transition-all ${errors.nik ? "border-red-500 focus-visible:ring-red-400" : ""}`}
                       />
                     </div>
                     {errors.nik && (
-                      <p className="text-[11px] text-red-600 font-medium">{errors.nik}</p>
+                      <p className="text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-1 duration-200">{errors.nik}</p>
                     )}
                   </div>
                 </div>
 
                 {/* Row 2: Email & Section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Field 3: Email */}
                   <div className="space-y-1">
-                    <Label htmlFor="email" className="text-xs font-semibold text-slate-700">
+                    <Label htmlFor="email" className="text-sm font-semibold text-slate-700">
                       Email Perusahaan <span className="text-red-500">*</span>
                     </Label>
                     <div className="relative group">
-                      <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
-                        <Mail className="w-4 h-4" />
+                      <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
+                        <Mail className="w-5 h-5" />
                       </span>
                       <Input
                         id="email"
@@ -277,17 +277,17 @@ export default function RegisterPage() {
                         placeholder="nama@sbi.co.id"
                         value={formData.email}
                         onChange={handleChange}
-                        className={`pl-9 h-10 text-sm ${errors.email ? "border-red-500 focus-visible:ring-red-400" : ""}`}
+                        className={`pl-10 h-12 bg-white border-slate-300 rounded-lg text-sm focus-visible:ring-blue-600 focus-visible:border-transparent transition-all ${errors.email ? "border-red-500 focus-visible:ring-red-400" : ""}`}
                       />
                     </div>
                     {errors.email && (
-                      <p className="text-[11px] text-red-600 font-medium">{errors.email}</p>
+                      <p className="text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-1 duration-200">{errors.email}</p>
                     )}
                   </div>
 
                   {/* Field 4: Section */}
                   <div className="space-y-1">
-                    <Label htmlFor="section" className="text-xs font-semibold text-slate-700">
+                    <Label htmlFor="section" className="text-sm font-semibold text-slate-700">
                       Section / Unit <span className="text-red-500">*</span>
                     </Label>
                     <div className="relative">
@@ -296,7 +296,7 @@ export default function RegisterPage() {
                         name="section"
                         value={formData.section}
                         onChange={handleChange}
-                        className={`w-full h-10 px-3 bg-white border rounded-lg text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all appearance-none pr-8 ${
+                        className={`w-full h-12 px-3.5 bg-white border rounded-lg text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all appearance-none pr-9 ${
                           errors.section ? "border-red-500 focus:ring-red-400" : "border-slate-300"
                         }`}
                       >
@@ -307,10 +307,10 @@ export default function RegisterPage() {
                         <option value="PE">PE (Plant Engineering)</option>
                         <option value="GA">GA (General Affairs)</option>
                       </select>
-                      <ChevronDown className="w-4 h-4 absolute right-2.5 top-3 text-slate-400 pointer-events-none" />
+                      <ChevronDown className="w-5 h-5 absolute right-3 top-3.5 text-slate-400 pointer-events-none" />
                     </div>
                     {errors.section && (
-                      <p className="text-[11px] text-red-600 font-medium">{errors.section}</p>
+                      <p className="text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-1 duration-200">{errors.section}</p>
                     )}
                   </div>
                 </div>
@@ -318,14 +318,14 @@ export default function RegisterPage() {
                 {/* Field 5: Password */}
                 <div className="space-y-1">
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="password" className="text-xs font-semibold text-slate-700">
+                    <Label htmlFor="password" className="text-sm font-semibold text-slate-700">
                       Kata Sandi <span className="text-red-500">*</span>
                     </Label>
                     <span className="text-[11px] text-slate-400">Min. 8 karakter</span>
                   </div>
                   <div className="relative group">
-                    <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
-                      <Lock className="w-4 h-4" />
+                    <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
+                      <Lock className="w-5 h-5" />
                     </span>
                     <Input
                       id="password"
@@ -334,29 +334,29 @@ export default function RegisterPage() {
                       placeholder="Masukkan kata sandi baru"
                       value={formData.password}
                       onChange={handleChange}
-                      className={`pl-9 pr-10 h-10 text-sm ${errors.password ? "border-red-500 focus-visible:ring-red-400" : ""}`}
+                      className={`pl-10 pr-11 h-12 bg-white border-slate-300 rounded-lg text-sm focus-visible:ring-blue-600 focus-visible:border-transparent transition-all ${errors.password ? "border-red-500 focus-visible:ring-red-400" : ""}`}
                     />
                     <button
                       type="button"
                       className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 focus:outline-none"
                       onClick={() => setShowPassword(!showPassword)}
                     >
-                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                      {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </button>
                   </div>
                   {errors.password && (
-                    <p className="text-[11px] text-red-600 font-medium">{errors.password}</p>
+                    <p className="text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-1 duration-200">{errors.password}</p>
                   )}
                 </div>
 
                 {/* Field 6: Confirm Password */}
                 <div className="space-y-1">
-                  <Label htmlFor="confirmPassword" className="text-xs font-semibold text-slate-700">
+                  <Label htmlFor="confirmPassword" className="text-sm font-semibold text-slate-700">
                     Konfirmasi Kata Sandi <span className="text-red-500">*</span>
                   </Label>
                   <div className="relative group">
-                    <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
-                      <Lock className="w-4 h-4" />
+                    <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-600 transition-colors">
+                      <Lock className="w-5 h-5" />
                     </span>
                     <Input
                       id="confirmPassword"
@@ -365,18 +365,18 @@ export default function RegisterPage() {
                       placeholder="Ketik ulang kata sandi"
                       value={formData.confirmPassword}
                       onChange={handleChange}
-                      className={`pl-9 pr-10 h-10 text-sm ${errors.confirmPassword ? "border-red-500 focus-visible:ring-red-400" : ""}`}
+                      className={`pl-10 pr-11 h-12 bg-white border-slate-300 rounded-lg text-sm focus-visible:ring-blue-600 focus-visible:border-transparent transition-all ${errors.confirmPassword ? "border-red-500 focus-visible:ring-red-400" : ""}`}
                     />
                     <button
                       type="button"
                       className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 focus:outline-none"
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     >
-                      {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                      {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </button>
                   </div>
                   {errors.confirmPassword && (
-                    <p className="text-[11px] text-red-600 font-medium">{errors.confirmPassword}</p>
+                    <p className="text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-1 duration-200">{errors.confirmPassword}</p>
                   )}
                 </div>
 
@@ -385,7 +385,7 @@ export default function RegisterPage() {
                   <button
                     type="button"
                     onClick={fillSampleData}
-                    className="text-xs text-blue-700 hover:text-blue-800 font-medium hover:underline transition-colors"
+                    className="text-xs font-semibold text-slate-400 hover:text-blue-600 transition-colors"
                   >
                     Isi otomatis (Uji Coba)
                   </button>
@@ -395,11 +395,11 @@ export default function RegisterPage() {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full h-11 bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg shadow-sm transition-all text-sm mt-3 flex items-center justify-center gap-2"
+                  className="w-full h-12 bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg shadow-sm focus-visible:ring-blue-600 transition-all text-base mt-2 flex items-center justify-center gap-2"
                 >
                   {isLoading ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <Loader2 className="w-5 h-5 animate-spin" />
                       <span>Sedang Mendaftarkan Akun...</span>
                     </>
                   ) : (
@@ -460,7 +460,7 @@ export default function RegisterPage() {
               <Button
                 type="button"
                 onClick={() => router.push("/login")}
-                className="w-full max-w-sm h-11 bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg shadow-sm transition-all text-sm flex items-center justify-center gap-2 mx-auto"
+                className="w-full max-w-sm h-12 bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg shadow-sm transition-all text-base flex items-center justify-center gap-2 mx-auto"
               >
                 <span>Masuk Sekarang</span>
                 <ArrowRight className="w-4 h-4" />
