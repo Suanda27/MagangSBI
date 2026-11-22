@@ -3,10 +3,13 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Ban, Check, ExternalLink, FileText, Image as ImageIcon, X } from "lucide-react";
-import { Avatar, Drawer, PageHeader, PrioritasBadge, StatusBadge } from "@/components/pic/primitives";
+import { Avatar, PageHeader } from "@/components/shared/display";
+import { Drawer } from "@/components/shared/overlay";
+import { PrioritasBadge, StatusBadge } from "@/components/pic/primitives";
 import { FilterBar, RequestTable, useFilter } from "@/components/pic/request-list";
 import { TerimaDialog, TolakDialog } from "@/components/pic/actions";
-import { infoSla, SLA_TONE, tanggalJam, ukuranFile, useNow } from "@/lib/pic/format";
+import { tanggalJam, ukuranFile, useNow } from "@/lib/shared/format";
+import { infoSla, SLA_TONE } from "@/lib/pic/format";
 import { usePicStore } from "@/lib/pic/store";
 import { NAMA_BAGIAN, type Permintaan } from "@/lib/pic/types";
 

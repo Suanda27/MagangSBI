@@ -2,8 +2,8 @@
 
 import { useRef, useState } from "react";
 import { Ban, Check, CheckCircle2, FileText, Image as ImageIcon, Info, PauseCircle, PlayCircle, Trash2, UploadCloud, X } from "lucide-react";
-import { Modal, ModalHeader } from "./primitives";
-import { ukuranFile, validasiFile } from "@/lib/pic/format";
+import { Modal, ModalHeader } from "@/components/shared/overlay";
+import { ukuranFile, validasiFile } from "@/lib/shared/format";
 import { usePicStore } from "@/lib/pic/store";
 import type { Lampiran, Permintaan } from "@/lib/pic/types";
 

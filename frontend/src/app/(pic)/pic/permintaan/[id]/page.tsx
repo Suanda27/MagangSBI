@@ -4,9 +4,11 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import { ArrowLeft, Ban, Check, CheckCircle2, Clock3, FileSearch, FileText, History, Image as ImageIcon, Mail, MapPin, PauseCircle, Phone, RefreshCw, User } from "lucide-react";
-import { Avatar, PageHeader, PrioritasBadge, StatusBadge, delay } from "@/components/pic/primitives";
+import { Avatar, PageHeader, delay } from "@/components/shared/display";
+import { PrioritasBadge, StatusBadge } from "@/components/pic/primitives";
 import { ProofUploadForm, StatusDialog, TerimaDialog, TolakDialog } from "@/components/pic/actions";
-import { infoSla, SLA_TONE, tanggalJam, ukuranFile, useNow } from "@/lib/pic/format";
+import { tanggalJam, ukuranFile, useNow } from "@/lib/shared/format";
+import { infoSla, SLA_TONE } from "@/lib/pic/format";
 import { usePicStore } from "@/lib/pic/store";
 import { NAMA_BAGIAN, type Lampiran, type Permintaan } from "@/lib/pic/types";
 
@@ -79,7 +81,7 @@ function Alur({ p }: { p: Permintaan }) {
         return (
           <li key={s.n} style={delay(i * 90)} className={`fx-reveal rounded-xl border p-3.5 flex gap-3 transition-colors duration-500 ${box[st]}`}>
             <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold shrink-0 ${dot[st]}`}>
-              {st === "rose" ? <Ban className="w-3.5 h-3.5" /> : st === "done" ? <Check className="w-3.5 h-3.5 pic-check" /> : s.n}
+              {st === "rose" ? <Ban className="w-3.5 h-3.5" /> : st === "done" ? <Check className="w-3.5 h-3.5 ui-check" /> : s.n}
             </span>
             <span className="min-w-0 leading-tight">
               <span className="block text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Langkah {s.n}</span>
