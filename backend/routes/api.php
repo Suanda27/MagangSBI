@@ -31,8 +31,12 @@ $login = ['auth:sanctum', 'akun.aktif'];
 // Route yang butuh login di dalamnya (logout, me, password) memasang $login sendiri.
 Route::prefix('auth')->group(base_path('routes/api/auth.php'));
 
-// Data referensi: section, layanan, lokasi (semua peran yang login) → Syifa
-Route::prefix('referensi')->middleware($login)->group(base_path('routes/api/referensi.php'));
+// Data referensi: section, layanan, lokasi                       → Syifa
+// CATATAN: kelompok ini TANPA middleware karena GET /api/referensi/sections dipakai formulir
+// registrasi SEBELUM pengguna login. Route referensi yang hanya untuk pengguna yang sudah login
+// (mis. layanan dan lokasi pada form pengajuan) memasang ['auth:sanctum', 'akun.aktif'] sendiri
+// di routes/api/referensi.php, dengan Route::middleware([...])->group(...).
+Route::prefix('referensi')->group(base_path('routes/api/referensi.php'));
 
 // Dipakai semua peran: notifikasi, unduh lampiran (semua yang login) → Syifa
 Route::middleware($login)->group(base_path('routes/api/umum.php'));
