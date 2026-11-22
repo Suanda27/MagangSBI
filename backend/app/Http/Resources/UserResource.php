@@ -13,6 +13,14 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 class UserResource extends JsonResource
 {
+    /** Halaman awal tiap peran di frontend. */
+    private const HOME = [
+        'employee' => '/employee/dashboard',
+        'supervisor' => '/supervisor/dashboard',
+        'pic' => '/pic/dashboard',
+        'admin' => '/admin/dashboard',
+    ];
+
     /**
      * @return array<string, mixed>
      */
@@ -25,6 +33,8 @@ class UserResource extends JsonResource
             'email' => $this->email,
             'role' => $this->role->value,
             'role_label' => $this->role->label(),
+            // Jalur dashboard peran ini di frontend (dipakai setelah login).
+            'home' => self::HOME[$this->role->value] ?? '/',
             'status' => $this->status->value,
             'jabatan' => $this->jabatan,
             'telepon' => $this->telepon,
