@@ -20,6 +20,8 @@ import {
 import PageHeader from "@/components/supervisor/page-header";
 import ReadOnlyBadge from "@/components/supervisor/read-only-badge";
 import { useAuth } from "@/lib/auth/auth-context";
+import { changePassword, updateProfile } from "@/lib/api/auth";
+import { toApiError } from "@/lib/api/errors";
 import { initialsOf, sectionOf } from "@/lib/auth/user-display";
 import type { User as Akun } from "@/lib/api/types";
 
@@ -55,12 +57,16 @@ export default function PengaturanPage() {
 }
 
 function PengaturanForm({ user }: { user: Akun }) {
+  const { setUser } = useAuth();
   const [profile, setProfile] = useState({ name: user.name, email: user.email, phone: user.telepon ?? "" });
   const [pw, setPw] = useState({ current: "", next: "", confirm: "" });
   const [show, setShow] = useState({ current: false, next: false, confirm: false });
   const [saving, setSaving] = useState<"" | "profile" | "pw">("");
   const [toast, setToast] = useState("");
   const [error, setError] = useState("");
+  const [profilErr, setProfilErr] = useState<Record<string, string>>({});
+  const [profilUmum, setProfilUmum] = useState("");
+  const [pwErr, setPwErr] = useState<Record<string, string>>({});
 
   const s = strength(pw.next);
   const bars = ["bg-rose-500", "bg-amber-500", "bg-blue-500", "bg-emerald-500"];
@@ -70,24 +76,80 @@ function PengaturanForm({ user }: { user: Akun }) {
     setTimeout(() => setToast(""), 2600);
   };
 
-  const saveProfile = (e: React.FormEvent) => {
+  const saveProfile = async (e: React.FormEvent) => {
     e.preventDefault();
+    setProfilErr({});
+    setProfilUmum("");
+
+    const lokal: Record<string, string> = {};
+    if (!profile.name.trim()) lokal.name = "Nama lengkap wajib diisi.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(profile.email.trim())) lokal.email = "Masukkan alamat email yang valid.";
+    if (Object.keys(lokal).length) return setProfilErr(lokal);
+
     setSaving("profile");
-    setTimeout(() => { setSaving(""); notify("Perubahan profil berhasil disimpan."); }, 800);
+    try {
+      const akun = await updateProfile({
+        name: profile.name.trim(),
+        email: profile.email.trim(),
+        telepon: profile.phone.trim() || null,
+      });
+      setUser(akun); // header dan halaman lain langsung ikut berubah
+      setProfile({ name: akun.name, email: akun.email, phone: akun.telepon ?? "" });
+      notify("Perubahan profil berhasil disimpan.");
+    } catch (err) {
+      const apiErr = toApiError(err);
+      if (apiErr.isValidation) {
+        const peta: Record<string, string> = {};
+        if (apiErr.errors.name?.[0]) peta.name = apiErr.errors.name[0];
+        if (apiErr.errors.email?.[0]) peta.email = apiErr.errors.email[0];
+        if (apiErr.errors.telepon?.[0]) peta.phone = apiErr.errors.telepon[0];
+        setProfilErr(peta);
+      } else {
+        setProfilUmum(apiErr.message);
+      }
+    } finally {
+      setSaving("");
+    }
   };
 
-  const savePw = (e: React.FormEvent) => {
+  const savePw = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    if (!pw.current) return setError("Masukkan password saat ini.");
-    if (s.score < 3) return setError("Password baru belum memenuhi kebijakan keamanan.");
-    if (pw.next !== pw.confirm) return setError("Konfirmasi password tidak cocok.");
+    setPwErr({});
+
+    const lokal: Record<string, string> = {};
+    if (!pw.current) lokal.current = "Masukkan password saat ini.";
+    if (s.score < 3) lokal.next = "Password baru belum memenuhi kebijakan keamanan.";
+    if (pw.next !== pw.confirm) lokal.confirm = "Konfirmasi password tidak cocok.";
+    if (Object.keys(lokal).length) return setPwErr(lokal);
+
     setSaving("pw");
-    setTimeout(() => {
-      setSaving("");
+    try {
+      await changePassword({
+        current_password: pw.current,
+        password: pw.next,
+        password_confirmation: pw.confirm,
+      });
       setPw({ current: "", next: "", confirm: "" });
       notify("Password berhasil diperbarui.");
-    }, 900);
+    } catch (err) {
+      const apiErr = toApiError(err);
+      if (apiErr.isValidation) {
+        const peta: Record<string, string> = {};
+        if (apiErr.errors.current_password?.[0]) peta.current = apiErr.errors.current_password[0];
+        // Backend memakai satu field "password" untuk aturan sandi dan konfirmasi.
+        const sandi = apiErr.errors.password ?? [];
+        const konfirmasi = sandi.find((m) => /konfirmasi/i.test(m));
+        const aturan = sandi.find((m) => !/konfirmasi/i.test(m));
+        if (aturan) peta.next = aturan;
+        if (konfirmasi) peta.confirm = konfirmasi;
+        setPwErr(peta);
+      } else {
+        setError(apiErr.message);
+      }
+    } finally {
+      setSaving("");
+    }
   };
 
   const pwField = (k: "current" | "next" | "confirm", label: string, placeholder: string, Icon: typeof Lock) => (
@@ -100,6 +162,7 @@ function PengaturanForm({ user }: { user: Akun }) {
           {show[k] ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
         </button>
       </div>
+      {pwErr[k] && <p className="mt-1.5 text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-2 duration-300">{pwErr[k]}</p>}
     </div>
   );
 
@@ -157,7 +220,8 @@ function PengaturanForm({ user }: { user: Akun }) {
             <div className="flex items-center gap-2.5"><span className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center"><User className="w-4 h-4" /></span><h2 className="text-[15px] font-semibold text-slate-900">Informasi Profil</h2></div>
             <p className="text-xs text-slate-400 mt-1.5">Perbarui informasi pribadi dan kontak yang terhubung dengan akun Anda.</p>
           </div>
-          <form onSubmit={saveProfile} className="p-5 grid gap-5">
+          <form onSubmit={saveProfile} className="p-5 grid gap-5" noValidate>
+            {profilUmum && <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-xs text-red-700 animate-in fade-in slide-in-from-top-2 duration-300">{profilUmum}</div>}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {[
                 { l: "NIK", v: user.nik ?? "-" },
@@ -177,15 +241,18 @@ function PengaturanForm({ user }: { user: Akun }) {
             <div>
               <label className={labelCls}>Nama Lengkap</label>
               <div className="relative"><User className="absolute left-3.5 top-3 w-4 h-4 text-slate-400 pointer-events-none" /><input value={profile.name} onChange={(e) => setProfile({ ...profile, name: e.target.value })} className={fieldCls} /></div>
+              {profilErr.name && <p className="mt-1.5 text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-2 duration-300">{profilErr.name}</p>}
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <label className={labelCls}>Email Korporat</label>
                 <div className="relative"><Mail className="absolute left-3.5 top-3 w-4 h-4 text-slate-400 pointer-events-none" /><input type="email" value={profile.email} onChange={(e) => setProfile({ ...profile, email: e.target.value })} className={fieldCls} /></div>
+                {profilErr.email && <p className="mt-1.5 text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-2 duration-300">{profilErr.email}</p>}
               </div>
               <div>
                 <label className={labelCls}>Nomor Telepon</label>
                 <div className="relative"><Phone className="absolute left-3.5 top-3 w-4 h-4 text-slate-400 pointer-events-none" /><input value={profile.phone} onChange={(e) => setProfile({ ...profile, phone: e.target.value })} className={fieldCls} /></div>
+                {profilErr.phone && <p className="mt-1.5 text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-2 duration-300">{profilErr.phone}</p>}
               </div>
             </div>
             <div className="flex justify-end">
@@ -202,7 +269,7 @@ function PengaturanForm({ user }: { user: Akun }) {
             <div className="flex items-center gap-2.5"><span className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center"><KeyRound className="w-4 h-4" /></span><h2 className="text-[15px] font-semibold text-slate-900">Keamanan Akun</h2></div>
             <p className="text-xs text-slate-400 mt-1.5">Perbarui kata sandi secara berkala untuk menjaga integritas data pengawasan.</p>
           </div>
-          <form onSubmit={savePw} className="p-5 grid gap-5">
+          <form onSubmit={savePw} className="p-5 grid gap-5" noValidate>
             {error && <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-xs text-red-700 animate-in fade-in slide-in-from-top-2 duration-300">{error}</div>}
             {pwField("current", "Password Saat Ini", "Masukkan password saat ini", Lock)}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
