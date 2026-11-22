@@ -89,22 +89,28 @@ class RegisterTest extends TestCase
         $this->assertSame(StatusAkun::Aktif, $user->status);
     }
 
-    public function test_role_bawaan_mengikuti_konfigurasi(): void
+    public function test_role_selalu_employee_walau_konfigurasi_diubah(): void
     {
-        config(['register.default_role' => 'supervisor']);
+        // PRD D9: Supervisor, PIC, dan Admin hanya diberikan Admin. Tidak ada opsi config/.env
+        // yang boleh menaikkan role pendaftar mandiri, bahkan bila seseorang mencoba mengisinya.
+        foreach (['admin', 'supervisor', 'pic'] as $role) {
+            config(['register.default_role' => $role]);
 
-        $this->postJson('/api/auth/register', $this->payload())
-            ->assertCreated()
-            ->assertJsonPath('data.role', 'supervisor');
+            $this->postJson('/api/auth/register', $this->payload([
+                'nik' => 'EMP-'.$role,
+                'email' => $role.'@sbi.co.id',
+            ]))->assertCreated()->assertJsonPath('data.role', 'employee');
+        }
+
+        $this->assertSame(0, User::where('role', '!=', Role::Employee->value)->count());
     }
 
-    public function test_konfigurasi_role_atau_status_tidak_sah_kembali_ke_bawaan(): void
+    public function test_status_tidak_sah_pada_konfigurasi_kembali_ke_aktif(): void
     {
-        config(['register.default_role' => 'superuser', 'register.default_status' => 'entah']);
+        config(['register.default_status' => 'entah']);
 
         $this->postJson('/api/auth/register', $this->payload())
             ->assertCreated()
-            ->assertJsonPath('data.role', 'employee')
             ->assertJsonPath('data.status', 'aktif');
     }
 
@@ -185,7 +191,7 @@ class RegisterTest extends TestCase
     {
         Bagian::where('kode_bagian', 'GA')->update(['status' => StatusAkun::Nonaktif]);
 
-        $this->getJson('/api/referensi/section')
+        $this->getJson('/api/referensi/sections')
             ->assertOk()
             ->assertJsonCount(4, 'data')
             ->assertJsonStructure(['data' => [['id', 'kode_bagian', 'nama_bagian', 'deskripsi']]]);

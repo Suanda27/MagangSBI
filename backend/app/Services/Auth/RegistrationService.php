@@ -34,20 +34,15 @@ class RegistrationService
             'email' => $data['email'],
             'password' => $data['password'], // di-hash oleh cast 'hashed'
             'id_bagian' => $bagianId,
-            // Role & status ditetapkan di sisi server, tidak pernah dari request.
-            'role' => $this->defaultRole(),
+            // Pendaftar mandiri SELALU Karyawan (PRD D9); peran lain hanya diberikan Admin.
+            // Sengaja tidak dapat diatur lewat request maupun .env. Status dari config.
+            'role' => Role::Employee,
             'status' => $this->defaultStatus(),
         ]));
 
         event(new Registered($user));
 
         return $user->load('bagian');
-    }
-
-    /** Role bawaan dari konfigurasi; kembali ke Karyawan bila nilainya tidak sah. */
-    protected function defaultRole(): Role
-    {
-        return Role::tryFrom((string) config('register.default_role')) ?? Role::Employee;
     }
 
     /** Status bawaan dari konfigurasi; kembali ke Aktif bila nilainya tidak sah. */
