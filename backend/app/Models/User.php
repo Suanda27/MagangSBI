@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * Satu tabel untuk semua peran (Karyawan, Supervisor, PIC, Admin), dibedakan oleh kolom role.
@@ -21,8 +22,13 @@ use Illuminate\Notifications\Notifiable;
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
-    /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    /**
+     * HasApiTokens tidak dipakai untuk login (mode SPA memakai cookie), tetapi dibutuhkan agar
+     * pembantu tes Sanctum::actingAs($user) bisa dipakai. Tabel token tidak dibuat.
+     *
+     * @use HasFactory<UserFactory>
+     */
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * @return array<string, string>
