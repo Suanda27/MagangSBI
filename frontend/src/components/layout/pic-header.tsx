@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Search, Bell, Menu, Inbox, CornerDownLeft } from "lucide-react";
 import { usePicStore, useRingkasan } from "@/lib/pic/store";
-import { inisial, tanggalJam } from "@/lib/pic/format";
+import { inisial, tanggalJam } from "@/lib/shared/format";
 
 interface PicHeaderProps {
   onMenuClick: () => void;
@@ -76,7 +76,7 @@ export default function PicHeader({ onMenuClick }: PicHeaderProps) {
               type="text"
             />
             {fokus && q.trim() && (
-              <div className="pic-modal absolute left-0 right-0 top-full mt-2 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden">
+              <div className="ui-modal absolute left-0 right-0 top-full mt-2 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden">
                 {hasil.length === 0 ? (
                   <p className="px-4 py-3 text-xs text-slate-500">Tidak ada hasil untuk “{q}”.</p>
                 ) : (
@@ -120,7 +120,7 @@ export default function PicHeader({ onMenuClick }: PicHeaderProps) {
               )}
             </button>
             {notif && (
-              <div className="pic-modal absolute right-0 top-full mt-2 w-80 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden">
+              <div className="ui-modal absolute right-0 top-full mt-2 w-80 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden">
                 <div className="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
                   <span className="text-[13px] font-semibold text-slate-900">Notifikasi</span>
                   <span className="text-[11px] text-slate-400">{menunggu} menunggu</span>

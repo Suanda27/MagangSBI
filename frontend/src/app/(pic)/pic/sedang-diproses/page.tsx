@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { Hourglass, PauseCircle, PlayCircle } from "lucide-react";
 import { CountUp } from "@/components/fx/motion";
-import { PageHeader, StatCard } from "@/components/pic/primitives";
+import { PageHeader, StatCard } from "@/components/shared/display";
 import { FilterBar, RequestTable, useFilter } from "@/components/pic/request-list";
 import { usePicStore, useRingkasan } from "@/lib/pic/store";
 

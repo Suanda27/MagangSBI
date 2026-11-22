@@ -3,8 +3,9 @@
 import { useMemo, useState } from "react";
 import { BarChart3, CheckCircle2, Download, Gauge, Printer, Timer, Inbox } from "lucide-react";
 import { CountUp } from "@/components/fx/motion";
-import { PageHeader, SelectField, StatCard, delay } from "@/components/pic/primitives";
-import { kunciHari, tanggalJam, useNow } from "@/lib/pic/format";
+import { PageHeader, StatCard, delay } from "@/components/shared/display";
+import { SelectField } from "@/components/shared/form-controls";
+import { kunciHari, tanggalJam, useNow } from "@/lib/shared/format";
 import { usePicStore } from "@/lib/pic/store";
 import { NAMA_BAGIAN, type KodeBagian } from "@/lib/pic/types";
 

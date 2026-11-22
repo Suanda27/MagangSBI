@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Briefcase, Building2, Mail, Phone, RotateCcw, Save, ShieldCheck } from "lucide-react";
-import { Avatar, PageHeader } from "@/components/pic/primitives";
+import { Avatar, PageHeader } from "@/components/shared/display";
 import { usePicStore, useRingkasan } from "@/lib/pic/store";
 
 const input = "w-full px-3 py-2 text-sm bg-white border border-slate-200 rounded-lg text-slate-800 placeholder:text-slate-400 hover:border-slate-300 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all";

@@ -4,8 +4,10 @@ import Link from "next/link";
 import { useMemo } from "react";
 import { ArrowRight, CheckCircle2, Clock3, Hourglass, Inbox, PauseCircle, AlertTriangle, History } from "lucide-react";
 import { CountUp } from "@/components/fx/motion";
-import { Avatar, EmptyState, PrioritasBadge, StatusBadge, delay } from "@/components/pic/primitives";
-import { infoSla, jam, kunciHari, SLA_TONE, tanggalJam, useNow } from "@/lib/pic/format";
+import { Avatar, EmptyState, delay } from "@/components/shared/display";
+import { PrioritasBadge, StatusBadge } from "@/components/pic/primitives";
+import { jam, kunciHari, tanggalJam, useNow } from "@/lib/shared/format";
+import { infoSla, SLA_TONE } from "@/lib/pic/format";
 import { usePicStore, useRingkasan } from "@/lib/pic/store";
 
 export default function PicDashboard() {
