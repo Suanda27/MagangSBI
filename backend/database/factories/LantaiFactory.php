@@ -1,0 +1,21 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Lantai;
+use App\Models\Plant;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends Factory<Lantai>
+ */
+class LantaiFactory extends Factory
+{
+    public function definition(): array
+    {
+        return [
+            'nama_lantai' => 'Lantai '.fake()->numberBetween(1, 5),
+            'id_plant' => Plant::factory(),
+        ];
+    }
+}
