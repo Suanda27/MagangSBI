@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -407,7 +408,10 @@ export default function LoginPage() {
 
           {/* Prototype Navigations */}
           <div className="login-reveal mt-8 text-center text-sm text-slate-600 pt-6 border-t border-slate-100" style={d(750)}>
-            Belum memiliki akun? <a href="#" className="font-semibold text-blue-700 hover:text-blue-800 hover:underline underline-offset-4">Hubungi Tim IT Internal</a>
+            Belum memiliki akun?{" "}
+            <Link href="/register" className="font-semibold text-blue-700 hover:text-blue-800 hover:underline underline-offset-4">
+              Daftar Akun Baru
+            </Link>
           </div>
 
           {process.env.NODE_ENV === "development" && (
