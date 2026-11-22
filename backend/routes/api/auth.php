@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\LoginController;
+use App\Http\Controllers\Api\Auth\ProfileController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +26,8 @@ Route::post('login', [LoginController::class, 'login'])->name('auth.login');
 Route::middleware(['auth:sanctum', 'akun.aktif'])->group(function () {
     Route::post('logout', [LoginController::class, 'logout'])->name('auth.logout');
     Route::get('me', [LoginController::class, 'me'])->name('auth.me');
+
+    // Profil sendiri (nama, email, telepon) dan ganti kata sandi.
+    Route::patch('me', [ProfileController::class, 'update'])->name('auth.profile.update');
+    Route::patch('password', [ProfileController::class, 'password'])->name('auth.password');
 });
