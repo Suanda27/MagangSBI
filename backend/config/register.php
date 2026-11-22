@@ -14,11 +14,12 @@
 return [
 
     /*
-    | Role & status akun yang mendaftar sendiri. Role TIDAK PERNAH diterima dari
-    | request. Nilai harus sesuai enum App\Enums\Role dan App\Enums\StatusAkun;
-    | nilai tidak sah otomatis kembali ke 'employee' dan 'aktif'.
+    | Status akun yang mendaftar sendiri (PRD D9: langsung 'aktif'). Nilai harus sesuai
+    | enum App\Enums\StatusAkun; nilai tidak sah kembali ke 'aktif'.
+    |
+    | Role TIDAK dapat diatur di sini: pendaftar mandiri SELALU 'employee'. Peran
+    | Supervisor, PIC, dan Admin hanya dapat diberikan oleh Admin (PRD D9).
     */
-    'default_role' => env('REGISTER_DEFAULT_ROLE', 'employee'),
     'default_status' => env('REGISTER_DEFAULT_STATUS', 'aktif'),
 
     /*
