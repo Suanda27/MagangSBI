@@ -18,10 +18,20 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role')->default('employee');
+            // employee | supervisor | pic | admin (dijaga oleh enum App\Enums\Role)
+            $table->string('role', 15)->default('employee');
+            // Section karyawan; untuk PIC/Supervisor = section tugasnya (satu PIC = satu section).
+            // Foreign key dipasang di migrasi terpisah, setelah tabel bagians ada.
             $table->unsignedBigInteger('id_bagian')->nullable();
+            $table->string('jabatan')->nullable();
+            $table->string('telepon', 30)->nullable();
+            // aktif | nonaktif — akun dinonaktifkan, tidak dihapus
+            $table->string('status', 10)->default('aktif');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->index(['role', 'status']);
+            $table->index('id_bagian');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
