@@ -1,24 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { BadgeCheck, Briefcase, Pencil, Settings } from "lucide-react";
 import PageHeader from "@/components/employee/page-header";
-import { CURRENT_USER as u } from "@/lib/employee-data";
+import { useAuth } from "@/lib/auth/auth-context";
+import { formatTanggal, initialsOf, sectionOf } from "@/lib/auth/user-display";
 
 const dl = (ms: number) => ({ "--delay": `${ms}ms` } as React.CSSProperties);
-
-const personal = [
-  { label: "Nama Lengkap", value: u.name },
-  { label: "Email", value: u.email },
-  { label: "Nomor Telepon", value: u.phone },
-  { label: "Lokasi", value: u.location },
-];
-
-const work = [
-  { label: "NIK Karyawan", value: u.nik },
-  { label: "Section / Unit", value: u.section },
-  { label: "Jabatan", value: u.position },
-  { label: "Atasan Langsung", value: u.manager },
-  { label: "Tanggal Bergabung", value: u.joinDate },
-];
 
 function Card({ title, icon: Icon, rows, delay }: { title: string; icon: typeof BadgeCheck; rows: { label: string; value: string }[]; delay: number }) {
   return (
@@ -40,6 +28,22 @@ function Card({ title, icon: Icon, rows, delay }: { title: string; icon: typeof 
 }
 
 export default function ProfilePage() {
+  const { user } = useAuth();
+  if (!user) return null; // RoleGuard memastikan akun sudah dimuat sebelum halaman ini tampil
+
+  const personal = [
+    { label: "Nama Lengkap", value: user.name },
+    { label: "Email", value: user.email },
+    { label: "Nomor Telepon", value: user.telepon ?? "-" },
+  ];
+
+  const work = [
+    { label: "NIK Karyawan", value: user.nik ?? "-" },
+    { label: "Section / Unit", value: sectionOf(user) },
+    { label: "Jabatan", value: user.jabatan ?? "-" },
+    { label: "Terdaftar Sejak", value: formatTanggal(user.created_at) },
+  ];
+
   return (
     <>
       <PageHeader title="Profile" description="Informasi akun dan data kepegawaian Anda." />
@@ -50,11 +54,11 @@ export default function ProfilePage() {
         </div>
         <div className="px-5 pb-5 -mt-10 flex flex-col sm:flex-row sm:items-end gap-4">
           <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-700 to-blue-950 text-white flex items-center justify-center text-2xl font-semibold ring-4 ring-white shadow-lg">
-            {u.initials}
+            {initialsOf(user.name)}
           </div>
           <div className="flex-1 pb-1">
-            <h2 className="text-xl font-semibold text-slate-900">{u.name}</h2>
-            <p className="text-[13px] text-slate-500 flex items-center gap-1.5">{u.position} • {u.role}<BadgeCheck className="w-4 h-4 text-blue-600" /></p>
+            <h2 className="text-xl font-semibold text-slate-900">{user.name}</h2>
+            <p className="text-[13px] text-slate-500 flex items-center gap-1.5">{user.jabatan ?? "-"} • {user.role_label}<BadgeCheck className="w-4 h-4 text-blue-600" /></p>
           </div>
           <div className="flex gap-2.5">
             <button className="group inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white border border-slate-200 text-[13px] font-medium text-slate-700 hover:border-blue-200 hover:text-blue-900">

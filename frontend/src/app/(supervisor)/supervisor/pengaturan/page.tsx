@@ -19,7 +19,9 @@ import {
 } from "lucide-react";
 import PageHeader from "@/components/supervisor/page-header";
 import ReadOnlyBadge from "@/components/supervisor/read-only-badge";
-import { SUPERVISOR as u } from "@/lib/supervisor-data";
+import { useAuth } from "@/lib/auth/auth-context";
+import { initialsOf, sectionOf } from "@/lib/auth/user-display";
+import type { User as Akun } from "@/lib/api/types";
 
 const dl = (ms: number) => ({ "--delay": `${ms}ms` } as React.CSSProperties);
 
@@ -47,7 +49,13 @@ function strength(pw: string) {
 }
 
 export default function PengaturanPage() {
-  const [profile, setProfile] = useState({ name: u.name, email: u.email, phone: u.phone });
+  const { user } = useAuth();
+  if (!user) return null; // RoleGuard memastikan akun sudah dimuat sebelum halaman ini tampil
+  return <PengaturanForm user={user} />;
+}
+
+function PengaturanForm({ user }: { user: Akun }) {
+  const [profile, setProfile] = useState({ name: user.name, email: user.email, phone: user.telepon ?? "" });
   const [pw, setPw] = useState({ current: "", next: "", confirm: "" });
   const [show, setShow] = useState({ current: false, next: false, confirm: false });
   const [saving, setSaving] = useState<"" | "profile" | "pw">("");
@@ -116,18 +124,18 @@ export default function PengaturanPage() {
         </div>
         <div className="px-5 pb-5 -mt-9 flex flex-col sm:flex-row sm:items-end gap-4">
           <div className="relative">
-            <div className="w-[72px] h-[72px] rounded-2xl bg-gradient-to-br from-blue-700 to-blue-950 text-white flex items-center justify-center text-2xl font-semibold ring-4 ring-white shadow-lg">{u.initials}</div>
+            <div className="w-[72px] h-[72px] rounded-2xl bg-gradient-to-br from-blue-700 to-blue-950 text-white flex items-center justify-center text-2xl font-semibold ring-4 ring-white shadow-lg">{initialsOf(user.name)}</div>
             <span className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-emerald-500 ring-2 ring-white text-white flex items-center justify-center"><ShieldCheck className="w-3.5 h-3.5" /></span>
           </div>
           <div className="flex-1 pb-1">
             <div className="flex flex-wrap items-center gap-2">
-              <h2 className="text-xl font-semibold text-slate-900">{u.name}</h2>
+              <h2 className="text-xl font-semibold text-slate-900">{user.name}</h2>
               <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100">Aktif</span>
             </div>
             <p className="text-[13px] text-slate-500 flex flex-wrap items-center gap-x-3 gap-y-1">
-              <span>NIK: {u.nik}</span>
-              <span className="inline-flex items-center gap-1.5"><Building2 className="w-3.5 h-3.5" />{u.section}</span>
-              <span className="inline-flex items-center gap-1 text-blue-700"><BadgeCheck className="w-3.5 h-3.5" />{u.unit}</span>
+              <span>NIK: {user.nik ?? "-"}</span>
+              <span className="inline-flex items-center gap-1.5"><Building2 className="w-3.5 h-3.5" />{sectionOf(user)}</span>
+              <span className="inline-flex items-center gap-1 text-blue-700"><BadgeCheck className="w-3.5 h-3.5" />{user.jabatan ?? "-"}</span>
             </p>
           </div>
         </div>
@@ -152,7 +160,7 @@ export default function PengaturanPage() {
           <form onSubmit={saveProfile} className="p-5 grid gap-5">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {[
-                { l: "NIK", v: u.nik },
+                { l: "NIK", v: user.nik ?? "-" },
                 { l: "Role Otoritas", v: "Supervisor Operasional" },
               ].map((f) => (
                 <div key={f.l}>
@@ -162,7 +170,7 @@ export default function PengaturanPage() {
               ))}
               <div className="sm:col-span-2">
                 <label className={labelCls}>Section / Bagian Pengawasan</label>
-                <div className="relative"><input disabled value={u.section} className={lockedCls} /><Lock className="absolute right-3 top-3.5 w-4 h-4 text-slate-300" /></div>
+                <div className="relative"><input disabled value={sectionOf(user)} className={lockedCls} /><Lock className="absolute right-3 top-3.5 w-4 h-4 text-slate-300" /></div>
                 <p className="text-[11px] text-slate-400 mt-1.5">Data kepegawaian dikelola oleh Divisi SDM dan Administrator ISM.</p>
               </div>
             </div>

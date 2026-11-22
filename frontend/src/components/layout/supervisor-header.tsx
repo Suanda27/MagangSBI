@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Search, Bell, Menu, ChevronRight } from "lucide-react";
-import { SUPERVISOR } from "@/lib/supervisor-data";
+import { useAuth } from "@/lib/auth/auth-context";
+import { initialsOf } from "@/lib/auth/user-display";
 
 interface SupervisorHeaderProps {
   onMenuClick: () => void;
@@ -19,6 +20,7 @@ const breadcrumbLabels: Record<string, string> = {
 
 export default function SupervisorHeader({ onMenuClick }: SupervisorHeaderProps) {
   const pathname = usePathname();
+  const { user } = useAuth();
   const segments = pathname.split("/").filter((s) => s && s !== "supervisor");
 
   // Navbar menjadi lebih "solid" + berbayang saat halaman di-scroll
@@ -110,13 +112,13 @@ export default function SupervisorHeader({ onMenuClick }: SupervisorHeaderProps)
           >
             <div className="relative">
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-700 to-blue-950 text-white flex items-center justify-center font-medium text-xs shrink-0 ring-2 ring-white shadow-sm transition-all duration-300 group-hover/profile:ring-blue-200 group-hover/profile:scale-105">
-                {SUPERVISOR.initials}
+                {initialsOf(user?.name)}
               </div>
               <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span>
             </div>
             <div className="hidden md:flex flex-col text-left">
-              <span className="text-[13px] font-medium text-slate-800 leading-tight transition-colors group-hover/profile:text-blue-900">{SUPERVISOR.name}</span>
-              <span className="text-[11px] text-slate-400">{SUPERVISOR.role}</span>
+              <span className="text-[13px] font-medium text-slate-800 leading-tight transition-colors group-hover/profile:text-blue-900">{user?.name ?? ""}</span>
+              <span className="text-[11px] text-slate-400">{user?.role_label ?? ""}</span>
             </div>
           </Link>
         </div>

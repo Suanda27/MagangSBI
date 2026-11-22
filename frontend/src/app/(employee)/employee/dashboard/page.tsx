@@ -13,9 +13,9 @@ import {
   Inbox,
 } from "lucide-react";
 import { CountUp, FxCard } from "@/components/fx/motion";
-import PageHeader from "@/components/employee/page-header";
+import WelcomeHeader from "@/components/employee/welcome-header";
 import StatusBadge from "@/components/employee/status-badge";
-import { CURRENT_USER, TICKETS } from "@/lib/employee-data";
+import { TICKETS } from "@/lib/employee-data";
 
 const dl = (ms: number) => ({ "--delay": `${ms}ms` } as React.CSSProperties);
 
@@ -34,10 +34,7 @@ export default function EmployeeDashboard() {
 
   return (
     <>
-      <PageHeader
-        title={`Selamat datang kembali, ${CURRENT_USER.name.split(" ")[0]}.`}
-        description="Berikut adalah ringkasan aktivitas permintaan layanan Anda."
-      >
+      <WelcomeHeader>
         <Link
           href="/employee/pengajuan-layanan"
           className="group fx-shine inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-gradient-to-r from-blue-800 to-blue-600 text-white text-[13px] font-medium shadow-sm shadow-blue-800/30 hover:shadow-lg hover:shadow-blue-800/30 hover:-translate-y-0.5 active:translate-y-0"
@@ -45,7 +42,7 @@ export default function EmployeeDashboard() {
           <PlusCircle className="w-[17px] h-[17px] transition-transform duration-500 group-hover:rotate-90" />
           <span>Buat Permintaan</span>
         </Link>
-      </PageHeader>
+      </WelcomeHeader>
 
       {/* Ringkasan */}
       <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">

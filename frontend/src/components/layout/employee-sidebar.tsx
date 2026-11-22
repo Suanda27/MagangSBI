@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useAuth } from "@/lib/auth/auth-context";
 import {
   LayoutDashboard,
   PlusSquare,
@@ -45,7 +46,7 @@ const delay = (ms: number) => ({ "--delay": `${ms}ms` } as React.CSSProperties);
 
 export default function EmployeeSidebar({ isOpen, setIsOpen }: EmployeeSidebarProps) {
   const pathname = usePathname();
-  const router = useRouter();
+  const { logout } = useAuth();
 
   const isActive = (path: string) => pathname === path || pathname.startsWith(path + "/");
 
@@ -125,7 +126,7 @@ export default function EmployeeSidebar({ isOpen, setIsOpen }: EmployeeSidebarPr
 
         <div className="relative p-4 border-t border-slate-100">
           <button
-            onClick={() => router.push("/login")}
+            onClick={() => void logout()}
             className="group/logout w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-slate-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-300"
           >
             <LogOut className="w-[18px] h-[18px] text-slate-400 transition-all duration-300 group-hover/logout:text-red-500 group-hover/logout:translate-x-1" />
