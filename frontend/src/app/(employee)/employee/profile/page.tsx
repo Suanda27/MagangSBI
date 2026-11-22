@@ -61,9 +61,9 @@ export default function ProfilePage() {
             <p className="text-[13px] text-slate-500 flex items-center gap-1.5">{user.jabatan ?? "-"} • {user.role_label}<BadgeCheck className="w-4 h-4 text-blue-600" /></p>
           </div>
           <div className="flex gap-2.5">
-            <button className="group inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white border border-slate-200 text-[13px] font-medium text-slate-700 hover:border-blue-200 hover:text-blue-900">
+            <Link href="/employee/pengaturan" className="group inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white border border-slate-200 text-[13px] font-medium text-slate-700 hover:border-blue-200 hover:text-blue-900">
               <Pencil className="w-4 h-4" />Edit Profile
-            </button>
+            </Link>
             <Link href="/employee/pengaturan" className="group inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-gradient-to-r from-blue-800 to-blue-600 text-white text-[13px] font-medium shadow-sm shadow-blue-800/30 hover:shadow-lg hover:-translate-y-0.5">
               <Settings className="w-4 h-4 transition-transform duration-500 group-hover:rotate-90" />Pengaturan
             </Link>
