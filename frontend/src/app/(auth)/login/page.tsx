@@ -1,11 +1,13 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useAuth } from "@/lib/auth/auth-context";
+import { ApiError, toApiError } from "@/lib/api/errors";
 import { 
   Dialog, 
   DialogContent, 
@@ -55,12 +57,15 @@ const FEATURES = [
 
 export default function LoginPage() {
   const router = useRouter();
+  const { login, user, status } = useAuth();
   const [nikEmail, setNikEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [errorTitle, setErrorTitle] = useState("Autentikasi Gagal");
+  const [remember, setRemember] = useState(false);
   const [shakeKey, setShakeKey] = useState(0);
   
   // Modal state
@@ -79,38 +84,62 @@ export default function LoginPage() {
     el.style.setProperty("--my", `${e.clientY - rect.top}px`);
   };
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    setErrorMsg("");
+  // Sudah punya sesi aktif (mis. membuka /login lagi): langsung ke dashboard perannya.
+  useEffect(() => {
+    if (status === "authenticated" && user && !isLoading && !isSuccess) {
+      router.replace(user.home);
+    }
+  }, [status, user, isLoading, isSuccess, router]);
 
-    // Check demonstration error condition
-    if (nikEmail === "error" || password === "salah") {
-      setErrorMsg("NIK/Email atau kata sandi tidak valid.");
-      setShakeKey((k) => k + 1);
-      // Re-trigger animasi getar tanpa me-remount form
-      const form = formRef.current;
-      if (form) {
-        form.classList.remove("login-shake");
-        void form.offsetWidth;
-        form.classList.add("login-shake");
-      }
-      return;
+  /** Pesan untuk kotak error: judul + isi, sesuai jenis kegagalan dari API. */
+  const tampilkanError = (err: unknown) => {
+    const e: ApiError = toApiError(err);
+    if (e.status === 403) {
+      setErrorTitle("Akun Dinonaktifkan");
+      setErrorMsg(e.message);
+    } else if (e.status === 429) {
+      setErrorTitle("Terlalu Banyak Percobaan");
+      setErrorMsg(e.retryAfter ? `Coba lagi dalam ${e.retryAfter} detik.` : e.message);
+    } else if (e.isNetworkError) {
+      setErrorTitle("Server Tidak Terjangkau");
+      setErrorMsg(e.message);
+    } else {
+      setErrorTitle("Autentikasi Gagal");
+      // 422: pesan ada di errors.login; selain itu pakai pesan umum.
+      setErrorMsg(e.errors.login?.[0] ?? e.message);
     }
 
+    setShakeKey((k) => k + 1);
+    // Re-trigger animasi getar tanpa me-remount form
+    const form = formRef.current;
+    if (form) {
+      form.classList.remove("login-shake");
+      void form.offsetWidth;
+      form.classList.add("login-shake");
+    }
+  };
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMsg("");
     setIsLoading(true);
 
-    // Simulate network delay
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      const akun = await login({ login: nikEmail.trim(), password, remember });
       setIsSuccess(true);
-      // Untuk sementara, diarahkan ke dashboard admin.
-      setTimeout(() => router.push("/admin/dashboard"), 700);
-    }, 1000);
+      // Jeda singkat agar animasi "Berhasil!" terlihat, lalu ke dashboard sesuai peran.
+      setTimeout(() => router.push(akun.home), 700);
+    } catch (err) {
+      tampilkanError(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const fillQuickCredentials = () => {
-    setNikEmail("EMP-2023-0842");
-    setPassword("Password123!");
+    // Akun contoh dari PenggunaSeeder (hanya tersedia di mode pengembangan).
+    setNikEmail("karyawan.is@sbi.test");
+    setPassword("password");
     setErrorMsg("");
   };
 
@@ -222,7 +251,7 @@ export default function LoginPage() {
             <div key={`err-${shakeKey}`} className="mb-6 p-3.5 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3 text-sm text-red-700 animate-in fade-in slide-in-from-top-2 duration-300">
               <AlertCircle className="text-red-600 w-5 h-5 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-medium text-red-800">Autentikasi Gagal</p>
+                <p className="font-medium text-red-800">{errorTitle}</p>
                 <p className="text-xs text-red-600 mt-0.5">{errorMsg}</p>
               </div>
             </div>
@@ -333,14 +362,16 @@ export default function LoginPage() {
             {/* Remember me & Quick Test Links */}
             <div className="login-reveal flex items-center justify-between pt-1" style={d(550)}>
               <div className="flex items-center space-x-2">
-                <Checkbox id="remember" className="border-slate-300 transition-all duration-200 data-[state=checked]:bg-blue-600 data-[state=checked]:border-blue-600 data-[state=checked]:scale-110" />
+                <Checkbox id="remember" checked={remember} onCheckedChange={(v) => setRemember(v === true)} className="border-slate-300 transition-all duration-200 data-[state=checked]:bg-blue-600 data-[state=checked]:border-blue-600 data-[state=checked]:scale-110" />
                 <label htmlFor="remember" className="text-sm text-slate-600 font-medium cursor-pointer select-none hover:text-slate-900 transition-colors">
                   Ingat sesi saya
                 </label>
               </div>
-              <button type="button" className="text-xs font-semibold text-slate-400 hover:text-blue-600 transition-colors" onClick={fillQuickCredentials}>
-                Isi otomatis (Uji Coba)
-              </button>
+              {process.env.NODE_ENV === "development" && (
+                <button type="button" className="text-xs font-semibold text-slate-400 hover:text-blue-600 transition-colors" onClick={fillQuickCredentials}>
+                  Isi otomatis (Uji Coba)
+                </button>
+              )}
             </div>
 
             {/* Primary Submit Button */}
@@ -379,13 +410,16 @@ export default function LoginPage() {
             Belum memiliki akun? <a href="#" className="font-semibold text-blue-700 hover:text-blue-800 hover:underline underline-offset-4">Hubungi Tim IT Internal</a>
           </div>
 
-          <div className="login-reveal mt-6 pt-4 text-center" style={d(850)}>
-            <span className="text-xs text-slate-400 block mb-3 font-medium">Pintasan Navigasi Prototipe:</span>
-            <div className="flex justify-center flex-wrap gap-2 text-xs font-semibold">
-              <button onClick={() => router.push('/admin/dashboard')} className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-md transition-all duration-200 border border-slate-200 shadow-sm hover:-translate-y-0.5 hover:shadow-md">Dashboard Faiz (Admin)</button>
-              <button onClick={() => router.push('/employee/dashboard')} className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-md transition-all duration-200 border border-slate-200 shadow-sm hover:-translate-y-0.5 hover:shadow-md">Dashboard Syifa (Karyawan)</button>
+          {process.env.NODE_ENV === "development" && (
+            <div className="login-reveal mt-6 pt-4 text-center" style={d(850)}>
+              <span className="text-xs text-slate-400 block mb-3 font-medium">Pintasan Navigasi Prototipe:</span>
+              <div className="flex justify-center flex-wrap gap-2 text-xs font-semibold">
+                <button onClick={() => router.push('/admin/dashboard')} className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-md transition-all duration-200 border border-slate-200 shadow-sm hover:-translate-y-0.5 hover:shadow-md">Dashboard Faiz (Admin)</button>
+                <button onClick={() => router.push('/employee/dashboard')} className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-md transition-all duration-200 border border-slate-200 shadow-sm hover:-translate-y-0.5 hover:shadow-md">Dashboard Syifa (Karyawan)</button>
+              </div>
             </div>
-          </div>
+
+          )}
 
         </div>
       </div>
