@@ -26,18 +26,6 @@ export interface SupTicket {
   slaOk: boolean;
 }
 
-export const SUPERVISOR = {
-  name: "Hendra Gunawan",
-  initials: "HG",
-  role: "Supervisor",
-  nik: "19880412 201201 1 003",
-  email: "hendra.gunawan@company.com",
-  phone: "+62 811 2233 4455",
-  section: "Quality & Operations",
-  unit: "Unit Pengawasan Terpadu",
-  joined: "15 Januari 2021",
-};
-
 export const SUP_STATUS_STYLE: Record<SupStatus, { badge: string; dot: string; bar: string }> = {
   Baru: { badge: "bg-sky-50 text-sky-700 border-sky-100", dot: "bg-sky-500", bar: "#0ea5e9" },
   Diproses: { badge: "bg-blue-50 text-blue-700 border-blue-100", dot: "bg-blue-500", bar: "#2563eb" },

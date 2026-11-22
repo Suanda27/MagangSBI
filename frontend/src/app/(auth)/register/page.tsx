@@ -1,8 +1,12 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "@/lib/auth/auth-context";
+import { getSections, register as apiRegister } from "@/lib/api/auth";
+import { toApiError } from "@/lib/api/errors";
+import type { Section } from "@/lib/api/types";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -56,8 +60,19 @@ const inputCls = (hasError: boolean, withToggle = false) =>
 const submitCls =
   "group/btn relative overflow-hidden w-full h-12 text-white font-medium rounded-lg shadow-md focus-visible:ring-blue-600 text-base transition-all duration-300 bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-600 bg-[length:200%_100%] bg-left hover:bg-right hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-700/30 active:translate-y-0 active:scale-[0.99]";
 
+/** Cadangan bila GET /api/referensi/sections gagal; kode sama dengan bagians.kode_bagian. */
+const SECTION_CADANGAN: Pick<Section, "kode_bagian" | "nama_bagian">[] = [
+  { kode_bagian: "ASM", nama_bagian: "Assembly" },
+  { kode_bagian: "HR", nama_bagian: "HR (Human Resources)" },
+  { kode_bagian: "IS", nama_bagian: "IS (Information Systems)" },
+  { kode_bagian: "PE", nama_bagian: "PE (Production Engineering)" },
+  { kode_bagian: "GA", nama_bagian: "GA (General Affairs)" },
+];
+
 export default function RegisterPage() {
   const router = useRouter();
+  const { user, status } = useAuth();
+  const [sections, setSections] = useState<Pick<Section, "kode_bagian" | "nama_bagian">[]>(SECTION_CADANGAN);
 
   // Form states
   const [formData, setFormData] = useState({
@@ -76,6 +91,24 @@ export default function RegisterPage() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  // Daftar section dari server (sumber kebenaran); gagal -> tetap memakai daftar cadangan.
+  useEffect(() => {
+    let dibatalkan = false;
+    getSections()
+      .then((data) => {
+        if (!dibatalkan && data.length > 0) setSections(data);
+      })
+      .catch(() => {});
+    return () => {
+      dibatalkan = true;
+    };
+  }, []);
+
+  // Sudah punya sesi aktif: tidak perlu mendaftar lagi.
+  useEffect(() => {
+    if (status === "authenticated" && user && !isSuccess) router.replace(user.home);
+  }, [status, user, isSuccess, router]);
 
   // Efek spotlight mengikuti kursor di panel branding (tanpa re-render)
   const brandRef = useRef<HTMLDivElement>(null);
@@ -112,15 +145,11 @@ export default function RegisterPage() {
 
     if (!formData.nik.trim()) {
       newErrors.nik = "NIK Karyawan wajib diisi.";
-    } else if (formData.nik.toLowerCase() === "duplicate" || formData.nik === "EMP-9999") {
-      newErrors.nik = "NIK ini sudah terdaftar di sistem.";
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim() || !emailRegex.test(formData.email)) {
       newErrors.email = "Masukkan alamat email yang valid.";
-    } else if (formData.email.includes("taken@")) {
-      newErrors.email = "Email ini sudah digunakan.";
     }
 
     if (!formData.section) {
@@ -139,37 +168,75 @@ export default function RegisterPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleRegister = (e: React.FormEvent) => {
+  /** Animasi getar pada form (re-trigger tanpa me-remount), sama seperti login. */
+  const goyangForm = () => {
+    setShakeKey((k) => k + 1);
+    const form = formRef.current;
+    if (form) {
+      form.classList.remove("login-shake");
+      void form.offsetWidth;
+      form.classList.add("login-shake");
+    }
+  };
+
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setGeneralError("");
 
     if (!validate()) {
       setGeneralError("Mohon periksa kembali kolom formulir yang belum sesuai.");
-      setShakeKey((k) => k + 1);
-      // Re-trigger animasi getar tanpa me-remount form (sama seperti login)
-      const form = formRef.current;
-      if (form) {
-        form.classList.remove("login-shake");
-        void form.offsetWidth;
-        form.classList.add("login-shake");
-      }
+      goyangForm();
       return;
     }
 
     setIsLoading(true);
 
-    // Simulasi request pendaftaran ke backend
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      await apiRegister({
+        name: formData.fullName.trim(),
+        nik: formData.nik.trim(),
+        email: formData.email.trim(),
+        section: formData.section,
+        password: formData.password,
+        password_confirmation: formData.confirmPassword,
+      });
       setIsSuccess(true);
-    }, 1000);
+    } catch (err) {
+      const e = toApiError(err);
+
+      if (e.isValidation) {
+        // Pesan server -> kolom form (nama field backend berbeda: name -> fullName).
+        const pesan = e.errors;
+        const peta: Record<string, string> = {};
+        if (pesan.name?.[0]) peta.fullName = pesan.name[0];
+        if (pesan.nik?.[0]) peta.nik = pesan.nik[0];
+        if (pesan.email?.[0]) peta.email = pesan.email[0];
+        const bagian = pesan.section?.[0] ?? pesan.id_bagian?.[0];
+        if (bagian) peta.section = bagian;
+        // Backend memakai satu field "password" untuk aturan sandi dan konfirmasi.
+        const sandi = pesan.password ?? [];
+        const konfirmasi = sandi.find((m) => /konfirmasi/i.test(m));
+        const aturan = sandi.find((m) => !/konfirmasi/i.test(m));
+        if (aturan) peta.password = aturan;
+        if (konfirmasi) peta.confirmPassword = konfirmasi;
+
+        setErrors(peta);
+        setGeneralError("Mohon periksa kembali kolom formulir yang belum sesuai.");
+      } else {
+        // 429 (terlalu sering), server mati, dan sebagainya: pesan dari API.
+        setGeneralError(e.message);
+      }
+      goyangForm();
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const fillSampleData = () => {
     setFormData({
-      fullName: "Muhammad Faiz Difa Suanda",
-      nik: "EMP-2023-0842",
-      email: "faiz.suanda@sbi.co.id",
+      fullName: "Tes Pendaftaran",
+      nik: `TES-${Date.now().toString().slice(-6)}`,
+      email: `tes.${Date.now().toString().slice(-6)}@sbi.test`,
       section: "IS",
       password: "Enterprise@2026",
       confirmPassword: "Enterprise@2026",
@@ -387,11 +454,9 @@ export default function RegisterPage() {
                         }`}
                       >
                         <option value="" disabled>Pilih section</option>
-                        <option value="Assembly">Assembly</option>
-                        <option value="HR">HR (Human Resources)</option>
-                        <option value="IS">IS (Information Systems)</option>
-                        <option value="PE">PE (Plant Engineering)</option>
-                        <option value="GA">GA (General Affairs)</option>
+                        {sections.map((sec) => (
+                          <option key={sec.kode_bagian} value={sec.kode_bagian}>{sec.nama_bagian}</option>
+                        ))}
                       </select>
                       <ChevronDown className="w-5 h-5 absolute right-3 top-3.5 text-slate-400 pointer-events-none transition-colors duration-300 group-focus-within:text-blue-600" />
                     </div>
@@ -466,13 +531,15 @@ export default function RegisterPage() {
 
                 {/* Quick Demo Autofill */}
                 <div className="login-reveal flex justify-end pt-1" style={d(700)}>
-                  <button
-                    type="button"
-                    onClick={fillSampleData}
-                    className="text-xs font-semibold text-slate-400 hover:text-blue-600 transition-colors"
-                  >
-                    Isi otomatis (Uji Coba)
-                  </button>
+                  {process.env.NODE_ENV === "development" && (
+                    <button
+                      type="button"
+                      onClick={fillSampleData}
+                      className="text-xs font-semibold text-slate-400 hover:text-blue-600 transition-colors"
+                    >
+                      Isi otomatis (Uji Coba)
+                    </button>
+                  )}
                 </div>
 
                 {/* Submit Button */}

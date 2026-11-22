@@ -20,20 +20,6 @@ export interface Ticket {
   description: string;
 }
 
-export const CURRENT_USER = {
-  name: "Syifa Fitria Azizah",
-  initials: "SF",
-  role: "Karyawan",
-  nik: "EMP-2023-0842",
-  email: "syifa.fitria@sbi.co.id",
-  phone: "+62 812 3456 7890",
-  section: "Information Systems (IS)",
-  position: "Staff Administrasi",
-  manager: "Hendra Wijaya",
-  joinDate: "15 Jan 2023",
-  location: "Batam, Indonesia",
-};
-
 export const STATUS_STYLE: Record<TicketStatus, { badge: string; dot: string }> = {
   Diajukan: { badge: "bg-amber-50 text-amber-700 border-amber-100", dot: "bg-amber-500" },
   Diproses: { badge: "bg-blue-50 text-blue-700 border-blue-100", dot: "bg-blue-500" },
