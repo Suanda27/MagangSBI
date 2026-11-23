@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\LampiranController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -7,3 +8,6 @@ use Illuminate\Support\Facades\Route;
 | Diawali prefix /api oleh routes/api.php.
 | Pemilik: Syifa
 */
+
+// Unduh lampiran tiket; hak akses diperiksa PermintaanPolicy::unduhLampiran di controller.
+Route::get('lampiran/{lampiran}', [LampiranController::class, 'show'])->whereNumber('lampiran')->name('lampiran.show');
