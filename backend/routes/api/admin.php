@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\Admin\LayananController;
+use App\Http\Controllers\Api\Admin\SectionController;
+use App\Http\Controllers\Api\Admin\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +18,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/ping', fn (Request $request) => response()->json([
     'peran' => $request->user()->role->value,
 ]));
+
+// Master data (PRD 6.5). Data dinonaktifkan lewat status, tidak ada DELETE.
+Route::get('/users', [UserController::class, 'index']);
+Route::post('/users', [UserController::class, 'store']);
+Route::get('/users/{user}', [UserController::class, 'show']);
+Route::patch('/users/{user}', [UserController::class, 'update']);
+
+Route::get('/sections', [SectionController::class, 'index']);
+Route::post('/sections', [SectionController::class, 'store']);
+Route::patch('/sections/{bagian}', [SectionController::class, 'update']);
+
+Route::get('/layanan', [LayananController::class, 'index']);
+Route::post('/layanan', [LayananController::class, 'store']);
+Route::patch('/layanan/{layanan}', [LayananController::class, 'update']);

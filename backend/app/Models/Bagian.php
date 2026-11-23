@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Role;
 use App\Enums\StatusAkun;
 use Database\Factories\BagianFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -25,6 +26,14 @@ class Bagian extends Model
     public function users(): HasMany
     {
         return $this->hasMany(User::class, 'id_bagian');
+    }
+
+    /** PIC aktif di section ini (boleh lebih dari satu; antrean dibagi bersama). */
+    public function pics(): HasMany
+    {
+        return $this->hasMany(User::class, 'id_bagian')
+            ->where('role', Role::Pic->value)
+            ->where('status', StatusAkun::Aktif->value);
     }
 
     public function layanans(): HasMany
