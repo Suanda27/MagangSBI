@@ -2,21 +2,33 @@
 
 namespace App\Models;
 
+use App\Enums\StatusAkun;
 use Database\Factories\PlantFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-/** Master lokasi: plant. */
-#[Fillable(['nama_plant'])]
+/** Master lokasi: plant. Dinonaktifkan, tidak dihapus. */
+#[Fillable(['nama_plant', 'status'])]
 class Plant extends Model
 {
     /** @use HasFactory<PlantFactory> */
     use HasFactory;
 
+    protected function casts(): array
+    {
+        return ['status' => StatusAkun::class];
+    }
+
     public function lantais(): HasMany
     {
         return $this->hasMany(Lantai::class, 'id_plant');
+    }
+
+    public function scopeAktif(Builder $query): Builder
+    {
+        return $query->where('status', StatusAkun::Aktif->value);
     }
 }

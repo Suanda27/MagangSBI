@@ -1,8 +1,9 @@
-# Kontrak API Admin — Pengguna, Section, Layanan
+# Kontrak API Admin — Master Data dan Pengaturan
 
 Semua endpoint di bawah `/api/admin/...` hanya untuk peran **admin** (sesi cookie Sanctum, sama seperti
 `docs/api-auth.md`). Peran lain mendapat **403**, tamu mendapat **401**. Data **dinonaktifkan lewat `status`,
-tidak pernah dihapus** — tidak ada endpoint `DELETE` (menjawab 405).
+tidak pernah dihapus** — tidak ada endpoint `DELETE` untuk data (menjawab 405). Satu-satunya `DELETE` adalah
+`/pic-mapping/{user}`, yang hanya mengembalikan peran PIC menjadi karyawan.
 
 Kode status yang dipakai:
 
@@ -159,6 +160,113 @@ Daftar bertahap, urut section → kategori → nama. Query: `q` (kode/nama), `id
 Semua field opsional. Layanan boleh dipindah ke section aktif lain; tiket yang sudah terbit menyimpan section
 tujuannya sendiri, jadi hanya tiket berikutnya yang terpengaruh. Menonaktifkan layanan menyembunyikannya dari
 form pengajuan; tiket yang sedang berjalan tidak terpengaruh.
+
+---
+
+## 4. Lokasi: plant dan lantai
+
+Plant dan lantai ikut aturan master data: **dinonaktifkan, tidak dihapus** (kolom `status`, ditambahkan lewat migrasi
+`add_status_to_plants_and_lantais_tables`; jalankan `php artisan migrate`). Lokasi nonaktif tidak muncul di
+`GET /api/referensi/lokasi` (form pengajuan), tetapi tiket lama tetap menyimpannya.
+
+### `GET /api/admin/plants`
+
+Semua plant beserta **semua lantainya** (semua status), urut nama, tanpa paginasi. Query opsional: `q`, `status`.
+
+```json
+{ "data": [{
+  "id": 1, "nama_plant": "Plant 1", "status": "aktif", "status_label": "Aktif", "jumlah_lantai": 3,
+  "lantais": [{ "id": 1, "nama_lantai": "Lantai 1", "id_plant": 1, "status": "aktif", "status_label": "Aktif" }],
+  "created_at": "2026-11-23T08:00:00+07:00"
+}] }
+```
+
+### `POST /api/admin/plants` — 201 · `PATCH /api/admin/plants/{id}`
+
+| Field | Aturan |
+|---|---|
+| `nama_plant` | wajib (POST), unik |
+| `status` | opsional, bawaan `aktif` |
+
+### `GET /api/admin/lantais`
+
+Daftar datar, urut plant lalu nama. Query opsional: `id_plant`, `status`. Setiap item memuat `plant: { id, nama_plant }`.
+
+### `POST /api/admin/lantais` — 201 · `PATCH /api/admin/lantais/{id}`
+
+| Field | Aturan |
+|---|---|
+| `id_plant` | wajib (POST), plant harus aktif. **Dilarang pada PATCH** (422): lantai tidak dapat dipindah antar plant karena tiket lama menyimpan pasangan plant dan lantainya |
+| `nama_lantai` | wajib (POST), unik di dalam satu plant |
+| `status` | opsional, bawaan `aktif` |
+
+---
+
+## 5. Pemetaan PIC
+
+Satu PIC = satu section; satu section boleh punya banyak PIC (antrean dibagi bersama). Menetapkan PIC mengubah
+`role` menjadi `pic`. (`PATCH /api/admin/users/{id}` dengan `role` + `id_bagian` juga bisa, tetapi endpoint ini
+khusus untuk halaman pemetaan.)
+
+### `GET /api/admin/pic-mapping`
+
+Daftar PIC beserta section dan beban tiketnya, berpaginasi. Query: `q`, `id_bagian`, `status`, `per_page`, `page`.
+
+```json
+{ "data": [{
+  "id": 7, "name": "Budi Santoso", "nik": "22010001", "email": "budi@sbi.co.id", "jabatan": "...", "telepon": "...",
+  "role": "pic", "status": "aktif", "status_label": "Aktif",
+  "bagian": { "id": 3, "kode_bagian": "IS", "nama_bagian": "Information System" },
+  "tiket_aktif": 2
+}], "links": {...}, "meta": {...} }
+```
+
+`tiket_aktif` = tiket berjalan yang sedang dipegang PIC itu (tiket selesai/ditolak tidak dihitung).
+
+### `POST /api/admin/pic-mapping` — 201
+
+| Field | Aturan |
+|---|---|
+| `user_id` | wajib; harus **karyawan aktif**. Sudah PIC, supervisor, atau admin → 422 |
+| `id_bagian` | wajib, section harus aktif |
+
+### `PATCH /api/admin/pic-mapping/{user}`
+
+Body: `id_bagian` (wajib, section aktif). Memindahkan PIC ke section lain. Bukan PIC → **404**.
+PIC yang masih memegang tiket berjalan → **409**.
+
+### `DELETE /api/admin/pic-mapping/{user}`
+
+Mengembalikan PIC menjadi **karyawan** (section tetap). **Akun tidak dihapus.** Bukan PIC → 404.
+PIC yang masih memegang tiket berjalan → **409**.
+
+---
+
+## 6. Pengaturan sistem
+
+Hanya batas ukuran dan format lampiran yang dapat diubah (PRD D11). Nilai disimpan di tabel `pengaturans`
+dan dibaca juga oleh `GET /api/referensi/aturan-lampiran` dan layanan unggah berkas, sehingga form dan server
+selalu memakai aturan yang sama.
+
+### `GET /api/admin/pengaturan`
+
+```json
+{ "data": { "max_upload_mb": 5, "format_lampiran": ["jpg", "png", "pdf"], "digit_nomor_tiket": 4, "maks_berkas": 5 } }
+```
+
+`digit_nomor_tiket` dan `maks_berkas` hanya dibaca.
+
+### `PATCH /api/admin/pengaturan`
+
+Kirim hanya kunci yang diubah.
+
+| Field | Aturan |
+|---|---|
+| `max_upload_mb` | bilangan bulat 1–5 (batas sistem 5 MB) |
+| `format_lampiran` | larik, minimal satu, isi dari `jpg`, `png`, `pdf`, tanpa duplikat (huruf besar/kecil diabaikan) |
+| `digit_nomor_tiket` | **dilarang** (422): format nomor tiket tetap |
+
+Respons: `{ "message": "Pengaturan berhasil disimpan.", "data": { ... } }`
 
 ---
 

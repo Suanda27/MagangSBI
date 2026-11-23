@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\Api\Admin\LantaiController;
 use App\Http\Controllers\Api\Admin\LayananController;
+use App\Http\Controllers\Api\Admin\PengaturanController;
+use App\Http\Controllers\Api\Admin\PicMappingController;
+use App\Http\Controllers\Api\Admin\PlantController;
 use App\Http\Controllers\Api\Admin\SectionController;
 use App\Http\Controllers\Api\Admin\UserController;
 use Illuminate\Http\Request;
@@ -32,3 +36,22 @@ Route::patch('/sections/{bagian}', [SectionController::class, 'update']);
 Route::get('/layanan', [LayananController::class, 'index']);
 Route::post('/layanan', [LayananController::class, 'store']);
 Route::patch('/layanan/{layanan}', [LayananController::class, 'update']);
+
+// Lokasi: plant dan lantai (dinonaktifkan, tidak dihapus).
+Route::get('/plants', [PlantController::class, 'index']);
+Route::post('/plants', [PlantController::class, 'store']);
+Route::patch('/plants/{plant}', [PlantController::class, 'update']);
+
+Route::get('/lantais', [LantaiController::class, 'index']);
+Route::post('/lantais', [LantaiController::class, 'store']);
+Route::patch('/lantais/{lantai}', [LantaiController::class, 'update']);
+
+// Pemetaan PIC ke section. DELETE = kembalikan ke karyawan (akun tidak dihapus).
+Route::get('/pic-mapping', [PicMappingController::class, 'index']);
+Route::post('/pic-mapping', [PicMappingController::class, 'store']);
+Route::patch('/pic-mapping/{user}', [PicMappingController::class, 'update']);
+Route::delete('/pic-mapping/{user}', [PicMappingController::class, 'destroy']);
+
+// Pengaturan sistem: batas ukuran dan format lampiran.
+Route::get('/pengaturan', [PengaturanController::class, 'show']);
+Route::patch('/pengaturan', [PengaturanController::class, 'update']);

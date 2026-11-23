@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\StatusAkun;
 use App\Models\Lantai;
 use App\Models\Plant;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -16,6 +17,12 @@ class LantaiFactory extends Factory
         return [
             'nama_lantai' => 'Lantai '.fake()->numberBetween(1, 5),
             'id_plant' => Plant::factory(),
+            'status' => StatusAkun::Aktif,
         ];
+    }
+
+    public function nonaktif(): static
+    {
+        return $this->state(fn () => ['status' => StatusAkun::Nonaktif]);
     }
 }
