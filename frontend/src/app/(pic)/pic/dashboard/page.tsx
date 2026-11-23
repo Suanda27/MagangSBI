@@ -2,12 +2,11 @@
 
 import Link from "next/link";
 import { useMemo } from "react";
-import { ArrowRight, CheckCircle2, Clock3, Hourglass, Inbox, PauseCircle, AlertTriangle, History } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock3, Hourglass, Inbox, PauseCircle, History } from "lucide-react";
 import { CountUp } from "@/components/fx/motion";
 import { Avatar, EmptyState, delay } from "@/components/shared/display";
 import { PrioritasBadge, StatusBadge } from "@/components/pic/primitives";
 import { jam, kunciHari, tanggalJam, useNow } from "@/lib/shared/format";
-import { infoSla, SLA_TONE } from "@/lib/pic/format";
 import { usePicStore, useRingkasan } from "@/lib/pic/store";
 
 export default function PicDashboard() {
@@ -24,7 +23,7 @@ export default function PicDashboard() {
     () =>
       permintaan
         .filter((p) => p.status === "menunggu")
-        .sort((a, b) => new Date(a.slaDeadline).getTime() - new Date(b.slaDeadline).getTime())
+        .sort((a, b) => new Date(a.diajukan).getTime() - new Date(b.diajukan).getTime())
         .slice(0, 5),
     [permintaan],
   );
@@ -39,7 +38,6 @@ export default function PicDashboard() {
     [permintaan],
   );
 
-  const kritis = permintaan.filter((p) => ["menunggu", "diproses", "pending"].includes(p.status) && infoSla(p, now).tone !== "ok" && infoSla(p, now).tone !== "none").length;
   const baruHariIni = now === null ? 0 : permintaan.filter((p) => p.status === "menunggu" && kunciHari(p.diajukan) === kunciHari(new Date(now))).length;
   const selesaiBulanIni = permintaan.filter((p) => p.status === "selesai").length;
 
@@ -47,7 +45,7 @@ export default function PicDashboard() {
     { label: "Permintaan Masuk", value: r.menunggu, sub: baruHariIni ? `+${baruHariIni} baru hari ini` : "Menunggu pemeriksaan awal", icon: Inbox, tone: "text-blue-700 bg-blue-50", href: "/pic/permintaan-masuk" },
     { label: "Sedang Diproses", value: r.diproses, sub: "Pengerjaan aktif", icon: Hourglass, tone: "text-sky-700 bg-sky-50", href: "/pic/sedang-diproses" },
     { label: "Pending", value: r.pending, sub: "Menunggu pihak lain", icon: PauseCircle, tone: "text-violet-700 bg-violet-50", href: "/pic/sedang-diproses" },
-    { label: "Selesai", value: selesaiBulanIni, sub: "Tiket tertutup bulan ini", icon: CheckCircle2, tone: "text-emerald-700 bg-emerald-50", href: "/pic/selesai" },
+    { label: "Selesai", value: selesaiBulanIni, sub: "Disetujui pengaju", icon: CheckCircle2, tone: "text-emerald-700 bg-emerald-50", href: "/pic/selesai" },
   ];
 
   return (
@@ -59,9 +57,9 @@ export default function PicDashboard() {
           </h1>
           <p className="text-sm text-slate-500 mt-1">Berikut ringkasan permintaan layanan yang perlu Anda tangani hari ini.</p>
         </div>
-        {kritis > 0 && (
-          <Link href="/pic/permintaan-masuk" className="inline-flex items-center gap-2 text-xs font-medium text-amber-800 bg-amber-50 border border-amber-200/70 rounded-lg px-3 py-2 hover:bg-amber-100 transition-colors">
-            <AlertTriangle className="w-4 h-4" /> {kritis} tiket mendekati / melewati batas SLA
+        {r.konfirmasi > 0 && (
+          <Link href="/pic/sedang-diproses" className="inline-flex items-center gap-2 text-xs font-medium text-sky-800 bg-sky-50 border border-sky-200/70 rounded-lg px-3 py-2 hover:bg-sky-100 transition-colors">
+            <Hourglass className="w-4 h-4" /> {r.konfirmasi} hasil menunggu konfirmasi pengaju
           </Link>
         )}
       </div>
@@ -94,7 +92,6 @@ export default function PicDashboard() {
           ) : (
             <ul className="divide-y divide-slate-100">
               {antrean.map((p, i) => {
-                const sla = infoSla(p, now);
                 return (
                   <li key={p.id} className="fx-reveal" style={delay(200 + i * 70)}>
                     <Link href={`/pic/permintaan/${p.id}`} className="flex items-center gap-4 px-5 py-3.5 hover:bg-blue-50/40 transition-colors group/row">
@@ -107,8 +104,7 @@ export default function PicDashboard() {
                         <p className="text-xs text-slate-400 mt-0.5 truncate">#{p.id} · {p.pengaju.nama} · {p.layanan}</p>
                       </div>
                       <div className="hidden sm:flex flex-col items-end gap-1 shrink-0">
-                        <span className={`text-xs font-medium flex items-center gap-1 ${SLA_TONE[sla.tone]}`}><Clock3 className="w-3.5 h-3.5" />{sla.label}</span>
-                        <span className="text-[11px] text-slate-400">{tanggalJam(p.diajukan)}</span>
+                        <span className="text-xs font-medium flex items-center gap-1 text-slate-600"><Clock3 className="w-3.5 h-3.5" />{tanggalJam(p.diajukan)}</span>
                       </div>
                       <ArrowRight className="w-4 h-4 text-slate-300 group-hover/row:text-blue-600 group-hover/row:translate-x-1 transition-all shrink-0" />
                     </Link>
@@ -144,7 +140,7 @@ export default function PicDashboard() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-5">
           {permintaan
-            .filter((p) => p.status === "diproses" || p.status === "pending")
+            .filter((p) => p.status === "diproses" || p.status === "pending" || p.status === "menunggu_konfirmasi")
             .slice(0, 3)
             .map((p) => (
               <Link key={p.id} href={`/pic/permintaan/${p.id}`} className="rounded-xl border border-slate-200 p-4 hover:border-blue-300 hover:shadow-md transition-all duration-300 flex flex-col gap-2.5 bg-white">

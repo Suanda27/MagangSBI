@@ -32,11 +32,11 @@ export default function SelesaiPage() {
 
   return (
     <>
-      <PageHeader title="Selesai & Riwayat" desc="Arsip permintaan yang telah Anda selesaikan atau tolak, lengkap dengan bukti penyelesaian." />
+      <PageHeader title="Selesai & Riwayat" desc="Arsip permintaan yang telah Anda selesaikan atau tolak, lengkap dengan hasil pengerjaan dan riwayatnya." />
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <StatCard label="Total Riwayat" value={<CountUp value={final.length} />} hint="Tiket tertutup" icon={History} tone="slate" />
-        <StatCard label="Selesai" value={<CountUp value={r.selesai} delay={80} />} hint="Diselesaikan dengan bukti" icon={CheckCircle2} tone="emerald" />
+        <StatCard label="Selesai" value={<CountUp value={r.selesai} delay={80} />} hint="Disetujui pengaju" icon={CheckCircle2} tone="emerald" />
         <StatCard label="Ditolak" value={<CountUp value={r.ditolak} delay={160} />} hint="Dengan alasan penolakan" icon={Ban} tone="rose" />
       </div>
 

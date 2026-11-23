@@ -14,7 +14,7 @@ const karyawanOptions = [
 export default function TambahPicPage() {
   const router = useRouter();
   const [selectedId, setSelectedId] = useState(karyawanOptions[0].id);
-  const [plant, setPlant] = useState("Plant 2 — Cikarang Stamping");
+  const [section, setSection] = useState("Information System");
   const [status, setStatus] = useState<"active" | "inactive">("active");
 
   const selected = karyawanOptions.find((k) => k.id === selectedId)!;
@@ -89,13 +89,15 @@ export default function TambahPicPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-1.5">
-                <label className="text-sm font-semibold text-slate-700">Plant Penanggung Jawab <span className="text-rose-500">*</span></label>
+                <label className="text-sm font-semibold text-slate-700">Section Penanggung Jawab <span className="text-rose-500">*</span></label>
                 <div className="relative flex items-center">
                   <Factory className="absolute left-3.5 w-5 h-5 text-slate-400" />
-                  <select value={plant} onChange={(e) => setPlant(e.target.value)} className="w-full pl-11 pr-4 py-2.5 bg-slate-50 rounded-lg text-sm text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-700/20 appearance-none cursor-pointer">
-                    <option>Plant 1 — Karawang Main</option>
-                    <option>Plant 2 — Cikarang Stamping</option>
-                    <option>Plant 3 — Pulogadung Logistics</option>
+                  <select value={section} onChange={(e) => setSection(e.target.value)} className="w-full pl-11 pr-4 py-2.5 bg-slate-50 rounded-lg text-sm text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-700/20 appearance-none cursor-pointer">
+                    <option>Assembly</option>
+                    <option>General Affairs</option>
+                    <option>Human Resource</option>
+                    <option>Information System</option>
+                    <option>Production Engineering</option>
                   </select>
                 </div>
               </div>
@@ -139,7 +141,7 @@ export default function TambahPicPage() {
             <ShieldCheck className="w-8 h-8 text-blue-700 bg-blue-700/10 rounded-full p-1.5 shrink-0" />
             <div className="flex flex-col gap-0.5">
               <span className="text-xs font-bold uppercase tracking-wider text-blue-700">Integritas Sistem Terverifikasi</span>
-              <p className="text-sm text-slate-900">Karyawan ini belum terdaftar sebagai PIC aktif di departemen lain. Penugasan untuk <strong>{plant}</strong> aman diproses.</p>
+              <p className="text-sm text-slate-900">Karyawan ini belum terdaftar sebagai PIC aktif di departemen lain. Penugasan ke section <strong>{section}</strong> aman diproses.</p>
             </div>
           </div>
 

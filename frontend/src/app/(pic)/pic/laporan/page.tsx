@@ -80,10 +80,11 @@ export default function LaporanPage() {
     const selesai = data.filter((p) => p.status === "selesai");
     const ditolak = data.filter((p) => p.status === "ditolak");
     const aktif = data.filter((p) => p.status === "diproses" || p.status === "pending");
+    const konfirmasi = data.filter((p) => p.status === "menunggu_konfirmasi");
     const menunggu = data.filter((p) => p.status === "menunggu");
-    const ditangani = selesai.length + ditolak.length + aktif.length;
+    const ditangani = selesai.length + ditolak.length + aktif.length + konfirmasi.length;
     const rata = selesai.length ? selesai.reduce((a, p) => a + (new Date(p.selesaiPada!).getTime() - new Date(p.diajukan).getTime()), 0) / selesai.length / 3600_000 : 0;
-    const sesuai = selesai.filter((p) => new Date(p.selesaiPada!).getTime() <= new Date(p.slaDeadline).getTime()).length;
+    const tanpaRevisi = selesai.filter((p) => p.jumlahRevisi === 0).length;
     const layanan = Object.entries(data.reduce<Record<string, number>>((m, p) => ((m[p.kategori] = (m[p.kategori] ?? 0) + 1), m), {})).sort((a, b) => b[1] - a[1]);
     const perBagian = (Object.keys(NAMA_BAGIAN) as KodeBagian[]).map((k) => ({ k, n: data.filter((p) => p.pengaju.bagian === k).length })).filter((x) => x.n > 0).sort((a, b) => b.n - a.n);
     const berulang = Object.entries(data.reduce<Record<string, { n: number; jam: number; s: number }>>((m, p) => {
@@ -93,8 +94,8 @@ export default function LaporanPage() {
       return m;
     }, {})).sort((a, b) => b[1].n - a[1].n).slice(0, 5);
     return {
-      selesai: selesai.length, ditolak: ditolak.length, aktif: aktif.length, menunggu: menunggu.length, ditangani,
-      rata, sla: selesai.length ? Math.round((sesuai / selesai.length) * 100) : 0, sesuai,
+      selesai: selesai.length, ditolak: ditolak.length, aktif: aktif.length, konfirmasi: konfirmasi.length, menunggu: menunggu.length, ditangani,
+      rata, tanpaRevisiPersen: selesai.length ? Math.round((tanpaRevisi / selesai.length) * 100) : 0, tanpaRevisi,
       tuntas: data.length ? Math.round((selesai.length / data.length) * 100) : 0,
       layanan: layanan.slice(0, 5).map(([label, value]) => ({ label, value })), perBagian, berulang,
     };
@@ -113,14 +114,14 @@ export default function LaporanPage() {
     toast({ tone: "success", title: "Laporan diekspor", desc: `${data.length} baris disimpan sebagai CSV.` });
   };
 
-  const maxStatus = Math.max(stat.selesai, stat.aktif, stat.menunggu, stat.ditolak, 1);
+  const maxStatus = Math.max(stat.selesai, stat.aktif, stat.konfirmasi, stat.menunggu, stat.ditolak, 1);
   const rataLabel = stat.rata < 24 ? `${stat.rata.toFixed(1)} jam` : `${(stat.rata / 24).toFixed(1)} hari`;
 
   return (
     <>
       <PageHeader
         title="Laporan Operasional"
-        desc="Performa penanganan, tingkat penyelesaian, dan kepatuhan SLA untuk tiket yang Anda tangani."
+        desc="Performa penanganan, tingkat penyelesaian, dan tingkat revisi untuk tiket yang Anda tangani."
         actions={
           <>
             <button onClick={() => window.print()} className="inline-flex items-center gap-2 px-3 py-2 text-xs font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:border-blue-200 hover:text-blue-800 transition-all"><Printer className="w-4 h-4" /> Cetak</button>
@@ -137,8 +138,8 @@ export default function LaporanPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard label="Total Ditangani" value={<CountUp value={stat.ditangani} />} hint={`${stat.menunggu} masih menunggu keputusan`} icon={Inbox} tone="blue" />
-        <StatCard label="Rata-rata Penyelesaian" value={stat.selesai ? rataLabel : "—"} hint="Sejak diajukan hingga selesai" icon={Timer} tone="slate" />
-        <StatCard label="Kepatuhan SLA" value={<><CountUp value={stat.sla} />%</>} hint={`${stat.sesuai} dari ${stat.selesai} selesai tepat waktu`} icon={Gauge} tone="emerald" />
+        <StatCard label="Rata-rata Penyelesaian" value={stat.selesai ? rataLabel : "—"} hint="Sejak diajukan hingga disetujui" icon={Timer} tone="slate" />
+        <StatCard label="Disetujui Tanpa Revisi" value={<><CountUp value={stat.tanpaRevisiPersen} />%</>} hint={`${stat.tanpaRevisi} dari ${stat.selesai} tiket selesai`} icon={Gauge} tone="emerald" />
         <StatCard label="Tingkat Penyelesaian" value={<><CountUp value={stat.tuntas} />%</>} hint={`${stat.selesai} dari ${data.length} tiket`} icon={CheckCircle2} tone="violet" />
       </div>
 
@@ -155,6 +156,7 @@ export default function LaporanPage() {
           <div className="flex flex-col gap-5">
             <Bar label="Selesai" value={stat.selesai} max={maxStatus} color="bg-emerald-500" />
             <Bar label="Sedang diproses / pending" value={stat.aktif} max={maxStatus} color="bg-blue-600" />
+            <Bar label="Menunggu konfirmasi pengaju" value={stat.konfirmasi} max={maxStatus} color="bg-sky-500" />
             <Bar label="Menunggu keputusan" value={stat.menunggu} max={maxStatus} color="bg-amber-500" />
             <Bar label="Ditolak" value={stat.ditolak} max={maxStatus} color="bg-rose-500" />
           </div>

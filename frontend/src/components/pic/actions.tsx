@@ -1,11 +1,15 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Ban, Check, CheckCircle2, FileText, Image as ImageIcon, Info, PauseCircle, PlayCircle, Trash2, UploadCloud, X } from "lucide-react";
+import { Ban, Check, CheckCircle2, FileText, Image as ImageIcon, Info, PauseCircle, PlayCircle, Send, Trash2, UploadCloud, X } from "lucide-react";
 import { Modal, ModalHeader } from "@/components/shared/overlay";
 import { ukuranFile, validasiFile } from "@/lib/shared/format";
+import { TUTUP_OTOMATIS_HARI_KERJA } from "@/lib/pic/format";
 import { usePicStore } from "@/lib/pic/store";
 import type { Lampiran, Permintaan } from "@/lib/pic/types";
+
+/** Batas PRD: maksimal 5 berkas per kategori (foto / dokumen). */
+const MAKS_BERKAS = 5;
 
 const btnGhost = "px-3.5 py-2 text-xs font-medium text-slate-600 hover:text-slate-900 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors";
 
@@ -178,7 +182,7 @@ export function StatusDialog({ permintaan, onClose }: { permintaan: Permintaan |
   );
 }
 
-/* ---------- Upload bukti & selesaikan ---------- */
+/* ---------- Upload hasil kerja & kirim untuk ditinjau ---------- */
 
 function Dropzone({
   icon: Icon,
@@ -245,7 +249,7 @@ function Dropzone({
 }
 
 export function ProofUploadForm({ permintaan, onDone }: { permintaan: Permintaan; onDone?: () => void }) {
-  const { selesaikan, toast } = usePicStore();
+  const { kirimHasil, toast } = usePicStore();
   const [foto, setFoto] = useState<Lampiran[]>([]);
   const [dok, setDok] = useState<Lampiran[]>([]);
   const [catatan, setCatatan] = useState("");
@@ -255,7 +259,12 @@ export function ProofUploadForm({ permintaan, onDone }: { permintaan: Permintaan
   const tambah = (tipe: "gambar" | "dokumen") => (files: File[]) => {
     const galat: string[] = [];
     const ok: Lampiran[] = [];
+    const sudah = tipe === "gambar" ? foto.length : dok.length;
     for (const f of files) {
+      if (sudah + ok.length >= MAKS_BERKAS) {
+        galat.push(`Maksimal ${MAKS_BERKAS} berkas per kategori.`);
+        break;
+      }
       const e = validasiFile(f);
       const salahJenis = tipe === "gambar" ? f.type === "application/pdf" : f.type !== "application/pdf";
       if (e) galat.push(e);
@@ -268,13 +277,13 @@ export function ProofUploadForm({ permintaan, onDone }: { permintaan: Permintaan
 
   const total = foto.length + dok.length;
   const klikSelesai = () => {
-    if (total === 0) return setErr("Unggah minimal satu bukti penyelesaian (foto atau dokumen) sebelum menutup tiket.");
+    if (total === 0) return setErr("Unggah minimal satu berkas hasil pekerjaan (foto atau dokumen) sebelum mengirim untuk ditinjau.");
     setErr(null);
     setKonfirmasi(true);
   };
   const kirim = () => {
-    selesaikan(permintaan.id, { catatan, bukti: [...foto, ...dok] });
-    toast({ tone: "success", title: "Tiket diselesaikan", desc: `#${permintaan.id} ditutup dengan ${total} bukti penyelesaian.` });
+    kirimHasil(permintaan.id, { catatan, bukti: [...foto, ...dok] });
+    toast({ tone: "success", title: "Hasil dikirim untuk ditinjau", desc: `#${permintaan.id} menunggu konfirmasi ${permintaan.pengaju.nama}.` });
     setKonfirmasi(false);
     onDone?.();
   };
@@ -282,8 +291,8 @@ export function ProofUploadForm({ permintaan, onDone }: { permintaan: Permintaan
   return (
     <section className="bg-white border border-border-subtle rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.02)] overflow-hidden">
       <div className="px-5 py-4 border-b border-slate-100">
-        <h2 className="text-sm font-semibold text-slate-900 flex items-center gap-2"><UploadCloud className="w-4 h-4 text-blue-600" /> Upload Bukti Penyelesaian</h2>
-        <p className="text-xs text-slate-500 mt-1">Lampirkan dokumentasi pengerjaan sebelum menyelesaikan tiket. Format JPG, PNG, atau PDF — maksimal 5 MB per berkas.</p>
+        <h2 className="text-sm font-semibold text-slate-900 flex items-center gap-2"><UploadCloud className="w-4 h-4 text-blue-600" /> Kirim Hasil Pengerjaan</h2>
+        <p className="text-xs text-slate-500 mt-1">Lampirkan hasil atau dokumentasi pengerjaan agar pengaju dapat meninjaunya. Format JPG, PNG, atau PDF — maksimal 5 MB dan 5 berkas per kategori.</p>
       </div>
       <div className="p-5 grid md:grid-cols-2 gap-5">
         <Dropzone icon={ImageIcon} title="Foto Pekerjaan" hint="JPG, PNG" accept="image/jpeg,image/png" files={foto} onAdd={tambah("gambar")} onRemove={(id) => setFoto((c) => c.filter((f) => f.id !== id))} />
@@ -291,7 +300,7 @@ export function ProofUploadForm({ permintaan, onDone }: { permintaan: Permintaan
       </div>
       <div className="px-5 pb-5">
         <label className="flex flex-col gap-1.5">
-          <span className="text-xs font-semibold text-slate-700 flex justify-between">Catatan Penyelesaian <span className="font-normal text-slate-400">{catatan.length}/500</span></span>
+          <span className="text-xs font-semibold text-slate-700 flex justify-between">Catatan Hasil Pekerjaan <span className="font-normal text-slate-400">{catatan.length}/500</span></span>
           <textarea
             value={catatan}
             maxLength={500}
@@ -308,20 +317,20 @@ export function ProofUploadForm({ permintaan, onDone }: { permintaan: Permintaan
         )}
       </div>
       <div className="px-5 py-4 border-t border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <p className="text-xs text-slate-500">Konfirmasi bahwa seluruh pengerjaan teknis telah selesai dilakukan. <span className="font-medium text-slate-700">{total} bukti</span> siap diunggah.</p>
+        <p className="text-xs text-slate-500">Pengaju akan meninjau hasil ini: menyetujui (tiket selesai) atau meminta revisi. <span className="font-medium text-slate-700">{total} berkas</span> siap dikirim.</p>
         <button onClick={klikSelesai} className="px-5 py-2.5 text-xs font-semibold bg-blue-700 hover:bg-blue-800 text-white rounded-lg shadow-sm flex items-center justify-center gap-2 transition-all hover:-translate-y-0.5">
-          <CheckCircle2 className="w-4 h-4" /> Tandai Selesai
+          <Send className="w-4 h-4" /> Kirim untuk Ditinjau
         </button>
       </div>
 
       <Modal open={konfirmasi} onClose={() => setKonfirmasi(false)}>
-        <ModalHeader icon={CheckCircle2} tone="emerald" title="Selesaikan Tiket?" onClose={() => setKonfirmasi(false)} />
+        <ModalHeader icon={Send} tone="blue" title="Kirim Hasil untuk Ditinjau?" onClose={() => setKonfirmasi(false)} />
         <div className="p-5 text-xs text-slate-600 leading-relaxed">
-          Tiket <span className="font-semibold text-slate-900">#{permintaan.id}</span> akan ditutup dengan status <span className="font-medium text-emerald-700">Selesai</span>. Setelah ditutup, status tidak dapat diubah lagi.
+          Hasil untuk tiket <span className="font-semibold text-slate-900">#{permintaan.id}</span> akan dikirim ke {permintaan.pengaju.nama} dengan status <span className="font-medium text-sky-700">Menunggu Konfirmasi</span>. Tiket selesai bila disetujui, atau kembali ke Anda bila ada revisi. Tanpa tanggapan, tiket ditutup otomatis setelah {TUTUP_OTOMATIS_HARI_KERJA} hari kerja.
         </div>
         <div className="p-4 border-t border-slate-100 flex justify-end gap-2.5">
           <button className={btnGhost} onClick={() => setKonfirmasi(false)}>Periksa Lagi</button>
-          <button className="px-4 py-2 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg shadow-sm" onClick={kirim}>Ya, Selesaikan</button>
+          <button className="px-4 py-2 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg shadow-sm" onClick={kirim}>Ya, Kirim</button>
         </div>
       </Modal>
     </section>
