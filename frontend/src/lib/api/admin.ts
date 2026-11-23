@@ -80,3 +80,99 @@ export async function updatePengaturan(payload: { max_upload_mb?: number; format
   const { data } = await api.patch<{ data: PengaturanApi }>("/api/admin/pengaturan", payload);
   return data.data;
 }
+
+/* ---------- Section ---------- */
+
+export interface SectionAdminApi {
+  id: number;
+  kode_bagian: string;
+  nama_bagian: string;
+  deskripsi: string | null;
+  status: StatusMaster;
+  status_label: string;
+  /** PIC aktif di section ini. */
+  jumlah_pic?: number;
+  jumlah_pengguna?: number;
+  jumlah_layanan?: number;
+  created_at: string;
+}
+
+/** GET /api/admin/sections: semua section (tanpa paginasi) beserta hitungannya. */
+export async function getSectionsAdmin(): Promise<SectionAdminApi[]> {
+  const { data } = await api.get<{ data: SectionAdminApi[] }>("/api/admin/sections");
+  return data.data;
+}
+
+/** POST /api/admin/sections: kode 2–10 huruf, tidak dapat diubah lagi sesudahnya. */
+export async function createSection(payload: { kode_bagian: string; nama_bagian: string; deskripsi?: string | null; status?: StatusMaster }): Promise<SectionAdminApi> {
+  const { data } = await api.post<{ data: SectionAdminApi }>("/api/admin/sections", payload);
+  return data.data;
+}
+
+/** PATCH /api/admin/sections/{id}: 409 bila dinonaktifkan padahal masih ada tiket berjalan. */
+export async function updateSection(id: number, payload: { nama_bagian?: string; deskripsi?: string | null; status?: StatusMaster }): Promise<SectionAdminApi> {
+  const { data } = await api.patch<{ data: SectionAdminApi }>(`/api/admin/sections/${id}`, payload);
+  return data.data;
+}
+
+/* ---------- Layanan ---------- */
+
+export interface LayananAdminApi {
+  id: number;
+  kode_layanan: string;
+  nama_layanan: string;
+  kategori: string;
+  deskripsi: string | null;
+  status: StatusMaster;
+  status_label: string;
+  bagian?: { id: number; kode_bagian: string; nama_bagian: string };
+  created_at: string;
+}
+
+/** Bentuk respons berpaginasi Laravel (hanya bagian yang dipakai). */
+export interface Halaman<T> {
+  data: T[];
+  meta: { current_page: number; last_page: number; per_page: number; total: number; from: number | null; to: number | null };
+}
+
+export interface FilterLayanan {
+  q?: string;
+  id_bagian?: number;
+  kategori?: string;
+  status?: StatusMaster;
+  per_page?: number;
+  page?: number;
+}
+
+/** GET /api/admin/layanan: semua status, berpaginasi. */
+export async function getLayananAdmin(params: FilterLayanan = {}): Promise<Halaman<LayananAdminApi>> {
+  const { data } = await api.get<Halaman<LayananAdminApi>>("/api/admin/layanan", { params });
+  return data;
+}
+
+export interface PayloadLayanan {
+  kode_layanan?: string;
+  nama_layanan?: string;
+  kategori?: string;
+  deskripsi?: string | null;
+  id_bagian?: number;
+  status?: StatusMaster;
+}
+
+/** POST /api/admin/layanan */
+export async function createLayanan(payload: Required<Pick<PayloadLayanan, "kode_layanan" | "nama_layanan" | "kategori" | "id_bagian">> & PayloadLayanan): Promise<LayananAdminApi> {
+  const { data } = await api.post<{ data: LayananAdminApi }>("/api/admin/layanan", payload);
+  return data.data;
+}
+
+/** PATCH /api/admin/layanan/{id}: layanan boleh dipindah ke section aktif lain. */
+export async function updateLayanan(id: number, payload: PayloadLayanan): Promise<LayananAdminApi> {
+  const { data } = await api.patch<{ data: LayananAdminApi }>(`/api/admin/layanan/${id}`, payload);
+  return data.data;
+}
+
+/** Kategori layanan yang sudah dipakai (untuk saran isian), diambil dari katalog yang ada. */
+export async function getKategoriLayanan(): Promise<string[]> {
+  const hasil = await getLayananAdmin({ per_page: 100 });
+  return Array.from(new Set(hasil.data.map((l) => l.kategori))).sort((a, b) => a.localeCompare(b, "id"));
+}

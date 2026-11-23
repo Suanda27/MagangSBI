@@ -1,21 +1,72 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Hash, ShieldCheck, CheckCircle2, Lightbulb } from "lucide-react";
+import { ArrowLeft, Hash, ShieldCheck, CheckCircle2, Lightbulb, Loader2 } from "lucide-react";
+import { KotakGalat } from "@/components/admin/master-dialogs";
+import { createLayanan, getKategoriLayanan, getSectionsAdmin, type SectionAdminApi } from "@/lib/api/admin";
+import { toApiError } from "@/lib/api/errors";
+import { setFlash } from "@/lib/admin/flash";
 
 export default function TambahLayananPage() {
   const router = useRouter();
+  const [kode, setKode] = useState("");
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [section, setSection] = useState("");
   const [desc, setDesc] = useState("");
   const [status, setStatus] = useState<"Aktif" | "Nonaktif">("Aktif");
+  const [sections, setSections] = useState<SectionAdminApi[]>([]);
+  const [kategori, setKategori] = useState<string[]>([]);
+  const [err, setErr] = useState<Record<string, string>>({});
+  const [umum, setUmum] = useState<string | null>(null);
+  const [proses, setProses] = useState(false);
 
-  function handleSubmit(e: React.FormEvent) {
+  // Section aktif untuk pilihan tujuan, dan kategori yang sudah dipakai sebagai saran.
+  useEffect(() => {
+    getSectionsAdmin().then((d) => setSections(d.filter((x) => x.status === "aktif"))).catch(() => undefined);
+    getKategoriLayanan().then(setKategori).catch(() => undefined);
+  }, []);
+
+  const sectionDipilih = sections.find((x) => String(x.id) === section);
+  const salah = (k: string) => (err[k] ? "!border-rose-400 !ring-4 !ring-rose-100" : "");
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    router.push("/admin/layanan");
+    if (proses) return;
+    setUmum(null);
+
+    const lokal: Record<string, string> = {};
+    if (!kode.trim()) lokal.kode_layanan = "Kode layanan wajib diisi.";
+    if (!name.trim()) lokal.nama_layanan = "Nama layanan wajib diisi.";
+    if (!category.trim()) lokal.kategori = "Kategori wajib diisi.";
+    if (!section) lokal.id_bagian = "Section tujuan wajib dipilih.";
+    setErr(lokal);
+    if (Object.keys(lokal).length) return;
+
+    setProses(true);
+    try {
+      const baru = await createLayanan({
+        kode_layanan: kode.trim(),
+        nama_layanan: name.trim(),
+        kategori: category.trim(),
+        deskripsi: desc.trim() || null,
+        id_bagian: Number(section),
+        status: status === "Aktif" ? "aktif" : "nonaktif",
+      });
+      setFlash({ title: "Layanan ditambahkan", desc: `${baru.nama_layanan} (${baru.kode_layanan})` });
+      router.push("/admin/layanan");
+    } catch (e2) {
+      const apiErr = toApiError(e2);
+      if (apiErr.isValidation) {
+        const ambil = (k: string) => (apiErr.errors[k]?.[0] ? { [k]: apiErr.errors[k][0] } : {});
+        setErr({ ...ambil("kode_layanan"), ...ambil("nama_layanan"), ...ambil("kategori"), ...ambil("id_bagian"), ...ambil("deskripsi") });
+      } else {
+        setUmum(apiErr.message);
+      }
+      setProses(false);
+    }
   }
 
   return (
@@ -31,7 +82,7 @@ export default function TambahLayananPage() {
         <p className="text-sm text-slate-500 mt-1">Tambahkan layanan baru yang dapat digunakan oleh karyawan.</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <form onSubmit={handleSubmit} noValidate className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         <div className="lg:col-span-8 bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
           <div className="px-6 py-4 bg-slate-50 flex items-center justify-between">
             <h2 className="text-base font-semibold text-slate-900">Informasi Layanan</h2>
@@ -40,40 +91,31 @@ export default function TambahLayananPage() {
           <div className="p-6 space-y-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-semibold text-slate-700 uppercase">ID Layanan</label>
+                <label className="text-xs font-semibold text-slate-700 uppercase">Kode Layanan <span className="text-rose-500">*</span></label>
                 <div className="relative flex items-center">
                   <Hash className="absolute left-3 w-[18px] h-[18px] text-slate-400" />
-                  <input value="LYN-007" readOnly className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-200 bg-slate-50 text-sm text-slate-500" />
+                  <input value={kode} onChange={(e) => setKode(e.target.value.toUpperCase())} maxLength={20} placeholder="Contoh: GA-07" className={`w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-800 font-mono placeholder:text-slate-400 placeholder:font-sans focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 ${salah("kode_layanan")}`} />
                 </div>
-                <span className="text-xs text-slate-400">Dibuat otomatis oleh sistem.</span>
+                {err.kode_layanan ? <span className="text-xs text-rose-600 fx-reveal">{err.kode_layanan}</span> : <span className="text-xs text-slate-400">Unik; huruf besar, angka, dan tanda hubung.</span>}
               </div>
               <div className="flex flex-col gap-1.5">
                 <label className="text-xs font-semibold text-slate-700 uppercase">Nama Layanan <span className="text-rose-500">*</span></label>
-                <input value={name} onChange={(e) => setName(e.target.value)} required placeholder="Masukkan nama layanan" className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100" />
+                <input value={name} onChange={(e) => setName(e.target.value)} maxLength={255} placeholder="Masukkan nama layanan" className={`w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 ${salah("nama_layanan")}`} />
+                {err.nama_layanan && <span className="text-xs text-rose-600 fx-reveal">{err.nama_layanan}</span>}
               </div>
               <div className="flex flex-col gap-1.5">
                 <label className="text-xs font-semibold text-slate-700 uppercase">Kategori <span className="text-rose-500">*</span></label>
-                <select value={category} onChange={(e) => setCategory(e.target.value)} required className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-800 appearance-none focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 cursor-pointer">
-                  <option value="" disabled>-- Pilih Kategori --</option>
-                  <option>Fasilitas & Gedung</option>
-                  <option>Peralatan & Perlengkapan</option>
-                  <option>Dukungan Sistem</option>
-                  <option>Administrasi Karyawan</option>
-                  <option>Dokumen & Surat</option>
-                  <option>Pelaporan Masalah</option>
-                  <option>Lainnya</option>
-                </select>
+                <input value={category} onChange={(e) => setCategory(e.target.value)} maxLength={255} list="saran-kategori" placeholder="Pilih atau ketik kategori" className={`w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 ${salah("kategori")}`} />
+                <datalist id="saran-kategori">{kategori.map((k) => <option key={k} value={k} />)}</datalist>
+                {err.kategori && <span className="text-xs text-rose-600 fx-reveal">{err.kategori}</span>}
               </div>
               <div className="flex flex-col gap-1.5">
                 <label className="text-xs font-semibold text-slate-700 uppercase">Section <span className="text-rose-500">*</span></label>
-                <select value={section} onChange={(e) => setSection(e.target.value)} required className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-800 appearance-none focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 cursor-pointer">
+                <select value={section} onChange={(e) => setSection(e.target.value)} className={`w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-800 appearance-none focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 cursor-pointer ${salah("id_bagian")}`}>
                   <option value="" disabled>-- Pilih Section PIC --</option>
-                  <option>Assembly</option>
-                  <option>HR (Human Resources)</option>
-                  <option>IS (Information System)</option>
-                  <option>PE (Production Engineering)</option>
-                  <option>GA (General Affairs)</option>
+                  {sections.map((x) => <option key={x.id} value={x.id}>{x.kode_bagian} · {x.nama_bagian}</option>)}
                 </select>
+                {err.id_bagian && <span className="text-xs text-rose-600 fx-reveal">{err.id_bagian}</span>}
               </div>
             </div>
 
@@ -90,20 +132,21 @@ export default function TambahLayananPage() {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-semibold text-slate-700 uppercase">Deskripsi Layanan <span className="text-rose-500">*</span></label>
-              <textarea value={desc} onChange={(e) => setDesc(e.target.value)} required maxLength={500} rows={4} placeholder="Masukkan deskripsi layanan secara lengkap..." className="w-full p-4 rounded-lg border border-slate-200 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 resize-y" />
+              <label className="text-xs font-semibold text-slate-700 uppercase">Deskripsi Layanan <span className="text-[11px] font-normal normal-case text-slate-400">(opsional)</span></label>
+              <textarea value={desc} onChange={(e) => setDesc(e.target.value)} maxLength={500} rows={4} placeholder="Masukkan deskripsi layanan secara lengkap..." className="w-full p-4 rounded-lg border border-slate-200 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 resize-y" />
               <div className="flex items-center justify-between">
                 <span className="text-xs text-slate-400">Jelaskan cakupan servis, batasan wewenang, atau instruksi umum bagi pemohon.</span>
                 <span className="text-xs text-slate-400">{desc.length} / 500 karakter</span>
               </div>
             </div>
           </div>
+          {umum && <div className="px-6 pb-4"><KotakGalat pesan={umum} /></div>}
           <div className="px-6 py-4 bg-slate-50 flex items-center justify-between flex-wrap gap-3">
             <span className="text-xs text-slate-500 flex items-center gap-1"><span className="text-rose-500 font-bold">*</span> Bidang wajib diisi</span>
             <div className="flex items-center gap-3">
               <Link href="/admin/layanan" className="px-5 py-2.5 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 text-sm font-medium transition-all">Batal</Link>
-              <button type="submit" className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-blue-700 hover:bg-blue-800 text-white text-sm font-semibold shadow-sm transition-all">
-                <CheckCircle2 className="w-[18px] h-[18px]" /> Simpan Layanan
+              <button type="submit" disabled={proses} className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-blue-700 hover:bg-blue-800 text-white text-sm font-semibold shadow-sm transition-all disabled:opacity-60">
+                {proses ? <Loader2 className="w-[18px] h-[18px] animate-spin" /> : <CheckCircle2 className="w-[18px] h-[18px]" />} {proses ? "Menyimpan..." : "Simpan Layanan"}
               </button>
             </div>
           </div>
@@ -118,8 +161,8 @@ export default function TambahLayananPage() {
               </span>
             </div>
             <div className="flex items-center justify-between text-xs text-slate-500 mb-2">
-              <span className="bg-slate-100 px-2 py-0.5 rounded font-mono text-slate-900 font-medium">LYN-007</span>
-              <span className="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-semibold">{section || "-"}</span>
+              <span className="bg-slate-100 px-2 py-0.5 rounded font-mono text-slate-900 font-medium">{kode || "KODE"}</span>
+              <span className="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-semibold">{sectionDipilih?.kode_bagian ?? "-"}</span>
             </div>
             <h3 className="text-lg font-bold text-slate-900 leading-tight">{name || "Nama Layanan"}</h3>
             <span className="text-xs text-slate-500 block mt-0.5">{category || "Kategori belum dipilih"}</span>
