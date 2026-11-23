@@ -1,4 +1,5 @@
 import { api } from "./client";
+import type { Role, User } from "./types";
 
 // Fungsi bertipe untuk endpoint Admin (kontrak: docs/api-admin.md).
 // Semua melempar ApiError saat gagal (lihat lib/api/errors.ts).
@@ -175,4 +176,102 @@ export async function updateLayanan(id: number, payload: PayloadLayanan): Promis
 export async function getKategoriLayanan(): Promise<string[]> {
   const hasil = await getLayananAdmin({ per_page: 100 });
   return Array.from(new Set(hasil.data.map((l) => l.kategori))).sort((a, b) => a.localeCompare(b, "id"));
+}
+
+/* ---------- Pengguna ---------- */
+
+export interface FilterPengguna {
+  q?: string;
+  role?: Role;
+  status?: StatusMaster;
+  id_bagian?: number;
+  per_page?: number;
+  page?: number;
+}
+
+/** GET /api/admin/users: berpaginasi, urut nama. */
+export async function getUsers(params: FilterPengguna = {}): Promise<Halaman<User>> {
+  const { data } = await api.get<Halaman<User>>("/api/admin/users", { params });
+  return data;
+}
+
+/** GET /api/admin/users/{id} */
+export async function getUser(id: number | string): Promise<User> {
+  const { data } = await api.get<{ data: User }>(`/api/admin/users/${id}`);
+  return data.data;
+}
+
+export interface PayloadPengguna {
+  name?: string;
+  nik?: string;
+  email?: string;
+  password?: string;
+  password_confirmation?: string;
+  role?: Role;
+  /** Wajib untuk employee/supervisor/pic; jangan dikirim untuk admin. */
+  id_bagian?: number;
+  jabatan?: string | null;
+  telepon?: string | null;
+  status?: StatusMaster;
+}
+
+/** POST /api/admin/users */
+export async function createUser(payload: PayloadPengguna & Required<Pick<PayloadPengguna, "name" | "nik" | "email" | "password" | "password_confirmation" | "role">>): Promise<User> {
+  const { data } = await api.post<{ data: User }>("/api/admin/users", payload);
+  return data.data;
+}
+
+/** PATCH /api/admin/users/{id}: 422 bila mengunci akun sendiri, 409 bila PIC masih memegang tiket. */
+export async function updateUser(id: number | string, payload: PayloadPengguna): Promise<User> {
+  const { data } = await api.patch<{ data: User }>(`/api/admin/users/${id}`, payload);
+  return data.data;
+}
+
+/* ---------- Pemetaan PIC ---------- */
+
+export interface PicMappingApi {
+  id: number;
+  name: string;
+  nik: string | null;
+  email: string;
+  jabatan: string | null;
+  telepon: string | null;
+  role: Role;
+  status: StatusMaster;
+  status_label: string;
+  bagian?: { id: number; kode_bagian: string; nama_bagian: string } | null;
+  /** Tiket berjalan yang sedang dipegang PIC ini. */
+  tiket_aktif?: number;
+}
+
+export interface FilterPic {
+  q?: string;
+  id_bagian?: number;
+  status?: StatusMaster;
+  per_page?: number;
+  page?: number;
+}
+
+/** GET /api/admin/pic-mapping */
+export async function getPicMapping(params: FilterPic = {}): Promise<Halaman<PicMappingApi>> {
+  const { data } = await api.get<Halaman<PicMappingApi>>("/api/admin/pic-mapping", { params });
+  return data;
+}
+
+/** POST /api/admin/pic-mapping: hanya karyawan aktif yang dapat dijadikan PIC. */
+export async function createPicMapping(userId: number, idBagian: number): Promise<PicMappingApi> {
+  const { data } = await api.post<{ data: PicMappingApi }>("/api/admin/pic-mapping", { user_id: userId, id_bagian: idBagian });
+  return data.data;
+}
+
+/** PATCH /api/admin/pic-mapping/{id}: pindah section; 409 bila masih memegang tiket berjalan. */
+export async function updatePicMapping(userId: number, idBagian: number): Promise<PicMappingApi> {
+  const { data } = await api.patch<{ data: PicMappingApi }>(`/api/admin/pic-mapping/${userId}`, { id_bagian: idBagian });
+  return data.data;
+}
+
+/** DELETE /api/admin/pic-mapping/{id}: kembalikan menjadi karyawan (akun tidak dihapus); 409 bila masih memegang tiket. */
+export async function deletePicMapping(userId: number): Promise<PicMappingApi> {
+  const { data } = await api.delete<{ data: PicMappingApi }>(`/api/admin/pic-mapping/${userId}`);
+  return data.data;
 }
