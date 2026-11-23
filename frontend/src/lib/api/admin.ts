@@ -54,3 +54,29 @@ export async function updateLantai(id: number, payload: { nama_lantai?: string; 
   const { data } = await api.patch<{ data: LantaiApi }>(`/api/admin/lantais/${id}`, payload);
   return data.data;
 }
+
+/* ---------- Pengaturan sistem ---------- */
+
+export type FormatLampiran = "jpg" | "png" | "pdf";
+
+export interface PengaturanApi {
+  /** Batas ukuran per berkas, 1–5 MB. */
+  max_upload_mb: number;
+  format_lampiran: FormatLampiran[];
+  /** Hanya dibaca: format nomor tiket tetap. */
+  digit_nomor_tiket: number;
+  /** Hanya dibaca: batas jumlah berkas per kategori. */
+  maks_berkas: number;
+}
+
+/** GET /api/admin/pengaturan */
+export async function getPengaturan(): Promise<PengaturanApi> {
+  const { data } = await api.get<{ data: PengaturanApi }>("/api/admin/pengaturan");
+  return data.data;
+}
+
+/** PATCH /api/admin/pengaturan: kirim hanya kunci yang diubah. */
+export async function updatePengaturan(payload: { max_upload_mb?: number; format_lampiran?: FormatLampiran[] }): Promise<PengaturanApi> {
+  const { data } = await api.patch<{ data: PengaturanApi }>("/api/admin/pengaturan", payload);
+  return data.data;
+}
