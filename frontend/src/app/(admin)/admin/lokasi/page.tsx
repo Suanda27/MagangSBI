@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Ban, Building2, CheckCircle2, Info, Layers, MapPin, Pencil, PlusCircle, RotateCcw, Search } from "lucide-react";
+import { Ban, Building2, CheckCircle2, Info, Layers, Loader2, MapPin, Pencil, PlusCircle, RotateCcw, Search, TriangleAlert } from "lucide-react";
 import { CountUp } from "@/components/fx/motion";
 import { Toasts, useToasts } from "@/components/admin/settings-ui";
 import { FormNamaModal, KonfirmasiStatusModal, type TargetStatus } from "@/components/admin/lokasi-dialogs";
@@ -35,7 +35,8 @@ type Dialog =
 export default function LokasiPage() {
   const lokasi = useLokasi();
   const toast = useToasts();
-  const { plants, ready } = lokasi;
+  const { plants, status: statusMuat } = lokasi;
+  const ready = statusMuat === "ready";
 
   const [q, setQ] = useState("");
   const [status, setStatus] = useState("");
@@ -67,6 +68,12 @@ export default function LokasiPage() {
   const filterAktif = q.trim() !== "" || status !== "";
 
   const berhasil = (title: string, desc?: string) => toast.push({ tone: "success", title, desc });
+  /** Jalankan perubahan status; galat dari server tampil sebagai toast. */
+  const ubahStatus = async (aksi: Promise<{ ok: true } | { ok: false; error: string }>, judul: string, desc: string) => {
+    const h = await aksi;
+    if (h.ok) berhasil(judul, desc);
+    else toast.push({ tone: "error", title: "Perubahan gagal", desc: h.error });
+  };
 
   const mintaStatus = (target: TargetStatus, jalankan: () => void) => setKonfirmasi({ ...target, jalankan });
 
@@ -115,7 +122,18 @@ export default function LokasiPage() {
         <span className="ml-auto text-xs text-slate-400">{terfilter.length} plant ditampilkan</span>
       </div>
 
-      {terfilter.length === 0 ? (
+      {statusMuat === "loading" ? (
+        <div className="bg-white rounded-xl border border-slate-200 py-20 flex items-center justify-center gap-3 text-sm text-slate-500" role="status" aria-live="polite">
+          <Loader2 className="w-5 h-5 animate-spin text-blue-600" /> Memuat data lokasi...
+        </div>
+      ) : statusMuat === "error" ? (
+        <div className="bg-white rounded-xl border border-rose-200 py-14 px-6 flex flex-col items-center text-center gap-3" role="alert">
+          <span className="w-12 h-12 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center"><TriangleAlert className="w-6 h-6" /></span>
+          <h3 className="text-sm font-semibold text-slate-900">Data lokasi tidak dapat dimuat</h3>
+          <p className="text-xs text-slate-500 max-w-sm">{lokasi.error}</p>
+          <button onClick={lokasi.coba} className="px-4 py-2 text-xs font-medium text-white bg-blue-700 hover:bg-blue-800 rounded-lg shadow-sm transition-colors">Coba Lagi</button>
+        </div>
+      ) : terfilter.length === 0 ? (
         <div className="bg-white rounded-xl border border-slate-200">
           <EmptyState icon={Building2} title={plants.length === 0 ? "Belum ada plant" : "Tidak ada hasil"} desc={plants.length === 0 ? "Tambahkan plant pertama untuk mulai mengatur lokasi." : "Coba ubah kata kunci atau reset filter."} />
         </div>
@@ -138,7 +156,7 @@ export default function LokasiPage() {
                     </span>
                     <span className="min-w-0 flex-1 leading-tight">
                       <span className="block text-sm font-semibold text-slate-900 truncate">{p.nama_plant}</span>
-                      <span className="block text-[11px] text-slate-400 mt-0.5">{lantaiAktif} dari {p.lantais.length} lantai aktif</span>
+                      <span className="block text-[11px] text-slate-400 mt-0.5">{p.status === "aktif" ? `${lantaiAktif} dari ${p.lantais.length} lantai aktif` : `${p.lantais.length} lantai · plant nonaktif`}</span>
                     </span>
                     <StatusBadge status={p.status} />
                   </button>
@@ -166,14 +184,14 @@ export default function LokasiPage() {
                   </button>
                   {aktif.status === "aktif" ? (
                     <button
-                      onClick={() => mintaStatus({ jenis: "plant", nama: aktif.nama_plant, ke: "nonaktif" }, () => { lokasi.setStatusPlant(aktif.id, "nonaktif"); berhasil("Plant dinonaktifkan", `${aktif.nama_plant} tidak tampil lagi di form pengajuan.`); })}
+                      onClick={() => mintaStatus({ jenis: "plant", nama: aktif.nama_plant, ke: "nonaktif" }, () => ubahStatus(lokasi.setStatusPlant(aktif.id, "nonaktif"), "Plant dinonaktifkan", `${aktif.nama_plant} tidak tampil lagi di form pengajuan.`))}
                       className="px-3 py-2 text-xs font-medium text-rose-700 bg-rose-50 border border-rose-200 rounded-lg hover:bg-rose-100 transition-colors flex items-center gap-1.5"
                     >
                       <Ban className="w-3.5 h-3.5" /> Nonaktifkan
                     </button>
                   ) : (
                     <button
-                      onClick={() => mintaStatus({ jenis: "plant", nama: aktif.nama_plant, ke: "aktif" }, () => { lokasi.setStatusPlant(aktif.id, "aktif"); berhasil("Plant diaktifkan", `${aktif.nama_plant} tampil kembali di form pengajuan.`); })}
+                      onClick={() => mintaStatus({ jenis: "plant", nama: aktif.nama_plant, ke: "aktif" }, () => ubahStatus(lokasi.setStatusPlant(aktif.id, "aktif"), "Plant diaktifkan", `${aktif.nama_plant} tampil kembali di form pengajuan.`))}
                       className="px-3 py-2 text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg hover:bg-emerald-100 transition-colors flex items-center gap-1.5"
                     >
                       <CheckCircle2 className="w-3.5 h-3.5" /> Aktifkan
@@ -229,14 +247,14 @@ export default function LokasiPage() {
                               </button>
                               {l.status === "aktif" ? (
                                 <button
-                                  onClick={() => mintaStatus({ jenis: "lantai", nama: l.nama_lantai, induk: aktif.nama_plant, ke: "nonaktif" }, () => { lokasi.setStatusLantai(aktif.id, l.id, "nonaktif"); berhasil("Lantai dinonaktifkan", `${l.nama_lantai} (${aktif.nama_plant}) tidak tampil lagi di form pengajuan.`); })}
+                                  onClick={() => mintaStatus({ jenis: "lantai", nama: l.nama_lantai, induk: aktif.nama_plant, ke: "nonaktif" }, () => ubahStatus(lokasi.setStatusLantai(l.id, "nonaktif"), "Lantai dinonaktifkan", `${l.nama_lantai} (${aktif.nama_plant}) tidak tampil lagi di form pengajuan.`))}
                                   className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition-colors" title="Nonaktifkan" aria-label={`Nonaktifkan ${l.nama_lantai}`}
                                 >
                                   <Ban className="w-4 h-4" />
                                 </button>
                               ) : (
                                 <button
-                                  onClick={() => mintaStatus({ jenis: "lantai", nama: l.nama_lantai, induk: aktif.nama_plant, ke: "aktif" }, () => { lokasi.setStatusLantai(aktif.id, l.id, "aktif"); berhasil("Lantai diaktifkan", `${l.nama_lantai} (${aktif.nama_plant}) tampil kembali di form pengajuan.`); })}
+                                  onClick={() => mintaStatus({ jenis: "lantai", nama: l.nama_lantai, induk: aktif.nama_plant, ke: "aktif" }, () => ubahStatus(lokasi.setStatusLantai(l.id, "aktif"), "Lantai diaktifkan", `${l.nama_lantai} (${aktif.nama_plant}) tampil kembali di form pengajuan.`))}
                                   className="p-1.5 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-colors" title="Aktifkan" aria-label={`Aktifkan ${l.nama_lantai}`}
                                 >
                                   <CheckCircle2 className="w-4 h-4" />
@@ -266,8 +284,8 @@ export default function LokasiPage() {
         label="Nama Plant"
         placeholder="Contoh: Plant 4"
         submitLabel="Simpan Plant"
-        onSubmit={(nama) => {
-          const h = lokasi.tambahPlant(nama);
+        onSubmit={async (nama) => {
+          const h = await lokasi.tambahPlant(nama);
           if (h.ok) berhasil("Plant ditambahkan", nama.trim());
           return h;
         }}
@@ -281,9 +299,9 @@ export default function LokasiPage() {
         placeholder="Nama plant"
         initial={dialog?.jenis === "ubah-plant" ? dialog.plant.nama_plant : ""}
         submitLabel="Simpan Perubahan"
-        onSubmit={(nama) => {
+        onSubmit={async (nama) => {
           if (dialog?.jenis !== "ubah-plant") return { ok: false, error: "Plant tidak ditemukan." };
-          const h = lokasi.ubahPlant(dialog.plant.id, nama);
+          const h = await lokasi.ubahPlant(dialog.plant.id, nama);
           if (h.ok) berhasil("Nama plant diperbarui", nama.trim());
           return h;
         }}
@@ -296,9 +314,9 @@ export default function LokasiPage() {
         label="Nama Lantai"
         placeholder="Contoh: Lantai 4"
         submitLabel="Simpan Lantai"
-        onSubmit={(nama) => {
+        onSubmit={async (nama) => {
           if (dialog?.jenis !== "tambah-lantai") return { ok: false, error: "Plant tidak ditemukan." };
-          const h = lokasi.tambahLantai(dialog.plant.id, nama);
+          const h = await lokasi.tambahLantai(dialog.plant.id, nama);
           if (h.ok) berhasil("Lantai ditambahkan", `${nama.trim()} di ${dialog.plant.nama_plant}`);
           return h;
         }}
@@ -312,9 +330,9 @@ export default function LokasiPage() {
         placeholder="Nama lantai"
         initial={dialog?.jenis === "ubah-lantai" ? dialog.nama : ""}
         submitLabel="Simpan Perubahan"
-        onSubmit={(nama) => {
+        onSubmit={async (nama) => {
           if (dialog?.jenis !== "ubah-lantai") return { ok: false, error: "Lantai tidak ditemukan." };
-          const h = lokasi.ubahLantai(dialog.plant.id, dialog.idLantai, nama);
+          const h = await lokasi.ubahLantai(dialog.idLantai, nama);
           if (h.ok) berhasil("Nama lantai diperbarui", nama.trim());
           return h;
         }}
