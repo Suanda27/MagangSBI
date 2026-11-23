@@ -4,12 +4,12 @@ import { useState } from "react";
 import { Download, FileSpreadsheet, FileText, Filter, Check, RotateCcw, ChevronDown } from "lucide-react";
 
 const recap = [
-  { id: "REQ-2026-0064", title: "Perbaikan AC Ruang Server Line 2", layanan: "Perbaikan AC", requester: "Muhammad Faiz", section: "Assembly", pic: "Budi Santoso", plant: "Plant 2", status: "Selesai", tglAjuan: "25 Feb 2026, 08:30", tglSelesai: "25 Feb 2026, 11:45" },
-  { id: "REQ-2026-0063", title: "Penggantian Sensor Pneumatik Press 04", layanan: "Penggantian Komponen", requester: "Agus Pramono", section: "PE", pic: "Rizky Pratama", plant: "Plant 1", status: "Sedang Diproses", tglAjuan: "25 Feb 2026, 09:10", tglSelesai: "-" },
-  { id: "REQ-2026-0062", title: "Koneksi Switch Hub Kantor HR Drop", layanan: "Dukungan Sistem", requester: "Dewi Rahayu", section: "HR", pic: "Belum Ditugaskan", plant: "Plant 1", status: "Menunggu", tglAjuan: "25 Feb 2026, 10:00", tglSelesai: "-" },
-  { id: "REQ-2026-0061", title: "Pengadaan Spare Valve Hidrolik Kompresor", layanan: "Penggantian Komponen", requester: "Irfan Setiawan", section: "Assembly", pic: "Hendra Wijaya", plant: "Plant 3", status: "Pending", tglAjuan: "24 Feb 2026, 14:15", tglSelesai: "-" },
-  { id: "REQ-2026-0060", title: "Kalibrasi Timbangan Digital Loading Dock", layanan: "Kalibrasi Mesin", requester: "Tri Nugroho", section: "PE", pic: "Siti Aminah", plant: "Plant 2", status: "Selesai", tglAjuan: "24 Feb 2026, 11:20", tglSelesai: "24 Feb 2026, 16:00" },
-  { id: "REQ-2026-0059", title: "Pemasangan Terminal Listrik Pribadi Locker", layanan: "Instalasi Listrik", requester: "Rendi Kurnia", section: "GA", pic: "Budi Santoso", plant: "Plant 1", status: "Ditolak", tglAjuan: "24 Feb 2026, 09:40", tglSelesai: "24 Feb 2026, 10:15" },
+  { id: "GA-2026-0064", title: "Perbaikan AC Ruang Server Line 2", layanan: "Perbaikan AC", requester: "Muhammad Faiz", section: "Assembly", pic: "Budi Santoso", plant: "Plant 2", status: "Selesai", tglAjuan: "25 Feb 2026, 08:30", tglSelesai: "25 Feb 2026, 11:45" },
+  { id: "PE-2026-0063", title: "Penggantian Sensor Pneumatik Press 04", layanan: "Penggantian Komponen", requester: "Agus Pramono", section: "PE", pic: "Rizky Pratama", plant: "Plant 1", status: "Sedang Diproses", tglAjuan: "25 Feb 2026, 09:10", tglSelesai: "-" },
+  { id: "IS-2026-0062", title: "Koneksi Switch Hub Kantor HR Drop", layanan: "Dukungan Sistem", requester: "Dewi Rahayu", section: "HR", pic: "Belum Ditugaskan", plant: "Plant 1", status: "Menunggu", tglAjuan: "25 Feb 2026, 10:00", tglSelesai: "-" },
+  { id: "PE-2026-0061", title: "Pengadaan Spare Valve Hidrolik Kompresor", layanan: "Penggantian Komponen", requester: "Irfan Setiawan", section: "Assembly", pic: "Hendra Wijaya", plant: "Plant 3", status: "Pending", tglAjuan: "24 Feb 2026, 14:15", tglSelesai: "-" },
+  { id: "PE-2026-0060", title: "Kalibrasi Timbangan Digital Loading Dock", layanan: "Kalibrasi Mesin", requester: "Tri Nugroho", section: "PE", pic: "Siti Aminah", plant: "Plant 2", status: "Selesai", tglAjuan: "24 Feb 2026, 11:20", tglSelesai: "24 Feb 2026, 16:00" },
+  { id: "GA-2026-0059", title: "Pemasangan Terminal Listrik Pribadi Locker", layanan: "Instalasi Listrik", requester: "Rendi Kurnia", section: "GA", pic: "Budi Santoso", plant: "Plant 1", status: "Ditolak", tglAjuan: "24 Feb 2026, 09:40", tglSelesai: "24 Feb 2026, 10:15" },
 ];
 
 const statusStyle: Record<string, string> = {

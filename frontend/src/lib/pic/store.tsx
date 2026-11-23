@@ -10,7 +10,9 @@ import { PROFIL_PIC, type Lampiran, type Permintaan, type ProfilPic, type Riwaya
  *   terima   -> POST  /api/pic/permintaan/{id}/accept
  *   tolak    -> POST  /api/pic/permintaan/{id}/reject
  *   ubahStatus -> PATCH /api/pic/permintaan/{id}/status
- *   selesaikan -> POST  /api/pic/permintaan/{id}/selesaikan
+ *   kirimHasil -> POST  /api/pic/permintaan/{id}/kirim-hasil   (status -> menunggu_konfirmasi)
+ * Menyetujui / meminta revisi adalah aksi karyawan (POST /api/employee/permintaan/{id}/setujui | minta-revisi);
+ * di sini hanya ada versi simulasi untuk demo, dihapus saat API tersambung.
  * Data disimpan di localStorage agar perubahan tetap ada setelah refresh.
  */
 
@@ -30,7 +32,10 @@ interface PicStore {
   terima: (id: string, catatan?: string) => void;
   tolak: (id: string, alasan: string) => void;
   ubahStatus: (id: string, status: Extract<StatusPermintaan, "diproses" | "pending">, catatan: string) => void;
-  selesaikan: (id: string, data: { catatan: string; bukti: Lampiran[] }) => void;
+  kirimHasil: (id: string, data: { catatan: string; bukti: Lampiran[] }) => void;
+  /** Simulasi aksi karyawan (hanya demo): setuju atau minta revisi. */
+  simulasiSetujui: (id: string) => void;
+  simulasiRevisi: (id: string, alasan: string) => void;
   setProfil: (p: Partial<ProfilPic>) => void;
   resetDemo: () => void;
   toast: (t: Omit<Toast, "id">) => void;
@@ -133,11 +138,29 @@ export function PicStoreProvider({ children }: { children: React.ReactNode }) {
         );
       },
 
-      selesaikan: (id, { catatan, bukti }) => {
+      kirimHasil: (id, { catatan, bukti }) => {
         ubah(id, (p) =>
           tambahRiwayat(
-            { ...p, status: "selesai", selesaiPada: new Date().toISOString(), catatanSelesai: catatan.trim() || undefined, buktiSelesai: bukti, alasanPending: undefined },
-            { judul: "Permintaan Selesai", keterangan: catatan.trim() || `Pengerjaan selesai dengan ${bukti.length} bukti terlampir.`, oleh: nama, status: "selesai" },
+            { ...p, status: "menunggu_konfirmasi", dikirimPada: new Date().toISOString(), catatanSelesai: catatan.trim() || undefined, buktiSelesai: bukti, alasanPending: undefined, alasanRevisi: undefined },
+            { judul: "Hasil Dikirim untuk Ditinjau", keterangan: catatan.trim() || `Hasil pengerjaan dikirim dengan ${bukti.length} berkas terlampir.`, oleh: nama, status: "menunggu_konfirmasi" },
+          ),
+        );
+      },
+
+      simulasiSetujui: (id) => {
+        ubah(id, (p) =>
+          tambahRiwayat(
+            { ...p, status: "selesai", selesaiPada: new Date().toISOString() },
+            { judul: "Permintaan Selesai", keterangan: `Hasil pengerjaan disetujui oleh ${p.pengaju.nama}.`, oleh: p.pengaju.nama, status: "selesai" },
+          ),
+        );
+      },
+
+      simulasiRevisi: (id, alasan) => {
+        ubah(id, (p) =>
+          tambahRiwayat(
+            { ...p, status: "diproses", jumlahRevisi: p.jumlahRevisi + 1, alasanRevisi: alasan.trim() },
+            { judul: "Revisi Diminta", keterangan: alasan.trim(), oleh: p.pengaju.nama, status: "revisi" },
           ),
         );
       },
@@ -175,8 +198,9 @@ export function useRingkasan() {
     const menunggu = hitung("menunggu");
     const diproses = hitung("diproses");
     const pending = hitung("pending");
+    const konfirmasi = hitung("menunggu_konfirmasi");
     const selesai = hitung("selesai");
     const ditolak = hitung("ditolak");
-    return { total: permintaan.length, menunggu, diproses, pending, selesai, ditolak, aktif: diproses + pending };
+    return { total: permintaan.length, menunggu, diproses, pending, konfirmasi, selesai, ditolak, aktif: diproses + pending + konfirmasi };
   }, [permintaan]);
 }

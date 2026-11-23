@@ -3,7 +3,8 @@
  * sehingga saat endpoint Laravel siap, cukup mengganti store (lib/pic/store.tsx) dengan pemanggilan API.
  */
 
-export type StatusPermintaan = "menunggu" | "diproses" | "pending" | "selesai" | "ditolak";
+/** menunggu_konfirmasi = hasil sudah dikirim PIC, menunggu peninjauan karyawan (waiting_review di API). */
+export type StatusPermintaan = "menunggu" | "diproses" | "pending" | "menunggu_konfirmasi" | "selesai" | "ditolak";
 export type Prioritas = "Mendesak" | "Tinggi" | "Normal";
 export type KodeBagian = "ASM" | "HR" | "IS" | "PE" | "GA";
 
@@ -23,7 +24,7 @@ export interface RiwayatItem {
   judul: string;
   keterangan: string;
   oleh: string;
-  status: StatusPermintaan | "dibuat" | "dialokasikan";
+  status: StatusPermintaan | "dibuat" | "dialokasikan" | "revisi";
 }
 
 export interface Pengaju {
@@ -46,18 +47,25 @@ export interface Permintaan {
   lantai: string;
   lokasiDetail: string;
   diajukan: string;
-  slaDeadline: string;
   prioritas: Prioritas;
   status: StatusPermintaan;
   lampiran: Lampiran[];
   riwayat: RiwayatItem[];
   diterimaPada?: string;
+  /** Waktu PIC mengirim hasil untuk ditinjau (terakhir). */
+  dikirimPada?: string;
+  /** Waktu karyawan menyetujui atau tiket ditutup otomatis. */
   selesaiPada?: string;
   ditolakPada?: string;
   alasanTolak?: string;
   catatanTriage?: string;
   catatanSelesai?: string;
   alasanPending?: string;
+  /** Berapa kali karyawan meminta revisi (tanpa batas). */
+  jumlahRevisi: number;
+  /** Alasan revisi terakhir dari karyawan (teks, minimal 10 karakter). */
+  alasanRevisi?: string;
+  /** Lampiran hasil kerja yang dikirim PIC. */
   buktiSelesai?: Lampiran[];
 }
 

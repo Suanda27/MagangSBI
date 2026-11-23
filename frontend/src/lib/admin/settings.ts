@@ -15,25 +15,19 @@ export interface AdminSettings {
     maintenance: boolean;
   };
   tiket: {
-    prefix: string;
-    sertakanTahun: boolean;
-    panjangNomor: number;
-    slaMendesak: number;
-    slaTinggi: number;
-    slaNormal: number;
-    peringatanSla: number;
     maksUploadMb: number;
     format: { jpg: boolean; png: boolean; pdf: boolean };
   };
-  notifikasi: Record<NotifKey, { inapp: boolean; email: boolean }> & { ringkasanHarian: boolean };
+  /** Notifikasi hanya di dalam aplikasi (keputusan PRD D8), tanpa email. */
+  notifikasi: Record<NotifKey, { inapp: boolean }>;
 }
 
-export type NotifKey = "tiketBaru" | "statusBerubah" | "slaMendekati" | "tiketDitolak" | "penggunaBaru";
+export type NotifKey = "tiketBaru" | "statusBerubah" | "hasilDikirim" | "tiketDitolak" | "penggunaBaru";
 
 export const NOTIF_LABEL: Record<NotifKey, { judul: string; desc: string }> = {
   tiketBaru: { judul: "Tiket baru dibuat", desc: "Karyawan mengajukan permintaan layanan baru." },
-  statusBerubah: { judul: "Status tiket berubah", desc: "PIC menerima, menunda, atau menyelesaikan tiket." },
-  slaMendekati: { judul: "SLA mendekati batas", desc: "Tiket hampir atau sudah melewati batas SLA." },
+  statusBerubah: { judul: "Status tiket berubah", desc: "PIC menerima atau menunda tiket, dan pengaju menyetujui hasilnya." },
+  hasilDikirim: { judul: "Hasil dikirim untuk ditinjau", desc: "PIC mengirim hasil kerja, atau pengaju meminta revisi." },
   tiketDitolak: { judul: "Tiket ditolak PIC", desc: "PIC menolak tiket beserta alasannya." },
   penggunaBaru: { judul: "Pengguna baru ditambahkan", desc: "Akun baru dibuat pada menu Pengguna." },
 };
@@ -50,27 +44,19 @@ export const DEFAULT_SETTINGS: AdminSettings = {
     maintenance: false,
   },
   tiket: {
-    prefix: "SRV",
-    sertakanTahun: true,
-    panjangNomor: 4,
-    slaMendesak: 6,
-    slaTinggi: 12,
-    slaNormal: 24,
-    peringatanSla: 80,
     maksUploadMb: 5,
     format: { jpg: true, png: true, pdf: true },
   },
   notifikasi: {
-    tiketBaru: { inapp: true, email: true },
-    statusBerubah: { inapp: true, email: false },
-    slaMendekati: { inapp: true, email: true },
-    tiketDitolak: { inapp: true, email: false },
-    penggunaBaru: { inapp: true, email: false },
-    ringkasanHarian: false,
+    tiketBaru: { inapp: true },
+    statusBerubah: { inapp: true },
+    hasilDikirim: { inapp: true },
+    tiketDitolak: { inapp: true },
+    penggunaBaru: { inapp: true },
   },
 };
 
-export const STORAGE_KEY = "ism.admin.settings.v1";
+export const STORAGE_KEY = "ism.admin.settings.v2";
 
 /** Gabungkan data tersimpan dengan default agar field baru tidak hilang. */
 export function loadSettings(): AdminSettings {
@@ -98,12 +84,14 @@ export function saveSettings(s: AdminSettings) {
   }
 }
 
-/** Contoh nomor tiket sesuai konfigurasi, untuk pratinjau. */
-export function contohNomorTiket(t: AdminSettings["tiket"], tahun = 2026) {
-  const prefix = t.prefix.trim().toUpperCase() || "TKT";
-  const nomor = String(42).padStart(Math.max(3, Math.min(8, t.panjangNomor)), "0");
-  return [prefix, t.sertakanTahun ? String(tahun) : null, nomor].filter(Boolean).join("-");
-}
+/** Nomor tiket dibuat otomatis per section: {KODE SECTION}-{TAHUN}-{URUTAN 4 digit}, contoh GA-2026-0001. */
+export const CONTOH_NOMOR_TIKET = [
+  { kode: "GA", section: "General Affairs", contoh: "GA-2026-0001" },
+  { kode: "HR", section: "Human Resource", contoh: "HR-2026-0001" },
+  { kode: "IS", section: "Information System", contoh: "IS-2026-0001" },
+  { kode: "PE", section: "Production Engineering", contoh: "PE-2026-0001" },
+  { kode: "ASM", section: "Assembly", contoh: "ASM-2026-0001" },
+] as const;
 
 /** Skor kekuatan kata sandi 0–4. */
 export function kekuatanPassword(p: string) {

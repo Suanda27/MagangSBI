@@ -10,17 +10,16 @@ type Pic = {
   name: string;
   section: string;
   services: number;
-  plant: string;
   status: "Aktif" | "Nonaktif";
   avatarClass: string;
 };
 
 const picList: Pic[] = [
-  { id: "EMP-001", nik: "EMP-001", name: "Budi Santoso", section: "Assembly", services: 4, plant: "Plant 2", status: "Aktif", avatarClass: "bg-blue-700 text-white" },
-  { id: "EMP-002", nik: "EMP-002", name: "Doni Prasetyo", section: "PE", services: 3, plant: "Plant 3", status: "Aktif", avatarClass: "bg-slate-600 text-white" },
-  { id: "EMP-003", nik: "EMP-003", name: "Hendra Wijaya", section: "HR", services: 5, plant: "Plant 1", status: "Aktif", avatarClass: "bg-blue-100 text-blue-700" },
-  { id: "EMP-004", nik: "EMP-004", name: "Rina Wulandari", section: "GA", services: 4, plant: "Plant 1", status: "Aktif", avatarClass: "bg-purple-100 text-purple-700" },
-  { id: "EMP-005", nik: "EMP-005", name: "Ahmad Fauzi", section: "Assembly", services: 2, plant: "Plant 2", status: "Nonaktif", avatarClass: "bg-slate-200 text-slate-500" },
+  { id: "EMP-001", nik: "EMP-001", name: "Budi Santoso", section: "Assembly", services: 4, status: "Aktif", avatarClass: "bg-blue-700 text-white" },
+  { id: "EMP-002", nik: "EMP-002", name: "Doni Prasetyo", section: "PE", services: 3, status: "Aktif", avatarClass: "bg-slate-600 text-white" },
+  { id: "EMP-003", nik: "EMP-003", name: "Hendra Wijaya", section: "HR", services: 5, status: "Aktif", avatarClass: "bg-blue-100 text-blue-700" },
+  { id: "EMP-004", nik: "EMP-004", name: "Rina Wulandari", section: "GA", services: 4, status: "Aktif", avatarClass: "bg-purple-100 text-purple-700" },
+  { id: "EMP-005", nik: "EMP-005", name: "Ahmad Fauzi", section: "Assembly", services: 2, status: "Nonaktif", avatarClass: "bg-slate-200 text-slate-500" },
 ];
 
 export default function PicPage() {
@@ -95,7 +94,6 @@ export default function PicPage() {
                 <th className="py-3 px-4 font-semibold">NIK</th>
                 <th className="py-3 px-4 font-semibold">Section</th>
                 <th className="py-3 px-4 font-semibold">Layanan Ditangani</th>
-                <th className="py-3 px-4 font-semibold">Plant</th>
                 <th className="py-3 px-4 font-semibold">Status</th>
                 <th className="py-3 px-6 text-right font-semibold">Aksi</th>
               </tr>
@@ -121,7 +119,6 @@ export default function PicPage() {
                       <Wrench className="w-3.5 h-3.5 text-blue-700" /> {p.services} Layanan
                     </div>
                   </td>
-                  <td className="py-3.5 px-4"><span className="px-2 py-0.5 rounded bg-slate-50 text-slate-600 text-xs">{p.plant}</span></td>
                   <td className="py-3.5 px-4">
                     {p.status === "Aktif" ? (
                       <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-50 text-slate-900 text-xs font-semibold">

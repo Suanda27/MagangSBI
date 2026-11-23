@@ -8,18 +8,16 @@ import { Drawer } from "@/components/shared/overlay";
 import { PrioritasBadge, StatusBadge } from "@/components/pic/primitives";
 import { FilterBar, RequestTable, useFilter } from "@/components/pic/request-list";
 import { TerimaDialog, TolakDialog } from "@/components/pic/actions";
-import { tanggalJam, ukuranFile, useNow } from "@/lib/shared/format";
-import { infoSla, SLA_TONE } from "@/lib/pic/format";
+import { tanggalJam, ukuranFile } from "@/lib/shared/format";
 import { usePicStore } from "@/lib/pic/store";
 import { NAMA_BAGIAN, type Permintaan } from "@/lib/pic/types";
 
 export default function PermintaanMasukPage() {
   const { permintaan } = usePicStore();
-  const now = useNow(30_000);
 
-  // Antrean = tiket yang belum diputuskan PIC
+  // Antrean bersama per section: tiket yang belum diterima PIC mana pun, yang terlama di atas
   const antrean = useMemo(
-    () => permintaan.filter((p) => p.status === "menunggu").sort((a, b) => new Date(a.slaDeadline).getTime() - new Date(b.slaDeadline).getTime()),
+    () => permintaan.filter((p) => p.status === "menunggu").sort((a, b) => new Date(a.diajukan).getTime() - new Date(b.diajukan).getTime()),
     [permintaan],
   );
   const filter = useFilter(antrean);
@@ -36,7 +34,6 @@ export default function PermintaanMasukPage() {
     setReviewId(p.id);
   };
 
-  const kritis = antrean.filter((p) => ["warn", "late"].includes(infoSla(p, now).tone)).length;
 
   return (
     <>
@@ -52,7 +49,6 @@ export default function PermintaanMasukPage() {
 
       <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 -mb-2">
         <span className="text-slate-800 font-semibold">{antrean.length} permintaan</span> menunggu tindakan
-        {kritis > 0 && <span className="text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200/60 font-medium text-[11px]">{kritis} mendekati batas SLA</span>}
       </div>
 
       <FilterBar data={antrean} filter={filter} />
@@ -100,7 +96,7 @@ export default function PermintaanMasukPage() {
                   ["Layanan", aktif.layanan],
                   ["Kategori", aktif.kategori],
                   ["Lokasi", `${aktif.plant} · ${aktif.lantai}`],
-                  ["Sisa SLA", <span key="s" className={`font-semibold ${SLA_TONE[infoSla(aktif, now).tone]}`}>{infoSla(aktif, now).label}</span>],
+                  ["Diajukan", tanggalJam(aktif.diajukan)],
                 ].map(([k, v]) => (
                   <div key={String(k)} className="rounded-lg border border-slate-100 p-3">
                     <dt className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">{k}</dt>

@@ -42,11 +42,11 @@ const beban = [
 ];
 
 const recentTickets = [
-  { id: "SRV-2026-0012", title: "Sensor PLC Conveyor Rusak", requester: "Muhammad Faiz", initials: "MF", section: "Assembly", pic: "Budi Santoso", status: "Selesai", date: "23 Agt 2026, 08:24" },
-  { id: "SRV-2026-0015", title: "VPN & GitLab Onboarding", requester: "Siti Aminah", initials: "SA", section: "HR", pic: "Hendra Wijaya", status: "Sedang Diproses", date: "23 Agt 2026, 09:15" },
-  { id: "SRV-2026-0018", title: "Kalibrasi Mesin Press Hidrolik", requester: "Rudi Hartono", initials: "RH", section: "PE", pic: "Budi Santoso", status: "Menunggu Pemeriksaan", date: "23 Agt 2026, 10:00" },
-  { id: "SRV-2026-0021", title: "Penggantian Lampu LED Line 4", requester: "Agus Kurnia", initials: "AK", section: "GA", pic: "Doni Prasetyo", status: "Selesai", date: "22 Agt 2026, 16:40" },
-  { id: "SRV-2026-0022", title: "Permohonan Surat Visa Dinas", requester: "Dewi Sartika", initials: "DS", section: "HR", pic: "Rina Wulandari", status: "Ditolak", date: "22 Agt 2026, 14:10" },
+  { id: "PE-2026-0012", title: "Sensor PLC Conveyor Rusak", requester: "Muhammad Faiz", initials: "MF", section: "Assembly", pic: "Budi Santoso", status: "Selesai", date: "23 Agt 2026, 08:24" },
+  { id: "IS-2026-0015", title: "VPN & GitLab Onboarding", requester: "Siti Aminah", initials: "SA", section: "HR", pic: "Hendra Wijaya", status: "Sedang Diproses", date: "23 Agt 2026, 09:15" },
+  { id: "PE-2026-0018", title: "Kalibrasi Mesin Press Hidrolik", requester: "Rudi Hartono", initials: "RH", section: "PE", pic: "Budi Santoso", status: "Menunggu Pemeriksaan", date: "23 Agt 2026, 10:00" },
+  { id: "GA-2026-0021", title: "Penggantian Lampu LED Line 4", requester: "Agus Kurnia", initials: "AK", section: "GA", pic: "Doni Prasetyo", status: "Selesai", date: "22 Agt 2026, 16:40" },
+  { id: "HR-2026-0022", title: "Permohonan Surat Visa Dinas", requester: "Dewi Sartika", initials: "DS", section: "HR", pic: "Rina Wulandari", status: "Ditolak", date: "22 Agt 2026, 14:10" },
 ];
 
 const statusBadge: Record<string, string> = {
@@ -225,8 +225,8 @@ export default function AdminDashboard() {
             <p className="text-[12px] text-slate-400 mb-4">Rekam jejak tindakan admin, assignment PIC, dan update operasional.</p>
             <div className="space-y-3.5 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-gradient-to-b before:from-blue-200 before:via-slate-100 before:to-transparent">
               {[
-                { icon: ShieldCheck, badgeClass: "bg-blue-50 border-blue-200 text-blue-700", title: "Penugasan PIC Tiket", time: "5 mnt lalu", desc: <>Budi Santoso ditugaskan pada tiket <span className="text-blue-800 font-medium">#SRV-2026-0018</span> (Kalibrasi Hidrolik).</> },
-                { icon: CheckCircle2, badgeClass: "bg-emerald-50 border-emerald-200 text-emerald-700", title: "Status Layanan Diperbarui", time: "24 mnt lalu", desc: <>Tiket <span className="text-blue-800 font-medium">#SRV-2026-0012</span> diubah ke status <span className="text-emerald-700 font-medium">Selesai</span> oleh Admin ISM.</> },
+                { icon: ShieldCheck, badgeClass: "bg-blue-50 border-blue-200 text-blue-700", title: "Penugasan PIC Tiket", time: "5 mnt lalu", desc: <>Budi Santoso ditugaskan pada tiket <span className="text-blue-800 font-medium">#PE-2026-0018</span> (Kalibrasi Hidrolik).</> },
+                { icon: CheckCircle2, badgeClass: "bg-emerald-50 border-emerald-200 text-emerald-700", title: "Status Layanan Diperbarui", time: "24 mnt lalu", desc: <>Tiket <span className="text-blue-800 font-medium">#PE-2026-0012</span> diubah ke status <span className="text-emerald-700 font-medium">Selesai</span> oleh Admin ISM.</> },
                 { icon: UserPlus, badgeClass: "bg-sky-50 border-sky-200 text-sky-700", title: "Permintaan Baru Masuk", time: "1 jam lalu", desc: <>Siti Aminah (HR) mengajukan tiket VPN &amp; GitLab Onboarding.</> },
               ].map((e, i) => (
                 <div key={i} className="fx-reveal-x group/evt relative flex items-start gap-3 pl-1 -mx-1 px-1 py-1 rounded-lg transition-colors duration-300 hover:bg-slate-50" style={dl(750 + i * 120)}>

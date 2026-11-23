@@ -8,7 +8,6 @@ import { Pagination } from "@/components/shared/pagination";
 import { SelectField } from "@/components/shared/form-controls";
 import { PrioritasBadge, StatusBadge } from "./primitives";
 import { kunciHari, tanggalJam, useNow } from "@/lib/shared/format";
-import { infoSla, SLA_TONE } from "@/lib/pic/format";
 import { NAMA_BAGIAN, type KodeBagian, type Permintaan, type StatusPermintaan } from "@/lib/pic/types";
 
 /* ---------- Filter ---------- */
@@ -66,7 +65,7 @@ export function FilterBar({
   placeholder?: string;
 }) {
   const { f, set, reset, aktif } = filter;
-  const labelStatus: Record<StatusPermintaan, string> = { menunggu: "Menunggu Pemeriksaan", diproses: "Sedang Diproses", pending: "Pending", selesai: "Selesai", ditolak: "Ditolak" };
+  const labelStatus: Record<StatusPermintaan, string> = { menunggu: "Menunggu Pemeriksaan", diproses: "Sedang Diproses", pending: "Pending", menunggu_konfirmasi: "Menunggu Konfirmasi", selesai: "Selesai", ditolak: "Ditolak" };
   return (
     <div className="bg-white border border-border-subtle rounded-xl p-3 md:p-4 flex flex-col gap-3 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
       <div className="flex flex-wrap items-center gap-2">
@@ -132,7 +131,6 @@ export function RequestTable({
   emptyDesc?: string;
 }) {
   const [page, setPage] = useState(1);
-  const now = useNow(30_000);
   const pages = Math.max(1, Math.ceil(data.length / perPage));
   const cur = Math.min(page, pages);
   const rows = data.slice((cur - 1) * perPage, cur * perPage);
@@ -143,7 +141,7 @@ export function RequestTable({
         <EmptyState icon={Inbox} title={emptyTitle} desc={emptyDesc} />
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse min-w-[980px]">
+          <table className="w-full text-left border-collapse min-w-[900px]">
             <thead>
               <tr className="border-b border-border-subtle bg-slate-50/60 text-slate-500 text-[11px] uppercase tracking-wider">
                 <th className="py-3.5 px-4 font-semibold">ID</th>
@@ -151,14 +149,13 @@ export function RequestTable({
                 <th className="py-3.5 px-4 font-semibold">Pengaju</th>
                 <th className="py-3.5 px-4 font-semibold">Lokasi</th>
                 <th className="py-3.5 px-4 font-semibold">Diajukan</th>
-                <th className="py-3.5 px-4 font-semibold">{mode === "riwayat" ? "Selesai / Ditolak" : "SLA"}</th>
+                {mode === "riwayat" && <th className="py-3.5 px-4 font-semibold">Selesai / Ditolak</th>}
                 <th className="py-3.5 px-4 font-semibold">Status</th>
                 <th className="py-3.5 px-4 font-semibold text-center">Aksi</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border-subtle text-xs text-slate-700">
               {rows.map((p) => {
-                const sla = infoSla(p, now);
                 const akhir = p.selesaiPada ?? p.ditolakPada;
                 return (
                   <tr key={p.id} className="group">
@@ -170,7 +167,7 @@ export function RequestTable({
                         <span className="font-medium text-slate-900 truncate" title={p.judul}>{p.judul}</span>
                         {p.prioritas === "Mendesak" && p.status !== "selesai" && p.status !== "ditolak" && <PrioritasBadge prioritas="Mendesak" />}
                       </div>
-                      <span className="text-[11px] text-slate-400">{p.layanan}</span>
+                      <span className="text-[11px] text-slate-400">{p.layanan}{p.jumlahRevisi > 0 && p.status !== "selesai" && <span className="ml-2 text-amber-700 font-medium">· Revisi ke-{p.jumlahRevisi}</span>}</span>
                     </td>
                     <td className="py-3 px-4 whitespace-nowrap">
                       <div className="flex items-center gap-2">
@@ -183,9 +180,7 @@ export function RequestTable({
                     </td>
                     <td className="py-3 px-4 whitespace-nowrap text-slate-600">{p.plant} · {p.lantai}</td>
                     <td className="py-3 px-4 whitespace-nowrap text-slate-700">{tanggalJam(p.diajukan)}</td>
-                    <td className={`py-3 px-4 whitespace-nowrap font-medium ${mode === "riwayat" ? "text-slate-700" : SLA_TONE[sla.tone]}`}>
-                      {mode === "riwayat" ? (akhir ? tanggalJam(akhir) : "—") : sla.label}
-                    </td>
+                    {mode === "riwayat" && <td className="py-3 px-4 whitespace-nowrap font-medium text-slate-700">{akhir ? tanggalJam(akhir) : "—"}</td>}
                     <td className="py-3 px-4"><StatusBadge status={p.status} /></td>
                     <td className="py-3 px-4">
                       <div className="flex items-center justify-center gap-1.5">

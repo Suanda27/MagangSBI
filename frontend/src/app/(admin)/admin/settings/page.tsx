@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import { Field, SectionCard, Switch, ToggleRow, Toasts, inputCls, useToasts } from "@/components/admin/settings-ui";
 import {
-  DEFAULT_SETTINGS, NOTIF_LABEL, contohNomorTiket, kekuatanPassword, loadSettings, saveSettings,
+  CONTOH_NOMOR_TIKET, DEFAULT_SETTINGS, NOTIF_LABEL, kekuatanPassword, loadSettings, saveSettings,
   type AdminSettings, type NotifKey,
 } from "@/lib/admin/settings";
 
@@ -17,7 +17,7 @@ const TABS: { key: TabKey; label: string; desc: string; icon: LucideIcon }[] = [
   { key: "profil", label: "Profil", desc: "Identitas akun admin", icon: UserCog },
   { key: "keamanan", label: "Keamanan", desc: "Kata sandi & sesi", icon: ShieldCheck },
   { key: "sistem", label: "Sistem", desc: "Aplikasi, zona waktu", icon: Wrench },
-  { key: "tiket", label: "Tiket & SLA", desc: "Nomor tiket, SLA, unggah", icon: Ticket },
+  { key: "tiket", label: "Tiket & Lampiran", desc: "Nomor tiket, batas unggah", icon: Ticket },
   { key: "notifikasi", label: "Notifikasi", desc: "Peristiwa & kanal", icon: Bell },
 ];
 
@@ -57,8 +57,6 @@ export default function SettingsPage() {
     if (profil.telepon.replace(/\D/g, "").length < 8) e.telepon = "Nomor telepon tidak valid.";
     if (!sistem.namaAplikasi.trim()) e.namaAplikasi = "Nama aplikasi wajib diisi.";
     if (!sistem.namaPerusahaan.trim()) e.namaPerusahaan = "Nama perusahaan wajib diisi.";
-    if (!/^[A-Za-z]{2,6}$/.test(tiket.prefix)) e.prefix = "Prefix 2–6 huruf tanpa spasi atau angka.";
-    if (!(tiket.slaMendesak > 0 && tiket.slaTinggi >= tiket.slaMendesak && tiket.slaNormal >= tiket.slaTinggi)) e.sla = "Urutan SLA harus: Mendesak ≤ Tinggi ≤ Normal (jam, lebih dari 0).";
     if (tiket.maksUploadMb < 1 || tiket.maksUploadMb > 5) e.maksUploadMb = "Ukuran unggah 1–5 MB (batas sistem 5 MB).";
     if (!tiket.format.jpg && !tiket.format.png && !tiket.format.pdf) e.format = "Pilih minimal satu format berkas.";
     setErrors(e);
@@ -70,7 +68,7 @@ export default function SettingsPage() {
     const keys = Object.keys(e);
     if (keys.length) {
       // Arahkan ke tab pertama yang bermasalah
-      const peta: Record<string, TabKey> = { nama: "profil", email: "profil", telepon: "profil", namaAplikasi: "sistem", namaPerusahaan: "sistem", prefix: "tiket", sla: "tiket", maksUploadMb: "tiket", format: "tiket" };
+      const peta: Record<string, TabKey> = { nama: "profil", email: "profil", telepon: "profil", namaAplikasi: "sistem", namaPerusahaan: "sistem", maksUploadMb: "tiket", format: "tiket" };
       setTab(peta[keys[0]] ?? tab);
       toast.push({ tone: "error", title: "Periksa kembali isian", desc: e[keys[0]] });
       return;
@@ -352,61 +350,30 @@ function SistemTab({ draft, set, errors }: { draft: AdminSettings; set: SetFn; e
   );
 }
 
-/* ================= Tab: Tiket & SLA ================= */
+/* ================= Tab: Tiket & Lampiran ================= */
 
 function TiketTab({ draft, set, errors }: { draft: AdminSettings; set: SetFn; errors: Record<string, string> }) {
   const t = draft.tiket;
   const num = (k: keyof typeof t, v: string) => set("tiket", { [k]: v === "" ? 0 : Number(v) } as Partial<typeof t>);
-  const contoh = contohNomorTiket(t);
-  const jam = (k: "slaMendesak" | "slaTinggi" | "slaNormal", label: string, dot: string) => (
-    <Field label={label}>
-      <div className="relative">
-        <span className={`absolute left-3 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full ${dot}`} />
-        <input type="number" min={1} value={t[k] || ""} onChange={(e) => num(k, e.target.value)} className={`${inputCls} pl-8 pr-14 ${errors.sla ? "!border-rose-400" : ""}`} />
-        <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-slate-400">jam</span>
-      </div>
-    </Field>
-  );
   return (
     <>
-      <SectionCard icon={Hash} title="Format Nomor Tiket" desc="Dibuat otomatis oleh sistem saat tiket diajukan">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <Field label="Prefix" required error={errors.prefix} hint="Contoh: SRV, ISM, TKT">
-            <input value={t.prefix} maxLength={6} onChange={(e) => set("tiket", { prefix: e.target.value.toUpperCase() })} className={`${inputCls} font-mono uppercase ${errors.prefix ? "!border-rose-400" : ""}`} />
-          </Field>
-          <Field label="Digit Nomor Urut">
-            <select value={t.panjangNomor} onChange={(e) => set("tiket", { panjangNomor: Number(e.target.value) })} className={`${inputCls} cursor-pointer`}>
-              {[3, 4, 5, 6].map((n) => <option key={n} value={n}>{n} digit</option>)}
-            </select>
-          </Field>
-          <Field label="Sertakan Tahun">
-            <div className="h-[42px] flex items-center gap-3"><Switch checked={t.sertakanTahun} onChange={(v) => set("tiket", { sertakanTahun: v })} label="Sertakan tahun" /><span className="text-sm text-slate-600">{t.sertakanTahun ? "Ya" : "Tidak"}</span></div>
-          </Field>
+      <SectionCard icon={Hash} title="Format Nomor Tiket" desc="Dibuat otomatis oleh sistem per section saat tiket diajukan">
+        <div className="rounded-lg bg-slate-50 border border-slate-200 p-4 flex flex-wrap items-center justify-between gap-3">
+          <span className="text-xs text-slate-500">Format</span>
+          <span className="font-mono text-sm font-semibold text-blue-800 tracking-wide">{"{KODE SECTION}-{TAHUN}-{URUTAN}"}</span>
         </div>
-        <div className="mt-5 rounded-lg bg-slate-50 border border-slate-200 p-4 flex items-center justify-between gap-3">
-          <span className="text-xs text-slate-500">Pratinjau nomor tiket</span>
-          <span key={contoh} className="fx-reveal font-mono text-base font-semibold text-blue-800 tracking-wide">#{contoh}</span>
-        </div>
+        <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          {CONTOH_NOMOR_TIKET.map((c) => (
+            <li key={c.kode} className="flex items-center justify-between gap-3 rounded-lg border border-slate-200 px-3.5 py-2.5">
+              <span className="text-xs text-slate-600">{c.section}</span>
+              <span className="font-mono text-[13px] font-semibold text-slate-900">#{c.contoh}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="text-[11px] text-slate-400 mt-3">Urutan dihitung terpisah untuk tiap section dan mulai dari 0001 setiap pergantian tahun. Format ini tetap dan tidak dapat diubah dari sini.</p>
       </SectionCard>
 
-      <SectionCard icon={Timer} title="Target SLA Default" desc="Batas waktu penyelesaian berdasarkan prioritas tiket">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {jam("slaMendesak", "Mendesak", "bg-rose-500")}
-          {jam("slaTinggi", "Tinggi", "bg-orange-500")}
-          {jam("slaNormal", "Normal", "bg-slate-400")}
-        </div>
-        {errors.sla && <p className="text-[11px] text-rose-600 mt-2 fx-reveal">{errors.sla}</p>}
-        <div className="mt-6">
-          <div className="flex items-center justify-between mb-2">
-            <label className="text-xs font-semibold text-slate-700">Peringatan SLA pada</label>
-            <span className="text-sm font-semibold text-blue-800">{t.peringatanSla}% dari target</span>
-          </div>
-          <input type="range" min={50} max={95} step={5} value={t.peringatanSla} onChange={(e) => set("tiket", { peringatanSla: Number(e.target.value) })} className="w-full accent-blue-700 cursor-pointer" />
-          <p className="text-[11px] text-slate-400 mt-1">Notifikasi dikirim ke PIC dan Supervisor ketika waktu terpakai mencapai persentase ini.</p>
-        </div>
-      </SectionCard>
-
-      <SectionCard icon={FileCheck2} title="Lampiran" desc="Aturan unggah berkas pada tiket dan bukti penyelesaian">
+      <SectionCard icon={FileCheck2} title="Lampiran" desc="Aturan unggah berkas pada tiket dan hasil pengerjaan (maksimal 5 berkas per kategori)">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Field label="Ukuran Maksimal per Berkas" error={errors.maksUploadMb} hint="Batas sistem 5 MB.">
             <div className="relative">
@@ -437,17 +404,16 @@ function TiketTab({ draft, set, errors }: { draft: AdminSettings; set: SetFn; er
 
 function NotifikasiTab({ draft, setDraft }: { draft: AdminSettings; setDraft: React.Dispatch<React.SetStateAction<AdminSettings>> }) {
   const n = draft.notifikasi;
-  const ubah = (k: NotifKey, kanal: "inapp" | "email", v: boolean) => setDraft((d) => ({ ...d, notifikasi: { ...d.notifikasi, [k]: { ...d.notifikasi[k], [kanal]: v } } }));
+  const ubah = (k: NotifKey, v: boolean) => setDraft((d) => ({ ...d, notifikasi: { ...d.notifikasi, [k]: { inapp: v } } }));
   return (
     <>
-      <SectionCard icon={Bell} title="Peristiwa & Kanal" desc="Pilih peristiwa yang memicu notifikasi untuk Administrator">
+      <SectionCard icon={Bell} title="Peristiwa & Kanal" desc="Pilih peristiwa yang memicu notifikasi di dalam aplikasi untuk Administrator">
         <div className="overflow-x-auto -mx-2">
           <table className="w-full min-w-[460px] text-left">
             <thead>
               <tr className="text-[11px] uppercase tracking-wider text-slate-400">
                 <th className="px-2 pb-3 font-semibold">Peristiwa</th>
                 <th className="px-2 pb-3 font-semibold text-center w-24">Di aplikasi</th>
-                <th className="px-2 pb-3 font-semibold text-center w-24">Email</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
@@ -457,17 +423,12 @@ function NotifikasiTab({ draft, setDraft }: { draft: AdminSettings; setDraft: Re
                     <p className="text-sm font-medium text-slate-900">{NOTIF_LABEL[k].judul}</p>
                     <p className="text-xs text-slate-500 mt-0.5">{NOTIF_LABEL[k].desc}</p>
                   </td>
-                  <td className="px-2 py-3.5"><div className="flex justify-center"><Switch checked={n[k].inapp} onChange={(v) => ubah(k, "inapp", v)} label={`${NOTIF_LABEL[k].judul} di aplikasi`} /></div></td>
-                  <td className="px-2 py-3.5"><div className="flex justify-center"><Switch checked={n[k].email} onChange={(v) => ubah(k, "email", v)} label={`${NOTIF_LABEL[k].judul} lewat email`} /></div></td>
+                  <td className="px-2 py-3.5"><div className="flex justify-center"><Switch checked={n[k].inapp} onChange={(v) => ubah(k, v)} label={`${NOTIF_LABEL[k].judul} di aplikasi`} /></div></td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      </SectionCard>
-
-      <SectionCard icon={AtSign} title="Ringkasan Email" desc="Rekap berkala ke email administrator">
-        <ToggleRow title="Ringkasan harian" desc="Kirim rekap tiket masuk, selesai, dan melewati SLA setiap hari pukul 07:00." checked={n.ringkasanHarian} onChange={(v) => setDraft((d) => ({ ...d, notifikasi: { ...d.notifikasi, ringkasanHarian: v } }))} />
       </SectionCard>
     </>
   );

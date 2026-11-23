@@ -124,10 +124,6 @@ export default function TambahLayananPage() {
             <h3 className="text-lg font-bold text-slate-900 leading-tight">{name || "Nama Layanan"}</h3>
             <span className="text-xs text-slate-500 block mt-0.5">{category || "Kategori belum dipilih"}</span>
             <p className="text-sm text-slate-500 italic mt-2 line-clamp-3">{desc || "Deskripsi layanan akan tertera di sini saat Anda mengetik..."}</p>
-            <div className="mt-3 p-3 bg-slate-50 rounded-lg flex items-center justify-between text-xs text-slate-500">
-              <span>Standar SLA</span>
-              <span className="font-semibold text-slate-900">1 - 2 Hari Kerja</span>
-            </div>
           </div>
 
           <div className="bg-slate-50 rounded-xl p-5">

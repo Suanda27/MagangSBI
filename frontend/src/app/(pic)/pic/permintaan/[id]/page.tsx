@@ -3,12 +3,12 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
-import { ArrowLeft, Ban, Check, CheckCircle2, Clock3, FileSearch, FileText, History, Image as ImageIcon, Mail, MapPin, PauseCircle, Phone, RefreshCw, User } from "lucide-react";
+import { ArrowLeft, Ban, Check, CheckCircle2, Clock3, FileSearch, FileText, History, Hourglass, Image as ImageIcon, Mail, MapPin, PauseCircle, Phone, RefreshCw, RotateCcw, User } from "lucide-react";
 import { Avatar, PageHeader, delay } from "@/components/shared/display";
 import { PrioritasBadge, StatusBadge } from "@/components/pic/primitives";
 import { ProofUploadForm, StatusDialog, TerimaDialog, TolakDialog } from "@/components/pic/actions";
-import { tanggalJam, ukuranFile, useNow } from "@/lib/shared/format";
-import { infoSla, SLA_TONE } from "@/lib/pic/format";
+import { tanggalJam, ukuranFile } from "@/lib/shared/format";
+import { TUTUP_OTOMATIS_HARI_KERJA, tambahHariKerja } from "@/lib/pic/format";
 import { usePicStore } from "@/lib/pic/store";
 import { NAMA_BAGIAN, type Lampiran, type Permintaan } from "@/lib/pic/types";
 
@@ -41,7 +41,7 @@ function DaftarLampiran({ items, kosong }: { items: Lampiran[]; kosong: string }
   );
 }
 
-/** Stepper alur kerja: Diajukan → Diterima → Diproses → Selesai */
+/** Stepper alur kerja: Diajukan → Diterima → Diproses → Konfirmasi pengaju / Selesai */
 type StepState = "done" | "current" | "rose" | "skip" | "todo";
 
 function Alur({ p }: { p: Permintaan }) {
@@ -50,6 +50,7 @@ function Alur({ p }: { p: Permintaan }) {
       case "menunggu": return n === 1 ? "done" : n === 2 ? "current" : "todo";
       case "diproses":
       case "pending": return n <= 2 ? "done" : n === 3 ? "current" : "todo";
+      case "menunggu_konfirmasi": return n <= 3 ? "done" : "current";
       case "selesai": return "done";
       case "ditolak": return n === 1 ? "done" : n === 2 ? "rose" : "skip";
     }
@@ -57,8 +58,12 @@ function Alur({ p }: { p: Permintaan }) {
   const steps = [
     { l: "Diajukan", s: tanggalJam(p.diajukan), n: 1 },
     { l: p.status === "ditolak" ? "Ditolak" : "Diterima", s: p.ditolakPada ? tanggalJam(p.ditolakPada) : p.diterimaPada ? tanggalJam(p.diterimaPada) : "Menunggu keputusan PIC", n: 2 },
-    { l: p.status === "pending" ? "Pending" : "Sedang Diproses", s: "Pengerjaan oleh PIC", n: 3 },
-    { l: "Selesai", s: p.selesaiPada ? tanggalJam(p.selesaiPada) : "Penyelesaian tiket", n: 4 },
+    { l: p.status === "pending" ? "Pending" : "Sedang Diproses", s: p.jumlahRevisi > 0 ? `Pengerjaan oleh PIC · revisi ke-${p.jumlahRevisi}` : "Pengerjaan oleh PIC", n: 3 },
+    {
+      l: p.status === "menunggu_konfirmasi" ? "Menunggu Konfirmasi" : "Selesai",
+      s: p.selesaiPada ? tanggalJam(p.selesaiPada) : p.status === "menunggu_konfirmasi" && p.dikirimPada ? `Hasil dikirim ${tanggalJam(p.dikirimPada)}` : "Disetujui oleh pengaju",
+      n: 4,
+    },
   ];
   const box: Record<StepState, string> = {
     done: "border-blue-200 bg-blue-50/40",
@@ -97,11 +102,11 @@ function Alur({ p }: { p: Permintaan }) {
 
 export default function DetailPermintaanPage() {
   const { id } = useParams<{ id: string }>();
-  const { ambil, ready, profil } = usePicStore();
-  const now = useNow(30_000);
+  const { ambil, ready, profil, simulasiSetujui, simulasiRevisi, toast } = usePicStore();
   const [terima, setTerima] = useState(false);
   const [tolak, setTolak] = useState(false);
   const [status, setStatus] = useState(false);
+  const [alasanDemo, setAlasanDemo] = useState("");
 
   const p = ambil(id);
 
@@ -116,7 +121,6 @@ export default function DetailPermintaanPage() {
     );
   }
 
-  const sla = infoSla(p, now);
   const kembali = p.status === "menunggu" ? { href: "/pic/permintaan-masuk", l: "Permintaan Masuk" } : p.status === "selesai" || p.status === "ditolak" ? { href: "/pic/selesai", l: "Selesai & Riwayat" } : { href: "/pic/sedang-diproses", l: "Sedang Diproses" };
   const aktif = p.status === "diproses" || p.status === "pending";
 
@@ -137,9 +141,9 @@ export default function DetailPermintaanPage() {
         <StatusBadge status={p.status} />
         <PrioritasBadge prioritas={p.prioritas} />
         <span className="text-xs text-slate-400 flex items-center gap-1"><Clock3 className="w-3.5 h-3.5" /> Diajukan {tanggalJam(p.diajukan)}</span>
-        {sla.tone !== "none" && (
-          <span className={`ml-auto text-xs font-semibold px-3 py-1.5 rounded-lg border ${sla.tone === "late" ? "bg-rose-50 border-rose-200" : sla.tone === "warn" ? "bg-amber-50 border-amber-200" : "bg-slate-50 border-slate-200"} ${SLA_TONE[sla.tone]}`}>
-            SLA: {sla.label}
+        {p.jumlahRevisi > 0 && (
+          <span className="ml-auto text-xs font-semibold px-3 py-1.5 rounded-lg border bg-amber-50 border-amber-200 text-amber-800 inline-flex items-center gap-1.5">
+            <RotateCcw className="w-3.5 h-3.5" /> Revisi ke-{p.jumlahRevisi}
           </span>
         )}
       </div>
@@ -185,11 +189,23 @@ export default function DetailPermintaanPage() {
             <DaftarLampiran items={p.lampiran} kosong="Pengaju tidak melampirkan berkas." />
           </Kartu>
 
-          {p.status === "selesai" && (
-            <Kartu title="Bukti Penyelesaian" icon={CheckCircle2} right={p.selesaiPada && <span className="text-[11px] text-slate-400">Selesai {tanggalJam(p.selesaiPada)}</span>}>
-              <DaftarLampiran items={p.buktiSelesai ?? []} kosong="Tidak ada bukti terlampir." />
+          {(p.status === "selesai" || p.status === "menunggu_konfirmasi") && (
+            <Kartu
+              title="Hasil Pengerjaan"
+              icon={CheckCircle2}
+              right={<span className="text-[11px] text-slate-400">{p.selesaiPada ? `Disetujui ${tanggalJam(p.selesaiPada)}` : p.dikirimPada ? `Dikirim ${tanggalJam(p.dikirimPada)}` : ""}</span>}
+            >
+              <DaftarLampiran items={p.buktiSelesai ?? []} kosong="Tidak ada berkas terlampir." />
               {p.catatanSelesai && <p className="mt-4 text-[13px] text-slate-700 leading-relaxed rounded-lg bg-emerald-50/60 border border-emerald-100 p-3.5">{p.catatanSelesai}</p>}
             </Kartu>
+          )}
+
+          {p.status === "diproses" && p.alasanRevisi && (
+            <section className="rounded-xl border border-amber-200 bg-amber-50/70 p-5">
+              <h2 className="text-[13px] font-semibold text-amber-900 flex items-center gap-2"><RotateCcw className="w-4 h-4" /> Revisi dari Pengaju (ke-{p.jumlahRevisi})</h2>
+              <p className="text-[13px] text-amber-950/80 mt-2 leading-relaxed">{p.alasanRevisi}</p>
+              <p className="text-[11px] text-amber-800/70 mt-2">Perbaiki sesuai catatan di atas, lalu kirim hasil yang baru untuk ditinjau kembali.</p>
+            </section>
           )}
 
           {p.status === "ditolak" && (
@@ -206,7 +222,7 @@ export default function DetailPermintaanPage() {
           {p.status === "menunggu" && (
             <section className="bg-white border border-border-subtle rounded-xl p-5 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
               <h2 className="text-sm font-semibold text-slate-900">Keputusan PIC</h2>
-              <p className="text-xs text-slate-500 mt-1 leading-relaxed">Apakah permintaan ini dapat diterima dan dikerjakan oleh seksi Anda sesuai SLA?</p>
+              <p className="text-xs text-slate-500 mt-1 leading-relaxed">Apakah permintaan ini dapat diterima dan dikerjakan oleh seksi Anda? Anda tercatat sebagai penanggung jawab bila menerimanya.</p>
               <div className="mt-4 flex flex-col gap-2.5">
                 <button onClick={() => setTerima(true)} className="w-full py-2.5 text-xs font-semibold bg-blue-700 hover:bg-blue-800 text-white rounded-lg shadow-sm flex items-center justify-center gap-2 transition-all hover:-translate-y-0.5">
                   <Check className="w-4 h-4" /> Terima & Mulai Proses
@@ -216,6 +232,52 @@ export default function DetailPermintaanPage() {
                 </button>
               </div>
             </section>
+          )}
+
+          {p.status === "menunggu_konfirmasi" && (
+            <>
+              <section className="bg-white border border-border-subtle rounded-xl p-5 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+                <h2 className="text-sm font-semibold text-slate-900 flex items-center gap-2"><Hourglass className="w-4 h-4 text-sky-600" /> Menunggu Peninjauan Pengaju</h2>
+                <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                  {p.pengaju.nama} akan menyetujui hasil ini atau meminta revisi. Jika tidak ada tanggapan, tiket ditutup otomatis setelah {TUTUP_OTOMATIS_HARI_KERJA} hari kerja
+                  {p.dikirimPada && <> (paling lambat <span className="font-medium text-slate-700">{tanggalJam(tambahHariKerja(p.dikirimPada, TUTUP_OTOMATIS_HARI_KERJA))}</span>)</>}.
+                </p>
+              </section>
+
+              <section className="rounded-xl border border-dashed border-slate-300 bg-slate-50/70 p-5">
+                <h2 className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Mode demo · aksi pengaju</h2>
+                <p className="text-xs text-slate-500 mt-1 leading-relaxed">Hanya untuk mencoba alur. Setelah API tersambung, aksi ini dilakukan karyawan dari portalnya.</p>
+                <textarea
+                  value={alasanDemo}
+                  onChange={(e) => setAlasanDemo(e.target.value)}
+                  rows={2}
+                  placeholder="Alasan revisi (minimal 10 karakter)..."
+                  className="mt-3 w-full text-xs p-2.5 rounded-lg border border-slate-200 bg-white text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 resize-none transition-all"
+                />
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => {
+                      simulasiSetujui(p.id);
+                      toast({ tone: "success", title: "Disetujui pengaju (simulasi)", desc: `#${p.id} berstatus Selesai.` });
+                    }}
+                    className="py-2 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors"
+                  >
+                    Setujui
+                  </button>
+                  <button
+                    onClick={() => {
+                      if (alasanDemo.trim().length < 10) return toast({ tone: "error", title: "Alasan revisi terlalu singkat", desc: "Minimal 10 karakter." });
+                      simulasiRevisi(p.id, alasanDemo);
+                      setAlasanDemo("");
+                      toast({ tone: "info", title: "Revisi diminta (simulasi)", desc: `#${p.id} kembali ke Sedang Diproses.` });
+                    }}
+                    className="py-2 text-xs font-semibold bg-white hover:bg-amber-50 text-amber-800 border border-amber-200 rounded-lg transition-colors"
+                  >
+                    Minta Revisi
+                  </button>
+                </div>
+              </section>
+            </>
           )}
 
           {aktif && (
