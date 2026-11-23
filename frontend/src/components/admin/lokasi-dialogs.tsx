@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Ban, CheckCircle2, Info, type LucideIcon } from "lucide-react";
+import { Ban, CheckCircle2, Info, Loader2, type LucideIcon } from "lucide-react";
 import { Modal, ModalHeader } from "@/components/shared/overlay";
 import { inputCls } from "@/components/admin/settings-ui";
 import type { HasilAksi } from "@/lib/admin/lokasi";
@@ -18,8 +18,8 @@ interface FormNamaProps {
   icon: LucideIcon;
   initial?: string;
   submitLabel: string;
-  /** Mengembalikan galat seperti respons 422 server; sukses menutup dialog. */
-  onSubmit: (nilai: string) => HasilAksi;
+  /** Mengembalikan galat dari server (mis. 422); sukses menutup dialog. */
+  onSubmit: (nilai: string) => Promise<HasilAksi>;
   onClose: () => void;
 }
 
@@ -32,10 +32,14 @@ export function FormNamaModal({ open, ...props }: FormNamaProps) {
 function IsiFormNama({ title, label, placeholder, icon, initial = "", submitLabel, onSubmit, onClose }: Omit<FormNamaProps, "open">) {
   const [nilai, setNilai] = useState(initial);
   const [error, setError] = useState<string | null>(null);
+  const [proses, setProses] = useState(false);
 
-  const kirim = (e: React.FormEvent) => {
+  const kirim = async (e: React.FormEvent) => {
     e.preventDefault();
-    const hasil = onSubmit(nilai);
+    if (proses) return;
+    setProses(true);
+    const hasil = await onSubmit(nilai);
+    setProses(false);
     if (hasil.ok) onClose();
     else setError(hasil.error);
   };
@@ -64,8 +68,11 @@ function IsiFormNama({ title, label, placeholder, icon, initial = "", submitLabe
           {error && <span className="text-[11px] text-rose-600 fx-reveal">{error}</span>}
         </div>
         <div className="p-4 border-t border-slate-100 flex justify-end gap-2.5">
-          <button type="button" className={btnGhost} onClick={onClose}>Batal</button>
-          <button type="submit" className="px-4 py-2 text-xs font-semibold bg-blue-700 hover:bg-blue-800 text-white rounded-lg shadow-sm transition-colors">{submitLabel}</button>
+          <button type="button" className={btnGhost} onClick={onClose} disabled={proses}>Batal</button>
+          <button type="submit" disabled={proses} className="px-4 py-2 text-xs font-semibold bg-blue-700 hover:bg-blue-800 text-white rounded-lg shadow-sm transition-colors disabled:opacity-60 flex items-center gap-1.5">
+            {proses && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+            {proses ? "Menyimpan..." : submitLabel}
+          </button>
         </div>
       </form>
     </Modal>
@@ -82,7 +89,7 @@ export interface TargetStatus {
   ke: "aktif" | "nonaktif";
 }
 
-export function KonfirmasiStatusModal({ target, onClose, onKonfirmasi }: { target: TargetStatus | null; onClose: () => void; onKonfirmasi: () => void }) {
+export function KonfirmasiStatusModal({ target, onClose, onKonfirmasi }: { target: TargetStatus | null; onClose: () => void; onKonfirmasi: () => void | Promise<void> }) {
   if (!target) return null;
   const nonaktif = target.ke === "nonaktif";
   const nama = target.jenis === "plant" ? `Plant “${target.nama}”` : `Lantai “${target.nama}” (${target.induk})`;
