@@ -1,59 +1,95 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import {
+  AlertCircle,
   ArrowLeft,
+  CheckCircle2,
   ChevronDown,
   FileText,
-  ImagePlus,
   Loader2,
   MapPin,
   Send,
   Trash2,
   UploadCloud,
-  CheckCircle2,
-  AlertCircle,
 } from "lucide-react";
 import PageHeader from "@/components/employee/page-header";
 import SectionIcon from "@/components/employee/section-icon";
-import { FLOORS, PLANTS, getSection } from "@/lib/employee-data";
+import { getSections } from "@/lib/api/auth";
+import { toApiError } from "@/lib/api/errors";
+import { buatPermintaan, getAturanLampiran, getLayanan, getLokasi } from "@/lib/api/pengajuan";
+import type { AturanLampiran, KategoriLayanan, Plant, Prioritas, Section } from "@/lib/api/types";
+import { ikonSection } from "@/lib/section-meta";
 
 const dl = (ms: number) => ({ "--delay": `${ms}ms` } as React.CSSProperties);
-
-const MAX_DOC = 10 * 1024 * 1024;
-const MAX_IMG = 5 * 1024 * 1024;
-const DOC_EXT = ["pdf", "doc", "docx", "xls", "xlsx"];
-const IMG_EXT = ["jpg", "jpeg", "png"];
 
 const fieldCls =
   "w-full h-11 px-3.5 bg-white border rounded-lg text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 transition-all duration-300 hover:border-slate-400";
 const labelCls = "block text-[13px] font-semibold text-slate-700 mb-1.5";
 
+const URGENSI: { value: Prioritas; label: string; hint: string }[] = [
+  { value: "normal", label: "Normal", hint: "Kebutuhan biasa" },
+  { value: "tinggi", label: "Tinggi", hint: "Perlu segera" },
+  { value: "mendesak", label: "Mendesak", hint: "Mengganggu pekerjaan" },
+];
+
 function fmtSize(b: number) {
   return b > 1024 * 1024 ? `${(b / 1024 / 1024).toFixed(1)} MB` : `${Math.max(1, Math.round(b / 1024))} KB`;
 }
 
+interface Referensi {
+  section: Section;
+  kategori: KategoriLayanan[];
+  plants: Plant[];
+  aturan: AturanLampiran;
+}
+
+const FORM_AWAL = { category: "", service: "", plant: "", floor: "", detail: "", priority: "normal" as Prioritas, title: "", description: "" };
+
 export default function FormPermintaanPage() {
   const router = useRouter();
   const params = useParams<{ section: string }>();
-  const section = getSection(params.section);
+  const kode = (params.section ?? "").toUpperCase();
 
-  const [form, setForm] = useState({ category: "", service: "", plant: "", floor: "", title: "", description: "" });
+  const [ref, setRef] = useState<Referensi | null>(null);
+  const [loadError, setLoadError] = useState("");
+  const [form, setForm] = useState(FORM_AWAL);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [photo, setPhoto] = useState<File | null>(null);
-  const [doc, setDoc] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
   const [fileError, setFileError] = useState("");
+  const [generalError, setGeneralError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const photoRef = useRef<HTMLInputElement>(null);
-  const docRef = useRef<HTMLInputElement>(null);
+  const [kodeTiket, setKodeTiket] = useState("");
+  const fileRef = useRef<HTMLInputElement>(null);
 
-  if (!section) {
+  // Muat section, layanan, lokasi, dan aturan lampiran dari server.
+  useEffect(() => {
+    let dibatalkan = false;
+    (async () => {
+      try {
+        const sections = await getSections();
+        const section = sections.find((s) => s.kode_bagian.toUpperCase() === kode);
+        if (!section) {
+          if (!dibatalkan) setLoadError("Departemen tidak ditemukan.");
+          return;
+        }
+        const [kategori, plants, aturan] = await Promise.all([getLayanan(section.id), getLokasi(), getAturanLampiran()]);
+        if (!dibatalkan) setRef({ section, kategori, plants, aturan });
+      } catch (err) {
+        if (!dibatalkan) setLoadError(toApiError(err).message);
+      }
+    })();
+    return () => {
+      dibatalkan = true;
+    };
+  }, [kode]);
+
+  if (loadError) {
     return (
       <div className="rounded-xl border border-slate-200 bg-white p-10 text-center shadow-sm">
-        <p className="text-sm font-medium text-slate-800">Departemen tidak ditemukan.</p>
+        <p className="text-sm font-medium text-slate-800">{loadError}</p>
         <Link href="/employee/pengajuan-layanan" className="mt-3 inline-block text-[13px] font-medium text-blue-700 hover:text-blue-900">
           Kembali memilih departemen
         </Link>
@@ -61,51 +97,115 @@ export default function FormPermintaanPage() {
     );
   }
 
-  const services = section.categories.find((c) => c.name === form.category)?.services ?? [];
+  if (!ref) {
+    return (
+      <div className="flex items-center justify-center gap-2 py-24 text-sm text-slate-500">
+        <Loader2 className="w-4 h-4 animate-spin" />
+        Memuat formulir...
+      </div>
+    );
+  }
+
+  const { section, kategori, plants, aturan } = ref;
+  const layananDipilih = kategori.find((k) => k.kategori === form.category)?.layanan ?? [];
+  const lantaiDipilih = plants.find((p) => String(p.id) === form.plant)?.lantais ?? [];
+  const namaPlant = plants.find((p) => String(p.id) === form.plant)?.nama_plant;
+  const namaLantai = lantaiDipilih.find((l) => String(l.id) === form.floor)?.nama_lantai;
+  const formatLabel = aturan.format.map((f) => f.toUpperCase()).join(", ");
 
   const set = (k: string, v: string) => {
-    setForm((p) => ({ ...p, [k]: v, ...(k === "category" ? { service: "" } : {}) }));
+    setForm((p) => ({
+      ...p,
+      [k]: v,
+      ...(k === "category" ? { service: "" } : {}),
+      ...(k === "plant" ? { floor: "" } : {}),
+    }));
     if (errors[k]) setErrors((p) => ({ ...p, [k]: "" }));
   };
 
-  const pickFile = (kind: "photo" | "doc", f?: File | null) => {
-    if (!f) return;
-    const ext = f.name.split(".").pop()?.toLowerCase() ?? "";
-    const okExt = kind === "photo" ? IMG_EXT : DOC_EXT;
-    const max = kind === "photo" ? MAX_IMG : MAX_DOC;
-    if (!okExt.includes(ext)) {
-      setFileError(`Format tidak didukung. Gunakan: ${okExt.join(", ").toUpperCase()}.`);
-      return;
+  const addFiles = (list: FileList | null) => {
+    if (!list) return;
+    const next = [...files];
+    const batasByte = aturan.maks_ukuran_mb * 1024 * 1024;
+    let pesan = "";
+
+    for (const f of Array.from(list)) {
+      const ext = f.name.split(".").pop()?.toLowerCase() ?? "";
+      const diizinkan = aturan.format.includes(ext) || (ext === "jpeg" && aturan.format.includes("jpg"));
+      if (!diizinkan) {
+        pesan = `"${f.name}" tidak didukung. Format yang diizinkan: ${formatLabel}.`;
+      } else if (f.size > batasByte) {
+        pesan = `"${f.name}" melebihi batas ${aturan.maks_ukuran_mb} MB.`;
+      } else if (next.some((x) => x.name === f.name && x.size === f.size)) {
+        pesan = `"${f.name}" sudah ditambahkan.`;
+      } else if (next.length >= aturan.maks_berkas) {
+        pesan = `Maksimal ${aturan.maks_berkas} berkas per permintaan.`;
+      } else {
+        next.push(f);
+      }
     }
-    if (f.size > max) {
-      setFileError(`Ukuran file melebihi batas ${kind === "photo" ? "5MB" : "10MB"}.`);
-      return;
-    }
-    setFileError("");
-    if (kind === "photo") setPhoto(f);
-    else setDoc(f);
+
+    setFiles(next);
+    setFileError(pesan);
+    if (fileRef.current) fileRef.current.value = ""; // izinkan memilih berkas yang sama lagi
   };
 
   const validate = () => {
     const e: Record<string, string> = {};
     if (!form.category) e.category = "Silakan pilih kategori layanan.";
     if (!form.service) e.service = "Silakan pilih layanan.";
+    if (!form.plant) e.plant = "Silakan pilih plant.";
+    if (!form.floor) e.floor = "Silakan pilih lantai.";
     if (!form.title.trim()) e.title = "Judul permintaan wajib diisi.";
+    else if (form.title.trim().length > 150) e.title = "Judul maksimal 150 karakter.";
     if (!form.description.trim()) e.description = "Deskripsi kebutuhan wajib diisi.";
+    else if (form.description.trim().length < 10) e.description = "Deskripsi minimal 10 karakter.";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
 
-  const submit = (ev: React.FormEvent) => {
+  const submit = async (ev: React.FormEvent) => {
     ev.preventDefault();
-    if (!validate()) return;
+    setGeneralError("");
+    if (!validate()) {
+      setGeneralError("Mohon periksa kembali kolom formulir yang belum sesuai.");
+      return;
+    }
+
     setIsLoading(true);
-    // Simulasi POST /api/employee/permintaan
-    setTimeout(() => {
+    try {
+      const tiket = await buatPermintaan({
+        id_layanan: Number(form.service),
+        id_plant: Number(form.plant),
+        id_lantai: Number(form.floor),
+        lokasi_detail: form.detail,
+        judul: form.title,
+        deskripsi: form.description,
+        prioritas: form.priority,
+        lampiran: files,
+      });
+      setKodeTiket(tiket.kode_tiket);
+      setTimeout(() => router.push("/employee/permintaan-saya"), 2200);
+    } catch (err) {
+      const e = toApiError(err);
+      if (e.isValidation) {
+        const peta: Record<string, string> = {};
+        const pesan = e.errors;
+        if (pesan.id_layanan?.[0]) peta.service = pesan.id_layanan[0];
+        if (pesan.id_plant?.[0]) peta.plant = pesan.id_plant[0];
+        if (pesan.id_lantai?.[0]) peta.floor = pesan.id_lantai[0];
+        if (pesan.judul?.[0]) peta.title = pesan.judul[0];
+        if (pesan.deskripsi?.[0]) peta.description = pesan.deskripsi[0];
+        if (pesan.prioritas?.[0]) peta.priority = pesan.prioritas[0];
+        const lampiran = Object.entries(pesan).find(([k]) => k.startsWith("lampiran"));
+        if (lampiran?.[1]?.[0]) setFileError(lampiran[1][0]);
+        setErrors(peta);
+        setGeneralError("Mohon periksa kembali kolom formulir yang belum sesuai.");
+      } else {
+        setGeneralError(e.message);
+      }
       setIsLoading(false);
-      setIsSuccess(true);
-      setTimeout(() => router.push("/employee/permintaan-saya"), 1400);
-    }, 1000);
+    }
   };
 
   const err = (k: string) =>
@@ -113,9 +213,11 @@ export default function FormPermintaanPage() {
       <p className="mt-1.5 text-xs text-red-600 font-medium animate-in fade-in slide-in-from-top-2 duration-300">{errors[k]}</p>
     ) : null;
 
+  const isSuccess = kodeTiket !== "";
+
   return (
     <>
-      <PageHeader title={`Buat Permintaan - ${section.name}`} description="Langkah 2 dari 2: isi detail permintaan layanan sesuai kebutuhan Anda.">
+      <PageHeader title={`Buat Permintaan - ${section.nama_bagian}`} description="Langkah 2 dari 2: isi detail permintaan layanan sesuai kebutuhan Anda.">
         <Link
           href="/employee/pengajuan-layanan"
           className="group inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white border border-slate-200 text-[13px] font-medium text-slate-700 hover:border-blue-200 hover:text-blue-900"
@@ -125,30 +227,55 @@ export default function FormPermintaanPage() {
         </Link>
       </PageHeader>
 
+      {isSuccess && (
+        <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start gap-3 animate-in fade-in zoom-in-95 duration-300" role="status">
+          <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+          <div>
+            <p className="text-sm font-semibold text-emerald-800">Permintaan berhasil diajukan</p>
+            <p className="text-xs text-emerald-700 mt-0.5">
+              Nomor tiket Anda: <span className="font-semibold">{kodeTiket}</span>. Mengalihkan ke daftar permintaan...
+            </p>
+          </div>
+        </div>
+      )}
+
+      {generalError && (
+        <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-xs text-red-700 animate-in fade-in slide-in-from-top-2 duration-300" role="alert">
+          <AlertCircle className="w-4 h-4 shrink-0" />
+          {generalError}
+        </div>
+      )}
+
       <form onSubmit={submit} className="grid gap-6" noValidate>
         {/* Informasi permintaan */}
         <section className="fx-reveal rounded-xl border border-slate-200 bg-white shadow-sm" style={dl(80)}>
           <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <span className="w-10 h-10 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center">
-                <SectionIcon name={section.icon} className="w-5 h-5" />
+                <SectionIcon name={ikonSection(section.kode_bagian)} className="w-5 h-5" />
               </span>
               <div>
                 <h2 className="text-[15px] font-semibold text-slate-900">Informasi Permintaan</h2>
-                <p className="text-xs text-slate-500">Lengkapi kategori layanan dan rincian kebutuhan {section.short}.</p>
+                <p className="text-xs text-slate-500">Lengkapi kategori layanan dan rincian kebutuhan {section.kode_bagian}.</p>
               </div>
             </div>
             <span className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-rose-50 text-rose-600 border border-rose-100">Wajib Diisi</span>
           </div>
 
           <div className="p-5 grid gap-5">
+            {kategori.length === 0 && (
+              <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-800">
+                Belum ada layanan aktif untuk departemen ini. Silakan pilih departemen lain atau hubungi Admin.
+              </div>
+            )}
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
                 <label htmlFor="category" className={labelCls}>Kategori Layanan <span className="text-red-500">*</span></label>
                 <div className="relative">
                   <select id="category" value={form.category} onChange={(e) => set("category", e.target.value)} className={`${fieldCls} appearance-none pr-10 ${errors.category ? "border-red-500" : "border-slate-300"}`}>
                     <option value="" disabled>Pilih kategori layanan...</option>
-                    {section.categories.map((c) => <option key={c.name} value={c.name}>{c.name}</option>)}
+                    {kategori.map((k) => <option key={k.kategori} value={k.kategori}>{k.kategori}</option>)}
                   </select>
                   <ChevronDown className="absolute right-3 top-3.5 w-4 h-4 text-slate-400 pointer-events-none" />
                 </div>
@@ -159,7 +286,7 @@ export default function FormPermintaanPage() {
                 <div className="relative">
                   <select id="service" value={form.service} disabled={!form.category} onChange={(e) => set("service", e.target.value)} className={`${fieldCls} appearance-none pr-10 disabled:bg-slate-50 disabled:cursor-not-allowed ${errors.service ? "border-red-500" : "border-slate-300"}`}>
                     <option value="" disabled>{form.category ? "Pilih jenis layanan..." : "Pilih kategori terlebih dahulu"}</option>
-                    {services.map((s) => <option key={s} value={s}>{s}</option>)}
+                    {layananDipilih.map((s) => <option key={s.id} value={s.id}>{s.nama_layanan}</option>)}
                   </select>
                   <ChevronDown className="absolute right-3 top-3.5 w-4 h-4 text-slate-400 pointer-events-none" />
                 </div>
@@ -169,34 +296,70 @@ export default function FormPermintaanPage() {
 
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <span className="text-[13px] font-semibold text-slate-700">Lokasi (Plant &amp; Lantai)</span>
-                <span className="text-[11px] text-slate-400">Opsional</span>
+                <span className="text-[13px] font-semibold text-slate-700">Lokasi (Plant &amp; Lantai) <span className="text-red-500">*</span></span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {[
-                  { k: "plant", label: "Plant", opts: PLANTS },
-                  { k: "floor", label: "Lantai", opts: FLOORS },
-                ].map(({ k, label, opts }) => (
-                  <div className="relative" key={k}>
-                    <select aria-label={label} value={form[k as "plant" | "floor"]} onChange={(e) => set(k, e.target.value)} className={`${fieldCls} appearance-none pr-10 border-slate-300`}>
-                      <option value="">Pilih {label}</option>
-                      {opts.map((o) => <option key={o} value={o}>{o}</option>)}
+                <div>
+                  <div className="relative">
+                    <select aria-label="Plant" value={form.plant} onChange={(e) => set("plant", e.target.value)} className={`${fieldCls} appearance-none pr-10 ${errors.plant ? "border-red-500" : "border-slate-300"}`}>
+                      <option value="" disabled>Pilih Plant</option>
+                      {plants.map((p) => <option key={p.id} value={p.id}>{p.nama_plant}</option>)}
                     </select>
                     <ChevronDown className="absolute right-3 top-3.5 w-4 h-4 text-slate-400 pointer-events-none" />
                   </div>
-                ))}
+                  {err("plant")}
+                </div>
+                <div>
+                  <div className="relative">
+                    <select aria-label="Lantai" value={form.floor} disabled={!form.plant} onChange={(e) => set("floor", e.target.value)} className={`${fieldCls} appearance-none pr-10 disabled:bg-slate-50 disabled:cursor-not-allowed ${errors.floor ? "border-red-500" : "border-slate-300"}`}>
+                      <option value="" disabled>{form.plant ? "Pilih Lantai" : "Pilih plant terlebih dahulu"}</option>
+                      {lantaiDipilih.map((l) => <option key={l.id} value={l.id}>{l.nama_lantai}</option>)}
+                    </select>
+                    <ChevronDown className="absolute right-3 top-3.5 w-4 h-4 text-slate-400 pointer-events-none" />
+                  </div>
+                  {err("floor")}
+                </div>
               </div>
-              {(form.plant || form.floor) && (
+              {(namaPlant || namaLantai) && (
                 <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-50 text-blue-800 text-xs font-medium animate-in fade-in zoom-in-95 duration-300">
                   <MapPin className="w-3.5 h-3.5" />
-                  Lokasi terpilih: {[form.plant, form.floor].filter(Boolean).join(" • ")}
+                  Lokasi terpilih: {[namaPlant, namaLantai].filter(Boolean).join(" • ")}
                 </div>
               )}
+              <div className="mt-4">
+                <label htmlFor="detail" className={labelCls}>Detail Lokasi <span className="text-[11px] font-normal text-slate-400">(opsional)</span></label>
+                <input id="detail" type="text" maxLength={255} value={form.detail} onChange={(e) => set("detail", e.target.value)} placeholder="Contoh: Dekat pantry, ruang meeting B" className={`${fieldCls} border-slate-300`} />
+              </div>
+            </div>
+
+            <div>
+              <span className={labelCls}>Urgensi <span className="text-red-500">*</span></span>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3" role="radiogroup" aria-label="Urgensi">
+                {URGENSI.map((u) => {
+                  const aktif = form.priority === u.value;
+                  return (
+                    <button
+                      key={u.value}
+                      type="button"
+                      role="radio"
+                      aria-checked={aktif}
+                      onClick={() => set("priority", u.value)}
+                      className={`text-left rounded-lg border px-3.5 py-2.5 transition-all duration-300 hover:-translate-y-0.5 ${
+                        aktif ? "border-blue-600 bg-blue-50/60 ring-4 ring-blue-100" : "border-slate-300 bg-white hover:border-blue-300"
+                      }`}
+                    >
+                      <span className="block text-[13px] font-semibold text-slate-900">{u.label}</span>
+                      <span className="block text-[11px] text-slate-500">{u.hint}</span>
+                    </button>
+                  );
+                })}
+              </div>
+              {err("priority")}
             </div>
 
             <div>
               <label htmlFor="title" className={labelCls}>Judul Permintaan <span className="text-red-500">*</span></label>
-              <input id="title" type="text" value={form.title} onChange={(e) => set("title", e.target.value)} placeholder="Contoh: Permintaan perbaikan peralatan" className={`${fieldCls} ${errors.title ? "border-red-500" : "border-slate-300"}`} />
+              <input id="title" type="text" maxLength={150} value={form.title} onChange={(e) => set("title", e.target.value)} placeholder="Contoh: Permintaan perbaikan peralatan" className={`${fieldCls} ${errors.title ? "border-red-500" : "border-slate-300"}`} />
               {err("title")}
             </div>
 
@@ -218,58 +381,46 @@ export default function FormPermintaanPage() {
             <span className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-slate-100 text-slate-500">Opsional</span>
           </div>
 
-          <div className="p-5 grid grid-cols-1 lg:grid-cols-2 gap-5">
-            {/* Dokumen */}
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[13px] font-semibold text-slate-700 inline-flex items-center gap-1.5"><FileText className="w-4 h-4 text-slate-400" />Unggah Dokumen</span>
-                <span className="text-[11px] text-slate-400">Maks. 10MB</span>
-              </div>
-              <input ref={docRef} type="file" accept=".pdf,.doc,.docx,.xls,.xlsx" className="hidden" onChange={(e) => pickFile("doc", e.target.files?.[0])} />
-              {doc ? (
-                <div className="flex items-center justify-between gap-3 rounded-lg border border-emerald-200 bg-emerald-50/50 p-3 animate-in fade-in zoom-in-95 duration-300">
-                  <div className="min-w-0">
-                    <p className="text-sm font-medium text-slate-900 truncate">{doc.name}</p>
-                    <p className="text-xs text-slate-500">{fmtSize(doc.size)} • Siap diunggah</p>
-                  </div>
-                  <button type="button" onClick={() => setDoc(null)} className="p-1.5 rounded-md text-slate-400 hover:text-red-600 hover:bg-red-50" aria-label="Hapus dokumen"><Trash2 className="w-4 h-4" /></button>
-                </div>
-              ) : (
-                <button type="button" onClick={() => docRef.current?.click()} className="group w-full rounded-lg border-2 border-dashed border-slate-300 hover:border-blue-400 hover:bg-blue-50/40 p-6 flex flex-col items-center text-center transition-all duration-300">
-                  <UploadCloud className="w-8 h-8 text-slate-300 group-hover:text-blue-500 group-hover:-translate-y-1 transition-all duration-300" />
-                  <p className="mt-2 text-[13px] text-slate-600"><span className="font-medium text-blue-700">Klik untuk mengunggah</span> dokumen</p>
-                  <p className="text-[11px] text-slate-400 mt-1">PDF, DOC, DOCX, XLS, XLSX</p>
-                </button>
-              )}
-            </div>
+          <div className="p-5 grid gap-4">
+            <input
+              ref={fileRef}
+              type="file"
+              multiple
+              accept={aturan.format.map((f) => `.${f}`).join(",")}
+              className="hidden"
+              onChange={(e) => addFiles(e.target.files)}
+            />
+            <button
+              type="button"
+              disabled={files.length >= aturan.maks_berkas}
+              onClick={() => fileRef.current?.click()}
+              className="group w-full rounded-lg border-2 border-dashed border-slate-300 hover:border-blue-400 hover:bg-blue-50/40 p-6 flex flex-col items-center text-center transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <UploadCloud className="w-8 h-8 text-slate-300 group-hover:text-blue-500 group-hover:-translate-y-1 transition-all duration-300" />
+              <p className="mt-2 text-[13px] text-slate-600"><span className="font-medium text-blue-700">Klik untuk memilih berkas</span></p>
+              <p className="text-[11px] text-slate-400 mt-1">
+                {formatLabel} • Maks. {aturan.maks_ukuran_mb} MB per berkas • Maks. {aturan.maks_berkas} berkas
+              </p>
+            </button>
 
-            {/* Foto */}
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[13px] font-semibold text-slate-700 inline-flex items-center gap-1.5"><ImagePlus className="w-4 h-4 text-slate-400" />Unggah Foto / Bukti Kondisi</span>
-                <span className="text-[11px] text-slate-400">JPG, PNG • Maks. 5MB</span>
-              </div>
-              <input ref={photoRef} type="file" accept=".jpg,.jpeg,.png" className="hidden" onChange={(e) => pickFile("photo", e.target.files?.[0])} />
-              {photo ? (
-                <div className="flex items-center justify-between gap-3 rounded-lg border border-emerald-200 bg-emerald-50/50 p-3 animate-in fade-in zoom-in-95 duration-300">
-                  <div className="flex items-center gap-3 min-w-0">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={URL.createObjectURL(photo)} alt="Pratinjau foto" className="w-12 h-12 rounded-md object-cover border border-slate-200" />
-                    <div className="min-w-0">
-                      <p className="text-sm font-medium text-slate-900 truncate">{photo.name}</p>
-                      <p className="text-xs text-slate-500">{fmtSize(photo.size)} • Siap diunggah</p>
+            {files.length > 0 && (
+              <ul className="grid gap-2">
+                {files.map((f) => (
+                  <li key={`${f.name}-${f.size}`} className="flex items-center justify-between gap-3 rounded-lg border border-emerald-200 bg-emerald-50/50 p-3 animate-in fade-in zoom-in-95 duration-300">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <FileText className="w-5 h-5 text-emerald-600 shrink-0" />
+                      <div className="min-w-0">
+                        <p className="text-sm font-medium text-slate-900 truncate">{f.name}</p>
+                        <p className="text-xs text-slate-500">{fmtSize(f.size)} • Siap diunggah</p>
+                      </div>
                     </div>
-                  </div>
-                  <button type="button" onClick={() => setPhoto(null)} className="p-1.5 rounded-md text-slate-400 hover:text-red-600 hover:bg-red-50" aria-label="Hapus foto"><Trash2 className="w-4 h-4" /></button>
-                </div>
-              ) : (
-                <button type="button" onClick={() => photoRef.current?.click()} className="group w-full rounded-lg border-2 border-dashed border-slate-300 hover:border-blue-400 hover:bg-blue-50/40 p-6 flex flex-col items-center text-center transition-all duration-300">
-                  <ImagePlus className="w-8 h-8 text-slate-300 group-hover:text-blue-500 group-hover:-translate-y-1 transition-all duration-300" />
-                  <p className="mt-2 text-[13px] text-slate-600"><span className="font-medium text-blue-700">Klik untuk menambah foto</span></p>
-                  <p className="text-[11px] text-slate-400 mt-1">Disarankan untuk keluhan fasilitas atau kerusakan alat</p>
-                </button>
-              )}
-            </div>
+                    <button type="button" onClick={() => setFiles(files.filter((x) => x !== f))} className="p-1.5 rounded-md text-slate-400 hover:text-red-600 hover:bg-red-50" aria-label={`Hapus ${f.name}`}>
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
           {fileError && (
@@ -286,9 +437,9 @@ export default function FormPermintaanPage() {
           </button>
           <button
             type="submit"
-            disabled={isLoading || isSuccess}
+            disabled={isLoading || isSuccess || kategori.length === 0}
             className={`group fx-shine inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg text-white text-[13px] font-medium shadow-sm transition-all duration-300 disabled:cursor-not-allowed ${
-              isSuccess ? "bg-emerald-600" : "bg-gradient-to-r from-blue-800 to-blue-600 shadow-blue-800/30 hover:shadow-lg hover:-translate-y-0.5"
+              isSuccess ? "bg-emerald-600" : "bg-gradient-to-r from-blue-800 to-blue-600 shadow-blue-800/30 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-60"
             }`}
           >
             {isSuccess ? (

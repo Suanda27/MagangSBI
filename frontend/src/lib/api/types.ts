@@ -61,3 +61,62 @@ export interface ChangePasswordPayload {
   password: string;
   password_confirmation: string;
 }
+
+// ---- Pengajuan layanan (docs: PRD 6.2 dan 6.3) ----
+
+export type Prioritas = "normal" | "tinggi" | "mendesak";
+
+export interface Layanan {
+  id: number;
+  kode_layanan: string;
+  nama_layanan: string;
+  kategori: string;
+  deskripsi: string | null;
+}
+
+/** GET /api/referensi/layanan: dikelompokkan per kategori. */
+export interface KategoriLayanan {
+  kategori: string;
+  layanan: Layanan[];
+}
+
+export interface Lantai {
+  id: number;
+  nama_lantai: string;
+  id_plant: number;
+}
+
+export interface Plant {
+  id: number;
+  nama_plant: string;
+  lantais: Lantai[];
+}
+
+/** GET /api/referensi/aturan-lampiran: mengikuti pengaturan Admin. */
+export interface AturanLampiran {
+  maks_berkas: number;
+  maks_ukuran_mb: number;
+  /** Ekstensi huruf kecil, mis. ["jpg", "png", "pdf"]. */
+  format: string[];
+}
+
+export interface BuatPermintaanPayload {
+  id_layanan: number;
+  id_plant: number;
+  id_lantai: number;
+  lokasi_detail?: string;
+  judul: string;
+  deskripsi: string;
+  prioritas: Prioritas;
+  lampiran: File[];
+}
+
+/** Tiket yang dikembalikan POST /api/employee/permintaan. */
+export interface PermintaanBaru {
+  id: number;
+  kode_tiket: string;
+  judul: string;
+  status: string;
+  status_label: string;
+  prioritas: Prioritas;
+}
