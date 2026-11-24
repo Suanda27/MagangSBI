@@ -120,3 +120,29 @@ export interface PermintaanBaru {
   status_label: string;
   prioritas: Prioritas;
 }
+
+// ---- Dashboard karyawan (GET /api/employee/dashboard) ----
+
+export type StatusTiket = "submitted" | "in_progress" | "pending" | "waiting_review" | "completed" | "rejected";
+
+/** Tiket ringkas pada daftar "terbaru" dashboard karyawan. */
+export interface TiketRingkas {
+  id: number;
+  kode_tiket: string;
+  judul: string;
+  status: StatusTiket;
+  status_label: string;
+  prioritas: Prioritas;
+  prioritas_label: string;
+  layanan?: { id: number; nama_layanan: string; kategori: string };
+  bagian?: { id: number; kode_bagian: string; nama_bagian: string };
+  dibuat_pada: string | null;
+}
+
+export interface DashboardKaryawan {
+  total: number;
+  /** Tiket yang belum final (diajukan, diproses, pending, menunggu konfirmasi). */
+  berjalan: number;
+  per_status: Record<StatusTiket, number>;
+  terbaru: TiketRingkas[];
+}
