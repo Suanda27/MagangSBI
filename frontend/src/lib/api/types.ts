@@ -146,3 +146,57 @@ export interface DashboardKaryawan {
   per_status: Record<StatusTiket, number>;
   terbaru: TiketRingkas[];
 }
+
+// ---- Dashboard supervisor (GET /api/supervisor/dashboard) ----
+
+export type AksiRiwayat =
+  | "submitted"
+  | "accepted"
+  | "rejected"
+  | "paused"
+  | "resumed"
+  | "result_sent"
+  | "revision_requested"
+  | "approved"
+  | "auto_closed";
+
+export interface TiketSupervisor {
+  id: number;
+  kode_tiket: string;
+  judul: string;
+  status: StatusTiket;
+  status_label: string;
+  prioritas: Prioritas;
+  prioritas_label: string;
+  layanan: string | null;
+  pengaju: string | null;
+  pic: string | null;
+  dibuat_pada: string | null;
+}
+
+export interface AktivitasSupervisor {
+  id: number;
+  aksi: AksiRiwayat;
+  judul: string;
+  status: StatusTiket;
+  kode_tiket: string | null;
+  judul_tiket: string | null;
+  /** Nama pelaku, atau "Sistem". */
+  pelaku: string;
+  waktu: string | null;
+}
+
+export interface DashboardSupervisor {
+  bagian: Bagian | null;
+  total: number;
+  berjalan: number;
+  baru_hari_ini: number;
+  per_status: Record<StatusTiket, number>;
+  /** Persen tiket Selesai; null bila belum ada tiket. */
+  rasio_selesai: number | null;
+  /** Rata-rata jam dari dibuat sampai selesai; null bila belum ada tiket Selesai. */
+  rata_durasi_jam: number | null;
+  rata_revisi: number | null;
+  terbaru: TiketSupervisor[];
+  aktivitas: AktivitasSupervisor[];
+}
