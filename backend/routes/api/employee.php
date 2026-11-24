@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\Employee\DashboardController;
+use App\Http\Controllers\Api\Employee\PermintaanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/ping', fn (Request $request) => response()->json([
     'peran' => $request->user()->role->value,
 ]));
+
+Route::get('dashboard', [DashboardController::class, 'index'])->name('employee.dashboard');
+
+// Pengajuan tiket baru (multipart). Dibatasi agar tidak dipakai membanjiri antrean.
+Route::post('permintaan', [PermintaanController::class, 'store'])
+    ->middleware('throttle:30,1')
+    ->name('employee.permintaan.store');
