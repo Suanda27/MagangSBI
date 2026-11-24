@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Supervisor\DashboardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/ping', fn (Request $request) => response()->json([
     'peran' => $request->user()->role->value,
 ]));
+
+Route::get('dashboard', [DashboardController::class, 'index'])->name('supervisor.dashboard');
