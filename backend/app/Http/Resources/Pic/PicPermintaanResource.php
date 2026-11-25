@@ -26,6 +26,8 @@ class PicPermintaanResource extends PermintaanResource
                 'jabatan' => $this->pengaju->jabatan,
                 'bagian' => $this->pengaju->relationLoaded('bagian') ? $this->pengaju->bagian?->nama_bagian : null,
             ] : null),
+            // Ada bila relasi dimuat (daftar Admin); detail PIC memuatnya sendiri.
+            'pic' => $this->whenLoaded('pic', fn () => $this->pic ? ['id' => $this->pic->id, 'name' => $this->pic->name] : null),
             'diterima_pada' => $this->diterima_pada?->toIso8601String(),
             'selesai_pada' => $this->selesai_pada?->toIso8601String(),
             'diperbarui_pada' => $this->updated_at?->toIso8601String(),

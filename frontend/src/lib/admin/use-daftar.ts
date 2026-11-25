@@ -14,15 +14,16 @@ export function useDebounced<T>(nilai: T, ms = 400): T {
   return v;
 }
 
-type Muat<T> = { kunci: string; data: Halaman<T> | null; error: string | null };
+type Muat<H> = { kunci: string; data: H | null; error: string | null };
 
 /**
  * Memuat satu halaman daftar dari API. `kunci` mewakili semua parameter (filter, halaman, penyegar):
  * saat berubah, permintaan baru dikirim dan `memuat` bernilai true sampai hasilnya tiba.
  * Data lama tetap tersedia selama memuat supaya tabel tidak berkedip.
+ * Tipe respons dipertahankan utuh, sehingga field tambahan (mis. `ringkasan`) tetap bertipe.
  */
-export function useDaftar<T>(ambil: () => Promise<Halaman<T>>, kunci: string, pesanGalat = "Gagal memuat data.") {
-  const [muat, setMuat] = useState<Muat<T>>({ kunci: "", data: null, error: null });
+export function useDaftar<H extends Halaman<unknown>>(ambil: () => Promise<H>, kunci: string, pesanGalat = "Gagal memuat data.") {
+  const [muat, setMuat] = useState<Muat<H>>({ kunci: "", data: null, error: null });
 
   useEffect(() => {
     let batal = false;

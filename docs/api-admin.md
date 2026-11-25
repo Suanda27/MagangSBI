@@ -277,3 +277,30 @@ Respons: `{ "message": "Pengaturan berhasil disimpan.", "data": { ... } }`
   untuk tab Aktif/Nonaktif.
 - Form Tambah/Ubah Pengguna: tampilkan field section hanya untuk peran selain admin, dan baca pesan 409
   apa adanya (sudah berbahasa Indonesia dan menyebut jumlah tiket).
+
+# Pantauan tiket dan dashboard (Sprint 4.2)
+
+Hanya baca. Admin memantau semua tiket lintas section; perubahan status tetap dilakukan PIC dan karyawan pengaju.
+
+## `GET /api/admin/dashboard`
+`data`: `pengguna`, `section`, `layanan`, `pic` (masing-masing `{ total, aktif, nonaktif }`), `tiket`
+(`{ total, per_status }`), `beban_section` (jumlah tiket per section tujuan, terbanyak dulu), dan
+`tiket_terbaru` (5 tiket, bentuk sama dengan item daftar di bawah). Tanpa target waktu (SLA).
+
+## `GET /api/admin/permintaan`
+Semua tiket, terbaru dulu, berpaginasi (`per_page` bawaan 15, maks 100).
+
+| Query | Keterangan |
+|---|---|
+| `status` | satu atau beberapa status dipisah koma, mis. `pending,in_progress` |
+| `id_bagian` | section tujuan |
+| `id_plant` | plant lokasi |
+| `q` | nomor tiket, judul, nama atau NIK pengaju |
+
+Selain `data` dan `meta`, ada `ringkasan` (`{ total, per_status }`) untuk seluruh sistem, tidak terpengaruh filter.
+Item = bentuk daftar PIC (lihat docs/api-pic.md) ditambah `pic` ({ id, name } atau null bila belum diambil).
+Nilai tidak valid dijawab 422.
+
+## `GET /api/admin/permintaan/{id}`
+Detail lengkap, bentuk sama dengan detail PIC: pengaju, `pic`, `lampiran`, `hasil_kerja` per putaran, alasan, dan `riwayat`.
+Id yang tidak ada dijawab 404. Peran lain 403.

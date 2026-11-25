@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Api\Admin\DashboardController;
 use App\Http\Controllers\Api\Admin\LantaiController;
 use App\Http\Controllers\Api\Admin\LayananController;
 use App\Http\Controllers\Api\Admin\PengaturanController;
+use App\Http\Controllers\Api\Admin\PermintaanController;
 use App\Http\Controllers\Api\Admin\PicMappingController;
 use App\Http\Controllers\Api\Admin\PlantController;
 use App\Http\Controllers\Api\Admin\SectionController;
@@ -22,6 +24,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/ping', fn (Request $request) => response()->json([
     'peran' => $request->user()->role->value,
 ]));
+
+// Dashboard dan pantauan semua tiket (Sprint 4.2). Hanya baca: status tiket diubah PIC dan karyawan.
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/permintaan', [PermintaanController::class, 'index']);
+Route::get('/permintaan/{id}', [PermintaanController::class, 'show'])->whereNumber('id');
 
 // Master data (PRD 6.5). Data dinonaktifkan lewat status, tidak ada DELETE.
 Route::get('/users', [UserController::class, 'index']);
