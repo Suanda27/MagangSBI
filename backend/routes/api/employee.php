@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Employee\DashboardController;
 use App\Http\Controllers\Api\Employee\KonfirmasiHasilController;
 use App\Http\Controllers\Api\Employee\PermintaanController;
+use App\Http\Controllers\Api\Employee\RiwayatController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,9 @@ Route::get('permintaan/{id}', [PermintaanController::class, 'show'])->whereNumbe
 // Tanggapan atas hasil kerja PIC (Sprint 3.3): hanya untuk tiket Menunggu Konfirmasi milik sendiri.
 Route::post('permintaan/{id}/setujui', [KonfirmasiHasilController::class, 'setujui'])->whereNumber('id')->name('employee.permintaan.setujui');
 Route::post('permintaan/{id}/revisi', [KonfirmasiHasilController::class, 'revisi'])->whereNumber('id')->name('employee.permintaan.revisi');
+
+// Log aktivitas seluruh tiket sendiri.
+Route::get('riwayat', [RiwayatController::class, 'index'])->name('employee.riwayat');
 
 // Pengajuan tiket baru (multipart). Dibatasi agar tidak dipakai membanjiri antrean.
 Route::post('permintaan', [PermintaanController::class, 'store'])
