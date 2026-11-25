@@ -214,16 +214,11 @@ class TicketWorkflowTest extends TestCase
         }
     }
 
-    // ---- Rangka Sprint 3–4 -------------------------------------------
+    // ---- Rangka Sprint 4 ---------------------------------------------
 
-    public function test_metode_sprint_berikutnya_masih_rangka(): void
+    public function test_tutup_otomatis_masih_rangka(): void
     {
-        $tiket = $this->tiketIs();
-
-        $this->assertThrows(fn () => $this->workflow->kirimHasil($tiket, $this->picIs, []), BadMethodCallException::class);
-        $this->assertThrows(fn () => $this->workflow->setujui($tiket, $this->karyawan), BadMethodCallException::class);
-        $this->assertThrows(fn () => $this->workflow->mintaRevisi($tiket, $this->karyawan, 'x'), BadMethodCallException::class);
-        $this->assertThrows(fn () => $this->workflow->tutupOtomatis($tiket), BadMethodCallException::class);
+        $this->assertThrows(fn () => $this->workflow->tutupOtomatis($this->tiketIs()), BadMethodCallException::class);
     }
 
     // ---- Pemetaan ke kode HTTP (403 vs 409 vs 422) ---------------------

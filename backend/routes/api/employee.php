@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Employee\DashboardController;
+use App\Http\Controllers\Api\Employee\KonfirmasiHasilController;
 use App\Http\Controllers\Api\Employee\PermintaanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,10 @@ Route::get('dashboard', [DashboardController::class, 'index'])->name('employee.d
 // Daftar dan detail tiket sendiri.
 Route::get('permintaan', [PermintaanController::class, 'index'])->name('employee.permintaan.index');
 Route::get('permintaan/{id}', [PermintaanController::class, 'show'])->whereNumber('id')->name('employee.permintaan.show');
+
+// Tanggapan atas hasil kerja PIC (Sprint 3.3): hanya untuk tiket Menunggu Konfirmasi milik sendiri.
+Route::post('permintaan/{id}/setujui', [KonfirmasiHasilController::class, 'setujui'])->whereNumber('id')->name('employee.permintaan.setujui');
+Route::post('permintaan/{id}/revisi', [KonfirmasiHasilController::class, 'revisi'])->whereNumber('id')->name('employee.permintaan.revisi');
 
 // Pengajuan tiket baru (multipart). Dibatasi agar tidak dipakai membanjiri antrean.
 Route::post('permintaan', [PermintaanController::class, 'store'])
