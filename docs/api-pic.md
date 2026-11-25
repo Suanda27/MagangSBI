@@ -96,3 +96,17 @@ Kedua aksi karyawan: tiket milik orang lain dijawab 404, peran lain 403, status 
 menyetujui dua kali) 409. Respons sukses = detail tiket terbaru versi karyawan (`GET /api/employee/permintaan/{id}`).
 
 Tutup otomatis setelah 3 hari kerja tanpa tanggapan dikerjakan di Sprint 4.
+
+# Tutup otomatis — Sprint 4.1
+
+Tiket **Menunggu Konfirmasi** yang tidak ditanggapi karyawan dalam **3 hari kerja** (Senin–Jumat, libur nasional
+belum dihitung) sejak `hasil_kerja.dikirim_pada` ditutup otomatis menjadi **Selesai**.
+
+- Perintah: `php artisan tiket:tutup-otomatis`, dijadwalkan **tiap jam** (`routes/console.php`).
+- Riwayat mencatat aksi `auto_closed` dengan pelaku **Sistem** dan keterangan "Ditutup otomatis setelah 3 hari kerja tanpa tinjauan."
+- Revisi atau kirim ulang hasil mengulang hitungan, karena `dikirim_pada` diperbarui.
+- Aman dijalankan berulang; tiket yang sudah ditanggapi atau dikirim ulang saat perintah berjalan dilewati.
+- Batas yang tampil di layar PIC memakai aturan hari kerja yang sama (`tambahHariKerja` di frontend dan `App\Support\HariKerja` di backend).
+
+**Menjalankan penjadwal.** Server produksi butuh cron `* * * * * php artisan schedule:run`.
+Saat pengembangan lokal jalankan `php artisan schedule:work` di terminal terpisah, atau panggil perintahnya manual.

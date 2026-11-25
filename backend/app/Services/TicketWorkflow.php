@@ -7,13 +7,14 @@ use App\Enums\JenisLampiran;
 use App\Enums\Role;
 use App\Enums\StatusPermintaan;
 use App\Events\TiketDiubah;
+use App\Exceptions\BelumJatuhTempo;
 use App\Exceptions\TiketSudahDiambil;
 use App\Exceptions\TransisiTidakValid;
 use App\Models\Lampiran;
 use App\Models\Permintaan;
 use App\Models\RiwayatPermintaan;
 use App\Models\User;
-use BadMethodCallException;
+use App\Support\HariKerja;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
@@ -34,8 +35,8 @@ use Throwable;
  *  - TiketSudahDiambil, TransisiTidakValid → 409 (keadaan tiket sudah berubah)
  *  - ValidationException     → 422 (alasan terlalu pendek)
  *
- * Status: terima, tolak, ubahStatus, kirimHasil, setujui, dan mintaRevisi sudah berfungsi.
- * tutupOtomatis masih rangka dan diisi pada Sprint 4.
+ * Semua perpindahan status sudah berfungsi: terima, tolak, ubahStatus, kirimHasil, setujui, mintaRevisi,
+ * dan tutupOtomatis (dijalankan perintah terjadwal).
  */
 class TicketWorkflow
 {
@@ -262,10 +263,55 @@ class TicketWorkflow
         return $hasil;
     }
 
-    /** Sprint 4: tutup otomatis tiket waiting_review yang lewat 3 hari kerja (waiting_review → completed). */
+    /**
+     * Sistem menutup tiket Menunggu Konfirmasi yang tidak ditanggapi karyawan dalam 3 hari kerja sejak hasil
+     * dikirim (Menunggu Konfirmasi → Selesai, pelaku = Sistem). Dipanggil oleh perintah terjadwal tiket:tutup-otomatis.
+     *
+     * Ditolak dengan 409 bila tiket belum jatuh tempo, bukan lagi Menunggu Konfirmasi, atau hasilnya dikirim ulang
+     * (revisi) saat perintah berjalan: pembaruan dikunci pada status DAN waktu kirim yang dibaca.
+     */
     public function tutupOtomatis(Permintaan $permintaan): Permintaan
     {
-        throw new BadMethodCallException('TicketWorkflow::tutupOtomatis akan diimplementasikan pada Sprint 4.');
+        $dikirim = $permintaan->dikirim_pada;
+
+        if ($permintaan->status !== StatusPermintaan::WaitingReview) {
+            throw TransisiTidakValid::dari($permintaan->status, StatusPermintaan::Completed);
+        }
+
+        if ($dikirim === null || HariKerja::batasTutupOtomatis($dikirim)->isFuture()) {
+            throw new BelumJatuhTempo;
+        }
+
+        $hasil = DB::transaction(function () use ($permintaan, $dikirim) {
+            $diperbarui = Permintaan::query()
+                ->whereKey($permintaan->id)
+                ->where('status', StatusPermintaan::WaitingReview->value)
+                ->where('dikirim_pada', $dikirim)
+                ->update([
+                    'status' => StatusPermintaan::Completed->value,
+                    'selesai_pada' => now(),
+                    'updated_at' => now(),
+                ]);
+
+            if ($diperbarui === 0) {
+                // Karyawan menanggapi atau PIC mengirim ulang tepat saat perintah berjalan.
+                throw TransisiTidakValid::dari($permintaan->fresh()?->status ?? $permintaan->status, StatusPermintaan::Completed);
+            }
+
+            $this->catat(
+                $permintaan,
+                null,
+                StatusPermintaan::Completed,
+                AksiRiwayat::AutoClosed,
+                'Ditutup otomatis setelah '.HariKerja::BATAS_TUTUP_OTOMATIS.' hari kerja tanpa tinjauan.',
+            );
+
+            return $permintaan->fresh();
+        });
+
+        TiketDiubah::dispatch($hasil, AksiRiwayat::AutoClosed, null);
+
+        return $hasil;
     }
 
     // ---- Pembantu -----------------------------------------------------
