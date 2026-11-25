@@ -19,7 +19,9 @@ Route::get('/ping', fn (Request $request) => response()->json([
     'peran' => $request->user()->role->value,
 ]));
 
-// Aksi (Sprint 3.2). Kirim-hasil menyusul di 3.3.
+// Aksi (Sprint 3.2 dan 3.3). Kirim hasil membawa berkas (multipart), jadi dibatasi lajunya.
+Route::post('permintaan/{id}/kirim-hasil', [AksiPermintaanController::class, 'kirimHasil'])
+    ->whereNumber('id')->middleware('throttle:30,1')->name('pic.permintaan.kirim-hasil');
 Route::post('permintaan/{id}/terima', [AksiPermintaanController::class, 'terima'])->whereNumber('id')->name('pic.permintaan.terima');
 Route::post('permintaan/{id}/tolak', [AksiPermintaanController::class, 'tolak'])->whereNumber('id')->name('pic.permintaan.tolak');
 Route::post('permintaan/{id}/status', [AksiPermintaanController::class, 'ubahStatus'])->whereNumber('id')->name('pic.permintaan.status');

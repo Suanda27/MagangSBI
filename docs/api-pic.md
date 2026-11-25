@@ -74,3 +74,25 @@ Body: `{ "status": "pending" | "in_progress", "alasan": "…" }`. Hanya PIC pena
 - `pending` (tunda): Diproses → Pending, `alasan` wajib minimal 5 karakter.
 - `in_progress` (lanjutkan): Pending → Diproses, `alasan_pending` dikosongkan.
 Status tujuan lain (mis. `completed`) ditolak 422; kirim hasil menyusul di Sprint 3.3.
+
+# Kirim hasil dan konfirmasi — Sprint 3.3
+
+## `POST /api/pic/permintaan/{id}/kirim-hasil` (multipart/form-data)
+Hanya PIC penanggung jawab. Field: `bukti[]` (wajib, 1–5 berkas; format dan ukuran mengikuti pengaturan Admin,
+bawaan JPG/PNG/PDF maks 5 MB) dan `catatan` (opsional, maks 2000).
+Diproses atau Pending → **Menunggu Konfirmasi**. Bukti disimpan per putaran (`hasil_kerja.putaran[]`);
+saat ada revisi, bukti putaran lama tetap ada dan putaran baru bertambah. Dibatasi 30 permintaan per menit.
+Kegagalan: 422 (bukti kosong, lebih dari 5, atau format salah), 403 (bukan penanggung jawab), 409 (status bukan Diproses/Pending).
+Bila gagal, tidak ada berkas yang tersisa di disk.
+
+## `POST /api/employee/permintaan/{id}/setujui`
+Karyawan pengaju. Menunggu Konfirmasi → **Selesai** (final), `selesai_pada` terisi.
+
+## `POST /api/employee/permintaan/{id}/revisi`
+Body `{ "alasan": "…" }` (wajib, 10–1000 karakter). Menunggu Konfirmasi → **Sedang Diproses**,
+`jumlah_revisi` bertambah, `alasan_revisi` terisi, PIC penanggung jawab tetap sama. Revisi tidak dibatasi jumlahnya.
+
+Kedua aksi karyawan: tiket milik orang lain dijawab 404, peran lain 403, status tidak cocok (termasuk
+menyetujui dua kali) 409. Respons sukses = detail tiket terbaru versi karyawan (`GET /api/employee/permintaan/{id}`).
+
+Tutup otomatis setelah 3 hari kerja tanpa tanggapan dikerjakan di Sprint 4.

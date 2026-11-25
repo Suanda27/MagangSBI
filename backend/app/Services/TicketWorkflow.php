@@ -3,18 +3,22 @@
 namespace App\Services;
 
 use App\Enums\AksiRiwayat;
+use App\Enums\JenisLampiran;
 use App\Enums\Role;
 use App\Enums\StatusPermintaan;
 use App\Events\TiketDiubah;
 use App\Exceptions\TiketSudahDiambil;
 use App\Exceptions\TransisiTidakValid;
+use App\Models\Lampiran;
 use App\Models\Permintaan;
 use App\Models\RiwayatPermintaan;
 use App\Models\User;
 use BadMethodCallException;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
+use Throwable;
 
 /**
  * Satu-satunya tempat yang boleh memindahkan status tiket (PRD Bagian 4).
@@ -30,8 +34,8 @@ use Illuminate\Validation\ValidationException;
  *  - TiketSudahDiambil, TransisiTidakValid → 409 (keadaan tiket sudah berubah)
  *  - ValidationException     → 422 (alasan terlalu pendek)
  *
- * Status Sprint 1: terima, tolak, ubahStatus sudah berfungsi. kirimHasil, setujui, mintaRevisi,
- * dan tutupOtomatis masih rangka dan diisi pada Sprint 3.
+ * Status: terima, tolak, ubahStatus, kirimHasil, setujui, dan mintaRevisi sudah berfungsi.
+ * tutupOtomatis masih rangka dan diisi pada Sprint 4.
  */
 class TicketWorkflow
 {
@@ -143,26 +147,119 @@ class TicketWorkflow
     }
 
     /**
-     * Sprint 3: PIC mengirim hasil kerja (minimal 1 bukti) → waiting_review, mengisi dikirim_pada
-     * dan lampiran jenis "penyelesaian" dengan nomor putaran berikutnya.
+     * PIC penanggung jawab mengirim hasil kerja untuk ditinjau karyawan (Diproses/Pending → Menunggu Konfirmasi).
+     * Minimal 1 bukti. Bukti disimpan sebagai lampiran jenis "penyelesaian" dengan nomor putaran berikutnya,
+     * sehingga bukti putaran lama tidak hilang saat ada revisi.
      *
-     * @param  list<mixed>  $bukti
+     * @param  list<UploadedFile>  $bukti
      */
     public function kirimHasil(Permintaan $permintaan, User $pic, array $bukti, ?string $catatan = null): Permintaan
     {
-        throw new BadMethodCallException('TicketWorkflow::kirimHasil akan diimplementasikan pada Sprint 3.');
+        if ($bukti === []) {
+            throw ValidationException::withMessages(['bukti' => 'Lampirkan minimal 1 bukti hasil kerja.']);
+        }
+
+        $tersimpan = collect();
+
+        try {
+            $hasil = DB::transaction(function () use ($permintaan, $pic, $bukti, $catatan, &$tersimpan) {
+                $diperbarui = Permintaan::query()
+                    ->whereKey($permintaan->id)
+                    ->where('id_pic', $pic->id)
+                    ->whereIn('status', [StatusPermintaan::InProgress->value, StatusPermintaan::Pending->value])
+                    ->update([
+                        'status' => StatusPermintaan::WaitingReview->value,
+                        'dikirim_pada' => now(),
+                        'catatan_hasil' => $this->bersihkan($catatan),
+                        'alasan_pending' => null,
+                        'updated_at' => now(),
+                    ]);
+
+                if ($diperbarui === 0) {
+                    $this->gagalMengubah($permintaan, $pic, StatusPermintaan::WaitingReview);
+                }
+
+                $putaran = ((int) Lampiran::query()
+                    ->where('id_permintaan', $permintaan->id)
+                    ->where('jenis', JenisLampiran::Penyelesaian->value)
+                    ->max('putaran')) + 1;
+
+                $tersimpan = app(FileUploadService::class)->simpan($permintaan, $pic, $bukti, JenisLampiran::Penyelesaian, $putaran);
+
+                $this->catat($permintaan, $pic, StatusPermintaan::WaitingReview, AksiRiwayat::ResultSent, $this->bersihkan($catatan));
+
+                return $permintaan->fresh();
+            });
+        } catch (Throwable $e) {
+            app(FileUploadService::class)->hapusFisik($tersimpan); // jangan sisakan berkas yatim
+            throw $e;
+        }
+
+        TiketDiubah::dispatch($hasil, AksiRiwayat::ResultSent, $pic);
+
+        return $hasil;
     }
 
-    /** Sprint 3: karyawan pengaju menyetujui hasil (waiting_review → completed). */
+    /** Karyawan pengaju menyetujui hasil (Menunggu Konfirmasi → Selesai, final). */
     public function setujui(Permintaan $permintaan, User $karyawan): Permintaan
     {
-        throw new BadMethodCallException('TicketWorkflow::setujui akan diimplementasikan pada Sprint 3.');
+        $hasil = DB::transaction(function () use ($permintaan, $karyawan) {
+            $diperbarui = Permintaan::query()
+                ->whereKey($permintaan->id)
+                ->where('id_karyawan', $karyawan->id)
+                ->where('status', StatusPermintaan::WaitingReview->value)
+                ->update([
+                    'status' => StatusPermintaan::Completed->value,
+                    'selesai_pada' => now(),
+                    'updated_at' => now(),
+                ]);
+
+            if ($diperbarui === 0) {
+                $this->gagalDitinjau($permintaan, $karyawan, StatusPermintaan::Completed);
+            }
+
+            $this->catat($permintaan, $karyawan, StatusPermintaan::Completed, AksiRiwayat::Approved);
+
+            return $permintaan->fresh();
+        });
+
+        TiketDiubah::dispatch($hasil, AksiRiwayat::Approved, $karyawan);
+
+        return $hasil;
     }
 
-    /** Sprint 3: karyawan pengaju meminta revisi (waiting_review → in_progress, jumlah_revisi bertambah). */
+    /**
+     * Karyawan pengaju meminta revisi (Menunggu Konfirmasi → Diproses). Alasan wajib; jumlah_revisi bertambah.
+     * Revisi tidak dibatasi jumlahnya (keputusan PRD).
+     */
     public function mintaRevisi(Permintaan $permintaan, User $karyawan, string $alasan): Permintaan
     {
-        throw new BadMethodCallException('TicketWorkflow::mintaRevisi akan diimplementasikan pada Sprint 3.');
+        $this->wajibIsi($alasan, 10, 'alasan', 'Alasan revisi minimal 10 karakter.');
+
+        $hasil = DB::transaction(function () use ($permintaan, $karyawan, $alasan) {
+            $diperbarui = Permintaan::query()
+                ->whereKey($permintaan->id)
+                ->where('id_karyawan', $karyawan->id)
+                ->where('status', StatusPermintaan::WaitingReview->value)
+                ->update([
+                    'status' => StatusPermintaan::InProgress->value,
+                    'alasan_revisi' => trim($alasan),
+                    'jumlah_revisi' => DB::raw('jumlah_revisi + 1'),
+                    'updated_at' => now(),
+                ]);
+
+            if ($diperbarui === 0) {
+                $this->gagalDitinjau($permintaan, $karyawan, StatusPermintaan::InProgress);
+            }
+
+            $this->catat($permintaan, $karyawan, StatusPermintaan::InProgress, AksiRiwayat::RevisionRequested, trim($alasan));
+
+            return $permintaan->fresh();
+        });
+
+        TiketDiubah::dispatch($hasil, AksiRiwayat::RevisionRequested, $karyawan);
+
+        return $hasil;
     }
 
     /** Sprint 4: tutup otomatis tiket waiting_review yang lewat 3 hari kerja (waiting_review → completed). */
@@ -193,6 +290,18 @@ class TicketWorkflow
 
         if ($terbaru === null || (int) $terbaru->id_pic !== (int) $pic->id) {
             throw new AuthorizationException('Hanya PIC penanggung jawab yang dapat mengubah status tiket ini.');
+        }
+
+        throw TransisiTidakValid::dari($terbaru->status, $ke);
+    }
+
+    /** Sama seperti gagalMengubah, tetapi untuk aksi karyawan pengaju (setujui / minta revisi). */
+    private function gagalDitinjau(Permintaan $permintaan, User $karyawan, StatusPermintaan $ke): never
+    {
+        $terbaru = $permintaan->fresh();
+
+        if ($terbaru === null || (int) $terbaru->id_karyawan !== (int) $karyawan->id) {
+            throw new AuthorizationException('Hanya karyawan pengaju yang dapat menanggapi hasil kerja tiket ini.');
         }
 
         throw TransisiTidakValid::dari($terbaru->status, $ke);

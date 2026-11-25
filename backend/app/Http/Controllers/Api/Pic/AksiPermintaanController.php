@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Pic;
 
 use App\Enums\StatusPermintaan;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Pic\KirimHasilPermintaanRequest;
 use App\Http\Requests\Pic\TerimaPermintaanRequest;
 use App\Http\Requests\Pic\TolakPermintaanRequest;
 use App\Http\Requests\Pic\UbahStatusPermintaanRequest;
@@ -53,6 +54,20 @@ class AksiPermintaanController extends Controller
             StatusPermintaan::from($request->validated('status')),
             $request->validated('alasan'),
         );
+
+        return $this->respons($id);
+    }
+
+    /**
+     * POST /api/pic/permintaan/{id}/kirim-hasil (multipart) — PIC penanggung jawab mengirim hasil kerja beserta
+     * bukti untuk ditinjau karyawan (Diproses/Pending → Menunggu Konfirmasi).
+     */
+    public function kirimHasil(KirimHasilPermintaanRequest $request, int $id, TicketWorkflow $workflow): PicPermintaanDetailResource
+    {
+        $tiket = Permintaan::query()->findOrFail($id);
+        Gate::authorize('kirimHasil', $tiket);
+
+        $workflow->kirimHasil($tiket, $request->user(), $request->file('bukti', []), $request->validated('catatan'));
 
         return $this->respons($id);
     }
