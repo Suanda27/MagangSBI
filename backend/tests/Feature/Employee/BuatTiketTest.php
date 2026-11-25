@@ -47,7 +47,7 @@ class BuatTiketTest extends TestCase
         $this->ga = Bagian::factory()->create(['kode_bagian' => 'GA']);
         $this->layanan = Layanan::factory()->create(['id_bagian' => $this->ga->id, 'kategori' => 'Fasilitas']);
         $this->plant = Plant::factory()->create();
-        $this->lantai = Lantai::factory()->create(['id_plant' => $this->plant->id]);
+        $this->lantai = Lantai::factory()->create(['id_plant' => $this->plant->id, 'nama_lantai' => 'Lantai 1']);
         // Karyawan berasal dari section lain, supaya terbukti tujuan tiket mengikuti layanan.
         $this->karyawan = User::factory()->employee(Bagian::factory()->create(['kode_bagian' => 'IS']))->create();
         Sanctum::actingAs($this->karyawan);
@@ -201,7 +201,7 @@ class BuatTiketTest extends TestCase
         $this->kirim(['id_plant' => $plantMati->id, 'id_lantai' => $lantaiDiPlantMati->id])
             ->assertUnprocessable()->assertJsonValidationErrors('id_plant');
 
-        $lantaiMati = Lantai::factory()->nonaktif()->create(['id_plant' => $this->plant->id]);
+        $lantaiMati = Lantai::factory()->nonaktif()->create(['id_plant' => $this->plant->id, 'nama_lantai' => 'Lantai Nonaktif']);
         $this->kirim(['id_lantai' => $lantaiMati->id])->assertUnprocessable()->assertJsonValidationErrors('id_lantai');
 
         $this->assertSame(0, Permintaan::count());
