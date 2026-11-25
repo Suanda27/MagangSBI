@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search, Bell, Menu, ChevronRight } from "lucide-react";
+import { Search, Menu, ChevronRight } from "lucide-react";
+import NotificationBell from "@/components/notifikasi/notification-bell";
 import { useAuth } from "@/lib/auth/auth-context";
 import { initialsOf } from "@/lib/auth/user-display";
 
@@ -100,16 +101,7 @@ export default function EmployeeHeader({ onMenuClick }: EmployeeHeaderProps) {
             />
           </div>
 
-          <button
-            aria-label="Notifikasi"
-            className="fx-bell relative p-2 rounded-lg text-slate-500 hover:text-blue-700 hover:bg-blue-50 transition-all duration-300 active:scale-90"
-          >
-            <Bell className="w-5 h-5" />
-            <span className="absolute top-2 right-2 flex w-2 h-2">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75 animate-ping"></span>
-              <span className="relative inline-flex w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white"></span>
-            </span>
-          </button>
+          <NotificationBell hrefTiket={(id) => `/employee/permintaan-saya/${id}`} />
 
           <div className="hidden sm:block h-6 w-px bg-gradient-to-b from-transparent via-slate-300 to-transparent"></div>
 
