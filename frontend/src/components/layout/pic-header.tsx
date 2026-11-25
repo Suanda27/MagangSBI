@@ -3,9 +3,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Search, Bell, Menu, Inbox, CornerDownLeft } from "lucide-react";
-import { usePicStore, useRingkasan } from "@/lib/pic/store";
-import { inisial, tanggalJam } from "@/lib/shared/format";
+import { Search, Menu, CornerDownLeft } from "lucide-react";
+import NotifikasiBell from "@/components/shared/notifikasi-bell";
+import { usePicStore } from "@/lib/pic/store";
+import { inisial } from "@/lib/shared/format";
 
 interface PicHeaderProps {
   onMenuClick: () => void;
@@ -14,14 +15,11 @@ interface PicHeaderProps {
 export default function PicHeader({ onMenuClick }: PicHeaderProps) {
   const router = useRouter();
   const { profil, permintaan } = usePicStore();
-  const { menunggu } = useRingkasan();
 
   const [scrolled, setScrolled] = useState(false);
   const [q, setQ] = useState("");
   const [fokus, setFokus] = useState(false);
-  const [notif, setNotif] = useState(false);
   const wrap = useRef<HTMLDivElement>(null);
-  const notifRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -29,7 +27,6 @@ export default function PicHeader({ onMenuClick }: PicHeaderProps) {
     window.addEventListener("scroll", onScroll, { passive: true });
     const onClick = (e: MouseEvent) => {
       if (wrap.current && !wrap.current.contains(e.target as Node)) setFokus(false);
-      if (notifRef.current && !notifRef.current.contains(e.target as Node)) setNotif(false);
     };
     document.addEventListener("mousedown", onClick);
     return () => {
@@ -43,8 +40,6 @@ export default function PicHeader({ onMenuClick }: PicHeaderProps) {
     if (!s) return [];
     return permintaan.filter((p) => `${p.kode} ${p.judul} ${p.pengaju.nama}`.toLowerCase().includes(s)).slice(0, 5);
   }, [q, permintaan]);
-
-  const antrean = permintaan.filter((p) => p.status === "menunggu").slice(0, 4);
 
   return (
     <header
@@ -105,49 +100,7 @@ export default function PicHeader({ onMenuClick }: PicHeaderProps) {
         </div>
 
         <div className="flex items-center gap-3 md:gap-4">
-          <div ref={notifRef} className="relative">
-            <button
-              aria-label="Notifikasi"
-              onClick={() => setNotif((v) => !v)}
-              className="fx-bell relative p-2 rounded-lg text-slate-500 hover:text-blue-700 hover:bg-blue-50 transition-all duration-300 active:scale-90"
-            >
-              <Bell className="w-5 h-5" />
-              {menunggu > 0 && (
-                <span className="absolute top-2 right-2 flex w-2 h-2">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75 animate-ping"></span>
-                  <span className="relative inline-flex w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white"></span>
-                </span>
-              )}
-            </button>
-            {notif && (
-              <div className="ui-modal absolute right-0 top-full mt-2 w-80 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden">
-                <div className="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
-                  <span className="text-[13px] font-semibold text-slate-900">Notifikasi</span>
-                  <span className="text-[11px] text-slate-400">{menunggu} menunggu</span>
-                </div>
-                {antrean.length === 0 ? (
-                  <p className="px-4 py-6 text-xs text-slate-500 text-center">Tidak ada permintaan baru. 🎉</p>
-                ) : (
-                  <ul className="max-h-72 overflow-y-auto divide-y divide-slate-100">
-                    {antrean.map((p) => (
-                      <li key={p.id}>
-                        <Link href={`/pic/permintaan/${p.id}`} onClick={() => setNotif(false)} className="flex gap-3 px-4 py-3 hover:bg-blue-50/50 transition-colors">
-                          <span className="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0"><Inbox className="w-4 h-4" /></span>
-                          <span className="min-w-0">
-                            <span className="block text-xs font-medium text-slate-800 truncate">{p.judul}</span>
-                            <span className="block text-[11px] text-slate-400">{p.pengaju.nama} · {tanggalJam(p.diajukan)}</span>
-                          </span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                <Link href="/pic/permintaan-masuk" onClick={() => setNotif(false)} className="block text-center text-xs font-medium text-blue-700 hover:bg-blue-50 py-2.5 border-t border-slate-100 transition-colors">
-                  Buka Permintaan Masuk
-                </Link>
-              </div>
-            )}
-          </div>
+          <NotifikasiBell hrefTiket={(id) => `/pic/permintaan/${id}`} />
 
           <div className="hidden sm:block h-6 w-px bg-gradient-to-b from-transparent via-slate-300 to-transparent"></div>
 
