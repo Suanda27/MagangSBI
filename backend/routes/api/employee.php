@@ -20,6 +20,10 @@ Route::get('/ping', fn (Request $request) => response()->json([
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('employee.dashboard');
 
+// Daftar dan detail tiket sendiri.
+Route::get('permintaan', [PermintaanController::class, 'index'])->name('employee.permintaan.index');
+Route::get('permintaan/{id}', [PermintaanController::class, 'show'])->whereNumber('id')->name('employee.permintaan.show');
+
 // Pengajuan tiket baru (multipart). Dibatasi agar tidak dipakai membanjiri antrean.
 Route::post('permintaan', [PermintaanController::class, 'store'])
     ->middleware('throttle:30,1')
