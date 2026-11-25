@@ -1,4 +1,5 @@
 import { api } from "./client";
+import type { PicDetailApi, PicTiketApi, StatusApi } from "./pic";
 import type { Role, User } from "./types";
 
 // Fungsi bertipe untuk endpoint Admin (kontrak: docs/api-admin.md).
@@ -273,5 +274,61 @@ export async function updatePicMapping(userId: number, idBagian: number): Promis
 /** DELETE /api/admin/pic-mapping/{id}: kembalikan menjadi karyawan (akun tidak dihapus); 409 bila masih memegang tiket. */
 export async function deletePicMapping(userId: number): Promise<PicMappingApi> {
   const { data } = await api.delete<{ data: PicMappingApi }>(`/api/admin/pic-mapping/${userId}`);
+  return data.data;
+}
+
+/* ---------- Pantauan tiket (hanya baca) ---------- */
+
+/** Tiket pada daftar Admin: bentuk daftar PIC ditambah PIC penanggung jawab. */
+export type TiketAdminApi = PicTiketApi & { pic?: { id: number; name: string } | null };
+
+export interface RingkasanTiketApi {
+  total: number;
+  per_status: Record<StatusApi, number>;
+}
+
+export interface FilterTiketAdmin {
+  /** Satu atau beberapa status dipisah koma, mis. "pending,in_progress". */
+  status?: string;
+  id_bagian?: number;
+  id_plant?: number;
+  q?: string;
+  per_page?: number;
+  page?: number;
+}
+
+/** GET /api/admin/permintaan: semua tiket lintas section, terbaru dulu. `ringkasan` = jumlah per status seluruh sistem. */
+export async function getTiketAdmin(params: FilterTiketAdmin = {}): Promise<Halaman<TiketAdminApi> & { ringkasan: RingkasanTiketApi }> {
+  const { data } = await api.get<Halaman<TiketAdminApi> & { ringkasan: RingkasanTiketApi }>("/api/admin/permintaan", { params });
+  return data;
+}
+
+/** GET /api/admin/permintaan/{id}: detail lengkap (pengaju, PIC, lampiran, hasil kerja, riwayat). */
+export async function getDetailTiketAdmin(id: number | string): Promise<PicDetailApi> {
+  const { data } = await api.get<{ data: PicDetailApi }>(`/api/admin/permintaan/${id}`);
+  return data.data;
+}
+
+/* ---------- Dashboard ---------- */
+
+export interface HitungMaster {
+  total: number;
+  aktif: number;
+  nonaktif: number;
+}
+
+export interface DashboardAdminApi {
+  pengguna: HitungMaster;
+  section: HitungMaster;
+  layanan: HitungMaster;
+  pic: HitungMaster;
+  tiket: RingkasanTiketApi;
+  beban_section: { id: number; kode_bagian: string; nama_bagian: string; jumlah: number }[];
+  tiket_terbaru: TiketAdminApi[];
+}
+
+/** GET /api/admin/dashboard */
+export async function getDashboardAdmin(): Promise<DashboardAdminApi> {
+  const { data } = await api.get<{ data: DashboardAdminApi }>("/api/admin/dashboard");
   return data.data;
 }
