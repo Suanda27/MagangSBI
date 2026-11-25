@@ -36,7 +36,7 @@ class PenggunaAdminTest extends TestCase
     {
         return array_merge([
             'name' => 'Rina Wulandari',
-            'nik' => '22010999',
+            'nik' => 'TES-0999',
             'email' => 'rina@sbi.test',
             'password' => 'Password123',
             'password_confirmation' => 'Password123',
@@ -136,14 +136,14 @@ class PenggunaAdminTest extends TestCase
             ->assertJsonPath('data.role', 'admin')
             ->assertJsonPath('data.bagian', null);
 
-        $this->postJson('/api/admin/users', $this->dataBaru(['role' => 'admin', 'nik' => '22010111', 'email' => 'adm2@sbi.test']))
+        $this->postJson('/api/admin/users', $this->dataBaru(['role' => 'admin', 'nik' => 'TES-0111', 'email' => 'adm2@sbi.test']))
             ->assertUnprocessable()->assertJsonValidationErrors('id_bagian');
     }
 
     public function test_validasi_pembuatan_pengguna(): void
     {
         $this->sebagaiAdmin();
-        $ada = User::factory()->employee($this->bagianIs)->create(['nik' => '22010555', 'email' => 'ada@sbi.test']);
+        $ada = User::factory()->employee($this->bagianIs)->create(['nik' => 'TES-0555', 'email' => 'ada@sbi.test']);
 
         $this->postJson('/api/admin/users', [])->assertUnprocessable()
             ->assertJsonValidationErrors(['name', 'nik', 'email', 'password', 'role']);
