@@ -25,7 +25,8 @@ return [
 
     'allowed_headers' => ['*'],
 
-    'exposed_headers' => [],
+    // Content-Disposition dibaca frontend untuk nama berkas unduhan (ekspor laporan).
+    'exposed_headers' => ['Content-Disposition'],
 
     'max_age' => 0,
 

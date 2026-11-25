@@ -304,3 +304,27 @@ Nilai tidak valid dijawab 422.
 ## `GET /api/admin/permintaan/{id}`
 Detail lengkap, bentuk sama dengan detail PIC: pengaju, `pic`, `lampiran`, `hasil_kerja` per putaran, alasan, dan `riwayat`.
 Id yang tidak ada dijawab 404. Peran lain 403.
+
+# Laporan Admin (Sprint 4.3)
+
+Hanya baca, hanya Admin. Filter yang sama dipakai oleh kartu, grafik, tabel, dan berkas ekspor, sehingga angkanya selalu konsisten.
+
+| Query | Keterangan |
+|---|---|
+| `dari`, `sampai` | tanggal **pengajuan**, format `YYYY-MM-DD`, kedua hari ikut dihitung; `sampai` tidak boleh sebelum `dari` |
+| `id_bagian`, `id_layanan`, `id_pic`, `id_plant` | section tujuan, layanan, PIC penanggung jawab, plant |
+| `status` | satu atau beberapa status dipisah koma |
+
+## `GET /api/admin/laporan`
+Baris rekap berpaginasi (`data`, `meta`; `per_page` bawaan 15, maks 100) dan `ringkasan` untuk **seluruh hasil filter**:
+`total`, `per_status`, `per_section` (terbanyak dulu), `top_layanan` (5 teratas), dan `selesai`
+(`jumlah`, `rata_rata_jam` sejak diajukan sampai selesai, `tanpa_revisi_persen`; keduanya `null` bila belum ada tiket selesai).
+Nilai tidak valid dijawab 422.
+
+## `GET /api/admin/laporan/ekspor`
+Seluruh hasil filter sebagai berkas CSV (UTF-8 dengan BOM, pemisah titik koma supaya terbuka rapi di Excel pengaturan regional Indonesia).
+Tidak terpengaruh `page` atau `per_page`. Dibatasi 20 permintaan per menit.
+Sel yang diawali `=`, `+`, `-`, `@` diberi tanda petik di depan agar tidak dijalankan Excel sebagai rumus (CSV injection).
+Nama berkas dibaca frontend dari header `Content-Disposition` (diekspos lewat `config/cors.php`).
+
+**Format PDF dan .xlsx** menunggu layanan ekspor bersama (PEMBAGIAN-TUGAS: milik Syifa); saat ini tersedia CSV dan tombol Cetak browser.

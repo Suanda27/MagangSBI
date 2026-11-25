@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Admin\DashboardController;
 use App\Http\Controllers\Api\Admin\LantaiController;
+use App\Http\Controllers\Api\Admin\LaporanController;
 use App\Http\Controllers\Api\Admin\LayananController;
 use App\Http\Controllers\Api\Admin\PengaturanController;
 use App\Http\Controllers\Api\Admin\PermintaanController;
@@ -29,6 +30,10 @@ Route::get('/ping', fn (Request $request) => response()->json([
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/permintaan', [PermintaanController::class, 'index']);
 Route::get('/permintaan/{id}', [PermintaanController::class, 'show'])->whereNumber('id');
+
+// Laporan (Sprint 4.3): statistik dan rekap terfilter, ekspor CSV. Pengunduhan dibatasi lajunya.
+Route::get('/laporan', [LaporanController::class, 'index']);
+Route::get('/laporan/ekspor', [LaporanController::class, 'ekspor'])->middleware('throttle:20,1');
 
 // Master data (PRD 6.5). Data dinonaktifkan lewat status, tidak ada DELETE.
 Route::get('/users', [UserController::class, 'index']);
