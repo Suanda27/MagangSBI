@@ -9,7 +9,6 @@ use App\Exceptions\TiketSudahDiambil;
 use App\Exceptions\TransisiTidakValid;
 use App\Models\Permintaan;
 use App\Services\TicketWorkflow;
-use BadMethodCallException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
@@ -212,13 +211,6 @@ class TicketWorkflowTest extends TestCase
         } catch (TransisiTidakValid $e) {
             $this->assertSame(409, $e->getStatusCode());
         }
-    }
-
-    // ---- Rangka Sprint 4 ---------------------------------------------
-
-    public function test_tutup_otomatis_masih_rangka(): void
-    {
-        $this->assertThrows(fn () => $this->workflow->tutupOtomatis($this->tiketIs()), BadMethodCallException::class);
     }
 
     // ---- Pemetaan ke kode HTTP (403 vs 409 vs 422) ---------------------
