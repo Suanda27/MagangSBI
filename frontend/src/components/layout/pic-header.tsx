@@ -41,7 +41,7 @@ export default function PicHeader({ onMenuClick }: PicHeaderProps) {
   const hasil = useMemo(() => {
     const s = q.trim().toLowerCase();
     if (!s) return [];
-    return permintaan.filter((p) => `${p.id} ${p.judul} ${p.pengaju.nama}`.toLowerCase().includes(s)).slice(0, 5);
+    return permintaan.filter((p) => `${p.kode} ${p.judul} ${p.pengaju.nama}`.toLowerCase().includes(s)).slice(0, 5);
   }, [q, permintaan]);
 
   const antrean = permintaan.filter((p) => p.status === "menunggu").slice(0, 4);
@@ -91,7 +91,7 @@ export default function PicHeader({ onMenuClick }: PicHeaderProps) {
                           }}
                           className="flex items-center gap-3 px-4 py-2.5 hover:bg-blue-50/60 transition-colors"
                         >
-                          <span className="text-xs font-semibold text-blue-800">#{p.id}</span>
+                          <span className="text-xs font-semibold text-blue-800">#{p.kode}</span>
                           <span className="text-xs text-slate-700 truncate">{p.judul}</span>
                           <CornerDownLeft className="w-3.5 h-3.5 text-slate-300 ml-auto shrink-0" />
                         </Link>

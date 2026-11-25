@@ -211,7 +211,9 @@ class BacaPermintaanPicTest extends TestCase
             ->assertJsonCount(2, 'data')
             ->assertJsonPath('meta.total', 3)
             ->assertJsonPath('data.0.status_label', 'Menunggu Pemeriksaan')
-            ->assertJsonPath('data.0.pengaju.name', $this->karyawan->name);
+            ->assertJsonPath('data.0.pengaju.name', $this->karyawan->name)
+            ->assertJsonPath('data.0.pengaju.bagian', $this->bagianGa->nama_bagian)
+            ->assertJsonStructure(['data' => [['diperbarui_pada']]]);
 
         $this->assertArrayNotHasKey('email', $res->json('data.0.pengaju'));
     }

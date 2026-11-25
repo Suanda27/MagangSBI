@@ -1,19 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import { Briefcase, Building2, Mail, Phone, RotateCcw, Save, ShieldCheck } from "lucide-react";
+import { Briefcase, Building2, Mail, Phone, Save, ShieldCheck } from "lucide-react";
 import { Avatar, PageHeader } from "@/components/shared/display";
+import { updateProfile } from "@/lib/api/auth";
+import { errorMessage, fieldErrors } from "@/lib/api/errors";
+import { useAuth } from "@/lib/auth/auth-context";
 import { usePicStore, useRingkasan } from "@/lib/pic/store";
 
 const input = "w-full px-3 py-2 text-sm bg-white border border-slate-200 rounded-lg text-slate-800 placeholder:text-slate-400 hover:border-slate-300 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all";
 
 export default function ProfilPage() {
-  const { profil, setProfil, toast, resetDemo } = usePicStore();
+  const { profil, toast } = usePicStore();
+  const { setUser } = useAuth();
+  const [menyimpan, setMenyimpan] = useState(false);
   const r = useRingkasan();
   const [form, setForm] = useState({ nama: profil.nama, email: profil.email, telepon: profil.telepon });
   const [err, setErr] = useState<Record<string, string>>({});
 
-  const simpan = (e: React.FormEvent) => {
+  const simpan = async (e: React.FormEvent) => {
     e.preventDefault();
     const x: Record<string, string> = {};
     if (form.nama.trim().length < 3) x.nama = "Nama minimal 3 karakter.";
@@ -21,8 +26,18 @@ export default function ProfilPage() {
     if (form.telepon.replace(/\D/g, "").length < 8) x.telepon = "Nomor telepon tidak valid.";
     setErr(x);
     if (Object.keys(x).length) return;
-    setProfil(form);
-    toast({ tone: "success", title: "Profil diperbarui", desc: "Perubahan profil Anda telah disimpan." });
+    setMenyimpan(true);
+    try {
+      const akun = await updateProfile({ name: form.nama.trim(), email: form.email.trim(), telepon: form.telepon.trim() || null });
+      setUser(akun); // header dan sidebar ikut berubah
+      toast({ tone: "success", title: "Profil diperbarui", desc: "Perubahan profil Anda telah disimpan." });
+    } catch (e) {
+      const dariServer = fieldErrors(e);
+      setErr({ nama: dariServer.name ?? "", email: dariServer.email ?? "", telepon: dariServer.telepon ?? "" });
+      toast({ tone: "error", title: "Profil gagal disimpan", desc: errorMessage(e) });
+    } finally {
+      setMenyimpan(false);
+    }
   };
 
   const field = (k: "nama" | "email" | "telepon", label: string, type = "text") => (
@@ -75,25 +90,9 @@ export default function ProfilPage() {
               <label className="flex flex-col gap-1.5"><span className="text-xs font-semibold text-slate-700">Seksi</span><input disabled value={profil.seksi} className={`${input} bg-slate-50 text-slate-500`} /></label>
             </div>
             <div className="px-5 py-4 border-t border-slate-100 bg-slate-50/50 flex justify-end">
-              <button type="submit" className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded-lg shadow-sm transition-all hover:-translate-y-0.5"><Save className="w-4 h-4" /> Simpan Perubahan</button>
+              <button type="submit" disabled={menyimpan} className="inline-flex disabled:opacity-60 items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded-lg shadow-sm transition-all hover:-translate-y-0.5"><Save className="w-4 h-4" /> {menyimpan ? "Menyimpan..." : "Simpan Perubahan"}</button>
             </div>
           </form>
-
-          <section className="bg-white border border-border-subtle rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.02)] p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <h2 className="text-sm font-semibold text-slate-900">Data Demo</h2>
-              <p className="text-xs text-slate-500 mt-1 max-w-md">Antrean saat ini memakai data contoh yang tersimpan di browser. Kembalikan ke kondisi awal untuk mengulang alur terima, tolak, dan selesaikan.</p>
-            </div>
-            <button
-              onClick={() => {
-                resetDemo();
-                toast({ tone: "info", title: "Data demo direset", desc: "Antrean dikembalikan ke kondisi awal." });
-              }}
-              className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium text-slate-700 bg-white border border-slate-200 rounded-lg hover:border-blue-200 hover:text-blue-800 transition-all shrink-0"
-            >
-              <RotateCcw className="w-4 h-4" /> Reset Data Demo
-            </button>
-          </section>
         </div>
       </div>
     </>

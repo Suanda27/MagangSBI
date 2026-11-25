@@ -29,7 +29,7 @@ class DashboardController extends Controller
 
         $teratas = Permintaan::query()->antreanUntuk($pic)
             ->urutAntrean()
-            ->with(['layanan', 'bagian', 'plant', 'lantai', 'pengaju'])
+            ->with(['layanan', 'bagian', 'plant', 'lantai', 'pengaju.bagian'])
             ->limit(5)
             ->get();
 

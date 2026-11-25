@@ -10,7 +10,7 @@ import { jam, kunciHari, tanggalJam, useNow } from "@/lib/shared/format";
 import { usePicStore, useRingkasan } from "@/lib/pic/store";
 
 export default function PicDashboard() {
-  const { profil, permintaan, ready } = usePicStore();
+  const { profil, permintaan, ready, galat } = usePicStore();
   const r = useRingkasan();
   const now = useNow(30_000);
 
@@ -19,33 +19,26 @@ export default function PicDashboard() {
     return h < 11 ? "Selamat pagi" : h < 15 ? "Selamat siang" : h < 18 ? "Selamat sore" : "Selamat malam";
   })();
 
-  const antrean = useMemo(
-    () =>
-      permintaan
-        .filter((p) => p.status === "menunggu")
-        .sort((a, b) => new Date(a.diajukan).getTime() - new Date(b.diajukan).getTime())
-        .slice(0, 5),
-    [permintaan],
-  );
+  // Urutan antrean ditentukan server: prioritas Mendesak, Tinggi, Normal, lalu yang paling lama menunggu.
+  const antrean = useMemo(() => permintaan.filter((p) => p.status === "menunggu").slice(0, 5), [permintaan]);
 
+  // Aktivitas = tiket yang Anda tangani, yang terakhir berubah di atas.
   const aktivitas = useMemo(
     () =>
       permintaan
-        .flatMap((p) => p.riwayat.map((h) => ({ ...h, tiket: p.id, judul2: p.judul })))
-        .filter((h) => h.status !== "dialokasikan")
-        .sort((a, b) => new Date(b.waktu).getTime() - new Date(a.waktu).getTime())
+        .filter((p) => p.status !== "menunggu" && p.diperbaruiPada!)
+        .sort((a, b) => new Date(b.diperbaruiPada!).getTime() - new Date(a.diperbaruiPada!).getTime())
         .slice(0, 6),
     [permintaan],
   );
 
   const baruHariIni = now === null ? 0 : permintaan.filter((p) => p.status === "menunggu" && kunciHari(p.diajukan) === kunciHari(new Date(now))).length;
-  const selesaiBulanIni = permintaan.filter((p) => p.status === "selesai").length;
 
   const kartu = [
     { label: "Permintaan Masuk", value: r.menunggu, sub: baruHariIni ? `+${baruHariIni} baru hari ini` : "Menunggu pemeriksaan awal", icon: Inbox, tone: "text-blue-700 bg-blue-50", href: "/pic/permintaan-masuk" },
     { label: "Sedang Diproses", value: r.diproses, sub: "Pengerjaan aktif", icon: Hourglass, tone: "text-sky-700 bg-sky-50", href: "/pic/sedang-diproses" },
     { label: "Pending", value: r.pending, sub: "Menunggu pihak lain", icon: PauseCircle, tone: "text-violet-700 bg-violet-50", href: "/pic/sedang-diproses" },
-    { label: "Selesai", value: selesaiBulanIni, sub: "Disetujui pengaju", icon: CheckCircle2, tone: "text-emerald-700 bg-emerald-50", href: "/pic/selesai" },
+    { label: "Selesai", value: r.selesai, sub: "Disetujui pengaju", icon: CheckCircle2, tone: "text-emerald-700 bg-emerald-50", href: "/pic/selesai" },
   ];
 
   return (
@@ -63,6 +56,8 @@ export default function PicDashboard() {
           </Link>
         )}
       </div>
+
+      {galat && <div role="alert" className="text-xs text-rose-700 bg-rose-50 border border-rose-200/70 rounded-lg px-3 py-2">{galat}</div>}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {kartu.map((k, i) => (
@@ -101,7 +96,7 @@ export default function PicDashboard() {
                           <span className="text-[13px] font-medium text-slate-900 truncate group-hover/row:text-blue-800 transition-colors">{p.judul}</span>
                           {p.prioritas === "Mendesak" && <PrioritasBadge prioritas="Mendesak" />}
                         </div>
-                        <p className="text-xs text-slate-400 mt-0.5 truncate">#{p.id} · {p.pengaju.nama} · {p.layanan}</p>
+                        <p className="text-xs text-slate-400 mt-0.5 truncate">#{p.kode} · {p.pengaju.nama} · {p.layanan}</p>
                       </div>
                       <div className="hidden sm:flex flex-col items-end gap-1 shrink-0">
                         <span className="text-xs font-medium flex items-center gap-1 text-slate-600"><Clock3 className="w-3.5 h-3.5" />{tanggalJam(p.diajukan)}</span>
@@ -121,12 +116,13 @@ export default function PicDashboard() {
             <h2 className="text-sm font-semibold text-slate-900">Aktivitas Terbaru</h2>
           </div>
           <ol className="p-5 flex flex-col gap-4">
+            {aktivitas.length === 0 && <li className="text-xs text-slate-500">Belum ada aktivitas. Terima permintaan untuk mulai.</li>}
             {aktivitas.map((a, i) => (
               <li key={a.id} className="fx-reveal-x relative pl-5" style={delay(250 + i * 70)}>
                 <span className="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-blue-500 ring-4 ring-blue-50" />
-                <Link href={`/pic/permintaan/${a.tiket}`} className="text-[13px] font-medium text-slate-800 hover:text-blue-800 transition-colors">{a.judul}</Link>
-                <p className="text-xs text-slate-500 mt-0.5 truncate">#{a.tiket} · {a.judul2}</p>
-                <p className="text-[11px] text-slate-400 mt-0.5">{tanggalJam(a.waktu)}</p>
+                <Link href={`/pic/permintaan/${a.id}`} className="text-[13px] font-medium text-slate-800 hover:text-blue-800 transition-colors line-clamp-1">{a.judul}</Link>
+                <p className="mt-1 flex items-center gap-2 text-xs text-slate-500"><span>#{a.kode}</span><StatusBadge status={a.status} /></p>
+                <p className="text-[11px] text-slate-400 mt-0.5">{tanggalJam(a.diperbaruiPada!)}</p>
               </li>
             ))}
           </ol>
@@ -145,7 +141,7 @@ export default function PicDashboard() {
             .map((p) => (
               <Link key={p.id} href={`/pic/permintaan/${p.id}`} className="rounded-xl border border-slate-200 p-4 hover:border-blue-300 hover:shadow-md transition-all duration-300 flex flex-col gap-2.5 bg-white">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-blue-800">#{p.id}</span>
+                  <span className="text-xs font-semibold text-blue-800">#{p.kode}</span>
                   <StatusBadge status={p.status} />
                 </div>
                 <p className="text-[13px] font-medium text-slate-900 line-clamp-2">{p.judul}</p>

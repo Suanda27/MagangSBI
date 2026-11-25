@@ -8,7 +8,7 @@ import { Pagination } from "@/components/shared/pagination";
 import { SelectField } from "@/components/shared/form-controls";
 import { PrioritasBadge, StatusBadge } from "./primitives";
 import { kunciHari, tanggalJam, useNow } from "@/lib/shared/format";
-import { NAMA_BAGIAN, type KodeBagian, type Permintaan, type StatusPermintaan } from "@/lib/pic/types";
+import type { Permintaan, StatusPermintaan } from "@/lib/pic/types";
 
 /* ---------- Filter ---------- */
 
@@ -34,7 +34,7 @@ export function useFilter(data: Permintaan[]) {
     const q = f.q.trim().toLowerCase();
     const ref = now;
     return data.filter((p) => {
-      if (q && !`${p.id} ${p.judul} ${p.pengaju.nama} ${p.pengaju.nik} ${p.layanan}`.toLowerCase().includes(q)) return false;
+      if (q && !`${p.kode} ${p.judul} ${p.pengaju.nama} ${p.pengaju.nik} ${p.layanan}`.toLowerCase().includes(q)) return false;
       if (f.status && p.status !== f.status) return false;
       if (f.layanan && p.layanan !== f.layanan) return false;
       if (f.bagian && p.pengaju.bagian !== f.bagian) return false;
@@ -93,7 +93,7 @@ export function FilterBar({
           <SelectField label="Status" value={f.status} onChange={(v) => set("status", v)} options={[{ value: "", label: "Semua Status" }, ...statusOptions.map((s) => ({ value: s, label: labelStatus[s] }))]} />
         )}
         <SelectField label="Layanan" value={f.layanan} onChange={(v) => set("layanan", v)} options={[{ value: "", label: "Semua Layanan" }, ...uniq(data.map((d) => d.layanan)).map((v) => ({ value: v, label: v }))]} />
-        <SelectField label="Bagian" value={f.bagian} onChange={(v) => set("bagian", v)} options={[{ value: "", label: "Semua Bagian" }, ...(Object.keys(NAMA_BAGIAN) as KodeBagian[]).map((k) => ({ value: k, label: NAMA_BAGIAN[k] }))]} />
+        <SelectField label="Bagian" value={f.bagian} onChange={(v) => set("bagian", v)} options={[{ value: "", label: "Semua Bagian" }, ...uniq(data.map((d) => d.pengaju.bagian)).map((v) => ({ value: v, label: v }))]} />
         <SelectField label="Plant" value={f.plant} onChange={(v) => set("plant", v)} options={[{ value: "", label: "Semua Plant" }, ...uniq(data.map((d) => d.plant)).map((v) => ({ value: v, label: v }))]} />
         <button
           onClick={reset}
@@ -160,7 +160,7 @@ export function RequestTable({
                 return (
                   <tr key={p.id} className="group">
                     <td className="py-3 px-4 whitespace-nowrap">
-                      <Link href={`/pic/permintaan/${p.id}`} className="font-semibold text-blue-800 hover:underline">#{p.id}</Link>
+                      <Link href={`/pic/permintaan/${p.id}`} className="font-semibold text-blue-800 hover:underline">#{p.kode}</Link>
                     </td>
                     <td className="py-3 px-4 max-w-[260px]">
                       <div className="flex items-center gap-2">
@@ -174,7 +174,7 @@ export function RequestTable({
                         <Avatar nama={p.pengaju.nama} />
                         <div className="leading-tight">
                           <div className="font-medium text-slate-800">{p.pengaju.nama}</div>
-                          <div className="text-[11px] text-slate-400">{NAMA_BAGIAN[p.pengaju.bagian]}</div>
+                          <div className="text-[11px] text-slate-400">{p.pengaju.bagian}</div>
                         </div>
                       </div>
                     </td>

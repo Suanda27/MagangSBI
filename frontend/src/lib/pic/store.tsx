@@ -1,19 +1,29 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import { SEED_PERMINTAAN, STORAGE_KEY } from "./seed";
-import { PROFIL_PIC, type Lampiran, type Permintaan, type ProfilPic, type RiwayatItem, type StatusPermintaan } from "./types";
+import {
+  getDaftarPic,
+  getDashboardPic,
+  kirimHasilTiket,
+  terimaTiket,
+  tolakTiket,
+  ubahStatusTiket,
+  type DashboardPicApi,
+  type PicDetailApi,
+} from "@/lib/api/pic";
+import { errorMessage } from "@/lib/api/errors";
+import { useAuth } from "@/lib/auth/auth-context";
+import { dariDaftar, dariDetail } from "./adapter";
+import type { Permintaan, ProfilPic } from "./types";
 
 /**
- * Store sisi-klien untuk modul PIC.
- * Setiap aksi di sini sama dengan satu endpoint di PRD (B.5) — ganti isi fungsi dengan axios saat API Laravel siap:
- *   terima   -> POST  /api/pic/permintaan/{id}/accept
- *   tolak    -> POST  /api/pic/permintaan/{id}/reject
- *   ubahStatus -> PATCH /api/pic/permintaan/{id}/status
- *   kirimHasil -> POST  /api/pic/permintaan/{id}/kirim-hasil   (status -> menunggu_konfirmasi)
- * Menyetujui / meminta revisi adalah aksi karyawan (POST /api/employee/permintaan/{id}/setujui | minta-revisi);
- * di sini hanya ada versi simulasi untuk demo, dihapus saat API tersambung.
- * Data disimpan di localStorage agar perubahan tetap ada setelah refresh.
+ * Store modul PIC, didukung API Laravel (docs/api-pic.md).
+ *
+ * - Hitungan kartu (antrean, diproses, selesai, ...) dari GET /api/pic/dashboard, selalu akurat.
+ * - Daftar tiket dari GET /api/pic/permintaan untuk tiga tab, masing-masing dimuat sampai 50 tiket terbaru.
+ * - Setiap aksi memanggil endpoint lalu memuat ulang; kegagalan (403/409/422) dilempar ke pemanggil
+ *   agar dialog bisa menampilkan pesan server apa adanya.
+ * - Data dimuat ulang tiap 30 detik dan saat tab browser aktif kembali (antrean dipakai bersama PIC lain).
  */
 
 export type ToastTone = "success" | "error" | "info";
@@ -24,64 +34,63 @@ interface Toast {
   desc?: string;
 }
 
+export interface Ringkasan {
+  total: number;
+  menunggu: number;
+  diproses: number;
+  pending: number;
+  konfirmasi: number;
+  selesai: number;
+  ditolak: number;
+  aktif: number;
+}
+
+const RINGKASAN_AWAL: Ringkasan = { total: 0, menunggu: 0, diproses: 0, pending: 0, konfirmasi: 0, selesai: 0, ditolak: 0, aktif: 0 };
+
 interface PicStore {
+  /** true setelah pemuatan pertama selesai (berhasil atau gagal). */
   ready: boolean;
+  /** Pesan galat pemuatan terakhir; null bila lancar. */
+  galat: string | null;
   profil: ProfilPic;
+  ringkasan: Ringkasan;
   permintaan: Permintaan[];
+  muat: () => Promise<void>;
   ambil: (id: string) => Permintaan | undefined;
-  terima: (id: string, catatan?: string) => void;
-  tolak: (id: string, alasan: string) => void;
-  ubahStatus: (id: string, status: Extract<StatusPermintaan, "diproses" | "pending">, catatan: string) => void;
-  kirimHasil: (id: string, data: { catatan: string; bukti: Lampiran[] }) => void;
-  /** Simulasi aksi karyawan (hanya demo): setuju atau minta revisi. */
-  simulasiSetujui: (id: string) => void;
-  simulasiRevisi: (id: string, alasan: string) => void;
-  setProfil: (p: Partial<ProfilPic>) => void;
-  resetDemo: () => void;
+  /** Aksi di bawah mengembalikan detail terbaru; melempar ApiError bila gagal. */
+  terima: (id: string, catatan?: string) => Promise<Permintaan>;
+  tolak: (id: string, alasan: string) => Promise<Permintaan>;
+  ubahStatus: (id: string, status: "diproses" | "pending", catatan: string) => Promise<Permintaan>;
+  kirimHasil: (id: string, data: { catatan: string; bukti: File[] }) => Promise<Permintaan>;
   toast: (t: Omit<Toast, "id">) => void;
   toasts: Toast[];
   dismissToast: (id: number) => void;
 }
 
 const Ctx = createContext<PicStore | null>(null);
-const PROFIL_KEY = "ism.pic.profil.v1";
 
-const uid = () => Math.random().toString(36).slice(2, 9);
-
-function tambahRiwayat(p: Permintaan, item: Omit<RiwayatItem, "id" | "waktu">): Permintaan {
-  return { ...p, riwayat: [...p.riwayat, { ...item, id: `rw-${uid()}`, waktu: new Date().toISOString() }] };
-}
+const hitung = (d: DashboardPicApi): Ringkasan => {
+  const aktif = d.sedang_diproses + d.pending + d.menunggu_konfirmasi;
+  return {
+    menunggu: d.antrean,
+    diproses: d.sedang_diproses,
+    pending: d.pending,
+    konfirmasi: d.menunggu_konfirmasi,
+    selesai: d.selesai,
+    ditolak: d.ditolak,
+    aktif,
+    total: d.antrean + aktif + d.selesai + d.ditolak,
+  };
+};
 
 export function PicStoreProvider({ children }: { children: React.ReactNode }) {
-  const [permintaan, setPermintaan] = useState<Permintaan[]>(SEED_PERMINTAAN);
-  const [profil, setProfilState] = useState<ProfilPic>(PROFIL_PIC);
+  const { user } = useAuth();
+  const [permintaan, setPermintaan] = useState<Permintaan[]>([]);
+  const [ringkasan, setRingkasan] = useState<Ringkasan>(RINGKASAN_AWAL);
   const [ready, setReady] = useState(false);
+  const [galat, setGalat] = useState<string | null>(null);
   const [toasts, setToasts] = useState<Toast[]>([]);
   const toastId = useRef(0);
-
-  // Muat data tersimpan setelah mount (menghindari hydration mismatch)
-  /* eslint-disable react-hooks/set-state-in-effect */
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) setPermintaan(JSON.parse(raw));
-      const pr = localStorage.getItem(PROFIL_KEY);
-      if (pr) setProfilState({ ...PROFIL_PIC, ...JSON.parse(pr) });
-    } catch {
-      /* abaikan data rusak */
-    }
-    setReady(true);
-  }, []);
-  /* eslint-enable react-hooks/set-state-in-effect */
-
-  useEffect(() => {
-    if (!ready) return;
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(permintaan));
-    } catch {
-      /* storage penuh/terblokir */
-    }
-  }, [permintaan, ready]);
 
   const dismissToast = useCallback((id: number) => setToasts((t) => t.filter((x) => x.id !== id)), []);
 
@@ -94,92 +103,80 @@ export function PicStoreProvider({ children }: { children: React.ReactNode }) {
     [dismissToast],
   );
 
-  const ubah = useCallback((id: string, fn: (p: Permintaan) => Permintaan) => {
-    setPermintaan((list) => list.map((p) => (p.id === id ? fn(p) : p)));
+  const muat = useCallback(async () => {
+    try {
+      const [dash, masuk, proses, selesai] = await Promise.all([
+        getDashboardPic(),
+        getDaftarPic("masuk"),
+        getDaftarPic("diproses"),
+        getDaftarPic("selesai"),
+      ]);
+      setRingkasan(hitung(dash));
+      setPermintaan([...masuk.data, ...proses.data, ...selesai.data].map(dariDaftar));
+      setGalat(null);
+    } catch (e) {
+      setGalat(errorMessage(e, "Gagal memuat permintaan."));
+    } finally {
+      setReady(true);
+    }
   }, []);
 
-  const store = useMemo<PicStore>(() => {
-    const nama = profil.nama;
-    return {
+  // Muat saat masuk, lalu segarkan berkala dan saat tab aktif kembali.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- muat() mengubah state hanya setelah respons API
+    void muat();
+    const tiap = setInterval(() => {
+      if (document.visibilityState === "visible") void muat();
+    }, 30_000);
+    const saatAktif = () => {
+      if (document.visibilityState === "visible") void muat();
+    };
+    document.addEventListener("visibilitychange", saatAktif);
+    return () => {
+      clearInterval(tiap);
+      document.removeEventListener("visibilitychange", saatAktif);
+    };
+  }, [muat]);
+
+  const setelahAksi = useCallback(
+    async (detail: PicDetailApi) => {
+      await muat();
+      return dariDetail(detail);
+    },
+    [muat],
+  );
+
+  const profil = useMemo<ProfilPic>(
+    () => ({
+      nama: user?.name ?? "PIC",
+      nik: user?.nik ?? "-",
+      email: user?.email ?? "-",
+      telepon: user?.telepon ?? "-",
+      seksi: user?.bagian?.nama_bagian ?? "-",
+      jabatan: user?.jabatan ?? "PIC",
+    }),
+    [user],
+  );
+
+  const store = useMemo<PicStore>(
+    () => ({
       ready,
+      galat,
       profil,
+      ringkasan,
       permintaan,
       toasts,
       dismissToast,
       toast,
+      muat,
       ambil: (id) => permintaan.find((p) => p.id === id),
-
-      terima: (id, catatan) => {
-        ubah(id, (p) =>
-          tambahRiwayat(
-            { ...p, status: "diproses", diterimaPada: new Date().toISOString(), catatanTriage: catatan?.trim() || undefined },
-            { judul: "Permintaan Diterima", keterangan: `Diterima oleh ${nama}. Status berubah menjadi Sedang Diproses.${catatan?.trim() ? ` Catatan: ${catatan.trim()}` : ""}`, oleh: nama, status: "diproses" },
-          ),
-        );
-      },
-
-      tolak: (id, alasan) => {
-        ubah(id, (p) =>
-          tambahRiwayat(
-            { ...p, status: "ditolak", ditolakPada: new Date().toISOString(), alasanTolak: alasan.trim() },
-            { judul: "Permintaan Ditolak", keterangan: alasan.trim(), oleh: nama, status: "ditolak" },
-          ),
-        );
-      },
-
-      ubahStatus: (id, status, catatan) => {
-        ubah(id, (p) =>
-          tambahRiwayat(
-            { ...p, status, alasanPending: status === "pending" ? catatan.trim() : undefined },
-            status === "pending"
-              ? { judul: "Pengerjaan Ditunda (Pending)", keterangan: catatan.trim(), oleh: nama, status }
-              : { judul: "Pengerjaan Dilanjutkan", keterangan: catatan.trim() || "Pengerjaan dilanjutkan kembali oleh PIC.", oleh: nama, status },
-          ),
-        );
-      },
-
-      kirimHasil: (id, { catatan, bukti }) => {
-        ubah(id, (p) =>
-          tambahRiwayat(
-            { ...p, status: "menunggu_konfirmasi", dikirimPada: new Date().toISOString(), catatanSelesai: catatan.trim() || undefined, buktiSelesai: bukti, alasanPending: undefined, alasanRevisi: undefined },
-            { judul: "Hasil Dikirim untuk Ditinjau", keterangan: catatan.trim() || `Hasil pengerjaan dikirim dengan ${bukti.length} berkas terlampir.`, oleh: nama, status: "menunggu_konfirmasi" },
-          ),
-        );
-      },
-
-      simulasiSetujui: (id) => {
-        ubah(id, (p) =>
-          tambahRiwayat(
-            { ...p, status: "selesai", selesaiPada: new Date().toISOString() },
-            { judul: "Permintaan Selesai", keterangan: `Hasil pengerjaan disetujui oleh ${p.pengaju.nama}.`, oleh: p.pengaju.nama, status: "selesai" },
-          ),
-        );
-      },
-
-      simulasiRevisi: (id, alasan) => {
-        ubah(id, (p) =>
-          tambahRiwayat(
-            { ...p, status: "diproses", jumlahRevisi: p.jumlahRevisi + 1, alasanRevisi: alasan.trim() },
-            { judul: "Revisi Diminta", keterangan: alasan.trim(), oleh: p.pengaju.nama, status: "revisi" },
-          ),
-        );
-      },
-
-      setProfil: (p) => {
-        setProfilState((cur) => {
-          const next = { ...cur, ...p };
-          try {
-            localStorage.setItem(PROFIL_KEY, JSON.stringify(next));
-          } catch {
-            /* abaikan */
-          }
-          return next;
-        });
-      },
-
-      resetDemo: () => setPermintaan(SEED_PERMINTAAN),
-    };
-  }, [permintaan, profil, ready, toasts, toast, dismissToast, ubah]);
+      terima: async (id, catatan) => setelahAksi(await terimaTiket(id, catatan)),
+      tolak: async (id, alasan) => setelahAksi(await tolakTiket(id, alasan)),
+      ubahStatus: async (id, status, catatan) => setelahAksi(await ubahStatusTiket(id, status === "pending" ? "pending" : "in_progress", catatan)),
+      kirimHasil: async (id, { catatan, bukti }) => setelahAksi(await kirimHasilTiket(id, bukti, catatan)),
+    }),
+    [ready, galat, profil, ringkasan, permintaan, toasts, toast, dismissToast, muat, setelahAksi],
+  );
 
   return <Ctx.Provider value={store}>{children}</Ctx.Provider>;
 }
@@ -190,17 +187,7 @@ export function usePicStore() {
   return ctx;
 }
 
-/** Ringkasan angka per status, dipakai sidebar, dashboard, dan laporan. */
-export function useRingkasan() {
-  const { permintaan } = usePicStore();
-  return useMemo(() => {
-    const hitung = (s: StatusPermintaan) => permintaan.filter((p) => p.status === s).length;
-    const menunggu = hitung("menunggu");
-    const diproses = hitung("diproses");
-    const pending = hitung("pending");
-    const konfirmasi = hitung("menunggu_konfirmasi");
-    const selesai = hitung("selesai");
-    const ditolak = hitung("ditolak");
-    return { total: permintaan.length, menunggu, diproses, pending, konfirmasi, selesai, ditolak, aktif: diproses + pending + konfirmasi };
-  }, [permintaan]);
+/** Ringkasan angka per status (dari server), dipakai sidebar, dashboard, dan profil. */
+export function useRingkasan(): Ringkasan {
+  return usePicStore().ringkasan;
 }

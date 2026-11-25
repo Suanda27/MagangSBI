@@ -1,12 +1,11 @@
 /**
- * Tipe data modul PIC. Bentuknya mengikuti entitas ERD (permintaan, riwayat_permintaan, lampiran)
- * sehingga saat endpoint Laravel siap, cukup mengganti store (lib/pic/store.tsx) dengan pemanggilan API.
+ * Tipe data tampilan modul PIC. Respons API diterjemahkan ke bentuk ini oleh lib/pic/adapter.ts,
+ * sehingga komponen tidak perlu mengenal nama field API.
  */
 
 /** menunggu_konfirmasi = hasil sudah dikirim PIC, menunggu peninjauan karyawan (waiting_review di API). */
 export type StatusPermintaan = "menunggu" | "diproses" | "pending" | "menunggu_konfirmasi" | "selesai" | "ditolak";
 export type Prioritas = "Mendesak" | "Tinggi" | "Normal";
-export type KodeBagian = "ASM" | "HR" | "IS" | "PE" | "GA";
 
 export interface Lampiran {
   id: string;
@@ -15,6 +14,8 @@ export interface Lampiran {
   ukuran: number;
   tipe: "gambar" | "dokumen";
   oleh: "pengaju" | "pic";
+  /** Alamat unduh (GET /api/lampiran/{id}); kosong untuk berkas yang belum dikirim. */
+  url?: string;
 }
 
 export interface RiwayatItem {
@@ -30,14 +31,17 @@ export interface RiwayatItem {
 export interface Pengaju {
   nama: string;
   nik: string;
-  email: string;
   telepon: string;
   jabatan: string;
-  bagian: KodeBagian;
+  /** Nama section pengaju, mis. "Assembly". */
+  bagian: string;
 }
 
 export interface Permintaan {
+  /** id numerik dari server (dipakai untuk alamat halaman dan pemanggilan API). */
   id: string;
+  /** Nomor tiket untuk ditampilkan, mis. IS-2026-0001. */
+  kode: string;
   judul: string;
   deskripsi: string;
   layanan: string;
@@ -51,6 +55,10 @@ export interface Permintaan {
   status: StatusPermintaan;
   lampiran: Lampiran[];
   riwayat: RiwayatItem[];
+  /** PIC penanggung jawab (hanya ada di detail). */
+  picNama?: string;
+  /** Terakhir diubah di server. */
+  diperbaruiPada?: string;
   diterimaPada?: string;
   /** Waktu PIC mengirim hasil untuk ditinjau (terakhir). */
   dikirimPada?: string;
@@ -58,24 +66,15 @@ export interface Permintaan {
   selesaiPada?: string;
   ditolakPada?: string;
   alasanTolak?: string;
-  catatanTriage?: string;
   catatanSelesai?: string;
   alasanPending?: string;
   /** Berapa kali karyawan meminta revisi (tanpa batas). */
   jumlahRevisi: number;
   /** Alasan revisi terakhir dari karyawan (teks, minimal 10 karakter). */
   alasanRevisi?: string;
-  /** Lampiran hasil kerja yang dikirim PIC. */
+  /** Berkas hasil kerja putaran terakhir yang dikirim PIC. */
   buktiSelesai?: Lampiran[];
 }
-
-export const NAMA_BAGIAN: Record<KodeBagian, string> = {
-  ASM: "Assembly",
-  HR: "Human Resource",
-  IS: "Information System",
-  PE: "Production Engineering",
-  GA: "General Affairs",
-};
 
 export interface ProfilPic {
   nama: string;
@@ -85,12 +84,3 @@ export interface ProfilPic {
   seksi: string;
   jabatan: string;
 }
-
-export const PROFIL_PIC: ProfilPic = {
-  nama: "Budi Santoso",
-  nik: "21008841",
-  email: "budi.santoso@sbi.co.id",
-  telepon: "+62 812-7788-4521",
-  seksi: "Information System",
-  jabatan: "PIC IT & Automation",
-};
