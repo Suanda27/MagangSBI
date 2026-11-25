@@ -7,7 +7,6 @@ import { PageHeader, StatCard, delay } from "@/components/shared/display";
 import { SelectField } from "@/components/shared/form-controls";
 import { kunciHari, tanggalJam, useNow } from "@/lib/shared/format";
 import { usePicStore } from "@/lib/pic/store";
-import { NAMA_BAGIAN, type KodeBagian } from "@/lib/pic/types";
 
 const WARNA = ["#1e40af", "#3b82f6", "#93c5fd", "#64748b", "#cbd5e1"];
 
@@ -86,7 +85,7 @@ export default function LaporanPage() {
     const rata = selesai.length ? selesai.reduce((a, p) => a + (new Date(p.selesaiPada!).getTime() - new Date(p.diajukan).getTime()), 0) / selesai.length / 3600_000 : 0;
     const tanpaRevisi = selesai.filter((p) => p.jumlahRevisi === 0).length;
     const layanan = Object.entries(data.reduce<Record<string, number>>((m, p) => ((m[p.kategori] = (m[p.kategori] ?? 0) + 1), m), {})).sort((a, b) => b[1] - a[1]);
-    const perBagian = (Object.keys(NAMA_BAGIAN) as KodeBagian[]).map((k) => ({ k, n: data.filter((p) => p.pengaju.bagian === k).length })).filter((x) => x.n > 0).sort((a, b) => b.n - a.n);
+    const perBagian = Array.from(new Set(data.map((p) => p.pengaju.bagian))).map((k) => ({ k, n: data.filter((p) => p.pengaju.bagian === k).length })).sort((a, b) => b.n - a.n);
     const berulang = Object.entries(data.reduce<Record<string, { n: number; jam: number; s: number }>>((m, p) => {
       const e = (m[p.layanan] ??= { n: 0, jam: 0, s: 0 });
       e.n++;
@@ -104,7 +103,7 @@ export default function LaporanPage() {
   const exportCsv = () => {
     const esc = (v: string) => `"${v.replace(/"/g, '""')}"`;
     const rows = [["ID", "Judul", "Layanan", "Pengaju", "Bagian", "Lokasi", "Diajukan", "Status", "Selesai/Ditolak"].map(esc).join(",")];
-    for (const p of data) rows.push([p.id, p.judul, p.layanan, p.pengaju.nama, NAMA_BAGIAN[p.pengaju.bagian], `${p.plant} ${p.lantai}`, tanggalJam(p.diajukan), p.status, p.selesaiPada ? tanggalJam(p.selesaiPada) : p.ditolakPada ? tanggalJam(p.ditolakPada) : ""].map((v) => esc(String(v))).join(","));
+    for (const p of data) rows.push([p.kode, p.judul, p.layanan, p.pengaju.nama, p.pengaju.bagian, `${p.plant} ${p.lantai}`, tanggalJam(p.diajukan), p.status, p.selesaiPada ? tanggalJam(p.selesaiPada) : p.ditolakPada ? tanggalJam(p.ditolakPada) : ""].map((v) => esc(String(v))).join(","));
     const url = URL.createObjectURL(new Blob(["﻿" + rows.join("\n")], { type: "text/csv;charset=utf-8" }));
     const a = document.createElement("a");
     a.href = url;
@@ -132,7 +131,7 @@ export default function LaporanPage() {
 
       <div className="flex flex-wrap items-center gap-3">
         <SelectField label="Periode" value={periode} onChange={setPeriode} options={[{ value: "semua", label: "Semua Periode" }, { value: "bulan", label: "Bulan Ini" }, { value: "minggu", label: "7 Hari Terakhir" }]} />
-        <SelectField label="Bagian pengaju" value={bagian} onChange={setBagian} options={[{ value: "", label: "Semua Bagian" }, ...(Object.keys(NAMA_BAGIAN) as KodeBagian[]).map((k) => ({ value: k, label: NAMA_BAGIAN[k] }))]} />
+        <SelectField label="Bagian pengaju" value={bagian} onChange={setBagian} options={[{ value: "", label: "Semua Bagian" }, ...Array.from(new Set(permintaan.map((p) => p.pengaju.bagian))).sort().map((k) => ({ value: k, label: k }))]} />
         <span className="text-xs text-slate-400 ml-auto">{data.length} tiket dalam laporan</span>
       </div>
 
@@ -168,7 +167,7 @@ export default function LaporanPage() {
           <div className="flex flex-col gap-5">
             {stat.perBagian.length === 0 && <p className="text-xs text-slate-400 py-10 text-center">Belum ada data.</p>}
             {stat.perBagian.map((b) => (
-              <Bar key={b.k} label={NAMA_BAGIAN[b.k]} value={b.n} max={stat.perBagian[0].n} color="bg-blue-700" right={`${b.n} tiket`} />
+              <Bar key={b.k} label={b.k} value={b.n} max={stat.perBagian[0].n} color="bg-blue-700" right={`${b.n} tiket`} />
             ))}
           </div>
         </section>

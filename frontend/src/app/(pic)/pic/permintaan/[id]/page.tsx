@@ -2,15 +2,17 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useState } from "react";
-import { ArrowLeft, Ban, Check, CheckCircle2, Clock3, FileSearch, FileText, History, Hourglass, Image as ImageIcon, Mail, MapPin, PauseCircle, Phone, RefreshCw, RotateCcw, User } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowLeft, Ban, Check, CheckCircle2, Clock3, FileSearch, FileText, History, Hourglass, Image as ImageIcon, MapPin, PauseCircle, Phone, RefreshCw, RotateCcw, User } from "lucide-react";
 import { Avatar, PageHeader, delay } from "@/components/shared/display";
 import { PrioritasBadge, StatusBadge } from "@/components/pic/primitives";
 import { ProofUploadForm, StatusDialog, TerimaDialog, TolakDialog } from "@/components/pic/actions";
 import { tanggalJam, ukuranFile } from "@/lib/shared/format";
 import { TUTUP_OTOMATIS_HARI_KERJA, tambahHariKerja } from "@/lib/pic/format";
-import { usePicStore } from "@/lib/pic/store";
-import { NAMA_BAGIAN, type Lampiran, type Permintaan } from "@/lib/pic/types";
+import { errorMessage } from "@/lib/api/errors";
+import { getDetailPic } from "@/lib/api/pic";
+import { dariDetail } from "@/lib/pic/adapter";
+import type { Lampiran, Permintaan } from "@/lib/pic/types";
 
 const Kartu = ({ title, icon: Icon, right, children }: { title: string; icon: typeof User; right?: React.ReactNode; children: React.ReactNode }) => (
   <section className="bg-white border border-border-subtle rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.02)] overflow-hidden">
@@ -27,14 +29,16 @@ function DaftarLampiran({ items, kosong }: { items: Lampiran[]; kosong: string }
   return (
     <ul className="grid sm:grid-cols-2 gap-2.5">
       {items.map((l) => (
-        <li key={l.id} className="flex items-center gap-3 p-3 border border-slate-200 rounded-lg hover:border-blue-200 hover:bg-blue-50/30 transition-colors">
-          <span className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${l.tipe === "gambar" ? "bg-blue-50 text-blue-600" : "bg-rose-50 text-rose-600"}`}>
-            {l.tipe === "gambar" ? <ImageIcon className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
-          </span>
-          <span className="min-w-0 leading-tight">
-            <span className="block text-xs font-medium text-slate-800 truncate">{l.nama}</span>
-            <span className="text-[11px] text-slate-400">{ukuranFile(l.ukuran)}</span>
-          </span>
+        <li key={l.id}>
+          <a href={l.url} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-3 border border-slate-200 rounded-lg hover:border-blue-200 hover:bg-blue-50/30 transition-colors">
+            <span className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${l.tipe === "gambar" ? "bg-blue-50 text-blue-600" : "bg-rose-50 text-rose-600"}`}>
+              {l.tipe === "gambar" ? <ImageIcon className="w-4 h-4" /> : <FileText className="w-4 h-4" />}
+            </span>
+            <span className="min-w-0 leading-tight">
+              <span className="block text-xs font-medium text-slate-800 truncate">{l.nama}</span>
+              <span className="text-[11px] text-slate-400">{ukuranFile(l.ukuran)}</span>
+            </span>
+          </a>
         </li>
       ))}
     </ul>
@@ -102,20 +106,41 @@ function Alur({ p }: { p: Permintaan }) {
 
 export default function DetailPermintaanPage() {
   const { id } = useParams<{ id: string }>();
-  const { ambil, ready, profil, simulasiSetujui, simulasiRevisi, toast } = usePicStore();
   const [terima, setTerima] = useState(false);
   const [tolak, setTolak] = useState(false);
   const [status, setStatus] = useState(false);
-  const [alasanDemo, setAlasanDemo] = useState("");
 
-  const p = ambil(id);
+  // Detail lengkap dari server; disegarkan tiap 30 detik (karyawan bisa menanggapi kapan saja).
+  const [p, setP] = useState<Permintaan | null>(null);
+  const [galat, setGalat] = useState<string | null>(null);
+  useEffect(() => {
+    let batal = false;
+    const muat = () =>
+      getDetailPic(id)
+        .then((d) => {
+          if (batal) return;
+          setP(dariDetail(d));
+          setGalat(null);
+        })
+        .catch((e) => {
+          if (!batal) setGalat(errorMessage(e, "Gagal memuat permintaan."));
+        });
+    void muat();
+    const tiap = setInterval(() => {
+      if (document.visibilityState === "visible") void muat();
+    }, 30_000);
+    return () => {
+      batal = true;
+      clearInterval(tiap);
+    };
+  }, [id]);
 
   if (!p) {
     return (
       <div className="bg-white border border-border-subtle rounded-xl p-12 flex flex-col items-center text-center gap-3">
         <FileSearch className="w-10 h-10 text-slate-300" />
-        <h1 className="text-lg font-semibold text-slate-900">{ready ? "Permintaan tidak ditemukan" : "Memuat permintaan..."}</h1>
-        {ready && <p className="text-sm text-slate-500">Tiket #{id} tidak ada di antrean Anda.</p>}
+        <h1 className="text-lg font-semibold text-slate-900">{galat ? "Permintaan tidak dapat dibuka" : "Memuat permintaan..."}</h1>
+        {galat && <p className="text-sm text-slate-500">{galat}</p>}
         <Link href="/pic/permintaan-masuk" className="text-sm font-medium text-blue-700 hover:text-blue-900 inline-flex items-center gap-1.5"><ArrowLeft className="w-4 h-4" /> Kembali ke Permintaan Masuk</Link>
       </div>
     );
@@ -127,7 +152,7 @@ export default function DetailPermintaanPage() {
   return (
     <>
       <PageHeader
-        crumbs={[{ label: "Portal" }, { label: kembali.l, href: kembali.href }, { label: `#${p.id}` }]}
+        crumbs={[{ label: "Portal" }, { label: kembali.l, href: kembali.href }, { label: `#${p.kode}` }]}
         title={p.judul}
         actions={
           <Link href={kembali.href} className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-slate-600 border border-slate-200 rounded-lg hover:bg-white hover:text-blue-800 hover:border-blue-200 transition-all">
@@ -137,7 +162,7 @@ export default function DetailPermintaanPage() {
       />
 
       <div className="flex flex-wrap items-center gap-3 -mt-2">
-        <span className="text-sm font-semibold text-blue-800">#{p.id}</span>
+        <span className="text-sm font-semibold text-blue-800">#{p.kode}</span>
         <StatusBadge status={p.status} />
         <PrioritasBadge prioritas={p.prioritas} />
         <span className="text-xs text-slate-400 flex items-center gap-1"><Clock3 className="w-3.5 h-3.5" /> Diajukan {tanggalJam(p.diajukan)}</span>
@@ -157,11 +182,10 @@ export default function DetailPermintaanPage() {
               <Avatar nama={p.pengaju.nama} size="lg" />
               <div className="flex-1 min-w-0">
                 <p className="text-base font-semibold text-slate-900">{p.pengaju.nama}</p>
-                <p className="text-xs text-slate-500">{p.pengaju.jabatan} · {NAMA_BAGIAN[p.pengaju.bagian]}</p>
+                <p className="text-xs text-slate-500">{p.pengaju.jabatan} · {p.pengaju.bagian}</p>
                 <p className="text-xs text-slate-400 mt-0.5">NIK {p.pengaju.nik}</p>
               </div>
               <div className="text-xs text-slate-600 flex flex-col gap-1.5">
-                <a href={`mailto:${p.pengaju.email}`} className="inline-flex items-center gap-2 hover:text-blue-700 transition-colors"><Mail className="w-3.5 h-3.5 text-slate-400" />{p.pengaju.email}</a>
                 <span className="inline-flex items-center gap-2"><Phone className="w-3.5 h-3.5 text-slate-400" />{p.pengaju.telepon}</span>
               </div>
             </div>
@@ -215,7 +239,7 @@ export default function DetailPermintaanPage() {
             </section>
           )}
 
-          {aktif && <ProofUploadForm permintaan={p} />}
+          {aktif && <ProofUploadForm permintaan={p} onDone={setP} />}
         </div>
 
         <div className="flex flex-col gap-6 lg:sticky lg:top-24">
@@ -244,46 +268,13 @@ export default function DetailPermintaanPage() {
                 </p>
               </section>
 
-              <section className="rounded-xl border border-dashed border-slate-300 bg-slate-50/70 p-5">
-                <h2 className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Mode demo · aksi pengaju</h2>
-                <p className="text-xs text-slate-500 mt-1 leading-relaxed">Hanya untuk mencoba alur. Setelah API tersambung, aksi ini dilakukan karyawan dari portalnya.</p>
-                <textarea
-                  value={alasanDemo}
-                  onChange={(e) => setAlasanDemo(e.target.value)}
-                  rows={2}
-                  placeholder="Alasan revisi (minimal 10 karakter)..."
-                  className="mt-3 w-full text-xs p-2.5 rounded-lg border border-slate-200 bg-white text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 resize-none transition-all"
-                />
-                <div className="mt-3 grid grid-cols-2 gap-2">
-                  <button
-                    onClick={() => {
-                      simulasiSetujui(p.id);
-                      toast({ tone: "success", title: "Disetujui pengaju (simulasi)", desc: `#${p.id} berstatus Selesai.` });
-                    }}
-                    className="py-2 text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors"
-                  >
-                    Setujui
-                  </button>
-                  <button
-                    onClick={() => {
-                      if (alasanDemo.trim().length < 10) return toast({ tone: "error", title: "Alasan revisi terlalu singkat", desc: "Minimal 10 karakter." });
-                      simulasiRevisi(p.id, alasanDemo);
-                      setAlasanDemo("");
-                      toast({ tone: "info", title: "Revisi diminta (simulasi)", desc: `#${p.id} kembali ke Sedang Diproses.` });
-                    }}
-                    className="py-2 text-xs font-semibold bg-white hover:bg-amber-50 text-amber-800 border border-amber-200 rounded-lg transition-colors"
-                  >
-                    Minta Revisi
-                  </button>
-                </div>
-              </section>
             </>
           )}
 
           {aktif && (
             <section className="bg-white border border-border-subtle rounded-xl p-5 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
               <h2 className="text-sm font-semibold text-slate-900">Progres Pengerjaan</h2>
-              <p className="text-xs text-slate-500 mt-1">PIC penanggung jawab: <span className="font-medium text-slate-700">{profil.nama}</span></p>
+              <p className="text-xs text-slate-500 mt-1">PIC penanggung jawab: <span className="font-medium text-slate-700">{p.picNama ?? "-"}</span></p>
               {p.status === "pending" && p.alasanPending && (
                 <div className="mt-3 text-xs text-violet-800 bg-violet-50 border border-violet-200/70 rounded-lg p-3 leading-relaxed flex gap-2"><PauseCircle className="w-4 h-4 shrink-0 mt-0.5" />{p.alasanPending}</div>
               )}
@@ -308,9 +299,9 @@ export default function DetailPermintaanPage() {
         </div>
       </div>
 
-      <TerimaDialog permintaan={terima ? p : null} onClose={() => setTerima(false)} />
-      <TolakDialog permintaan={tolak ? p : null} onClose={() => setTolak(false)} />
-      <StatusDialog permintaan={status ? p : null} onClose={() => setStatus(false)} />
+      <TerimaDialog permintaan={terima ? p : null} onClose={() => setTerima(false)} onDone={setP} />
+      <TolakDialog permintaan={tolak ? p : null} onClose={() => setTolak(false)} onDone={setP} />
+      {status && <StatusDialog permintaan={p} onClose={() => setStatus(false)} onDone={setP} />}
     </>
   );
 }

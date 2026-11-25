@@ -11,7 +11,7 @@ export default function SedangDiprosesPage() {
   const { permintaan } = usePicStore();
   const r = useRingkasan();
   const aktif = useMemo(
-    () => permintaan.filter((p) => p.status === "diproses" || p.status === "pending" || p.status === "menunggu_konfirmasi").sort((a, b) => new Date(a.diajukan).getTime() - new Date(b.diajukan).getTime()),
+    () => permintaan.filter((p) => p.status === "diproses" || p.status === "pending" || p.status === "menunggu_konfirmasi"),
     [permintaan],
   );
   const filter = useFilter(aktif);

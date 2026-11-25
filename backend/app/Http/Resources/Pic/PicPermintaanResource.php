@@ -24,9 +24,11 @@ class PicPermintaanResource extends PermintaanResource
                 'name' => $this->pengaju->name,
                 'nik' => $this->pengaju->nik,
                 'jabatan' => $this->pengaju->jabatan,
+                'bagian' => $this->pengaju->relationLoaded('bagian') ? $this->pengaju->bagian?->nama_bagian : null,
             ] : null),
             'diterima_pada' => $this->diterima_pada?->toIso8601String(),
             'selesai_pada' => $this->selesai_pada?->toIso8601String(),
+            'diperbarui_pada' => $this->updated_at?->toIso8601String(),
         ]);
     }
 }

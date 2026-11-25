@@ -9,17 +9,17 @@ import { PrioritasBadge, StatusBadge } from "@/components/pic/primitives";
 import { FilterBar, RequestTable, useFilter } from "@/components/pic/request-list";
 import { TerimaDialog, TolakDialog } from "@/components/pic/actions";
 import { tanggalJam, ukuranFile } from "@/lib/shared/format";
+import { getDetailPic } from "@/lib/api/pic";
+import { dariDetail } from "@/lib/pic/adapter";
 import { usePicStore } from "@/lib/pic/store";
-import { NAMA_BAGIAN, type Permintaan } from "@/lib/pic/types";
+import type { Permintaan } from "@/lib/pic/types";
 
 export default function PermintaanMasukPage() {
-  const { permintaan } = usePicStore();
+  const { permintaan, ready, galat } = usePicStore();
 
-  // Antrean bersama per section: tiket yang belum diterima PIC mana pun, yang terlama di atas
-  const antrean = useMemo(
-    () => permintaan.filter((p) => p.status === "menunggu").sort((a, b) => new Date(a.diajukan).getTime() - new Date(b.diajukan).getTime()),
-    [permintaan],
-  );
+  // Antrean bersama per section: tiket yang belum diterima PIC mana pun. Urutan dari server:
+  // Mendesak, Tinggi, Normal, lalu yang paling lama menunggu.
+  const antrean = useMemo(() => permintaan.filter((p) => p.status === "menunggu"), [permintaan]);
   const filter = useFilter(antrean);
 
   const [reviewId, setReviewId] = useState<string | null>(null);
@@ -28,11 +28,20 @@ export default function PermintaanMasukPage() {
 
   // Drawer tetap menyimpan tiket terakhir agar animasi keluar tidak "kosong"
   const [terakhir, setTerakhir] = useState<Permintaan | null>(null);
-  const aktif = reviewId ? permintaan.find((p) => p.id === reviewId) ?? terakhir : terakhir;
+  const item = reviewId ? permintaan.find((p) => p.id === reviewId) ?? terakhir : terakhir;
+
+  // Lampiran dan data pengaju lengkap hanya ada di detail; dimuat saat drawer dibuka.
+  const [detail, setDetail] = useState<Permintaan | null>(null);
+  const aktif = item && detail && detail.id === item.id ? { ...item, ...detail } : item;
   const buka = (p: Permintaan) => {
     setTerakhir(p);
     setReviewId(p.id);
+    setDetail(null);
+    getDetailPic(p.id).then((d) => setDetail(dariDetail(d))).catch(() => {
+      /* daftar tetap tampil; lampiran dianggap belum termuat */
+    });
   };
+  const detailSiap = !!aktif && detail?.id === aktif.id;
 
 
   return (
@@ -51,6 +60,8 @@ export default function PermintaanMasukPage() {
         <span className="text-slate-800 font-semibold">{antrean.length} permintaan</span> menunggu tindakan
       </div>
 
+      {galat && <div role="alert" className="text-xs text-rose-700 bg-rose-50 border border-rose-200/70 rounded-lg px-3 py-2">{galat}</div>}
+
       <FilterBar data={antrean} filter={filter} />
 
       <RequestTable
@@ -59,8 +70,8 @@ export default function PermintaanMasukPage() {
         onReview={buka}
         onTerima={setTerima}
         onTolak={setTolak}
-        emptyTitle={antrean.length === 0 ? "Antrean kosong" : "Tidak ada hasil"}
-        emptyDesc={antrean.length === 0 ? "Belum ada permintaan baru yang menunggu pemeriksaan Anda." : "Coba ubah kata kunci atau reset filter."}
+        emptyTitle={!ready ? "Memuat permintaan..." : antrean.length === 0 ? "Antrean kosong" : "Tidak ada hasil"}
+        emptyDesc={!ready ? "Mengambil data dari server." : antrean.length === 0 ? "Belum ada permintaan baru yang menunggu pemeriksaan Anda." : "Coba ubah kata kunci atau reset filter."}
       />
 
       {/* Drawer pemeriksaan cepat */}
@@ -69,7 +80,7 @@ export default function PermintaanMasukPage() {
           <>
             <div className="p-5 border-b border-slate-100 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <span className="text-base font-semibold text-slate-900">#{aktif.id}</span>
+                <span className="text-base font-semibold text-slate-900">#{aktif.kode}</span>
                 <PrioritasBadge prioritas={aktif.prioritas} />
               </div>
               <button className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 hover:rotate-90 transition-all duration-300" onClick={() => setReviewId(null)} aria-label="Tutup">
@@ -87,7 +98,7 @@ export default function PermintaanMasukPage() {
                 <Avatar nama={aktif.pengaju.nama} size="md" />
                 <div className="leading-tight">
                   <p className="text-[13px] font-semibold text-slate-900">{aktif.pengaju.nama}</p>
-                  <p className="text-xs text-slate-500">{NAMA_BAGIAN[aktif.pengaju.bagian]} · NIK {aktif.pengaju.nik}</p>
+                  <p className="text-xs text-slate-500">{aktif.pengaju.bagian} · NIK {aktif.pengaju.nik}</p>
                 </div>
               </div>
 
@@ -111,16 +122,20 @@ export default function PermintaanMasukPage() {
               </div>
 
               <div>
-                <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Lampiran ({aktif.lampiran.length})</h4>
-                {aktif.lampiran.length === 0 ? (
+                <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Lampiran{detailSiap ? ` (${aktif.lampiran.length})` : ""}</h4>
+                {!detailSiap ? (
+                  <p className="text-xs text-slate-400">Memuat lampiran...</p>
+                ) : aktif.lampiran.length === 0 ? (
                   <p className="text-xs text-slate-400">Tidak ada lampiran.</p>
                 ) : (
                   <ul className="flex flex-col gap-2">
                     {aktif.lampiran.map((l) => (
-                      <li key={l.id} className="flex items-center gap-3 p-2.5 border border-slate-200 rounded-lg text-xs">
-                        {l.tipe === "gambar" ? <ImageIcon className="w-4 h-4 text-blue-500" /> : <FileText className="w-4 h-4 text-rose-500" />}
-                        <span className="truncate font-medium text-slate-800">{l.nama}</span>
-                        <span className="text-slate-400 ml-auto shrink-0">{ukuranFile(l.ukuran)}</span>
+                      <li key={l.id}>
+                        <a href={l.url} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-2.5 border border-slate-200 rounded-lg text-xs hover:border-blue-200 hover:bg-blue-50/30 transition-colors">
+                          {l.tipe === "gambar" ? <ImageIcon className="w-4 h-4 text-blue-500" /> : <FileText className="w-4 h-4 text-rose-500" />}
+                          <span className="truncate font-medium text-slate-800">{l.nama}</span>
+                          <span className="text-slate-400 ml-auto shrink-0">{ukuranFile(l.ukuran)}</span>
+                        </a>
                       </li>
                     ))}
                   </ul>

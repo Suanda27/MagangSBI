@@ -36,7 +36,7 @@ class PermintaanController extends Controller
                 $kata = '%'.$request->kataKunci().'%';
                 $q->where(fn ($w) => $w->where('kode_tiket', 'like', $kata)->orWhere('judul', 'like', $kata));
             })
-            ->with(['layanan', 'bagian', 'plant', 'lantai', 'pengaju'])
+            ->with(['layanan', 'bagian', 'plant', 'lantai', 'pengaju.bagian'])
             ->paginate($request->perPage())
             ->withQueryString();
 
