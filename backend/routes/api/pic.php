@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Pic\AksiPermintaanController;
 use App\Http\Controllers\Api\Pic\DashboardController;
 use App\Http\Controllers\Api\Pic\PermintaanController;
 use Illuminate\Http\Request;
@@ -18,7 +19,12 @@ Route::get('/ping', fn (Request $request) => response()->json([
     'peran' => $request->user()->role->value,
 ]));
 
-// Baca (Sprint 3.1). Aksi terima/tolak/status/kirim-hasil menyusul di 3.2 dan seterusnya.
+// Aksi (Sprint 3.2). Kirim-hasil menyusul di 3.3.
+Route::post('permintaan/{id}/terima', [AksiPermintaanController::class, 'terima'])->whereNumber('id')->name('pic.permintaan.terima');
+Route::post('permintaan/{id}/tolak', [AksiPermintaanController::class, 'tolak'])->whereNumber('id')->name('pic.permintaan.tolak');
+Route::post('permintaan/{id}/status', [AksiPermintaanController::class, 'ubahStatus'])->whereNumber('id')->name('pic.permintaan.status');
+
+// Baca (Sprint 3.1).
 Route::get('dashboard', [DashboardController::class, 'index'])->name('pic.dashboard');
 Route::get('permintaan', [PermintaanController::class, 'index'])->name('pic.permintaan.index');
 Route::get('permintaan/{id}', [PermintaanController::class, 'show'])->whereNumber('id')->name('pic.permintaan.show');

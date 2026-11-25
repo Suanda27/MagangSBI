@@ -49,3 +49,28 @@ Detail lengkap: semua field daftar ditambah `deskripsi`, `pengaju` (plus `telepo
 
 Boleh dibuka bila tiket baru di section PIC itu atau tiket yang ia tangani (`PermintaanPolicy::view`).
 Tiket section lain atau milik PIC lain dijawab 403; id yang tidak ada 404.
+
+# API PIC (aksi) — Sprint 3.2
+
+Semua aksi `POST`, berawalan `/api/pic/permintaan/{id}`. Respons sukses (200) = detail tiket terbaru
+(bentuk sama dengan `GET /api/pic/permintaan/{id}`), jadi status dan riwayat langsung segar.
+
+| Kode | Arti |
+|---|---|
+| 403 | Bukan hak PIC ini (section lain, atau bukan penanggung jawab tiket) |
+| 404 | Tiket tidak ada |
+| 409 | Keadaan tiket sudah berubah (diambil PIC lain, status tidak cocok, tiket sudah final) |
+| 422 | Isian tidak valid (alasan kosong atau terlalu pendek, status tujuan salah) |
+
+## `POST /api/pic/permintaan/{id}/terima`
+Body opsional: `{ "catatan": "…" }` (maks 1000). Diajukan → Sedang Diproses; PIC ini menjadi penanggung jawab.
+Bila dua PIC menekan bersamaan, hanya satu yang menang; yang lain 409.
+
+## `POST /api/pic/permintaan/{id}/tolak`
+Body: `{ "alasan": "…" }`, wajib, 10–1000 karakter. Diajukan → Ditolak (final). PIC yang menolak tercatat sebagai `id_pic`.
+
+## `POST /api/pic/permintaan/{id}/status`
+Body: `{ "status": "pending" | "in_progress", "alasan": "…" }`. Hanya PIC penanggung jawab.
+- `pending` (tunda): Diproses → Pending, `alasan` wajib minimal 5 karakter.
+- `in_progress` (lanjutkan): Pending → Diproses, `alasan_pending` dikosongkan.
+Status tujuan lain (mis. `completed`) ditolak 422; kirim hasil menyusul di Sprint 3.3.
