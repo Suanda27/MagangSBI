@@ -332,3 +332,36 @@ export async function getDashboardAdmin(): Promise<DashboardAdminApi> {
   const { data } = await api.get<{ data: DashboardAdminApi }>("/api/admin/dashboard");
   return data.data;
 }
+
+/* ---------- Laporan ---------- */
+
+export interface FilterLaporan {
+  /** Tanggal pengajuan, format YYYY-MM-DD (kedua ujung ikut dihitung). */
+  dari?: string;
+  sampai?: string;
+  id_bagian?: number;
+  id_layanan?: number;
+  id_pic?: number;
+  id_plant?: number;
+  /** Satu atau beberapa status dipisah koma. */
+  status?: string;
+}
+
+export interface RingkasanLaporanApi extends RingkasanTiketApi {
+  per_section: { id: number; kode_bagian: string; nama_bagian: string; jumlah: number }[];
+  top_layanan: { id: number; nama_layanan: string; jumlah: number }[];
+  selesai: { jumlah: number; rata_rata_jam: number | null; tanpa_revisi_persen: number | null };
+}
+
+/** GET /api/admin/laporan: rekap berpaginasi dan ringkasan untuk seluruh hasil filter. */
+export async function getLaporanAdmin(params: FilterLaporan & { page?: number; per_page?: number } = {}): Promise<Halaman<TiketAdminApi> & { ringkasan: RingkasanLaporanApi }> {
+  const { data } = await api.get<Halaman<TiketAdminApi> & { ringkasan: RingkasanLaporanApi }>("/api/admin/laporan", { params });
+  return data;
+}
+
+/** GET /api/admin/laporan/ekspor: seluruh hasil filter sebagai berkas CSV (diunduh lewat sesi login, jadi bukan tautan biasa). */
+export async function unduhLaporanCsv(params: FilterLaporan = {}): Promise<{ blob: Blob; nama: string }> {
+  const res = await api.get<Blob>("/api/admin/laporan/ekspor", { params, responseType: "blob" });
+  const nama = /filename="?([^";]+)"?/i.exec(String(res.headers["content-disposition"] ?? ""))?.[1] ?? "laporan-tiket.csv";
+  return { blob: res.data, nama };
+}
