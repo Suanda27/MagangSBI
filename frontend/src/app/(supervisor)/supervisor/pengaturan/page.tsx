@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BadgeCheck,
   Building2,
@@ -21,9 +21,10 @@ import PageHeader from "@/components/supervisor/page-header";
 import ReadOnlyBadge from "@/components/supervisor/read-only-badge";
 import { useAuth } from "@/lib/auth/auth-context";
 import { changePassword, updateProfile } from "@/lib/api/auth";
+import { getDashboardSupervisor } from "@/lib/api/dashboard";
 import { toApiError } from "@/lib/api/errors";
 import { initialsOf, sectionOf } from "@/lib/auth/user-display";
-import type { User as Akun } from "@/lib/api/types";
+import type { DashboardSupervisor, User as Akun } from "@/lib/api/types";
 
 const dl = (ms: number) => ({ "--delay": `${ms}ms` } as React.CSSProperties);
 
@@ -58,6 +59,20 @@ export default function PengaturanPage() {
 
 function PengaturanForm({ user }: { user: Akun }) {
   const { setUser } = useAuth();
+
+  // Ringkasan nyata section Anda (menggantikan angka contoh).
+  const [ringkas, setRingkas] = useState<DashboardSupervisor | null>(null);
+  useEffect(() => {
+    let dibatalkan = false;
+    getDashboardSupervisor()
+      .then((d) => {
+        if (!dibatalkan) setRingkas(d);
+      })
+      .catch(() => {});
+    return () => {
+      dibatalkan = true;
+    };
+  }, []);
   const [profile, setProfile] = useState({ name: user.name, email: user.email, phone: user.telepon ?? "" });
   const [pw, setPw] = useState({ current: "", next: "", confirm: "" });
   const [show, setShow] = useState({ current: false, next: false, confirm: false });
@@ -204,11 +219,11 @@ function PengaturanForm({ user }: { user: Akun }) {
         </div>
         <div className="grid grid-cols-3 divide-x divide-slate-100 border-t border-slate-100 text-center">
           {[
-            { v: "142", l: "Tiket Diawasi" },
-            { v: "98.4%", l: "SLA Tercapai" },
-            { v: "36", l: "Laporan Dibuat" },
+            { v: ringkas ? String(ringkas.total) : "-", l: "Tiket Diawasi" },
+            { v: ringkas ? String(ringkas.berjalan) : "-", l: "Masih Berjalan" },
+            { v: ringkas ? String(ringkas.per_status.completed) : "-", l: "Selesai" },
           ].map((x) => (
-            <div key={x.l} className="py-4"><p className="text-lg font-semibold text-slate-900">{x.v}</p><p className="text-[11px] text-slate-400">{x.l} • 30 hari</p></div>
+            <div key={x.l} className="py-4"><p className="text-lg font-semibold text-slate-900">{x.v}</p><p className="text-[11px] text-slate-400">{x.l} • seluruh waktu</p></div>
           ))}
         </div>
       </section>
