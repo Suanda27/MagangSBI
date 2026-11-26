@@ -25,5 +25,6 @@ Route::get('dashboard', [DashboardController::class, 'index'])->name('supervisor
 Route::get('permintaan', [PermintaanController::class, 'index'])->name('supervisor.permintaan.index');
 Route::get('permintaan/{id}', [PermintaanController::class, 'show'])->whereNumber('id')->name('supervisor.permintaan.show');
 
-// Laporan section sendiri: rekap, statistik, dan tren (ekspor menyusul setelah layanan ekspor bersama siap).
+// Laporan section sendiri: rekap, statistik, dan tren, plus ekspor CSV, Excel, dan PDF (dibatasi laju).
 Route::get('laporan', [LaporanController::class, 'index'])->name('supervisor.laporan');
+Route::get('laporan/ekspor', [LaporanController::class, 'ekspor'])->middleware('throttle:20,1')->name('supervisor.laporan.ekspor');
