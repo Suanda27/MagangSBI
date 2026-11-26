@@ -1,7 +1,7 @@
 import { Cpu, Network, Building2, Users, Factory } from "lucide-react";
-import type { SectionConfig } from "@/lib/employee-data";
+import type { IconName } from "@/lib/section-meta";
 
-const MAP: Record<SectionConfig["icon"], typeof Factory> = {
+const MAP: Record<IconName, typeof Factory> = {
   precision_manufacturing: Factory,
   groups: Users,
   apartment: Building2,
@@ -9,7 +9,7 @@ const MAP: Record<SectionConfig["icon"], typeof Factory> = {
   computer: Cpu,
 };
 
-export default function SectionIcon({ name, className }: { name: SectionConfig["icon"]; className?: string }) {
+export default function SectionIcon({ name, className }: { name: IconName; className?: string }) {
   const Icon = MAP[name];
   return <Icon className={className} />;
 }
