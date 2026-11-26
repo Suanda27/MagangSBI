@@ -10,7 +10,7 @@ export default function PageHeader({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="fx-reveal flex flex-col sm:flex-row sm:items-center justify-between gap-4" style={dl(0)}>
+    <div className="fx-reveal relative z-20 flex flex-col sm:flex-row sm:items-center justify-between gap-4" style={dl(0)}>
       <div>
         <h1 className="text-2xl font-semibold tracking-tight bg-gradient-to-r from-slate-900 via-blue-900 to-blue-700 bg-clip-text text-transparent">
           {title}

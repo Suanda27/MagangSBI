@@ -1,9 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   AlertCircle,
+  Download,
+  FileSpreadsheet,
+  FileText,
   BarChart3,
   Bot,
   CheckCircle2,
@@ -27,7 +30,8 @@ import ReadOnlyBadge from "@/components/supervisor/read-only-badge";
 import { DonutChart, HBarList, TrendBars } from "@/components/supervisor/charts";
 import StatusTiketBadge from "@/components/employee/status-tiket-badge";
 import { errorMessage } from "@/lib/api/errors";
-import { getLaporanSupervisor, type LaporanSupervisor } from "@/lib/api/laporan";
+import { getLaporanSupervisor, MAKS_BARIS_PDF, unduhLaporanSupervisor, type FormatEkspor, type LaporanSupervisor } from "@/lib/api/laporan";
+import { simpanBlob } from "@/lib/api/unduh";
 import { getLayanan } from "@/lib/api/pengajuan";
 import type { KategoriLayanan, StatusTiket } from "@/lib/api/types";
 import { useAuth } from "@/lib/auth/auth-context";
@@ -72,6 +76,10 @@ export default function LaporanPage() {
   const [hasil, setHasil] = useState<Hasil | null>(null);
   const [ulang, setUlang] = useState(0);
   const [kategori, setKategori] = useState<KategoriLayanan[]>([]);
+  const [menuEkspor, setMenuEkspor] = useState(false);
+  const [mengunduh, setMengunduh] = useState<FormatEkspor | null>(null);
+  const [galatEkspor, setGalatEkspor] = useState<string | null>(null);
+  const wadahEkspor = useRef<HTMLDivElement>(null);
 
   // Tanggal yang belum utuh atau terbalik tidak dikirim ke server.
   const dariSah = POLA_TANGGAL.test(dari) ? dari : "";
@@ -109,6 +117,37 @@ export default function LaporanPage() {
       dibatalkan = true;
     };
   }, [kunci, status, layanan, dariKirim, sampaiKirim, page]);
+
+  // Menu ekspor tertutup saat klik di luar atau menekan Escape.
+  useEffect(() => {
+    if (!menuEkspor) return;
+    const luar = (e: MouseEvent) => {
+      if (!wadahEkspor.current?.contains(e.target as Node)) setMenuEkspor(false);
+    };
+    const esc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuEkspor(false);
+    };
+    document.addEventListener("mousedown", luar);
+    document.addEventListener("keydown", esc);
+    return () => {
+      document.removeEventListener("mousedown", luar);
+      document.removeEventListener("keydown", esc);
+    };
+  }, [menuEkspor]);
+
+  /** Mengunduh SELURUH hasil filter yang sedang aktif (bukan hanya halaman yang tampil). */
+  const ekspor = async (format: FormatEkspor) => {
+    setMenuEkspor(false);
+    setMengunduh(format);
+    setGalatEkspor(null);
+    try {
+      simpanBlob(await unduhLaporanSupervisor(format, { status, layanan, dari: dariKirim, sampai: sampaiKirim }));
+    } catch (err) {
+      setGalatEkspor(errorMessage(err, "Berkas laporan gagal dibuat."));
+    } finally {
+      setMengunduh(null);
+    }
+  };
 
   const atur = (d: string, s: string) => {
     setDari(d);
@@ -170,7 +209,43 @@ export default function LaporanPage() {
         >
           <Printer className="w-4 h-4" />Cetak
         </button>
+        <div ref={wadahEkspor} className="relative print:hidden">
+          <button
+            type="button"
+            onClick={() => setMenuEkspor((b) => !b)}
+            disabled={mengunduh !== null}
+            aria-haspopup="menu"
+            aria-expanded={menuEkspor}
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-blue-700 text-[13px] font-medium text-white hover:bg-blue-800 disabled:opacity-60 transition-colors"
+          >
+            {mengunduh ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
+            {mengunduh ? "Menyiapkan berkas..." : "Ekspor"}
+            {!mengunduh && <ChevronDown className="w-3.5 h-3.5" />}
+          </button>
+          {menuEkspor && (
+            <div role="menu" className="absolute right-0 z-20 mt-2 w-64 rounded-xl border border-slate-200 bg-white p-1.5 shadow-lg">
+              {([
+                { f: "excel", judul: "Excel (.xlsx)", ket: "Semua tiket sesuai filter", icon: FileSpreadsheet },
+                { f: "csv", judul: "CSV", ket: "Semua tiket sesuai filter", icon: FileText },
+                { f: "pdf", judul: "PDF", ket: `Ringkasan dan maks. ${MAKS_BARIS_PDF} tiket`, icon: FileText },
+              ] as const).map(({ f, judul, ket, icon: Ikon }) => (
+                <button key={f} type="button" role="menuitem" onClick={() => ekspor(f)} className="w-full flex items-start gap-3 rounded-lg px-3 py-2 text-left hover:bg-slate-50">
+                  <Ikon className="w-4 h-4 mt-0.5 text-blue-700" />
+                  <span><span className="block text-[13px] font-medium text-slate-800">{judul}</span><span className="block text-[11.5px] text-slate-400">{ket}</span></span>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </PageHeader>
+
+      {galatEkspor && (
+        <div role="alert" className="mt-4 flex items-start gap-2.5 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-[13px] text-red-700 print:hidden">
+          <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
+          <span className="flex-1">{galatEkspor}</span>
+          <button type="button" onClick={() => setGalatEkspor(null)} className="text-xs font-semibold underline">Tutup</button>
+        </div>
+      )}
 
       {/* Filter */}
       <section className="fx-reveal rounded-xl border border-slate-200 bg-white shadow-sm print:hidden" style={dl(60)}>

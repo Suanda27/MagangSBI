@@ -61,3 +61,48 @@ export async function getLaporanSupervisor(filter: FilterLaporan = {}): Promise<
   const { data } = await api.get<LaporanSupervisor>("/api/supervisor/laporan", { params });
   return data;
 }
+
+export type FormatEkspor = "csv" | "excel" | "pdf";
+
+/** PDF dibuat utuh di memori server; di atas jumlah ini server menolak dan menyarankan CSV atau Excel. */
+export const MAKS_BARIS_PDF = 100;
+
+/**
+ * GET /api/supervisor/laporan/ekspor: seluruh hasil filter sebagai berkas (bukan hanya halaman yang tampil).
+ * Memakai filter yang sama dengan getLaporanSupervisor. Berkas diterima sebagai arraybuffer; bila server menjawab
+ * JSON (mis. 422 "terlalu banyak baris untuk PDF"), isinya di-parse supaya pesannya sampai ke pengguna.
+ * Hasilnya bisa langsung diberikan ke simpanBlob().
+ */
+export async function unduhLaporanSupervisor(
+  format: FormatEkspor,
+  filter: FilterLaporan = {},
+): Promise<{ blob: Blob; nama: string }> {
+  const params: Record<string, string | number> = { format };
+  if (filter.status) params.status = filter.status;
+  if (filter.layanan) params.layanan = filter.layanan;
+  if (filter.dari) params.dari = filter.dari;
+  if (filter.sampai) params.sampai = filter.sampai;
+
+  const res = await api.get<ArrayBuffer>("/api/supervisor/laporan/ekspor", {
+    params,
+    responseType: "arraybuffer",
+    headers: { Accept: "application/json, */*" },
+    transformResponse: [
+      (data: unknown, headers) => {
+        const jenis = String(headers?.["content-type"] ?? "");
+        if (jenis.includes("json") && data instanceof ArrayBuffer) {
+          try {
+            return JSON.parse(new TextDecoder().decode(data));
+          } catch {
+            return data;
+          }
+        }
+        return data;
+      },
+    ],
+  });
+
+  const ext = format === "excel" ? "xlsx" : format;
+  const nama = /filename="?([^";]+)"?/i.exec(String(res.headers["content-disposition"] ?? ""))?.[1] ?? `laporan-tiket.${ext}`;
+  return { blob: new Blob([res.data], { type: String(res.headers["content-type"] ?? "application/octet-stream") }), nama };
+}

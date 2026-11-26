@@ -62,4 +62,25 @@ filter** (bukan hanya halaman ini), sehingga kartu, grafik, tabel, dan ekspor se
 Titik tren tanpa tiket tetap muncul dengan angka nol. Tanpa `dari` dan `sampai`, rentangnya dari tiket terawal sampai terakhir.
 Tanpa SLA (D1).
 
-Ekspor (`GET /api/supervisor/laporan/export?format=...`) menyusul setelah layanan ekspor bersama siap.
+## `GET /api/supervisor/laporan/ekspor`
+
+Seluruh hasil filter (bukan satu halaman) sebagai berkas unduhan. Filter dan cakupan section sama persis dengan
+`GET /api/supervisor/laporan` (`dari`, `sampai`, `status`, `layanan`; parameter cakupan diabaikan), ditambah:
+
+| Query | Keterangan |
+|---|---|
+| `format` | **wajib**: `csv`, `excel`, atau `pdf`. Selain itu dijawab 422 |
+
+| Format | Isi | Batas |
+|---|---|---|
+| `csv` | 16 kolom, pemisah titik koma, UTF-8 berBOM (layanan CSV bersama, `EksporTiketCsv`) | ditulis berangsur-angsur, tanpa batas baris |
+| `excel` | berkas `.xlsx`, satu sheet "Tiket", 16 kolom yang sama, judul kolom tebal | ditulis berangsur-angsur, tanpa batas baris |
+| `pdf` | A4 lanjang: kepala (section, periode, filter aktif), ringkasan (total, per status, rata-rata), dan 10 kolom utama | **maksimal 100 tiket**; lebih dari itu dijawab 422 dengan saran mempersempit filter atau memakai CSV/Excel |
+
+- Nama berkas: `laporan-tiket-{kode-section}-{tanggal}-{jam}.{csv|xlsx|pdf}`, dibaca dari header `Content-Disposition`.
+- Dibatasi `throttle:20,1` (permintaan ke-21 dalam semenit dijawab 429).
+- Keamanan: di Excel semua teks pengguna disimpan sebagai teks (tidak pernah menjadi rumus), di CSV sel berawalan
+  `=`, `+`, `-`, `@` diberi petik, di PDF semua teks di-escape dan pengambilan sumber daya luar dimatikan (lihat `docs/ekspor.md`).
+- Supervisor tanpa section mendapat berkas kosong (hanya judul kolom), bukan error.
+- Batas 100 baris PDF berasal dari pengukuran dompdf di server dengan memori 128 MB: 64 baris sekitar 84 MB dan 2 detik,
+  124 baris sekitar 106 MB dan 4 detik, 204 baris kehabisan memori.
