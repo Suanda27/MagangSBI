@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\LaporanAdminRequest;
 use App\Models\Bagian;
 use App\Models\Layanan;
 use App\Models\Permintaan;
+use Closure;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
@@ -65,7 +66,7 @@ class LaporanTiket
             'per_status' => $perStatus,
             'per_section' => $perSection,
             'top_layanan' => $topLayanan,
-            'selesai' => $this->statistikSelesai($f, $perStatus[StatusPermintaan::Completed->value]),
+            'selesai' => $this->statistikSelesai(fn () => $this->query($f), $perStatus[StatusPermintaan::Completed->value]),
         ];
     }
 
@@ -73,9 +74,10 @@ class LaporanTiket
      * Rata-rata waktu penyelesaian (jam, sejak diajukan sampai selesai) dan persentase selesai tanpa revisi.
      * Dihitung di PHP dari dua kolom saja supaya sama di MariaDB dan SQLite.
      *
+     * @param  Closure(): Builder  $baru  pembuat query tiket terfilter; dipanggil sekali per penggunaan (dipakai Admin dan PIC)
      * @return array{jumlah:int, rata_rata_jam:?float, tanpa_revisi_persen:?int}
      */
-    private function statistikSelesai(LaporanAdminRequest $f, int $jumlah): array
+    public function statistikSelesai(Closure $baru, int $jumlah): array
     {
         if ($jumlah === 0) {
             return ['jumlah' => 0, 'rata_rata_jam' => null, 'tanpa_revisi_persen' => null];
@@ -85,7 +87,7 @@ class LaporanTiket
         $dihitung = 0;
         $tanpaRevisi = 0;
 
-        $this->query($f)
+        $baru()
             ->where('status', StatusPermintaan::Completed->value)
             ->whereNotNull('selesai_pada')
             ->select(['id', self::KOLOM_TANGGAL, 'selesai_pada', 'jumlah_revisi'])

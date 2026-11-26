@@ -110,3 +110,22 @@ belum dihitung) sejak `hasil_kerja.dikirim_pada` ditutup otomatis menjadi **Sele
 
 **Menjalankan penjadwal.** Server produksi butuh cron `* * * * * php artisan schedule:run`.
 Saat pengembangan lokal jalankan `php artisan schedule:work` di terminal terpisah, atau panggil perintahnya manual.
+
+# Laporan PIC — Sprint 4.5
+
+Statistik **pribadi**: hanya tiket yang ditangani PIC itu sendiri (`id_pic` = dia, termasuk yang ia tolak). Tiket rekan, antrean, dan section lain tidak ikut.
+
+| Query | Keterangan |
+|---|---|
+| `dari`, `sampai` | tanggal pengajuan, `YYYY-MM-DD`, kedua hari ikut dihitung; `sampai` tidak boleh sebelum `dari` |
+| `id_bagian_pengaju` | section asal karyawan pengaju |
+
+## `GET /api/pic/laporan`
+`data`: `total`, `per_status`, `per_kategori`, `per_bagian_pengaju` (section asal pengaju), `top_layanan` (5 teratas: `jumlah`, `selesai`,
+`rata_rata_jam`), `selesai` (`jumlah`, `rata_rata_jam`, `tanpa_revisi_persen`; `null` bila belum ada tiket selesai), dan
+`antrean_saat_ini` (tiket baru di section PIC yang masih menunggu keputusan; tidak terpengaruh filter). Nilai tidak valid dijawab 422.
+
+## `GET /api/pic/laporan/ekspor`
+Tiket yang PIC ini tangani (sesuai filter) sebagai CSV dengan format yang sama seperti ekspor Admin
+(UTF-8 BOM, titik koma, sel berawalan `=`, `+`, `-`, `@` dinetralkan). Dibatasi 20 permintaan per menit.
+Penulis CSV dipakai bersama oleh Admin dan PIC (`App\Services\EksporTiketCsv`).

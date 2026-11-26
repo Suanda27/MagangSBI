@@ -1,4 +1,5 @@
 import { api } from "./client";
+import { unduhBerkas } from "./unduh";
 import type { PicDetailApi, PicTiketApi, StatusApi } from "./pic";
 import type { Role, User } from "./types";
 
@@ -361,7 +362,5 @@ export async function getLaporanAdmin(params: FilterLaporan & { page?: number; p
 
 /** GET /api/admin/laporan/ekspor: seluruh hasil filter sebagai berkas CSV (diunduh lewat sesi login, jadi bukan tautan biasa). */
 export async function unduhLaporanCsv(params: FilterLaporan = {}): Promise<{ blob: Blob; nama: string }> {
-  const res = await api.get<Blob>("/api/admin/laporan/ekspor", { params, responseType: "blob" });
-  const nama = /filename="?([^";]+)"?/i.exec(String(res.headers["content-disposition"] ?? ""))?.[1] ?? "laporan-tiket.csv";
-  return { blob: res.data, nama };
+  return unduhBerkas("/api/admin/laporan/ekspor", params, "laporan-tiket.csv");
 }
