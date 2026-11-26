@@ -1,4 +1,5 @@
 import { api } from "./client";
+import { unduhBerkas } from "./unduh";
 
 /**
  * Endpoint modul PIC (lihat docs/api-pic.md). Semua melempar ApiError saat gagal:
@@ -107,4 +108,36 @@ export async function kirimHasilTiket(id: number | string, bukti: File[], catata
   if (catatan?.trim()) form.append("catatan", catatan.trim());
   const { data } = await api.post<{ data: PicDetailApi }>(`/api/pic/permintaan/${id}/kirim-hasil`, form);
   return data.data;
+}
+
+/* ---------- Laporan pribadi ---------- */
+
+export interface FilterLaporanPic {
+  /** Tanggal pengajuan, format YYYY-MM-DD (kedua ujung ikut dihitung). */
+  dari?: string;
+  sampai?: string;
+  /** Section asal karyawan pengaju. */
+  id_bagian_pengaju?: number;
+}
+
+export interface LaporanPicApi {
+  total: number;
+  per_status: Record<StatusApi, number>;
+  per_kategori: { kategori: string; jumlah: number }[];
+  per_bagian_pengaju: { id: number | null; nama_bagian: string; jumlah: number }[];
+  top_layanan: { id: number; nama_layanan: string; jumlah: number; selesai: number; rata_rata_jam: number | null }[];
+  selesai: { jumlah: number; rata_rata_jam: number | null; tanpa_revisi_persen: number | null };
+  /** Tidak terpengaruh filter: tiket baru di section PIC yang masih menunggu keputusan. */
+  antrean_saat_ini: number;
+}
+
+/** GET /api/pic/laporan: statistik atas tiket yang PIC ini tangani sendiri. */
+export async function getLaporanPic(params: FilterLaporanPic = {}): Promise<LaporanPicApi> {
+  const { data } = await api.get<{ data: LaporanPicApi }>("/api/pic/laporan", { params });
+  return data.data;
+}
+
+/** GET /api/pic/laporan/ekspor: tiket yang PIC ini tangani (sesuai filter) sebagai berkas CSV. */
+export function unduhLaporanPicCsv(params: FilterLaporanPic = {}): Promise<{ blob: Blob; nama: string }> {
+  return unduhBerkas("/api/pic/laporan/ekspor", params, "laporan-pic.csv");
 }

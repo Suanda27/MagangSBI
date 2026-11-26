@@ -1,12 +1,16 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { BarChart3, CheckCircle2, Download, Gauge, Printer, Timer, Inbox } from "lucide-react";
 import { CountUp } from "@/components/fx/motion";
 import { PageHeader, StatCard, delay } from "@/components/shared/display";
 import { SelectField } from "@/components/shared/form-controls";
-import { kunciHari, tanggalJam, useNow } from "@/lib/shared/format";
+import { getSections } from "@/lib/api/auth";
+import { errorMessage } from "@/lib/api/errors";
+import { getLaporanPic, unduhLaporanPicCsv, type FilterLaporanPic, type LaporanPicApi } from "@/lib/api/pic";
+import { simpanBlob } from "@/lib/api/unduh";
 import { usePicStore } from "@/lib/pic/store";
+import type { Section } from "@/lib/api/types";
 
 const WARNA = ["#1e40af", "#3b82f6", "#93c5fd", "#64748b", "#cbd5e1"];
 
@@ -58,63 +62,78 @@ function Bar({ label, value, max, color, right }: { label: string; value: number
   );
 }
 
+/** YYYY-MM-DD menurut jam lokal komputer pengguna (bukan UTC, supaya "hari ini" tidak bergeser). */
+const ymd = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+
+function rentang(periode: string): Pick<FilterLaporanPic, "dari" | "sampai"> {
+  const sekarang = new Date();
+  if (periode === "bulan") return { dari: ymd(new Date(sekarang.getFullYear(), sekarang.getMonth(), 1)), sampai: ymd(sekarang) };
+  if (periode === "minggu") {
+    const awal = new Date(sekarang);
+    awal.setDate(sekarang.getDate() - 6); // 7 hari terakhir termasuk hari ini
+    return { dari: ymd(awal), sampai: ymd(sekarang) };
+  }
+  return {};
+}
+
+const label = (jam: number) => (jam < 24 ? `${jam.toFixed(1)} jam` : `${(jam / 24).toFixed(1)} hari`);
+
 export default function LaporanPage() {
-  const { permintaan, toast } = usePicStore();
-  const now = useNow(60_000);
+  const { toast } = usePicStore();
   const [periode, setPeriode] = useState("semua");
   const [bagian, setBagian] = useState("");
+  const [sections, setSections] = useState<Section[]>([]);
+  const [data, setData] = useState<LaporanPicApi | null>(null);
+  const [galat, setGalat] = useState<string | null>(null);
+  const [mengunduh, setMengunduh] = useState(false);
 
-  const data = useMemo(() => {
-    const ref = now;
-    return permintaan.filter((p) => {
-      if (bagian && p.pengaju.bagian !== bagian) return false;
-      if (ref === null) return true;
-      if (periode === "bulan") return kunciHari(p.diajukan).slice(0, 7) === kunciHari(new Date(ref)).slice(0, 7);
-      if (periode === "minggu") return ref - new Date(p.diajukan).getTime() <= 7 * 86400_000;
-      return true;
-    });
-  }, [permintaan, periode, bagian, now]);
+  useEffect(() => {
+    getSections().then(setSections).catch(() => undefined);
+  }, []);
 
-  const stat = useMemo(() => {
-    const selesai = data.filter((p) => p.status === "selesai");
-    const ditolak = data.filter((p) => p.status === "ditolak");
-    const aktif = data.filter((p) => p.status === "diproses" || p.status === "pending");
-    const konfirmasi = data.filter((p) => p.status === "menunggu_konfirmasi");
-    const menunggu = data.filter((p) => p.status === "menunggu");
-    const ditangani = selesai.length + ditolak.length + aktif.length + konfirmasi.length;
-    const rata = selesai.length ? selesai.reduce((a, p) => a + (new Date(p.selesaiPada!).getTime() - new Date(p.diajukan).getTime()), 0) / selesai.length / 3600_000 : 0;
-    const tanpaRevisi = selesai.filter((p) => p.jumlahRevisi === 0).length;
-    const layanan = Object.entries(data.reduce<Record<string, number>>((m, p) => ((m[p.kategori] = (m[p.kategori] ?? 0) + 1), m), {})).sort((a, b) => b[1] - a[1]);
-    const perBagian = Array.from(new Set(data.map((p) => p.pengaju.bagian))).map((k) => ({ k, n: data.filter((p) => p.pengaju.bagian === k).length })).sort((a, b) => b.n - a.n);
-    const berulang = Object.entries(data.reduce<Record<string, { n: number; jam: number; s: number }>>((m, p) => {
-      const e = (m[p.layanan] ??= { n: 0, jam: 0, s: 0 });
-      e.n++;
-      if (p.status === "selesai") { e.jam += (new Date(p.selesaiPada!).getTime() - new Date(p.diajukan).getTime()) / 3600_000; e.s++; }
-      return m;
-    }, {})).sort((a, b) => b[1].n - a[1].n).slice(0, 5);
-    return {
-      selesai: selesai.length, ditolak: ditolak.length, aktif: aktif.length, konfirmasi: konfirmasi.length, menunggu: menunggu.length, ditangani,
-      rata, tanpaRevisiPersen: selesai.length ? Math.round((tanpaRevisi / selesai.length) * 100) : 0, tanpaRevisi,
-      tuntas: data.length ? Math.round((selesai.length / data.length) * 100) : 0,
-      layanan: layanan.slice(0, 5).map(([label, value]) => ({ label, value })), perBagian, berulang,
+  const filter: FilterLaporanPic = { ...rentang(periode), id_bagian_pengaju: bagian ? Number(bagian) : undefined };
+  const kunci = JSON.stringify(filter);
+
+  useEffect(() => {
+    let batal = false;
+    getLaporanPic(JSON.parse(kunci))
+      .then((d) => {
+        if (batal) return;
+        setData(d);
+        setGalat(null);
+      })
+      .catch((e) => {
+        if (!batal) setGalat(errorMessage(e, "Gagal memuat laporan."));
+      });
+    return () => {
+      batal = true;
     };
-  }, [data]);
+  }, [kunci]);
 
-  const exportCsv = () => {
-    const esc = (v: string) => `"${v.replace(/"/g, '""')}"`;
-    const rows = [["ID", "Judul", "Layanan", "Pengaju", "Bagian", "Lokasi", "Diajukan", "Status", "Selesai/Ditolak"].map(esc).join(",")];
-    for (const p of data) rows.push([p.kode, p.judul, p.layanan, p.pengaju.nama, p.pengaju.bagian, `${p.plant} ${p.lantai}`, tanggalJam(p.diajukan), p.status, p.selesaiPada ? tanggalJam(p.selesaiPada) : p.ditolakPada ? tanggalJam(p.ditolakPada) : ""].map((v) => esc(String(v))).join(","));
-    const url = URL.createObjectURL(new Blob(["﻿" + rows.join("\n")], { type: "text/csv;charset=utf-8" }));
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `laporan-pic-${kunciHari(new Date())}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
-    toast({ tone: "success", title: "Laporan diekspor", desc: `${data.length} baris disimpan sebagai CSV.` });
+  const unduh = async () => {
+    setMengunduh(true);
+    try {
+      simpanBlob(await unduhLaporanPicCsv(filter));
+      toast({ tone: "success", title: "Laporan diekspor", desc: "Berkas CSV berisi tiket yang Anda tangani sesuai filter." });
+    } catch (e) {
+      toast({ tone: "error", title: "Ekspor gagal", desc: errorMessage(e, "Gagal mengunduh laporan.") });
+    } finally {
+      setMengunduh(false);
+    }
   };
 
-  const maxStatus = Math.max(stat.selesai, stat.aktif, stat.konfirmasi, stat.menunggu, stat.ditolak, 1);
-  const rataLabel = stat.rata < 24 ? `${stat.rata.toFixed(1)} jam` : `${(stat.rata / 24).toFixed(1)} hari`;
+  const s = data?.per_status;
+  const total = data?.total ?? 0;
+  const aktif = s ? s.in_progress + s.pending : 0;
+  const konfirmasi = s?.waiting_review ?? 0;
+  const selesai = s?.completed ?? 0;
+  const ditolak = s?.rejected ?? 0;
+  const maxStatus = Math.max(selesai, aktif, konfirmasi, ditolak, 1);
+  const tuntas = total > 0 ? Math.round((selesai / total) * 100) : 0;
+  const tanpaRevisi = data?.selesai.tanpa_revisi_persen ?? 0;
+  const tanpaRevisiJumlah = data && data.selesai.tanpa_revisi_persen != null ? Math.round((data.selesai.tanpa_revisi_persen / 100) * data.selesai.jumlah) : 0;
+  const kategori = (data?.per_kategori ?? []).slice(0, 5).map((k) => ({ label: k.kategori, value: k.jumlah }));
+  const bagianPengaju = data?.per_bagian_pengaju ?? [];
 
   return (
     <>
@@ -124,40 +143,41 @@ export default function LaporanPage() {
         actions={
           <>
             <button onClick={() => window.print()} className="inline-flex items-center gap-2 px-3 py-2 text-xs font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:border-blue-200 hover:text-blue-800 transition-all"><Printer className="w-4 h-4" /> Cetak</button>
-            <button onClick={exportCsv} className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded-lg shadow-sm transition-all"><Download className="w-4 h-4" /> Ekspor CSV</button>
+            <button onClick={unduh} disabled={mengunduh} className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-white bg-blue-700 hover:bg-blue-800 disabled:opacity-60 rounded-lg shadow-sm transition-all"><Download className="w-4 h-4" /> {mengunduh ? "Menyiapkan..." : "Ekspor CSV"}</button>
           </>
         }
       />
 
       <div className="flex flex-wrap items-center gap-3">
         <SelectField label="Periode" value={periode} onChange={setPeriode} options={[{ value: "semua", label: "Semua Periode" }, { value: "bulan", label: "Bulan Ini" }, { value: "minggu", label: "7 Hari Terakhir" }]} />
-        <SelectField label="Bagian pengaju" value={bagian} onChange={setBagian} options={[{ value: "", label: "Semua Bagian" }, ...Array.from(new Set(permintaan.map((p) => p.pengaju.bagian))).sort().map((k) => ({ value: k, label: k }))]} />
-        <span className="text-xs text-slate-400 ml-auto">{data.length} tiket dalam laporan</span>
+        <SelectField label="Bagian pengaju" value={bagian} onChange={setBagian} options={[{ value: "", label: "Semua Bagian" }, ...sections.map((b) => ({ value: String(b.id), label: b.nama_bagian }))]} />
+        <span className="text-xs text-slate-400 ml-auto">{data ? `${total} tiket dalam laporan` : "Memuat..."}</span>
       </div>
 
+      {galat && <div role="alert" className="text-xs text-rose-700 bg-rose-50 border border-rose-200/70 rounded-lg px-3 py-2">{galat}</div>}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="Total Ditangani" value={<CountUp value={stat.ditangani} />} hint={`${stat.menunggu} masih menunggu keputusan`} icon={Inbox} tone="blue" />
-        <StatCard label="Rata-rata Penyelesaian" value={stat.selesai ? rataLabel : "—"} hint="Sejak diajukan hingga disetujui" icon={Timer} tone="slate" />
-        <StatCard label="Disetujui Tanpa Revisi" value={<><CountUp value={stat.tanpaRevisiPersen} />%</>} hint={`${stat.tanpaRevisi} dari ${stat.selesai} tiket selesai`} icon={Gauge} tone="emerald" />
-        <StatCard label="Tingkat Penyelesaian" value={<><CountUp value={stat.tuntas} />%</>} hint={`${stat.selesai} dari ${data.length} tiket`} icon={CheckCircle2} tone="violet" />
+        <StatCard label="Total Ditangani" value={<CountUp value={total} />} hint={`${data?.antrean_saat_ini ?? 0} masih menunggu keputusan di antrean`} icon={Inbox} tone="blue" />
+        <StatCard label="Rata-rata Penyelesaian" value={data?.selesai.rata_rata_jam != null ? label(data.selesai.rata_rata_jam) : "—"} hint="Sejak diajukan hingga disetujui" icon={Timer} tone="slate" />
+        <StatCard label="Disetujui Tanpa Revisi" value={data?.selesai.tanpa_revisi_persen != null ? <><CountUp value={tanpaRevisi} />%</> : "—"} hint={`${tanpaRevisiJumlah} dari ${data?.selesai.jumlah ?? 0} tiket selesai`} icon={Gauge} tone="emerald" />
+        <StatCard label="Tingkat Penyelesaian" value={<><CountUp value={tuntas} />%</>} hint={`${selesai} dari ${total} tiket`} icon={CheckCircle2} tone="violet" />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <section className="bg-white border border-border-subtle rounded-xl p-5 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
           <h2 className="text-sm font-semibold text-slate-900">Volume per Kategori</h2>
-          <p className="text-xs text-slate-400 mb-5">Distribusi tiket masuk</p>
-          {stat.layanan.length ? <Donut data={stat.layanan} /> : <p className="text-xs text-slate-400 py-10 text-center">Belum ada data.</p>}
+          <p className="text-xs text-slate-400 mb-5">Distribusi tiket yang Anda tangani</p>
+          {kategori.length ? <Donut data={kategori} /> : <p className="text-xs text-slate-400 py-10 text-center">{data ? "Belum ada data." : "Memuat..."}</p>}
         </section>
 
         <section className="bg-white border border-border-subtle rounded-xl p-5 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
           <h2 className="text-sm font-semibold text-slate-900 flex items-center gap-2"><BarChart3 className="w-4 h-4 text-slate-400" /> Status Tiket</h2>
           <p className="text-xs text-slate-400 mb-5">Posisi alur penanganan</p>
           <div className="flex flex-col gap-5">
-            <Bar label="Selesai" value={stat.selesai} max={maxStatus} color="bg-emerald-500" />
-            <Bar label="Sedang diproses / pending" value={stat.aktif} max={maxStatus} color="bg-blue-600" />
-            <Bar label="Menunggu konfirmasi pengaju" value={stat.konfirmasi} max={maxStatus} color="bg-sky-500" />
-            <Bar label="Menunggu keputusan" value={stat.menunggu} max={maxStatus} color="bg-amber-500" />
-            <Bar label="Ditolak" value={stat.ditolak} max={maxStatus} color="bg-rose-500" />
+            <Bar label="Selesai" value={selesai} max={maxStatus} color="bg-emerald-500" />
+            <Bar label="Sedang diproses / pending" value={aktif} max={maxStatus} color="bg-blue-600" />
+            <Bar label="Menunggu konfirmasi pengaju" value={konfirmasi} max={maxStatus} color="bg-sky-500" />
+            <Bar label="Ditolak" value={ditolak} max={maxStatus} color="bg-rose-500" />
           </div>
         </section>
 
@@ -165,9 +185,9 @@ export default function LaporanPage() {
           <h2 className="text-sm font-semibold text-slate-900">Permintaan per Bagian</h2>
           <p className="text-xs text-slate-400 mb-5">Asal pengaju</p>
           <div className="flex flex-col gap-5">
-            {stat.perBagian.length === 0 && <p className="text-xs text-slate-400 py-10 text-center">Belum ada data.</p>}
-            {stat.perBagian.map((b) => (
-              <Bar key={b.k} label={b.k} value={b.n} max={stat.perBagian[0].n} color="bg-blue-700" right={`${b.n} tiket`} />
+            {bagianPengaju.length === 0 && <p className="text-xs text-slate-400 py-10 text-center">{data ? "Belum ada data." : "Memuat..."}</p>}
+            {bagianPengaju.map((b) => (
+              <Bar key={b.id ?? b.nama_bagian} label={b.nama_bagian} value={b.jumlah} max={bagianPengaju[0].jumlah} color="bg-blue-700" right={`${b.jumlah} tiket`} />
             ))}
           </div>
         </section>
@@ -175,8 +195,8 @@ export default function LaporanPage() {
 
       <section className="bg-white border border-border-subtle rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.02)] overflow-hidden">
         <div className="px-5 py-4 border-b border-slate-100">
-          <h2 className="text-sm font-semibold text-slate-900">Layanan Paling Sering Diminta</h2>
-          <p className="text-xs text-slate-400">Diurutkan berdasarkan jumlah tiket</p>
+          <h2 className="text-sm font-semibold text-slate-900">Layanan Paling Sering Ditangani</h2>
+          <p className="text-xs text-slate-400">Diurutkan berdasarkan jumlah tiket (lima teratas)</p>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs min-w-[520px]">
@@ -188,14 +208,14 @@ export default function LaporanPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-border-subtle text-slate-700">
-              {stat.berulang.map(([nama, v]) => (
-                <tr key={nama}>
-                  <td className="py-3 px-5 font-medium text-slate-900">{nama}</td>
-                  <td className="py-3 px-5">{v.n} tiket</td>
-                  <td className="py-3 px-5">{v.s ? `${(v.jam / v.s).toFixed(1)} jam` : "—"}</td>
+              {(data?.top_layanan ?? []).map((l) => (
+                <tr key={l.id}>
+                  <td className="py-3 px-5 font-medium text-slate-900">{l.nama_layanan}</td>
+                  <td className="py-3 px-5">{l.jumlah} tiket</td>
+                  <td className="py-3 px-5">{l.rata_rata_jam != null ? label(l.rata_rata_jam) : "—"}</td>
                 </tr>
               ))}
-              {stat.berulang.length === 0 && <tr><td colSpan={3} className="py-8 text-center text-slate-400">Belum ada data.</td></tr>}
+              {data && data.top_layanan.length === 0 && <tr><td colSpan={3} className="py-8 text-center text-slate-400">Belum ada data.</td></tr>}
             </tbody>
           </table>
         </div>

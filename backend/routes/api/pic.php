@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Pic\AksiPermintaanController;
 use App\Http\Controllers\Api\Pic\DashboardController;
+use App\Http\Controllers\Api\Pic\LaporanController;
 use App\Http\Controllers\Api\Pic\PermintaanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,10 @@ Route::post('permintaan/{id}/kirim-hasil', [AksiPermintaanController::class, 'ki
 Route::post('permintaan/{id}/terima', [AksiPermintaanController::class, 'terima'])->whereNumber('id')->name('pic.permintaan.terima');
 Route::post('permintaan/{id}/tolak', [AksiPermintaanController::class, 'tolak'])->whereNumber('id')->name('pic.permintaan.tolak');
 Route::post('permintaan/{id}/status', [AksiPermintaanController::class, 'ubahStatus'])->whereNumber('id')->name('pic.permintaan.status');
+
+// Laporan pribadi (Sprint 4.5): statistik tiket yang ditangani PIC ini, dan ekspor CSV (dibatasi lajunya).
+Route::get('laporan', [LaporanController::class, 'index'])->name('pic.laporan');
+Route::get('laporan/ekspor', [LaporanController::class, 'ekspor'])->middleware('throttle:20,1')->name('pic.laporan.ekspor');
 
 // Baca (Sprint 3.1).
 Route::get('dashboard', [DashboardController::class, 'index'])->name('pic.dashboard');
