@@ -1,6 +1,5 @@
-import type { SectionConfig } from "@/lib/employee-data";
-
-type IconName = SectionConfig["icon"];
+/** Nama ikon tampilan section. Dipetakan ke ikon lucide oleh components/employee/section-icon. */
+export type IconName = "precision_manufacturing" | "groups" | "apartment" | "account_tree" | "computer";
 
 /** Ikon tampilan per kode section (bagians.kode_bagian). Data lain datang dari API. */
 const IKON: Record<string, IconName> = {
