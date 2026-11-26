@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Supervisor\DashboardController;
+use App\Http\Controllers\Api\Supervisor\LaporanController;
 use App\Http\Controllers\Api\Supervisor\PermintaanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,6 @@ Route::get('dashboard', [DashboardController::class, 'index'])->name('supervisor
 // Monitoring tiket section sendiri (read-only).
 Route::get('permintaan', [PermintaanController::class, 'index'])->name('supervisor.permintaan.index');
 Route::get('permintaan/{id}', [PermintaanController::class, 'show'])->whereNumber('id')->name('supervisor.permintaan.show');
+
+// Laporan section sendiri: rekap, statistik, dan tren (ekspor menyusul setelah layanan ekspor bersama siap).
+Route::get('laporan', [LaporanController::class, 'index'])->name('supervisor.laporan');
