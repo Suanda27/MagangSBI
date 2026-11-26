@@ -18,6 +18,11 @@ return Application::configure(basePath: dirname(__DIR__))
         // Sanctum mode SPA: request dari frontend memakai sesi cookie + CSRF.
         $middleware->statefulApi();
 
+        // API murni: tidak ada halaman login di backend, jadi tamu tidak pernah dialihkan. Tanpa baris ini,
+        // permintaan tanpa header "Accept: application/json" membuat framework mencari rute "login" yang tidak
+        // ada lalu menjawab 500; sekarang menjadi 401 berformat JSON seperti yang dipakai frontend.
+        $middleware->redirectGuestsTo(fn () => null);
+
         // Hak akses (Sprint 1 Langkah 3): dipakai pada route sebagai 'akun.aktif' dan 'role:pic'.
         $middleware->alias([
             'akun.aktif' => EnsureAkunAktif::class,
