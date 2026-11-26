@@ -20,17 +20,18 @@ export function DonutChart({
   }, []);
 
   const total = data.reduce((a, b) => a + b.value, 0);
+  const bagi = total || 1; // tanpa data: lingkaran kosong, bukan NaN
   const r = 70;
   const c = 2 * Math.PI * r;
   // Offset awal tiap segmen dihitung di depan (tanpa mengubah variabel saat render)
-  const offsets = data.map((_, i) => data.slice(0, i).reduce((a, b) => a + (b.value / total) * c, 0));
+  const offsets = data.map((_, i) => data.slice(0, i).reduce((a, b) => a + (b.value / bagi) * c, 0));
 
   return (
     <div className="relative shrink-0" style={{ width: size, height: size }}>
       <svg viewBox="0 0 180 180" className="w-full h-full -rotate-90">
         <circle cx="90" cy="90" r={r} fill="none" stroke="#f1f5f9" strokeWidth="18" />
         {data.map((d, i) => {
-          const len = (d.value / total) * c;
+          const len = (d.value / bagi) * c;
           return (
             <circle
               key={d.label}
@@ -58,7 +59,7 @@ export function DonutChart({
 
 /** Daftar batang horizontal yang tumbuh dari kiri. */
 export function HBarList({ data, color = "bg-blue-600" }: { data: { label: string; value: number }[]; color?: string }) {
-  const max = Math.max(...data.map((d) => d.value));
+  const max = Math.max(1, ...data.map((d) => d.value));
   return (
     <div className="grid gap-3.5">
       {data.map((d, i) => (
@@ -86,11 +87,14 @@ export function TrendBars({ data }: { data: { label: string; masuk: number; sele
     const t = setTimeout(() => setOn(true), 200);
     return () => clearTimeout(t);
   }, []);
-  const max = Math.max(...data.flatMap((d) => [d.masuk, d.selesai]));
+  const max = Math.max(1, ...data.flatMap((d) => [d.masuk, d.selesai]));
+  // Banyak periode (mis. 31 hari): batang dirapatkan dan label ditampilkan berselang agar tidak bertumpuk.
+  const rapat = data.length > 12;
+  const selang = rapat ? Math.ceil(data.length / 10) : 1;
 
   return (
     <div>
-      <div className="h-44 flex items-end gap-4 sm:gap-8 px-2 border-b border-slate-100">
+      <div className={`h-44 flex items-end px-2 border-b border-slate-100 ${rapat ? "gap-1" : "gap-4 sm:gap-8"}`}>
         {data.map((d) => (
           <div key={d.label} className="flex-1 h-full flex items-end justify-center gap-1.5">
             {[
@@ -100,7 +104,7 @@ export function TrendBars({ data }: { data: { label: string; masuk: number; sele
               <div
                 key={b.t}
                 title={`${b.t}: ${b.v}`}
-                className={`group/bar relative w-full max-w-[28px] rounded-t-md ${b.c} transition-[height] duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:brightness-110`}
+                className={`group/bar relative w-full ${rapat ? "max-w-[10px]" : "max-w-[28px]"} rounded-t-md ${b.c} transition-[height] duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:brightness-110`}
                 style={{ height: on ? `${(b.v / max) * 100}%` : "0%" }}
               >
                 <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[11px] font-medium text-slate-500 opacity-0 group-hover/bar:opacity-100 transition-opacity">
@@ -111,9 +115,11 @@ export function TrendBars({ data }: { data: { label: string; masuk: number; sele
           </div>
         ))}
       </div>
-      <div className="flex gap-4 sm:gap-8 px-2 mt-2">
-        {data.map((d) => (
-          <span key={d.label} className="flex-1 text-center text-[12px] text-slate-400">{d.label}</span>
+      <div className={`flex px-2 mt-2 ${rapat ? "gap-1" : "gap-4 sm:gap-8"}`}>
+        {data.map((d, i) => (
+          <span key={`${d.label}-${i}`} className="flex-1 text-center text-[11px] sm:text-[12px] text-slate-400 whitespace-nowrap overflow-visible">
+            {i % selang === 0 ? d.label : ""}
+          </span>
         ))}
       </div>
       <div className="mt-4 flex items-center justify-center gap-5 text-xs text-slate-500">
