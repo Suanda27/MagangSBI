@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Supervisor\DashboardController;
+use App\Http\Controllers\Api\Supervisor\PermintaanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,7 @@ Route::get('/ping', fn (Request $request) => response()->json([
 ]));
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('supervisor.dashboard');
+
+// Monitoring tiket section sendiri (read-only).
+Route::get('permintaan', [PermintaanController::class, 'index'])->name('supervisor.permintaan.index');
+Route::get('permintaan/{id}', [PermintaanController::class, 'show'])->whereNumber('id')->name('supervisor.permintaan.show');
